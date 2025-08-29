@@ -1,11 +1,10 @@
-:root{ --bg:#071026; --card-grad1:#7c5cff; --card-grad2:#4f46e5; --text:#eaf2ff }
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text)}
-.demo-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px}
-.circular-gallery{width:100%;height:100%;max-width:1100px;max-height:640px;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));box-shadow:0 12px 50px rgba(2,6,23,0.6);overflow:hidden;position:relative}
-.cg-track{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
-.cg-item{position:absolute;transition:transform .28s cubic-bezier(.2,.9,.24,1),opacity .2s;transform-origin:center}
-.cg-card{display:flex;align-items:center;justify-content:center;width:150px;height:150px;border-radius:12px;background:linear-gradient(135deg,var(--card-grad1),var(--card-grad2));color:var(--text);text-decoration:none;font-weight:700;box-shadow:0 12px 36px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.04)}
-.cg-card:focus{outline:none;box-shadow:0 0 0 6px rgba(79,70,229,0.12)}
+.circular-gallery {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: grab;
+}
 
-@media(max-width:520px){.cg-card{width:110px;height:110px;font-size:14px}}
+.circular-gallery:active {
+  cursor: grabbing;
+}

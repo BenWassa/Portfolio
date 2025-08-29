@@ -5,7 +5,23 @@ body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;ba
 .site-header h1{margin:0;font-size:28px}
 .lead{color:var(--muted);margin:6px 0 0}
 .stage{width:min(1100px,96vw);height:min(620px,72vh);display:grid;place-items:center}
-.circular-gallery{width:100%;height:100%;position:relative;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));box-shadow:0 12px 48px rgba(2,6,23,0.6);overflow:hidden}
+.circular-gallery {
+	/* user suggested minimal guide */
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	cursor: grab;
+
+	/* polished visuals retained */
+	position: relative;
+	border-radius: 14px;
+	background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+	box-shadow: 0 12px 48px rgba(2,6,23,0.6);
+}
+
+.circular-gallery:active {
+	cursor: grabbing;
+}
 .cg-track{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
 .cg-item{position:absolute;transition:transform .28s cubic-bezier(.2,.9,.24,1),opacity .18s;transform-origin:center}
 .cg-card{display:flex;align-items:center;justify-content:center;width:150px;height:150px;border-radius:12px;background:linear-gradient(135deg,var(--card1),var(--card2));color:var(--muted);font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,0.04);box-shadow:0 10px 32px rgba(2,6,23,0.6)}
