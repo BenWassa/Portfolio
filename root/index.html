@@ -1,4 +1,42 @@
 <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Portfolio — Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="page">
+      <header class="site-header">
+        <h1>Portfolio</h1>
+        <p class="lead">A small collection of projects — placeholders for demo.</p>
+      </header>
+
+      <section class="stage">
+        <div id="gallery" class="circular-gallery" aria-label="Project gallery"></div>
+      </section>
+
+      <div class="controls">
+        <button id="viewAllBtn" class="btn">View all projects</button>
+        <button id="themeToggle" class="btn">Toggle theme</button>
+      </div>
+    </main>
+
+    <div id="detailsModal" class="details-modal" aria-hidden="true">
+      <div class="details-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="details-header">
+          <h2 id="modalTitle">Project</h2>
+          <button id="closeModalBtn" class="close-btn" aria-label="Close">×</button>
+        </div>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
