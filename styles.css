@@ -77,3 +77,35 @@ body {
     color: var(--text-primary);
 }
 
+/* Page layout (minimal) */
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.stage {
+    width: min(900px, 95vw);
+    height: min(600px, 70vh);
+    display: grid;
+    place-items: center;
+}
+
+.circular-gallery {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.controls { display:flex; gap:8px; }
+.btn { padding:8px 12px; border-radius:6px; background:var(--bg-secondary); color:var(--text-primary); border:1px solid rgba(255,255,255,0.06); cursor:pointer; }
+
+.sr-only { position:absolute; left:-9999px; }
+
+.close-btn { background:none; border:none; font-size:20px; cursor:pointer; }
+
+

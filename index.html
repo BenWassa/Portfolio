@@ -1,6 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio - Circular Gallery</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="dark">
+  <main class="page">
+    <h1 class="sr-only">Portfolio</h1>
+
+    <section class="stage">
+      <div id="circularGallery" class="circular-gallery" aria-label="Circular project gallery"></div>
+    </section>
+
+    <div class="controls">
+      <button id="viewAllBtn" class="btn">View All</button>
+      <button id="themeToggle" class="btn">Toggle Theme</button>
+    </div>
+  </main>
+
+  <div class="details-modal" id="detailsModal" aria-hidden="true">
+    <div class="details-content">
+      <div class="details-header">
+        <h2 id="modalTitle">Project Details</h2>
+        <button id="closeModalBtn" class="close-btn">×</button>
+      </div>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>

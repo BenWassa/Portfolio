@@ -1,178 +1,152 @@
-/*
- * CircularGallery ES module
- * Exports default CircularGallery class and auto-mounts when a #circularGallery element exists
- * Props supported: bend (number), textColor (string), borderRadius (0-1), scrollEase (0-1)
- */
+/* Simple CircularGallery: minimal, centered, functional */
 
-const projects = {
-    project1: { title: 'Landing Page', url: 'https://yourusername.github.io/landing-page' },
-    project2: { title: 'Dashboard', url: 'https://yourusername.github.io/dashboard' },
-    project3: { title: 'Game', url: 'https://yourusername.github.io/game' },
-    project4: { title: 'Mobile App', url: 'https://yourusername.github.io/mobile-app' },
-    project5: { title: 'Art Gallery', url: 'https://yourusername.github.io/art-gallery' }
-};
+const DEFAULT_ITEMS = [
+    { title: 'Landing Page', url: '#' },
+    { title: 'Dashboard', url: '#' },
+    { title: 'Game', url: '#' },
+    { title: 'Mobile App', url: '#' },
+    { title: 'Art Gallery', url: '#' }
+];
 
-class CircularGallery {
-    constructor(container, options = {}) {
+export default class CircularGallery {
+    constructor(container, opts = {}) {
         this.container = container;
-        this.options = Object.assign({
-            bend: 3,
-            textColor: '#ffffff',
-            borderRadius: 0.05,
-            scrollEase: 0.02,
-            items: Object.values(projects)
-        }, options);
-
-        this.state = {
-            angle: 0,
-            targetAngle: 0,
-            dragging: false,
-            lastX: 0,
-        };
-
-        this.init();
+        this.opts = Object.assign({ bend: 3, textColor: '#fff', borderRadius: 0.05, scrollEase: 0.08, items: DEFAULT_ITEMS }, opts);
+        this.items = [];
+        this._angle = 0;
+        this._target = 0;
+        this._drag = false;
+        this._lastX = 0;
+        this._init();
     }
 
-    init() {
-        this.container.classList.add('circular-gallery');
+    _init() {
+        this.container.innerHTML = '';
         this.track = document.createElement('div');
         this.track.className = 'cg-track';
         this.container.appendChild(this.track);
 
-        this.createItems();
-        this.attachEvents();
-        this.raf();
+        this._create();
+        this._bind();
+        this._resize();
+        requestAnimationFrame(() => this._tick());
     }
 
-    createItems() {
-        const { items } = this.options;
-        this.items = items.map((it, i) => {
-            const el = document.createElement('div');
-            el.className = 'cg-item';
-            el.dataset.index = i;
-
+    _create() {
+        const items = this.opts.items;
+        items.forEach((it, i) => {
+            const item = document.createElement('div');
+            item.className = 'cg-item';
             const card = document.createElement('a');
             card.className = 'cg-card';
+            card.textContent = it.title;
             card.href = it.url || '#';
             card.target = '_blank';
-            card.textContent = it.title || `Item ${i + 1}`;
-            card.style.color = this.options.textColor;
-            card.style.borderRadius = `${this.options.borderRadius * 100}%`;
-
-            el.appendChild(card);
-            this.track.appendChild(el);
-            return { el, card, data: it };
-        });
-
-        this.layoutItems();
-    }
-
-    layoutItems() {
-        const rect = this.container.getBoundingClientRect();
-        const cx = rect.width / 2;
-        const cy = rect.height / 2;
-        const radius = Math.min(cx, cy) * 0.75;
-        const bend = this.options.bend;
-        const count = this.items.length;
-
-        this.items.forEach((it, i) => {
-            const t = (i / count) * Math.PI * 2;
-            // bend influences the effective radius per item
-            const bx = Math.cos(t) * radius * (1 + Math.sin(t) / bend);
-            const by = Math.sin(t) * radius * (1 - Math.cos(t) / bend);
-
-            it.angle = t;
-            it.x = cx + bx;
-            it.y = cy + by;
-            it.el.style.transform = `translate(-50%, -50%) translate(${it.x}px, ${it.y}px)`;
+            card.style.color = this.opts.textColor;
+            card.style.borderRadius = `${this.opts.borderRadius * 100}%`;
+            item.appendChild(card);
+            this.track.appendChild(item);
+            this.items.push(item);
         });
     }
 
-    attachEvents() {
-        this.container.addEventListener('mousedown', this.onDown.bind(this));
-        window.addEventListener('mouseup', this.onUp.bind(this));
-        window.addEventListener('mousemove', this.onMove.bind(this));
+    _bind() {
+        this.container.addEventListener('mousedown', (e) => this._down(e));
+        window.addEventListener('mouseup', () => this._up());
+        window.addEventListener('mousemove', (e) => this._move(e));
+        // touch
+        this.container.addEventListener('touchstart', (e) => this._down(e.touches[0]));
+        window.addEventListener('touchend', () => this._up());
+        window.addEventListener('touchmove', (e) => this._move(e.touches[0]));
 
-        // touch handlers
-        this.container.addEventListener('touchstart', (e) => this.onDown(e.touches[0]));
-        window.addEventListener('touchend', (e) => this.onUp(e.changedTouches ? e.changedTouches[0] : e));
-        window.addEventListener('touchmove', (e) => this.onMove(e.touches[0]));
+        window.addEventListener('resize', () => this._resize());
 
-        // window resize
-        window.addEventListener('resize', () => this.layoutItems());
-
-        // wire buttons and modal
         const viewAll = document.getElementById('viewAllBtn');
-        if (viewAll) viewAll.addEventListener('click', () => this.showAll());
+        if (viewAll) viewAll.addEventListener('click', () => this._showAll());
 
         const closeBtn = document.getElementById('closeModalBtn');
-        if (closeBtn) closeBtn.addEventListener('click', () => this.closeModal());
+        if (closeBtn) closeBtn.addEventListener('click', () => this._closeModal());
 
         const themeToggle = document.getElementById('themeToggle');
-        if (themeToggle) themeToggle.addEventListener('click', () => this.toggleTheme());
+        if (themeToggle) themeToggle.addEventListener('click', () => this._toggleTheme());
     }
 
-    onDown(e) {
-        this.state.dragging = true;
-        this.state.lastX = e.clientX;
+    _down(e) {
+        this._drag = true;
+        this._lastX = e.clientX;
     }
 
-    onUp() {
-        this.state.dragging = false;
+    _up() { this._drag = false; }
+
+    _move(e) {
+        if (!this._drag) return;
+        const dx = e.clientX - this._lastX;
+        this._lastX = e.clientX;
+        this._target += dx * 0.01; // sensitivity
     }
 
-    onMove(e) {
-        if (!this.state.dragging) return;
-        const dx = e.clientX - this.state.lastX;
-        this.state.lastX = e.clientX;
-        // convert horizontal drag to target angle change
-        this.state.targetAngle += dx * 0.01; // sensitivity
+    _resize() {
+        const r = this.container.getBoundingClientRect();
+        this.cx = r.width / 2;
+        this.cy = r.height / 2;
+        this.radius = Math.min(this.cx, this.cy) * 0.6;
+        this._layout();
     }
 
-    raf() {
-        const ease = this.options.scrollEase;
-        this.state.angle += (this.state.targetAngle - this.state.angle) * ease;
-        this.track.style.transform = `rotate(${this.state.angle}rad)`;
-        requestAnimationFrame(() => this.raf());
+    _layout() {
+        const count = this.items.length;
+        for (let i = 0; i < count; i++) {
+            const t = (i / count) * Math.PI * 2;
+            const x = this.cx + Math.cos(t) * this.radius;
+            const y = this.cy + Math.sin(t) * this.radius;
+            const el = this.items[i];
+            el.style.position = 'absolute';
+            el.style.left = `${x}px`;
+            el.style.top = `${y}px`;
+            el.style.transform = 'translate(-50%, -50%)';
+        }
     }
 
-    showAll() {
+    _tick() {
+        const ease = this.opts.scrollEase;
+        this._angle += (this._target - this._angle) * ease;
+        this.track.style.transform = `translate(-50%, -50%) translate(${this.cx}px, ${this.cy}px) rotate(${this._angle}rad)`;
+        this.track.style.transformOrigin = 'center center';
+        requestAnimationFrame(() => this._tick());
+    }
+
+    _showAll() {
         const modal = document.getElementById('detailsModal');
         const title = document.getElementById('modalTitle');
         const content = document.getElementById('modalContent');
         if (!modal || !title || !content) return;
         title.textContent = 'All Projects';
-        let html = '';
+        content.innerHTML = '';
         this.items.forEach(it => {
-            html += `<div style="margin-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:8px;">
-                <div style="font-weight:600">${it.data.title}</div>
-                <a href="${it.data.url}" target="_blank" style="color:var(--accent)">Visit →</a>
-            </div>`;
+            const a = it.querySelector('a');
+            const div = document.createElement('div');
+            div.innerHTML = `<div style="margin-bottom:8px"><strong>${a.textContent}</strong> — <a href="${a.href}" target="_blank">Visit</a></div>`;
+            content.appendChild(div);
         });
-        content.innerHTML = html;
         modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden', 'false');
     }
 
-    closeModal() {
+    _closeModal() {
         const modal = document.getElementById('detailsModal');
-        if (modal) modal.style.display = 'none';
+        if (!modal) return;
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
     }
 
-    toggleTheme() {
-        const body = document.body;
-        const current = body.getAttribute('data-theme');
-        body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    _toggleTheme() {
+        const b = document.body;
+        b.setAttribute('data-theme', b.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     }
 }
 
-export default CircularGallery;
+// Auto-mount
+const mount = document.getElementById('circularGallery');
+if (mount) new CircularGallery(mount, { bend: 3, textColor: '#fff', borderRadius: 0.05, scrollEase: 0.08 });
 
-// Auto-mount when #circularGallery exists
-const mountPoint = document.getElementById('circularGallery');
-if (mountPoint) {
-    // default options mirror user's usage example
-    const gallery = new CircularGallery(mountPoint, { bend: 3, textColor: '#ffffff', borderRadius: 0.05, scrollEase: 0.02 });
-    // expose for debugging
-    window.CircularGallery = CircularGallery;
-}
 
