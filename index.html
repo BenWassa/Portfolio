@@ -14,56 +14,21 @@
         </div>
 
         <div class="gallery-container">
-            <div class="gallery-center">
-                <div class="gallery-center-text">My<br>Projects</div>
-            </div>
-            
-            <!-- Sample projects - replace with your actual sites -->
-            <div class="site-item" data-site="project1" style="top: 0; left: 50%; transform: translateX(-50%);">
-                <div class="site-preview">🚀</div>
-                <div class="site-info">
-                    <div class="site-title">Landing Page</div>
-                </div>
-            </div>
-
-            <div class="site-item" data-site="project2" style="top: 25%; right: 0; transform: translateY(-50%);">
-                <div class="site-preview">📊</div>
-                <div class="site-info">
-                    <div class="site-title">Dashboard</div>
-                </div>
-            </div>
-
-            <div class="site-item" data-site="project3" style="bottom: 0; right: 25%; transform: translateX(50%);">
-                <div class="site-preview">🎮</div>
-                <div class="site-info">
-                    <div class="site-title">Game</div>
-                </div>
-            </div>
-
-            <div class="site-item" data-site="project4" style="bottom: 0; left: 25%; transform: translateX(-50%);">
-                <div class="site-preview">📱</div>
-                <div class="site-info">
-                    <div class="site-title">Mobile App</div>
-                </div>
-            </div>
-
-            <div class="site-item" data-site="project5" style="top: 25%; left: 0; transform: translateY(-50%);">
-                <div class="site-preview">🎨</div>
-                <div class="site-info">
-                    <div class="site-title">Art Gallery</div>
-                </div>
+            <!-- Circular gallery will be mounted here -->
+            <div id="circularGallery" class="circular-gallery" style="height:600px; position:relative;">
+                <!-- items populated by script.js -->
             </div>
         </div>
 
         <div class="actions">
-            <button class="btn" onclick="showAllDetails()">
+            <button class="btn" id="viewAllBtn">
                 <span>View All Details</span>
                 <span>📋</span>
             </button>
         </div>
     </div>
 
-    <div class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" role="button" tabindex="0">
+    <div class="theme-toggle" id="themeToggle" aria-label="Toggle theme" role="button" tabindex="0">
         <svg class="lightbulb" viewBox="0 0 24 24">
             <path d="M12 7c-2.76 0-5 2.24-5 5 0 1.64.8 3.09 2.03 4H15c1.2-.91 2-2.36 2-4 0-2.76-2.24-5-5-5zM12 2l3 3-3-3-3 3 3-3zM6.5 6L4 3.5 6.5 6 4 8.5 6.5 6zM18 3.5L15.5 6 18 8.5 15.5 6 18 3.5zM17.5 11.5c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5zM9 16h6v1c0 .55-.45 1-1 1h-4c-.55 0-1-.45-1-1v-1zM10 19h4v1c0 .55-.45 1-1 1h-2c-.55 0-1-.45-1-1v-1z"/>
         </svg>
@@ -73,7 +38,7 @@
         <div class="details-content">
             <div class="details-header">
                 <h2 class="details-title" id="modalTitle">Project Details</h2>
-                <button class="close-btn" onclick="closeModal()">&times;</button>
+                <button class="close-btn" id="closeModalBtn">&times;</button>
             </div>
             <div id="modalContent">
                 <!-- Content will be populated by JavaScript -->
@@ -81,6 +46,6 @@
         </div>
     </div>
 
-    <script src="script.js" defer></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>

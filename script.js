@@ -1,196 +1,178 @@
-// Project data - customize this with your actual projects
+/*
+ * CircularGallery ES module
+ * Exports default CircularGallery class and auto-mounts when a #circularGallery element exists
+ * Props supported: bend (number), textColor (string), borderRadius (0-1), scrollEase (0-1)
+ */
+
 const projects = {
-    project1: {
-        title: "Landing Page",
-        url: "https://yourusername.github.io/landing-page",
-        inspiration: "Modern SaaS landing pages with clean typography and bold gradients",
-        purpose: "To create a compelling first impression for a fictional startup",
-        audience: "Tech-savvy professionals and potential investors",
-        tech: "HTML, CSS, JavaScript with animations"
-    },
-    project2: {
-        title: "Dashboard",
-        url: "https://yourusername.github.io/dashboard",
-        inspiration: "Data visualization platforms like Tableau and modern admin panels",
-        purpose: "Demonstrate data visualization and UI component skills",
-        audience: "Data analysts and business users",
-        tech: "React, Chart.js, responsive design"
-    },
-    project3: {
-        title: "Game",
-        url: "https://yourusername.github.io/game",
-        inspiration: "Classic arcade games with modern web technologies",
-        purpose: "Explore game development and interactive animations",
-        audience: "Casual gamers and developers",
-        tech: "JavaScript, Canvas API, game loops"
-    },
-    project4: {
-        title: "Mobile App",
-        url: "https://yourusername.github.io/mobile-app",
-        inspiration: "iOS and Android design systems",
-        purpose: "Practice responsive design and mobile-first approach",
-        audience: "Mobile users and app enthusiasts",
-        tech: "Progressive Web App, Touch interactions"
-    },
-    project5: {
-        title: "Art Gallery",
-        url: "https://yourusername.github.io/art-gallery",
-        inspiration: "Museum websites and photography portfolios",
-        purpose: "Showcase visual content with elegant presentation",
-        audience: "Artists, designers, and art enthusiasts",
-        tech: "CSS Grid, Image optimization, Lazy loading"
-    }
+    project1: { title: 'Landing Page', url: 'https://yourusername.github.io/landing-page' },
+    project2: { title: 'Dashboard', url: 'https://yourusername.github.io/dashboard' },
+    project3: { title: 'Game', url: 'https://yourusername.github.io/game' },
+    project4: { title: 'Mobile App', url: 'https://yourusername.github.io/mobile-app' },
+    project5: { title: 'Art Gallery', url: 'https://yourusername.github.io/art-gallery' }
 };
 
-// Theme toggle functionality
-function toggleTheme() {
-    const body = document.body;
-    const currentTheme = body.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    body.setAttribute('data-theme', newTheme);
+class CircularGallery {
+    constructor(container, options = {}) {
+        this.container = container;
+        this.options = Object.assign({
+            bend: 3,
+            textColor: '#ffffff',
+            borderRadius: 0.05,
+            scrollEase: 0.02,
+            items: Object.values(projects)
+        }, options);
 
-    // Add a subtle animation to the lightbulb
-    const lightbulb = document.querySelector('.lightbulb');
-    if (lightbulb) {
-        lightbulb.style.transform = 'scale(1.2)';
-        setTimeout(() => {
-            lightbulb.style.transform = 'scale(1)';
-        }, 200);
+        this.state = {
+            angle: 0,
+            targetAngle: 0,
+            dragging: false,
+            lastX: 0,
+        };
+
+        this.init();
+    }
+
+    init() {
+        this.container.classList.add('circular-gallery');
+        this.track = document.createElement('div');
+        this.track.className = 'cg-track';
+        this.container.appendChild(this.track);
+
+        this.createItems();
+        this.attachEvents();
+        this.raf();
+    }
+
+    createItems() {
+        const { items } = this.options;
+        this.items = items.map((it, i) => {
+            const el = document.createElement('div');
+            el.className = 'cg-item';
+            el.dataset.index = i;
+
+            const card = document.createElement('a');
+            card.className = 'cg-card';
+            card.href = it.url || '#';
+            card.target = '_blank';
+            card.textContent = it.title || `Item ${i + 1}`;
+            card.style.color = this.options.textColor;
+            card.style.borderRadius = `${this.options.borderRadius * 100}%`;
+
+            el.appendChild(card);
+            this.track.appendChild(el);
+            return { el, card, data: it };
+        });
+
+        this.layoutItems();
+    }
+
+    layoutItems() {
+        const rect = this.container.getBoundingClientRect();
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+        const radius = Math.min(cx, cy) * 0.75;
+        const bend = this.options.bend;
+        const count = this.items.length;
+
+        this.items.forEach((it, i) => {
+            const t = (i / count) * Math.PI * 2;
+            // bend influences the effective radius per item
+            const bx = Math.cos(t) * radius * (1 + Math.sin(t) / bend);
+            const by = Math.sin(t) * radius * (1 - Math.cos(t) / bend);
+
+            it.angle = t;
+            it.x = cx + bx;
+            it.y = cy + by;
+            it.el.style.transform = `translate(-50%, -50%) translate(${it.x}px, ${it.y}px)`;
+        });
+    }
+
+    attachEvents() {
+        this.container.addEventListener('mousedown', this.onDown.bind(this));
+        window.addEventListener('mouseup', this.onUp.bind(this));
+        window.addEventListener('mousemove', this.onMove.bind(this));
+
+        // touch handlers
+        this.container.addEventListener('touchstart', (e) => this.onDown(e.touches[0]));
+        window.addEventListener('touchend', (e) => this.onUp(e.changedTouches ? e.changedTouches[0] : e));
+        window.addEventListener('touchmove', (e) => this.onMove(e.touches[0]));
+
+        // window resize
+        window.addEventListener('resize', () => this.layoutItems());
+
+        // wire buttons and modal
+        const viewAll = document.getElementById('viewAllBtn');
+        if (viewAll) viewAll.addEventListener('click', () => this.showAll());
+
+        const closeBtn = document.getElementById('closeModalBtn');
+        if (closeBtn) closeBtn.addEventListener('click', () => this.closeModal());
+
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) themeToggle.addEventListener('click', () => this.toggleTheme());
+    }
+
+    onDown(e) {
+        this.state.dragging = true;
+        this.state.lastX = e.clientX;
+    }
+
+    onUp() {
+        this.state.dragging = false;
+    }
+
+    onMove(e) {
+        if (!this.state.dragging) return;
+        const dx = e.clientX - this.state.lastX;
+        this.state.lastX = e.clientX;
+        // convert horizontal drag to target angle change
+        this.state.targetAngle += dx * 0.01; // sensitivity
+    }
+
+    raf() {
+        const ease = this.options.scrollEase;
+        this.state.angle += (this.state.targetAngle - this.state.angle) * ease;
+        this.track.style.transform = `rotate(${this.state.angle}rad)`;
+        requestAnimationFrame(() => this.raf());
+    }
+
+    showAll() {
+        const modal = document.getElementById('detailsModal');
+        const title = document.getElementById('modalTitle');
+        const content = document.getElementById('modalContent');
+        if (!modal || !title || !content) return;
+        title.textContent = 'All Projects';
+        let html = '';
+        this.items.forEach(it => {
+            html += `<div style="margin-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:8px;">
+                <div style="font-weight:600">${it.data.title}</div>
+                <a href="${it.data.url}" target="_blank" style="color:var(--accent)">Visit →</a>
+            </div>`;
+        });
+        content.innerHTML = html;
+        modal.style.display = 'flex';
+    }
+
+    closeModal() {
+        const modal = document.getElementById('detailsModal');
+        if (modal) modal.style.display = 'none';
+    }
+
+    toggleTheme() {
+        const body = document.body;
+        const current = body.getAttribute('data-theme');
+        body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
     }
 }
 
-// Site item click handlers
-document.addEventListener('DOMContentLoaded', function() {
-    const siteItems = document.querySelectorAll('.site-item');
-    
-    siteItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const siteId = this.getAttribute('data-site');
-            const project = projects[siteId];
-            
-            if (project) {
-                // Open the actual site
-                window.open(project.url, '_blank');
-            }
-        });
+export default CircularGallery;
 
-        // Add right-click for details
-        item.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            const siteId = this.getAttribute('data-site');
-            showProjectDetails(siteId);
-        });
-
-        // Add double-click for details on mobile
-        let tapCount = 0;
-        item.addEventListener('touchend', function(e) {
-            tapCount++;
-            if (tapCount === 1) {
-                setTimeout(() => {
-                    if (tapCount === 1) {
-                        // Single tap - open site
-                        const siteId = this.getAttribute('data-site');
-                        const project = projects[siteId];
-                        if (project) {
-                            window.open(project.url, '_blank');
-                        }
-                    } else {
-                        // Double tap - show details
-                        const siteId = this.getAttribute('data-site');
-                        showProjectDetails(siteId);
-                    }
-                    tapCount = 0;
-                }, 300);
-            }
-        });
-    });
-});
-
-function showProjectDetails(projectId) {
-    const project = projects[projectId];
-    if (!project) return;
-
-    const modal = document.getElementById('detailsModal');
-    const title = document.getElementById('modalTitle');
-    const content = document.getElementById('modalContent');
-
-    title.textContent = project.title;
-    content.innerHTML = `
-        <div class="details-section">
-            <div class="section-title">Inspiration</div>
-            <div class="section-content">${project.inspiration}</div>
-        </div>
-        <div class="details-section">
-            <div class="section-title">Purpose</div>
-            <div class="section-content">${project.purpose}</div>
-        </div>
-        <div class="details-section">
-            <div class="section-title">Target Audience</div>
-            <div class="section-content">${project.audience}</div>
-        </div>
-        <div class="details-section">
-            <div class="section-title">Technologies</div>
-            <div class="section-content">${project.tech}</div>
-        </div>
-        <div class="details-section">
-            <a href="${project.url}" target="_blank" class="btn" style="margin-top: 1rem;">
-                Visit Site →
-            </a>
-        </div>
-    `;
-
-    modal.style.display = 'flex';
+// Auto-mount when #circularGallery exists
+const mountPoint = document.getElementById('circularGallery');
+if (mountPoint) {
+    // default options mirror user's usage example
+    const gallery = new CircularGallery(mountPoint, { bend: 3, textColor: '#ffffff', borderRadius: 0.05, scrollEase: 0.02 });
+    // expose for debugging
+    window.CircularGallery = CircularGallery;
 }
 
-function showAllDetails() {
-    const modal = document.getElementById('detailsModal');
-    const title = document.getElementById('modalTitle');
-    const content = document.getElementById('modalContent');
-
-    title.textContent = 'All Projects';
-    
-    let allProjectsHTML = '';
-    Object.entries(projects).forEach(([id, project]) => {
-        allProjectsHTML += `
-            <div class="details-section" style="border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
-                <div class="section-title">${project.title}</div>
-                <div class="section-content" style="margin-bottom: 0.5rem;">${project.purpose}</div>
-                <a href="${project.url}" target="_blank" class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">
-                    Visit →
-                </a>
-            </div>
-        `;
-    });
-
-    content.innerHTML = allProjectsHTML;
-    modal.style.display = 'flex';
-}
-
-function closeModal() {
-    const modal = document.getElementById('detailsModal');
-    modal.style.display = 'none';
-}
-
-// Close modal when clicking outside
-document.addEventListener('click', function (e) {
-    const modal = document.getElementById('detailsModal');
-    if (!modal) return;
-    if (e.target === modal) closeModal();
-});
-
-// Add smooth entrance animations
-window.addEventListener('load', function() {
-    const siteItems = document.querySelectorAll('.site-item');
-    siteItems.forEach((item, index) => {
-        item.style.opacity = '0';
-        item.style.transform += ' scale(0.8)';
-        setTimeout(() => {
-            item.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-            item.style.opacity = '1';
-            item.style.transform = item.style.transform.replace('scale(0.8)', 'scale(1)');
-        }, 200 + (index * 100));
-    });
-});
-
-// Export projects for potential use in other scripts or tests
-if (typeof module !== 'undefined') module.exports = { projects };
