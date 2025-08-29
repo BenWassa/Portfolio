@@ -7,73 +7,12 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <main class="page">
-      <header class="site-header">
-        <h1>Portfolio</h1>
-        <p class="lead">A small collection of projects — placeholders for demo.</p>
-      </header>
+   import CircularGallery from './CircularGallery'
 
-      <section class="stage">
-        <div id="gallery" class="circular-gallery" aria-label="Project gallery"></div>
-      </section>
-
-      <div class="controls">
-        <button id="viewAllBtn" class="btn">View all projects</button>
-        <button id="themeToggle" class="btn">Toggle theme</button>
-      </div>
-    </main>
-
-    <div id="detailsModal" class="details-modal" aria-hidden="true">
-      <div class="details-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <div class="details-header">
-          <h2 id="modalTitle">Project</h2>
-          <button id="closeModalBtn" class="close-btn" aria-label="Close">×</button>
-        </div>
-        <div id="modalContent"></div>
-      </div>
-    </div>
+<div style={{ height: '600px', position: 'relative' }}>
+  <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02}/>
+</div>
 
     <script src="script.js" defer></script>
-  </body>
-</html>
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Circular Gallery Demo</title>
-    <link rel="stylesheet" href="gallery.css">
-    <!-- React + ReactDOM + Babel for quick demo (dev only) -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  </head>
-  <body>
-    <div class="demo-wrap">
-      <div id="root" style="width:95%;height:600px;position:relative"></div>
-    </div>
-
-    <!-- Load component via simple inline module loader (development) -->
-    <script type="text/babel">
-      // Import the component file using fetch and eval to allow quick demo without a bundler.
-      async function loadComponent() {
-        const src = await fetch('CircularGallery.js').then(r => r.text());
-        // Transform ES module content into an IIFE that returns the default export
-        const wrapped = `(function(React){ ${src}; return exports.default || module.exports || CircularGallery; })(React)`;
-        // Evaluate and get the component factory
-        const factory = eval(wrapped);
-        return factory;
-      }
-
-      (async function(){
-        const CircularGallery = await loadComponent();
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(
-          React.createElement('div', { style: { height: '600px', position: 'relative' } },
-            React.createElement(CircularGallery, { bend: 3, textColor: '#ffffff', borderRadius: 0.05, scrollEase: 0.02 })
-          )
-        );
-      })();
-    </script>
   </body>
 </html>
