@@ -1,14 +1,51 @@
+/* Minimal gallery styles (horizontal scroll) */
+
 .circular-gallery {
-	/* user suggested minimal guide */
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
 	cursor: grab;
-
-	/* polished visuals retained */
 	position: relative;
-	border-radius: 14px;
-	background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-	box-shadow: 0 12px 48px rgba(2,6,23,0.6);
 }
+
+.circular-gallery:active {
+	cursor: grabbing;
+}
+
+/* horizontal track inside the gallery */
+.cg-track {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	height: 100%;
+	padding: 24px;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	-webkit-overflow-scrolling: touch;
+}
+
+.cg-item {
+	flex: 0 0 auto;
+	scroll-snap-align: center;
+}
+
+.cg-card {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 200px;
+	height: 200px;
+	border-radius: 12px;
+	background: linear-gradient(135deg,#7c5cff,#4f46e5);
+	color: #fff;
+	text-decoration: none;
+	font-weight: 700;
+	box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* small screens */
+@media (max-width: 520px) {
+	.cg-card { width: 140px; height: 140px; }
+}
+
 

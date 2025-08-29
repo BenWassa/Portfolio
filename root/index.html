@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-   import CircularGallery from './CircularGallery'
-
-<div style={{ height: '600px', position: 'relative' }}>
-  <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02}/>
-</div>
+    <main style="display:flex;align-items:center;justify-content:center;padding:24px">
+      <!-- Container for the gallery (600px high as requested) -->
+      <div style="height:600px; width:100%; max-width:1100px; position:relative;">
+        <div id="gallery" class="circular-gallery" aria-label="Project gallery"></div>
+      </div>
+    </main>
 
     <script src="script.js" defer></script>
   </body>
