@@ -11,7 +11,7 @@ export const projectsData = [
     tag: "Movie-Narrative Guide",
     desc: "An immersive mythic companion for personal reflection and growth, using Luke Skywalker’s journey as a timeless mirror. Transforms film narrative into guided self-discovery through prompts and symbolism.",
     href: "https://benwassa.github.io/Skywalker/",
-    img: "Project_Images/Skywalker.png",
+    img: "Skywalker.png",
     alt: "Skywalker — Personal systems & UX playground",
     theme: {
       primary: "#3B82F6", // accent-blue from Skywalker repo
@@ -26,7 +26,7 @@ export const projectsData = [
     tag: "Scientific-Narrative Guide",
     desc: "A unified framework addressing the Modern Meaning Crisis — weaving mythic storytelling, cultural critique, and research into emotionally resonant narratives of purpose, soul, and moral compass.",
     href: "https://benwassa.github.io/sankofa/",
-    img: "Project_Images/Sankofa.png",
+    img: "Sankofa.png",
     alt: "Sankofa — Mythic psychology narrative site",
     theme: {
       primary: "#d4af37", // accent-gold from Sankofa repo
@@ -41,7 +41,7 @@ export const projectsData = [
     tag: "Scientific-Narrative Guide",
     desc: "A field guide and manifesto on dopamine as a cultural force. Exposes misconceptions, charts how temptation systems shape modern crises, and offers practical tools for clarity, calm, and autonomy.",
     href: "https://benwassa.github.io/dukkha/",
-    img: "Project_Images/Dukkha.png",
+    img: "Dukkha.png",
     alt: "Dukkha — Digital well-being & dopamine craft",
     theme: {
       primary: "#10b981", // green for "truth" sections from Dukkha
@@ -56,7 +56,7 @@ export const projectsData = [
     tag: "Language Learning Tracker",
     desc: "Vox is a lean, offline-first vocabulary tracker designed for focused study in Spanish and Mandarin. Featuring CSV import and export, practice counters, and responsive table and card views, making it easy to manage and review progress.",
     href: "https://benwassa.github.io/Vox_Showcase/",
-    img: "Project_Images/Vox.png",
+    img: "Vox.png",
     alt: "Vox — Language-learning dashboard",
     theme: {
       primary: "#3b82f6", // primary-color from Vox repo
@@ -71,7 +71,7 @@ export const projectsData = [
     tag: "Music Research Tool",
     desc: "A lyrical lantern into memory and emotion, decoding the themes in your listening patterns. Transforms music into a framework for reflection, self-discovery, and mapping emotional currents.",
     href: null,
-    img: "Project_Images/Orpheus.png", 
+    img: "Orpheus.png", 
     alt: "Orpheus — Audio experiments",
     theme: {
       primary: "#8B5CF6", // purple accent for music/audio theme
@@ -86,7 +86,7 @@ export const projectsData = [
     tag: "Scientific-Narrative Guide",
     desc: "A cross-cultural study of rites of passage. Blends history, myth, psychology, and research into a modern narrative framework reimagining authentic initiation for resilience and transformation.",
     href: null,
-    img: "Project_Images/Agoge.png", 
+    img: "Agoge.png", 
     alt: "Agoge — Rites of passage research",
     theme: {
       primary: "#dc2626", // strong red for Spartan/warrior theme
