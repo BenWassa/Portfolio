@@ -15,7 +15,7 @@ The site is built as a static site inside the `docs/` folder and published via G
 
 The portfolio highlights a handful of projects, including:
 
-- Skywalker — Mythic companion for personal reflection and guided self-discovery using Luke Skywalker's journey.
+- Skywalker — A comprehensive UX playground for personal systems and compounding routines with advanced interaction patterns.
 - Sankofa — An immersive mythic psychology narrative experience with podcast scaffolding in a living document environment.
 - Dukkha — A comprehensive field guide for digital discipline—featuring live HTML experiences & systematic UX patterns.
 - Vox — Advanced language-learning dashboard with progress tracking, analytics, and adaptive learning algorithms (in development).
