@@ -8,10 +8,10 @@
 export const projectsData = [
   {
     title: "Skywalker",
-    tag: "UX Design",
-    desc: "A comprehensive UX playground for personal systems and compounding routines with advanced interaction patterns.",
+    tag: "Movie-Narrative Guide",
+    desc: "An immersive mythic companion for personal reflection and growth, using Luke Skywalker’s journey as a timeless mirror. Transforms film narrative into guided self-discovery through prompts and symbolism.",
     href: "https://benwassa.github.io/Skywalker/",
-  img: "../docs/Project_Images/Skywalker.png",
+    img: "../docs/Project_Images/Skywalker.png",
     alt: "Skywalker — Personal systems & UX playground",
     theme: {
       primary: "#3B82F6", // accent-blue from Skywalker repo
@@ -23,10 +23,10 @@ export const projectsData = [
   },
   {
     title: "Sankofa",
-    tag: "Digital Narrative",
-    desc: "An immersive mythic psychology narrative experience with podcast scaffolding in a living document environment.",
+    tag: "Scientific-Narrative Guide",
+    desc: "A unified framework addressing the Modern Meaning Crisis — weaving mythic storytelling, cultural critique, and research into emotionally resonant narratives of purpose, soul, and moral compass.",
     href: "https://benwassa.github.io/sankofa/",
-  img: "../docs/Project_Images/Sankofa.png",
+    img: "../docs/Project_Images/Sankofa.png",
     alt: "Sankofa — Mythic psychology narrative site",
     theme: {
       primary: "#d4af37", // accent-gold from Sankofa repo
@@ -38,10 +38,10 @@ export const projectsData = [
   },
   {
     title: "Dukkha", 
-    tag: "Design System",
-    desc: "A comprehensive field guide for digital discipline—featuring live HTML experiences & systematic UX patterns.",
+    tag: "Scientific-Narrative Guide",
+    desc: "A field guide and manifesto on dopamine as a cultural force. Exposes misconceptions, charts how temptation systems shape modern crises, and offers practical tools for clarity, calm, and autonomy.",
     href: "https://benwassa.github.io/dukkha/",
-  img: "../docs/Project_Images/Dukkha.png",
+    img: "../docs/Project_Images/Dukkha.png",
     alt: "Dukkha — Digital well-being & dopamine craft",
     theme: {
       primary: "#10b981", // green for "truth" sections from Dukkha
@@ -53,10 +53,10 @@ export const projectsData = [
   },
   {
     title: "Vox",
-    tag: "Data Interface", 
-    desc: "Advanced language-learning dashboard with progress tracking, analytics, and adaptive learning algorithms (in development).",
+    tag: "Language Learning Tracker", 
+    desc: "A rigorous, self-directed language learning tracker. Emphasizes grammar mastery, vocab transparency, and real-world output, avoiding gamified fluff in favor of deliberate, adaptive practice.",
     href: "https://benwassa.github.io/Vox/",
-  img: "../docs/Project_Images/Vox.png",
+    img: "../docs/Project_Images/Vox.png",
     alt: "Vox — Language-learning dashboard",
     theme: {
       primary: "#3b82f6", // primary-color from Vox repo
@@ -68,10 +68,10 @@ export const projectsData = [
   },
   {
     title: "Orpheus",
-    tag: "Audio Research",
-    desc: "Experimental audio interfaces and sonic interaction patterns — exploring the intersection of sound and digital experience.",
+    tag: "Music Research Tool",
+    desc: "A lyrical lantern into memory and emotion, decoding the themes in your listening patterns. Transforms music into a framework for reflection, self-discovery, and mapping emotional currents.",
     href: null,
-  img: "../docs/Project_Images/Orpheus.png", 
+    img: "../docs/Project_Images/Orpheus.png", 
     alt: "Orpheus — Audio experiments",
     theme: {
       primary: "#8B5CF6", // purple accent for music/audio theme
@@ -83,10 +83,10 @@ export const projectsData = [
   },
   {
     title: "Agoge",
-    tag: "Research Project",
-    desc: "A narrative research project exploring traditional rites of passage and authentic initiation for the modern world.",
+    tag: "Scientific-Narrative Guide",
+    desc: "A cross-cultural study of rites of passage. Blends history, myth, psychology, and research into a modern narrative framework reimagining authentic initiation for resilience and transformation.",
     href: null,
-  img: "../docs/Project_Images/Agoge.png", 
+    img: "../docs/Project_Images/Agoge.png", 
     alt: "Agoge — Rites of passage research",
     theme: {
       primary: "#dc2626", // strong red for Spartan/warrior theme
