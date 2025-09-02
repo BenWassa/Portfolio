@@ -105,6 +105,36 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Reusable hero image utility + per-project background images
+     Use in HTML like:
+     <div class="hero-section-image skywalker" role="img" aria-label="Skywalker — ..."></div>
+  */
+  .hero-section-image {
+    width: 100%;
+    height: clamp(200px, 28vw, 420px);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: block;
+    overflow: hidden;
+  }
+
+  .hero-section-image[role="img"] {
+    /* provide a subtle background while image loads or if missing */
+    background-color: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));
+  }
+
+  /* Project background images (relative to this CSS file in docs/) */
+  .hero-section-image.skywalker   { background-image: url('Project_Images/Skywalker.png'); }
+  .hero-section-image.sankofa     { background-image: url('Project_Images/Sankofa.png'); }
+  .hero-section-image.dukkha      { background-image: url('Project_Images/Dukkha.png'); }
+  .hero-section-image.vox         { background-image: url('Project_Images/Vox.png'); }
+  .hero-section-image.orpheus     { background-image: url('Project_Images/Orpheus.png'); }
+  .hero-section-image.agoge       { background-image: url('Project_Images/Agoge.png'); }
+
   
   .eyebrow{
     display:inline-block; 
