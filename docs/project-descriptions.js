@@ -11,7 +11,7 @@ export const projectsData = [
     tag: "UX Design",
     desc: "A comprehensive UX playground for personal systems and compounding routines with advanced interaction patterns.",
     href: "https://benwassa.github.io/Skywalker/",
-  img: "docs/Project_Images/Skywalker.png",
+  img: "../docs/Project_Images/Skywalker.png",
     alt: "Skywalker — Personal systems & UX playground",
     theme: {
       primary: "#3B82F6", // accent-blue from Skywalker repo
@@ -26,7 +26,7 @@ export const projectsData = [
     tag: "Digital Narrative",
     desc: "An immersive mythic psychology narrative experience with podcast scaffolding in a living document environment.",
     href: "https://benwassa.github.io/sankofa/",
-  img: "docs/Project_Images/Sankofa.png",
+  img: "../docs/Project_Images/Sankofa.png",
     alt: "Sankofa — Mythic psychology narrative site",
     theme: {
       primary: "#d4af37", // accent-gold from Sankofa repo
@@ -41,7 +41,7 @@ export const projectsData = [
     tag: "Design System",
     desc: "A comprehensive field guide for digital discipline—featuring live HTML experiences & systematic UX patterns.",
     href: "https://benwassa.github.io/dukkha/",
-  img: "docs/Project_Images/Dukkha.png",
+  img: "../docs/Project_Images/Dukkha.png",
     alt: "Dukkha — Digital well-being & dopamine craft",
     theme: {
       primary: "#10b981", // green for "truth" sections from Dukkha
@@ -56,7 +56,7 @@ export const projectsData = [
     tag: "Data Interface", 
     desc: "Advanced language-learning dashboard with progress tracking, analytics, and adaptive learning algorithms (in development).",
     href: "https://benwassa.github.io/Vox/",
-  img: "docs/Project_Images/Vox.png",
+  img: "../docs/Project_Images/Vox.png",
     alt: "Vox — Language-learning dashboard",
     theme: {
       primary: "#3b82f6", // primary-color from Vox repo
@@ -71,7 +71,7 @@ export const projectsData = [
     tag: "Audio Research",
     desc: "Experimental audio interfaces and sonic interaction patterns — exploring the intersection of sound and digital experience.",
     href: null,
-  img: "docs/Project_Images/Orpheus.png", 
+  img: "../docs/Project_Images/Orpheus.png", 
     alt: "Orpheus — Audio experiments",
     theme: {
       primary: "#8B5CF6", // purple accent for music/audio theme
@@ -86,7 +86,7 @@ export const projectsData = [
     tag: "Research Project",
     desc: "A narrative research project exploring traditional rites of passage and authentic initiation for the modern world.",
     href: null,
-  img: "docs/Project_Images/Agoge.png", 
+  img: "../docs/Project_Images/Agoge.png", 
     alt: "Agoge — Rites of passage research",
     theme: {
       primary: "#dc2626", // strong red for Spartan/warrior theme

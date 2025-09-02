@@ -259,6 +259,11 @@ class PortfolioCarousel {
     art.setAttribute('aria-posinset', index + 1); // 1-based position in set
     art.setAttribute('aria-setsize', this.projects.length); // Total number of items
 
+    // Set per-card accent variable for outline/button styling
+    if (p.theme && p.theme.primary) {
+      art.style.setProperty('--card-accent', p.theme.primary);
+    }
+
     art.innerHTML = `
       <div class="thumb">
         <img loading="lazy" src="${p.img}" alt="${p.alt}">
@@ -418,12 +423,7 @@ class PortfolioCarousel {
     const currentCardId = `project-card-${this.state.currentIndex}`;
     this.elements.track.setAttribute('aria-activedescendant', currentCardId);
 
-
-    // Update active theme based on the current project
-    const currentProject = this.projects[this.state.currentIndex];
-    if (currentProject && currentProject.theme) {
-      this._applyTheme(currentProject.theme, true);
-    }
+    // Keep global palette stable; no per-card theme changes.
   }
 
   /**
