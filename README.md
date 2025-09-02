@@ -23,24 +23,6 @@ The portfolio highlights a handful of projects, including:
 
 For full project metadata and descriptions see `docs/project-descriptions.js`.
 
-## Quick local preview
-
-To preview the site locally, serve the `docs/` folder over HTTP. From the repository root you can use Python (recommended if installed):
-
-```powershell
-# from repository root
-cd docs
-python -m http.server 8000
-# then open http://localhost:8000 in your browser
-```
-
-Or if you prefer Node.js you can install a tiny static server and run it from `docs/`:
-
-```powershell
-npm install -g http-server
-cd docs; http-server -p 8000
-# then open http://localhost:8000
-```
 
 ## Notes for maintainers
 
