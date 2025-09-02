@@ -54,8 +54,8 @@ export const projectsData = [
   {
     title: "Vox",
     tag: "Language Learning Tracker", 
-    desc: "A rigorous, self-directed language learning tracker. Emphasizes grammar mastery, vocab transparency, and real-world output, avoiding gamified fluff in favor of deliberate, adaptive practice.",
-    href: "https://benwassa.github.io/Vox/",
+    desc: "Track, edit, and review Spanish and Mandarin vocabulary with translations, progress status, and practice counters. Import or export CSV files, switch between desktop table and mobile card layouts, and manage your language learning efficiently from any device.",
+    href: "https://benwassa.github.io/Vox_Showcase/",
     img: "../docs/Project_Images/Vox.png",
     alt: "Vox — Language-learning dashboard",
     theme: {
