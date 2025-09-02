@@ -11,7 +11,7 @@ export const projectsData = [
     tag: "Movie-Narrative Guide",
     desc: "An immersive mythic companion for personal reflection and growth, using Luke Skywalker’s journey as a timeless mirror. Transforms film narrative into guided self-discovery through prompts and symbolism.",
     href: "https://benwassa.github.io/Skywalker/",
-    img: "Project_Images/Skywalker.png",
+    img: "../Project_Images/Skywalker.png",
     alt: "Skywalker — Personal systems & UX playground",
     theme: {
       primary: "#3B82F6", // accent-blue from Skywalker repo
