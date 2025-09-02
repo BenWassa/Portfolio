@@ -12,14 +12,15 @@ The site is built as a static site inside the `docs/` folder and published via G
 
 ## Projects (high level)
 
+
 The portfolio highlights a handful of projects, including:
 
-- Skywalker — Movie-narrative guide & UX playground
-- Sankofa — Mythic psychology narrative framework
-- Dukkha — Digital well-being & dopamine craft
-- Vox — Language-learning dashboard and tracker
-- Orpheus — Experimental audio interfaces
-- Agoge — Rites-of-passage research
+- Skywalker — A comprehensive UX playground for personal systems and compounding routines.
+- Sankofa — An immersive mythic-psychology narrative experience and research scaffolding.
+- Dukkha — A field guide for digital discipline, dopamine understanding, and practical tools.
+- Vox — An offline-first language-learning dashboard and vocabulary tracking prototype.
+- Orpheus — Experimental audio interfaces exploring sound, memory, and reflective interaction.
+- Agoge — Narrative research into rites of passage and modern initiation frameworks.
 
 For full project metadata and descriptions see `docs/project-descriptions.js`.
 
