@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portfolio of Benjamin P. Haddon</title>
+<meta name="description" content="Projects at the intersection of research, storytelling, and technology. A clean, circular-scrolling portfolio by Benjamin P. Haddon." />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Progress bar -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- Background particles -->
+  <div class="bg-particles" id="particles"></div>
+
+  <header class="hero wrap" id="hero">
+    <div class="eyebrow">Portfolio of Benjamin P. Haddon</div>
+    <h1>Projects at the Intersection of Research, Storytelling, and Technology</h1>
+    <p class="sub">Selected live builds — Skywalker, Sankofa, Dukkha, Vox, Orpheus</p>
+  </header>
+
+  <main class="wrap">
+    <section class="carousel" aria-label="Project carousel">
+      <button class="nav-arrow prev" id="prevBtn" aria-label="Previous project">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="nav-arrow next" id="nextBtn" aria-label="Next project">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      
+      <div class="track" id="track" tabindex="0" role="listbox" aria-live="polite" aria-label="Projects">
+        <!-- Cards are injected by JS -->
+      </div>
+      <div class="dots" id="dots" role="tablist" aria-label="Project navigation"></div>
+    </section>
+  </main>
+  
+  <!-- Theme toggle (light / dark) -->
+  <button class="autoplay-toggle" id="themeToggle" aria-label="Toggle light theme" title="Toggle light / dark theme">
+    <!-- Moon / Sun icon will be swapped by JS -->
+    <svg viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="5" fill="currentColor" />
+    </svg>
+  </button>
+  
+  <footer class="foot wrap">
+    © <span id="year"></span> Benjamin P. Haddon — Enhanced Portfolio Experience
+  </footer>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
