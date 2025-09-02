@@ -94,7 +94,7 @@ export const projectsData = [
       tertiary: "#1c1917", // warm dark tertiary
       bg: "#0c0a09" // very dark warm background
     },
-    status: "yellow"
+    status: "red"
   }
 ];
 
