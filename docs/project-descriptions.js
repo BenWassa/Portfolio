@@ -48,18 +48,24 @@ export const projectsData = [
       secondary: "#1f2937", // dark secondary
       tertiary: "#111827", // darker tertiary
       bg: "#0f172a" // very dark background
-    },
-    status: "yellow"
-  },
-  {
-    title: "Vox",
-    tag: "Language Learning Tracker", 
-    desc: "Track, edit, and review Spanish and Mandarin vocabulary with translations, progress status, and practice counters. Import or export CSV files, switch between desktop table and mobile card layouts, and manage your language learning efficiently from any device.",
-    href: "https://benwassa.github.io/Vox_Showcase/",
-    img: "../docs/Project_Images/Vox.png",
-    alt: "Vox — Language-learning dashboard",
-    theme: {
-      primary: "#3b82f6", // primary-color from Vox repo
+      },
+      status: "yellow"
+      },
+      {
+      title: "Vox",
+      tag: "Language Learning Tracker",
+      desc: "Lean, offline-first vocab tracker for Spanish & Mandarin — CSV import/export, practice counters, and responsive table/card views for focused study.",
+      href: "https://benwassa.github.io/Vox_Showcase/",
+      img: "../docs/Project_Images/Vox.png",
+      alt: "Vox — Language-learning dashboard",
+      theme: {
+        primary: "#3b82f6", // Vox accent blue
+        secondary: "#0b1220",
+        tertiary: "#111827",
+        bg: "#0f172a"
+      },
+      status: "green"
+      },
       secondary: "#1f2937", // text-color-primary adapted to dark
       tertiary: "#374151", // darker gray
       bg: "#111827" // dark background adaptation
