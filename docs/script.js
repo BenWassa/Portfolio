@@ -11,26 +11,18 @@ class LandingManager {
     this.landingSection = document.getElementById('landing');
     this.projectsSection = document.getElementById('projects');
     this.enterButton = document.getElementById('enterCta');
-    this.hasVisited = localStorage.getItem('portfolio-visited') === 'true';
     
     this.init();
   }
 
   init() {
-    // If user has visited before, skip landing and go to projects
-    if (this.hasVisited) {
-      this.skipToProjects();
-    } else {
-      this.showLanding();
-    }
+    // Always show landing page on refresh for consistent experience
+    this.showLanding();
 
     // Set up enter button click handler
     if (this.enterButton) {
       this.enterButton.addEventListener('click', () => this.enterPortfolio());
     }
-
-    // Handle scroll to show landing if at top
-    window.addEventListener('scroll', debounce(() => this.handleScroll(), 100));
   }
 
   showLanding() {
@@ -44,11 +36,7 @@ class LandingManager {
   }
 
   enterPortfolio() {
-    // Mark as visited
-    localStorage.setItem('portfolio-visited', 'true');
-    this.hasVisited = true;
-
-    // Transition to projects
+    // Transition to projects (no longer storing visit state)
     this.landingSection.classList.add('exiting');
     
     setTimeout(() => {
@@ -64,23 +52,6 @@ class LandingManager {
       // Scroll to top of projects section
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 800);
-  }
-
-  skipToProjects() {
-    this.landingSection.style.display = 'none';
-    this.projectsSection.style.display = 'block';
-    this.projectsSection.classList.add('active');
-    
-    setTimeout(() => {
-      this.projectsSection.classList.add('loaded');
-    }, 100);
-  }
-
-  handleScroll() {
-    // If user scrolls to very top and has visited, show landing again
-    if (window.scrollY < 50 && this.hasVisited) {
-      // Optional: Could re-show landing on scroll to top
-    }
   }
 }
 
