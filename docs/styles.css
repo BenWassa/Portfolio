@@ -189,7 +189,7 @@
   }
   
   .sub{ 
-    margin:0 auto; 
+    margin:0 auto 40px; 
     color:var(--muted); 
     max-width:800px; 
     font-size: clamp(16px,2vw,20px);
@@ -198,6 +198,83 @@
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 1s var(--ease-out-quart) 0.8s forwards;
+  }
+
+  /* Introduction paragraph styling */
+  .intro-paragraph {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s var(--ease-out-quart) 1.2s forwards;
+  }
+
+  .intro-paragraph p {
+    color: var(--fg);
+    font-size: clamp(15px, 1.8vw, 18px);
+    line-height: 1.8;
+    font-weight: 300;
+    margin: 0;
+    text-align: center;
+  }
+
+  /* Scroll CTA button */
+  .scroll-cta {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.4s var(--ease-out-quart);
+    margin: 40px auto 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s var(--ease-out-quart) 1.6s forwards;
+    backdrop-filter: blur(10px);
+  }
+
+  .scroll-cta:hover {
+    transform: translateY(-4px) scale(1.1);
+    border-color: var(--theme-primary);
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .scroll-cta svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--fg);
+    transition: stroke 0.3s ease;
+  }
+
+  .scroll-cta:hover svg {
+    stroke: var(--theme-primary);
+  }
+
+  /* Projects section */
+  .projects-section {
+    padding-top: 100px;
+    min-height: 100vh;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 300;
+    color: var(--fg);
+    margin: 0 0 60px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s var(--ease-out-quart);
+  }
+
+  .projects-section.loaded .section-title {
+    opacity: 1;
+    transform: translateY(0);
   }
   
   /* Progress indicator */
@@ -216,24 +293,20 @@
   /* Carousel enhancements */
   .carousel{
     position:relative;
-    margin-top: clamp(80px, 10vw, 150px); /* Set consistent top margin */
-    padding-bottom: 100px; /* Increased bottom padding */
-    padding-top: 120px; /* Increased top padding to match track */
-    padding-left: clamp(40px, 6vw, 80px); /* Increased side padding */
-    padding-right: clamp(40px, 6vw, 80px); /* Increased side padding */
-    overflow: visible; /* Ensure carousel container doesn't clip hover effects */
-    /* Add subtle background for definition */
+    margin-top: 0; 
+    padding-bottom: 100px;
+    padding-top: 0;
+    padding-left: clamp(40px, 6vw, 80px);
+    padding-right: clamp(40px, 6vw, 80px);
+    overflow: visible;
     background: radial-gradient(ellipse at center, rgba(255,255,255,0.02) 0%, transparent 70%);
     border-radius: 40px;
-    /* Initial state for loading animation */
     opacity: 0;
     transform: translateY(20px);
-    transition: all 1s var(--ease-out-quart) 0.5s;
-    /* Removed min-height to allow content to define height */
+    transition: all 1s var(--ease-out-quart) 0.3s;
   }
 
-  .carousel.loaded {
-    margin-top: 0; /* Remove top margin when loaded */
+  .projects-section.loaded .carousel {
     opacity: 1;
     transform: translateY(0);
   }
@@ -282,16 +355,14 @@
   
   .track{
     display:flex;
-    gap: clamp(20px, 3vw, 40px); /* Reduced gap */
+    gap: clamp(20px, 3vw, 40px);
     overflow-x:auto;
-    overflow-y: visible; /* Allow cards to expand upward on hover */
+    overflow-y: visible;
     overscroll-behavior-x: contain;
-    /* scroll-snap-type: x mandatory; */ /* Removed for multi-card view */
-    padding: 160px 0 120px; /* Removed horizontal padding */
+    padding: 60px 0 120px;
     scrollbar-width:none;
     -ms-overflow-style: none;
     scroll-behavior: smooth;
-    /* Soft fade at left/right edges to reduce harsh cutoffs */
     -webkit-mask-image: linear-gradient(to right,
       transparent 0,
       black clamp(24px, 6vw, 72px),
