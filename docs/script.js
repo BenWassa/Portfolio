@@ -3,6 +3,88 @@
 import { projectsData } from './project-descriptions.js';
 
 /**
+ * Landing Page Manager
+ * Handles the onboarding experience and transition to projects
+ */
+class LandingManager {
+  constructor() {
+    this.landingSection = document.getElementById('landing');
+    this.projectsSection = document.getElementById('projects');
+    this.enterButton = document.getElementById('enterCta');
+    this.hasVisited = localStorage.getItem('portfolio-visited') === 'true';
+    
+    this.init();
+  }
+
+  init() {
+    // If user has visited before, skip landing and go to projects
+    if (this.hasVisited) {
+      this.skipToProjects();
+    } else {
+      this.showLanding();
+    }
+
+    // Set up enter button click handler
+    if (this.enterButton) {
+      this.enterButton.addEventListener('click', () => this.enterPortfolio());
+    }
+
+    // Handle scroll to show landing if at top
+    window.addEventListener('scroll', debounce(() => this.handleScroll(), 100));
+  }
+
+  showLanding() {
+    this.landingSection.style.display = 'block';
+    this.projectsSection.style.display = 'none';
+    
+    // Trigger hero animation
+    setTimeout(() => {
+      document.getElementById('hero').classList.add('loaded');
+    }, 100);
+  }
+
+  enterPortfolio() {
+    // Mark as visited
+    localStorage.setItem('portfolio-visited', 'true');
+    this.hasVisited = true;
+
+    // Transition to projects
+    this.landingSection.classList.add('exiting');
+    
+    setTimeout(() => {
+      this.landingSection.style.display = 'none';
+      this.projectsSection.style.display = 'block';
+      this.projectsSection.classList.add('active');
+      
+      // Trigger projects section animations
+      setTimeout(() => {
+        this.projectsSection.classList.add('loaded');
+      }, 100);
+
+      // Scroll to top of projects section
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 800);
+  }
+
+  skipToProjects() {
+    this.landingSection.style.display = 'none';
+    this.projectsSection.style.display = 'block';
+    this.projectsSection.classList.add('active');
+    
+    setTimeout(() => {
+      this.projectsSection.classList.add('loaded');
+    }, 100);
+  }
+
+  handleScroll() {
+    // If user scrolls to very top and has visited, show landing again
+    if (window.scrollY < 50 && this.hasVisited) {
+      // Optional: Could re-show landing on scroll to top
+    }
+  }
+}
+
+/**
  * Utility function for debouncing
  */
 function debounce(func, delay) {
@@ -549,6 +631,9 @@ class PortfolioCarousel {
 // --- Global Initialization ---
 // Ensure the DOM is fully loaded before attempting to initialize the carousel.
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize landing page manager first
+  window.landingManager = new LandingManager();
+  
   // Instantiate the carousel and attach to window for testing
   window.portfolioCarousel = new PortfolioCarousel(projectsData);
 });
