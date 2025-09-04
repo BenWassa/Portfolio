@@ -553,6 +553,20 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     document.getElementById('hero').classList.add('loaded');
   }, 100);
+
+  // Set up scroll button functionality
+  const scrollCta = document.getElementById('scrollCta');
+  if (scrollCta) {
+    scrollCta.addEventListener('click', () => {
+      const projectsSection = document.getElementById('projects');
+      if (projectsSection) {
+        projectsSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  }
   
   // Instantiate the carousel and attach to window for testing
   window.portfolioCarousel = new PortfolioCarousel(projectsData);
