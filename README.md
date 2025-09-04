@@ -38,3 +38,8 @@ Benjamin P. Haddon — https://benwassa.github.io/
 ---
 
 Small, focused README intended to make it easy to run and update the static portfolio. If you'd like, I can add a development script, CI publish workflow, or a CONTRIBUTING.md next.
+
+## Copyright & reuse
+
+- This repository and site content are copyright © 2025 Benjamin P. Haddon. All rights reserved.
+- Reuse or redistribution requires prior written permission. See `docs/COPYRIGHT.md` for details and the permission request process.
