@@ -644,8 +644,8 @@
     display: inline-block;
     vertical-align: middle;
     font-family: "Corinthia", cursive;
-    font-weight: 400;
-    font-size: 22px;            /* larger signature */
+    font-weight: 600;
+    font-size: 28px;            /* larger signature */
     color: var(--theme-primary);
     line-height: 1;
     margin-left: 12px;          /* distance from © year */
@@ -656,7 +656,7 @@
   }
 
   .foot .author-name:hover {
-    color: var(--fg);
+    color: var(--brand);
   }
   
   /* Mobile optimizations */
