@@ -67,21 +67,6 @@ export const projectsData = [
     status: "yellow"
   },
   {
-    title: "Orpheus",
-    tag: "Music Research Tool",
-    desc: "A lyrical lantern into memory and emotion, decoding the themes in your listening patterns. Transforms music into a framework for reflection, self-discovery, and mapping emotional currents.",
-    href: null,
-    img: "Orpheus.png", 
-    alt: "Orpheus — Audio experiments",
-    theme: {
-      primary: "#8B5CF6", // purple accent for music/audio theme
-      secondary: "#1e1b4b", // deep purple secondary
-      tertiary: "#1e293b", // slate tertiary
-      bg: "#0f0f23" // very dark purple-tinted bg
-    },
-    status: "red"
-  },
-  {
     title: "Agoge",
     tag: "Scientific-Narrative Guide",
     desc: "A cross-cultural study of rites of passage. Blends history, myth, psychology, and research into a modern narrative framework reimagining authentic initiation for resilience and transformation.",
@@ -95,6 +80,21 @@ export const projectsData = [
       bg: "#0c0a09" // very dark warm background
     },
     status: "yellow"
+  },
+  {
+    title: "Orpheus",
+    tag: "Music Research Tool",
+    desc: "A lyrical lantern into memory and emotion, decoding the themes in your listening patterns. Transforms music into a framework for reflection, self-discovery, and mapping emotional currents.",
+    href: null,
+    img: "Orpheus.png", 
+    alt: "Orpheus — Audio experiments",
+    theme: {
+      primary: "#8B5CF6", // purple accent for music/audio theme
+      secondary: "#1e1b4b", // deep purple secondary
+      tertiary: "#1e293b", // slate tertiary
+      bg: "#0f0f23" // very dark purple-tinted bg
+    },
+    status: "red"
   }
 ];
 
