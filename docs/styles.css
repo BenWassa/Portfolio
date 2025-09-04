@@ -156,8 +156,8 @@
     color:var(--theme-primary); 
     margin-bottom:24px;
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s var(--ease-out-quart) 0.2s forwards;
+    transform: translateY(30px);
+    animation: fadeInUp 1.2s var(--ease-out-quart) 0.3s forwards;
     position: relative;
   }
   
@@ -192,6 +192,9 @@
     text-align: center;
     max-width: 100%;
     word-wrap: break-word;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 1.4s var(--ease-out-quart) 0.6s forwards;
   }
   
   @keyframes fadeInUp {
@@ -215,8 +218,8 @@
     max-width: 650px;
     margin: 0 auto 0;
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s var(--ease-out-quart) 1.2s forwards;
+    transform: translateY(30px);
+    animation: fadeInUp 1.3s var(--ease-out-quart) 1.4s forwards;
   }
 
   .intro-paragraph p {
@@ -245,8 +248,8 @@
     transition: all 0.4s var(--ease-out-quart);
     margin: 50px auto 0;
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s var(--ease-out-quart) 1.6s forwards;
+    transform: translateY(30px);
+    animation: fadeInUp 1.2s var(--ease-out-quart) 2.1s forwards;
     backdrop-filter: blur(10px);
     text-decoration: none;
     width: fit-content;
@@ -290,10 +293,10 @@
     color: var(--fg);
     margin: 0 0 20px;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
     transition: all 1s var(--ease-out-quart);
     letter-spacing: -0.02em;
-    animation: fadeInUp 1s var(--ease-out-quart) 0.5s forwards;
+    animation: fadeInUp 1.3s var(--ease-out-quart) 0.2s forwards;
   }
 
   /* Projects subtitle styling */
@@ -306,8 +309,8 @@
     font-weight: 300;
     line-height: 1.7;
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s var(--ease-out-quart) 0.7s forwards;
+    transform: translateY(25px);
+    animation: fadeInUp 1.2s var(--ease-out-quart) 0.5s forwards;
   }
   
   /* Progress indicator */
@@ -333,8 +336,8 @@
     background: radial-gradient(ellipse at center, rgba(255,255,255,0.02) 0%, transparent 70%);
     border-radius: 40px;
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s var(--ease-out-quart) 0.9s forwards;
+    transform: translateY(40px);
+    animation: fadeInUp 1.4s var(--ease-out-quart) 0.8s forwards;
   }
   
   /* Navigation arrows */

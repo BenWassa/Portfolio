@@ -549,10 +549,10 @@ class PortfolioCarousel {
 // --- Global Initialization ---
 // Ensure the DOM is fully loaded before attempting to initialize the carousel.
 document.addEventListener('DOMContentLoaded', () => {
-  // Trigger hero animation
+  // Trigger hero animation with slight delay for smoother entrance
   setTimeout(() => {
     document.getElementById('hero').classList.add('loaded');
-  }, 100);
+  }, 200);
 
   // Set up scroll button functionality
   const scrollCta = document.getElementById('scrollCta');
