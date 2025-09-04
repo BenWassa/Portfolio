@@ -638,16 +638,20 @@
     opacity: 0.8;
     position: relative;
   }
-  
-  .foot::before {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--theme-primary), transparent);
+
+  .foot .author-name {
+    /* visual update: larger, same-line, subtly separated */
+    display: inline-block;
+    vertical-align: middle;
+    font-family: "Corinthia", cursive;
+    font-weight: 400;
+    font-size: 22px;            /* larger signature */
+    color: var(--theme-primary);
+    line-height: 1;
+    margin-left: 12px;          /* distance from © year */
+    padding-left: 12px;         /* space before separator */
+    border-left: 1px solid rgba(255,255,255,0.08); /* subtle divider */
+    transition: color .18s ease;
   }
   
   /* Mobile optimizations */
