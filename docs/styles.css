@@ -169,8 +169,11 @@
     line-height:1.18; /* give extra line-height and a bit of padding so glyph descenders aren't cut off */
     padding-bottom: 4px;
     display: inline-block;
-    font-weight: 200; /* Reverted to original lighter font weight */
-    font-family: 'Inter', sans-serif; /* Keep Inter font */
+    font-family: "Merriweather", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
     background: linear-gradient(135deg, var(--fg) 0%, var(--theme-primary) 50%, var(--fg) 100%);
     background-clip: text;
     -webkit-background-clip: text;
@@ -800,4 +803,29 @@
   font-family: "Corinthia", cursive;
   font-weight: 700;
   font-style: normal;
+}
+
+/* Merriweather font classes */
+.merriweather-light {
+  font-family: "Merriweather", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.merriweather-regular {
+  font-family: "Merriweather", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.merriweather-bold {
+  font-family: "Merriweather", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
 }
