@@ -3,59 +3,6 @@
 import { projectsData } from './project-descriptions.js';
 
 /**
- * Landing Page Manager
- * Handles the onboarding experience and transition to projects
- */
-class LandingManager {
-  constructor() {
-    this.landingSection = document.getElementById('landing');
-    this.projectsSection = document.getElementById('projects');
-    this.enterButton = document.getElementById('enterCta');
-    
-    this.init();
-  }
-
-  init() {
-    // Always show landing page on refresh for consistent experience
-    this.showLanding();
-
-    // Set up enter button click handler
-    if (this.enterButton) {
-      this.enterButton.addEventListener('click', () => this.enterPortfolio());
-    }
-  }
-
-  showLanding() {
-    this.landingSection.style.display = 'block';
-    this.projectsSection.style.display = 'none';
-    
-    // Trigger hero animation
-    setTimeout(() => {
-      document.getElementById('hero').classList.add('loaded');
-    }, 100);
-  }
-
-  enterPortfolio() {
-    // Transition to projects (no longer storing visit state)
-    this.landingSection.classList.add('exiting');
-    
-    setTimeout(() => {
-      this.landingSection.style.display = 'none';
-      this.projectsSection.style.display = 'block';
-      this.projectsSection.classList.add('active');
-      
-      // Trigger projects section animations
-      setTimeout(() => {
-        this.projectsSection.classList.add('loaded');
-      }, 100);
-
-      // Scroll to top of projects section
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 800);
-  }
-}
-
-/**
  * Utility function for debouncing
  */
 function debounce(func, delay) {
@@ -602,8 +549,10 @@ class PortfolioCarousel {
 // --- Global Initialization ---
 // Ensure the DOM is fully loaded before attempting to initialize the carousel.
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize landing page manager first
-  window.landingManager = new LandingManager();
+  // Trigger hero animation
+  setTimeout(() => {
+    document.getElementById('hero').classList.add('loaded');
+  }, 100);
   
   // Instantiate the carousel and attach to window for testing
   window.portfolioCarousel = new PortfolioCarousel(projectsData);

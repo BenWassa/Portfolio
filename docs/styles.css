@@ -46,7 +46,6 @@
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
-    overflow-y: auto; /* Allow natural vertical scrolling so users can reach the footer */
   }
 
   /* Main content is normal flow so page can scroll to footer */
@@ -90,21 +89,14 @@
     z-index: 1;
   }
   
-  /* Full-screen landing section */
-  .landing-section {
+  /* Hero section */
+  .hero-section {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     z-index: 10;
-    transition: opacity 0.8s var(--ease-out-quart), transform 0.8s var(--ease-out-quart);
-  }
-
-  .landing-section.exiting {
-    opacity: 0;
-    transform: translateY(-50px);
-    pointer-events: none;
   }
 
   /* Enhanced Hero for full-screen */
@@ -221,7 +213,7 @@
   /* Introduction paragraph styling */
   .intro-paragraph {
     max-width: 650px;
-    margin: 0 auto 50px;
+    margin: 0 auto 0;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 1s var(--ease-out-quart) 1.2s forwards;
@@ -236,65 +228,12 @@
     text-align: center;
   }
 
-  /* Enter CTA button */
-  .enter-cta {
-    background: linear-gradient(135deg, var(--theme-primary), rgba(59, 130, 246, 0.8));
-    border: 1px solid var(--theme-primary);
-    border-radius: 12px;
-    padding: 16px 32px;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    cursor: pointer;
-    transition: all 0.4s var(--ease-out-quart);
-    margin: 0 auto;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s var(--ease-out-quart) 1.6s forwards;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-    text-decoration: none;
-    width: fit-content;
-  }
-
-  .enter-cta:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
-    background: linear-gradient(135deg, var(--theme-primary), var(--theme-primary));
-  }
-
-  .enter-cta svg {
-    width: 20px;
-    height: 20px;
-    stroke: currentColor;
-    transition: transform 0.3s ease;
-  }
-
-  .enter-cta:hover svg {
-    transform: translateX(4px);
-  }
-
-  /* Projects section - initially hidden */
+  /* Projects section */
   .projects-section {
-    display: none;
-    padding: 30px 0 20px;
+    padding: 60px 0 20px;
     min-height: 100vh;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s var(--ease-out-quart);
-  }
-
-  .projects-section.active {
-    display: block;
-  }
-
-  .projects-section.loaded {
-    opacity: 1;
-    transform: translateY(0);
+    position: relative;
+    z-index: 5;
   }
 
   .section-title {
@@ -307,11 +246,7 @@
     transform: translateY(20px);
     transition: all 1s var(--ease-out-quart);
     letter-spacing: -0.02em;
-  }
-
-  .projects-section.loaded .section-title {
-    opacity: 1;
-    transform: translateY(0);
+    animation: fadeInUp 1s var(--ease-out-quart) 0.5s forwards;
   }
 
   /* Projects subtitle styling */
@@ -325,12 +260,7 @@
     line-height: 1.7;
     opacity: 0;
     transform: translateY(20px);
-    transition: all 1s var(--ease-out-quart) 0.2s;
-  }
-
-  .projects-section.loaded .sub {
-    opacity: 1;
-    transform: translateY(0);
+    animation: fadeInUp 1s var(--ease-out-quart) 0.7s forwards;
   }
   
   /* Progress indicator */
@@ -357,12 +287,7 @@
     border-radius: 40px;
     opacity: 0;
     transform: translateY(20px);
-    transition: all 1s var(--ease-out-quart) 0.4s;
-  }
-
-  .projects-section.loaded .carousel {
-    opacity: 1;
-    transform: translateY(0);
+    animation: fadeInUp 1s var(--ease-out-quart) 0.9s forwards;
   }
   
   /* Navigation arrows */

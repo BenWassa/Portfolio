@@ -19,33 +19,28 @@
   <!-- Background particles -->
   <div class="bg-particles" id="particles"></div>
 
-  <!-- Full-screen landing section -->
-  <section class="landing-section" id="landing">
-    <div class="wrap">
-      <header class="hero" id="hero">
-        <div class="eyebrow">Portfolio of Benjamin P. Haddon</div>
-        <h1>Projects at the Intersection of Research, Storytelling, and Technology</h1>
-        
-        <div class="intro-paragraph">
-          <p>Each project emerges from a deep curiosity about how stories shape understanding, how technology can serve wisdom rather than distraction, and how rigorous research might find its way into lived experience. These are experiments in meaning-making—prototypes that bridge ancient insights with contemporary tools, transforming abstract concepts into tangible, interactive frameworks for growth and reflection.</p>
-        </div>
-        
-        <button class="enter-cta" id="enterCta" aria-label="Enter portfolio">
-          <span>Enter Portfolio</span>
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </header>
-    </div>
-  </section>
+  <!-- Main content area -->
+  <main>
+    <!-- Hero section -->
+    <section class="hero-section">
+      <div class="wrap">
+        <header class="hero" id="hero">
+          <div class="eyebrow">Portfolio of Benjamin P. Haddon</div>
+          <h1>Projects at the Intersection of Research, Storytelling, and Technology</h1>
+          
+          <div class="intro-paragraph">
+            <p>Each project emerges from a deep curiosity about how stories shape understanding, how technology can serve wisdom rather than distraction, and how rigorous research might find its way into lived experience. These are experiments in meaning-making—prototypes that bridge ancient insights with contemporary tools, transforming abstract concepts into tangible, interactive frameworks for growth and reflection.</p>
+          </div>
+        </header>
+      </div>
+    </section>
 
-  <!-- Projects section (initially hidden) -->
-  <section class="projects-section" id="projects">
-    <div class="wrap">
-      <h2 class="section-title">Projects</h2>
-      <p class="sub">Selected live builds — Skywalker, Sankofa, Dukkha, Vox, Orpheus, Agoge</p>
-      <div class="carousel" aria-label="Project carousel">
+    <!-- Projects section -->
+    <section class="projects-section" id="projects">
+      <div class="wrap">
+        <h2 class="section-title">Projects</h2>
+        <p class="sub">Selected live builds — Skywalker, Sankofa, Dukkha, Vox, Orpheus, Agoge</p>
+        <div class="carousel" aria-label="Project carousel">
       <button class="nav-arrow prev" id="prevBtn" aria-label="Previous project">
         <svg viewBox="0 0 24 24" fill="none">
           <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -60,12 +55,11 @@
       <div class="track" id="track" tabindex="0" role="listbox" aria-live="polite" aria-label="Projects">
         <!-- Cards are injected by JS -->
       </div>
-      <div class="dots" id="dots" role="tablist" aria-label="Project navigation"></div>
+        <div class="dots" id="dots" role="tablist" aria-label="Project navigation"></div>
+        </div>
       </div>
-    </div>
-  </section>
-  
-  <!-- Theme toggle (light / dark) -->
+    </section>
+  </main>  <!-- Theme toggle (light / dark) -->
   <button class="autoplay-toggle" id="themeToggle" aria-label="Toggle light theme" title="Toggle light / dark theme">
     <!-- Moon / Sun icon will be swapped by JS -->
     <svg viewBox="0 0 24 24" fill="none">
