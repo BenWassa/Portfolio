@@ -85,7 +85,7 @@ export const projectsData = [
     title: "Agoge",
     tag: "Scientific-Narrative Guide",
     desc: "A cross-cultural study of rites of passage. Blends history, myth, psychology, and research into a modern narrative framework reimagining authentic initiation for resilience and transformation.",
-    href: null,
+    href: "https://benwassa.github.io/agoge/",
     img: "Agoge.png", 
     alt: "Agoge — Rites of passage research",
     theme: {
@@ -94,7 +94,7 @@ export const projectsData = [
       tertiary: "#1c1917", // warm dark tertiary
       bg: "#0c0a09" // very dark warm background
     },
-    status: "red"
+    status: "yellow"
   }
 ];
 
