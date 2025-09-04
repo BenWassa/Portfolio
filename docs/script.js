@@ -562,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (projectsSection) {
         projectsSection.scrollIntoView({ 
           behavior: 'smooth',
-          block: 'start'
+          block: 'center'  // Changed from 'start' to 'center' for lower positioning
         });
       }
     });
