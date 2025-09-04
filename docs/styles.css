@@ -754,3 +754,25 @@
   .carousel { 
     margin-top: 0 !important;     /* remove any top margin before load */
   }
+
+/* Corinthia font classes */
+.corinthia-regular {
+  font-family: "Corinthia", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.corinthia-bold {
+  font-family: "Corinthia", cursive;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Footer enhancements */
+.foot .author-name {
+  font-family: "Corinthia", cursive;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--theme-primary);
+  letter-spacing: 0.5px;
+}
