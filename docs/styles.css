@@ -652,6 +652,11 @@
     padding-left: 12px;         /* space before separator */
     border-left: 1px solid rgba(255,255,255,0.08); /* subtle divider */
     transition: color .18s ease;
+    text-decoration: none;      /* for link styling */
+  }
+
+  .foot .author-name:hover {
+    color: var(--fg);
   }
   
   /* Mobile optimizations */
@@ -770,13 +775,4 @@
   font-family: "Corinthia", cursive;
   font-weight: 700;
   font-style: normal;
-}
-
-/* Footer enhancements */
-.foot .author-name {
-  font-family: "Corinthia", cursive;
-  font-weight: 400;
-  font-size: 18px;
-  color: var(--theme-primary);
-  letter-spacing: 0.5px;
 }
