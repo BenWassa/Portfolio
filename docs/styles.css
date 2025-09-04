@@ -302,7 +302,7 @@
     font-size: clamp(32px, 4.5vw, 48px);
     font-weight: 300;
     color: var(--fg);
-    margin: 0 0 120px;
+    margin: 0 0 15px;
     opacity: 0;
     transform: translateY(20px);
     transition: all 1s var(--ease-out-quart);
@@ -331,7 +331,7 @@
   .carousel{
     position:relative;
     margin: 0 auto;
-    padding: 20px clamp(40px, 6vw, 80px) 160px;
+    padding: 10px clamp(40px, 6vw, 80px) 160px;
     max-width: 1400px;
     overflow: visible;
     background: radial-gradient(ellipse at center, rgba(255,255,255,0.02) 0%, transparent 70%);
