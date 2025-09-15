@@ -611,6 +611,35 @@
 
   .status-badge:focus { outline: none; box-shadow: 0 0 0 4px rgba(59,130,246,0.08); border-radius: 50%; }
   
+  /* Global floating tooltip used by JS for consistent positioning above dots */
+  .floating-status-tooltip {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    background: rgba(12,12,12,0.94);
+    color: #fff;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 1;
+    white-space: nowrap;
+    transform-origin: center bottom;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  }
+
+  .floating-status-tooltip::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    bottom: -5px; /* caret sits just below the tooltip so it points to the dot */
+    width: 10px;
+    height: 10px;
+    background: rgba(12,12,12,0.94);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    pointer-events: none;
+  }
+  
   .desc{ 
     margin:0 0 20px 0; 
     color:var(--muted); 

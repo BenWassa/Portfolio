@@ -364,17 +364,30 @@ class PortfolioCarousel {
    */
   _showFloatingTooltip(text, target) {
     if (!this._floatingTooltip || !target) return;
-    this._floatingTooltip.textContent = text;
-    const rect = target.getBoundingClientRect();
     const tip = this._floatingTooltip;
-    // Position above the target, centered horizontally
-    const left = rect.left + rect.width / 2;
-    const top = rect.top - 8; // slight offset
-    tip.style.left = `${left}px`;
-    tip.style.top = `${top}px`;
-    tip.style.transform = 'translate(-50%, 0)';
-    tip.style.opacity = '1';
+    tip.textContent = text;
+    // Ensure it's rendered to measure size
+    tip.style.opacity = '0';
     tip.style.pointerEvents = 'none';
+    tip.style.transform = 'translate(-50%, 6px)';
+    tip.style.left = '0px';
+    tip.style.top = '0px';
+
+    // Measure target and tooltip sizes
+    const rect = target.getBoundingClientRect();
+    const tipRect = tip.getBoundingClientRect();
+
+    // Calculate centered horizontal position
+    const left = rect.left + rect.width / 2;
+    // Position tooltip above the target with a small gap (10px)
+    const gap = 10;
+    const top = rect.top - tipRect.height - gap;
+
+    tip.style.left = `${left}px`;
+    // If top would be off-screen, clamp it to a small offset
+    tip.style.top = `${Math.max(8, top)}px`;
+    tip.style.transform = 'translateX(-50%) translateY(0)';
+    tip.style.opacity = '1';
     this._visibleBadge = target;
   }
 
