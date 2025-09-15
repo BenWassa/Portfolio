@@ -178,6 +178,33 @@ class PortfolioCarousel {
     }
     // Ensure page fits viewport (may toggle compact mode)
     this._ensureFitsViewport();
+    // Create a single floating tooltip node for status badges to avoid interfering with card clicks
+    this._createFloatingTooltip();
+  }
+
+  /**
+   * Creates a single floating tooltip element and appends it to the document.
+   * The tooltip will be positioned and shown/hidden by badge event handlers.
+   */
+  _createFloatingTooltip() {
+    if (this._floatingTooltip) return; // already created
+    const tip = document.createElement('div');
+    tip.className = 'floating-status-tooltip';
+    tip.setAttribute('role', 'status');
+    tip.style.position = 'fixed';
+    tip.style.zIndex = '9999';
+    tip.style.pointerEvents = 'none';
+    tip.style.opacity = '0';
+    tip.style.transition = 'opacity .12s ease, transform .12s ease';
+    tip.style.transform = 'translateY(6px)';
+    tip.style.background = 'rgba(12,12,12,0.92)';
+    tip.style.color = '#fff';
+    tip.style.padding = '6px 8px';
+    tip.style.borderRadius = '6px';
+    tip.style.fontSize = '12px';
+    tip.style.whiteSpace = 'nowrap';
+    document.body.appendChild(tip);
+    this._floatingTooltip = tip;
   }
 
   /**
@@ -302,18 +329,62 @@ class PortfolioCarousel {
       badge.setAttribute('data-tooltip', label);
       badge.setAttribute('aria-label', label);
 
-      // For touch devices, toggle tooltip on tap
+      // Prevent badge interactions from bubbling and centering the card
+      const stop = (e) => { e.stopPropagation(); };
+      ['click','mousedown','pointerdown'].forEach(evt => badge.addEventListener(evt, stop));
+
+      // Show floating tooltip on hover/focus; hide on leave/blur
+      badge.addEventListener('mouseenter', (ev) => {
+        this._showFloatingTooltip(label, ev.currentTarget);
+      });
+      badge.addEventListener('mouseleave', () => {
+        this._hideFloatingTooltip();
+      });
+      badge.addEventListener('focus', (ev) => this._showFloatingTooltip(label, ev.currentTarget));
+      badge.addEventListener('blur', () => this._hideFloatingTooltip());
+
+      // For touch devices, toggle tooltip on tap (coarse pointers)
       badge.addEventListener('click', (ev) => {
         if (window.matchMedia('(pointer: coarse)').matches) {
           ev.stopPropagation();
-          badge.classList.toggle('tooltip-open');
+          // If already visible for this element, hide it
+          if (this._visibleBadge === badge) {
+            this._hideFloatingTooltip();
+          } else {
+            this._showFloatingTooltip(label, badge);
+          }
         }
       });
-      // Ensure tooltip closes when element loses focus
-      badge.addEventListener('blur', () => badge.classList.remove('tooltip-open'));
     }
     
     return art;
+  }
+
+  /**
+   * Position and show the floating tooltip near a target element.
+   * @param {string} text
+   * @param {HTMLElement} target
+   */
+  _showFloatingTooltip(text, target) {
+    if (!this._floatingTooltip || !target) return;
+    this._floatingTooltip.textContent = text;
+    const rect = target.getBoundingClientRect();
+    const tip = this._floatingTooltip;
+    // Position above the target, centered horizontally
+    const left = rect.left + rect.width / 2;
+    const top = rect.top - 8; // slight offset
+    tip.style.left = `${left}px`;
+    tip.style.top = `${top}px`;
+    tip.style.transform = 'translate(-50%, 0)';
+    tip.style.opacity = '1';
+    tip.style.pointerEvents = 'none';
+    this._visibleBadge = target;
+  }
+
+  _hideFloatingTooltip() {
+    if (!this._floatingTooltip) return;
+    this._floatingTooltip.style.opacity = '0';
+    this._visibleBadge = null;
   }
 
   /**
