@@ -298,7 +298,6 @@ class PortfolioCarousel {
       <div class="body">
         <div class="title">
           <span class="dot ${p.status}"></span>
-          <span class="status-badge ${p.status}" data-tooltip="" tabindex="0" role="img" aria-label="status"></span>
           ${p.title}
         </div>
         <p class="desc">${p.desc}</p>
@@ -321,37 +320,35 @@ class PortfolioCarousel {
       }
     });
     
-    // Set tooltip text and accessible label based on status
-    const badge = art.querySelector('.status-badge');
-    if (badge) {
-      const map = { green: 'Live', yellow: 'Draft', red: 'In Progress' };
+    // Attach tooltip handlers to the colored dot for green/yellow statuses only
+    const dotEl = art.querySelector('.dot');
+    if (dotEl && (p.status === 'green' || p.status === 'yellow')) {
+      const map = { green: 'Live', yellow: 'Draft' };
       const label = map[p.status] || 'Status';
-      badge.setAttribute('data-tooltip', label);
-      badge.setAttribute('aria-label', label);
+      // Make dot accessible for screen readers
+      dotEl.setAttribute('role', 'img');
+      dotEl.setAttribute('aria-label', label);
 
-      // Prevent badge interactions from bubbling and centering the card
+      // Prevent dot interactions from bubbling and centering the card
       const stop = (e) => { e.stopPropagation(); };
-      ['click','mousedown','pointerdown'].forEach(evt => badge.addEventListener(evt, stop));
+      ['click','mousedown','pointerdown'].forEach(evt => dotEl.addEventListener(evt, stop));
 
-      // Show floating tooltip on hover/focus; hide on leave/blur
-      badge.addEventListener('mouseenter', (ev) => {
-        this._showFloatingTooltip(label, ev.currentTarget);
-      });
-      badge.addEventListener('mouseleave', () => {
-        this._hideFloatingTooltip();
-      });
-      badge.addEventListener('focus', (ev) => this._showFloatingTooltip(label, ev.currentTarget));
-      badge.addEventListener('blur', () => this._hideFloatingTooltip());
+      // Hover/focus show tooltip; leave/blur hide tooltip
+      dotEl.addEventListener('mouseenter', (ev) => this._showFloatingTooltip(label, ev.currentTarget));
+      dotEl.addEventListener('mouseleave', () => this._hideFloatingTooltip());
+      // Allow keyboard focus on dot
+      dotEl.setAttribute('tabindex', '0');
+      dotEl.addEventListener('focus', (ev) => this._showFloatingTooltip(label, ev.currentTarget));
+      dotEl.addEventListener('blur', () => this._hideFloatingTooltip());
 
       // For touch devices, toggle tooltip on tap (coarse pointers)
-      badge.addEventListener('click', (ev) => {
+      dotEl.addEventListener('click', (ev) => {
         if (window.matchMedia('(pointer: coarse)').matches) {
           ev.stopPropagation();
-          // If already visible for this element, hide it
-          if (this._visibleBadge === badge) {
+          if (this._visibleBadge === dotEl) {
             this._hideFloatingTooltip();
           } else {
-            this._showFloatingTooltip(label, badge);
+            this._showFloatingTooltip(label, dotEl);
           }
         }
       });
