@@ -270,7 +270,8 @@ class PortfolioCarousel {
       </div>
       <div class="body">
         <div class="title">
-          <span class="dot ${p.status}"></span> 
+          <span class="dot ${p.status}"></span>
+          <span class="status-badge ${p.status}" data-tooltip="" tabindex="0" role="img" aria-label="status"></span>
           ${p.title}
         </div>
         <p class="desc">${p.desc}</p>
@@ -292,6 +293,25 @@ class PortfolioCarousel {
         this._scrollToSlide(index);
       }
     });
+    
+    // Set tooltip text and accessible label based on status
+    const badge = art.querySelector('.status-badge');
+    if (badge) {
+      const map = { green: 'Live', yellow: 'Draft', red: 'In Progress' };
+      const label = map[p.status] || 'Status';
+      badge.setAttribute('data-tooltip', label);
+      badge.setAttribute('aria-label', label);
+
+      // For touch devices, toggle tooltip on tap
+      badge.addEventListener('click', (ev) => {
+        if (window.matchMedia('(pointer: coarse)').matches) {
+          ev.stopPropagation();
+          badge.classList.toggle('tooltip-open');
+        }
+      });
+      // Ensure tooltip closes when element loses focus
+      badge.addEventListener('blur', () => badge.classList.remove('tooltip-open'));
+    }
     
     return art;
   }

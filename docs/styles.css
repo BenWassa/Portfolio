@@ -562,6 +562,54 @@
     background: #ff4757; 
     box-shadow: 0 0 15px rgba(255,71,87,.6);
   }
+
+  /* Minimal, clean tooltip for status badges */
+  .status-badge { cursor: default; display: inline-block; vertical-align: middle; position: relative; margin-left: 8px; }
+  .status-badge[data-tooltip]:after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(6px) scale(.98);
+    white-space: nowrap;
+    background: rgba(12,12,12,0.92);
+    color: #fff;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 1;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .16s var(--ease-out-quart), transform .16s var(--ease-out-quart);
+    z-index: 40;
+  }
+
+  .status-badge[data-tooltip]:before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 2px);
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg) scale(.9);
+    width: 8px;
+    height: 8px;
+    background: rgba(12,12,12,0.92);
+    border-radius: 2px;
+    opacity: 0;
+    transition: opacity .16s var(--ease-out-quart), transform .16s var(--ease-out-quart);
+    z-index: 39;
+  }
+
+  .status-badge:focus:after,
+  .status-badge:hover:after,
+  .status-badge.tooltip-open:after,
+  .status-badge:focus:before,
+  .status-badge:hover:before,
+  .status-badge.tooltip-open:before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+
+  .status-badge:focus { outline: none; box-shadow: 0 0 0 4px rgba(59,130,246,0.08); border-radius: 50%; }
   
   .desc{ 
     margin:0 0 20px 0; 
