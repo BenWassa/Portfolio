@@ -47,6 +47,18 @@ class PortfolioCarousel {
     }
 
     this.projects = projectsData;
+    // Ensure projects are shown in order: green (active) -> yellow (draft) -> red (in progress)
+    // Keep stable ordering within the same status by using the original index as tiebreaker
+    const statusOrder = { green: 0, yellow: 1, red: 2 };
+    this.projects = this.projects
+      .map((p, i) => ({ p, i }))
+      .sort((a, b) => {
+        const sa = statusOrder[a.p.status] ?? 3;
+        const sb = statusOrder[b.p.status] ?? 3;
+        if (sa !== sb) return sa - sb;
+        return a.i - b.i;
+      })
+      .map(({ p }) => p);
     // --- Centralized State Management ---
     this.state = {
       slideEls: [], // Array of generated card DOM elements
