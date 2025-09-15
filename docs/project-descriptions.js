@@ -64,7 +64,7 @@ export const projectsData = [
       tertiary: "#374151", // darker gray
       bg: "#111827" // dark background adaptation
     },
-    status: "yellow"
+    status: "green"
   },
   {
     title: "Agoge",

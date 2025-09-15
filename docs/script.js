@@ -291,6 +291,17 @@ class PortfolioCarousel {
       art.style.setProperty('--card-accent', p.theme.primary);
     }
 
+    // Set status color and glow for visual edge/highlight (can be overridden per project)
+    const statusMap = {
+      green: { color: '#10b981', glow: '0 20px 60px rgba(16,185,129,0.08)' },
+      yellow: { color: '#f59e0b', glow: '0 20px 60px rgba(245,158,11,0.06)' },
+      red: { color: '#ef4444', glow: '0 20px 60px rgba(239,68,68,0.06)' }
+    };
+    if (p.status && statusMap[p.status]) {
+      art.style.setProperty('--status-color', statusMap[p.status].color);
+      art.style.setProperty('--status-glow', statusMap[p.status].glow);
+    }
+
     art.innerHTML = `
       <div class="thumb">
         <img loading="lazy" src="${p.img}" alt="${p.alt}">
