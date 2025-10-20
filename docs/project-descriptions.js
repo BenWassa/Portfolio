@@ -95,38 +95,78 @@ export const projectsData = [
       bg: "#0f0f23" // very dark purple-tinted bg
     },
     status: "red"
+  },
+  {
+    title: "STARK",
+    tag: "Fitness Intelligence PWA",
+    desc: "A privacy-first Progressive Web App that transforms physiological data into an elegant fitness intelligence dashboard — fully offline, open source, and powered by clean in-browser computation.",
+    href: "https://benwassa.github.io/STARK/",
+    img: "STARK.png",
+    alt: "STARK — Fitness Intelligence PWA",
+    theme: {
+      primary: "#06b6d4", // cyan glow
+      secondary: "#0f172a", // deep navy
+      tertiary: "#1e293b", // slate accent
+      bg: "#0a0f18" // dark base
+    },
+    status: "green"
+  },
+  {
+    title: "drop",
+    tag: "Daily Domain Tracker",
+    desc: "A minimalist Progressive Web App for tracking daily life domains — Sleep, Fitness, Mind, and Spirit — with a mindful scoring system that rewards consistency over perfection.",
+    href: "https://benwassa.github.io/drop/",
+    img: "drop.png",
+    alt: "drop — Daily Domain Tracker",
+    theme: {
+      primary: "#3b82f6", // bright blue accent
+      secondary: "#1c1c21", // dark UI surface
+      tertiary: "#0b0b0f", // deep neutral background
+      bg: "#09090b" // core black
+    },
+    status: "green"
   }
 ];
 
 export const projectDescriptions = {
   skywalker: {
     portfolio: "A comprehensive UX playground for personal systems and compounding routines with advanced interaction patterns.",
-    full: "The Skywalker Quest Map is your immersive mythic companion for personal reflection and philosophical growth, using Luke Skywalker's journey as a timeless mirror for your own. It transforms passive listening into active self-discovery through structured prompts, symbolic insight, and guided questions — weaving classic mythic stages into modern psychological reflection. Thoughtfully designed for slow, deliberate use, it invites you to map your inner conflicts, inheritances, shadows, and redemptions, all within a poetic, soul-centered framework that honors myth not as fantasy but as a living guide for becoming."
+    full: "The Skywalker Quest Map is an immersive mythic companion for personal reflection and philosophical growth, using Luke Skywalker's journey as a timeless mirror for your own. It transforms passive listening into active self-discovery through structured prompts, symbolic insight, and guided questions — weaving classic mythic stages into modern psychological reflection. Thoughtfully designed for slow, deliberate use, it invites you to map your inner conflicts, inheritances, shadows, and redemptions, all within a poetic, soul-centered framework that honors myth not as fantasy but as a living guide for becoming."
   },
 
   sankofa: {
     portfolio: "An immersive mythic psychology narrative experience with podcast scaffolding in a living document environment.",
-    full: "Project Sankofa is your overarching narrative framework to tackle the Modern Meaning Crisis. It weaves mythic storytelling, cultural critique, and deep research into a unified exploration of how contemporary life lost cohesive meaning — and how people might find soul, purpose, and moral compass again. Sankofa ties together your dopamine work, rites of passage concepts, and narrative design into a podcast or multimedia experience that blends rigorous insight with emotionally resonant mythic arcs."
+    full: "Project Sankofa is an overarching narrative framework to tackle the Modern Meaning Crisis. It weaves mythic storytelling, cultural critique, and deep research into a unified exploration of how contemporary life lost cohesive meaning — and how people might find soul, purpose, and moral compass again. Sankofa ties together dopamine work, rites of passage concepts, and narrative design into a podcast or multimedia experience that blends rigorous insight with emotionally resonant mythic arcs."
   },
 
   dukkha: {
     portfolio: "A comprehensive field guide for digital discipline—featuring live HTML experiences & systematic UX patterns.",
-    full: "Project Dukkha is your field guide and manifesto for understanding dopamine not just as a neurotransmitter but as a living, mythic force shaping human culture, motivation, habits, and collective drift. It aims to reveal misconceptions, chart how dopamine-driven systems fuel modern temptations and crises, and offer practical tools to navigate daily life with more clarity and autonomy."
+    full: "Project Dukkha is a field guide and manifesto for understanding dopamine not just as a neurotransmitter but as a living, mythic force shaping human culture, motivation, habits, and collective drift. It aims to reveal misconceptions, chart how dopamine-driven systems fuel modern temptations and crises, and offer practical tools to navigate daily life with more clarity and autonomy."
   },
 
   vox: {
     portfolio: "Advanced language-learning dashboard with progress tracking, analytics, and adaptive learning algorithms (in development).",
-    full: "Project Vox is your pilot framework for building a rigorous, self-directed language learning system. It emphasizes grammar mastery, transparent vocab tracking, and real-world sentence production—eschewing gamified fluff in favor of deliberate, adaptive practice. Designed to function fully offline with clean JSON architecture, Vox visualizes progress like a growing reservoir of knowledge, where vocabulary adds volume, grammar shapes the container, and output waters the fields of fluency. It serves as both prototype and proof-of-concept for a learner-first, data-transparent alternative to mainstream apps."
+    full: "Project Vox is a pilot framework for building a rigorous, self-directed language learning system. It emphasizes grammar mastery, transparent vocab tracking, and real-world sentence production—eschewing gamified fluff in favor of deliberate, adaptive practice. Designed to function fully offline with clean JSON architecture, Vox visualizes progress like a growing reservoir of knowledge, where vocabulary adds volume, grammar shapes the container, and output waters the fields of fluency. It serves as both prototype and proof-of-concept for a learner-first, data-transparent alternative to mainstream apps."
   },
 
   orpheus: {
     portfolio: "Experimental audio interfaces and sonic interaction patterns — exploring the intersection of sound and digital experience.",
-    full: "Project Orpheus is your lyrical lantern into the underworld of memory and emotion. By tracing the songs you play on repeat—the fixations, the phases, the sudden crescendos—it reveals the hidden narratives shaping your life. Like Orpheus descending with music as his guide, this framework transforms passive listening into active self-discovery through structured analysis, mythic symbolism, and reflective prompts. Thoughtfully designed for slow, deliberate exploration, it lets you chart emotional currents, pivotal transitions, and unmet needs inside a poetic, soul-centered map where every refrain becomes a clue to becoming more wholly yourself."
+    full: "Project Orpheus is a lyrical lantern into the underworld of memory and emotion. By tracing the songs you play on repeat—the fixations, the phases, the sudden crescendos—it reveals the hidden narratives shaping your life. Like Orpheus descending with music as his guide, this framework transforms passive listening into active self-discovery through structured analysis, mythic symbolism, and reflective prompts. Thoughtfully designed for slow, deliberate exploration, it lets you chart emotional currents, pivotal transitions, and unmet needs inside a poetic, soul-centered map where every refrain becomes a clue to becoming more wholly yourself."
   },
 
   agoge: {
     portfolio: "A narrative research project exploring traditional rites of passage and authentic initiation for the modern world.",
     full: "Project Agoge is a narrative research project exploring how traditional rites transformed boys into grounded, resilient men. It blends cross-cultural history, mythic symbolism, and modern psychology to uncover timeless insights on confidence, moral strength, and belonging — laying the groundwork for a podcast and supporting framework that reimagines authentic initiation for today's world."
+  },
+
+  stark: {
+    portfolio: "A self-contained, privacy-first fitness dashboard that visualizes strength, endurance, mobility, and recovery through a unified Fitness Index — all computed locally in the browser.",
+    full: "Project STARK is a static Progressive Web App built with React and TailwindCSS, designed to turn physiological data into a clear visual story of fitness and recovery. It blends performance metrics, VO₂ max estimation, and normative comparisons into an elegant offline dashboard that values transparency, simplicity, and privacy. All calculations are client-side, data is stored in IndexedDB, and users can install it as a PWA — no logins, no servers, just insight."
+  },
+
+  drop: {
+    portfolio: "A mindful daily tracker for Sleep, Fitness, Mind, and Spirit — built as a pure vanilla JavaScript PWA that values quality, reflection, and sustained growth over streaks or perfection.",
+    full: "Project drop is a minimalist, framework-free Progressive Web App designed for reflective self-tracking across four life domains: Sleep, Fitness, Mind, and Spirit. It integrates a philosophically grounded scoring model based on weighted trends and intrinsic motivation, emphasizing balance, consistency, and self-awareness. The app runs fully offline, includes IndexedDB auto-backups, and features an elegant interface optimized for touch and accessibility. It’s a digital companion for maintaining mindful engagement with your growth — not a habit tracker, but a quality tracker."
   }
 };
 
