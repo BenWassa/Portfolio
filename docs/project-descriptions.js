@@ -34,7 +34,7 @@ export const projectsData = [
       tertiary: "#1a1a1a", // secondary-dark
       bg: "#0a0a0a" // primary-dark
     },
-    status: "green"
+    status: "yellow"
   },
   {
     title: "Dukkha", 
