@@ -27,8 +27,16 @@
     --compact-scale: 0.9; /* General scale factor for compact mode */
   }
   
-  * { box-sizing: border-box }
-  html, body { height: 100% }
+/* Hide content initially to prevent flash */
+body {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: auto; /* Ensure interaction works */
+}
+
+body.loaded {
+  opacity: 1;
+}
   
   body{
     margin:0;
@@ -118,9 +126,9 @@
     transform: translateY(0);
   }
 
-  /* Reusable hero image utility + per-project background images
-     Use in HTML like:
-     <div class="hero-section-image skywalker" role="img" aria-label="Skywalker — ..."></div>
+    /* Reusable hero image utility + per-project background images
+     Example usage:
+     <div class="hero-section-image skywalker" role="img" aria-label="Skywalker sample card"></div>
   */
   .hero-section-image {
     width: 100%;
@@ -140,12 +148,12 @@
   }
 
   /* Project background images (relative to this CSS file in docs/) */
-  .hero-section-image.skywalker   { background-image: url('Project_Images/Skywalker.png'); }
-  .hero-section-image.sankofa     { background-image: url('Project_Images/Sankofa.png'); }
-  .hero-section-image.dukkha      { background-image: url('Project_Images/Dukkha.png'); }
-  .hero-section-image.vox         { background-image: url('Project_Images/Vox.png'); }
-  .hero-section-image.orpheus     { background-image: url('Project_Images/Orpheus.png'); }
-  .hero-section-image.agoge       { background-image: url('Project_Images/Agoge.png'); }
+  .hero-section-image.skywalker   { background-image: url('Skywalker.png'); }
+  .hero-section-image.sankofa     { background-image: url('Sankofa.png'); }
+  .hero-section-image.dukkha      { background-image: url('Dukkha.png'); }
+  .hero-section-image.vox         { background-image: url('Vox.png'); }
+  .hero-section-image.orpheus     { background-image: url('Orpheus.png'); }
+  .hero-section-image.agoge       { background-image: url('Agoge.png'); }
 
   
   .eyebrow{
@@ -232,13 +240,38 @@
   }
 
   /* Scroll CTA button */
-  .scroll-cta {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 16px;
-    padding: 14px 28px;
-    color: var(--fg);
+  /* Hero subtitle for dual-stream explanation */
+  .hero-subtitle {
+    text-align: center;
+    color: var(--muted);
     font-size: 15px;
+    margin: 40px auto 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.2s var(--ease-out-quart) 1.8s forwards;
+    letter-spacing: 0.02em;
+  }
+
+  /* Hero actions container for dual CTAs */
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 32px auto 0;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1.2s var(--ease-out-quart) 2.1s forwards;
+  }
+
+  .cta-btn {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 14px;
+    padding: 14px 24px;
+    color: var(--fg);
+    font-size: 14px;
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -246,35 +279,78 @@
     gap: 10px;
     cursor: pointer;
     transition: all 0.4s var(--ease-out-quart);
-    margin: 50px auto 0;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 1.2s var(--ease-out-quart) 2.1s forwards;
     backdrop-filter: blur(10px);
     text-decoration: none;
-    width: fit-content;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--cta-theme, var(--theme-primary)), transparent);
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-out-quart);
+  }
+
+  .cta-narrative {
+    --cta-theme: #d4af37;
+  }
+
+  .cta-apps {
+    --cta-theme: #3b82f6;
+  }
+
+  .cta-btn:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--cta-theme);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  }
+
+  .cta-btn:hover::before {
+    opacity: 0.08;
+  }
+
+  .cta-label {
+    position: relative;
+    z-index: 1;
     letter-spacing: 0.02em;
   }
 
-  .scroll-cta:hover {
+  .cta-badge {
+    position: relative;
+    z-index: 1;
     background: rgba(255,255,255,0.12);
-    border-color: var(--theme-primary);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    color: var(--theme-primary);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--cta-theme);
+    min-width: 24px;
+    text-align: center;
+    transition: all 0.3s ease;
   }
 
-  .scroll-cta svg {
-    width: 18px;
-    height: 18px;
+  .cta-btn:hover .cta-badge {
+    background: var(--cta-theme);
+    color: var(--bg);
+  }
+
+  .cta-icon {
+    position: relative;
+    z-index: 1;
+    width: 16px;
+    height: 16px;
     stroke: var(--muted);
     transition: all 0.3s ease;
-    opacity: 0.8;
+    opacity: 0.7;
   }
 
-  .scroll-cta:hover svg {
-    stroke: var(--theme-primary);
-    transform: translateY(1px);
+  .cta-btn:hover .cta-icon {
+    stroke: var(--cta-theme);
+    transform: translateY(2px);
     opacity: 1;
   }
 
@@ -777,6 +853,67 @@
     transform: scale(1);
   }
   
+  /* ============================================
+     Status Legend
+     ============================================ */
+  
+  .status-legend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin: 16px auto 0;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    width: fit-content;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .legend-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+  
+  .legend-indicator.green {
+    background: #10b981;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+  }
+  
+  .legend-indicator.yellow {
+    background: #f59e0b;
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
+  }
+  
+  .legend-indicator.red {
+    background: #ef4444;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
+  }
+  
+  .legend-label {
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+  
+  /* Hover effect for legend items */
+  .legend-item:hover .legend-indicator {
+    transform: scale(1.2);
+  }
+  
+  .legend-item:hover .legend-label {
+    color: var(--fg);
+  }
+  
   /* Theme toggle button */
   #themeToggle {
     position: fixed;
@@ -874,6 +1011,34 @@
   
   /* Mobile optimizations */
   @media (max-width: 768px) {
+    .hero-subtitle {
+      font-size: 13px;
+      margin-top: 32px;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .cta-btn {
+      width: 100%;
+      padding: 12px 20px;
+      font-size: 13px;
+    }
+
+    .cta-badge {
+      padding: 2px 8px;
+      font-size: 11px;
+    }
+
+    .cta-icon {
+      width: 14px;
+      height: 14px;
+    }
+
     .card {
       flex: 0 0 clamp(300px, 90vw, 380px);
     }
@@ -897,6 +1062,22 @@
     .dots {
       gap: 12px;
       padding: 12px;
+    }
+    
+    .status-legend {
+      gap: 16px;
+      padding: 10px 16px;
+      font-size: 12px;
+      margin-top: 12px;
+    }
+    
+    .legend-item {
+      gap: 6px;
+    }
+    
+    .legend-indicator {
+      width: 8px;
+      height: 8px;
     }
     
     .eyebrow{
@@ -1056,3 +1237,112 @@ body.page-license {
 .page-license .license-list {
   padding-left: 20px;
 }
+
+/* ============================================
+   Dual Stream Layout: Section-Level Theming
+   ============================================ */
+
+#narrative-projects {
+  --theme-primary: #d4af37;
+  --gradient-1: #3a2e1f;
+  --gradient-2: #1a120a;
+  margin-bottom: 80px;
+}
+
+#apps-projects {
+  --theme-primary: #3b82f6;
+  --gradient-1: #1e293b;
+  --gradient-2: #0f172a;
+  margin-bottom: 80px;
+}
+
+#narrative-projects .section-title,
+#apps-projects .section-title {
+  color: var(--theme-primary);
+  text-shadow: 0 0 20px var(--theme-primary);
+}
+
+/* Subtle separator between sections */
+#apps-projects {
+  padding-top: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Responsive adjustments for dual sections */
+@media (max-width: 768px) {
+  #narrative-projects,
+  #apps-projects {
+    margin-bottom: 60px;
+  }
+  
+  #apps-projects {
+    padding-top: 40px;
+  }
+}
+
+/* ========================
+   Scroll to Top Button
+   ======================== */
+.scroll-to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #000000;
+  color: #000000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px) scale(0.9);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-2px) scale(1);
+  background: #f0f0f0 !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+.scroll-to-top:active {
+  transform: translateY(0) scale(0.95);
+}
+
+.scroll-to-top.visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) scale(1);
+}
+
+.scroll-to-top svg {
+  display: block;
+  transition: transform 0.3s ease;
+  width: 20px;
+  height: 20px;
+}
+
+.scroll-to-top:hover svg {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .scroll-to-top {
+    width: 44px;
+    height: 44px;
+    bottom: 24px;
+    right: 24px;
+  }
+
+  .scroll-to-top svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+

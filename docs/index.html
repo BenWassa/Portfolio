@@ -11,6 +11,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css" />
+<script>
+  // Immediate scroll reset - runs before anything else
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+</script>
 </head>
 <body>
   <!-- Progress bar -->
@@ -29,40 +36,110 @@
           <h1>Projects at the Intersection of Research, Storytelling, and Technology</h1>
           
           <div class="intro-paragraph">
-            <p>Each project emerges from a deep curiosity about how stories shape understanding, how technology can serve wisdom rather than distraction, and how rigorous research might find its way into lived experience. These are experiments in meaning-making—prototypes that bridge ancient insights with contemporary tools, transforming abstract concepts into tangible, interactive frameworks for growth and reflection.</p>
+            <p>Each project emerges from a deep curiosity about how stories shape understanding, how technology can serve wisdom rather than distraction, and how rigorous research might find its way into lived experience. These are experiments in meaning-making prototypes that bridge ancient insights with contemporary tools, transforming abstract concepts into tangible, interactive frameworks for growth and reflection.</p>
           </div>
 
-          <button class="scroll-cta" id="scrollCta" aria-label="View projects">
-            <span>View Projects</span>
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
+          <p class="hero-subtitle">Explore two curated streams - narrative research and interactive tools</p>
+
+          <div class="hero-actions" role="navigation" aria-label="Explore project categories">
+            <button class="cta-btn cta-narrative" id="viewNarrative" aria-controls="narrative-projects" aria-label="View Narrative Research Sites">
+              <span class="cta-label">Narrative Research</span>
+              <span class="cta-badge" id="countNarrative">0</span>
+              <svg class="cta-icon" viewBox="0 0 24 24" fill="none">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <button class="cta-btn cta-apps" id="viewApps" aria-controls="apps-projects" aria-label="View Interactive Tools and PWAs">
+              <span class="cta-label">Tools & PWAs</span>
+              <span class="cta-badge" id="countApps">0</span>
+              <svg class="cta-icon" viewBox="0 0 24 24" fill="none">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
         </header>
       </div>
     </section>
 
-    <!-- Projects section -->
-    <section class="projects-section" id="projects">
+    <!-- Narrative Research Sites Section -->
+    <section class="projects-section" id="narrative-projects">
       <div class="wrap">
-        <h2 class="section-title">Projects</h2>
-        <p class="sub">Selected live builds — Skywalker, Sankofa, Dukkha, Vox, Orpheus, Agoge</p>
-        <div class="carousel" aria-label="Project carousel">
-      <button class="nav-arrow prev" id="prevBtn" aria-label="Previous project">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      <button class="nav-arrow next" id="nextBtn" aria-label="Next project">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      
-      <div class="track" id="track" tabindex="0" role="listbox" aria-live="polite" aria-label="Projects">
-        <!-- Cards are injected by JS -->
+        <h2 class="section-title">Narrative Research Sites</h2>
+        <p class="sub">Exploring meaning, myth, and psychology through digital storytelling.</p>
+        <div class="carousel" id="carousel-narrative" aria-label="Narrative projects carousel">
+          <button class="nav-arrow prev" id="prevBtn-narrative" aria-label="Previous narrative project">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="nav-arrow next" id="nextBtn-narrative" aria-label="Next narrative project">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          
+          <div class="track" id="track-narrative" tabindex="0" role="listbox" aria-live="polite" aria-label="Narrative projects">
+            <!-- Cards are injected by JS -->
+          </div>
+          <div class="dots" id="dots-narrative" role="tablist" aria-label="Narrative project navigation"></div>
+          
+          <!-- Status Legend -->
+          <div class="status-legend" aria-label="Project status legend">
+            <div class="legend-item">
+              <span class="legend-indicator green"></span>
+              <span class="legend-label">Active</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-indicator yellow"></span>
+              <span class="legend-label">Draft</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-indicator red"></span>
+              <span class="legend-label">In Progress</span>
+            </div>
+          </div>
+        </div>
       </div>
-        <div class="dots" id="dots" role="tablist" aria-label="Project navigation"></div>
+    </section>
+
+    <!-- Interactive Tools & PWAs Section -->
+    <section class="projects-section" id="apps-projects">
+      <div class="wrap">
+        <h2 class="section-title">Interactive Tools & PWAs</h2>
+        <p class="sub">Lightweight, offline-first tools for reflection, growth, and performance.</p>
+        <div class="carousel" id="carousel-apps" aria-label="Apps projects carousel">
+          <button class="nav-arrow prev" id="prevBtn-apps" aria-label="Previous app project">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="nav-arrow next" id="nextBtn-apps" aria-label="Next app project">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          
+          <div class="track" id="track-apps" tabindex="0" role="listbox" aria-live="polite" aria-label="App projects">
+            <!-- Cards are injected by JS -->
+          </div>
+          <div class="dots" id="dots-apps" role="tablist" aria-label="App project navigation"></div>
+          
+          <!-- Status Legend -->
+          <div class="status-legend" aria-label="Project status legend">
+            <div class="legend-item">
+              <span class="legend-indicator green"></span>
+              <span class="legend-label">Active</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-indicator yellow"></span>
+              <span class="legend-label">Draft</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-indicator red"></span>
+              <span class="legend-label">In Progress</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -76,7 +153,7 @@
       Enhanced Portfolio Experience
     </div>
     <div class="copyright-line">
-      © <span id="year"></span> All rights reserved
+      &copy; <span id="year"></span> All rights reserved
     </div>
   </footer>
 

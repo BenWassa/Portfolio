@@ -20,26 +20,35 @@ function debounce(func, delay) {
  * DOM manipulation, state, navigation, themes, and autoplay.
  */
 class PortfolioCarousel {
-  constructor(projectsData) {
-    // Store references to critical DOM elements
+  constructor(projectsData, carouselId) {
+    this.carouselId = carouselId;
+    const container = document.getElementById(carouselId);
+    
+    if (!container) {
+      console.error(`PortfolioCarousel: Container with id "${carouselId}" not found. Initialization aborted.`);
+      return;
+    }
+
+    // Store references to critical DOM elements within this carousel's container
     this.elements = {
-      track: document.getElementById('track'),
-      dotsWrap: document.getElementById('dots'),
+      container: container,
+      track: container.querySelector('.track'),
+      dotsWrap: container.querySelector('.dots'),
       year: document.getElementById('year'),
       progressBar: document.getElementById('progressBar'),
       particlesContainer: document.getElementById('particles'),
-      carouselSection: document.querySelector('.carousel'),
-      prevBtn: document.getElementById('prevBtn'),
-      nextBtn: document.getElementById('nextBtn'),
+      carouselSection: container,
+      prevBtn: container.querySelector('.nav-arrow.prev'),
+      nextBtn: container.querySelector('.nav-arrow.next'),
       root: document.documentElement,
       hero: document.getElementById('hero')
     };
 
     // --- Robustness: Check for critical DOM elements ---
-    const requiredElements = ['track', 'dotsWrap', 'progressBar', 'particlesContainer', 'carouselSection', 'prevBtn', 'nextBtn', 'hero'];
+    const requiredElements = ['track', 'dotsWrap', 'carouselSection', 'prevBtn', 'nextBtn'];
     for (const key of requiredElements) {
       if (!this.elements[key]) {
-        console.error(`PortfolioCarousel: Missing required DOM element for key "${key}". Initialization aborted.`);
+        console.error(`PortfolioCarousel (${carouselId}): Missing required DOM element for key "${key}". Initialization aborted.`);
         // Stop execution if a critical element is missing
         return; 
       }
@@ -180,8 +189,10 @@ class PortfolioCarousel {
     // --- Theme: force dark mode only ---
     this.state.themeMode = 'dark';
     this._applyBaseTheme(this.state.themeMode);
-    // Ensure page fits viewport (may toggle compact mode)
-    this._ensureFitsViewport();
+    // Note: Removed _ensureFitsViewport() call to allow normal scrolling on portfolio site
+    // Ensure compact mode is disabled for normal scrolling
+    document.documentElement.classList.remove('compact');
+    // this._ensureFitsViewport();
     // Create a single floating tooltip node for status badges to avoid interfering with card clicks
     this._createFloatingTooltip();
   }
@@ -295,15 +306,16 @@ class PortfolioCarousel {
       art.style.setProperty('--card-accent', p.theme.primary);
     }
 
-    // Set status color and glow for visual edge/highlight (can be overridden per project)
-    const statusMap = {
-      green: { color: '#10b981', glow: '0 20px 60px rgba(16,185,129,0.08)' },
-      yellow: { color: '#f59e0b', glow: '0 20px 60px rgba(245,158,11,0.06)' },
-      red: { color: '#ef4444', glow: '0 20px 60px rgba(239,68,68,0.06)' }
+    // Set section-based border color (narrative vs app)
+    // Narrative sections use gold, app sections use blue
+    const sectionColorMap = {
+      narrative: { color: '#d4af37', glow: '0 20px 60px rgba(212,175,55,0.08)' },
+      app: { color: '#3b82f6', glow: '0 20px 60px rgba(59,130,246,0.08)' }
     };
-    if (p.status && statusMap[p.status]) {
-      art.style.setProperty('--status-color', statusMap[p.status].color);
-      art.style.setProperty('--status-glow', statusMap[p.status].glow);
+    
+    if (p.type && sectionColorMap[p.type]) {
+      art.style.setProperty('--status-color', sectionColorMap[p.type].color);
+      art.style.setProperty('--status-glow', sectionColorMap[p.type].glow);
     }
 
     art.innerHTML = `
@@ -321,7 +333,7 @@ class PortfolioCarousel {
           ${p.href ? 
             // --- Robustness: Add rel="noopener noreferrer" for security on external links ---
             `<a class="link" href="${p.href}" target="_blank" rel="noopener noreferrer" aria-label="Open ${p.title} project">
-              <span>Explore →</span>
+              <span>Explore &rarr;</span>
             </a>` : 
             `<span class="link" aria-disabled="true"><span>Coming Soon</span></span>`
           }
@@ -655,10 +667,48 @@ class PortfolioCarousel {
 // --- Global Initialization ---
 // Ensure the DOM is fully loaded before attempting to initialize the carousel.
 document.addEventListener('DOMContentLoaded', () => {
-  // Trigger hero animation with slight delay for smoother entrance
+  console.log('DOMContentLoaded - Initial scroll position:', window.scrollY);
+  
+  // Disable browser scroll restoration to ensure page always loads at top
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  
+  // Force scroll to top immediately and aggressively
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  
+  console.log('After force scroll to top:', window.scrollY);
+  
+  // Trigger hero animation and show content
   setTimeout(() => {
-    document.getElementById('hero').classList.add('loaded');
+    console.log('Adding loaded class to body and hero');
+    const heroElement = document.getElementById('hero');
+    if (heroElement) {
+      heroElement.classList.add('loaded');
+    } else {
+      console.log('Hero element not found');
+    }
+    document.body.classList.add('loaded');
+    console.log('Body classes after adding loaded:', document.body.className);
+    
+    // Create scroll-to-top button after content is visible
+    setTimeout(() => {
+      createScrollToTopButton();
+      console.log('Scroll-to-top button should now be created');
+    }, 50);
   }, 200);
+  
+  // Fallback: ensure body becomes visible even if something goes wrong
+  setTimeout(() => {
+    if (!document.body.classList.contains('loaded')) {
+      console.log('Fallback: forcing body to be visible');
+      document.body.classList.add('loaded');
+      document.getElementById('hero')?.classList.add('loaded');
+      createScrollToTopButton();
+    }
+  }, 2000);
 
   // Set up scroll button functionality
   const scrollCta = document.getElementById('scrollCta');
@@ -674,6 +724,178 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   
-  // Instantiate the carousel and attach to window for testing
-  window.portfolioCarousel = new PortfolioCarousel(projectsData);
+  // Filter projects by type
+  const narrativeProjects = projectsData.filter(p => p.type === 'narrative');
+  const appProjects = projectsData.filter(p => p.type === 'app');
+  
+  // Instantiate both carousels
+  window.portfolioNarrative = new PortfolioCarousel(narrativeProjects, 'carousel-narrative');
+  window.portfolioApps = new PortfolioCarousel(appProjects, 'carousel-apps');
+  
+  // --- Update badge counts and wire up hero CTA buttons ---
+  const viewNarrativeBtn = document.getElementById('viewNarrative');
+  const viewAppsBtn = document.getElementById('viewApps');
+  const countNarrativeBadge = document.getElementById('countNarrative');
+  const countAppsBadge = document.getElementById('countApps');
+  
+  console.log('DOM elements found:', {
+    viewNarrativeBtn: !!viewNarrativeBtn,
+    viewAppsBtn: !!viewAppsBtn,
+    countNarrativeBadge: !!countNarrativeBadge,
+    countAppsBadge: !!countAppsBadge
+  });
+  
+  if (countNarrativeBadge) countNarrativeBadge.textContent = narrativeProjects.length;
+  if (countAppsBadge) countAppsBadge.textContent = appProjects.length;
+  
+  function smoothScrollTo(targetPosition, duration = 800) {
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    
+    // If distance is very small, don't animate
+    if (Math.abs(distance) < 10) {
+      console.log('Distance too small, skipping animation');
+      return;
+    }
+    
+    const startTime = Date.now();
+    const fps = 60;
+    const frameDuration = 1000 / fps;
+    
+    console.log(`Starting smooth scroll from ${startPosition} to ${targetPosition} over ${duration}ms, distance: ${distance}`);
+    
+    function animate() {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Smooth ease-in-out cubic easing
+      const easeInOut = progress < 0.5 
+        ? 4 * progress * progress * progress 
+        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+      
+      const currentPosition = startPosition + distance * easeInOut;
+      
+      // Use direct scroll assignment for better compatibility
+      window.scrollTo(0, currentPosition);
+      document.documentElement.scrollTop = currentPosition;
+      document.body.scrollTop = currentPosition;
+      
+      console.log(`Scroll progress: ${progress.toFixed(2)}, target: ${currentPosition}, actual: ${window.pageYOffset}`);
+      
+      if (progress < 1) {
+        setTimeout(animate, frameDuration);
+      } else {
+        console.log('Smooth scroll completed at', window.pageYOffset);
+      }
+    }
+    
+    animate();
+  }
+  
+  function jumpToSection(sectionId, offset = 0) {
+    const section = document.getElementById(sectionId);
+    if (!section) {
+      console.error(`Section ${sectionId} not found`);
+      return;
+    }
+
+    // Use browser's native smooth scroll for better reliability
+    section.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'  // Changed from 'start' to 'center' for better framing
+    });
+    
+    // Focus management after scroll completes
+    setTimeout(() => {
+      const focusTarget = section.querySelector('.dotnav, .track');
+      if (focusTarget) {
+        focusTarget.focus({ preventScroll: true });
+      }
+    }, 600);
+  }
+  
+  if (viewNarrativeBtn) {
+    console.log('Narrative button found, adding listener');
+    viewNarrativeBtn.addEventListener('click', (e) => {
+      console.log('Narrative button clicked!');
+      e.preventDefault();
+      jumpToSection('narrative-projects', 100); // Scroll to just above the section
+    });
+  } else {
+    console.error('Narrative button not found');
+  }
+  
+  if (viewAppsBtn) {
+    console.log('Apps button found, adding listener');
+    viewAppsBtn.addEventListener('click', (e) => {
+      console.log('Apps button clicked!');
+      e.preventDefault();
+      jumpToSection('apps-projects', 100); // Scroll to just above the section
+    });
+  } else {
+    console.error('Apps button not found');
+  }
+  
+  // --- Scroll to Top Button ---
+  function createScrollToTopButton() {
+    console.log('Creating scroll to top button...');
+    const scrollToTopBtn = document.createElement('button');
+    scrollToTopBtn.id = 'scrollToTop';
+    scrollToTopBtn.className = 'scroll-to-top';
+    scrollToTopBtn.setAttribute('aria-label', 'Scroll to top');
+    scrollToTopBtn.innerHTML = `
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    `;
+    document.body.appendChild(scrollToTopBtn);
+    console.log('Scroll to top button created and appended to DOM');
+    
+    // Show/hide button based on scroll position
+    function toggleScrollToTopButton() {
+      // Get hero section height as threshold
+      const heroSection = document.querySelector('.hero-section');
+      const heroHeight = heroSection ? heroSection.offsetHeight : 400;
+      const currentScroll = window.scrollY;
+      const shouldShow = currentScroll > heroHeight;
+      
+      if (shouldShow) {
+        scrollToTopBtn.classList.add('visible');
+      } else {
+        scrollToTopBtn.classList.remove('visible');
+      }
+    }
+    
+    window.addEventListener('scroll', debounce(toggleScrollToTopButton, 100));
+    
+    // Scroll to top on click
+    scrollToTopBtn.addEventListener('click', () => {
+      // Use smooth scroll to top like the section buttons
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Initial check to set correct visibility state
+    toggleScrollToTopButton();
+  }
 });
+
+// Additional safeguard: ensure page stays at top after all resources load
+window.addEventListener('load', () => {
+  console.log('Window load event - scroll position:', window.scrollY);
+  
+  // Only force scroll to top if we're not at the top (browser restoration might have kicked in)
+  if (window.scrollY > 0) {
+    console.log('Browser restored scroll position, resetting to top');
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }
+  
+  // Remove the aggressive scroll checking that prevents normal scrolling
+  console.log('Page load complete, normal scrolling enabled');
+});
+
+
