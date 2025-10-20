@@ -99,7 +99,7 @@ export const projectsData = [
   {
     title: "STARK",
     tag: "Fitness Intelligence PWA",
-    desc: "A privacy-first Progressive Web App that transforms physiological data into an elegant fitness intelligence dashboard — fully offline, open source, and powered by clean in-browser computation.",
+    desc: "A Progressive Web App that transforms physiological data into a clear visual story of fitness and recovery — a personal dashboard for strength, endurance, and overall performance.",
     href: "https://benwassa.github.io/STARK/",
     img: "STARK.png",
     alt: "STARK — Fitness Intelligence PWA",
@@ -160,7 +160,7 @@ export const projectDescriptions = {
   },
 
   stark: {
-    portfolio: "A self-contained, privacy-first fitness dashboard that visualizes strength, endurance, mobility, and recovery through a unified Fitness Index — all computed locally in the browser.",
+    portfolio: "A data visualization PWA that unifies strength, endurance, mobility, and recovery into one elegant Fitness Index, complete with VO₂ max and trend insights.",
     full: "Project STARK is a static Progressive Web App built with React and TailwindCSS, designed to turn physiological data into a clear visual story of fitness and recovery. It blends performance metrics, VO₂ max estimation, and normative comparisons into an elegant offline dashboard that values transparency, simplicity, and privacy. All calculations are client-side, data is stored in IndexedDB, and users can install it as a PWA — no logins, no servers, just insight."
   },
 
