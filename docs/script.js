@@ -31,7 +31,6 @@ class PortfolioCarousel {
       carouselSection: document.querySelector('.carousel'),
       prevBtn: document.getElementById('prevBtn'),
       nextBtn: document.getElementById('nextBtn'),
-      themeToggle: document.getElementById('themeToggle'),
       root: document.documentElement,
       hero: document.getElementById('hero')
     };
@@ -178,16 +177,9 @@ class PortfolioCarousel {
       this.elements.hero.classList.add('loaded'); 
     });
 
-    // --- Theme toggle: initialize from localStorage or default to dark ---
-    const saved = localStorage.getItem('bp_theme_mode');
-    this.state.themeMode = saved === 'light' ? 'light' : 'dark';
+    // --- Theme: force dark mode only ---
+    this.state.themeMode = 'dark';
     this._applyBaseTheme(this.state.themeMode);
-    if (this.elements.themeToggle) {
-      this.elements.themeToggle.setAttribute('aria-pressed', this.state.themeMode === 'light' ? 'true' : 'false');
-      this.elements.themeToggle.setAttribute('aria-label', this.state.themeMode === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
-      // update icon (simple sun for light, moon for dark)
-      this._updateThemeToggleIcon();
-    }
     // Ensure page fits viewport (may toggle compact mode)
     this._ensureFitsViewport();
     // Create a single floating tooltip node for status badges to avoid interfering with card clicks
@@ -641,16 +633,6 @@ class PortfolioCarousel {
     this.elements.track.addEventListener('scroll', this._handleScroll);
     this.elements.prevBtn.addEventListener('click', () => this._navigateCarousel(-1));
     this.elements.nextBtn.addEventListener('click', () => this._navigateCarousel(1));
-    if (this.elements.themeToggle) {
-      this.elements.themeToggle.addEventListener('click', () => {
-        this.state.themeMode = this.state.themeMode === 'light' ? 'dark' : 'light';
-        localStorage.setItem('bp_theme_mode', this.state.themeMode);
-        this._applyBaseTheme(this.state.themeMode);
-        this.elements.themeToggle.setAttribute('aria-pressed', this.state.themeMode === 'light' ? 'true' : 'false');
-        this.elements.themeToggle.setAttribute('aria-label', this.state.themeMode === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
-        this._updateThemeToggleIcon();
-      });
-    }
 
     // --- Touch events for swipe navigation ---
     this.elements.track.addEventListener('touchstart', this._handleTouchStart.bind(this));
