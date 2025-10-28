@@ -79,7 +79,8 @@ class PortfolioCarousel {
       touchEndX: 0,
       themeMode: 'dark', // Default theme mode
       isProgrammaticScroll: false, // Flag to prevent scroll handler conflicts
-      scrollTimeout: null // To manage the programmatic scroll flag
+      scrollTimeout: null, // To manage the programmatic scroll flag
+      displayMode: 'default'
     };
 
     // --- Performance: Debounce resize events ---
@@ -87,28 +88,7 @@ class PortfolioCarousel {
     // Bind scroll handler to ensure 'this' context is correct
     this._handleScroll = this._handleScroll.bind(this); 
 
-    // Debounced check for vertical fit
-    this._debouncedFitCheck = debounce(this._ensureFitsViewport.bind(this), 200);
-
     this._initialize();
-  }
-
-  /**
-   * Checks if the document fits within the viewport vertically. If not, toggles a compact mode
-   * which reduces paddings and spacing to try to fit content without vertical scrolling.
-   */
-  _ensureFitsViewport() {
-    // Temporarily remove compact class to measure true content height without its influence
-    document.documentElement.classList.remove('compact');
-    
-    const contentHeight = document.documentElement.scrollHeight;
-    const viewHeight = window.innerHeight;
-    const needsCompact = contentHeight > viewHeight;
-    
-    if (needsCompact) {
-      document.documentElement.classList.add('compact');
-    }
-    // No 'else' needed as it was removed above.
   }
 
   /**
@@ -165,6 +145,33 @@ class PortfolioCarousel {
   }
 
   /**
+   * Updates a data attribute on <html> to let CSS adjust layout for medium/small viewports.
+   * Keeps track of last applied mode to avoid unnecessary DOM writes.
+   */
+  _updateDisplayMode() {
+    if (!this.elements.root) return;
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    let mode = 'default';
+    if (width <= 1400 || height <= 820) {
+      mode = 'small';
+    } else if (width <= 1680 || height <= 950) {
+      mode = 'medium';
+    }
+
+    if (this.state.displayMode === mode) return;
+
+    this.state.displayMode = mode;
+    if (mode === 'default') {
+      delete this.elements.root.dataset.displayMode;
+    } else {
+      this.elements.root.dataset.displayMode = mode;
+    }
+  }
+
+  /**
    * Initializes the carousel: builds elements, sets up events, and initial state.
    */
   _initialize() {
@@ -173,6 +180,7 @@ class PortfolioCarousel {
     this._createParticles();
     this._buildCarousel();
     this._addEventListeners();
+    this._updateDisplayMode(); // Apply responsive display mode before measurements
     this._updateCarouselDimensions(); // Initial dimension setup
 
     // Scroll to the first slide immediately, without smooth behavior for initial load
@@ -189,10 +197,6 @@ class PortfolioCarousel {
     // --- Theme: force dark mode only ---
     this.state.themeMode = 'dark';
     this._applyBaseTheme(this.state.themeMode);
-    // Note: Removed _ensureFitsViewport() call to allow normal scrolling on portfolio site
-    // Ensure compact mode is disabled for normal scrolling
-    document.documentElement.classList.remove('compact');
-    // this._ensureFitsViewport();
     // Create a single floating tooltip node for status badges to avoid interfering with card clicks
     this._createFloatingTooltip();
   }
@@ -466,6 +470,8 @@ class PortfolioCarousel {
    * Called on initialization and window resize.
    */
   _updateCarouselDimensions() {
+    this._updateDisplayMode();
+
     if (this.state.slideEls.length === 0) return;
 
     // Recalculate dimensions based on the first card and track's computed style
@@ -641,7 +647,6 @@ class PortfolioCarousel {
    */
   _addEventListeners() {
     window.addEventListener('resize', this._debouncedResize);
-    window.addEventListener('resize', this._debouncedFitCheck);
     this.elements.track.addEventListener('scroll', this._handleScroll);
     this.elements.prevBtn.addEventListener('click', () => this._navigateCarousel(-1));
     this.elements.nextBtn.addEventListener('click', () => this._navigateCarousel(1));
