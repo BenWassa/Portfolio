@@ -418,22 +418,32 @@ class ProjectLoader {
   _buildGallery() {
     this.elements.gallery.innerHTML = '';
     
-    // Reorder projects for grid layout: Skywalker, Agoge, Sankofa, Dukkha, Orpheus, drop (tall PWA), Vox, STARK
-    const gridOrder = ['skywalker', 'agoge', 'sankofa', 'dukkha', 'orpheus', 'drop', 'vox', 'stark'];
+    // Reorder projects for grid layout: Skywalker, Agoge, Sankofa, Dukkha, Orpheus,
+    // PWAs: drop and STARK on the top row (squares), then Vox as the wide card below.
+    const gridOrder = ['skywalker', 'agoge', 'sankofa', 'dukkha', 'orpheus', 'drop', 'stark', 'vox'];
     const orderedProjects = [];
+    
+    // Debug: log what projects we're starting with
+    console.log('Building gallery with projects:', this.projects.map(p => p.title));
     
     // Sort projects by the desired grid order
     gridOrder.forEach(name => {
       const project = this.projects.find(p => p.title.toLowerCase() === name);
-      if (project) orderedProjects.push(project);
+      if (project) {
+        orderedProjects.push(project);
+        console.log(`Added ${project.title} to ordered list`);
+      }
     });
     
     // Add any remaining projects not in the order list
     this.projects.forEach(p => {
       if (!orderedProjects.includes(p)) {
         orderedProjects.push(p);
+        console.log(`Added remaining project ${p.title} to ordered list`);
       }
     });
+    
+    console.log('Final ordered projects:', orderedProjects.map(p => p.title));
     
     // Build cards in the correct order
     orderedProjects.forEach((p, i) => {

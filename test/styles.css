@@ -469,20 +469,80 @@ body.loaded {
     grid-row: span 3;
   }
   
-  /* Row 3: PWA Section - drop (tall left) + Vox & STARK (stacked right) */
-  .card[data-project="drop"] {
-    grid-column: span 4;
-    grid-row: span 4;
+  /* Apps / PWA gallery — deterministic small-grid layout
+     Strategy:
+     - Use a small fixed "unit" (~45px) for columns and rows so two rows ≈ 90px
+     - Place `drop` and `STARK` as compact squares on row 1
+     - Place `Vox` below as a wide card on row 2
+     - Keep images filling their card areas with sensible object-fit rules
+  */
+  /* NOTE: This overrides the global project-gallery grid for the apps section only */
+  #apps-projects .project-gallery {
+  --apps-unit: 50px; /* change this value to raise/lower total height (2 × unit ≈ total) */
+    display: grid;
+    grid-template-columns: repeat(8, var(--apps-unit));
+    grid-template-rows: repeat(2, var(--apps-unit));
+    gap: 8px;
+    padding: 8px 12px;
+    align-items: stretch;
+    justify-content: start;
   }
-  
-  .card[data-project="vox"] {
-    grid-column: span 4;
-    grid-row: span 2;
+
+  /* Compact card baseline inside apps area */
+  #apps-projects .card {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
   }
-  
-  .card[data-project="stark"] {
-    grid-column: span 4;
-    grid-row: span 2;
+
+  /* Place small square posters on row 1 */
+  #apps-projects .card[data-project="drop"] {
+    grid-column: 1 / span 2; /* 2 × unit width */
+    grid-row: 1 / 2;         /* first row */
+  }
+
+  #apps-projects .card[data-project="STARK"],
+  #apps-projects .card[data-project="stark"] {
+    grid-column: 3 / span 2; /* sits to the right of drop */
+    grid-row: 1 / 2;
+  }
+
+  /* Vox spans the bottom row across remaining columns (or full width) */
+  #apps-projects .card[data-project="Vox"],
+  #apps-projects .card[data-project="vox"] {
+    grid-column: 1 / -1; /* full width across the unit grid */
+    grid-row: 2 / 3;     /* second row */
+  }
+
+  /* Image fitting for apps area */
+  #apps-projects .card .thumb img { object-fit: cover; object-position: center center; }
+  #apps-projects .card[data-project="Vox"] .thumb img { object-fit: contain; }
+
+  /* Defensive fixes: ensure cards inside apps area have visible height and
+     the thumb fills the card. This prevents visual collapse where absolutely
+     positioned thumbnails appear to render with 0px height. */
+  #apps-projects .card {
+    min-height: var(--apps-unit);
+    height: 100%;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  /* Make the thumb behave as a normal content box in the apps grid so it
+     fills the card area reliably (override global absolute positioning). */
+  #apps-projects .card .thumb {
+    position: relative !important;
+    inset: auto !important;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #apps-projects .card .thumb img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
   }
   
   /* Tablet: 4 columns */
@@ -520,16 +580,16 @@ body.loaded {
     
     .card[data-project="drop"] {
       grid-column: span 2;
-      grid-row: span 3;
-    }
-    
-    .card[data-project="vox"] {
-      grid-column: span 2;
-      grid-row: span 2;
+      grid-row: span 2; /* keep square-ish on tablet */
     }
     
     .card[data-project="stark"] {
       grid-column: span 2;
+      grid-row: span 2; /* keep square-ish on tablet */
+    }
+    
+    .card[data-project="vox"] {
+      grid-column: span 4; /* wide below the two squares */
       grid-row: span 2;
     }
   }
@@ -1569,12 +1629,17 @@ body.page-license {
   padding: 0px 16px;
 }
 
-/* Make the Apps/PWA gallery slightly taller than the global baseline so
-   PWAs have more vertical space (10-20px taller than the global 60px). */
+/* Apps/PWA gallery: use the compact unit grid so two rows ≈ 90px. This
+   matches the deterministic layout defined earlier (drop / STARK on row 1,
+   Vox on row 2). Adjust --apps-unit to tune sizing. */
 #apps-projects .project-gallery {
-  grid-auto-rows: 72px; /* increased from global 60px */
-  gap: 18px;
-  padding: 16px 20px;
+  --apps-unit: 50px;
+  display: grid;
+  grid-template-columns: repeat(8, var(--apps-unit));
+  grid-template-rows: repeat(2, var(--apps-unit));
+  gap: 8px;
+  padding: 8px 12px;
+  align-items: start;
 }
 
 /* Subtle separator between sections */

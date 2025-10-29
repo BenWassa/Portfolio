@@ -55,22 +55,6 @@ export const projectsData = [
     type: "narrative"
   },
   {
-    title: "Vox",
-    tag: "Language Learning Tracker",
-    desc: "Vox is a lean, offline-first vocabulary tracker designed for focused study in Spanish and Mandarin. Featuring CSV import and export, practice counters, and responsive table and card views, making it easy to manage and review progress.",
-    href: "https://benwassa.github.io/Vox_Showcase/",
-    img: "Vox.png",
-    alt: "Vox - Language-learning dashboard",
-    theme: {
-      primary: "#3b82f6", // primary-color from Vox repo
-      secondary: "#1f2937", // text-color-primary adapted to dark
-      tertiary: "#374151", // darker gray
-      bg: "#111827" // dark background adaptation
-    },
-    status: "green",
-    type: "app"
-  },
-  {
     title: "Agoge",
     tag: "Scientific-Narrative Guide",
     desc: "A cross-cultural study of rites of passage. Blends history, myth, psychology, and research into a modern narrative framework reimagining authentic initiation for resilience and transformation.",
@@ -103,6 +87,22 @@ export const projectsData = [
     type: "narrative"
   },
   {
+    title: "drop",
+    tag: "Daily Domain Tracker",
+    desc: "A minimalist Progressive Web App for tracking daily life domains - Sleep, Fitness, Mind, and Spirit - with a mindful scoring system that rewards consistency over perfection.",
+    href: "https://benwassa.github.io/drop/",
+    img: "drop.png",
+    alt: "drop - Daily Domain Tracker",
+    theme: {
+      primary: "#3b82f6", // bright blue accent
+      secondary: "#1c1c21", // dark UI surface
+      tertiary: "#0b0b0f", // deep neutral background
+      bg: "#09090b" // core black
+    },
+    status: "green",
+    type: "app"
+  },
+  {
     title: "STARK",
     tag: "Fitness Intelligence PWA",
     desc: "A Progressive Web App that transforms physiological data into a clear visual story of fitness and recovery - a personal dashboard for strength, endurance, and overall performance.",
@@ -119,17 +119,17 @@ export const projectsData = [
     type: "app"
   },
   {
-    title: "drop",
-    tag: "Daily Domain Tracker",
-    desc: "A minimalist Progressive Web App for tracking daily life domains - Sleep, Fitness, Mind, and Spirit - with a mindful scoring system that rewards consistency over perfection.",
-    href: "https://benwassa.github.io/drop/",
-    img: "drop.png",
-    alt: "drop - Daily Domain Tracker",
+    title: "Vox",
+    tag: "Language Learning Tracker",
+    desc: "Vox is a lean, offline-first vocabulary tracker designed for focused study in Spanish and Mandarin. Featuring CSV import and export, practice counters, and responsive table and card views, making it easy to manage and review progress.",
+    href: "https://benwassa.github.io/Vox_Showcase/",
+    img: "Vox.png",
+    alt: "Vox - Language-learning dashboard",
     theme: {
-      primary: "#3b82f6", // bright blue accent
-      secondary: "#1c1c21", // dark UI surface
-      tertiary: "#0b0b0f", // deep neutral background
-      bg: "#09090b" // core black
+      primary: "#3b82f6", // primary-color from Vox repo
+      secondary: "#1f2937", // text-color-primary adapted to dark
+      tertiary: "#374151", // darker gray
+      bg: "#111827" // dark background adaptation
     },
     status: "green",
     type: "app"
