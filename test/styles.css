@@ -469,9 +469,19 @@ body.loaded {
     grid-row: span 4;
   }
   
-  /* Row 3: Vox spans full width */
+  /* Row 3: PWA Section - drop (tall left) + Vox & STARK (stacked right) */
+  .card[data-project="drop"] {
+    grid-column: span 4;
+    grid-row: span 6;
+  }
+  
   .card[data-project="vox"] {
-    grid-column: span 8;
+    grid-column: span 4;
+    grid-row: span 3;
+  }
+  
+  .card[data-project="stark"] {
+    grid-column: span 4;
     grid-row: span 3;
   }
   
@@ -508,7 +518,17 @@ body.loaded {
       grid-row: span 2;
     }
     
+    .card[data-project="drop"] {
+      grid-column: span 2;
+      grid-row: span 4;
+    }
+    
     .card[data-project="vox"] {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    
+    .card[data-project="stark"] {
       grid-column: span 2;
       grid-row: span 2;
     }
@@ -528,7 +548,9 @@ body.loaded {
     .card[data-project="dukkha"],
     .card[data-project="vox"],
     .card[data-project="orpheus"],
-    .card[data-project="agoge"] {
+    .card[data-project="agoge"],
+    .card[data-project="drop"],
+    .card[data-project="stark"] {
       grid-column: span 1;
       grid-row: span 4;
     }

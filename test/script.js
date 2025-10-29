@@ -418,8 +418,8 @@ class ProjectLoader {
   _buildGallery() {
     this.elements.gallery.innerHTML = '';
     
-    // Reorder projects for grid layout: Skywalker, Agoge, Sankofa, Dukkha, Orpheus, Vox
-    const gridOrder = ['skywalker', 'agoge', 'sankofa', 'dukkha', 'orpheus', 'vox'];
+    // Reorder projects for grid layout: Skywalker, Agoge, Sankofa, Dukkha, Orpheus, drop (tall PWA), Vox, STARK
+    const gridOrder = ['skywalker', 'agoge', 'sankofa', 'dukkha', 'orpheus', 'drop', 'vox', 'stark'];
     const orderedProjects = [];
     
     // Sort projects by the desired grid order
