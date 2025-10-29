@@ -196,6 +196,9 @@ class ProjectLoader {
     const art = document.createElement('article');
     art.className = 'card';
     art.setAttribute('aria-label', `${p.title} project`);
+    
+    // Add data-project attribute for dynamic sizing
+    art.setAttribute('data-project', p.title.toLowerCase());
 
     // Set per-card accent variable for outline/button styling
     if (p.theme && p.theme.primary) {
@@ -213,14 +216,29 @@ class ProjectLoader {
       art.style.setProperty('--status-glow', sectionColorMap[p.type].glow);
     }
 
-    // New image-focused layout with bottom overlay
+    // Create terse taglines from descriptions
+    const taglines = {
+      'skywalker': 'A mythic mirror for self-discovery',
+      'sankofa': 'Stories of purpose and moral compass',
+      'dukkha': 'Understanding dopamine and temptation',
+      'vox': 'Focused vocabulary tracking',
+      'agoge': 'Reimagining rites of passage',
+      'orpheus': 'Decoding emotion through music'
+    };
+    
+    const tagline = taglines[p.title.toLowerCase()] || '';
+
+    // New image-focused layout with bottom overlay + tagline
     art.innerHTML = `
       <div class="thumb">
         <img loading="lazy" src="${p.img}" alt="${p.alt}">
       </div>
       <div class="card-overlay">
-        <span class="dot ${p.status}"></span>
-        <div class="title">${p.title}</div>
+        <div class="card-overlay-header">
+          <span class="dot ${p.status}"></span>
+          <div class="title">${p.title}</div>
+        </div>
+        ${tagline ? `<p class="card-tagline">${tagline}</p>` : ''}
       </div>`;
     
     // Click opens modal with full details
@@ -399,7 +417,26 @@ class ProjectLoader {
    */
   _buildGallery() {
     this.elements.gallery.innerHTML = '';
-    this.projects.forEach((p, i) => {
+    
+    // Reorder projects for grid layout: Skywalker, Agoge, Sankofa, Dukkha, Orpheus, Vox
+    const gridOrder = ['skywalker', 'agoge', 'sankofa', 'dukkha', 'orpheus', 'vox'];
+    const orderedProjects = [];
+    
+    // Sort projects by the desired grid order
+    gridOrder.forEach(name => {
+      const project = this.projects.find(p => p.title.toLowerCase() === name);
+      if (project) orderedProjects.push(project);
+    });
+    
+    // Add any remaining projects not in the order list
+    this.projects.forEach(p => {
+      if (!orderedProjects.includes(p)) {
+        orderedProjects.push(p);
+      }
+    });
+    
+    // Build cards in the correct order
+    orderedProjects.forEach((p, i) => {
       const card = this._createCard(p, i);
       this.elements.gallery.appendChild(card);
     });

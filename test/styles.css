@@ -417,19 +417,17 @@ body.loaded {
     animation: fadeInUp 1.4s var(--ease-out-quart) 0.8s forwards;
   }
   
-  /* Gallery Grid */
+  /* Gallery Grid - Robust masonry layout */
   .project-gallery{
     display: grid;
-    /* Responsive grid: auto-fill columns, min 300px, max 1fr */
-    grid-template-columns: repeat(auto-fill, minmax(clamp(280px, 90vw, 360px), 1fr));
-    gap: var(--gap);
-    padding: 20px 0;
+    grid-template-columns: repeat(8, 1fr);
+    grid-auto-rows: 80px;
+    gap: 20px;
+    padding: 40px 20px;
   }
   
-  /* Enhanced Cards - Image-focused with overlay */
+  /* Dynamic card sizing - organized for visual balance */
   .card{
-    /* 'flex' property removed */
-    aspect-ratio: 4/5; /* Taller card for better image display */
     background: var(--card);
     border: 1px solid var(--status-color, rgba(255,255,255,.15));
     border-radius: var(--radius);
@@ -442,6 +440,98 @@ body.loaded {
     isolation: isolate;
     transition: all 0.5s var(--ease-out-quart);
     cursor: pointer;
+  }
+  
+  /* Row 1: Skywalker (large hero) + Agoge */
+  .card[data-project="skywalker"] {
+    grid-column: span 5;
+    grid-row: span 5;
+  }
+  
+  .card[data-project="agoge"] {
+    grid-column: span 3;
+    grid-row: span 5;
+  }
+  
+  /* Row 2: Sankofa + Dukkha (center) + Orpheus */
+  .card[data-project="sankofa"] {
+    grid-column: span 2;
+    grid-row: span 4;
+  }
+  
+  .card[data-project="dukkha"] {
+    grid-column: span 4;
+    grid-row: span 4;
+  }
+  
+  .card[data-project="orpheus"] {
+    grid-column: span 2;
+    grid-row: span 4;
+  }
+  
+  /* Row 3: Vox spans full width */
+  .card[data-project="vox"] {
+    grid-column: span 8;
+    grid-row: span 3;
+  }
+  
+  /* Tablet: 4 columns */
+  @media (max-width: 1024px) {
+    .project-gallery {
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 100px;
+      gap: 16px;
+    }
+    
+    .card[data-project="skywalker"] {
+      grid-column: span 4;
+      grid-row: span 4;
+    }
+    
+    .card[data-project="agoge"] {
+      grid-column: span 4;
+      grid-row: span 3;
+    }
+    
+    .card[data-project="sankofa"] {
+      grid-column: span 2;
+      grid-row: span 3;
+    }
+    
+    .card[data-project="dukkha"] {
+      grid-column: span 2;
+      grid-row: span 3;
+    }
+    
+    .card[data-project="orpheus"] {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    
+    .card[data-project="vox"] {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+  }
+  
+  /* Mobile: single column */
+  @media (max-width: 768px) {
+    .project-gallery {
+      grid-template-columns: 1fr;
+      grid-auto-rows: 80px;
+      gap: 16px;
+      padding: 20px 10px;
+    }
+    
+    .card[data-project="skywalker"],
+    .card[data-project="sankofa"],
+    .card[data-project="dukkha"],
+    .card[data-project="vox"],
+    .card[data-project="orpheus"],
+    .card[data-project="agoge"] {
+      grid-column: span 1;
+      grid-row: span 4;
+    }
   }
   
   .card::before {
@@ -513,6 +603,12 @@ body.loaded {
     padding: 20px;
     z-index: 2;
     display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .card-overlay-header {
+    display: flex;
     align-items: center;
     gap: 12px;
   }
@@ -525,6 +621,15 @@ body.loaded {
     color: var(--fg);
     text-shadow: 0 2px 8px rgba(0,0,0,0.8);
     line-height: 1.2;
+  }
+  
+  .card-tagline {
+    font-style: italic;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.4;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+    margin: 0;
   }
   
   /* Enhanced status indicators */
@@ -701,15 +806,16 @@ body.loaded {
   
   .modal-header {
     position: relative;
-    aspect-ratio: 16/9;
+    max-height: 70vh;
     overflow: hidden;
     border-radius: var(--radius) var(--radius) 0 0;
+    background: var(--bg);
   }
   
   .modal-header img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* Show full image without cropping */
   }
   
   .modal-close {
