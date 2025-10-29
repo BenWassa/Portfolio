@@ -421,9 +421,9 @@ body.loaded {
   .project-gallery{
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-auto-rows: 80px;
-    gap: 20px;
-    padding: 40px 20px;
+    grid-auto-rows: 60px;
+    gap: 16px;
+    padding: 30px 20px;
   }
   
   /* Dynamic card sizing - organized for visual balance */
@@ -445,72 +445,72 @@ body.loaded {
   /* Row 1: Skywalker (large hero) + Agoge */
   .card[data-project="skywalker"] {
     grid-column: span 5;
-    grid-row: span 5;
+    grid-row: span 4;
   }
   
   .card[data-project="agoge"] {
     grid-column: span 3;
-    grid-row: span 5;
+    grid-row: span 4;
   }
   
   /* Row 2: Sankofa + Dukkha (center) + Orpheus */
   .card[data-project="sankofa"] {
     grid-column: span 2;
-    grid-row: span 4;
+    grid-row: span 3;
   }
   
   .card[data-project="dukkha"] {
     grid-column: span 4;
-    grid-row: span 4;
+    grid-row: span 3;
   }
   
   .card[data-project="orpheus"] {
     grid-column: span 2;
-    grid-row: span 4;
+    grid-row: span 3;
   }
   
   /* Row 3: PWA Section - drop (tall left) + Vox & STARK (stacked right) */
   .card[data-project="drop"] {
     grid-column: span 4;
-    grid-row: span 6;
+    grid-row: span 4;
   }
   
   .card[data-project="vox"] {
     grid-column: span 4;
-    grid-row: span 3;
+    grid-row: span 2;
   }
   
   .card[data-project="stark"] {
     grid-column: span 4;
-    grid-row: span 3;
+    grid-row: span 2;
   }
   
   /* Tablet: 4 columns */
   @media (max-width: 1024px) {
     .project-gallery {
       grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 100px;
-      gap: 16px;
+      grid-auto-rows: 80px;
+      gap: 14px;
     }
     
     .card[data-project="skywalker"] {
       grid-column: span 4;
-      grid-row: span 4;
+      grid-row: span 3;
     }
     
     .card[data-project="agoge"] {
       grid-column: span 4;
-      grid-row: span 3;
+      grid-row: span 2;
     }
     
     .card[data-project="sankofa"] {
       grid-column: span 2;
-      grid-row: span 3;
+      grid-row: span 2;
     }
     
     .card[data-project="dukkha"] {
       grid-column: span 2;
-      grid-row: span 3;
+      grid-row: span 2;
     }
     
     .card[data-project="orpheus"] {
@@ -520,7 +520,7 @@ body.loaded {
     
     .card[data-project="drop"] {
       grid-column: span 2;
-      grid-row: span 4;
+      grid-row: span 3;
     }
     
     .card[data-project="vox"] {
