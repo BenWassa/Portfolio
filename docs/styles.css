@@ -619,13 +619,14 @@ body.loaded {
   }
   
   .title{ 
-    font-weight:600; 
-    display:flex; 
-    align-items:center; 
-    gap:14px; 
-    font-size:19px;
+    font-weight: 700; 
+    display: flex; 
+    align-items: center; 
+    gap: 14px; 
+    font-size: 21px;
     margin-bottom: 10px;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
   
   /* Enhanced status indicators */
@@ -745,11 +746,11 @@ body.loaded {
   }
   
   .desc{ 
-    margin:0 0 20px 0; 
-    color:var(--muted); 
-    font-size: clamp(14px, 1.2vw, 15px); /* Set max to 15px */
-    line-height: 1.55; /* Adjusted */
-    min-height: 2.4em;
+    margin: 0 0 12px 0; 
+    color: var(--muted); 
+    font-size: 9px; /* Fixed readable size - no clamp */
+    line-height: 1.4; /* Compact line spacing */
+    min-height: 1.6em; /* Minimal vertical space */
   }
   
   .meta{
