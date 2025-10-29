@@ -99,7 +99,8 @@ body.loaded {
   
   /* Hero section */
   .hero-section {
-    min-height: 100vh;
+    min-height: auto; /* Let content define the height */
+    padding: 2vh 0 3vh; /* Minimal padding, let inner hero control spacing */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,7 +111,7 @@ body.loaded {
   /* Enhanced Hero for full-screen */
   .hero{ 
     text-align:center; 
-    padding: clamp(60px,10vw,100px) 0 clamp(40px,6vw,60px);
+    padding: clamp(40px,8vw,80px) 0 clamp(20px,3vh,40px);
     position: relative;
     z-index: 2;
     max-width: 900px;
@@ -183,7 +184,7 @@ body.loaded {
   
   h1{ 
     margin:0 0 32px; 
-    font-size: clamp(28px,5.2vw,52px); 
+    font-size: clamp(26px, 4.3vw, 42px); /* Lowered max from 52px */
     line-height:1.25; /* increased for better breathing room */
     padding: 8px 0 12px; /* more balanced padding top/bottom */
     display: inline-block;
@@ -232,7 +233,7 @@ body.loaded {
 
   .intro-paragraph p {
     color: var(--fg);
-    font-size: clamp(16px, 2vw, 19px);
+    font-size: clamp(15px, 1.7vw, 18px); /* Lowered max from 19px */
     line-height: 1.8;
     font-weight: 300;
     margin: 0;
@@ -356,15 +357,15 @@ body.loaded {
 
   /* Projects section */
   .projects-section {
-    padding: 60px 0 20px;
-    min-height: 100vh;
+    padding: clamp(36px, 6vh, 60px) 0 clamp(20px, 4vh, 44px);
+    min-height: auto;
     position: relative;
     z-index: 5;
   }
 
   .section-title {
     text-align: center;
-    font-size: clamp(32px, 4.5vw, 48px);
+    font-size: clamp(28px, 3.2vw, 38px); /* Lowered max from 48px */
     font-weight: 300;
     color: var(--fg);
     margin: 0 0 20px;
@@ -381,7 +382,7 @@ body.loaded {
     margin: 0 auto 20px;
     color: var(--muted);
     max-width: 800px;
-    font-size: clamp(16px, 2vw, 20px);
+    font-size: clamp(14.5px, 1.35vw, 17px); /* Lowered max from 20px */
     font-weight: 300;
     line-height: 1.7;
     opacity: 0;
@@ -402,9 +403,10 @@ body.loaded {
     transition: transform 0.3s var(--ease-out-quart);
   }
   
-  /* Carousel enhancements */
-  .carousel{
-    position:relative;
+  /* Default: show ~2.6 cards (a visible "peek") */
+  .carousel {
+    --cards-visible: 2.6;
+    position: relative;
     margin: 0 auto;
     padding: 20px clamp(40px, 6vw, 80px) 40px;
     max-width: 1400px;
@@ -414,6 +416,23 @@ body.loaded {
     opacity: 0;
     transform: translateY(40px);
     animation: fadeInUp 1.4s var(--ease-out-quart) 0.8s forwards;
+  }
+
+  /* Medium desktops: a larger peek but still 2+ */
+  :root[data-display-mode="medium"] .carousel {
+    --cards-visible: 2.3;
+  }
+
+  /* Small desktops: 2 full cards */
+  :root[data-display-mode="small"] .carousel {
+    --cards-visible: 2;
+  }
+
+  /* Mobile: single card */
+  @media (max-width: 768px) {
+    .carousel {
+      --cards-visible: 1;
+    }
   }
   
   /* Navigation arrows */
@@ -459,13 +478,14 @@ body.loaded {
   }
   
   .track{
-    display:flex;
-    gap: clamp(24px, 3.5vw, 48px);
-    overflow-x:auto;
+    --gap: clamp(18px, 2.4vw, 28px);
+    display: flex;
+    gap: var(--gap);
+    overflow-x: auto;
     overflow-y: visible;
     overscroll-behavior-x: contain;
     padding: 40px 0 40px;
-    scrollbar-width:none;
+    scrollbar-width: none;
     -ms-overflow-style: none;
     scroll-behavior: smooth;
     -webkit-mask-image: linear-gradient(to right,
@@ -485,8 +505,11 @@ body.loaded {
   
   /* Enhanced Cards */
   .card{
-    flex: 0 0 clamp(300px, 30vw, 400px); /* Adjusted for 3-card view */
-    min-height: clamp(420px, 45vh, 550px); /* Added minimum height for better content spacing */
+    flex: 0 0 calc(
+      (100% - (var(--gap) * (var(--cards-visible) - 1)))
+      / var(--cards-visible)
+    );
+    min-height: clamp(380px, 42vh, 520px);
     /* scroll-snap-align: center; */ /* Removed for multi-card view */
     background: 
       linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.03)),
@@ -724,9 +747,9 @@ body.loaded {
   .desc{ 
     margin:0 0 20px 0; 
     color:var(--muted); 
-    font-size:15px; 
-    line-height:1.6; 
-    min-height:2.4em;
+    font-size: clamp(14px, 1.2vw, 15px); /* Set max to 15px */
+    line-height: 1.55; /* Adjusted */
+    min-height: 2.4em;
   }
   
   .meta{
@@ -954,13 +977,13 @@ body.loaded {
   
   /* Footer enhancements */
   .foot{
-    color:var(--muted); 
-    text-align:center; 
-    padding: 30px 0 40px; 
-    font-size:13px;
-    border-top:1px solid rgba(255,255,255,.08); 
-    margin-top: 40px;
-    opacity: 0.9;
+    color: var(--muted);
+    text-align: center;
+    padding: 30px 0 40px;
+    font-size: 13px;
+    border-top: 1px solid rgba(255, 255, 255, .08);
+    margin-top: clamp(20px, 3.5vh, 36px);
+    opacity: 0.92;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -1029,15 +1052,6 @@ body.loaded {
 
     :root[data-display-mode="small"] .wrap {
       padding: clamp(14px, 2.6vw, 28px);
-    }
-
-    :root[data-display-mode="medium"] .hero-section {
-      min-height: 88vh;
-    }
-
-    :root[data-display-mode="small"] .hero-section {
-      min-height: auto;
-      padding: 32px 0 0;
     }
 
     :root[data-display-mode="medium"] .hero {
@@ -1348,68 +1362,12 @@ body.loaded {
     }
   }
 
-  /* Compact mode: reduce paddings and sizes for zero-scroll fit */
-  html.compact {
-    /* When compact, hide body vertical scrollbar entirely to force fit */
-    overflow-y: hidden;
+  /* Balanced mode tightens things slightly */
+  html[data-layout="balanced"] .carousel {
+    --cards-visible: 2.8;
   }
-
-  html.compact .hero {
-    padding-top: calc(clamp(40px,8vw,60px) * var(--compact-scale));
-    padding-bottom: calc(clamp(20px,4vw,30px) * var(--compact-scale));
-  }
-
-  html.compact h1 {
-    font-size: calc(clamp(32px,5.5vw,56px) * var(--compact-scale));
-    line-height: 1.08;
-    padding-bottom: 2px; /* Reduce padding more */
-  }
-
-  html.compact .carousel {
-    margin-top: 0;
-    padding-bottom: calc(60px * var(--compact-scale));
-    padding-top: 0;
-  }
-
-  html.compact .track { 
-    padding: calc(40px * var(--compact-scale)) calc(40px * var(--compact-scale)) calc(60px * var(--compact-scale));
-    gap: clamp(20px,3vw,28px);
-  }
-
-  html.compact .card { flex: 0 0 clamp(260px, 34vw, 380px); }
-
-  html.compact .dots {
-    margin-top: calc(20px * var(--compact-scale)); /* Reduced margin */
-    padding: calc(12px * var(--compact-scale)); /* Reduced padding */
-    gap: calc(10px * var(--compact-scale));
-  }
-
-  html.compact .foot { 
-    padding: calc(20px * var(--compact-scale)) 0 calc(24px * var(--compact-scale)); 
-    margin-top: calc(36px * var(--compact-scale)); 
-    font-size: calc(13px * var(--compact-scale));
-  }
-
-  html.compact #themeToggle {
-    bottom: calc(20px * var(--compact-scale));
-    right: calc(20px * var(--compact-scale));
-    width: calc(48px * var(--compact-scale));
-    height: calc(48px * var(--compact-scale));
-  }
-
-  /* Spacing between header and main */
-  /* To adjust later, edit these overrides */
-  .hero { 
-    padding-bottom: 0 !important; /* remove extra space under header */
-  }
-  html.compact .hero { 
-    padding-bottom: 0 !important; /* ensure compact mode matches */
-  }
-  main.wrap { 
-    padding-top: 8px !important;  /* exactly 8px gap from header to main */
-  }
-  .carousel { 
-    margin-top: 0 !important;     /* remove any top margin before load */
+  html[data-layout="balanced"] .projects-section {
+    padding-top: clamp(28px, 4.8vh, 44px);
   }
 
 /* Corinthia font classes */
@@ -1501,6 +1459,7 @@ body.page-license {
   --gradient-1: #3a2e1f;
   --gradient-2: #1a120a;
   margin-bottom: 80px;
+  scroll-margin-top: 30px; /* This adds the top gap on scroll */
 }
 
 #apps-projects {
@@ -1508,6 +1467,7 @@ body.page-license {
   --gradient-1: #1e293b;
   --gradient-2: #0f172a;
   margin-bottom: 80px;
+  scroll-margin-top: 30px; /* This adds the top gap on scroll */
 }
 
 #narrative-projects .section-title,
