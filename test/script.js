@@ -574,7 +574,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // `test/styles.css` will actually move where the section lands).
     const computed = window.getComputedStyle(section);
     const cssScrollMargin = computed && computed.scrollMarginTop
-      ? parseInt(computed.scrollMarginTop, 10)
+      ? parseInt(computed.scrollMarginTop, 15)
       : 0;
 
     // Decide which offset to use: prefer CSS value if present, otherwise
