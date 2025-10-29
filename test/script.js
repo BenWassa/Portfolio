@@ -527,19 +527,74 @@ document.addEventListener('DOMContentLoaded', () => {
   if (countNarrativeBadge) countNarrativeBadge.textContent = narrativeProjects.length;
   if (countAppsBadge) countAppsBadge.textContent = appProjects.length;
   
-  function jumpToSection(sectionId, offset = 0) {
+  function jumpToSection(sectionId, offsetOrOptions = 0) {
     const section = document.getElementById(sectionId);
     if (!section) {
       console.error(`Section ${sectionId} not found`);
       return;
     }
 
-    // Use browser's native smooth scroll for better reliability
-    section.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center'  // Changed from 'start' to 'center' for better framing
-    });
-    
+    // Normalize options: allow passing a number (pixels) or an object like
+    // { alignTo: 'heading', spacing: 8 } or { offset: 120 }.
+    let options = {};
+    if (typeof offsetOrOptions === 'object' && offsetOrOptions !== null) {
+      options = offsetOrOptions;
+    } else if (typeof offsetOrOptions === 'number') {
+      options.offset = offsetOrOptions;
+    }
+
+    // If the caller requested aligning to the section heading, find the
+    // heading (prefer .section-title, then h2, then first heading) and
+    // scroll so the heading sits `spacing` px from the top of the viewport.
+    if (options.alignTo === 'heading') {
+      const spacing = Number.isFinite(options.spacing) ? options.spacing : 8; // few px by default
+      const heading = section.querySelector('.section-title, h2, h1');
+      if (heading) {
+        const rect = heading.getBoundingClientRect();
+        const targetTop = window.scrollY + rect.top - spacing;
+        window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+      } else {
+        // Fallback to section top if no heading found
+        const rect = section.getBoundingClientRect();
+        const targetTop = window.scrollY + rect.top - spacing;
+        window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+      }
+
+      // Focus management after scroll completes
+      setTimeout(() => {
+        const focusTarget = section.querySelector('.card'); // Focus the first card
+        if (focusTarget) focusTarget.focus({ preventScroll: true });
+      }, 600);
+
+      return;
+    }
+
+    // Read CSS scroll-margin-top if set on the section. This lets designers
+    // control the landing offset from CSS (so changing scroll-margin-top in
+    // `test/styles.css` will actually move where the section lands).
+    const computed = window.getComputedStyle(section);
+    const cssScrollMargin = computed && computed.scrollMarginTop
+      ? parseInt(computed.scrollMarginTop, 10)
+      : 0;
+
+    // Decide which offset to use: prefer CSS value if present, otherwise
+    // fall back to the numeric offset passed to the function.
+    const effectiveOffset = (Number.isFinite(cssScrollMargin) && cssScrollMargin > 0)
+      ? cssScrollMargin
+      : (typeof options.offset === 'number' && options.offset > 0 ? options.offset : 0);
+
+    if (effectiveOffset > 0) {
+      // Compute exact scroll position so the section's top lands
+      // `effectiveOffset` pixels below the viewport top.
+      const rect = section.getBoundingClientRect();
+      const targetTop = window.scrollY + rect.top - effectiveOffset;
+      window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+    } else {
+      // No offset available — use native scroll which respects
+      // CSS `scroll-margin-top` (when block:'start') for anchor behaviour.
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
     // Focus management after scroll completes
     setTimeout(() => {
       const focusTarget = section.querySelector('.card'); // Focus the first card
@@ -554,7 +609,9 @@ document.addEventListener('DOMContentLoaded', () => {
     viewNarrativeBtn.addEventListener('click', (e) => {
       console.log('Narrative button clicked!');
       e.preventDefault();
-      jumpToSection('narrative-projects', 100); // Scroll to just above the section
+  // Align the section heading to the top of the viewport with a few
+  // pixels of spacing so the H2 sits visibly at the top.
+  jumpToSection('narrative-projects', { alignTo: 'heading', spacing: 8 });
     });
   } else {
     console.error('Narrative button not found');
@@ -565,7 +622,8 @@ document.addEventListener('DOMContentLoaded', () => {
     viewAppsBtn.addEventListener('click', (e) => {
       console.log('Apps button clicked!');
       e.preventDefault();
-      jumpToSection('apps-projects', 100); // Scroll to just above the section
+  // Align the apps section heading to the top as well
+  jumpToSection('apps-projects', { alignTo: 'heading', spacing: 8 });
     });
   } else {
     console.error('Apps button not found');

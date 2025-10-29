@@ -112,7 +112,7 @@ body.loaded {
   /* Enhanced Hero for full-screen */
   .hero{ 
     text-align:center; 
-    padding: clamp(40px,8vw,80px) 0 clamp(20px,3vh,40px);
+    padding: clamp(10px, 4vw,20px) 0 clamp(20px,3vh,40px);
     position: relative;
     z-index: 2;
     max-width: 900px;
@@ -369,7 +369,7 @@ body.loaded {
     font-size: clamp(28px, 3.2vw, 38px); /* Lowered max from 48px */
     font-weight: 300;
     color: var(--fg);
-    margin: 0 0 20px;
+    margin: 0 0 2px;
     opacity: 0;
     transform: translateY(30px);
     transition: all 1s var(--ease-out-quart);
@@ -380,7 +380,7 @@ body.loaded {
   /* Projects subtitle styling */
   .projects-section .sub {
     text-align: center;
-    margin: 0 auto 20px;
+    margin: 0 auto 0px;
     color: var(--muted);
     max-width: 800px;
     font-size: clamp(14.5px, 1.35vw, 17px); /* Lowered max from 20px */
@@ -1521,7 +1521,7 @@ body.page-license {
   --gradient-1: #3a2e1f;
   --gradient-2: #1a120a;
   margin-bottom: 80px;
-  scroll-margin-top: 100px; /* Balanced for visibility without cutting off legend */
+  scroll-margin-top: 160px; /* Adjusted landing offset to match JS nav button offset (tweak this value to change where section locks) */
 }
 
 #apps-projects {
@@ -1529,7 +1529,7 @@ body.page-license {
   --gradient-1: #1e293b;
   --gradient-2: #0f172a;
   margin-bottom: 80px;
-  scroll-margin-top: 100px; /* Balanced for visibility without cutting off legend */
+  scroll-margin-top: 160px; /* Adjusted landing offset to match JS nav button offset (tweak this value to change where section locks) */
 }
 
 #narrative-projects .section-title,
@@ -1548,11 +1548,11 @@ body.page-license {
 @media (max-width: 768px) {
   #narrative-projects,
   #apps-projects {
-    margin-bottom: 60px;
+    margin-bottom: 0px;
   }
   
   #apps-projects {
-    padding-top: 40px;
+    padding-top: 0px;
   }
 }
 
