@@ -538,8 +538,7 @@ body.loaded {
     z-index: 1;
   }
   
-  .card:hover,
-  .card.active{ 
+  .card:hover{ 
     transform: translateY(-12px) scale(1.03);
     border-color: var(--status-color, var(--card-accent, var(--theme-primary)));
     box-shadow: 
@@ -548,8 +547,7 @@ body.loaded {
       inset 0 1px 0 rgba(255,255,255,.2);
   }
   
-  .card:hover::before,
-  .card.active::before {
+  .card:hover::before {
     opacity: 1;
   }
   
@@ -581,8 +579,7 @@ body.loaded {
     opacity: 0.95;
   }
   
-  .card:hover .thumb img,
-  .card.active .thumb img{ 
+  .card:hover .thumb img{ 
     transform: scale(1.1);
     opacity: 1;
   }
