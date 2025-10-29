@@ -354,7 +354,7 @@ class PortfolioCarousel {
     // Attach tooltip handlers to the colored dot for green/yellow/red statuses
     const dotEl = art.querySelector('.dot');
     if (dotEl && (p.status === 'green' || p.status === 'yellow' || p.status === 'red')) {
-      const map = { green: 'Live', yellow: 'Draft', red: 'In Progress' };
+      const map = { green: 'Active', yellow: 'Draft', red: 'In Progress' };
       const label = map[p.status] || 'Status';
       // Make dot accessible for screen readers
       dotEl.setAttribute('role', 'img');

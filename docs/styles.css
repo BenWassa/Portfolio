@@ -407,7 +407,7 @@ body.loaded {
   .carousel {
     --cards-visible: 2.6;
     position: relative;
-    margin: 0 auto;
+    margin: 0 auto 60px; /* Added bottom margin to prevent dots/legend cutoff */
     padding: 20px clamp(40px, 6vw, 80px) 40px;
     max-width: 1400px;
     overflow: visible;
@@ -1459,7 +1459,7 @@ body.page-license {
   --gradient-1: #3a2e1f;
   --gradient-2: #1a120a;
   margin-bottom: 80px;
-  scroll-margin-top: 30px; /* This adds the top gap on scroll */
+  scroll-margin-top: 100px; /* Balanced for visibility without cutting off legend */
 }
 
 #apps-projects {
@@ -1467,7 +1467,7 @@ body.page-license {
   --gradient-1: #1e293b;
   --gradient-2: #0f172a;
   margin-bottom: 80px;
-  scroll-margin-top: 30px; /* This adds the top gap on scroll */
+  scroll-margin-top: 100px; /* Balanced for visibility without cutting off legend */
 }
 
 #narrative-projects .section-title,
