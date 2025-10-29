@@ -311,7 +311,6 @@ class PortfolioCarousel {
     }
 
     // Set section-based border color (narrative vs app)
-    // Narrative sections use gold, app sections use blue
     const sectionColorMap = {
       narrative: { color: '#d4af37', glow: '0 20px 60px rgba(212,175,55,0.08)' },
       app: { color: '#3b82f6', glow: '0 20px 60px rgba(59,130,246,0.08)' }
@@ -322,57 +321,38 @@ class PortfolioCarousel {
       art.style.setProperty('--status-glow', sectionColorMap[p.type].glow);
     }
 
+    // New image-focused layout with bottom overlay
     art.innerHTML = `
       <div class="thumb">
         <img loading="lazy" src="${p.img}" alt="${p.alt}">
       </div>
-      <div class="body">
-        <div class="title">
-          <span class="dot ${p.status}"></span>
-          ${p.title}
-        </div>
-        <p class="desc">${p.desc}</p>
-        <div class="meta">
-          <span class="tag">${p.tag}</span>
-          ${p.href ? 
-            // --- Robustness: Add rel="noopener noreferrer" for security on external links ---
-            `<a class="link" href="${p.href}" target="_blank" rel="noopener noreferrer" aria-label="Open ${p.title} project">
-              <span>Explore &rarr;</span>
-            </a>` : 
-            `<span class="link" aria-disabled="true"><span>Coming Soon</span></span>`
-          }
-        </div>
+      <div class="card-overlay">
+        <span class="dot ${p.status}"></span>
+        <div class="title">${p.title}</div>
       </div>`;
     
-    // Enhanced click handling: Only navigate carousel if a link within the card wasn't clicked
-    art.addEventListener('click', (e) => {
-      if (!e.target.closest('.link')) {
-        this._scrollToSlide(index);
-      }
+    // Click opens modal with full details
+    art.addEventListener('click', () => {
+      this._openProjectModal(p, index);
     });
     
-    // Attach tooltip handlers to the colored dot for green/yellow/red statuses
+    // Attach tooltip handlers to the colored dot
     const dotEl = art.querySelector('.dot');
     if (dotEl && (p.status === 'green' || p.status === 'yellow' || p.status === 'red')) {
       const map = { green: 'Active', yellow: 'Draft', red: 'In Progress' };
       const label = map[p.status] || 'Status';
-      // Make dot accessible for screen readers
       dotEl.setAttribute('role', 'img');
       dotEl.setAttribute('aria-label', label);
 
-      // Prevent dot interactions from bubbling and centering the card
       const stop = (e) => { e.stopPropagation(); };
       ['click','mousedown','pointerdown'].forEach(evt => dotEl.addEventListener(evt, stop));
 
-      // Hover/focus show tooltip; leave/blur hide tooltip
       dotEl.addEventListener('mouseenter', (ev) => this._showFloatingTooltip(label, ev.currentTarget));
       dotEl.addEventListener('mouseleave', () => this._hideFloatingTooltip());
-      // Allow keyboard focus on dot
       dotEl.setAttribute('tabindex', '0');
       dotEl.addEventListener('focus', (ev) => this._showFloatingTooltip(label, ev.currentTarget));
       dotEl.addEventListener('blur', () => this._hideFloatingTooltip());
 
-      // For touch devices, toggle tooltip on tap (coarse pointers)
       dotEl.addEventListener('click', (ev) => {
         if (window.matchMedia('(pointer: coarse)').matches) {
           ev.stopPropagation();
@@ -386,6 +366,94 @@ class PortfolioCarousel {
     }
     
     return art;
+  }
+
+  /**
+   * Opens modal with full project details
+   */
+  _openProjectModal(project, index) {
+    // Create modal if it doesn't exist
+    if (!this._projectModal) {
+      this._createProjectModal();
+    }
+
+    // Populate modal content
+    const modal = this._projectModal;
+    const img = modal.querySelector('.modal-header img');
+    const title = modal.querySelector('.modal-title');
+    const desc = modal.querySelector('.modal-desc');
+    const metaContainer = modal.querySelector('.modal-meta');
+    const dot = modal.querySelector('.dot');
+
+    img.src = project.img;
+    img.alt = project.alt;
+    title.innerHTML = `<span class="dot ${project.status}"></span>${project.title}`;
+    desc.textContent = project.desc;
+
+    // Build meta section
+    metaContainer.innerHTML = `
+      <span class="tag">${project.tag}</span>
+      ${project.href ? 
+        `<a class="link" href="${project.href}" target="_blank" rel="noopener noreferrer" aria-label="Open ${project.title} project">
+          <span>Explore &rarr;</span>
+        </a>` : 
+        `<span class="link" aria-disabled="true"><span>Coming Soon</span></span>`
+      }`;
+
+    // Show modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  /**
+   * Creates the project detail modal
+   */
+  _createProjectModal() {
+    const modal = document.createElement('div');
+    modal.className = 'project-modal';
+    modal.innerHTML = `
+      <div class="modal-content">
+        <div class="modal-header">
+          <img src="" alt="">
+          <button class="modal-close" aria-label="Close modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <h2 class="modal-title"></h2>
+          <p class="modal-desc"></p>
+          <div class="modal-meta"></div>
+        </div>
+      </div>`;
+
+    document.body.appendChild(modal);
+    this._projectModal = modal;
+
+    // Close handlers
+    const closeBtn = modal.querySelector('.modal-close');
+    closeBtn.addEventListener('click', () => this._closeProjectModal());
+
+    // Close on backdrop click
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        this._closeProjectModal();
+      }
+    });
+
+    // Close on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        this._closeProjectModal();
+      }
+    });
+  }
+
+  /**
+   * Closes the project modal
+   */
+  _closeProjectModal() {
+    if (this._projectModal) {
+      this._projectModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
   }
 
   /**
