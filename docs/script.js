@@ -223,7 +223,9 @@ class ProjectLoader {
       'dukkha': 'Understanding dopamine and temptation',
       'vox': 'Focused vocabulary tracking',
       'agoge': 'Reimagining rites of passage',
-      'orpheus': 'Decoding emotion through music'
+      'orpheus': 'Decoding emotion through music',
+      'drop': 'Mindful tracking of daily domains',
+  'stark': 'Log fitness metrics for an interactive dashboard overview'
     };
     
     const tagline = taglines[p.title.toLowerCase()] || '';
