@@ -17,7 +17,7 @@ This is the new Tailwind CSS version of the portfolio website.
 2. **Install dependencies:**
    Open Command Prompt (cmd) and run:
    ```
-   npm install -D tailwindcss postcss autoprefixer @tailwindcss/cli
+   npm install -D tailwindcss postcss autoprefixer
    ```
 
 3. **Build the CSS:**
@@ -32,7 +32,9 @@ This is the new Tailwind CSS version of the portfolio website.
 
 ## Current Status
 
-The project is fully set up with dependencies installed and CSS built. You can immediately open `index.html` to view the portfolio.
+The project is fully set up with dependencies installed and CSS built. You can immediately open `index.html` in your web browser (double-click the file or use a local server).
+
+**Note:** If using VS Code live preview, the CSS may not load due to path restrictions. Open the file directly in your browser for proper styling.
 
 ## Development
 
