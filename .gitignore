@@ -1,0 +1,57 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+coverage/
+.next/
+.nuxt/
+.out/
+.public/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Env files
+.env
+.env.*
+
+# Cache
+.cache/
+.parcel-cache/
+.sass-cache/
+
+# Logs
+*.log
+
+# Temporary
+*.tmp
+*.temp
+
+# OS generated
+desktop.ini
+
+# Mac
+.AppleDouble
+.LSOverride
+
+# Misc
+._*
+
+# Ignore local test artifacts
+test-results/
+
+# Ignore generated images if any (enable if you generate preview assets)
+# docs/generated_images/
