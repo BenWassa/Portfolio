@@ -502,18 +502,18 @@ body.loaded {
     }
     
     .card[data-project="drop"] {
-      grid-column: span 2;
-      grid-row: span 2; /* keep square-ish on tablet */
+      grid-column: span 4;
+      grid-row: span 3; /* keep square-ish on tablet */
     }
     
     .card[data-project="stark"] {
-      grid-column: span 2;
-      grid-row: span 2; /* keep square-ish on tablet */
+      grid-column: span 4;
+      grid-row: span 3; /* keep square-ish on tablet */
     }
     
     .card[data-project="vox"] {
-      grid-column: span 4; /* wide below the two squares */
-      grid-row: span 2;
+      grid-column: span 8; /* wide below the two squares */
+      grid-row: span 4;
     }
   }
   
@@ -1511,7 +1511,8 @@ body.page-license {
   --theme-primary: #3b82f6;
   --gradient-1: #1e293b;
   --gradient-2: #0f172a;
-  margin-bottom: 80px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
   scroll-margin-top: 160px; /* Adjusted landing offset to match JS nav button offset (tweak this value to change where section locks) */
 }
 
@@ -1559,32 +1560,37 @@ body.page-license {
 
 /* === START: Refactored PWA/Apps Gallery === */
 
-/* Use Flexbox for a robust, centered layout */
+/* Use Grid for a 4x4 layout with 2x2 cards */
 #apps-projects .project-gallery {
-  display: flex;
-  flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
-  justify-content: center; /* Center the items horizontally */
-  align-items: flex-start; /* Align items to the top */
-  gap: 24px; /* Consistent spacing between all items */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 80px);
+  gap: 16px;
   padding: 2rem 0;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 /* Define a base style for all cards in this section */
 #apps-projects .project-gallery .card {
-  flex-shrink: 0; /* Prevent cards from shrinking */
-  height: 120px; /* Give a consistent height */
-  transition: all 0.3s var(--ease-out-quart); /* Use existing transition */
+  transition: all 0.3s var(--ease-out-quart);
 }
 
 /* Style the two smaller, square-like app icons */
-#apps-projects .card[data-project="drop"],
-#apps-projects .card[data-project="stark"] {
-  width: 120px;
+#apps-projects .card[data-project="drop"] {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
 }
 
-/* Style the wider Vox banner */
+#apps-projects .card[data-project="stark"] {
+  grid-column: 1 / 3;
+  grid-row: 3 / 5;
+}
+
+/* Style the wider Vox banner - flush against drop/stark */
 #apps-projects .card[data-project="vox"] {
-  width: 360px; /* Make it wider */
+  grid-column: 3 / 5;
+  grid-row: 1 / 5;
 }
 
 /* Ensure images fill the card area correctly */
@@ -1600,25 +1606,27 @@ body.page-license {
 }
 
 /* Specific image fits */
-#apps-projects .card[data-project="vox"] .thumb img { object-fit: contain; }
+#apps-projects .card[data-project="vox"] .thumb img { object-fit: cover; }
 #apps-projects .card:not([data-project="vox"]) .thumb img { object-fit: cover; }
+#apps-projects .card[data-project="drop"] .thumb img { object-fit: cover; }
+#apps-projects .card[data-project="stark"] .thumb img { object-fit: cover; }
 
 
 /* Responsive adjustments for the PWA gallery */
 @media (max-width: 640px) {
   #apps-projects .project-gallery {
-    flex-direction: column; /* Stack them vertically on mobile */
-    align-items: center; /* Center them in the column */
+    grid-template-columns: 1fr;
+    grid-auto-rows: 180px;
     gap: 16px;
   }
 
-  /* Make all cards take up most of the width on mobile */
+  /* Make all cards span full width on mobile */
   #apps-projects .project-gallery .card,
   #apps-projects .card[data-project="drop"],
   #apps-projects .card[data-project="stark"],
   #apps-projects .card[data-project="vox"] {
-    width: 90%;
-    height: 180px; /* Give them more height on mobile */
+    grid-column: span 1;
+    grid-row: span 2;
   }
 }
 
