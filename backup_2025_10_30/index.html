@@ -67,11 +67,22 @@
       <div class="wrap">
         <h2 class="section-title">Narrative Research Sites</h2>
         <p class="sub">Exploring meaning, myth, and psychology through digital storytelling.</p>
-        <div class="project-gallery-container" id="project-gallery-container-narrative">
+        <div class="carousel" id="carousel-narrative" aria-label="Narrative projects carousel">
+          <button class="nav-arrow prev" id="prevBtn-narrative" aria-label="Previous narrative project">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="nav-arrow next" id="nextBtn-narrative" aria-label="Next narrative project">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
           
-          <div class="project-gallery" id="gallery-narrative">
+          <div class="track" id="track-narrative" tabindex="0" role="listbox" aria-live="polite" aria-label="Narrative projects">
             <!-- Cards are injected by JS -->
           </div>
+          <div class="dots" id="dots-narrative" role="tablist" aria-label="Narrative project navigation"></div>
           
           <!-- Status Legend -->
           <div class="status-legend" aria-label="Project status legend">
@@ -97,11 +108,22 @@
       <div class="wrap">
         <h2 class="section-title">Interactive Tools & PWAs</h2>
         <p class="sub">Lightweight, offline-first tools for reflection, growth, and performance.</p>
-        <div class="project-gallery-container" id="project-gallery-container-apps">
+        <div class="carousel" id="carousel-apps" aria-label="Apps projects carousel">
+          <button class="nav-arrow prev" id="prevBtn-apps" aria-label="Previous app project">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="nav-arrow next" id="nextBtn-apps" aria-label="Next app project">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
           
-          <div class="project-gallery" id="gallery-apps">
+          <div class="track" id="track-apps" tabindex="0" role="listbox" aria-live="polite" aria-label="App projects">
             <!-- Cards are injected by JS -->
           </div>
+          <div class="dots" id="dots-apps" role="tablist" aria-label="App project navigation"></div>
           
           <!-- Status Legend -->
           <div class="status-legend" aria-label="Project status legend">
