@@ -1,8 +1,8 @@
 module.exports = {
   content: [
     './index.html',
-    './script.js',
   ],
+  safelist: ['bg-gray-900'],
   darkMode: 'class',
   theme: {
     extend: {
