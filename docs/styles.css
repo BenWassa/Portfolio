@@ -468,87 +468,6 @@ body.loaded {
     grid-column: span 2;
     grid-row: span 3;
   }
-  
-  /* Apps / PWA gallery — deterministic small-grid layout
-     Strategy:
-     - Use a small fixed "unit" (~45px) for columns and rows so two rows ≈ 90px
-     - Place `drop` and `STARK` as compact squares on row 1
-     - Place `Vox` below as a wide card on row 2
-     - Keep images filling their card areas with sensible object-fit rules
-  */
-  /* NOTE: This overrides the global project-gallery grid for the apps section only */
-  #apps-projects .project-gallery {
-    --apps-unit: 56px; /* increased unit for better legibility (2 × 56px = 112px total) */
-    display: grid;
-    grid-template-columns: repeat(8, var(--apps-unit));
-    grid-template-rows: repeat(2, var(--apps-unit));
-    gap: 8px;
-    padding: 12px 16px;
-    align-items: center;
-    justify-content: center; /* center the small unit grid under the section heading */
-    width: max-content; /* shrinkwrap to content so centering works inside container */
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* Compact card baseline inside apps area */
-  #apps-projects .card {
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  /* Place small square posters on row 1 */
-  /* top-row squares: shift right slightly so they sit under the title */
-  #apps-projects .card[data-project="drop"] {
-    grid-column: 2 / span 2; /* small square, a little inset from left edge */
-    grid-row: 1 / 2;         /* first row */
-  }
-
-  #apps-projects .card[data-project="STARK"],
-  #apps-projects .card[data-project="stark"] {
-    grid-column: 4 / span 2; /* sits to the right of drop */
-    grid-row: 1 / 2;
-  }
-
-  /* Vox sits centered on the bottom row and spans most columns */
-  #apps-projects .card[data-project="Vox"],
-  #apps-projects .card[data-project="vox"] {
-    grid-column: 2 / span 6; /* centered wide card */
-    grid-row: 2 / 3;         /* second row */
-  }
-
-  /* Image fitting for apps area */
-  #apps-projects .card .thumb img { object-fit: cover; object-position: center center; }
-  #apps-projects .card[data-project="Vox"] .thumb img { object-fit: contain; }
-
-  /* Defensive fixes: ensure cards inside apps area have visible height and
-     the thumb fills the card. This prevents visual collapse where absolutely
-     positioned thumbnails appear to render with 0px height. */
-  #apps-projects .card {
-    min-height: var(--apps-unit);
-    height: 100%;
-    display: block;
-    box-sizing: border-box;
-  }
-
-  /* Make the thumb behave as a normal content box in the apps grid so it
-     fills the card area reliably (override global absolute positioning). */
-  #apps-projects .card .thumb {
-    position: relative !important;
-    inset: auto !important;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  #apps-projects .card .thumb img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-  }
-  
   /* Tablet: 4 columns */
   @media (max-width: 1024px) {
     .project-gallery {
@@ -1632,113 +1551,78 @@ body.page-license {
   gap: 12px;
   padding: 0px 16px;
 }
-
-/* Apps/PWA gallery: use the compact unit grid so two rows ≈ 90px. This
-   matches the deterministic layout defined earlier (drop / STARK on row 1,
-   Vox on row 2). Adjust --apps-unit to tune sizing. */
-#apps-projects .project-gallery {
-  --apps-unit: 56px;
-  display: grid;
-  grid-template-columns: repeat(8, var(--apps-unit));
-  grid-template-rows: repeat(2, var(--apps-unit));
-  gap: 8px;
-  padding: 12px 16px;
-  align-items: center;
-  justify-content: center;
-  width: max-content;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 /* Subtle separator between sections */
 #apps-projects {
   padding-top: 0px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Redesigned Apps/PWA layout — decisive single-shot flex approach.
-   Top row: two square app icons. Bottom row: centered wide Vox card.
-   This removes fragile grid-auto-rows interactions and gives us predictable
-   sizing while still providing responsive fallbacks. */
+/* === START: Refactored PWA/Apps Gallery === */
+
+/* Use Flexbox for a robust, centered layout */
 #apps-projects .project-gallery {
-  display: flex !important;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 24px 28px;
-  padding: 20px 0 28px;
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
+  justify-content: center; /* Center the items horizontally */
+  align-items: flex-start; /* Align items to the top */
+  gap: 24px; /* Consistent spacing between all items */
+  padding: 2rem 0;
 }
 
-/* Fixed-size cards inside the apps area */
+/* Define a base style for all cards in this section */
 #apps-projects .project-gallery .card {
-  flex: 0 0 auto;
-  box-sizing: border-box;
+  flex-shrink: 0; /* Prevent cards from shrinking */
+  height: 120px; /* Give a consistent height */
+  transition: all 0.3s var(--ease-out-quart); /* Use existing transition */
 }
 
-/* Top icons — clear, clickable squares */
+/* Style the two smaller, square-like app icons */
 #apps-projects .card[data-project="drop"],
-#apps-projects .card[data-project="DROP"],
-#apps-projects .card[data-project="stark"],
-#apps-projects .card[data-project="STARK"] {
-  width: 112px;
-  height: 112px;
-  border-radius: 14px;
-  order: 1;
+#apps-projects .card[data-project="stark"] {
+  width: 120px;
 }
 
-/* Vox — wider, centered tile below */
-#apps-projects .card[data-project="vox"],
-#apps-projects .card[data-project="Vox"] {
-  width: 360px;
-  height: 200px;
-  border-radius: 14px;
-  order: 2;
+/* Style the wider Vox banner */
+#apps-projects .card[data-project="vox"] {
+  width: 360px; /* Make it wider */
 }
 
-/* Thumbnails — ensure they fill their parent */
-#apps-projects .card .thumb { position: relative; width: 100%; height: 100%; overflow: hidden; }
-#apps-projects .card .thumb img { width: 100%; height: 100%; display: block; }
+/* Ensure images fill the card area correctly */
+#apps-projects .card .thumb {
+  position: relative; /* Simpler positioning */
+  width: 100%;
+  height: 100%;
+}
+#apps-projects .card .thumb img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Specific image fits */
 #apps-projects .card[data-project="vox"] .thumb img { object-fit: contain; }
 #apps-projects .card:not([data-project="vox"]) .thumb img { object-fit: cover; }
 
-/* Responsive fallbacks */
-@media (max-width: 1024px) {
-  #apps-projects .card[data-project="drop"],
-  #apps-projects .card[data-project="DROP"],
-  #apps-projects .card[data-project="stark"],
-  #apps-projects .card[data-project="STARK"] {
-    width: 88px;
-    height: 88px;
-  }
 
-  #apps-projects .card[data-project="vox"],
-  #apps-projects .card[data-project="Vox"] {
-    width: 280px;
-    height: 160px;
-  }
-}
-
+/* Responsive adjustments for the PWA gallery */
 @media (max-width: 640px) {
-  #apps-projects .project-gallery { gap: 16px; padding: 16px 12px; }
-  #apps-projects .card[data-project="drop"],
-  #apps-projects .card[data-project="DROP"],
-  #apps-projects .card[data-project="stark"],
-  #apps-projects .card[data-project="STARK"] {
-    width: calc(100% - 48px);
-    height: auto;
-    aspect-ratio: 1 / 1;
-    order: 1;
+  #apps-projects .project-gallery {
+    flex-direction: column; /* Stack them vertically on mobile */
+    align-items: center; /* Center them in the column */
+    gap: 16px;
   }
-  #apps-projects .card[data-project="vox"],
-  #apps-projects .card[data-project="Vox"] {
-    width: calc(100% - 48px);
-    height: auto;
-    order: 2;
+
+  /* Make all cards take up most of the width on mobile */
+  #apps-projects .project-gallery .card,
+  #apps-projects .card[data-project="drop"],
+  #apps-projects .card[data-project="stark"],
+  #apps-projects .card[data-project="vox"] {
+    width: 90%;
+    height: 180px; /* Give them more height on mobile */
   }
 }
 
+/* === END: Refactored PWA/Apps Gallery === */
 /* Responsive adjustments for dual sections */
 @media (max-width: 768px) {
   #narrative-projects,
