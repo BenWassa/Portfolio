@@ -1560,37 +1560,38 @@ body.page-license {
 
 /* === START: Refactored PWA/Apps Gallery === */
 
-/* Use Grid for a 4x4 layout with 2x2 cards */
+/* Use Grid for a simple 3-column layout with square cards */
 #apps-projects .project-gallery {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 80px);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 400px;
   gap: 16px;
   padding: 2rem 0;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 /* Define a base style for all cards in this section */
 #apps-projects .project-gallery .card {
   transition: all 0.3s var(--ease-out-quart);
+  width: 100%;
+  height: 100%;
 }
 
-/* Style the two smaller, square-like app icons */
+/* All square cards in a simple 3-column layout */
+#apps-projects .card[data-project="vox"] {
+  grid-column: 1;
+  grid-row: 1;
+}
+
 #apps-projects .card[data-project="drop"] {
-  grid-column: 1 / 3;
-  grid-row: 1 / 3;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 #apps-projects .card[data-project="stark"] {
-  grid-column: 1 / 3;
-  grid-row: 3 / 5;
-}
-
-/* Style the wider Vox banner - flush against drop/stark */
-#apps-projects .card[data-project="vox"] {
-  grid-column: 3 / 5;
-  grid-row: 1 / 5;
+  grid-column: 3;
+  grid-row: 1;
 }
 
 /* Ensure images fill the card area correctly */

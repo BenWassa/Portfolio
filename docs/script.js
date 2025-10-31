@@ -225,7 +225,7 @@ class ProjectLoader {
       'agoge': 'Reimagining rites of passage',
       'orpheus': 'Decoding emotion through music',
       'drop': 'Mindful tracking of daily domains',
-  'stark': 'Log fitness metrics for an interactive dashboard overview'
+  'stark': 'Tracking Fitness metrics in an interactive dashboard'
     };
     
     const tagline = taglines[p.title.toLowerCase()] || '';
