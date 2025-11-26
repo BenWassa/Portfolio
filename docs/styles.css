@@ -419,14 +419,14 @@ body.loaded {
   
   /* Gallery Grid - Robust masonry layout */
   .project-gallery{
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-auto-rows: 60px;
-    gap: 16px;
-    padding: 30px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(16px, 2vw, 24px);
+    padding: clamp(20px, 3vw, 32px);
   }
   
-  /* Dynamic card sizing - organized for visual balance */
+  /* Card styling */
   .card{
     background: var(--card);
     border: 1px solid var(--status-color, rgba(255,255,255,.15));
@@ -440,102 +440,57 @@ body.loaded {
     isolation: isolate;
     transition: all 0.5s var(--ease-out-quart);
     cursor: pointer;
+    flex: 0 1 clamp(240px, 24vw, 280px);
+    width: 100%;
+    min-height: clamp(240px, 32vw, 300px);
+    aspect-ratio: 4 / 5;
   }
   
-  /* Row 1: Skywalker (large hero) + Agoge */
-  .card[data-project="skywalker"] {
-    grid-column: span 5;
-    grid-row: span 4;
+  /* Status-driven sizing: Active > Draft > In Progress */
+  .card.status-green {
+    min-height: clamp(280px, 38vw, 340px);
+    aspect-ratio: 3 / 4;
   }
-  
-  .card[data-project="agoge"] {
-    grid-column: span 3;
-    grid-row: span 4;
+
+  .card.status-yellow {
+    min-height: clamp(260px, 34vw, 320px);
   }
-  
-  /* Row 2: Sankofa + Dukkha (center) + Orpheus */
-  .card[data-project="sankofa"] {
-    grid-column: span 2;
-    grid-row: span 3;
+
+  .card.status-red {
+    min-height: clamp(220px, 32vw, 280px);
+    aspect-ratio: 5 / 6;
   }
-  
-  .card[data-project="dukkha"] {
-    grid-column: span 4;
-    grid-row: span 3;
-  }
-  
-  .card[data-project="orpheus"] {
-    grid-column: span 2;
-    grid-row: span 3;
-  }
-  /* Tablet: 4 columns */
-  @media (max-width: 1024px) {
-    .project-gallery {
-      grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 80px;
-      gap: 14px;
+
+  @media (max-width: 1100px) {
+    .card {
+      flex-basis: clamp(220px, 40vw, 260px);
+      min-height: clamp(220px, 40vw, 280px);
     }
-    
-    .card[data-project="skywalker"] {
-      grid-column: span 4;
-      grid-row: span 3;
+
+    .card.status-green {
+      min-height: clamp(250px, 46vw, 320px);
     }
-    
-    .card[data-project="agoge"] {
-      grid-column: span 4;
-      grid-row: span 2;
-    }
-    
-    .card[data-project="sankofa"] {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-    
-    .card[data-project="dukkha"] {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-    
-    .card[data-project="orpheus"] {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-    
-    .card[data-project="drop"] {
-      grid-column: span 4;
-      grid-row: span 3; /* keep square-ish on tablet */
-    }
-    
-    .card[data-project="stark"] {
-      grid-column: span 4;
-      grid-row: span 3; /* keep square-ish on tablet */
-    }
-    
-    .card[data-project="vox"] {
-      grid-column: span 8; /* wide below the two squares */
-      grid-row: span 4;
+
+    .card.status-yellow {
+      min-height: clamp(230px, 42vw, 300px);
     }
   }
-  
-  /* Mobile: single column */
+
   @media (max-width: 768px) {
-    .project-gallery {
-      grid-template-columns: 1fr;
-      grid-auto-rows: 80px;
-      gap: 16px;
-      padding: 20px 10px;
+    .card {
+      flex: 1 1 100%;
+      max-width: 500px;
+      min-height: clamp(220px, 60vw, 320px);
+      aspect-ratio: 4 / 5;
     }
-    
-    .card[data-project="skywalker"],
-    .card[data-project="sankofa"],
-    .card[data-project="dukkha"],
-    .card[data-project="vox"],
-    .card[data-project="orpheus"],
-    .card[data-project="agoge"],
-    .card[data-project="drop"],
-    .card[data-project="stark"] {
-      grid-column: span 1;
-      grid-row: span 4;
+
+    .card.status-green {
+      min-height: clamp(240px, 68vw, 340px);
+      aspect-ratio: 3 / 4;
+    }
+
+    .card.status-red {
+      aspect-ratio: 5 / 6;
     }
   }
   
@@ -1250,13 +1205,13 @@ S    :root[data-display-mode="small"] .projects-section .sub {
     }
 
     :root[data-display-mode="medium"] .project-gallery {
-      padding: 32px 0;
-      gap: clamp(22px, 2.6vw, 26px);
+      padding: clamp(20px, 3vw, 30px);
+      gap: clamp(18px, 2.4vw, 24px);
     }
 
     :root[data-display-mode="small"] .project-gallery {
-      padding: 26px 0;
-      gap: clamp(18px, 2.8vw, 22px);
+      padding: clamp(18px, 2.6vw, 26px);
+      gap: clamp(16px, 2.6vw, 22px);
     }
 
     /* Card size is now controlled by grid, not flex-basis */
@@ -1542,15 +1497,15 @@ body.page-license {
 
 #narrative-projects .project-gallery-container {
   margin: 0 auto 40px;
-  padding: 16px 0 32px;
+  padding: 16px clamp(10px, 2vw, 22px) 32px;
   max-width: 1280px;
   border-radius: 32px;
 }
 
 #narrative-projects .project-gallery {
-  grid-auto-rows: 52px; /* slightly shorter rows than global */
-  gap: 12px;
-  padding: 0px 16px;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: clamp(14px, 2.4vw, 26px);
 }
 /* Subtle separator between sections */
 #apps-projects {
@@ -1558,80 +1513,14 @@ body.page-license {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* === START: Refactored PWA/Apps Gallery === */
-
-/* Use Grid for a simple 3-column layout with square cards */
 #apps-projects .project-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 400px;
-  gap: 16px;
-  padding: 2rem 0;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Define a base style for all cards in this section */
 #apps-projects .project-gallery .card {
-  transition: all 0.3s var(--ease-out-quart);
-  width: 100%;
   height: 100%;
 }
-
-/* All square cards in a simple 3-column layout */
-#apps-projects .card[data-project="vox"] {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-#apps-projects .card[data-project="drop"] {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-#apps-projects .card[data-project="stark"] {
-  grid-column: 3;
-  grid-row: 1;
-}
-
-/* Ensure images fill the card area correctly */
-#apps-projects .card .thumb {
-  position: relative; /* Simpler positioning */
-  width: 100%;
-  height: 100%;
-}
-#apps-projects .card .thumb img {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* Specific image fits */
-#apps-projects .card[data-project="vox"] .thumb img { object-fit: cover; }
-#apps-projects .card:not([data-project="vox"]) .thumb img { object-fit: cover; }
-#apps-projects .card[data-project="drop"] .thumb img { object-fit: cover; }
-#apps-projects .card[data-project="stark"] .thumb img { object-fit: cover; }
-
-
-/* Responsive adjustments for the PWA gallery */
-@media (max-width: 640px) {
-  #apps-projects .project-gallery {
-    grid-template-columns: 1fr;
-    grid-auto-rows: 180px;
-    gap: 16px;
-  }
-
-  /* Make all cards span full width on mobile */
-  #apps-projects .project-gallery .card,
-  #apps-projects .card[data-project="drop"],
-  #apps-projects .card[data-project="stark"],
-  #apps-projects .card[data-project="vox"] {
-    grid-column: span 1;
-    grid-row: span 2;
-  }
-}
-
-/* === END: Refactored PWA/Apps Gallery === */
 /* Responsive adjustments for dual sections */
 @media (max-width: 768px) {
   #narrative-projects,

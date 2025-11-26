@@ -199,6 +199,11 @@ class ProjectLoader {
     
     // Add data-project attribute for dynamic sizing
     art.setAttribute('data-project', p.title.toLowerCase());
+    const normalizedStatus = (p.status || '').toLowerCase();
+    if (normalizedStatus) {
+      art.classList.add(`status-${normalizedStatus}`);
+      art.dataset.status = normalizedStatus;
+    }
 
     // Set per-card accent variable for outline/button styling
     if (p.theme && p.theme.primary) {
@@ -417,38 +422,73 @@ class ProjectLoader {
   /**
    * Populates the gallery with project cards.
    */
+  _arrangeRows(projects) {
+    // Chunk into rows of up to 4, but never leave a single-card row.
+    const working = [...projects];
+    const rows = [];
+    while (working.length) {
+      let rowSize = Math.min(4, working.length);
+      if (rowSize === 1 && rows.length > 0) {
+        // Pull one from previous row to ensure at least 2 items in the last row
+        const prevRow = rows[rows.length - 1];
+        if (prevRow && prevRow.length > 2) {
+          const moved = prevRow.pop();
+          working.unshift(moved);
+          rowSize = 2;
+        }
+      }
+      rows.push(working.splice(0, rowSize));
+    }
+    return rows;
+  }
+
+  _layoutRow(row) {
+    const items = [...row];
+    const take = (prefs) => {
+      for (const status of prefs) {
+        const idx = items.findIndex(p => p.status === status);
+        if (idx !== -1) {
+          return items.splice(idx, 1)[0];
+        }
+      }
+      return items.shift();
+    };
+
+    if (row.length === 4) {
+      return [
+        take(['yellow', 'green', 'red']), // left
+        take(['green', 'yellow', 'red']), // center-left
+        take(['green', 'yellow', 'red']), // center-right
+        take(['red', 'yellow', 'green'])  // far right
+      ].filter(Boolean);
+    }
+
+    if (row.length === 3) {
+      return [
+        take(['yellow', 'green', 'red']),
+        take(['green', 'yellow', 'red']),
+        take(['red', 'yellow', 'green'])
+      ].filter(Boolean);
+    }
+
+    // 2 items: keep balanced, prefer an active left and draft right
+    if (row.length === 2) {
+      return [
+        take(['green', 'yellow', 'red']),
+        take(['yellow', 'green', 'red'])
+      ].filter(Boolean);
+    }
+
+    return items;
+  }
+
   _buildGallery() {
     this.elements.gallery.innerHTML = '';
-    
-    // Reorder projects for grid layout: Skywalker, Agoge, Sankofa, Dukkha, Orpheus,
-    // PWAs: drop and STARK on the top row (squares), then Vox as the wide card below.
-    const gridOrder = ['skywalker', 'agoge', 'sankofa', 'dukkha', 'orpheus', 'drop', 'stark', 'vox'];
-    const orderedProjects = [];
-    
-    // Debug: log what projects we're starting with
-    console.log('Building gallery with projects:', this.projects.map(p => p.title));
-    
-    // Sort projects by the desired grid order
-    gridOrder.forEach(name => {
-      const project = this.projects.find(p => p.title.toLowerCase() === name);
-      if (project) {
-        orderedProjects.push(project);
-        console.log(`Added ${project.title} to ordered list`);
-      }
-    });
-    
-    // Add any remaining projects not in the order list
-    this.projects.forEach(p => {
-      if (!orderedProjects.includes(p)) {
-        orderedProjects.push(p);
-        console.log(`Added remaining project ${p.title} to ordered list`);
-      }
-    });
-    
-    console.log('Final ordered projects:', orderedProjects.map(p => p.title));
-    
-    // Build cards in the correct order
-    orderedProjects.forEach((p, i) => {
+    const rows = this._arrangeRows(this.projects);
+    const laidOut = rows.flatMap(row => this._layoutRow(row));
+    console.log('Building gallery with projects:', laidOut.map(p => p.title));
+
+    laidOut.forEach((p, i) => {
       const card = this._createCard(p, i);
       this.elements.gallery.appendChild(card);
     });
