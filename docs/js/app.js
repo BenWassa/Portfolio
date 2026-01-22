@@ -19,10 +19,13 @@ function init() {
 
 function renderList(key, items) {
   const container = document.getElementById(`list-${key}`);
+  const isPwa = key === 'pwa';
   
   items.forEach((item) => {
     const card = document.createElement('div');
-    card.className = "project-card snap-center shrink-0 w-[80vw] md:w-[400px] h-[55vh] md:h-[500px] bg-[#1a1a1a] border border-white/10 rounded-lg overflow-hidden relative group cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/5";
+    card.className = isPwa
+      ? "project-card w-full h-[360px] md:h-[420px] bg-[#1a1a1a] border border-white/10 rounded-lg overflow-hidden relative group cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/5"
+      : "project-card snap-center shrink-0 w-[80vw] md:w-[400px] h-[55vh] md:h-[500px] bg-[#1a1a1a] border border-white/10 rounded-lg overflow-hidden relative group cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/5";
     card.style.setProperty('--accent-color', item.theme.primary);
     
     card.innerHTML = `
@@ -57,10 +60,12 @@ function renderList(key, items) {
     container.appendChild(card);
   });
   
-  // Add spacer
-  const spacer = document.createElement('div');
-  spacer.className = "shrink-0 w-12";
-  container.appendChild(spacer);
+  if (!isPwa) {
+    // Add spacer for horizontal tracks
+    const spacer = document.createElement('div');
+    spacer.className = "shrink-0 w-12";
+    container.appendChild(spacer);
+  }
 }
 
 // Pillar Interaction

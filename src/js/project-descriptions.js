@@ -11,7 +11,7 @@ export const projectsData = [
     tag: "Movie-Narrative Guide",
     desc: "An immersive mythic companion for personal reflection and growth, using Luke Skywalker's journey as a timeless mirror. Transforms film narrative into guided self-discovery through prompts and symbolism.",
     href: "https://benwassa.github.io/Skywalker/",
-    img: "Skywalker.png",
+    img: "assets/projects/Skywalker.png",
     alt: "Skywalker - Personal systems & UX playground",
     theme: {
       primary: "#3B82F6",
@@ -27,7 +27,7 @@ export const projectsData = [
     tag: "Scientific-Narrative Guide",
     desc: "A unified framework addressing the Modern Meaning Crisis - weaving mythic storytelling, cultural critique, and research into emotionally resonant narratives of purpose, soul, and moral compass.",
     href: "https://benwassa.github.io/sankofa/",
-    img: "Sankofa.png",
+    img: "assets/projects/Sankofa.png",
     alt: "Sankofa - Mythic psychology narrative site",
     theme: {
       primary: "#d4af37",
@@ -43,7 +43,7 @@ export const projectsData = [
     tag: "Scientific-Narrative Guide",
     desc: "A field guide and manifesto on dopamine as a cultural force. Exposes misconceptions, charts how temptation systems shape modern crises, and offers practical tools for clarity, calm, and autonomy.",
     href: "https://benwassa.github.io/dukkha/",
-    img: "Dukkha.png",
+    img: "assets/projects/Dukkha.png",
     alt: "Dukkha - Digital well-being & dopamine craft",
     theme: {
       primary: "#10b981",
@@ -59,7 +59,7 @@ export const projectsData = [
     tag: "Scientific-Narrative Guide",
     desc: "A cross-cultural study of rites of passage. Blends history, myth, psychology, and research into a modern narrative framework reimagining authentic initiation for resilience and transformation.",
     href: "https://benwassa.github.io/agoge/",
-    img: "Agoge.png", 
+    img: "assets/projects/Agoge.png", 
     alt: "Agoge - Rites of passage research",
     theme: {
       primary: "#dc2626",
@@ -75,7 +75,7 @@ export const projectsData = [
     tag: "Music Research Tool",
     desc: "A lyrical lantern into memory and emotion, decoding the themes in your listening patterns. Transforms music into a framework for reflection, self-discovery, and mapping emotional currents.",
     href: null,
-    img: "Orpheus.png", 
+    img: "assets/projects/Orpheus.png", 
     alt: "Orpheus - Audio experiments",
     theme: {
       primary: "#8B5CF6",
@@ -91,7 +91,7 @@ export const projectsData = [
     tag: "Daily Domain Tracker",
     desc: "A minimalist Progressive Web App for tracking daily life domains - Sleep, Fitness, Mind, and Spirit - with a mindful scoring system that rewards consistency over perfection.",
     href: "https://benwassa.github.io/drop/",
-    img: "drop.png",
+    img: "assets/projects/drop.png",
     alt: "drop - Daily Domain Tracker",
     theme: {
       primary: "#3b82f6",
@@ -107,7 +107,7 @@ export const projectsData = [
     tag: "Fitness Intelligence PWA",
     desc: "A Progressive Web App that transforms physiological data into a clear visual story of fitness and recovery - a personal dashboard for strength, endurance, and overall performance.",
     href: "https://benwassa.github.io/STARK/",
-    img: "STARK.png",
+    img: "assets/projects/STARK.png",
     alt: "STARK - Fitness Intelligence PWA",
     theme: {
       primary: "#06b6d4",
@@ -123,7 +123,7 @@ export const projectsData = [
     tag: "Language Learning Tracker",
     desc: "Vox is a lean, offline-first vocabulary tracker designed for focused study in Spanish and Mandarin. Featuring CSV import and export, practice counters, and responsive table and card views, making it easy to manage and review progress.",
     href: "https://benwassa.github.io/Vox_Showcase/",
-    img: "Vox.png",
+    img: "assets/projects/Vox.png",
     alt: "Vox - Language-learning dashboard",
     theme: {
       primary: "#3b82f6",
@@ -139,7 +139,7 @@ export const projectsData = [
     tag: "Game PWA",
     desc: "A minimalist game PWA with simple mechanics and instant feedback. No punchbacks—just pure play designed for quick sessions and genuine enjoyment.",
     href: "https://benwassa.github.io/punchbuggy/",
-    img: "Punchbuggy.png",
+    img: "assets/projects/Punchbuggy.png",
     alt: "Punchbuggy - Game PWA",
     theme: {
       primary: "#f59e0b",
@@ -155,7 +155,7 @@ export const projectsData = [
     tag: "Shared Watchlist PWA",
     desc: "A calm, shared watchlist PWA designed to help couples decide what to watch together without endless scrolling or algorithmic pressure.",
     href: "https://benwassa.github.io/hearthMVP/",
-    img: "Hearth.png",
+    img: "assets/projects/hearth.png",
     alt: "Hearth - Shared Watchlist PWA",
     theme: {
       primary: "#ec4899",
@@ -171,7 +171,7 @@ export const projectsData = [
     tag: "Fitness Challenge App",
     desc: "A time-bound Progressive Web App built to support participants during the Pushup Challenge with tracking, community, and sustainable progression.",
     href: "https://benwassa.github.io/the-pushup-challenge-2025/",
-    img: "PushUpChallenge.png",
+    img: "assets/projects/pushup.png",
     alt: "PushUp Challenge - Fitness App",
     theme: {
       primary: "#ef4444",
@@ -187,7 +187,7 @@ export const projectsData = [
     tag: "Grappling Training Log",
     desc: "An offline-first training log for wrestlers focused on honest tracking without accounts or gamification. Built for serious grapplers who value clarity.",
     href: "https://benwassa.github.io/wrestlePWA/",
-    img: "Wrestle.png",
+    img: "assets/projects/Wrestle.png",
     alt: "Wrestle - Grappling Training Tool",
     theme: {
       primary: "#8b5cf6",
@@ -203,7 +203,7 @@ export const projectsData = [
     tag: "Travel Photo Organizer",
     desc: "A fast, offline-first travel photo organizer that sorts images by story role instead of chronology—turning moments into narrative.",
     href: "https://benwassa.github.io/Narrative/",
-    img: "Narrative.png",
+    img: "assets/projects/Narrative_icon.png",
     alt: "Narrative - Travel Photo Organizer",
     theme: {
       primary: "#84cc16",
@@ -219,7 +219,7 @@ export const projectsData = [
     tag: "Dream Journal",
     desc: "A dream journal designed for serious reflection. Structure for recording dreams, tracking patterns, and exploring emotional resonance without interpretation.",
     href: "https://benwassa.github.io/Morpheus/",
-    img: "Morpheus.png",
+    img: "assets/projects/morpheus.png",
     alt: "Morpheus - Dream Journal",
     theme: {
       primary: "#8b5cf6",
@@ -235,7 +235,7 @@ export const projectsData = [
     tag: "Personality Framework",
     desc: "A personality framework mapping Big Five traits to ecological strategies rather than fixed types. Reveals how your personality serves you and where it might limit you.",
     href: "https://benwassa.github.io/EcologicalConstellation/",
-    img: "EcologicalConstellation.png",
+    img: "assets/projects/EcologicalConstellation.png",
     alt: "Ecological Constellation - Personality Framework",
     theme: {
       primary: "#06b6d4",
