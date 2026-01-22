@@ -168,11 +168,6 @@ window.closeModal = function() {
   }, 500);
 };
 
-// Export Portfolio
-window.exportPortfolio = function() {
-  window.print();
-};
-
 // Keyboard Navigation
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
