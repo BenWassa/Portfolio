@@ -52,7 +52,7 @@ export const projectsData = [
       bg: "#0f172a" // very dark background
     },
     status: "yellow",
-    type: "narrative"
+    type: "psychology"
   },
   {
     title: "Agoge",
@@ -84,7 +84,39 @@ export const projectsData = [
       bg: "#0f0f23" // very dark purple-tinted bg
     },
     status: "red",
-    type: "narrative"
+    type: "psychology"
+  },
+  {
+    title: "Morpheus",
+    tag: "Psychology Concept",
+    desc: "Conceptual psychology project exploring dream-state cognition and identity frameworks.",
+    href: null,
+    img: "Morpheus.png",
+    alt: "Morpheus - Psychology concept",
+    theme: {
+      primary: "#a855f7",
+      secondary: "#1e1b4b",
+      tertiary: "#1f2937",
+      bg: "#0f0f23"
+    },
+    status: "red",
+    type: "psychology"
+  },
+  {
+    title: "Ecologicalconstellation",
+    tag: "Psychology Concept",
+    desc: "A systems-psychology exploration mapping relational ecology, attention, and environment.",
+    href: null,
+    img: "Ecologicalconstellation.png",
+    alt: "Ecologicalconstellation - Psychology concept",
+    theme: {
+      primary: "#22c55e",
+      secondary: "#14532d",
+      tertiary: "#0f172a",
+      bg: "#0b1f17"
+    },
+    status: "red",
+    type: "psychology"
   },
   {
     title: "drop",
@@ -133,6 +165,86 @@ export const projectsData = [
     },
     status: "green",
     type: "app"
+  },
+  {
+    title: "punchbuggy",
+    tag: "PWA",
+    desc: "Placeholder description for punchbuggy.",
+    href: null,
+    img: "punchbuggy.png",
+    alt: "punchbuggy - PWA",
+    theme: {
+      primary: "#f59e0b",
+      secondary: "#1f2937",
+      tertiary: "#111827",
+      bg: "#0b0b0f"
+    },
+    status: "red",
+    type: "app"
+  },
+  {
+    title: "Hearth",
+    tag: "PWA",
+    desc: "Placeholder description for Hearth.",
+    href: null,
+    img: "Hearth.png",
+    alt: "Hearth - PWA",
+    theme: {
+      primary: "#ef4444",
+      secondary: "#7f1d1d",
+      tertiary: "#1c1917",
+      bg: "#0c0a09"
+    },
+    status: "red",
+    type: "app"
+  },
+  {
+    title: "thepushupchallenge",
+    tag: "PWA",
+    desc: "Placeholder description for thepushupchallenge.",
+    href: null,
+    img: "thepushupchallenge.png",
+    alt: "thepushupchallenge - PWA",
+    theme: {
+      primary: "#22c55e",
+      secondary: "#0f172a",
+      tertiary: "#111827",
+      bg: "#0b0b0f"
+    },
+    status: "red",
+    type: "app"
+  },
+  {
+    title: "wrestlePWA",
+    tag: "PWA",
+    desc: "Placeholder description for wrestlePWA.",
+    href: null,
+    img: "wrestlePWA.png",
+    alt: "wrestlePWA - PWA",
+    theme: {
+      primary: "#38bdf8",
+      secondary: "#0f172a",
+      tertiary: "#111827",
+      bg: "#0b0b0f"
+    },
+    status: "red",
+    type: "app"
+  },
+  {
+    title: "Narrative",
+    tag: "PWA",
+    desc: "Placeholder description for Narrative.",
+    href: null,
+    img: "Narrative.png",
+    alt: "Narrative - PWA",
+    theme: {
+      primary: "#6366f1",
+      secondary: "#1f2937",
+      tertiary: "#111827",
+      bg: "#0b0b0f"
+    },
+    status: "red",
+    type: "app"
   }
 ];
 
@@ -162,6 +274,16 @@ export const projectDescriptions = {
     full: "Project Orpheus is a lyrical lantern into the underworld of memory and emotion. By tracing the songs you play on repeat - the fixations, the phases, the sudden crescendos - it reveals the hidden narratives shaping your life. Like Orpheus descending with music as his guide, this framework transforms passive listening into active self-discovery through structured analysis, mythic symbolism, and reflective prompts. Thoughtfully designed for slow, deliberate exploration, it lets you chart emotional currents, pivotal transitions, and unmet needs inside a poetic, soul-centered map where every refrain becomes a clue to becoming more wholly yourself."
   },
 
+  morpheus: {
+    portfolio: "Psychology concept exploring dream-state cognition and identity frameworks.",
+    full: "Morpheus explores how identity, memory, and dream states shape perception, decisions, and long-term behavior."
+  },
+
+  ecologicalconstellation: {
+    portfolio: "Systems-psychology exploration mapping relational ecology, attention, and environment.",
+    full: "Ecological Constellation maps the invisible networks between environment, attention, and relational systems to surface how context shapes psychological outcomes."
+  },
+
   agoge: {
     portfolio: "A narrative research project exploring traditional rites of passage and authentic initiation for the modern world.",
     full: "Project Agoge is a narrative research project exploring how traditional rites transformed boys into grounded, resilient men. It blends cross-cultural history, mythic symbolism, and modern psychology to uncover timeless insights on confidence, moral strength, and belonging - laying the groundwork for a podcast and supporting framework that reimagines authentic initiation for today's world."
@@ -175,6 +297,31 @@ export const projectDescriptions = {
   drop: {
     portfolio: "A mindful daily tracker for Sleep, Fitness, Mind, and Spirit - built as a pure vanilla JavaScript PWA that values quality, reflection, and sustained growth over streaks or perfection.",
     full: "Project drop is a minimalist, framework-free Progressive Web App designed for reflective self-tracking across four life domains: Sleep, Fitness, Mind, and Spirit. It integrates a philosophically grounded scoring model based on weighted trends and intrinsic motivation, emphasizing balance, consistency, and self-awareness. The app runs fully offline, includes IndexedDB auto-backups, and features an elegant interface optimized for touch and accessibility. It's a digital companion for maintaining mindful engagement with your growth - not a habit tracker, but a quality tracker."
+  },
+
+  punchbuggy: {
+    portfolio: "PWA concept for punchbuggy.",
+    full: "punchbuggy is a Progressive Web App concept. Details forthcoming."
+  },
+
+  hearth: {
+    portfolio: "PWA concept for Hearth.",
+    full: "Hearth is a Progressive Web App concept. Details forthcoming."
+  },
+
+  thepushupchallenge: {
+    portfolio: "PWA concept for thepushupchallenge.",
+    full: "thepushupchallenge is a Progressive Web App concept. Details forthcoming."
+  },
+
+  wrestlepwa: {
+    portfolio: "PWA concept for wrestlePWA.",
+    full: "wrestlePWA is a Progressive Web App concept. Details forthcoming."
+  },
+
+  narrative: {
+    portfolio: "PWA concept for Narrative.",
+    full: "Narrative is a Progressive Web App concept. Details forthcoming."
   }
 };
 
@@ -185,5 +332,3 @@ Usage examples:
 - Detailed view: projectDescriptions.skywalker.full
 - All projects: Object.keys(projectDescriptions)
 */
-
-

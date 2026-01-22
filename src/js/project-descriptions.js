@@ -84,7 +84,7 @@ export const projectsData = [
       bg: "#0f0f23"
     },
     status: "red",
-    type: "narrative"
+    type: "psychology"
   },
   {
     title: "drop",

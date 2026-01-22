@@ -26,8 +26,14 @@ function renderList(key, items) {
     card.style.setProperty('--accent-color', item.theme.primary);
     
     card.innerHTML = `
-      <div class="h-1/2 w-full overflow-hidden relative">
-        <img src="${item.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="${item.alt}">
+      <div class="h-1/2 w-full overflow-hidden relative bg-zinc-900 flex items-center justify-center">
+        <img src="${item.img}" 
+             onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden'); this.nextElementSibling.classList.add('flex');"
+             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" 
+             alt="${item.alt}">
+        <div class="hidden absolute inset-0 items-center justify-center bg-zinc-800/50">
+            <span class="text-white/40 font-display font-medium uppercase tracking-[0.2em] text-lg lg:text-xl group-hover:text-white/60 transition-colors text-center px-6">${item.title}</span>
+        </div>
         <div class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] to-transparent"></div>
       </div>
       <div class="h-1/2 p-6 md:p-8 flex flex-col relative bg-[#1a1a1a]">
