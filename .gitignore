@@ -17,10 +17,6 @@ coverage/
 .out/
 .public/
 
-# Portfolio build outputs
-docs/css/output.css
-docs/js/project-descriptions.js
-
 # System files
 .DS_Store
 Thumbs.db
