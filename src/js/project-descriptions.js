@@ -213,6 +213,38 @@ export const projectsData = [
     },
     status: "green",
     type: "app"
+  },
+  {
+    title: "Morpheus",
+    tag: "Dream Journal",
+    desc: "A dream journal designed for serious reflection. Structure for recording dreams, tracking patterns, and exploring emotional resonance without interpretation.",
+    href: "https://benwassa.github.io/Morpheus/",
+    img: "Morpheus.png",
+    alt: "Morpheus - Dream Journal",
+    theme: {
+      primary: "#8b5cf6",
+      secondary: "#6d28d9",
+      tertiary: "#4c1d95",
+      bg: "#2e1065"
+    },
+    status: "green",
+    type: "psychology"
+  },
+  {
+    title: "Ecological Constellation",
+    tag: "Personality Framework",
+    desc: "A personality framework mapping Big Five traits to ecological strategies rather than fixed types. Reveals how your personality serves you and where it might limit you.",
+    href: "https://benwassa.github.io/EcologicalConstellation/",
+    img: "EcologicalConstellation.png",
+    alt: "Ecological Constellation - Personality Framework",
+    theme: {
+      primary: "#06b6d4",
+      secondary: "#0891b2",
+      tertiary: "#164e63",
+      bg: "#082f4f"
+    },
+    status: "green",
+    type: "psychology"
   }
 ];
 
