@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Styles */
+@layer base {
+  body {
+    @apply bg-[#050505] text-slate-200 overflow-hidden;
+  }
+}
+
+/* Utility Classes */
+@layer components {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Pillar Logic */
+  .pillar {
+    @apply transition-all duration-800 flex-grow flex-1 relative overflow-hidden;
+    transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .pillar-container:not(.has-active) .pillar:hover {
+    @apply flex-grow-[1.5];
+  }
+
+  .pillar.active {
+    @apply flex-grow-[10] cursor-default !important;
+  }
+
+  .pillar.inactive {
+    @apply flex-grow-[0.5] cursor-pointer;
+    filter: grayscale(100%) brightness(0.5);
+  }
+
+  .pillar.inactive:hover {
+    @apply flex-grow-[0.8];
+    filter: grayscale(0%) brightness(0.8);
+  }
+
+  /* Content Visibility */
+  .track-content {
+    @apply opacity-0 pointer-events-none;
+    transition: opacity 0.5s ease 0s;
+  }
+
+  .pillar.active .track-content {
+    @apply opacity-100 pointer-events-auto;
+    transition-delay: 0.4s;
+  }
+
+  /* Title Visibility */
+  .pillar-title {
+    @apply opacity-100 transition-opacity duration-500;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    @apply absolute whitespace-nowrap;
+  }
+
+  .pillar.active .pillar-title {
+    @apply opacity-0 pointer-events-none;
+  }
+
+  @media (min-width: 768px) {
+    .pillar.inactive .pillar-title {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: translate(-50%, -50%) rotate(180deg);
+    }
+  }
+
+  /* Card Animations */
+  .pillar.active .project-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+    @apply opacity-0;
+  }
+
+  .pillar.active .project-card:nth-child(1) { animation-delay: 0.4s; }
+  .pillar.active .project-card:nth-child(2) { animation-delay: 0.5s; }
+  .pillar.active .project-card:nth-child(3) { animation-delay: 0.6s; }
+  .pillar.active .project-card:nth-child(4) { animation-delay: 0.7s; }
+
+  /* Modal Transitions */
+  #modal {
+    transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+  }
+
+  #modal.open {
+    @apply visible opacity-100;
+    transition-delay: 0s;
+  }
+
+  #modal-content {
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    @apply translate-y-20;
+  }
+
+  #modal.open #modal-content {
+    @apply translate-y-0;
+  }
+
+  /* Dynamic theme accent */
+  .project-card {
+    --accent-color: #3b82f6;
+  }
+
+  .project-card:hover h4 {
+    color: var(--accent-color);
+  }
+}

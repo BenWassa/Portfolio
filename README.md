@@ -1,51 +1,165 @@
 # Portfolio - Benjamin P. Haddon
 
-This repository contains a small collection of live projects and prototypes at the intersection of research, storytelling, and web technology. Each project explores design, interaction patterns, and narrative frameworks with a focus on clarity, craft, and meaning.
+Production-ready portfolio showcasing three throughlines: **Narrative** (mythic frameworks), **Systems** (Progressive Web Apps), and **Psyche** (psychological interfaces).
 
-## Live site
+## Live Site
 
-You can view the hosted portfolio site here:
+https://benwassa.github.io/Portfolio/
 
-- https://benwassa.github.io/Portfolio/
+Built with Tailwind CSS, vanilla JavaScript (ES6 modules), and optimized for production.
 
-The site is built as a static site inside the `docs/` folder and published via GitHub Pages.
+## Project Structure
 
-## Projects (high level)
+```
+src/
+├── html/index.html              # Main HTML template
+├── css/input.css                # Tailwind input CSS (compiled → docs/)
+├── js/
+│   ├── app.js                   # Application logic & interactions
+│   └── project-descriptions.js  # Project data & metadata
+└── public/                      # Static assets (images, etc.)
 
-The portfolio highlights a handful of projects, including:
-
-- Skywalker - A comprehensive UX playground for personal systems and compounding routines with advanced interaction patterns.
-- Sankofa - An immersive mythic psychology narrative experience with podcast scaffolding in a living document environment.
-- Dukkha - A comprehensive field guide for digital discipline featuring live HTML experiences & systematic UX patterns.
-- Vox - Advanced language-learning dashboard with progress tracking, analytics, and adaptive learning algorithms (in development).
-- Orpheus - Experimental audio interfaces and sonic interaction patterns exploring the intersection of sound and digital experience.
-- Agoge - A narrative research project exploring traditional rites of passage and authentic initiation for the modern world.
-
-For full project metadata and descriptions see `docs/project-descriptions.js`.
-
-## Local preview
-
-You can review the site locally with any static server. One option is:
-
-```bash
-npx serve docs
+docs/
+├── index.html                   # Built HTML
+├── css/output.css               # Minified Tailwind CSS
+└── js/                          # Built JavaScript
 ```
 
-## Notes for maintainers
+## Setup & Development
 
-- The site's source files live in `docs/` (HTML, CSS, JS, and image assets).
-- Project metadata is exported from `docs/project-descriptions.js`. Image references in that file are relative to the `docs/` folder.
-- To update content, edit files under `docs/` and push to `main`; GitHub Pages will publish from `main` -> `docs/` (this repo is already configured that way).
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Development Mode
+
+Watch for changes and serve locally:
+
+```bash
+npm run dev
+```
+
+- Tailwind CSS compiler runs in watch mode
+- Local server starts on `http://localhost:8080`
+- Changes rebuild automatically
+
+### Production Build
+
+Generate optimized assets:
+
+```bash
+npm run build
+```
+
+- Minifies Tailwind CSS
+- Copies assets to `docs/`
+- Ready for deployment
+
+### Deploy
+
+Push built files to GitHub Pages:
+
+```bash
+npm run deploy
+```
+
+The `docs/` folder is ready for static hosting.
+
+## Features
+
+✨ **Three-Pillar Interface**
+- Narrative (mythic storytelling projects)
+- Systems (digital tools & PWAs)
+- Psyche (psychological explorations)
+
+🎨 **Premium Design**
+- Dark theme with accent colors per project
+- Responsive (mobile → desktop)
+- Smooth animations & transitions
+- Modal detail views
+
+⌨️ **Interactions**
+- Click pillars to expand and explore
+- ESC to close modal or reset view
+- Keyboard support throughout
+- Print-friendly export
+
+🔧 **Developer-Friendly**
+- Centralized project data layer
+- Dynamic theme colors from metadata
+- ES6 modules with clean separation
+- Utility-first CSS (Tailwind)
+
+## Projects
+
+### Narrative Throughline
+- **Skywalker** - Mythic companion using Luke's journey for self-discovery
+- **Sankofa** - Modern meaning crisis framework blending myth & research
+- **Agoge** - Rites of passage research for authentic initiation
+- **Dukkha** - Dopamine as cultural force; field guide & manifesto
+
+### Systems Throughline
+- **drop** - Mindful daily tracker (Sleep, Fitness, Mind, Spirit)
+- **STARK** - Fitness data visualization & performance dashboard
+- **Vox** - Offline-first language learning tracker
+
+### Psyche Throughline
+- **Orpheus** - Music listening patterns → emotional self-discovery
+- **Dukkha** - (also crosses into narrative)
+
+## Technology
+
+- **HTML5** - Semantic structure
+- **Tailwind CSS** - Utility-first, compiled to production-optimized CSS
+- **Vanilla JavaScript** - ES6 modules, no frameworks
+- **PostCSS** - Autoprefixing & processing
+- **GitHub Pages** - Static hosting from `docs/` folder
+
+## Configuration
+
+### Update Projects
+
+Edit `src/js/project-descriptions.js`:
+
+```javascript
+{
+  title: "Project Name",
+  tag: "Category",
+  desc: "Short description for card",
+  href: "https://...",
+  img: "ProjectName.png",
+  theme: {
+    primary: "#3B82F6",      // Accent color on hover
+    secondary: "#1F2937",
+    tertiary: "#151720",
+    bg: "#0A0B14"
+  },
+  status: "green",           // green | yellow | red
+  type: "narrative"          // narrative | app
+}
+```
+
+### Customize Theme
+
+Edit `tailwind.config.js`:
+- Font families (Space Grotesk, Inter, Cormorant Garamond)
+- Colors & spacing
+- Animation timings
+
+## Browser Support
+
+- Chrome/Edge (latest)
+- Firefox (latest)
+- Safari (latest)
+- Mobile browsers
+
+## License
+
+MIT
 
 ## Contact
 
 Benjamin P. Haddon - https://benwassa.github.io/
-
----
-
-Small, focused README intended to make it easy to run and update the static portfolio. If you'd like, I can add a development script, CI publish workflow, or a CONTRIBUTING.md next.
-
-## Copyright & reuse
-
-- This repository and site content are copyright (c) 2025 Benjamin P. Haddon. All rights reserved.
 - Reuse or redistribution requires prior written permission. See `docs/LICENSE.md` for details and the permission request process.
