@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benjamin P. Haddon | Narrative, Systems, Psyche</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    },
+                    colors: {
+                        bg: '#050505',
+                        surface: '#0A0A0A',
+                    },
+                    transitionDuration: {
+                        '800': '800ms',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #e2e8f0;
+            overflow: hidden; /* Main layout handles overflow */
+        }
+
+        /* Hide scrollbar for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* --- pillar Logic --- */
+        .pillar {
+            transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+            flex-grow: 1;
+            flex-basis: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Hover effect when idle */
+        .pillar-container:not(.has-active) .pillar:hover {
+            flex-grow: 1.5;
+        }
+
+        /* Active State */
+        .pillar.active {
+            flex-grow: 10 !important;
+            cursor: default;
+        }
+
+        /* Inactive State (Shrink but visible) */
+        .pillar.inactive {
+            flex-grow: 0.5; /* Keep a sliver visible */
+            cursor: pointer;
+            filter: grayscale(100%) brightness(0.5);
+        }
+        .pillar.inactive:hover {
+            flex-grow: 0.8; /* Slight expand on hover to hint interactivity */
+            filter: grayscale(0%) brightness(0.8);
+        }
+
+        /* Content Visibility */
+        .track-content {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease 0s;
+        }
+        .pillar.active .track-content {
+            opacity: 1;
+            pointer-events: auto;
+            transition-delay: 0.4s; /* Wait for expansion */
+        }
+
+        /* Title Visibility */
+        .pillar-title {
+            opacity: 1;
+            transition: opacity 0.5s ease;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            white-space: nowrap;
+        }
+        .pillar.active .pillar-title {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Vertical Text for Inactive Pillars on Desktop */
+        @media (min-width: 768px) {
+            .pillar.inactive .pillar-title {
+                writing-mode: vertical-rl;
+                text-orientation: mixed;
+                transform: translate(-50%, -50%) rotate(180deg);
+            }
+        }
+
+        /* Horizontal Scroll Snap */
+        .snap-x {
+            scroll-snap-type: x mandatory;
+        }
+        .snap-center {
+            scroll-snap-align: center;
+        }
+
+        /* Staggered Animation for List Items */
+        .pillar.active .project-card {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0; /* Start hidden */
+        }
+        /* Delays */
+        .pillar.active .project-card:nth-child(1) { animation-delay: 0.4s; }
+        .pillar.active .project-card:nth-child(2) { animation-delay: 0.5s; }
+        .pillar.active .project-card:nth-child(3) { animation-delay: 0.6s; }
+        .pillar.active .project-card:nth-child(4) { animation-delay: 0.7s; }
+
+        /* Modal Transitions */
+        #modal { transition: visibility 0s linear 0.5s, opacity 0.5s linear; }
+        #modal.open { visibility: visible; opacity: 1; transition-delay: 0s; }
+        #modal-content { transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        #modal.open #modal-content { transform: translateY(0); }
+    </style>
+</head>
+<body class="antialiased h-screen w-screen flex flex-col font-sans selection:bg-white/20">
+
+    <!-- Top Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center mix-blend-difference text-white pointer-events-none">
+        <div class="flex items-center gap-3 pointer-events-auto">
+            <div class="font-display font-bold tracking-tight text-lg">BENJAMIN P. HADDON</div>
+            <div class="hidden md:block h-4 w-[1px] bg-white/40"></div>
+            <div class="hidden md:block text-xs font-mono opacity-80">PORTFOLIO</div>
+        </div>
+        <div class="flex items-center gap-6 text-sm font-medium pointer-events-auto">
+            <button onclick="resetView()" id="close-btn" class="opacity-0 hidden transition-all duration-300 flex items-center gap-2 hover:text-red-400 uppercase tracking-widest text-xs">
+                <span class="material-symbols-outlined text-sm">close</span> Close View
+            </button>
+            <button onclick="window.print()" class="hover:opacity-70 transition-opacity flex items-center gap-2 text-xs uppercase tracking-widest border border-white/20 px-3 py-1 rounded">
+                <span class="material-symbols-outlined text-sm">save</span> Save
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area: The Three Pillars -->
+    <main class="pillar-container flex-1 flex flex-col md:flex-row h-full w-full relative">
+        
+        <!-- Pillar 1: Narrative -->
+        <section class="pillar group border-r border-white/5 bg-[#0c0a09]" id="pillar-narrative" onclick="activatePillar('narrative')" tabindex="0">
+            <!-- Background Image -->
+            <div class="absolute inset-0">
+                <img class="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-700" 
+                     src="https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1000&auto=format&fit=crop" 
+                     alt="Abstract Narrative">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60"></div>
+            </div>
+            
+            <!-- Idle Title -->
+            <div class="pillar-title text-center z-10">
+                <h2 class="font-serif text-4xl md:text-6xl text-[#d4af37] italic mb-2">Narrative</h2>
+                <span class="font-display text-xs uppercase tracking-[0.3em] text-white/70">As Interface</span>
+            </div>
+
+            <!-- Active Content -->
+            <div class="track-content absolute inset-0 flex flex-col z-20 pt-24 pb-10 px-4 md:px-12 bg-black/90 backdrop-blur-md">
+                <div class="max-w-7xl mx-auto w-full h-full flex flex-col">
+                    <header class="mb-8 shrink-0 animate-fade-in-up">
+                        <div class="text-[#d4af37] text-sm font-mono uppercase tracking-widest mb-2">Throughline 01</div>
+                        <h3 class="text-4xl md:text-5xl font-serif text-white italic">Narrative as Interface</h3>
+                        <p class="mt-4 max-w-xl text-white/60 font-light leading-relaxed">
+                            Prototyping mythic frameworks. These projects explore how ancient storytelling structures can solve modern meaning crises by becoming the very interface through which we engage with reality.
+                        </p>
+                    </header>
+                    <div class="flex-1 overflow-x-auto overflow-y-hidden no-scrollbar flex items-center gap-6 md:gap-8 snap-x pb-8 w-full pr-12" id="list-narrative">
+                        <!-- Items injected via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pillar 2: Systems (PWA) -->
+        <section class="pillar group border-r border-white/5 bg-[#0f172a]" id="pillar-pwa" onclick="activatePillar('pwa')" tabindex="0">
+            <!-- Background Image -->
+            <div class="absolute inset-0">
+                <img class="w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-700" 
+                     src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop" 
+                     alt="Cyberpunk Systems">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60"></div>
+            </div>
+
+            <!-- Idle Title -->
+            <div class="pillar-title text-center z-10">
+                <h2 class="font-display text-4xl md:text-6xl text-[#3b82f6] font-bold mb-2">Systems</h2>
+                <span class="font-display text-xs uppercase tracking-[0.3em] text-white/70">Progressive Web Apps</span>
+            </div>
+
+            <!-- Active Content -->
+            <div class="track-content absolute inset-0 flex flex-col z-20 pt-24 pb-10 px-4 md:px-12 bg-black/90 backdrop-blur-md">
+                <div class="max-w-7xl mx-auto w-full h-full flex flex-col">
+                    <header class="mb-8 shrink-0 animate-fade-in-up">
+                        <div class="text-[#3b82f6] text-sm font-mono uppercase tracking-widest mb-2">Throughline 02</div>
+                        <h3 class="text-4xl md:text-5xl font-display font-bold text-white">Progressive Systems</h3>
+                        <p class="mt-4 max-w-xl text-white/60 font-light leading-relaxed">
+                            Building digital companions that respect attention. These offline-first, privacy-focused PWAs prioritize consistency over perfection and tools over traps.
+                        </p>
+                    </header>
+                    <div class="flex-1 overflow-x-auto overflow-y-hidden no-scrollbar flex items-center gap-6 md:gap-8 snap-x pb-8 w-full pr-12" id="list-pwa">
+                        <!-- Items injected via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pillar 3: Psyche -->
+        <section class="pillar group bg-[#0f0f23]" id="pillar-psych" onclick="activatePillar('psych')" tabindex="0">
+            <!-- Background Image -->
+            <div class="absolute inset-0">
+                <img class="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-700" 
+                     src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=1000&auto=format&fit=crop" 
+                     alt="Abstract Psychology">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60"></div>
+            </div>
+
+            <!-- Idle Title -->
+            <div class="pillar-title text-center z-10">
+                <h2 class="font-display text-4xl md:text-6xl text-[#8B5CF6] font-light mb-2">Psyche</h2>
+                <span class="font-display text-xs uppercase tracking-[0.3em] text-white/70">Into Experience</span>
+            </div>
+
+            <!-- Active Content -->
+            <div class="track-content absolute inset-0 flex flex-col z-20 pt-24 pb-10 px-4 md:px-12 bg-black/90 backdrop-blur-md">
+                <div class="max-w-7xl mx-auto w-full h-full flex flex-col">
+                    <header class="mb-8 shrink-0 animate-fade-in-up">
+                        <div class="text-[#8B5CF6] text-sm font-mono uppercase tracking-widest mb-2">Throughline 03</div>
+                        <h3 class="text-4xl md:text-5xl font-display font-light text-white">Psychology into Experience</h3>
+                        <p class="mt-4 max-w-xl text-white/60 font-light leading-relaxed">
+                            Translating abstract psychological concepts—dopamine, grief, memory—into tangible, navigable digital landscapes. Making the invisible visible.
+                        </p>
+                    </header>
+                    <div class="flex-1 overflow-x-auto overflow-y-hidden no-scrollbar flex items-center gap-6 md:gap-8 snap-x pb-8 w-full pr-12" id="list-psych">
+                        <!-- Items injected via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Project Detail Modal -->
+    <div class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 opacity-0 invisible" id="modal">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-lg" id="modal-bg" onclick="closeModal()"></div>
+        
+        <!-- Content -->
+        <div class="relative w-full max-w-5xl bg-[#121212] border border-white/10 shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[90vh] rounded-xl transform translate-y-20" id="modal-content">
+            <button class="absolute top-4 right-4 z-20 p-2 bg-black/50 rounded-full hover:bg-white/20 text-white transition-colors" onclick="closeModal()">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            
+            <!-- Modal Image -->
+            <div class="w-full md:w-5/12 relative h-48 md:h-auto shrink-0 bg-black">
+                <img class="w-full h-full object-cover opacity-90" id="m-img" src="">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#121212] to-transparent md:bg-gradient-to-r"></div>
+            </div>
+            
+            <!-- Modal Text -->
+            <div class="flex-1 p-8 md:p-12 overflow-y-auto custom-scrollbar">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="text-xs font-mono uppercase tracking-widest px-2 py-1 border border-white/20 rounded text-white/60" id="m-tag">Tag</span>
+                    <div class="flex items-center gap-2 text-xs text-emerald-400 font-mono" id="m-status-wrap">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" id="m-status-dot"></span>
+                        <span id="m-status-text">Active</span>
+                    </div>
+                </div>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-6" id="m-title">Title</h2>
+                <div class="prose prose-invert prose-lg text-gray-300 font-light leading-relaxed" id="m-desc">
+                    <!-- Desc content -->
+                </div>
+                <div class="mt-12 pt-8 border-t border-white/10 flex flex-wrap gap-4">
+                    <a class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold rounded hover:bg-gray-200 transition-colors" href="#" id="m-link" target="_blank">
+                        Launch Project <span class="material-symbols-outlined text-sm">arrow_outward</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- COMPLETE PROJECT DATA ---
+        // Using stable high-quality unsplash images matching the themes
+        const projects = {
+            narrative: [
+                {
+                    title: "Sankofa",
+                    tag: "Scientific-Narrative Guide",
+                    status: "green",
+                    desc: "Project Sankofa is an overarching narrative framework to tackle the Modern Meaning Crisis. It weaves mythic storytelling, cultural critique, and deep research into a unified exploration of how contemporary life lost cohesive meaning.",
+                    href: "https://benwassa.github.io/sankofa/",
+                    img: "https://images.unsplash.com/photo-1605806616949-1e87b487bc2a?q=80&w=1000&auto=format&fit=crop", 
+                    thumbDesc: "A unified framework addressing the Modern Meaning Crisis - weaving mythic storytelling and research."
+                },
+                {
+                    title: "Skywalker",
+                    tag: "Movie-Narrative Guide",
+                    status: "green",
+                    desc: "The Skywalker Quest Map is an immersive mythic companion for personal reflection and philosophical growth, using Luke Skywalker's journey as a timeless mirror for your own.",
+                    href: "https://benwassa.github.io/Skywalker/",
+                    img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000&auto=format&fit=crop",
+                    thumbDesc: "An immersive mythic companion for personal reflection using Luke Skywalker's journey."
+                },
+                {
+                    title: "Agoge",
+                    tag: "Scientific-Narrative Guide",
+                    status: "yellow",
+                    desc: "Project Agoge is a narrative research project exploring how traditional rites transformed boys into grounded, resilient men. It blends cross-cultural history, mythic symbolism, and modern psychology.",
+                    href: "https://benwassa.github.io/agoge/",
+                    img: "https://images.unsplash.com/photo-1555677284-6a6f971639e0?q=80&w=1000&auto=format&fit=crop",
+                    thumbDesc: "A cross-cultural study of rites of passage reimagining authentic initiation."
+                }
+            ],
+            pwa: [
+                {
+                    title: "Vox",
+                    tag: "Language Learning Tracker",
+                    status: "green",
+                    desc: "Project Vox is a pilot framework for building a rigorous, self-directed language learning system. It emphasizes grammar mastery, transparent vocab tracking, and real-world sentence production.",
+                    href: "https://benwassa.github.io/Vox_Showcase/",
+                    img: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1000&auto=format&fit=crop",
+                    thumbDesc: "Offline-first vocabulary tracker for focused study in Spanish and Mandarin."
+                },
+                {
+                    title: "STARK",
+                    tag: "Fitness Intelligence PWA",
+                    status: "green",
+                    desc: "Project STARK is a static Progressive Web App built with React and TailwindCSS, designed to turn physiological data into a clear visual story of fitness and recovery.",
+                    href: "https://benwassa.github.io/STARK/",
+                    img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000&auto=format&fit=crop",
+                    thumbDesc: "Visual dashboard for strength, endurance, and overall performance."
+                },
+                {
+                    title: "drop",
+                    tag: "Daily Domain Tracker",
+                    status: "green",
+                    desc: "Project drop is a minimalist, framework-free Progressive Web App designed for reflective self-tracking across four life domains: Sleep, Fitness, Mind, and Spirit.",
+                    href: "https://benwassa.github.io/drop/",
+                    img: "https://images.unsplash.com/photo-1512428559087-560fa5ce7d02?q=80&w=1000&auto=format&fit=crop",
+                    thumbDesc: "Minimalist PWA for tracking daily life domains - Sleep, Fitness, Mind, and Spirit."
+                }
+            ],
+            psych: [
+                {
+                    title: "Orpheus",
+                    tag: "Music Research Tool",
+                    status: "red",
+                    desc: "Project Orpheus is a lyrical lantern into the underworld of memory and emotion. By tracing the songs you play on repeat - the fixations, the phases, the sudden crescendos - it reveals the hidden narratives shaping your life.",
+                    href: null,
+                    img: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=1000&auto=format&fit=crop",
+                    thumbDesc: "Decoding the themes in your listening patterns to map emotional currents."
+                },
+                {
+                    title: "Dukkha",
+                    tag: "Scientific-Narrative Guide",
+                    status: "yellow",
+                    desc: "Project Dukkha is a field guide and manifesto for understanding dopamine not just as a neurotransmitter but as a living, mythic force shaping human culture, motivation, habits, and collective drift.",
+                    href: "https://benwassa.github.io/dukkha/",
+                    img: "https://images.unsplash.com/photo-1620121692029-d088224ddc74?q=80&w=1000&auto=format&fit=crop",
+                    thumbDesc: "A field guide on dopamine as a cultural force, exposing misconceptions and offering tools."
+                }
+            ]
+        };
+
+        // --- Core Functions ---
+
+        function init() {
+            renderList('narrative', projects.narrative);
+            renderList('pwa', projects.pwa);
+            renderList('psych', projects.psych);
+        }
+
+        function renderList(key, items) {
+            const container = document.getElementById(`list-${key}`);
+            
+            items.forEach((item) => {
+                const card = document.createElement('div');
+                card.className = "project-card snap-center shrink-0 w-[80vw] md:w-[400px] h-[55vh] md:h-[500px] bg-[#1a1a1a] border border-white/10 rounded-lg overflow-hidden relative group cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/5";
+                
+                card.innerHTML = `
+                    <div class="h-1/2 w-full overflow-hidden relative">
+                        <img src="${item.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="${item.title}">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] to-transparent"></div>
+                    </div>
+                    <div class="h-1/2 p-6 md:p-8 flex flex-col relative bg-[#1a1a1a]">
+                        <div class="mb-4">
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-white/50 border border-white/10 px-2 py-1 rounded">${item.tag}</span>
+                        </div>
+                        <h4 class="text-3xl font-display font-bold text-white mb-3 group-hover:text-primary transition-colors">${item.title}</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed line-clamp-3 font-light">${item.thumbDesc}</p>
+                        
+                        <div class="mt-auto pt-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white opacity-60 group-hover:opacity-100 transition-opacity">
+                            View Project <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+                        </div>
+                    </div>
+                `;
+                
+                card.onclick = (e) => {
+                    e.stopPropagation();
+                    openModal(item);
+                };
+                
+                container.appendChild(card);
+            });
+            
+            // Add spacer
+            const spacer = document.createElement('div');
+            spacer.className = "shrink-0 w-12";
+            container.appendChild(spacer);
+        }
+
+        // --- Interaction Logic ---
+
+        let activePillarId = null;
+
+        function activatePillar(id) {
+            if (activePillarId === id) return; // Already active
+
+            const container = document.querySelector('.pillar-container');
+            container.classList.add('has-active');
+
+            const pillars = document.querySelectorAll('.pillar');
+            const target = document.getElementById(`pillar-${id}`);
+            const closeBtn = document.getElementById('close-btn');
+
+            pillars.forEach(p => {
+                if (p === target) {
+                    p.classList.remove('inactive');
+                    p.classList.add('active');
+                    p.setAttribute('aria-expanded', 'true');
+                } else {
+                    p.classList.remove('active');
+                    p.classList.add('inactive');
+                    p.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            activePillarId = id;
+
+            // Show close button
+            closeBtn.classList.remove('hidden');
+            setTimeout(() => closeBtn.classList.remove('opacity-0'), 100);
+        }
+
+        function resetView() {
+            if (!activePillarId) return;
+
+            const container = document.querySelector('.pillar-container');
+            container.classList.remove('has-active');
+
+            const pillars = document.querySelectorAll('.pillar');
+            const closeBtn = document.getElementById('close-btn');
+
+            pillars.forEach(p => {
+                p.classList.remove('active', 'inactive');
+                p.setAttribute('aria-expanded', 'false');
+            });
+
+            activePillarId = null;
+
+            closeBtn.classList.add('opacity-0');
+            setTimeout(() => closeBtn.classList.add('hidden'), 300);
+        }
+
+        // --- Modal Logic ---
+        const modal = document.getElementById('modal');
+
+        function openModal(item) {
+            document.getElementById('m-title').textContent = item.title;
+            document.getElementById('m-desc').textContent = item.desc;
+            document.getElementById('m-img').src = item.img;
+            document.getElementById('m-tag').textContent = item.tag;
+            
+            // Status styling
+            const dot = document.getElementById('m-status-dot');
+            const statusText = document.getElementById('m-status-text');
+            if(item.status === 'green') {
+                dot.className = "w-2 h-2 rounded-full bg-emerald-500 animate-pulse";
+                statusText.className = "text-emerald-400";
+                statusText.textContent = "Active Development";
+            } else if(item.status === 'yellow') {
+                dot.className = "w-2 h-2 rounded-full bg-yellow-500";
+                statusText.className = "text-yellow-400";
+                statusText.textContent = "Research Phase";
+            } else {
+                dot.className = "w-2 h-2 rounded-full bg-red-500";
+                statusText.className = "text-red-400";
+                statusText.textContent = "Concept / Archived";
+            }
+
+            const linkBtn = document.getElementById('m-link');
+            if(item.href) {
+                linkBtn.href = item.href;
+                linkBtn.style.display = 'inline-flex';
+                linkBtn.textContent = 'Launch Project';
+                linkBtn.appendChild(document.createElement('span')).className = 'material-symbols-outlined text-sm ml-2';
+                linkBtn.lastChild.textContent = 'arrow_outward';
+            } else {
+                linkBtn.style.display = 'none';
+            }
+
+            modal.classList.remove('hidden');
+            // Force reflow
+            void modal.offsetWidth; 
+            modal.classList.add('open');
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 500); 
+        }
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', init);
+        
+        // Keyboard Nav
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (modal.classList.contains('open')) closeModal();
+                else resetView();
+            }
+        });
+
+    </script>
+</body>
+</html>
