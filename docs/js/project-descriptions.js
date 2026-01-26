@@ -89,7 +89,7 @@ export const projectsData = [
   {
     title: "drop",
     tag: "Daily Domain Tracker",
-    desc: "A minimalist Progressive Web App for tracking daily life domains - Sleep, Fitness, Mind, and Spirit - with a mindful scoring system that rewards consistency over perfection.",
+    desc: "Setting, tracking, and reviewing habit consistency.",
     href: "https://benwassa.github.io/drop/",
     img: "assets/projects/drop.png",
     alt: "drop - Daily Domain Tracker",
@@ -104,8 +104,8 @@ export const projectsData = [
   },
   {
     title: "STARK",
-    tag: "Fitness Intelligence PWA",
-    desc: "A Progressive Web App that transforms physiological data into a clear visual story of fitness and recovery - a personal dashboard for strength, endurance, and overall performance.",
+    tag: "Fitness Intelligence",
+    desc: "Fitness intelligence dashboard for strength, endurance, recovery.",
     href: "https://benwassa.github.io/STARK/",
     img: "assets/projects/STARK.png",
     alt: "STARK - Fitness Intelligence PWA",
@@ -121,7 +121,7 @@ export const projectsData = [
   {
     title: "Vox",
     tag: "Language Learning Tracker",
-    desc: "Vox is a lean, offline-first vocabulary tracker designed for focused study in Spanish and Mandarin. Featuring CSV import and export, practice counters, and responsive table and card views, making it easy to manage and review progress.",
+    desc: "Vocabulary and grammar studying tool.",
     href: "https://benwassa.github.io/Vox_Showcase/",
     img: "assets/projects/Vox.png",
     alt: "Vox - Language-learning dashboard",
@@ -136,8 +136,8 @@ export const projectsData = [
   },
   {
     title: "Punchbuggy",
-    tag: "Game PWA",
-    desc: "A minimalist game PWA with simple mechanics and instant feedback. No punchbacks—just pure play designed for quick sessions and genuine enjoyment.",
+    tag: "Game",
+    desc: "Minimalist punchbuggy game with instant feedback.",
     href: "https://benwassa.github.io/punchbuggy/",
     img: "assets/projects/Punchbuggy.png",
     alt: "Punchbuggy - Game PWA",
@@ -152,8 +152,8 @@ export const projectsData = [
   },
   {
     title: "Hearth",
-    tag: "Shared Watchlist PWA",
-    desc: "A calm, shared watchlist PWA designed to help couples decide what to watch together without endless scrolling or algorithmic pressure.",
+    tag: "Shared Watchlist",
+    desc: "Shared watchlist to decide what to watch together.",
     href: "https://benwassa.github.io/hearthMVP/",
     img: "assets/projects/hearth.png",
     alt: "Hearth - Shared Watchlist PWA",
@@ -169,7 +169,7 @@ export const projectsData = [
   {
     title: "PushUp Challenge",
     tag: "Fitness Challenge App",
-    desc: "A time-bound Progressive Web App built to support participants during the Pushup Challenge with tracking, community, and sustainable progression.",
+    desc: "Pushup challenge tracker with community accountability.",
     href: "https://benwassa.github.io/the-pushup-challenge-2025/",
     img: "assets/projects/pushup.png",
     alt: "PushUp Challenge - Fitness App",
@@ -185,7 +185,7 @@ export const projectsData = [
   {
     title: "Wrestle",
     tag: "Grappling Training Log",
-    desc: "An offline-first training log for wrestlers focused on honest tracking without accounts or gamification. Built for serious grapplers who value clarity.",
+    desc: "Offline-first training log for wrestlers.",
     href: "https://benwassa.github.io/wrestlePWA/",
     img: "assets/projects/Wrestle.png",
     alt: "Wrestle - Grappling Training Tool",
