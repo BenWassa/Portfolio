@@ -142,10 +142,10 @@ export const projectsData = [
     img: "assets/projects/Punchbuggy.png",
     alt: "Punchbuggy - Game PWA",
     theme: {
-      primary: "#f59e0b",
-      secondary: "#b45309",
-      tertiary: "#92400e",
-      bg: "#451a03"
+      primary: "#3b82f6",
+      secondary: "#1f2937",
+      tertiary: "#374151",
+      bg: "#111827"
     },
     status: "green",
     type: "app"
@@ -158,7 +158,7 @@ export const projectsData = [
     img: "assets/projects/hearth.png",
     alt: "Hearth - Shared Watchlist PWA",
     theme: {
-      primary: "#ec4899",
+      primary: "#aa6c4b",
       secondary: "#be185d",
       tertiary: "#831843",
       bg: "#3f0f4d"

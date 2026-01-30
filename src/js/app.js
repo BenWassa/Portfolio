@@ -19,36 +19,58 @@ function init() {
 
 function renderList(key, items) {
   const container = document.getElementById(`list-${key}`);
+  
   items.forEach((item) => {
     const card = document.createElement('div');
     card.className = "project-card group";
+    card.setAttribute('data-type', item.type);
+    // Set the CSS variable for the accent color
     card.style.setProperty('--accent-color', item.theme.primary);
     
+    // Determine Status Color
+    let statusColorClass = "bg-gray-500";
+    if (item.status === 'green') statusColorClass = "bg-emerald-500 text-emerald-500";
+    else if (item.status === 'yellow') statusColorClass = "bg-amber-500 text-amber-500";
+    else if (item.status === 'red') statusColorClass = "bg-rose-500 text-rose-500";
+
     card.innerHTML = `
       <div class="project-card__media">
         <img src="${item.img}" 
              onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden'); this.nextElementSibling.classList.add('flex');"
              class="project-card__img" 
-             alt="${item.alt}">
-        <div class="project-card__fallback hidden absolute inset-0 items-center justify-center bg-zinc-800/50">
-            <span class="text-white/40 font-display font-medium uppercase tracking-[0.2em] text-lg lg:text-xl group-hover:text-white/60 transition-colors text-center px-6">${item.title}</span>
+             alt="${item.alt}"
+             loading="lazy">
+        
+        <div class="hidden absolute inset-0 items-center justify-center bg-zinc-900 border-b border-white/5">
+            <span class="text-white/20 font-display font-bold uppercase tracking-widest text-lg">${item.title}</span>
         </div>
-        <div class="project-card__fade"></div>
       </div>
+
       <div class="project-card__content">
         <div class="project-card__meta">
           <span class="project-card__tag">${item.tag}</span>
+          <div class="flex items-center gap-2" title="Project Status">
+            <div class="status-dot ${statusColorClass}"></div>
+          </div>
         </div>
+        
         <h4 class="project-card__title">${item.title}</h4>
         <p class="project-card__desc">${item.desc}</p>
         
         <div class="project-card__cta">
-          <span>View Project</span>
-          <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+          <span class="mr-2">Explore</span>
+          <span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
         </div>
       </div>
     `;
     
+    // Mouse Move Effect for the "Flashlight" gradient
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      card.style.setProperty('--mouse-x', `${x}px`);
+    });
+
     card.onclick = (e) => {
       e.stopPropagation();
       openModal(item);
