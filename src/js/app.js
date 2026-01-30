@@ -19,35 +19,32 @@ function init() {
 
 function renderList(key, items) {
   const container = document.getElementById(`list-${key}`);
-  const isPwa = key === 'pwa';
-  
   items.forEach((item) => {
     const card = document.createElement('div');
-    card.className = isPwa
-      ? "project-card w-full h-[360px] md:h-[420px] bg-[#1a1a1a] border border-white/10 rounded-lg overflow-hidden relative group cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/5"
-      : "project-card snap-center shrink-0 w-[80vw] md:w-[400px] h-[55vh] md:h-[500px] bg-[#1a1a1a] border border-white/10 rounded-lg overflow-hidden relative group cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/5";
+    card.className = "project-card group";
     card.style.setProperty('--accent-color', item.theme.primary);
     
     card.innerHTML = `
-      <div class="h-1/2 w-full overflow-hidden relative bg-zinc-900 flex items-center justify-center">
+      <div class="project-card__media">
         <img src="${item.img}" 
              onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden'); this.nextElementSibling.classList.add('flex');"
-             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" 
+             class="project-card__img" 
              alt="${item.alt}">
-        <div class="hidden absolute inset-0 items-center justify-center bg-zinc-800/50">
+        <div class="project-card__fallback hidden absolute inset-0 items-center justify-center bg-zinc-800/50">
             <span class="text-white/40 font-display font-medium uppercase tracking-[0.2em] text-lg lg:text-xl group-hover:text-white/60 transition-colors text-center px-6">${item.title}</span>
         </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] to-transparent"></div>
+        <div class="project-card__fade"></div>
       </div>
-      <div class="h-1/2 p-6 md:p-8 flex flex-col relative bg-[#1a1a1a]">
-        <div class="mb-4">
-          <span class="text-[10px] font-mono uppercase tracking-widest text-white/50 border border-white/10 px-2 py-1 rounded">${item.tag}</span>
+      <div class="project-card__content">
+        <div class="project-card__meta">
+          <span class="project-card__tag">${item.tag}</span>
         </div>
-        <h4 class="text-3xl font-display font-bold text-white mb-3 transition-colors">${item.title}</h4>
-        <p class="text-sm text-gray-400 leading-relaxed line-clamp-3 font-light">${item.desc}</p>
+        <h4 class="project-card__title">${item.title}</h4>
+        <p class="project-card__desc">${item.desc}</p>
         
-        <div class="mt-auto pt-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white opacity-60 group-hover:opacity-100 transition-opacity">
-          View Project <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+        <div class="project-card__cta">
+          <span>View Project</span>
+          <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
         </div>
       </div>
     `;
@@ -59,13 +56,6 @@ function renderList(key, items) {
     
     container.appendChild(card);
   });
-  
-  if (!isPwa) {
-    // Add spacer for horizontal tracks
-    const spacer = document.createElement('div');
-    spacer.className = "shrink-0 w-12";
-    container.appendChild(spacer);
-  }
 }
 
 // Pillar Interaction
