@@ -90,7 +90,7 @@ export const projectsData = [
     title: "Morpheus",
     tag: "Psychology Concept",
     desc: "Conceptual psychology project exploring dream-state cognition and identity frameworks.",
-    href: null,
+    href: "https://benwassa.github.io/template-morpheus/",
     img: "Morpheus.png",
     alt: "Morpheus - Psychology concept",
     theme: {

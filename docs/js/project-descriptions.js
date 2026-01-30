@@ -218,7 +218,7 @@ export const projectsData = [
     title: "Morpheus",
     tag: "Dream Journal",
     desc: "A dream journal designed for serious reflection. Structure for recording dreams, tracking patterns, and exploring emotional resonance without interpretation.",
-    href: "https://benwassa.github.io/Morpheus/",
+    href: "https://benwassa.github.io/template-morpheus/",
     img: "assets/projects/morpheus.png",
     alt: "Morpheus - Dream Journal",
     theme: {
