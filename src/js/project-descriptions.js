@@ -154,7 +154,7 @@ export const projectsData = [
     title: "Hearth",
     tag: "Shared Watchlist",
     desc: "Shared watchlist to decide what to watch together.",
-    href: "https://benwassa.github.io/hearthMVP/",
+    href: "https://benwassa.github.io/template-hearth/",
     img: "assets/projects/hearth.png",
     alt: "Hearth - Shared Watchlist PWA",
     theme: {
@@ -170,7 +170,7 @@ export const projectsData = [
     title: "PushUp Challenge",
     tag: "Fitness Challenge App",
     desc: "Pushup challenge tracker with community accountability.",
-    href: "https://benwassa.github.io/the-pushup-challenge-2025/",
+    href: "https://benwassa.github.io/template-pushup/",
     img: "assets/projects/pushup.png",
     alt: "PushUp Challenge - Fitness App",
     theme: {

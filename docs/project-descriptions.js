@@ -186,7 +186,7 @@ export const projectsData = [
     title: "Hearth",
     tag: "PWA",
     desc: "Placeholder description for Hearth.",
-    href: null,
+    href: "https://benwassa.github.io/template-hearth/",
     img: "Hearth.png",
     alt: "Hearth - PWA",
     theme: {
@@ -202,7 +202,7 @@ export const projectsData = [
     title: "thepushupchallenge",
     tag: "PWA",
     desc: "Placeholder description for thepushupchallenge.",
-    href: null,
+    href: "https://benwassa.github.io/template-pushup/",
     img: "thepushupchallenge.png",
     alt: "thepushupchallenge - PWA",
     theme: {
