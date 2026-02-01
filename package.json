@@ -4,8 +4,18 @@
   "description": "Benjamin P. Haddon - Narrative, Systems, Psyche Portfolio",
   "main": "index.js",
   "type": "module",
+  "watch": {
+    "build": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "js,css,html",
+      "quiet": false
+    }
+  },
   "scripts": {
-    "dev": "concurrently \"npm run tailwind:watch\" \"npm run server\"",
+    "watch": "npm-watch build",
+    "dev": "concurrently \"npm run watch\" \"npm run server\"",
     "build": "npm run update-cache-bust && npm run tailwind:build && npm run copy:assets",
     "tailwind:watch": "tailwindcss -i ./src/css/input.css -o ./docs/css/output.css --watch",
     "tailwind:build": "NODE_ENV=production tailwindcss -i ./src/css/input.css -o ./docs/css/output.css --minify",
@@ -14,14 +24,20 @@
     "server": "npx http-server docs -p 8080 -c-1",
     "deploy": "npm run build && echo 'Ready to deploy from docs/' "
   },
-  "keywords": ["portfolio", "narrative", "systems", "psyche"],
+  "keywords": [
+    "portfolio",
+    "narrative",
+    "systems",
+    "psyche"
+  ],
   "author": "Benjamin P. Haddon",
   "license": "MIT",
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
-    "concurrently": "^8.2.2",
-    "tailwindcss": "^3.4.1",
     "autoprefixer": "^10.4.17",
-    "postcss": "^8.4.32"
+    "concurrently": "^8.2.2",
+    "npm-watch": "^0.13.0",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.1"
   }
 }

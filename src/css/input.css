@@ -84,8 +84,10 @@
     --accent-color: #3b82f6; /* Default, overridden by inline styles */
     --card-bg: #09090b;      /* Deep Zinc-950 */
     
-    @apply w-full h-[400px] md:h-[440px] rounded-xl overflow-hidden relative cursor-pointer;
-    @apply flex flex-col;
+    /* Base Layout: Auto height by default (Narrative/Psychology) */
+    @apply w-full rounded-xl overflow-hidden relative cursor-pointer flex flex-col;
+    height: auto;
+    min-height: 400px;
     
     /* Base Styles */
     background-color: var(--card-bg);
@@ -95,6 +97,11 @@
     /* Initial State */
     transform: translateY(0);
     opacity: 0; /* Handled by animation */
+  }
+
+  /* Fixed Height ONLY for Apps (Systems) */
+  .project-card[data-type="app"] {
+    @apply h-[400px] md:h-[440px];
   }
 
   /* Hover State: The "Cinematic Lift" */
@@ -229,14 +236,19 @@
 
   /* Description */
   .project-card__desc {
-    @apply text-sm font-light text-zinc-400 line-clamp-3 leading-relaxed;
+    @apply text-sm font-light text-zinc-400 leading-relaxed;
+  }
+
+  /* Clamp description only on fixed-height App cards to prevent overflow */
+  .project-card[data-type="app"] .project-card__desc {
+    @apply line-clamp-3;
   }
 
   /* CTA / Footer */
   .project-card__cta {
-    @apply mt-auto pt-5 flex items-center text-xs font-bold uppercase tracking-widest;
     color: var(--accent-color);
-    opacity: 0.8;
+    opacity: 0;
+    transition: opacity 0.4s ease;
   }
 
   .project-card:hover .project-card__cta {

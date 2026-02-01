@@ -201,9 +201,9 @@ export const projectsData = [
   {
     title: "Narrative",
     tag: "Travel Photo Organizer",
-    desc: "A fast, offline-first travel photo organizer that sorts images by story role instead of chronology—turning moments into narrative.",
+    desc: "A travel photo organizer that groups images by story role to streamline storytelling and support video/content production.",
     href: "https://benwassa.github.io/Narrative/",
-    img: "assets/projects/Narrative_icon.png",
+    img: "assets/projects/narrative.png",
     alt: "Narrative - Travel Photo Organizer",
     theme: {
       primary: "#84cc16",

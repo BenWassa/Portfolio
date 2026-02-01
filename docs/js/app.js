@@ -67,8 +67,8 @@ function renderList(key, items) {
         <h4 class="project-card__title">${item.title}</h4>
         <p class="project-card__desc">${item.desc}</p>
         
-        <div class="project-card__cta">
-          <span class="mr-2">Explore</span>
+        <div class="project-card__cta mt-auto pt-5 flex items-center text-xs font-bold uppercase tracking-widest text-zinc-500 group-hover:text-white transition-colors">
+          <span class="mr-2">View Details</span>
           <span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
         </div>
       </div>
@@ -171,9 +171,12 @@ window.openModal = function(item) {
   }
 
   const linkBtn = document.getElementById('m-link');
+  const linkBtnText = document.getElementById('m-link-text');
+
   if(item.href) {
     linkBtn.href = item.href;
     linkBtn.style.display = 'inline-flex';
+    linkBtnText.textContent = item.type === 'app' ? 'Open App' : 'Open Narrative';
   } else {
     linkBtn.style.display = 'none';
   }
