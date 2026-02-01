@@ -139,7 +139,7 @@ export const projectsData = [
     tag: "Game",
     desc: "Minimalist punchbuggy game with instant feedback.",
     href: "https://benwassa.github.io/punchbuggy/",
-    img: "assets/projects/Punchbuggy.png",
+    img: "assets/projects/punchbuggy.png",
     alt: "Punchbuggy - Game PWA",
     theme: {
       primary: "#3b82f6",
@@ -187,7 +187,7 @@ export const projectsData = [
     tag: "Grappling Training Log",
     desc: "Offline-first training log for wrestlers.",
     href: "https://benwassa.github.io/wrestlePWA/",
-    img: "assets/projects/Wrestle.png",
+    img: "assets/projects/wrestle.png",
     alt: "Wrestle - Grappling Training Tool",
     theme: {
       primary: "#8b5cf6",

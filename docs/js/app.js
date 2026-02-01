@@ -27,11 +27,20 @@ function renderList(key, items) {
     // Set the CSS variable for the accent color
     card.style.setProperty('--accent-color', item.theme.primary);
     
-    // Determine Status Color
-    let statusColorClass = "bg-gray-500";
-    if (item.status === 'green') statusColorClass = "bg-emerald-500 text-emerald-500";
-    else if (item.status === 'yellow') statusColorClass = "bg-amber-500 text-amber-500";
-    else if (item.status === 'red') statusColorClass = "bg-rose-500 text-rose-500";
+    // Determine Status Color & Label
+    let statusColorClass = "text-gray-500 bg-gray-500/10 border-gray-500/20";
+    let statusLabel = "Unknown";
+    
+    if (item.status === 'green') {
+        statusColorClass = "text-emerald-400 bg-emerald-500/10 border-emerald-500/20";
+        statusLabel = "Active";
+    } else if (item.status === 'yellow') {
+        statusColorClass = "text-amber-400 bg-amber-500/10 border-amber-500/20";
+        statusLabel = "Research";
+    } else if (item.status === 'red') {
+        statusColorClass = "text-rose-400 bg-rose-500/10 border-rose-500/20";
+        statusLabel = "Concept";
+    }
 
     card.innerHTML = `
       <div class="project-card__media">
@@ -49,8 +58,9 @@ function renderList(key, items) {
       <div class="project-card__content">
         <div class="project-card__meta">
           <span class="project-card__tag">${item.tag}</span>
-          <div class="flex items-center gap-2" title="Project Status">
-            <div class="status-dot ${statusColorClass}"></div>
+          <div class="flex items-center gap-2 px-2 py-1 rounded-sm border ${statusColorClass}">
+            <div class="w-1.5 h-1.5 rounded-full bg-current shadow-[0_0_8px_currentColor]"></div>
+            <span class="text-[10px] font-mono uppercase tracking-wider font-bold">${statusLabel}</span>
           </div>
         </div>
         

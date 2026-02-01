@@ -176,10 +176,11 @@
 
   /* Image: Icon Sizing (Contained, not Covered) */
   .project-card[data-type="app"] .project-card__img {
-    @apply w-auto h-[60%] object-contain drop-shadow-2xl;
+    @apply w-full h-full object-contain drop-shadow-2xl;
     /* Reset the default cover styles */
     filter: grayscale(0%); 
     opacity: 1;
+    padding: 2rem; /* Add consistent padding to all icons */
   }
 
   /* Hover Effect: "Levitate" the icon */
