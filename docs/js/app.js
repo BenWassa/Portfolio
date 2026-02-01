@@ -27,19 +27,11 @@ function renderList(key, items) {
     // Set the CSS variable for the accent color
     card.style.setProperty('--accent-color', item.theme.primary);
     
-    // Determine Status Color and Text
-    let statusColorClass = "text-gray-500";
-    let statusText = "Unknown";
-    if (item.status === 'green') {
-      statusColorClass = "text-emerald-500";
-      statusText = "Active";
-    } else if (item.status === 'yellow') {
-      statusColorClass = "text-amber-500";
-      statusText = "Research";
-    } else if (item.status === 'red') {
-      statusColorClass = "text-rose-500";
-      statusText = "Concept";
-    }
+    // Determine Status Color
+    let statusColorClass = "bg-gray-500";
+    if (item.status === 'green') statusColorClass = "bg-emerald-500 text-emerald-500";
+    else if (item.status === 'yellow') statusColorClass = "bg-amber-500 text-amber-500";
+    else if (item.status === 'red') statusColorClass = "bg-rose-500 text-rose-500";
 
     card.innerHTML = `
       <div class="project-card__media">
@@ -57,7 +49,9 @@ function renderList(key, items) {
       <div class="project-card__content">
         <div class="project-card__meta">
           <span class="project-card__tag">${item.tag}</span>
-          <span class="status-label ${statusColorClass}">${statusText}</span>
+          <div class="flex items-center gap-2" title="Project Status">
+            <div class="status-dot ${statusColorClass}"></div>
+          </div>
         </div>
         
         <h4 class="project-card__title">${item.title}</h4>

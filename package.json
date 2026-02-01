@@ -6,10 +6,11 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"npm run tailwind:watch\" \"npm run server\"",
-    "build": "npm run tailwind:build && npm run copy:assets",
+    "build": "npm run update-cache-bust && npm run tailwind:build && npm run copy:assets",
     "tailwind:watch": "tailwindcss -i ./src/css/input.css -o ./docs/css/output.css --watch",
     "tailwind:build": "NODE_ENV=production tailwindcss -i ./src/css/input.css -o ./docs/css/output.css --minify",
     "copy:assets": "cp -r src/public/* docs/ 2>/dev/null || true && cp src/js/project-descriptions.js docs/js/ && cp src/html/index.html docs/index.html && cp src/js/app.js docs/js/app.js",
+    "update-cache-bust": "node -e \"const fs = require('fs'); const timestamp = Date.now(); let html = fs.readFileSync('src/html/index.html', 'utf8'); html = html.replace(/css\\/output\\.css\\?v=[^\\\"]*/g, 'css/output.css?v=' + timestamp); html = html.replace(/js\\/app\\.js\\?v=[^\\\"]*/g, 'js/app.js?v=' + timestamp); fs.writeFileSync('src/html/index.html', html); console.log('Cache busting updated with timestamp:', timestamp);\"",
     "server": "npx http-server docs -p 8080 -c-1",
     "deploy": "npm run build && echo 'Ready to deploy from docs/' "
   },
