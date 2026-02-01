@@ -84,15 +84,8 @@
     --accent-color: #3b82f6; /* Default, overridden by inline styles */
     --card-bg: #09090b; /* Deep Zinc-950 */
 
-    /* Base Layout: Auto height by default (Narrative/Psychology) */
-    @apply w-full rounded-xl overflow-hidden relative cursor-pointer flex flex-col;
-    height: auto;
-    min-height: 400px;
-
-    /* On smaller screens, let card grow to fit content */
-    @media (max-width: 1023px) {
-      min-height: auto;
-    }
+    /* Layout: use h-full to stretch in grid, flex-col for internal layout */
+    @apply w-full h-full rounded-xl overflow-hidden relative cursor-pointer flex flex-col;
 
     /* Base Styles */
     background-color: var(--card-bg);
@@ -104,9 +97,9 @@
     opacity: 0; /* Handled by animation */
   }
 
-  /* Fixed Height ONLY for Apps (Systems) */
+  /* Remove fixed height logic to let content + grid dictate balance */
   .project-card[data-type='app'] {
-    @apply h-auto md:h-auto;
+    /* Apps keep same logic */
   }
 
   /* Hover State: The "Cinematic Lift" */
@@ -241,12 +234,20 @@
   /* Description */
   .project-card__desc {
     @apply text-sm font-light text-zinc-400 leading-relaxed;
+    
+    /* Default Clamping (Narrative/Psyche) - roughly 6-7 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 6; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
-  /* Clamp description only on App cards to prevent overflow */
+  /* Specific Clamping for Apps (Systems) - tighter 3 lines */
   .project-card[data-type='app'] .project-card__desc {
-    @apply line-clamp-3;
+    -webkit-line-clamp: 3;
+    @apply line-clamp-3; /* Tailwind utility backup */
   }
+
 
   /* CTA / Footer */
   .project-card__cta {
