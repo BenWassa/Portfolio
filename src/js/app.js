@@ -17,7 +17,7 @@ const error = (...args) => {
 const APP_VERSION = '1.2.0';
 log(
   `%c📱 Portfolio App v${APP_VERSION} loaded`,
-  'color: #d4af37; font-weight: bold; font-size: 14px;',
+  'color: #d4af37; font-weight: bold; font-size: 14px;'
 );
 log(`📍 Built at: ${new Date().toLocaleString()}`);
 
@@ -25,9 +25,7 @@ log(`📍 Built at: ${new Date().toLocaleString()}`);
 if (typeof window !== 'undefined' && window.localStorage) {
   const cachedVersion = window.localStorage.getItem('portfolio_version');
   if (cachedVersion && cachedVersion !== APP_VERSION) {
-    warn(
-      `⚠️  Version change detected (${cachedVersion} → ${APP_VERSION}). Clearing cache...`,
-    );
+    warn(`⚠️  Version change detected (${cachedVersion} → ${APP_VERSION}). Clearing cache...`);
     // Clear old caches if available
     if ('caches' in window) {
       window.caches.keys().then((names) => {
