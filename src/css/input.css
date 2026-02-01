@@ -84,8 +84,10 @@
     --accent-color: #3b82f6; /* Default, overridden by inline styles */
     --card-bg: #09090b; /* Deep Zinc-950 */
 
-    /* Layout: use h-full to stretch in grid, flex-col for internal layout */
-    @apply w-full h-full rounded-xl overflow-hidden relative cursor-pointer flex flex-col;
+    /* Layout: Let content dictate height, no forced stretching */
+    @apply w-full rounded-xl overflow-hidden relative cursor-pointer flex flex-col;
+    height: auto;
+    min-height: 320px; /* Base minimum for visual consistency */
 
     /* Base Styles */
     background-color: var(--card-bg);
