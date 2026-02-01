@@ -1,27 +1,44 @@
 import '../css/input.css';
 import { projectsData, projectDescriptions } from './project-descriptions.js';
 
+const DEBUG = false;
+const logger = window.console;
+const log = (...args) => {
+  if (DEBUG) logger.log(...args);
+};
+const warn = (...args) => {
+  if (DEBUG) logger.warn(...args);
+};
+const error = (...args) => {
+  if (DEBUG) logger.error(...args);
+};
+
 // Version tracking
 const APP_VERSION = '1.2.0';
-console.log(`%c📱 Portfolio App v${APP_VERSION} loaded`, 'color: #d4af37; font-weight: bold; font-size: 14px;');
-console.log(`📍 Built at: ${new Date().toLocaleString()}`);
+log(
+  `%c📱 Portfolio App v${APP_VERSION} loaded`,
+  'color: #d4af37; font-weight: bold; font-size: 14px;',
+);
+log(`📍 Built at: ${new Date().toLocaleString()}`);
 
 // Cache busting: Force refresh if version changes
-if (typeof localStorage !== 'undefined') {
-  const cachedVersion = localStorage.getItem('portfolio_version');
+if (typeof window !== 'undefined' && window.localStorage) {
+  const cachedVersion = window.localStorage.getItem('portfolio_version');
   if (cachedVersion && cachedVersion !== APP_VERSION) {
-    console.warn(`⚠️  Version change detected (${cachedVersion} → ${APP_VERSION}). Clearing cache...`);
+    warn(
+      `⚠️  Version change detected (${cachedVersion} → ${APP_VERSION}). Clearing cache...`,
+    );
     // Clear old caches if available
     if ('caches' in window) {
-      caches.keys().then((names) => {
+      window.caches.keys().then((names) => {
         names.forEach((name) => {
-          console.log(`🗑️  Clearing cache: ${name}`);
-          caches.delete(name);
+          log(`🗑️  Clearing cache: ${name}`);
+          window.caches.delete(name);
         });
       });
     }
   }
-  localStorage.setItem('portfolio_version', APP_VERSION);
+  window.localStorage.setItem('portfolio_version', APP_VERSION);
 }
 
 // Organize projects by type
@@ -42,34 +59,34 @@ Object.keys(projects).forEach((key) => {
 
 // Initialize
 function init() {
-  console.log('🚀 Initializing app...');
-  
+  log('🚀 Initializing app...');
+
   // Diagnostic: Check if CSS is loaded
   const sampleCard = document.querySelector('.project-card');
   if (sampleCard) {
     const computedStyle = window.getComputedStyle(sampleCard);
     const minHeight = computedStyle.minHeight;
-    console.log(`✅ CSS loaded. Card min-height: ${minHeight}`);
+    log(`✅ CSS loaded. Card min-height: ${minHeight}`);
   }
 
   renderList('narrative', projects.narrative);
   renderList('pwa', projects.pwa);
   renderList('psych', projects.psych);
-  
-  console.log('✅ App initialization complete');
+
+  log('✅ App initialization complete');
 }
 
 function renderList(key, items) {
   const container = document.getElementById(`list-${key}`);
 
   if (!container) {
-    console.error(`❌ Container not found for key: ${key}`);
+    error(`❌ Container not found for key: ${key}`);
     return;
   }
 
-  console.log(`📦 Rendering ${items.length} items for "${key}"`);
+  log(`📦 Rendering ${items.length} items for "${key}"`);
 
-  items.forEach((item, index) => {
+  items.forEach((item, _index) => {
     const card = document.createElement('div');
     card.className = 'project-card group';
     card.setAttribute('data-type', item.type);
