@@ -71,13 +71,13 @@ Goal: Migrate the current Vite + vanilla JS portfolio to a component-based React
 **Goal:** Rebuild modal and interaction patterns in React.
 
 **Tasks:**
-- [ ] Build `ProjectModal` component with TypeScript props
-- [ ] Implement modal state management (useState or context)
-- [ ] Add keyboard navigation (ESC key, tab focus)
-- [ ] Implement click-away to close behavior
-- [ ] Add focus trapping and scroll lock
-- [ ] Connect card clicks to modal state
-- [ ] Port pillar expansion/collapse logic to React state
+- [x] Build `ProjectModal` component with TypeScript props
+- [x] Implement modal state management (useState or context)
+- [x] Add keyboard navigation (ESC key, tab focus)
+- [x] Implement click-away to close behavior
+- [x] Add focus trapping and scroll lock
+- [x] Connect card clicks to modal state
+- [x] Port pillar expansion/collapse logic to React state
 
 **Acceptance Criteria:**
 - Modal opens/closes smoothly with animations
