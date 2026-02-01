@@ -1523,30 +1523,38 @@ body {
   opacity: 1;
 }
 
-/* Image Container */
+/* -----------------------------------------------------------------
+     MEDIA CONTAINERS (Dynamic Aspect Ratios)
+     ----------------------------------------------------------------- */
+
+/* Base Media Container */
 
 .project-card__media {
   position: relative;
   display: flex;
-  aspect-ratio: 1 / 1;
   width: 100%;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   border-bottom-width: 1px;
   border-color: rgb(255 255 255 / 0.05);
-  background-color: rgb(0 0 0 / 0.5);
+  --tw-bg-opacity: 1;
+  background-color: rgb(9 9 11 / var(--tw-bg-opacity, 1));
   flex-shrink: 0;
+  transition: all 0.5s ease;
 }
 
-/* Landscape 3:2 aspect ratio for narrative and psychology projects */
+/* ---------------------------------------------------------------
+     TYPE 1: CINEMATIC (Narrative & Psychology) -> 3:2 Landscape
+     --------------------------------------------------------------- */
 
 .project-card[data-type="narrative"] .project-card__media,
   .project-card[data-type="psychology"] .project-card__media {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3/2;
 }
 
-.project-card__img {
+.project-card[data-type="narrative"] .project-card__img,
+  .project-card[data-type="psychology"] .project-card__img {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
@@ -1559,18 +1567,58 @@ body {
   filter: grayscale(20%);
 }
 
-/* PNG images should use contain to show full image */
+/* Hover Effect: Zoom & Colorize */
 
-.project-card__img[src$=".png"] {
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
-.project-card:hover .project-card__img {
+.project-card[data-type="narrative"]:hover .project-card__img,
+  .project-card[data-type="psychology"]:hover .project-card__img {
   transform: scale(1.05);
   opacity: 1;
   filter: grayscale(0%);
 }
+
+/* ---------------------------------------------------------------
+     TYPE 2: SYSTEMS / APPS (PWA) -> Square Icon
+     --------------------------------------------------------------- */
+
+.project-card[data-type="app"] .project-card__media {
+  aspect-ratio: 1 / 1;
+  padding: 2.5rem;
+  /* Generous padding for the icon */
+  /* "Spotlight" Gradient behind the icon using the card's accent color */
+  background: radial-gradient(
+      circle at center,
+      color-mix(in srgb, var(--accent-color) 15%, transparent) 0%,
+      transparent 70%
+    );
+}
+
+.project-card[data-type="app"] .project-card__img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  --tw-drop-shadow: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 500ms;
+  filter: grayscale(0%);
+  /* Icons should usually stay colored */
+  transform: scale(1);
+  opacity: 0.9;
+}
+
+/* Hover Effect: "Levitate" the icon */
+
+.project-card[data-type="app"]:hover .project-card__img {
+  transform: translateY(-5px) scale(1.05);
+  opacity: 1;
+  filter: drop-shadow(0 10px 15px color-mix(in srgb, var(--accent-color) 40%, transparent));
+}
+
+/* -----------------------------------------------------------------
+     CONTENT & TEXT
+     ----------------------------------------------------------------- */
 
 /* Content Container */
 
