@@ -5,34 +5,7 @@
  * Contains all project information including metadata, themes, and descriptions
  */
 
-export type ProjectStatus = 'active' | 'draft' | 'prototype';
-export type ProjectType = 'narrative' | 'app' | 'psychology';
-
-export type ProjectTheme = {
-  primary: string;
-  secondary: string;
-  tertiary: string;
-  bg: string;
-};
-
-export type Project = {
-  title: string;
-  tag: string;
-  desc: string;
-  href: string | null;
-  img: string;
-  alt: string;
-  theme: ProjectTheme;
-  status: ProjectStatus;
-  type: ProjectType;
-};
-
-export type ProjectDescription = {
-  portfolio: string;
-  full: string;
-};
-
-export type ProjectDescriptions = Record<string, ProjectDescription>;
+import type { Project, ProjectDescriptions } from '../types';
 
 export const projectsData: Project[] = [
   {
@@ -264,7 +237,7 @@ export const projectsData: Project[] = [
     tag: 'Personality Framework',
     desc: 'A personality framework mapping Big Five traits to ecological strategies rather than fixed types. Reveals how your personality serves you and where it might limit you.',
     href: 'https://benwassa.github.io/EcologicalConstellation/',
-    img: 'assets/projects/EcologicalConstellation.png',
+    img: 'assets/projects/ecological.png',
     alt: 'Ecological Constellation - Personality Framework',
     theme: {
       primary: '#06b6d4',
