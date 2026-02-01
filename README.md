@@ -136,12 +136,26 @@ Edit `src/js/project-descriptions.js`:
     tertiary: "#151720",
     bg: "#0A0B14"
   },
-  status: "green",           // green | yellow | red
+  status: "active",           // active | draft | prototype
   type: "narrative"          // narrative | app
 }
 ```
 
-### Customize Theme
+### Project Statuses
+
+Projects are categorized by development status, displayed as colored badges in the portfolio:
+
+- **Active** (green): Fully developed, live projects with complete functionality
+- **Draft** (yellow): Narrative projects in draft or development phase
+- **Prototype** (red): Application/system projects in prototype or development phase
+
+Status affects sorting order (Active first, then Draft, then Prototype) and visual presentation.
+
+For commission/project management (in `commissions/` folder), separate statuses are used:
+
+- **Not started**: Project planning phase, no assets verified
+- **In progress**: Assets being audited or generated
+- **Completed**: All required assets present and verified
 
 Edit `tailwind.config.js`:
 - Font families (Space Grotesk, Inter, Cormorant Garamond)

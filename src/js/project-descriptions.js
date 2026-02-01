@@ -19,7 +19,7 @@ export const projectsData = [
       tertiary: '#151720',
       bg: '#0A0B14',
     },
-    status: 'green',
+    status: 'active',
     type: 'narrative',
   },
   {
@@ -35,7 +35,7 @@ export const projectsData = [
       tertiary: '#1a1a1a',
       bg: '#0a0a0a',
     },
-    status: 'green',
+    status: 'active',
     type: 'narrative',
   },
   {
@@ -51,7 +51,7 @@ export const projectsData = [
       tertiary: '#111827',
       bg: '#0f172a',
     },
-    status: 'yellow',
+    status: 'draft',
     type: 'psychology',
   },
   {
@@ -67,7 +67,7 @@ export const projectsData = [
       tertiary: '#1c1917',
       bg: '#0c0a09',
     },
-    status: 'yellow',
+    status: 'draft',
     type: 'narrative',
   },
   {
@@ -83,7 +83,7 @@ export const projectsData = [
       tertiary: '#1e293b',
       bg: '#0f0f23',
     },
-    status: 'red',
+    status: 'draft',
     type: 'psychology',
   },
   {
@@ -99,7 +99,7 @@ export const projectsData = [
       tertiary: '#0b0b0f',
       bg: '#09090b',
     },
-    status: 'green',
+    status: 'active',
     type: 'app',
   },
   {
@@ -115,7 +115,7 @@ export const projectsData = [
       tertiary: '#1e293b',
       bg: '#0a0f18',
     },
-    status: 'green',
+    status: 'active',
     type: 'app',
   },
   {
@@ -131,7 +131,7 @@ export const projectsData = [
       tertiary: '#374151',
       bg: '#111827',
     },
-    status: 'green',
+    status: 'active',
     type: 'app',
   },
   {
@@ -147,7 +147,7 @@ export const projectsData = [
       tertiary: '#374151',
       bg: '#111827',
     },
-    status: 'green',
+    status: 'active',
     type: 'app',
   },
   {
@@ -163,7 +163,7 @@ export const projectsData = [
       tertiary: '#831843',
       bg: '#3f0f4d',
     },
-    status: 'green',
+    status: 'active',
     type: 'app',
   },
   {
@@ -179,7 +179,7 @@ export const projectsData = [
       tertiary: '#7f1d1d',
       bg: '#4c0519',
     },
-    status: 'green',
+    status: 'active',
     type: 'app',
   },
   {
@@ -195,7 +195,7 @@ export const projectsData = [
       tertiary: '#4c1d95',
       bg: '#2e1065',
     },
-    status: 'green',
+    status: 'active',
     type: 'app',
   },
   {
@@ -211,7 +211,7 @@ export const projectsData = [
       tertiary: '#4b5320',
       bg: '#202601',
     },
-    status: 'green',
+    status: 'active',
     type: 'app',
   },
   {
@@ -227,7 +227,7 @@ export const projectsData = [
       tertiary: '#4c1d95',
       bg: '#2e1065',
     },
-    status: 'green',
+    status: 'active',
     type: 'psychology',
   },
   {
@@ -243,7 +243,7 @@ export const projectsData = [
       tertiary: '#164e63',
       bg: '#082f4f',
     },
-    status: 'green',
+    status: 'active',
     type: 'psychology',
   },
 ];
