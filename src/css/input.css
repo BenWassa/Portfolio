@@ -130,46 +130,43 @@
   }
 
   /* -----------------------------------------------------------------
-     MEDIA CONTAINERS (Dynamic Aspect Ratios)
+     MEDIA CONTAINERS (Unified Aspect Ratio)
      ----------------------------------------------------------------- */
 
-  /* Base Media Container */
+  /* Base Media Container: SAME height for everyone now (3:2) */
   .project-card__media {
     @apply relative w-full overflow-hidden border-b border-white/5 flex items-center justify-center bg-zinc-950;
+    @apply aspect-[3/2]; /* Enforce the "Stage" dimensions */
     flex-shrink: 0;
     transition: all 0.5s ease;
   }
 
   /* ---------------------------------------------------------------
-     TYPE 1: CINEMATIC (Narrative & Psychology) -> 3:2 Landscape
+     TYPE 1: CINEMATIC (Landscape Images)
+     Narrative & Psychology projects use full-bleed cover art
      --------------------------------------------------------------- */
-  .project-card[data-type="narrative"] .project-card__media,
-  .project-card[data-type="psychology"] .project-card__media {
-    @apply aspect-[3/2];
-  }
-
-  .project-card[data-type="narrative"] .project-card__img,
-  .project-card[data-type="psychology"] .project-card__img {
+  
+  /* Default Image Style (assumes landscape/cover) */
+  .project-card__img {
     @apply w-full h-full object-cover transition-transform duration-700 ease-out;
     opacity: 0.8;
     filter: grayscale(20%);
   }
 
   /* Hover Effect: Zoom & Colorize */
-  .project-card[data-type="narrative"]:hover .project-card__img,
-  .project-card[data-type="psychology"]:hover .project-card__img {
+  .project-card:hover .project-card__img {
     transform: scale(1.05);
     opacity: 1;
     filter: grayscale(0%);
   }
 
   /* ---------------------------------------------------------------
-     TYPE 2: SYSTEMS / APPS (PWA) -> Square Icon
+     TYPE 2: ICONS (Square PNGs)
+     App projects use a centered icon on a "spotlight" background
      --------------------------------------------------------------- */
+  
+  /* Background: Spotlight Effect for Apps */
   .project-card[data-type="app"] .project-card__media {
-    @apply aspect-square p-10; /* Generous padding for the icon */
-
-    /* "Spotlight" Gradient behind the icon using the card's accent color */
     background: radial-gradient(
       circle at center,
       color-mix(in srgb, var(--accent-color) 15%, transparent) 0%,
@@ -177,18 +174,18 @@
     );
   }
 
+  /* Image: Icon Sizing (Contained, not Covered) */
   .project-card[data-type="app"] .project-card__img {
-    @apply w-full h-full object-contain drop-shadow-2xl transition-all duration-500;
-    filter: grayscale(0%); /* Icons should usually stay colored */
-    transform: scale(1);
-    opacity: 0.9;
+    @apply w-auto h-[60%] object-contain drop-shadow-2xl;
+    /* Reset the default cover styles */
+    filter: grayscale(0%); 
+    opacity: 1;
   }
 
   /* Hover Effect: "Levitate" the icon */
   .project-card[data-type="app"]:hover .project-card__img {
     transform: translateY(-5px) scale(1.05);
-    opacity: 1;
-    filter: drop-shadow(0 10px 15px color-mix(in srgb, var(--accent-color) 40%, transparent));
+    filter: drop-shadow(0 15px 30px color-mix(in srgb, var(--accent-color) 30%, transparent));
   }
 
 
@@ -213,7 +210,7 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
   
-  /* Status Dot (New) */
+  /* Status Dot */
   .status-dot {
     @apply w-1.5 h-1.5 rounded-full ml-2;
     box-shadow: 0 0 8px currentColor;
@@ -245,13 +242,12 @@
     opacity: 1;
   }
 
-  /* Animation Logic (Keep existing stagger logic) */
+  /* Animation Logic */
   .pillar.active .project-card {
     animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     opacity: 0; 
   }
   
-  /* ... keep your nth-child delay logic from previous CSS ... */
   .pillar.active .project-card:nth-child(n) { animation-delay: calc(0.2s + (0.05s * var(--item-index, 0))); }
   .pillar.active .project-card:nth-child(1) { --item-index: 1; }
   .pillar.active .project-card:nth-child(2) { --item-index: 2; }
