@@ -98,6 +98,11 @@
     opacity: 0;
   }
 
+  /* Ensure all cards reserve space for at least two lines of description */
+  .project-card__desc {
+    min-height: 3.25em;
+  }
+
   /* Hover State */
   .project-card:hover {
     transform: translateY(-8px);
