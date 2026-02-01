@@ -1,6 +1,29 @@
 import '../css/input.css';
 import { projectsData, projectDescriptions } from './project-descriptions.js';
 
+// Version tracking
+const APP_VERSION = '1.2.0';
+console.log(`%c📱 Portfolio App v${APP_VERSION} loaded`, 'color: #d4af37; font-weight: bold; font-size: 14px;');
+console.log(`📍 Built at: ${new Date().toLocaleString()}`);
+
+// Cache busting: Force refresh if version changes
+if (typeof localStorage !== 'undefined') {
+  const cachedVersion = localStorage.getItem('portfolio_version');
+  if (cachedVersion && cachedVersion !== APP_VERSION) {
+    console.warn(`⚠️  Version change detected (${cachedVersion} → ${APP_VERSION}). Clearing cache...`);
+    // Clear old caches if available
+    if ('caches' in window) {
+      caches.keys().then((names) => {
+        names.forEach((name) => {
+          console.log(`🗑️  Clearing cache: ${name}`);
+          caches.delete(name);
+        });
+      });
+    }
+  }
+  localStorage.setItem('portfolio_version', APP_VERSION);
+}
+
 // Organize projects by type
 const projects = {
   narrative: projectsData.filter((p) => p.type === 'narrative'),
@@ -19,15 +42,34 @@ Object.keys(projects).forEach((key) => {
 
 // Initialize
 function init() {
+  console.log('🚀 Initializing app...');
+  
+  // Diagnostic: Check if CSS is loaded
+  const sampleCard = document.querySelector('.project-card');
+  if (sampleCard) {
+    const computedStyle = window.getComputedStyle(sampleCard);
+    const minHeight = computedStyle.minHeight;
+    console.log(`✅ CSS loaded. Card min-height: ${minHeight}`);
+  }
+
   renderList('narrative', projects.narrative);
   renderList('pwa', projects.pwa);
   renderList('psych', projects.psych);
+  
+  console.log('✅ App initialization complete');
 }
 
 function renderList(key, items) {
   const container = document.getElementById(`list-${key}`);
 
-  items.forEach((item) => {
+  if (!container) {
+    console.error(`❌ Container not found for key: ${key}`);
+    return;
+  }
+
+  console.log(`📦 Rendering ${items.length} items for "${key}"`);
+
+  items.forEach((item, index) => {
     const card = document.createElement('div');
     card.className = 'project-card group';
     card.setAttribute('data-type', item.type);

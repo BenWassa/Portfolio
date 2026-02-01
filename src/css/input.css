@@ -89,6 +89,11 @@
     height: auto;
     min-height: 400px;
 
+    /* On smaller screens, let card grow to fit content */
+    @media (max-width: 1023px) {
+      min-height: auto;
+    }
+
     /* Base Styles */
     background-color: var(--card-bg);
     border: 1px solid rgba(255, 255, 255, 0.08);
