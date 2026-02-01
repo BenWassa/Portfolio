@@ -1,5 +1,5 @@
 import '../css/input.css';
-import { projectsData, projectDescriptions } from './project-descriptions.js';
+import { projectsData, projectDescriptions } from './project-descriptions.ts';
 
 const DEBUG = false;
 const logger = window.console;

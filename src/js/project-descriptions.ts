@@ -1,11 +1,40 @@
-/* project-descriptions.js */
+/* project-descriptions.ts */
 
 /**
  * Complete project data for the portfolio
  * Contains all project information including metadata, themes, and descriptions
  */
 
-export const projectsData = [
+export type ProjectStatus = 'active' | 'draft' | 'prototype';
+export type ProjectType = 'narrative' | 'app' | 'psychology';
+
+export type ProjectTheme = {
+  primary: string;
+  secondary: string;
+  tertiary: string;
+  bg: string;
+};
+
+export type Project = {
+  title: string;
+  tag: string;
+  desc: string;
+  href: string | null;
+  img: string;
+  alt: string;
+  theme: ProjectTheme;
+  status: ProjectStatus;
+  type: ProjectType;
+};
+
+export type ProjectDescription = {
+  portfolio: string;
+  full: string;
+};
+
+export type ProjectDescriptions = Record<string, ProjectDescription>;
+
+export const projectsData: Project[] = [
   {
     title: 'Skywalker',
     tag: 'Movie-Narrative Guide',
@@ -248,7 +277,7 @@ export const projectsData = [
   },
 ];
 
-export const projectDescriptions = {
+export const projectDescriptions: ProjectDescriptions = {
   skywalker: {
     portfolio:
       'A comprehensive UX playground for personal systems and compounding routines with advanced interaction patterns.',
