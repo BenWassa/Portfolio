@@ -3,9 +3,9 @@ import { projectsData, projectDescriptions } from './project-descriptions.js';
 
 // Organize projects by type
 const projects = {
-  narrative: projectsData.filter(p => p.type === 'narrative'),
-  pwa: projectsData.filter(p => p.type === 'app'),
-  psych: projectsData.filter(p => p.type === 'psychology')
+  narrative: projectsData.filter((p) => p.type === 'narrative'),
+  pwa: projectsData.filter((p) => p.type === 'app'),
+  psych: projectsData.filter((p) => p.type === 'psychology'),
 };
 
 // State
@@ -13,7 +13,7 @@ let activePillarId = null;
 
 // Sort projects by status
 const statusOrder = { green: 1, yellow: 2, red: 3 };
-Object.keys(projects).forEach(key => {
+Object.keys(projects).forEach((key) => {
   projects[key].sort((a, b) => statusOrder[a.status] - statusOrder[b.status]);
 });
 
@@ -26,27 +26,27 @@ function init() {
 
 function renderList(key, items) {
   const container = document.getElementById(`list-${key}`);
-  
+
   items.forEach((item) => {
     const card = document.createElement('div');
-    card.className = "project-card group";
+    card.className = 'project-card group';
     card.setAttribute('data-type', item.type);
     // Set the CSS variable for the accent color
     card.style.setProperty('--accent-color', item.theme.primary);
-    
+
     // Determine Status Color & Label
-    let statusColorClass = "text-gray-500 bg-gray-500/10 border-gray-500/20";
-    let statusLabel = "Unknown";
-    
+    let statusColorClass = 'text-gray-500 bg-gray-500/10 border-gray-500/20';
+    let statusLabel = 'Unknown';
+
     if (item.status === 'green') {
-        statusColorClass = "text-emerald-400 bg-emerald-500/10 border-emerald-500/20";
-        statusLabel = "Active";
+      statusColorClass = 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20';
+      statusLabel = 'Active';
     } else if (item.status === 'yellow') {
-        statusColorClass = "text-amber-400 bg-amber-500/10 border-amber-500/20";
-        statusLabel = "Research";
+      statusColorClass = 'text-amber-400 bg-amber-500/10 border-amber-500/20';
+      statusLabel = 'Research';
     } else if (item.status === 'red') {
-        statusColorClass = "text-rose-400 bg-rose-500/10 border-rose-500/20";
-        statusLabel = "Concept";
+      statusColorClass = 'text-rose-400 bg-rose-500/10 border-rose-500/20';
+      statusLabel = 'Concept';
     }
 
     card.innerHTML = `
@@ -80,7 +80,7 @@ function renderList(key, items) {
         </div>
       </div>
     `;
-    
+
     // Mouse Move Effect for the "Flashlight" gradient
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
@@ -90,15 +90,15 @@ function renderList(key, items) {
 
     card.onclick = (e) => {
       e.stopPropagation();
-      openModal(item);
+      window.openModal(item);
     };
-    
+
     container.appendChild(card);
   });
 }
 
 // Pillar Interaction
-window.activatePillar = function(id) {
+window.activatePillar = function (id) {
   if (activePillarId === id) return;
 
   const container = document.querySelector('.pillar-container');
@@ -108,7 +108,7 @@ window.activatePillar = function(id) {
   const target = document.getElementById(`pillar-${id}`);
   const closeBtn = document.getElementById('close-btn');
 
-  pillars.forEach(p => {
+  pillars.forEach((p) => {
     if (p === target) {
       p.classList.remove('inactive');
       p.classList.add('active');
@@ -126,7 +126,7 @@ window.activatePillar = function(id) {
   setTimeout(() => closeBtn.classList.remove('opacity-0'), 100);
 };
 
-window.resetView = function() {
+window.resetView = function () {
   if (!activePillarId) return;
 
   const container = document.querySelector('.pillar-container');
@@ -135,7 +135,7 @@ window.resetView = function() {
   const pillars = document.querySelectorAll('.pillar');
   const closeBtn = document.getElementById('close-btn');
 
-  pillars.forEach(p => {
+  pillars.forEach((p) => {
     p.classList.remove('active', 'inactive');
     p.setAttribute('aria-expanded', 'false');
   });
@@ -149,7 +149,7 @@ window.resetView = function() {
 // Modal Logic
 const modal = document.getElementById('modal');
 
-window.openModal = function(item) {
+window.openModal = function (item) {
   const projectKey = item.title.toLowerCase();
   const fullDesc = projectDescriptions[projectKey]?.full || item.desc;
 
@@ -158,29 +158,29 @@ window.openModal = function(item) {
   document.getElementById('m-img').src = item.img;
   document.getElementById('m-img').alt = item.alt;
   document.getElementById('m-tag').textContent = item.tag;
-  
+
   // Status styling
   const dot = document.getElementById('m-status-dot');
   const statusText = document.getElementById('m-status-text');
-  
-  if(item.status === 'green') {
-    dot.className = "w-2 h-2 rounded-full bg-emerald-500 animate-pulse";
-    statusText.className = "text-emerald-400";
-    statusText.textContent = "Active Development";
-  } else if(item.status === 'yellow') {
-    dot.className = "w-2 h-2 rounded-full bg-yellow-500";
-    statusText.className = "text-yellow-400";
-    statusText.textContent = "Research Phase";
+
+  if (item.status === 'green') {
+    dot.className = 'w-2 h-2 rounded-full bg-emerald-500 animate-pulse';
+    statusText.className = 'text-emerald-400';
+    statusText.textContent = 'Active Development';
+  } else if (item.status === 'yellow') {
+    dot.className = 'w-2 h-2 rounded-full bg-yellow-500';
+    statusText.className = 'text-yellow-400';
+    statusText.textContent = 'Research Phase';
   } else {
-    dot.className = "w-2 h-2 rounded-full bg-red-500";
-    statusText.className = "text-red-400";
-    statusText.textContent = "Concept / Archived";
+    dot.className = 'w-2 h-2 rounded-full bg-red-500';
+    statusText.className = 'text-red-400';
+    statusText.textContent = 'Concept / Archived';
   }
 
   const linkBtn = document.getElementById('m-link');
   const linkBtnText = document.getElementById('m-link-text');
 
-  if(item.href) {
+  if (item.href) {
     linkBtn.href = item.href;
     linkBtn.style.display = 'inline-flex';
     linkBtnText.textContent = item.type === 'app' ? 'Open App' : 'Open Narrative';
@@ -193,7 +193,7 @@ window.openModal = function(item) {
   modal.classList.add('open');
 };
 
-window.closeModal = function() {
+window.closeModal = function () {
   modal.classList.remove('open');
   setTimeout(() => {
     modal.classList.add('hidden');
@@ -203,8 +203,8 @@ window.closeModal = function() {
 // Keyboard Navigation
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
-    if (modal.classList.contains('open')) closeModal();
-    else resetView();
+    if (modal.classList.contains('open')) window.closeModal();
+    else window.resetView();
   }
 });
 
