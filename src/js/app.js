@@ -11,6 +11,12 @@ const projects = {
 // State
 let activePillarId = null;
 
+// Sort projects by status
+const statusOrder = { green: 1, yellow: 2, red: 3 };
+Object.keys(projects).forEach(key => {
+  projects[key].sort((a, b) => statusOrder[a.status] - statusOrder[b.status]);
+});
+
 // Initialize
 function init() {
   renderList('narrative', projects.narrative);

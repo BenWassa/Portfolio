@@ -101,7 +101,7 @@
 
   /* Fixed Height ONLY for Apps (Systems) */
   .project-card[data-type="app"] {
-    @apply h-[400px] md:h-[440px];
+    @apply h-auto md:h-auto;
   }
 
   /* Hover State: The "Cinematic Lift" */
@@ -239,8 +239,9 @@
     @apply text-sm font-light text-zinc-400 leading-relaxed;
   }
 
-  /* Clamp description only on fixed-height App cards to prevent overflow */
-  .project-card[data-type="app"] .project-card__desc {
+  /* Clamp description on App and Narrative cards to prevent overflow */
+  .project-card[data-type="app"] .project-card__desc,
+  .project-card[data-type="narrative"] .project-card__desc {
     @apply line-clamp-3;
   }
 

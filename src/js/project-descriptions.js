@@ -107,7 +107,7 @@ export const projectsData = [
     tag: "Fitness Intelligence",
     desc: "Fitness intelligence dashboard for strength, endurance, recovery.",
     href: "https://benwassa.github.io/STARK/",
-    img: "assets/projects/STARK.png",
+    img: "assets/projects/stark.png",
     alt: "STARK - Fitness Intelligence PWA",
     theme: {
       primary: "#06b6d4",
@@ -123,7 +123,7 @@ export const projectsData = [
     tag: "Language Learning Tracker",
     desc: "Vocabulary and grammar studying tool.",
     href: "https://benwassa.github.io/Vox_Showcase/",
-    img: "assets/projects/Vox.png",
+    img: "assets/projects/vox.png",
     alt: "Vox - Language-learning dashboard",
     theme: {
       primary: "#3b82f6",
