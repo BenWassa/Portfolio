@@ -6,23 +6,26 @@ Production-ready portfolio showcasing three throughlines: **Narrative** (mythic 
 
 https://benwassa.github.io/Portfolio/
 
-Built with Tailwind CSS, vanilla JavaScript (ES6 modules), and optimized for production.
+Built with React, TypeScript, Vite, and Tailwind CSS.
 
 ## Project Structure
 
 ```
 src/
-├── html/index.html              # Main HTML template
-├── css/input.css                # Tailwind input CSS (compiled → docs/)
-├── js/
-│   ├── app.js                   # Application logic & interactions
-│   └── project-descriptions.js  # Project data & metadata
+├── index.html                   # Vite HTML entry
+├── main.tsx                     # React entry
+├── App.tsx                      # App shell
+├── components/                  # UI components
+├── css/input.css                # Tailwind input CSS
+├── data/projects.ts             # Typed data helpers
+├── hooks/                       # Custom hooks
+├── js/project-descriptions.ts   # Project data & descriptions
+├── types.ts                     # Shared types
 └── public/                      # Static assets (images, etc.)
 
 docs/
 ├── index.html                   # Built HTML
-├── css/output.css               # Minified Tailwind CSS
-└── js/                          # Built JavaScript
+└── assets/                      # Built assets
 ```
 
 ## Setup & Development
@@ -41,8 +44,7 @@ Watch for changes and serve locally:
 npm run dev
 ```
 
-- Tailwind CSS compiler runs in watch mode
-- Local server starts on `http://localhost:8080`
+- Vite dev server runs on `http://localhost:5173`
 - Changes rebuild automatically
 
 ### Production Build
@@ -53,8 +55,7 @@ Generate optimized assets:
 npm run build
 ```
 
-- Minifies Tailwind CSS
-- Copies assets to `docs/`
+- Builds optimized assets to `docs/`
 - Ready for deployment
 
 ### Deploy
@@ -88,8 +89,8 @@ The `docs/` folder is ready for static hosting.
 
 🔧 **Developer-Friendly**
 - Centralized project data layer
-- Dynamic theme colors from metadata
-- ES6 modules with clean separation
+- Typed project metadata and props
+- React components with reusable structure
 - Utility-first CSS (Tailwind)
 
 ## Projects
@@ -113,7 +114,7 @@ The `docs/` folder is ready for static hosting.
 
 - **HTML5** - Semantic structure
 - **Tailwind CSS** - Utility-first, compiled to production-optimized CSS
-- **Vanilla JavaScript** - ES6 modules, no frameworks
+- **React + TypeScript** - Component-based UI with type safety
 - **PostCSS** - Autoprefixing & processing
 - **GitHub Pages** - Static hosting from `docs/` folder
 
@@ -121,7 +122,7 @@ The `docs/` folder is ready for static hosting.
 
 ### Update Projects
 
-Edit `src/js/project-descriptions.js`:
+Edit `src/js/project-descriptions.ts`:
 
 ```javascript
 {
@@ -137,7 +138,7 @@ Edit `src/js/project-descriptions.js`:
     bg: "#0A0B14"
   },
   status: "active",           // active | draft | prototype
-  type: "narrative"          // narrative | app
+  type: "narrative"          // narrative | app | psychology
 }
 ```
 

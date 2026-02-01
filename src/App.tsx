@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Pillar } from './components/Pillar';
 import { ProjectModal } from './components/ProjectModal';
 import type { Project } from './types';
-import { getSortedProjects } from './data/projects';
+import { useProjects } from './hooks/useProjects';
 
 const App: React.FC = () => {
   const [activePillar, setActivePillar] = useState<string | null>(null);
@@ -10,14 +10,7 @@ const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const closeTimerRef = useRef<number | null>(null);
 
-  const projectsByType = useMemo(
-    () => ({
-      narrative: getSortedProjects('narrative'),
-      app: getSortedProjects('app'),
-      psychology: getSortedProjects('psychology'),
-    }),
-    [],
-  );
+  const projectsByType = useProjects();
 
   const handlePillarActivate = (id: string) => {
     if (activePillar === id) return;

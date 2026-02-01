@@ -94,7 +94,7 @@ Goal: Migrate the current Vite + vanilla JS portfolio to a component-based React
 - [x] Create typed utilities for project filtering by type
 - [x] Implement status-based sorting logic
 - [x] Add project grouping by pillar (narrative/systems/psyche)
-- [ ] Create custom hooks for project data access
+- [x] Create custom hooks for project data access
 - [x] Verify sorting order: active → draft → prototype
 
 **Acceptance Criteria:**
@@ -110,11 +110,11 @@ Goal: Migrate the current Vite + vanilla JS portfolio to a component-based React
 
 **Tasks:**
 - [ ] Visual parity check against current v1.2.0
-- [ ] Optimize image loading (lazy loading, suspense)
+- [x] Optimize image loading (lazy loading, suspense)
 - [ ] Add loading states for async operations
 - [ ] Run Lighthouse audit and address issues
-- [ ] ESLint + Prettier pass on all TypeScript files
-- [ ] Update README with new tech stack details
+- [x] ESLint + Prettier pass on all TypeScript files
+- [x] Update README with new tech stack details
 - [ ] Test deploy to GitHub Pages
 
 **Acceptance Criteria:**

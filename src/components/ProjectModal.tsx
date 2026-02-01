@@ -121,6 +121,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
             id="m-img"
             src={project.img}
             alt={project.alt}
+            loading="lazy"
+            decoding="async"
           />
           <div
             className="absolute inset-0 bg-gradient-to-t from-[#121212] to-transparent md:bg-gradient-to-r"

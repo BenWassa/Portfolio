@@ -88,7 +88,7 @@ export const Pillar: React.FC<PillarProps> = ({
             </p>
           </header>
 
-          <div className="flex-1 overflow-y-auto overflow-x-hidden no-scrollbar grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-8 w-full pr-6">
+          <div className="flex-1 overflow-y-auto overflow-x-hidden no-scrollbar grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-8 w-full pr-6 items-start content-start auto-rows-max">
             {projects.map((project) => (
               <ProjectCard key={project.title} project={project} onClick={onProjectClick} />
             ))}
