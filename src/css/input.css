@@ -76,35 +76,29 @@
   }
 
   /* -----------------------------------------------------------------
-     Cinematic Card UI 
+     Cinematic Card UI (Refined v1.3)
      ----------------------------------------------------------------- */
 
   .project-card {
     /* Variables */
-    --accent-color: #3b82f6; /* Default, overridden by inline styles */
-    --card-bg: #09090b; /* Deep Zinc-950 */
+    --accent-color: #3b82f6;
+    --card-bg: #09090b;
 
-    /* Layout: Let content dictate height, no forced stretching */
+    /* Layout: Flex column is CRITICAL for the sticky footer */
     @apply w-full rounded-xl overflow-hidden relative cursor-pointer flex flex-col;
-    height: auto;
-    min-height: 320px; /* Base minimum for visual consistency */
 
-    /* Base Styles */
+    /* Remove rigid min-heights that cause "goofy" space. 
+       Let the grid stretch them equally (h-full is default in grid items). */
     background-color: var(--card-bg);
     border: 1px solid rgba(255, 255, 255, 0.08);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
     /* Initial State */
     transform: translateY(0);
-    opacity: 0; /* Handled by animation */
+    opacity: 0;
   }
 
-  /* Remove fixed height logic to let content + grid dictate balance */
-  .project-card[data-type='app'] {
-    /* Apps keep same logic */
-  }
-
-  /* Hover State: The "Cinematic Lift" */
+  /* Hover State */
   .project-card:hover {
     transform: translateY(-8px);
     border-color: rgba(255, 255, 255, 0.2);
@@ -113,7 +107,7 @@
       0 0 20px -5px color-mix(in srgb, var(--accent-color) 30%, transparent);
   }
 
-  /* The "Ambient Light" Gradient at the top */
+  /* Ambient Light Gradient */
   .project-card::before {
     content: '';
     position: absolute;
@@ -137,42 +131,30 @@
   }
 
   /* -----------------------------------------------------------------
-     MEDIA CONTAINERS (Unified Aspect Ratio)
+     MEDIA CONTAINERS
      ----------------------------------------------------------------- */
 
-  /* Base Media Container: SAME height for everyone now (3:2) */
   .project-card__media {
     @apply relative w-full overflow-hidden border-b border-white/5 flex items-center justify-center bg-zinc-950;
-    @apply aspect-[3/2]; /* Enforce the "Stage" dimensions */
+    @apply aspect-[16/9]; /* Slightly shorter than 3/2 to save vertical space */
     flex-shrink: 0;
     transition: all 0.5s ease;
   }
 
-  /* ---------------------------------------------------------------
-     TYPE 1: CINEMATIC (Landscape Images)
-     Narrative & Psychology projects use full-bleed cover art
-     --------------------------------------------------------------- */
-
-  /* Default Image Style (assumes landscape/cover) */
+  /* TYPE 1: CINEMATIC (Narrative/Psyche) */
   .project-card__img {
     @apply w-full h-full object-cover transition-transform duration-700 ease-out;
     opacity: 0.8;
     filter: grayscale(20%);
   }
 
-  /* Hover Effect: Zoom & Colorize */
   .project-card:hover .project-card__img {
     transform: scale(1.05);
     opacity: 1;
     filter: grayscale(0%);
   }
 
-  /* ---------------------------------------------------------------
-     TYPE 2: ICONS (Square PNGs)
-     App projects use a centered icon on a "spotlight" background
-     --------------------------------------------------------------- */
-
-  /* Background: Spotlight Effect for Apps */
+  /* TYPE 2: ICONS (Apps) */
   .project-card[data-type='app'] .project-card__media {
     background: radial-gradient(
       circle at center,
@@ -181,31 +163,27 @@
     );
   }
 
-  /* Image: Icon Sizing (Contained, not Covered) */
   .project-card[data-type='app'] .project-card__img {
     @apply w-full h-full object-contain drop-shadow-2xl;
-    /* Reset the default cover styles */
     filter: grayscale(0%);
     opacity: 1;
-    padding: 2rem; /* Add consistent padding to all icons */
+    padding: 1.5rem; /* Reduced padding slightly to make icon larger */
   }
 
-  /* Hover Effect: "Levitate" the icon */
   .project-card[data-type='app']:hover .project-card__img {
     transform: translateY(-5px) scale(1.05);
-    filter: drop-shadow(0 15px 30px color-mix(in srgb, var(--accent-color) 30%, transparent));
   }
 
   /* -----------------------------------------------------------------
      CONTENT & TEXT
      ----------------------------------------------------------------- */
 
-  /* Content Container */
+  /* Content Container: Flex-1 ensures it fills the available height */
   .project-card__content {
-    @apply p-6 flex flex-col flex-1 relative z-10;
+    @apply p-5 flex flex-col flex-1 relative z-10;
   }
 
-  /* Meta Data (Tag + Status) */
+  /* Meta Data */
   .project-card__meta {
     @apply flex items-center justify-between mb-3;
   }
@@ -217,15 +195,9 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  /* Status Dot */
-  .status-dot {
-    @apply w-1.5 h-1.5 rounded-full ml-2;
-    box-shadow: 0 0 8px currentColor;
-  }
-
   /* Title */
   .project-card__title {
-    @apply text-2xl font-display font-bold mb-3 text-white leading-tight;
+    @apply text-xl font-display font-bold mb-2 text-white leading-tight;
     transition: color 0.3s ease;
   }
 
@@ -233,33 +205,44 @@
     color: var(--accent-color);
   }
 
-  /* Description */
+  /* Description: UNIFIED CLAMPING 
+     This fixes the "Narrative too long" and "Apps too short" issue.
+     Everyone gets 4 lines. This ensures row uniformity. */
   .project-card__desc {
-    @apply text-sm font-light text-zinc-400 leading-relaxed;
-    
-    /* Default Clamping (Narrative/Psyche) - roughly 6-7 lines */
+    @apply text-sm font-light text-zinc-400 leading-relaxed mb-4;
     display: -webkit-box;
-    -webkit-line-clamp: 6; 
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
-  /* Specific Clamping for Apps (Systems) - tighter 3 lines */
+  /* Remove special clamp for apps so they can breathe */
   .project-card[data-type='app'] .project-card__desc {
-    -webkit-line-clamp: 3;
-    @apply line-clamp-3; /* Tailwind utility backup */
+    -webkit-line-clamp: 4;
   }
 
-
-  /* CTA / Footer */
+  /* CTA / Footer: STICKY BOTTOM 
+     mt-auto pushes this to the bottom of the flex container, 
+     filling the "empty space" naturally. */
   .project-card__cta {
+    @apply mt-auto pt-4 border-t border-white/5;
     color: var(--accent-color);
-    opacity: 0;
+    opacity: 1; /* Always visible on mobile/desktop now */
+    display: flex;
+    align-items: center;
+    font-size: 0.75rem; /* text-xs */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
     transition: opacity 0.4s ease;
   }
 
+  /* Optional: Dim it slightly until hover if you prefer */
+  .project-card__cta {
+    @apply text-zinc-500;
+  }
   .project-card:hover .project-card__cta {
-    opacity: 1;
+    @apply text-white;
   }
 
   /* Animation Logic */
@@ -326,6 +309,44 @@
 
   #modal.open #modal-content {
     transform: translateY(0) !important;
+  }
+
+  /* Modal layout: landscape on top for narrative/psych, square left for apps */
+  #modal-content[data-type='narrative'],
+  #modal-content[data-type='psychology'] {
+    flex-direction: column !important;
+  }
+
+  #modal-content[data-type='app'] {
+    flex-direction: column;
+  }
+
+  @media (min-width: 768px) {
+    #modal-content[data-type='app'] {
+      flex-direction: row;
+    }
+  }
+
+  #modal-content[data-type='narrative'] #m-media,
+  #modal-content[data-type='psychology'] #m-media {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+  }
+
+  #modal-content[data-type='app'] #m-media {
+    height: auto !important;
+    aspect-ratio: 1 / 1;
+  }
+
+  #modal-content[data-type='app'] #m-img {
+    object-fit: contain;
+    padding: 1.5rem;
+  }
+
+  #modal-content[data-type='narrative'] #m-overlay,
+  #modal-content[data-type='psychology'] #m-overlay {
+    background-image: linear-gradient(to top, #121212, transparent) !important;
   }
 }
 

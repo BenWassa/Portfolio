@@ -35,7 +35,7 @@ const projects = {
 let activePillarId = null;
 
 // Sort projects by status
-const statusOrder = { green: 1, yellow: 2, red: 3 };
+const statusOrder = { active: 1, draft: 2, prototype: 3 };
 Object.keys(projects).forEach((key) => {
   projects[key].sort((a, b) => statusOrder[a.status] - statusOrder[b.status]);
 });
@@ -80,15 +80,15 @@ function renderList(key, items) {
     let statusColorClass = 'text-gray-500 bg-gray-500/10 border-gray-500/20';
     let statusLabel = 'Unknown';
 
-    if (item.status === 'green') {
+    if (item.status === 'active') {
       statusColorClass = 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20';
       statusLabel = 'Active';
-    } else if (item.status === 'yellow') {
+    } else if (item.status === 'draft') {
       statusColorClass = 'text-amber-400 bg-amber-500/10 border-amber-500/20';
-      statusLabel = 'Research';
-    } else if (item.status === 'red') {
+      statusLabel = 'Draft';
+    } else if (item.status === 'prototype') {
       statusColorClass = 'text-rose-400 bg-rose-500/10 border-rose-500/20';
-      statusLabel = 'Concept';
+      statusLabel = 'Prototype';
     }
 
     card.innerHTML = `
@@ -194,12 +194,14 @@ const modal = document.getElementById('modal');
 window.openModal = function (item) {
   const projectKey = item.title.toLowerCase();
   const fullDesc = projectDescriptions[projectKey]?.full || item.desc;
+  const modalContent = document.getElementById('modal-content');
 
   document.getElementById('m-title').textContent = item.title;
   document.getElementById('m-desc').textContent = fullDesc;
   document.getElementById('m-img').src = item.img;
   document.getElementById('m-img').alt = item.alt;
   document.getElementById('m-tag').textContent = item.tag;
+  if (modalContent) modalContent.setAttribute('data-type', item.type);
 
   // Status styling
   const dot = document.getElementById('m-status-dot');
