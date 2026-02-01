@@ -203,7 +203,7 @@
 
   /* Content Container */
   .project-card__content {
-    @apply p-6 flex flex-col flex-grow relative z-10;
+    @apply p-6 flex flex-col flex-1 relative z-10;
   }
 
   /* Meta Data (Tag + Status) */
@@ -239,9 +239,8 @@
     @apply text-sm font-light text-zinc-400 leading-relaxed;
   }
 
-  /* Clamp description on App and Narrative cards to prevent overflow */
-  .project-card[data-type="app"] .project-card__desc,
-  .project-card[data-type="narrative"] .project-card__desc {
+  /* Clamp description only on App cards to prevent overflow */
+  .project-card[data-type="app"] .project-card__desc {
     @apply line-clamp-3;
   }
 
@@ -275,4 +274,36 @@
   .pillar.active .project-card:nth-child(10) { --item-index: 10; }
   .pillar.active .project-card:nth-child(n+11) { opacity: 1; animation: none; }
 
+  /* -----------------------------------------------------------------
+     Modal Styles
+     ----------------------------------------------------------------- */
+  
+  #modal {
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+
+  #modal.open {
+    @apply opacity-100 visible;
+  }
+
+  #modal-content {
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  #modal.open #modal-content {
+    transform: translateY(0) !important;
+  }
+
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
