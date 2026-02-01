@@ -1,3 +1,4 @@
+import '../css/input.css';
 import { projectsData, projectDescriptions } from './project-descriptions.js';
 
 // Organize projects by type

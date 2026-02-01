@@ -4,25 +4,11 @@
   "description": "Benjamin P. Haddon - Narrative, Systems, Psyche Portfolio",
   "main": "index.js",
   "type": "module",
-  "watch": {
-    "build": {
-      "patterns": [
-        "src"
-      ],
-      "extensions": "js,css,html",
-      "quiet": false
-    }
-  },
   "scripts": {
-    "watch": "npm-watch build",
-    "dev": "concurrently \"npm run watch\" \"npm run server\"",
-    "build": "npm run update-cache-bust && npm run tailwind:build && npm run copy:assets",
-    "tailwind:watch": "tailwindcss -i ./src/css/input.css -o ./docs/css/output.css --watch",
-    "tailwind:build": "NODE_ENV=production tailwindcss -i ./src/css/input.css -o ./docs/css/output.css --minify",
-    "copy:assets": "cp -r src/public/* docs/ 2>/dev/null || true && cp src/js/project-descriptions.js docs/js/ && cp src/html/index.html docs/index.html && cp src/js/app.js docs/js/app.js",
-    "update-cache-bust": "node -e \"const fs = require('fs'); const timestamp = Date.now(); let html = fs.readFileSync('src/html/index.html', 'utf8'); html = html.replace(/css\\/output\\.css\\?v=[^\\\"]*/g, 'css/output.css?v=' + timestamp); html = html.replace(/js\\/app\\.js\\?v=[^\\\"]*/g, 'js/app.js?v=' + timestamp); fs.writeFileSync('src/html/index.html', html); console.log('Cache busting updated with timestamp:', timestamp);\"",
-    "server": "npx http-server docs -p 8080 -c-1",
-    "deploy": "npm run build && echo 'Ready to deploy from docs/' "
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && echo 'Ready to deploy from docs/'"
   },
   "keywords": [
     "portfolio",
@@ -35,9 +21,8 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.17",
-    "concurrently": "^8.2.2",
-    "npm-watch": "^0.13.0",
     "postcss": "^8.4.32",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.4.0"
   }
 }
