@@ -1,10 +1,8 @@
-import React, { useMemo, useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Pillar } from './components/Pillar';
 import { ProjectModal } from './components/ProjectModal';
 import type { Project } from './types';
-import { allProjects } from './data/projects';
-
-const statusOrder: Record<string, number> = { active: 1, draft: 2, prototype: 3 };
+import { getSortedProjects } from './data/projects';
 
 const App: React.FC = () => {
   const [activePillar, setActivePillar] = useState<string | null>(null);
@@ -12,17 +10,14 @@ const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const closeTimerRef = useRef<number | null>(null);
 
-  const projectsByType = useMemo(() => {
-    const sorted = [...allProjects].sort(
-      (a, b) => (statusOrder[a.status] || 99) - (statusOrder[b.status] || 99),
-    );
-
-    return {
-      narrative: sorted.filter((project) => project.type === 'narrative'),
-      app: sorted.filter((project) => project.type === 'app'),
-      psychology: sorted.filter((project) => project.type === 'psychology'),
-    };
-  }, []);
+  const projectsByType = useMemo(
+    () => ({
+      narrative: getSortedProjects('narrative'),
+      app: getSortedProjects('app'),
+      psychology: getSortedProjects('psychology'),
+    }),
+    [],
+  );
 
   const handlePillarActivate = (id: string) => {
     if (activePillar === id) return;

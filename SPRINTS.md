@@ -91,11 +91,11 @@ Goal: Migrate the current Vite + vanilla JS portfolio to a component-based React
 **Goal:** Centralize project filtering, sorting, and type organization.
 
 **Tasks:**
-- [ ] Create typed utilities for project filtering by type
-- [ ] Implement status-based sorting logic
-- [ ] Add project grouping by pillar (narrative/systems/psyche)
+- [x] Create typed utilities for project filtering by type
+- [x] Implement status-based sorting logic
+- [x] Add project grouping by pillar (narrative/systems/psyche)
 - [ ] Create custom hooks for project data access
-- [ ] Verify sorting order: active → draft → prototype
+- [x] Verify sorting order: active → draft → prototype
 
 **Acceptance Criteria:**
 - Projects sort correctly by status
