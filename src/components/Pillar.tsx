@@ -89,9 +89,73 @@ export const Pillar: React.FC<PillarProps> = ({
           </header>
 
           <div className="flex-1 overflow-y-auto overflow-x-hidden no-scrollbar grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-8 w-full pr-6 items-start content-start auto-rows-max">
-            {projects.map((project) => (
-              <ProjectCard key={project.title} project={project} onClick={onProjectClick} />
-            ))}
+            {(() => {
+              // Group square projects by status
+              const hasSquareProjects = projects.some(p => p.orientation === 'square');
+              
+              if (hasSquareProjects) {
+                const activeProjects = projects.filter(p => p.status === 'active');
+                const draftProjects = projects.filter(p => p.status === 'draft');
+                const prototypeProjects = projects.filter(p => p.status === 'prototype');
+                
+                return (
+                  <div className="col-span-full grid grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-8">
+                    {activeProjects.length > 0 && (
+                      <>
+                        <div className="col-span-full">
+                          <div className="flex items-center gap-2 mb-3">
+                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]"></div>
+                            <span className="text-xs font-mono uppercase tracking-wider font-bold text-emerald-400">
+                              Active
+                            </span>
+                          </div>
+                        </div>
+                        {activeProjects.map((project) => (
+                          <ProjectCard key={project.title} project={project} onClick={onProjectClick} />
+                        ))}
+                      </>
+                    )}
+                    
+                    {draftProjects.length > 0 && (
+                      <>
+                        <div className="col-span-full">
+                          <div className="flex items-center gap-2 mb-3 mt-4">
+                            <div className="w-1.5 h-1.5 rounded-full bg-amber-500"></div>
+                            <span className="text-xs font-mono uppercase tracking-wider font-bold text-amber-400">
+                              Draft
+                            </span>
+                          </div>
+                        </div>
+                        {draftProjects.map((project) => (
+                          <ProjectCard key={project.title} project={project} onClick={onProjectClick} />
+                        ))}
+                      </>
+                    )}
+                    
+                    {prototypeProjects.length > 0 && (
+                      <>
+                        <div className="col-span-full">
+                          <div className="flex items-center gap-2 mb-3 mt-4">
+                            <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
+                            <span className="text-xs font-mono uppercase tracking-wider font-bold text-rose-400">
+                              Prototype
+                            </span>
+                          </div>
+                        </div>
+                        {prototypeProjects.map((project) => (
+                          <ProjectCard key={project.title} project={project} onClick={onProjectClick} />
+                        ))}
+                      </>
+                    )}
+                  </div>
+                );
+              }
+              
+              // For non-square projects, render normally
+              return projects.map((project) => (
+                <ProjectCard key={project.title} project={project} onClick={onProjectClick} />
+              ));
+            })()}
           </div>
         </div>
       </div>

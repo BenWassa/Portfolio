@@ -23,6 +23,7 @@ export const projectsData: Project[] = [
     },
     status: 'active',
     type: 'narrative',
+    orientation: 'landscape',
   },
   {
     title: 'Sankofa',
@@ -39,6 +40,7 @@ export const projectsData: Project[] = [
     },
     status: 'active',
     type: 'narrative',
+    orientation: 'landscape',
   },
   {
     title: 'Dukkha',
@@ -55,6 +57,7 @@ export const projectsData: Project[] = [
     },
     status: 'draft',
     type: 'psychology',
+    orientation: 'landscape',
   },
   {
     title: 'Agoge',
@@ -71,6 +74,7 @@ export const projectsData: Project[] = [
     },
     status: 'draft',
     type: 'narrative',
+    orientation: 'landscape',
   },
   {
     title: 'Orpheus',
@@ -87,6 +91,7 @@ export const projectsData: Project[] = [
     },
     status: 'draft',
     type: 'psychology',
+    orientation: 'landscape',
   },
   {
     title: 'drop',
@@ -103,6 +108,7 @@ export const projectsData: Project[] = [
     },
     status: 'active',
     type: 'app',
+    orientation: 'square',
   },
   {
     title: 'STARK',
@@ -117,8 +123,9 @@ export const projectsData: Project[] = [
       tertiary: '#1e293b',
       bg: '#0a0f18',
     },
-    status: 'active',
+    status: 'prototype',
     type: 'app',
+    orientation: 'square',
   },
   {
     title: 'Vox',
@@ -133,8 +140,9 @@ export const projectsData: Project[] = [
       tertiary: '#374151',
       bg: '#111827',
     },
-    status: 'active',
+    status: 'prototype',
     type: 'app',
+    orientation: 'square',
   },
   {
     title: 'Punchbuggy',
@@ -151,6 +159,7 @@ export const projectsData: Project[] = [
     },
     status: 'active',
     type: 'app',
+    orientation: 'square',
   },
   {
     title: 'Hearth',
@@ -167,6 +176,7 @@ export const projectsData: Project[] = [
     },
     status: 'active',
     type: 'app',
+    orientation: 'square',
   },
   {
     title: 'PushUp Challenge',
@@ -183,6 +193,7 @@ export const projectsData: Project[] = [
     },
     status: 'active',
     type: 'app',
+    orientation: 'square',
   },
   {
     title: 'Wrestle',
@@ -199,6 +210,7 @@ export const projectsData: Project[] = [
     },
     status: 'active',
     type: 'app',
+    orientation: 'square',
   },
   {
     title: 'Narrative',
@@ -215,6 +227,7 @@ export const projectsData: Project[] = [
     },
     status: 'active',
     type: 'app',
+    orientation: 'square',
   },
   {
     title: 'Morpheus',
@@ -230,7 +243,8 @@ export const projectsData: Project[] = [
       bg: '#2e1065',
     },
     status: 'active',
-    type: 'psychology',
+    type: 'app',
+    orientation: 'square',
   },
   {
     title: 'Ecological Constellation',
@@ -246,7 +260,8 @@ export const projectsData: Project[] = [
       bg: '#082f4f',
     },
     status: 'active',
-    type: 'psychology',
+    type: 'app',
+    orientation: 'square',
   },
 ];
 

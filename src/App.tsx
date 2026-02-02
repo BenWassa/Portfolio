@@ -108,7 +108,7 @@ const App: React.FC = () => {
           baseColor="#3b82f6"
           throughline="Throughline 02"
           heading="Progressive Systems"
-          description="Building digital companions that respect attention. These offline-first, privacy-focused PWAs prioritize consistency over perfection and tools over traps."
+          description="Building digital companions that respect attention. These PWAs prioritize consistency over perfection and tools over traps."
           titleClassName="font-display text-4xl md:text-6xl font-bold mb-2"
           headingClassName="text-4xl md:text-5xl font-display font-bold text-white"
           className="bg-[#0f172a]"

@@ -62,6 +62,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) =>
       ref={cardRef}
       className="project-card group"
       data-type={project.type}
+      data-orientation={project.orientation}
+      title={project.orientation === 'square' ? project.tag : undefined}
       style={{ '--accent-color': project.theme.primary } as React.CSSProperties}
       onMouseMove={(event) => {
         const rect = event.currentTarget.getBoundingClientRect();
@@ -98,7 +100,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) =>
 
         {/* Fallback text display */}
         <div
-          className={`absolute inset-0 items-center justify-center bg-zinc-900 border-b border-white/5 z-30 ${
+          className={`absolute inset-0 items-center justify-center ${
+            project.orientation === 'square' ? 'bg-transparent' : 'bg-zinc-900'
+          } ${
+            project.orientation === 'square' ? '' : 'border-b border-white/5'
+          } z-30 ${
             showFallback ? 'flex' : 'hidden'
           }`}
         >

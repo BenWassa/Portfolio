@@ -1,5 +1,6 @@
 export type ProjectStatus = 'active' | 'draft' | 'prototype';
 export type ProjectType = 'narrative' | 'app' | 'psychology';
+export type ProjectOrientation = 'landscape' | 'square';
 
 export type ProjectTheme = {
   primary: string;
@@ -19,6 +20,7 @@ export type Project = {
   theme: ProjectTheme;
   status: ProjectStatus;
   type: ProjectType;
+  orientation: ProjectOrientation;
 };
 
 export type ProjectDescription = {
