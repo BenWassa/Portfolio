@@ -108,7 +108,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
         data-type={project.type}
       >
         <button
-          className="absolute top-4 right-4 z-20 p-2 bg-black/50 rounded-full hover:bg-white/20 text-white transition-colors focus:ring-2 focus:ring-white"
+          className="absolute top-4 right-4 z-20 p-2 bg-black/50 rounded-full hover:bg-white/20 text-white transition-colors focus:ring-2 focus:ring-white flex items-center justify-center"
           onClick={onClose}
           aria-label="Close modal"
         >
@@ -130,7 +130,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
           ></div>
         </div>
 
-        <div className="flex-1 p-8 md:p-12 overflow-y-auto" id="modal-content-scroll">
+        <div className="flex-1 p-8 md:p-12 overflow-y-auto min-h-0" id="modal-content-scroll">
           <div className="flex items-center gap-3 mb-6">
             <span
               className="text-xs font-mono uppercase tracking-widest px-2 py-1 border border-white/20 rounded text-white/60"

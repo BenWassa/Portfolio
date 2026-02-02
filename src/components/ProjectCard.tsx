@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import type { Project, ProjectStatus } from '../types';
 
 interface ProjectCardProps {
@@ -34,9 +34,32 @@ const getStatusLabel = (status: ProjectStatus) => {
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
   const [showFallback, setShowFallback] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // Intersection Observer for lazy loading
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div
+      ref={cardRef}
       className="project-card group"
       data-type={project.type}
       style={{ '--accent-color': project.theme.primary } as React.CSSProperties}
@@ -50,18 +73,32 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) =>
         onClick(project);
       }}
     >
-      <div className="project-card__media">
-        {!showFallback && (
+      <div className="project-card__media relative">
+        {/* Skeleton loader placeholder */}
+        {!imageLoaded && !showFallback && (
+          <div className="absolute inset-0 bg-gradient-to-r from-zinc-800 via-zinc-700 to-zinc-800 animate-pulse border-b border-white/5 z-10" />
+        )}
+
+        {/* Lazy loaded image */}
+        {isInView && !showFallback && (
           <img
             src={project.img}
             alt={project.alt}
-            className="project-card__img"
+            className={`project-card__img transition-opacity duration-300 relative z-20 ${
+              imageLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
             loading="lazy"
-            onError={() => setShowFallback(true)}
+            onLoad={() => setImageLoaded(true)}
+            onError={() => {
+              setShowFallback(true);
+              setImageLoaded(true);
+            }}
           />
         )}
+
+        {/* Fallback text display */}
         <div
-          className={`absolute inset-0 items-center justify-center bg-zinc-900 border-b border-white/5 ${
+          className={`absolute inset-0 items-center justify-center bg-zinc-900 border-b border-white/5 z-30 ${
             showFallback ? 'flex' : 'hidden'
           }`}
         >
