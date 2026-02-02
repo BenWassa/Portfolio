@@ -136,8 +136,8 @@ export const Pillar: React.FC<PillarProps> = ({
                       <>
                         <div className="col-span-full">
                           <div className="flex items-center gap-2 mb-3 mt-4">
-                            <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
-                            <span className="text-xs font-mono uppercase tracking-wider font-bold text-rose-400">
+                            <div className="w-1.5 h-1.5 rounded-full bg-amber-600"></div>
+                            <span className="text-xs font-mono uppercase tracking-wider font-bold text-amber-500">
                               Prototype
                             </span>
                           </div>
