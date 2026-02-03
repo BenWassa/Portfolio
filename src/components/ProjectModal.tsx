@@ -290,7 +290,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
         `}
       >
         <button
-          className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/50 hover:bg-white/20 text-white/70 hover:text-white transition-all backdrop-blur-sm"
+          className="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 hover:bg-white/20 text-white/70 hover:text-white transition-all backdrop-blur-sm"
           onClick={onClose}
         >
           <span className="material-symbols-outlined text-xl">close</span>
