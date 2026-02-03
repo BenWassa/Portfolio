@@ -185,7 +185,7 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ p
   return (
     <>
       {/* Left: Image (Bleed, no padding) */}
-      <div className="relative w-full h-full min-h-[300px] md:min-h-0 overflow-hidden bg-black group">
+      <div className="relative w-full h-full md:h-auto overflow-hidden bg-black group">
          {/* Subtle overlay gradient to blend image into background if needed */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent opacity-20 z-10 pointer-events-none" />
         
@@ -198,7 +198,7 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ p
       </div>
 
       {/* Right: Content */}
-      <div className="flex-1 p-8 md:p-10 flex flex-col overflow-y-auto">
+      <div className="w-full h-full md:h-auto p-8 md:p-10 flex flex-col overflow-y-auto">
         
         {/* Header Section */}
         <div className="mb-6">
