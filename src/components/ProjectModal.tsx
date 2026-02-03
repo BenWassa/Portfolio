@@ -27,137 +27,90 @@ const getStatusTextClass = (status: ProjectStatus) => {
   }
 };
 
-// --- Helper: Tech Icons ---
+// --- Helper: Tech Icons & Colors ---
 type TechIconData = { short: string; color: string };
 
 const TECH_ICON_MAP: Record<string, TechIconData> = {
   HTML: { short: 'HTML', color: '#f97316' },
   CSS: { short: 'CSS', color: '#38bdf8' },
   JavaScript: { short: 'JS', color: '#facc15' },
-  'Web Audio Engine': { short: 'AUD', color: '#ec4899' },
-  'Prompt-Driven Flow': { short: 'PDF', color: '#a855f7' },
-  'Static Narrative Site': { short: 'SNS', color: '#22d3ee' },
-  'Long-form Layout': { short: 'LFL', color: '#94a3b8' },
-  'Multimedia Scaffolding': { short: 'MMS', color: '#f59e0b' },
-  'Interactive Guide': { short: 'IG', color: '#10b981' },
-  'Live HTML Experiences': { short: 'LHE', color: '#06b6d4' },
-  'Research Synthesis': { short: 'RS', color: '#8b5cf6' },
-  'Narrative Research': { short: 'NR', color: '#dc2626' },
-  'Cross-Cultural Analysis': { short: 'CCA', color: '#d4af37' },
-  'Mythic Structure': { short: 'MS', color: '#2d2520' },
-  'Data Analysis Tool': { short: 'DAT', color: '#8B5CF6' },
-  pandas: { short: 'PD', color: '#150458' },
-  Streamlit: { short: 'ST', color: '#ff4b4b' },
-  'Plotly Visualization': { short: 'PV', color: '#3f4f75' },
-  'Audio Feature Extraction': { short: 'AFE', color: '#ec4899' },
-  'Offline-First PWA': { short: 'PWA', color: '#3b82f6' },
-  IndexedDB: { short: 'IDB', color: '#1c1c21' },
-  'Service Worker': { short: 'SW', color: '#0b0b0f' },
-  'Local-Only Privacy': { short: 'LOP', color: '#09090b' },
-  'Client-Side Dashboard': { short: 'CSD', color: '#d4956d' },
-  React: { short: 'RE', color: '#22d3ee' },
   TypeScript: { short: 'TS', color: '#60a5fa' },
+  React: { short: 'RE', color: '#22d3ee' },
   Tailwind: { short: 'TW', color: '#38bdf8' },
-  'Data Visualization': { short: 'DV', color: '#b06a3a' },
-  'Framer Motion': { short: 'FM', color: '#8b5c3c' },
-  JSON: { short: 'JSON', color: '#3d2a1f' },
-  'Local Persistence': { short: 'LP', color: '#d4956d' },
-  'Spaced Repetition Logic': { short: 'SRL', color: '#b06a3a' },
-  'Instant Game PWA': { short: 'IGP', color: '#3b82f6' },
+  Python: { short: 'PY', color: '#38bdf8' },
   Vite: { short: 'VT', color: '#a855f7' },
-  'Zero-Latency UI': { short: 'ZLU', color: '#1f2937' },
-  Installable: { short: 'INS', color: '#374151' },
-  'Offline Capable': { short: 'OC', color: '#111827' },
-  'Real-Time Sync App': { short: 'RTSA', color: '#aa6c4b' },
   Firebase: { short: 'FB', color: '#f59e0b' },
-  'Firestore Realtime': { short: 'FSR', color: '#be185d' },
-  '3D Elements (Three.js)': { short: '3D', color: '#831843' },
-  'Community Tracker': { short: 'CT', color: '#ef4444' },
-  'Live Leaderboard': { short: 'LL', color: '#b91c1c' },
-  'PWA Installable': { short: 'PWA', color: '#7f1d1d' },
-  'Chart.js Analytics': { short: 'CJA', color: '#d4956d' },
-  'Local-First Utility': { short: 'LFU', color: '#84cc16' },
-  'File System Access API': { short: 'FSAA', color: '#65a30d' },
-  'Privacy-Centric': { short: 'PC', color: '#4b5320' },
-  'Private Journaling PWA': { short: 'PJP', color: '#8b5cf6' },
-  'Encrypted Local Storage': { short: 'ELS', color: '#6d28d9' },
-  'Export to JSON/Zip': { short: 'EJZ', color: '#4c1d95' },
-  'Interactive Visualization': { short: 'IV', color: '#06b6d4' },
-  'WebGL (OGL)': { short: 'WGL', color: '#0891b2' },
-  'Dynamic Modeling': { short: 'DM', color: '#164e63' },
-  Python: { short: 'PY', color: '#3776ab' },
-  Markdown: { short: 'MD', color: '#083fa1' },
-  // ... (Add others as needed, default fallback exists)
+  IndexedDB: { short: 'IDB', color: '#10b981' },
+  // Add other specific mappings here if needed
 };
 
 const getTechData = (tech: string): TechIconData => {
   if (TECH_ICON_MAP[tech]) return TECH_ICON_MAP[tech];
   return {
     short: tech.substring(0, 2).toUpperCase(),
-    color: '#94a3b8', // Slate-400 default
+    color: '#94a3b8', // Slate-400 default for unknown
   };
 };
 
-// --- Component: System Specs (New Structured Design) ---
+// --- Component: System Specs (Polished Spec Sheet Layout) ---
 const SystemSpecs: React.FC<{ techSpecs?: { model: string; stack: string[]; features: string[] } }> = ({ techSpecs }) => {
   if (!techSpecs) return null;
 
   return (
-    <div className="mt-auto pt-6 border-t border-white/5">
-      <div className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 mb-4">
-        System Architecture
-      </div>
-
-      {/* Model */}
-      <div className="mb-4">
-        <div className="text-[11px] font-medium text-zinc-400 mb-2 uppercase tracking-wide">
-          Model
+    <div className="mt-auto pt-8 border-t border-white/5">
+      {/* 1. Architecture / Model Headline */}
+      <div className="mb-6">
+        <div className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 mb-2">
+          Architecture
         </div>
-        <div className="px-3 py-2 rounded bg-white/[0.03] border border-white/[0.08]">
-          <span className="text-sm font-medium text-white">{techSpecs.model}</span>
+        <div className="font-display text-lg text-white font-medium tracking-wide">
+          {techSpecs.model}
         </div>
       </div>
 
-      {/* Stack */}
-      <div className="mb-4">
-        <div className="text-[11px] font-medium text-zinc-400 mb-2 uppercase tracking-wide">
-          Stack
+      {/* 2. Grid for Stack & Engine */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {/* Column A: Core Stack */}
+        <div>
+          <div className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 mb-3">
+            Core Stack
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {techSpecs.stack.map((tech) => {
+              const data = getTechData(tech);
+              return (
+                <div
+                  key={tech}
+                  className="group flex items-center gap-2 px-2.5 py-1.5 rounded bg-white/[0.03] border border-white/[0.08] hover:border-white/20 transition-colors"
+                >
+                  <span
+                    className="w-1.5 h-1.5 rounded-full"
+                    style={{ backgroundColor: data.color, boxShadow: `0 0 6px ${data.color}40` }}
+                  />
+                  <span className="text-[11px] font-medium text-zinc-300 group-hover:text-white transition-colors">
+                    {tech}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <div className="flex flex-wrap gap-2">
-          {techSpecs.stack.map((tech) => {
-            const data = getTechData(tech);
-            return (
+
+        {/* Column B: Engine / Features */}
+        <div>
+          <div className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 mb-3">
+            Engine & Capabilities
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {techSpecs.features.map((feature) => (
               <div
-                key={tech}
-                className="group flex items-center gap-2 px-2.5 py-1.5 rounded bg-white/[0.03] border border-white/[0.08] hover:border-white/20 transition-colors"
+                key={feature}
+                className="px-2 py-1 rounded border border-transparent hover:border-white/10 text-zinc-400 hover:text-zinc-200 text-[11px] font-medium transition-colors cursor-default"
               >
-                <span
-                  className="w-1.5 h-1.5 rounded-full"
-                  style={{ backgroundColor: data.color, boxShadow: `0 0 6px ${data.color}40` }}
-                />
-                <span className="text-[11px] font-medium text-zinc-300 group-hover:text-white transition-colors">
-                  {tech}
-                </span>
+                {feature}
               </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Features */}
-      <div>
-        <div className="text-[11px] font-medium text-zinc-400 mb-2 uppercase tracking-wide">
-          Features
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {techSpecs.features.map((feature) => (
-            <div
-              key={feature}
-              className="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-medium"
-            >
-              {feature}
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -166,7 +119,6 @@ const SystemSpecs: React.FC<{ techSpecs?: { model: string; stack: string[]; feat
 
 // --- Component: Text Formatter ---
 const FormattedDescription: React.FC<{ text: string }> = ({ text }) => {
-  // Split by double newline to create paragraphs
   const paragraphs = text.split('\n\n').filter(Boolean);
 
   return (
@@ -178,7 +130,7 @@ const FormattedDescription: React.FC<{ text: string }> = ({ text }) => {
   );
 };
 
-// --- Component: Landscape Modal (Narrative) ---
+// --- Component: Landscape Modal (Narrative / Cinematic) ---
 const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ project, onClose }) => {
   const linkLabel = project.type === 'app' ? 'Open App' : 'Open Narrative';
 
@@ -186,8 +138,8 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ p
     <>
       {/* Left: Image (Bleed, no padding) */}
       <div className="relative w-full h-full min-h-[300px] md:min-h-0 overflow-hidden bg-black group">
-         {/* Subtle overlay gradient to blend image into background if needed */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent opacity-20 z-10 pointer-events-none" />
+         {/* Subtle overlay gradient to blend image into background */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent opacity-20 z-10 pointer-events-none" />
         
         <img
           className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
@@ -198,11 +150,11 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ p
       </div>
 
       {/* Right: Content */}
-      <div className="w-full h-full p-8 md:p-10 flex flex-col overflow-y-auto">
+      <div className="w-full h-full p-8 md:p-10 flex flex-col overflow-y-auto custom-scrollbar">
         
         {/* Header Section */}
         <div className="mb-6">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight leading-tight">
             {project.title}
           </h2>
           
@@ -257,7 +209,7 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ p
   );
 };
 
-// --- Component: Square Modal (App) ---
+// --- Component: Square Modal (App / Tool) ---
 const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ project, onClose }) => {
   const linkLabel = 'Open App';
 
@@ -277,7 +229,7 @@ const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ proj
         />
       </div>
 
-      <div className="flex-1 p-8 md:p-10 overflow-y-auto flex flex-col">
+      <div className="flex-1 p-8 md:p-10 overflow-y-auto flex flex-col custom-scrollbar">
         {/* Header */}
         <div className="mb-6">
           <h2 className="font-display text-3xl font-bold text-white mb-3">
