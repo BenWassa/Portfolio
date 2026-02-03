@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import LightPillar from './components/LightPillar';
+import GlassSurface from './components/GlassSurface';
 
 /* Custom CSS for animations and noise texture */
 const styleTag = `
@@ -21,25 +22,6 @@ const styleTag = `
 `;
 
 // --- Components ---
-
-/**
- * GlassSurface: The container for content.
- * Modern Apple-style: Higher blur, smoother rounding, thinner borders.
- */
-const GlassSurface = ({ children, className = "" }) => (
-  <div className={`relative backdrop-blur-3xl bg-black/20 border border-white/10 shadow-[0_30px_60px_-12px_rgba(0,0,0,0.5)] rounded-[2.5rem] overflow-hidden ${className}`}>
-    {/* Inner subtle noise texture overlay */}
-    <div className="absolute inset-0 bg-noise opacity-40 pointer-events-none mix-blend-overlay"></div>
-
-    {/* Top gloss highlight */}
-    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-50"></div>
-
-    {/* Content Wrapper */}
-    <div className="relative z-10 h-full">
-      {children}
-    </div>
-  </div>
-);
 
 /**
  * Main Application Component
@@ -121,14 +103,25 @@ const Onboarding = () => {
       {/* Main Content Area */}
       <main className={`relative z-10 flex flex-col items-center justify-center min-h-screen p-6 transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${isLeaving ? 'opacity-0 scale-95 blur-lg' : 'opacity-100 scale-100 blur-0'}`}>
 
-        {/* Container: Transparent enough to see the pillar, blurred enough to read text */}
-        <GlassSurface className="w-full max-w-xl p-8 md:p-12 text-center">
+        {/* Container: keep it clean; glass is reserved for smaller elements */}
+        <div className="relative w-full max-w-xl p-8 md:p-12 text-center bg-black/45 border border-white/10 rounded-[2.5rem] shadow-[0_30px_60px_-12px_rgba(0,0,0,0.5)]">
 
           {/* 1. Opening Statement */}
           <div className="mb-10 animate-fade-in-delay-1 flex flex-col items-center">
-            <span className="inline-block px-3 py-1 mb-6 text-[10px] font-medium tracking-[0.2em] uppercase text-cyan-100/70 bg-cyan-500/10 rounded-full border border-cyan-500/10 backdrop-blur-md">
+            <GlassSurface
+              width="fit-content"
+              height="fit-content"
+              borderRadius={999}
+              brightness={65}
+              opacity={0.88}
+              blur={10}
+              displace={0.2}
+              distortionScale={-80}
+              mixBlendMode="screen"
+              className="mb-6 px-3 py-1 text-[10px] font-medium tracking-[0.2em] uppercase text-cyan-100/70"
+            >
               Opening
-            </span>
+            </GlassSurface>
             <h1 className="text-3xl md:text-4xl font-normal tracking-tight text-white leading-tight">
               A portfolio built by AI, directed by intention.
             </h1>
@@ -174,19 +167,32 @@ const Onboarding = () => {
           {/* 4. What You'll Find & Action */}
           <div className="flex flex-col items-center gap-6 animate-fade-in-delay-4">
 
-            <div className="w-full max-w-md text-left">
-              <div className="text-[11px] uppercase tracking-[0.2em] text-white/40 mb-3 text-center">
-                What You'll Find
+            <GlassSurface
+              width="100%"
+              height="auto"
+              borderRadius={24}
+              brightness={55}
+              opacity={0.86}
+              blur={12}
+              displace={0.3}
+              distortionScale={-120}
+              mixBlendMode="screen"
+              className="w-full max-w-md"
+            >
+              <div className="w-full px-4 py-3 text-left">
+                <div className="text-[11px] uppercase tracking-[0.2em] text-white/40 mb-3 text-center">
+                  What You'll Find
+                </div>
+                <ul className="text-sm text-zinc-400 leading-relaxed space-y-2">
+                  <li>• Narrative systems using mythology as interface design</li>
+                  <li>• Privacy-first PWAs prioritizing progress over metrics</li>
+                  <li>• Experimental tools making psychological concepts tangible</li>
+                </ul>
+                <p className="mt-4 text-sm text-zinc-500 text-center">
+                  Some projects are live. Some are prototypes. All are honest attempts to build things worth keeping.
+                </p>
               </div>
-              <ul className="text-sm text-zinc-400 leading-relaxed space-y-2">
-                <li>• Narrative systems using mythology as interface design</li>
-                <li>• Privacy-first PWAs prioritizing progress over metrics</li>
-                <li>• Experimental tools making psychological concepts tangible</li>
-              </ul>
-              <p className="mt-4 text-sm text-zinc-500 text-center">
-                Some projects are live. Some are prototypes. All are honest attempts to build things worth keeping.
-              </p>
-            </div>
+            </GlassSurface>
 
             {/* Primary Action - Apple Style Pill Button */}
             <div className="flex items-center gap-4">
@@ -208,7 +214,7 @@ const Onboarding = () => {
             </div>
 
           </div>
-        </GlassSurface>
+        </div>
 
         {/* Footer */}
         <div className="absolute bottom-8 text-[10px] text-white/20 tracking-widest uppercase font-medium animate-fade-in-delay-4 mix-blend-plus-lighter">
