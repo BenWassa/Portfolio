@@ -79,25 +79,22 @@
      Cinematic Card UI (Refined v1.3)
      ----------------------------------------------------------------- */
 
+  /* Only apply the heavy lifting CSS to the class used by Square cards now */
   .project-card {
     /* Variables */
     --accent-color: #3b82f6;
     --card-bg: #09090b;
 
-    /* Layout: Flex column is CRITICAL for the sticky footer */
     @apply w-full rounded-xl overflow-hidden relative cursor-pointer flex flex-col;
 
-    /* Remove rigid min-heights that cause "goofy" space. 
-       Let the grid stretch them equally (h-full is default in grid items). */
     background-color: var(--card-bg);
     border: 1px solid rgba(255, 255, 255, 0.08);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
-    /* Initial State */
     transform: translateY(0);
     opacity: 0;
   }
 
+  /* Specific overrides for Square Orientation (Systems) to ensure it stays GOLD */
   .project-card[data-orientation='square'] {
     --card-bg: transparent;
     background: transparent;
@@ -108,13 +105,14 @@
   }
 
   .project-card[data-orientation='square']:hover {
-    box-shadow: none;
-    transform: none;
+    box-shadow: none; /* Mouse move glow handles this via JS/CSS var */
+    transform: translateY(-4px); /* Slight lift for icons */
   }
 
-  .project-card[data-orientation='square']::before {
-    display: none;
-  }
+  /* ... Keep the rest of your .project-card styling for content/media ... */
+
+  /* NOTE: The new Landscape cards do NOT use the .project-card class
+     so they are free from these constraints. */
 
   /* Ensure all cards reserve space for at least two lines of description */
   .project-card__desc {
