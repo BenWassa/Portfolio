@@ -264,7 +264,7 @@ export const projectsData: Project[] = [
     title: 'Ecological Constellation',
     tag: 'Personality Framework',
     desc: 'A personality framework mapping Big Five traits to ecological strategies rather than fixed types. Reveals how your personality serves you and where it might limit you.',
-    href: 'https://benwassa.github.io/EcologicalConstellation/',
+    href: 'https://benwassa.github.io/ecological-constellation/',
     img: 'assets/projects/ecological.png',
     alt: 'Ecological Constellation - Personality Framework',
     theme: {
