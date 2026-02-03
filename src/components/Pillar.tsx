@@ -47,9 +47,11 @@ export const Pillar: React.FC<PillarProps> = ({
   const hasSquareProjects = projects.some(p => p.orientation === 'square');
   const secondaryStatus = projects.some(p => p.status === 'prototype') ? 'prototype' : 'draft';
   const secondaryLabel = secondaryStatus === 'prototype' ? 'Prototype' : 'Draft';
+  
+  // Note: Added 'content-start' to ensure items pack correctly
   const gridClassName = hasSquareProjects
-    ? 'flex-1 overflow-y-auto overflow-x-hidden no-scrollbar grid grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-8 pb-8 w-full pr-6 items-start content-start auto-rows-max'
-    : 'flex-1 overflow-y-auto overflow-x-hidden no-scrollbar grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-8 w-full pr-6 items-start content-start auto-rows-max';
+    ? 'flex-1 overflow-y-auto overflow-x-hidden no-scrollbar grid grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-8 pb-8 w-full pr-6 items-start content-start'
+    : 'flex-1 overflow-y-auto overflow-x-hidden no-scrollbar grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-8 w-full pr-6 items-start content-start';
 
   return (
     <section
@@ -81,7 +83,9 @@ export const Pillar: React.FC<PillarProps> = ({
 
       <div className="track-content absolute inset-0 flex flex-col z-20 pt-24 pb-10 px-4 md:px-12 bg-black/90 backdrop-blur-md">
         <div className="max-w-7xl mx-auto w-full h-full flex flex-col">
-          <header className="mb-8 shrink-0 animate-fade-in-up">
+          
+          {/* STICKY HEADER: Only contains Title and Tagline now */}
+          <header className="mb-6 shrink-0 animate-fade-in-up">
             <div
               className="text-sm font-mono uppercase tracking-widest mb-2"
               style={{ color: baseColor }}
@@ -89,12 +93,15 @@ export const Pillar: React.FC<PillarProps> = ({
               {throughline}
             </div>
             <h3 className={headingClassName}>{heading}</h3>
-            <p className="mt-4 max-w-xl text-white/60 font-light leading-relaxed">
-              {description}
-            </p>
           </header>
 
+          {/* SCROLLABLE AREA: Description + Projects */}
           <div className={gridClassName}>
+            
+            {/* Description moved here with col-span-full */}
+            <p className="col-span-full mb-4 max-w-xl text-white/60 font-light leading-relaxed animate-fade-in-up">
+              {description}
+            </p>
             {(() => {
               const activeProjects = projects.filter(p => p.status === 'active');
               const secondaryProjects = projects.filter(p => p.status === secondaryStatus);
@@ -103,7 +110,8 @@ export const Pillar: React.FC<PillarProps> = ({
                 <>
                   {activeProjects.length > 0 && (
                     <>
-                      <div className="col-span-full">
+                      {/* Active Label */}
+                      <div className="col-span-full mt-2">
                         <div className="flex items-center gap-2 mb-3">
                           <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]"></div>
                           <span className="text-xs font-mono uppercase tracking-wider font-bold text-emerald-400">
@@ -111,6 +119,7 @@ export const Pillar: React.FC<PillarProps> = ({
                           </span>
                         </div>
                       </div>
+                      
                       {activeProjects.map((project) => (
                         <ProjectCard key={project.title} project={project} onClick={onProjectClick} />
                       ))}
@@ -119,8 +128,9 @@ export const Pillar: React.FC<PillarProps> = ({
 
                   {secondaryProjects.length > 0 && (
                     <>
-                      <div className="col-span-full">
-                        <div className={`flex items-center gap-2 mb-3 ${activeProjects.length ? 'mt-4' : ''}`}>
+                      {/* Secondary Label */}
+                      <div className="col-span-full mt-6">
+                        <div className="flex items-center gap-2 mb-3">
                           <div
                             className={`w-1.5 h-1.5 rounded-full ${
                               secondaryStatus === 'prototype' ? 'bg-amber-600' : 'bg-amber-500'
@@ -135,6 +145,7 @@ export const Pillar: React.FC<PillarProps> = ({
                           </span>
                         </div>
                       </div>
+                      
                       {secondaryProjects.map((project) => (
                         <ProjectCard key={project.title} project={project} onClick={onProjectClick} />
                       ))}
