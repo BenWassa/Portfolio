@@ -24,6 +24,7 @@ export const projectsData: Project[] = [
     status: 'active',
     type: 'narrative',
     orientation: 'landscape',
+    techStack: ['HTML', 'CSS', 'JavaScript', 'Web Audio'],
   },
   {
     title: 'Sankofa',
@@ -41,6 +42,7 @@ export const projectsData: Project[] = [
     status: 'active',
     type: 'narrative',
     orientation: 'landscape',
+    techStack: ['HTML', 'CSS', 'JavaScript', 'Responsive'],
   },
   {
     title: 'Dukkha',
@@ -58,6 +60,7 @@ export const projectsData: Project[] = [
     status: 'draft',
     type: 'psychology',
     orientation: 'landscape',
+    techStack: ['Python', 'Markdown', 'YAML', 'CSS', 'JavaScript'],
   },
   {
     title: 'Agoge',
@@ -75,6 +78,7 @@ export const projectsData: Project[] = [
     status: 'draft',
     type: 'narrative',
     orientation: 'landscape',
+    techStack: ['HTML', 'CSS', 'JavaScript', 'Python'],
   },
   {
     title: 'Orpheus',
@@ -92,6 +96,7 @@ export const projectsData: Project[] = [
     status: 'draft',
     type: 'psychology',
     orientation: 'landscape',
+    techStack: ['Python', 'pandas', 'NumPy', 'scikit-learn', 'Streamlit', 'plotly'],
   },
   {
     title: 'drop',
@@ -109,6 +114,7 @@ export const projectsData: Project[] = [
     status: 'active',
     type: 'app',
     orientation: 'square',
+    techStack: ['JavaScript', 'HTML', 'CSS', 'PWA', 'IndexedDB', 'Service Worker'],
   },
   {
     title: 'STARK',
@@ -126,6 +132,7 @@ export const projectsData: Project[] = [
     status: 'prototype',
     type: 'app',
     orientation: 'square',
+    techStack: ['React', 'Vite', 'Tailwind', 'Framer Motion', 'IndexedDB'],
   },
   {
     title: 'Vox',
@@ -143,6 +150,7 @@ export const projectsData: Project[] = [
     status: 'prototype',
     type: 'app',
     orientation: 'square',
+    techStack: ['CSV', 'Markdown'],
   },
   {
     title: 'Punchbuggy',
@@ -160,6 +168,7 @@ export const projectsData: Project[] = [
     status: 'active',
     type: 'app',
     orientation: 'square',
+    techStack: ['JavaScript', 'Vite', 'PWA', 'IndexedDB', 'Service Worker'],
   },
   {
     title: 'Hearth',
@@ -177,6 +186,7 @@ export const projectsData: Project[] = [
     status: 'active',
     type: 'app',
     orientation: 'square',
+    techStack: ['React', 'Node', 'Express', 'Firebase', 'Three.js', 'Tailwind'],
   },
   {
     title: 'PushUp Challenge',
@@ -194,6 +204,7 @@ export const projectsData: Project[] = [
     status: 'active',
     type: 'app',
     orientation: 'square',
+    techStack: ['React', 'Vite', 'Firebase', 'Firestore', 'Tailwind', 'PWA'],
   },
   {
     title: 'Wrestle',
@@ -211,6 +222,7 @@ export const projectsData: Project[] = [
     status: 'active',
     type: 'app',
     orientation: 'square',
+    techStack: ['JavaScript', 'Tailwind', 'Firebase', 'Firestore', 'Chart.js', 'Service Worker'],
   },
   {
     title: 'Narrative',
@@ -228,6 +240,7 @@ export const projectsData: Project[] = [
     status: 'active',
     type: 'app',
     orientation: 'square',
+    techStack: ['React', 'TypeScript', 'Vite', 'Tailwind', 'IndexedDB', 'File System Access'],
   },
   {
     title: 'Morpheus',
@@ -245,12 +258,13 @@ export const projectsData: Project[] = [
     status: 'active',
     type: 'app',
     orientation: 'square',
+    techStack: ['React', 'Vite', 'Tailwind', 'JSZip', 'FileSaver', 'GitHub Pages'],
   },
   {
     title: 'Ecological Constellation',
     tag: 'Personality Framework',
     desc: 'A personality framework mapping Big Five traits to ecological strategies rather than fixed types. Reveals how your personality serves you and where it might limit you.',
-    href: 'https://benwassa.github.io/EcologicalConstellation/',
+    href: 'https://benwassa.github.io/ecological-constellation/',
     img: 'assets/projects/ecological.png',
     alt: 'Ecological Constellation - Personality Framework',
     theme: {
@@ -262,6 +276,7 @@ export const projectsData: Project[] = [
     status: 'active',
     type: 'app',
     orientation: 'square',
+    techStack: ['React', 'TypeScript', 'Vite', 'Tailwind', 'OGL'],
   },
 ];
 

@@ -79,25 +79,22 @@
      Cinematic Card UI (Refined v1.3)
      ----------------------------------------------------------------- */
 
+  /* Only apply the heavy lifting CSS to the class used by Square cards now */
   .project-card {
     /* Variables */
     --accent-color: #3b82f6;
     --card-bg: #09090b;
 
-    /* Layout: Flex column is CRITICAL for the sticky footer */
     @apply w-full rounded-xl overflow-hidden relative cursor-pointer flex flex-col;
 
-    /* Remove rigid min-heights that cause "goofy" space. 
-       Let the grid stretch them equally (h-full is default in grid items). */
     background-color: var(--card-bg);
     border: 1px solid rgba(255, 255, 255, 0.08);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
-    /* Initial State */
     transform: translateY(0);
     opacity: 0;
   }
 
+  /* Specific overrides for Square Orientation (Systems) to ensure it stays GOLD */
   .project-card[data-orientation='square'] {
     --card-bg: transparent;
     background: transparent;
@@ -108,13 +105,14 @@
   }
 
   .project-card[data-orientation='square']:hover {
-    box-shadow: none;
-    transform: none;
+    box-shadow: none; /* Mouse move glow handles this via JS/CSS var */
+    transform: translateY(-4px); /* Slight lift for icons */
   }
 
-  .project-card[data-orientation='square']::before {
-    display: none;
-  }
+  /* ... Keep the rest of your .project-card styling for content/media ... */
+
+  /* NOTE: The new Landscape cards do NOT use the .project-card class
+     so they are free from these constraints. */
 
   /* Ensure all cards reserve space for at least two lines of description */
   .project-card__desc {
@@ -357,75 +355,34 @@
   }
 
   /* -----------------------------------------------------------------
-     Modal Styles
-     ----------------------------------------------------------------- */
+   Modal Styles
+   ----------------------------------------------------------------- */
 
-  #modal {
-    transition:
-      opacity 0.5s ease,
-      visibility 0.5s ease;
-  }
+#modal {
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
 
-  #modal.open {
-    @apply opacity-100 visible;
-  }
+/* Ensure no scrollbars on the modal container itself */
+#modal-content {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
 
-  #modal-content {
-    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
+#modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+#modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+#modal-content::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+}
 
-  #modal.open #modal-content {
-    transform: translateY(0) !important;
-  }
-
-  /* Modal layout: landscape on top for narrative/psych, square left for apps */
-  #modal-content[data-type='narrative'],
-  #modal-content[data-type='psychology'] {
-    flex-direction: column !important;
-    width: min(65vw, 720px);
-    max-height: 90vh;
-  }
-
-  #modal-content[data-type='app'] {
-    flex-direction: column;
-  }
-
-  @media (min-width: 768px) {
-    #modal-content[data-type='app'] {
-      flex-direction: row;
-    }
-  }
-
-  #modal-content[data-type='narrative'] #m-media,
-  #modal-content[data-type='psychology'] #m-media {
-    width: 100% !important;
-    height: auto !important;
-    aspect-ratio: 3 / 2;
-    background: #0b0b0b;
-  }
-
-  #modal-content[data-type='narrative'] #m-img,
-  #modal-content[data-type='psychology'] #m-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
-  }
-
-  #modal-content[data-type='app'] #m-media {
-    height: auto !important;
-    aspect-ratio: 1 / 1;
-  }
-
-  #modal-content[data-type='app'] #m-img {
-    object-fit: contain;
-    padding: 1.5rem;
-  }
-
-  #modal-content[data-type='narrative'] #m-overlay,
-  #modal-content[data-type='psychology'] #m-overlay {
-    background-image: linear-gradient(to top, #121212, transparent) !important;
-  }
+/* We removed the specific ID selectors for narrative/app 
+   because the logic is now handled via Tailwind classes 
+   in the React component directly (grid-cols, etc).
+*/
 }
 
 /* Animations */
