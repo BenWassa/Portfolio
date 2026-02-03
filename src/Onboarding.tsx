@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ArrowRight } from 'lucide-react';
 import LightPillar from './components/LightPillar';
 import GlassSurface from './components/GlassSurface';
 
@@ -33,26 +33,33 @@ const styleTag = `
 const Onboarding = () => {
   const [showOnboarding, setShowOnboarding] = useState(true);
   const [isLeaving, setIsLeaving] = useState(false);
+  const leaveTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     const hasVisited = localStorage.getItem('portfolio_visited');
     if (hasVisited === 'true') {
       setShowOnboarding(false);
     }
+
+    return () => {
+      if (leaveTimeoutRef.current !== null) {
+        window.clearTimeout(leaveTimeoutRef.current);
+        leaveTimeoutRef.current = null;
+      }
+    };
   }, []);
 
   const handleEnter = () => {
     setIsLeaving(true);
-    setTimeout(() => {
+    if (leaveTimeoutRef.current !== null) {
+      window.clearTimeout(leaveTimeoutRef.current);
+    }
+    leaveTimeoutRef.current = window.setTimeout(() => {
       localStorage.setItem('portfolio_visited', 'true');
       setShowOnboarding(false);
       setIsLeaving(false);
+      leaveTimeoutRef.current = null;
     }, 800);
-  };
-
-  const handleSkip = () => {
-    localStorage.setItem('portfolio_visited', 'true');
-    setShowOnboarding(false);
   };
 
   const resetExperience = () => {
@@ -102,7 +109,7 @@ const Onboarding = () => {
       <main className={`relative z-10 w-full min-h-screen max-w-7xl mx-auto px-6 py-12 flex flex-col justify-between transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${isLeaving ? 'opacity-0 scale-95 blur-xl' : 'opacity-100 scale-100 blur-0'}`}>
         
         {/* HEADER: Floating Top Left */}
-        <div className="w-full flex justify-between items-start animate-enter-title">
+        <div className="w-full flex justify-between items-start animate-enter-left">
           <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/30 mix-blend-difference">
             Benjamin P. Haddon
           </div>
@@ -123,19 +130,25 @@ const Onboarding = () => {
           
           <div className="mt-12 animate-enter-sub">
             <GlassSurface
-              width="auto"
-              height="auto"
+              width="fit-content"
+              height="fit-content"
               borderRadius={999}
+              displace={0.5}
+              distortionScale={-180}
+              redOffset={0}
+              greenOffset={10}
+              blueOffset={20}
               backgroundOpacity={0.1}
-              blur={8}
-              borderWidth={0.5}
-              brightness={1.2}
+              saturation={1}
+              brightness={50}
+              opacity={0.93}
               mixBlendMode="screen"
+              className="inline-flex"
             >
               <div className="flex items-center gap-4 pl-1 pr-1 py-1">
                  <button
                     onClick={handleEnter}
-                    className="group relative flex items-center gap-3 px-8 py-3 bg-zinc-100 hover:bg-white text-black rounded-full transition-all duration-500 shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_-10px_rgba(255,255,255,0.5)] hover:scale-[1.02]"
+                    className="group relative flex items-center gap-3 px-8 py-3 bg-transparent text-white rounded-full transition-all duration-500 shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_-10px_rgba(255,255,255,0.5)] hover:scale-[1.02]"
                   >
                     <span className="text-xs font-bold tracking-[0.15em] uppercase">Enter System</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
