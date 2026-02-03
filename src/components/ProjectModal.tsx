@@ -34,15 +34,59 @@ const TECH_ICON_MAP: Record<string, TechIconData> = {
   HTML: { short: 'HTML', color: '#f97316' },
   CSS: { short: 'CSS', color: '#38bdf8' },
   JavaScript: { short: 'JS', color: '#facc15' },
-  'Web Audio': { short: 'AUD', color: '#ec4899' },
-  Responsive: { short: 'RWD', color: '#22d3ee' },
-  Python: { short: 'PY', color: '#38bdf8' },
-  Markdown: { short: 'MD', color: '#94a3b8' },
+  'Web Audio Engine': { short: 'AUD', color: '#ec4899' },
+  'Prompt-Driven Flow': { short: 'PDF', color: '#a855f7' },
+  'Static Narrative Site': { short: 'SNS', color: '#22d3ee' },
+  'Long-form Layout': { short: 'LFL', color: '#94a3b8' },
+  'Multimedia Scaffolding': { short: 'MMS', color: '#f59e0b' },
+  'Interactive Guide': { short: 'IG', color: '#10b981' },
+  'Live HTML Experiences': { short: 'LHE', color: '#06b6d4' },
+  'Research Synthesis': { short: 'RS', color: '#8b5cf6' },
+  'Narrative Research': { short: 'NR', color: '#dc2626' },
+  'Cross-Cultural Analysis': { short: 'CCA', color: '#d4af37' },
+  'Mythic Structure': { short: 'MS', color: '#2d2520' },
+  'Data Analysis Tool': { short: 'DAT', color: '#8B5CF6' },
+  pandas: { short: 'PD', color: '#150458' },
+  Streamlit: { short: 'ST', color: '#ff4b4b' },
+  'Plotly Visualization': { short: 'PV', color: '#3f4f75' },
+  'Audio Feature Extraction': { short: 'AFE', color: '#ec4899' },
+  'Offline-First PWA': { short: 'PWA', color: '#3b82f6' },
+  IndexedDB: { short: 'IDB', color: '#1c1c21' },
+  'Service Worker': { short: 'SW', color: '#0b0b0f' },
+  'Local-Only Privacy': { short: 'LOP', color: '#09090b' },
+  'Client-Side Dashboard': { short: 'CSD', color: '#d4956d' },
   React: { short: 'RE', color: '#22d3ee' },
   TypeScript: { short: 'TS', color: '#60a5fa' },
-  Vite: { short: 'VT', color: '#a855f7' },
   Tailwind: { short: 'TW', color: '#38bdf8' },
+  'Data Visualization': { short: 'DV', color: '#b06a3a' },
+  'Framer Motion': { short: 'FM', color: '#8b5c3c' },
+  JSON: { short: 'JSON', color: '#3d2a1f' },
+  'Local Persistence': { short: 'LP', color: '#d4956d' },
+  'Spaced Repetition Logic': { short: 'SRL', color: '#b06a3a' },
+  'Instant Game PWA': { short: 'IGP', color: '#3b82f6' },
+  Vite: { short: 'VT', color: '#a855f7' },
+  'Zero-Latency UI': { short: 'ZLU', color: '#1f2937' },
+  Installable: { short: 'INS', color: '#374151' },
+  'Offline Capable': { short: 'OC', color: '#111827' },
+  'Real-Time Sync App': { short: 'RTSA', color: '#aa6c4b' },
   Firebase: { short: 'FB', color: '#f59e0b' },
+  'Firestore Realtime': { short: 'FSR', color: '#be185d' },
+  '3D Elements (Three.js)': { short: '3D', color: '#831843' },
+  'Community Tracker': { short: 'CT', color: '#ef4444' },
+  'Live Leaderboard': { short: 'LL', color: '#b91c1c' },
+  'PWA Installable': { short: 'PWA', color: '#7f1d1d' },
+  'Chart.js Analytics': { short: 'CJA', color: '#d4956d' },
+  'Local-First Utility': { short: 'LFU', color: '#84cc16' },
+  'File System Access API': { short: 'FSAA', color: '#65a30d' },
+  'Privacy-Centric': { short: 'PC', color: '#4b5320' },
+  'Private Journaling PWA': { short: 'PJP', color: '#8b5cf6' },
+  'Encrypted Local Storage': { short: 'ELS', color: '#6d28d9' },
+  'Export to JSON/Zip': { short: 'EJZ', color: '#4c1d95' },
+  'Interactive Visualization': { short: 'IV', color: '#06b6d4' },
+  'WebGL (OGL)': { short: 'WGL', color: '#0891b2' },
+  'Dynamic Modeling': { short: 'DM', color: '#164e63' },
+  Python: { short: 'PY', color: '#3776ab' },
+  Markdown: { short: 'MD', color: '#083fa1' },
   // ... (Add others as needed, default fallback exists)
 };
 
@@ -54,33 +98,67 @@ const getTechData = (tech: string): TechIconData => {
   };
 };
 
-// --- Component: Tech Stack (New Minimal Design) ---
-const TechStack: React.FC<{ techStack?: string[] }> = ({ techStack }) => {
-  if (!techStack?.length) return null;
+// --- Component: System Specs (New Structured Design) ---
+const SystemSpecs: React.FC<{ techSpecs?: { model: string; stack: string[]; features: string[] } }> = ({ techSpecs }) => {
+  if (!techSpecs) return null;
 
   return (
     <div className="mt-auto pt-6 border-t border-white/5">
-      <div className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 mb-3">
-        Technologies
+      <div className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 mb-4">
+        System Architecture
       </div>
-      <div className="flex flex-wrap gap-2">
-        {techStack.map((tech) => {
-          const data = getTechData(tech);
-          return (
+
+      {/* Model */}
+      <div className="mb-4">
+        <div className="text-[11px] font-medium text-zinc-400 mb-2 uppercase tracking-wide">
+          Model
+        </div>
+        <div className="px-3 py-2 rounded bg-white/[0.03] border border-white/[0.08]">
+          <span className="text-sm font-medium text-white">{techSpecs.model}</span>
+        </div>
+      </div>
+
+      {/* Stack */}
+      <div className="mb-4">
+        <div className="text-[11px] font-medium text-zinc-400 mb-2 uppercase tracking-wide">
+          Stack
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {techSpecs.stack.map((tech) => {
+            const data = getTechData(tech);
+            return (
+              <div
+                key={tech}
+                className="group flex items-center gap-2 px-2.5 py-1.5 rounded bg-white/[0.03] border border-white/[0.08] hover:border-white/20 transition-colors"
+              >
+                <span
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{ backgroundColor: data.color, boxShadow: `0 0 6px ${data.color}40` }}
+                />
+                <span className="text-[11px] font-medium text-zinc-300 group-hover:text-white transition-colors">
+                  {tech}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Features */}
+      <div>
+        <div className="text-[11px] font-medium text-zinc-400 mb-2 uppercase tracking-wide">
+          Features
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {techSpecs.features.map((feature) => (
             <div
-              key={tech}
-              className="group flex items-center gap-2 px-2.5 py-1.5 rounded bg-white/[0.03] border border-white/[0.08] hover:border-white/20 transition-colors"
+              key={feature}
+              className="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-medium"
             >
-              <span
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ backgroundColor: data.color, boxShadow: `0 0 6px ${data.color}40` }}
-              />
-              <span className="text-[11px] font-medium text-zinc-300 group-hover:text-white transition-colors">
-                {tech}
-              </span>
+              {feature}
             </div>
-          );
-        })}
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -155,8 +233,8 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ p
           <FormattedDescription text={project.fullDesc || project.desc} />
         </div>
 
-        {/* Tech Stack (Pushed to bottom via mt-auto in component) */}
-        <TechStack techStack={project.techStack} />
+        {/* System Specs (Pushed to bottom via mt-auto in component) */}
+        <SystemSpecs techSpecs={project.techSpecs} />
 
         {/* Footer Actions */}
         {project.href && (
@@ -227,7 +305,7 @@ const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ proj
             <FormattedDescription text={project.fullDesc || project.desc} />
         </div>
 
-        <TechStack techStack={project.techStack} />
+        <SystemSpecs techSpecs={project.techSpecs} />
 
         {project.href && (
           <div className="mt-8 pt-6 border-t border-white/10 flex justify-end">
