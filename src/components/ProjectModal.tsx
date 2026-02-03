@@ -185,7 +185,7 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ p
   return (
     <>
       {/* Left: Image (Bleed, no padding) */}
-      <div className="relative w-full h-[300px] md:h-full overflow-hidden bg-black group">
+      <div className="relative w-full h-full min-h-[300px] md:min-h-0 overflow-hidden bg-black group">
          {/* Subtle overlay gradient to blend image into background if needed */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent opacity-20 z-10 pointer-events-none" />
         
@@ -198,7 +198,7 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ p
       </div>
 
       {/* Right: Content */}
-      <div className="w-full min-h-0 p-8 md:p-10 flex flex-col overflow-y-auto">
+      <div className="w-full h-full p-8 md:p-10 flex flex-col overflow-y-auto">
         
         {/* Header Section */}
         <div className="mb-6">
@@ -358,12 +358,12 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
         ref={modalRef}
         id="modal-content"
         className={`
-            relative w-full bg-[#121212] border border-white/10 shadow-2xl
+            relative w-full bg-[#121212] border border-white/10 shadow-2xl overflow-hidden
             transform transition-all duration-500 ease-out
             ${isOpen ? 'scale-100 translate-y-0 opacity-100' : 'scale-95 translate-y-8 opacity-0'}
             ${isLandscape 
-                ? 'max-w-6xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:grid md:grid-cols-[1.2fr_1fr] rounded-none md:rounded-2xl md:overflow-hidden' 
-                : 'max-w-4xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:flex-row rounded-none md:rounded-2xl overflow-hidden'
+                ? 'max-w-6xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:grid md:grid-cols-[1.2fr_1fr] rounded-none md:rounded-2xl' 
+                : 'max-w-4xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:flex-row rounded-none md:rounded-2xl'
             }
         `}
       >
