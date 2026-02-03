@@ -1,31 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import LightPillar from './components/LightPillar';
 import GlassSurface from './components/GlassSurface';
 
-/* Custom CSS for animations and noise texture */
+/* Custom CSS for directional animations */
 const styleTag = `
   @keyframes fade-in-up {
-    from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+    from { opacity: 0; transform: translateY(40px); filter: blur(10px); }
     to { opacity: 1; transform: translateY(0); filter: blur(0); }
   }
+  @keyframes fade-in-left {
+    from { opacity: 0; transform: translateX(-40px); filter: blur(10px); }
+    to { opacity: 1; transform: translateX(0); filter: blur(0); }
+  }
+  @keyframes fade-in-right {
+    from { opacity: 0; transform: translateX(40px); filter: blur(10px); }
+    to { opacity: 1; transform: translateX(0); filter: blur(0); }
+  }
 
-  /* Staggered entrance animations */
-  .animate-fade-in-delay-1 { animation: fade-in-up 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s forwards; opacity: 0; }
-  .animate-fade-in-delay-2 { animation: fade-in-up 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards; opacity: 0; }
-  .animate-fade-in-delay-3 { animation: fade-in-up 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards; opacity: 0; }
-  .animate-fade-in-delay-4 { animation: fade-in-up 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.7s forwards; opacity: 0; }
-
-  .bg-noise {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  /* Animations - slower, more cinematic */
+  .animate-enter-title { animation: fade-in-up 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s forwards; opacity: 0; }
+  .animate-enter-sub { animation: fade-in-up 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards; opacity: 0; }
+  .animate-enter-left { animation: fade-in-left 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards; opacity: 0; }
+  .animate-enter-right { animation: fade-in-right 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s forwards; opacity: 0; }
+  
+  /* Mobile override */
+  @media (max-width: 768px) {
+    .animate-enter-left, .animate-enter-right { animation-name: fade-in-up; }
   }
 `;
 
-// --- Components ---
-
-/**
- * Main Application Component
- */
 const Onboarding = () => {
   const [showOnboarding, setShowOnboarding] = useState(true);
   const [isLeaving, setIsLeaving] = useState(false);
@@ -58,15 +62,9 @@ const Onboarding = () => {
 
   if (!showOnboarding) {
     return (
-      <div className="min-h-screen bg-zinc-950 text-zinc-300 flex flex-col items-center justify-center p-8 font-sans antialiased selection:bg-cyan-500/30">
-        <h1 className="text-4xl font-light tracking-tight mb-6 text-white">Main Portfolio View</h1>
-        <p className="max-w-md text-center text-zinc-500 mb-8">
-          The threshold has been crossed. This is where the main navigation or content grid would reside.
-        </p>
-        <button
-          onClick={resetExperience}
-          className="px-6 py-2 text-sm border border-zinc-800 hover:bg-zinc-900 hover:text-white transition-colors duration-300 rounded-full"
-        >
+      <div className="min-h-screen bg-zinc-950 text-zinc-300 flex flex-col items-center justify-center p-8 font-sans antialiased">
+        <h1 className="text-4xl font-serif italic tracking-tight mb-6 text-white">Main Portfolio View</h1>
+        <button onClick={resetExperience} className="px-6 py-2 text-sm border border-zinc-800 hover:bg-zinc-900 rounded-full transition-colors">
           Reset Onboarding Experience
         </button>
       </div>
@@ -77,10 +75,10 @@ const Onboarding = () => {
     <div className="relative min-h-screen bg-[#050505] text-zinc-100 overflow-hidden font-sans antialiased selection:bg-cyan-500/30">
       <style>{styleTag}</style>
 
-      {/* Ambient Background - Deep Dark */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950 to-black z-0 pointer-events-none"></div>
+      {/* 1. Ambient Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950/50 to-black z-0 pointer-events-none"></div>
 
-      {/* The Axis - Front and Center */}
+      {/* 2. The Visual: Slanted Light Pillar */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="relative w-full h-screen">
           <LightPillar
@@ -100,125 +98,81 @@ const Onboarding = () => {
         </div>
       </div>
 
-      {/* Main Content Area */}
-      <main className={`relative z-10 flex flex-col items-center justify-center min-h-screen p-6 transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${isLeaving ? 'opacity-0 scale-95 blur-lg' : 'opacity-100 scale-100 blur-0'}`}>
-
-        {/* Container: keep it clean; glass is reserved for smaller elements */}
-        <div className="relative w-full max-w-xl p-8 md:p-12 text-center bg-black/45 border border-white/10 rounded-[2.5rem] shadow-[0_30px_60px_-12px_rgba(0,0,0,0.5)]">
-
-          {/* 1. Opening Statement */}
-          <div className="mb-10 animate-fade-in-delay-1 flex flex-col items-center">
-            <GlassSurface
-              width="fit-content"
-              height="fit-content"
-              borderRadius={999}
-              brightness={65}
-              opacity={0.88}
-              blur={10}
-              displace={0.2}
-              distortionScale={-80}
-              mixBlendMode="screen"
-              className="mb-6 px-3 py-1 text-[10px] font-medium tracking-[0.2em] uppercase text-cyan-100/70"
-            >
-              Opening
-            </GlassSurface>
-            <h1 className="text-3xl md:text-4xl font-normal tracking-tight text-white leading-tight">
-              A portfolio built by AI, directed by intention.
-            </h1>
+      {/* 3. Main Content Layer - Minimal & Floating */}
+      <main className={`relative z-10 w-full min-h-screen max-w-7xl mx-auto px-6 py-12 flex flex-col justify-between transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${isLeaving ? 'opacity-0 scale-95 blur-xl' : 'opacity-100 scale-100 blur-0'}`}>
+        
+        {/* HEADER: Floating Top Left */}
+        <div className="w-full flex justify-between items-start animate-enter-title">
+          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/30 mix-blend-difference">
+            Benjamin P. Haddon
           </div>
-
-          {/* 2. What This Is */}
-          <div className="mb-10 animate-fade-in-delay-2">
-            <div className="text-[11px] uppercase tracking-[0.2em] text-white/40 mb-4">
-              What This Is
-            </div>
-            <div className="space-y-3 text-sm md:text-base text-zinc-300">
-              <div>
-                <span className="text-white/80 font-medium">Narrative</span>{' '}
-                <span className="text-white/50">— Mythic frameworks as tools for meaning-making</span>
-              </div>
-              <div>
-                <span className="text-white/80 font-medium">Systems</span>{' '}
-                <span className="text-white/50">— Progressive web apps that respect attention</span>
-              </div>
-              <div>
-                <span className="text-white/80 font-medium">Psyche</span>{' '}
-                <span className="text-white/50">— Psychological concepts as navigable experiences</span>
-              </div>
-            </div>
-            <p className="mt-5 text-sm text-zinc-400 leading-relaxed max-w-md mx-auto">
-              Each project explores how structure serves depth. How ancient patterns solve modern problems. How tools can dignify rather than distract.
-            </p>
-          </div>
-
-          {/* 3. How It Was Made */}
-          <div className="mb-10 animate-fade-in-delay-3">
-            <div className="text-[11px] uppercase tracking-[0.2em] text-white/40 mb-4">
-              How It Was Made
-            </div>
-            <p className="text-sm md:text-base text-zinc-400 leading-relaxed max-w-md mx-auto">
-              This portfolio was AI-scaffolded and human-directed. I designed the architecture. I defined the constraints. I wrote the concepts.
-              AI built the code to spec—faster than I could alone, but never unsupervised.
-              Every creative decision is mine. Every line was reviewed. The vision is human. The execution is collaborative.
-              This is intentional AI partnership: acceleration without abdication.
-            </p>
-          </div>
-
-          {/* 4. What You'll Find & Action */}
-          <div className="flex flex-col items-center gap-6 animate-fade-in-delay-4">
-
-            <GlassSurface
-              width="100%"
-              height="auto"
-              borderRadius={24}
-              brightness={55}
-              opacity={0.86}
-              blur={12}
-              displace={0.3}
-              distortionScale={-120}
-              mixBlendMode="screen"
-              className="w-full max-w-md"
-            >
-              <div className="w-full px-4 py-3 text-left">
-                <div className="text-[11px] uppercase tracking-[0.2em] text-white/40 mb-3 text-center">
-                  What You'll Find
-                </div>
-                <ul className="text-sm text-zinc-400 leading-relaxed space-y-2">
-                  <li>• Narrative systems using mythology as interface design</li>
-                  <li>• Privacy-first PWAs prioritizing progress over metrics</li>
-                  <li>• Experimental tools making psychological concepts tangible</li>
-                </ul>
-                <p className="mt-4 text-sm text-zinc-500 text-center">
-                  Some projects are live. Some are prototypes. All are honest attempts to build things worth keeping.
-                </p>
-              </div>
-            </GlassSurface>
-
-            {/* Primary Action - Apple Style Pill Button */}
-            <div className="flex items-center gap-4">
-              <button
-                onClick={handleEnter}
-                className="group relative flex items-center gap-2 pl-6 pr-5 py-3.5 bg-white text-black rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(255,255,255,0.25)]"
-              >
-                <span className="text-sm font-semibold tracking-tight">Enter Portfolio</span>
-                <div className="bg-black/10 rounded-full p-1 group-hover:translate-x-0.5 transition-transform duration-300">
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </div>
-              </button>
-              <button
-                onClick={handleSkip}
-                className="text-xs uppercase tracking-[0.2em] text-white/50 hover:text-white/80 transition-colors"
-              >
-                Skip Intro
-              </button>
-            </div>
-
+          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/30 mix-blend-difference hidden md:block">
+            System Status: Online
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="absolute bottom-8 text-[10px] text-white/20 tracking-widest uppercase font-medium animate-fade-in-delay-4 mix-blend-plus-lighter">
-          System / Narrative © {new Date().getFullYear()}
+        {/* CENTER: The Narrative Title */}
+        <div className="flex-1 flex flex-col items-center justify-center text-center -mt-20">
+          <div className="animate-enter-title mix-blend-difference">
+             {/* Switched from font-display to font-sans + serif combo */}
+            <h1 className="text-4xl md:text-7xl font-sans font-light tracking-tight text-white leading-[1.1]">
+              A portfolio built by AI,<br />
+              <span className="font-serif italic text-white/90">directed by intention.</span>
+            </h1>
+          </div>
+          
+          <div className="mt-12 animate-enter-sub">
+            <GlassSurface
+              width="auto"
+              height="auto"
+              borderRadius={999}
+              backgroundOpacity={0.1}
+              blur={8}
+              borderWidth={0.5}
+              brightness={1.2}
+              mixBlendMode="screen"
+            >
+              <div className="flex items-center gap-4 pl-1 pr-1 py-1">
+                 <button
+                    onClick={handleEnter}
+                    className="group relative flex items-center gap-3 px-8 py-3 bg-zinc-100 hover:bg-white text-black rounded-full transition-all duration-500 shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_-10px_rgba(255,255,255,0.5)] hover:scale-[1.02]"
+                  >
+                    <span className="text-xs font-bold tracking-[0.15em] uppercase">Enter System</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </button>
+              </div>
+            </GlassSurface>
+          </div>
+        </div>
+
+        {/* FOOTER: Minimal Text Columns */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-6 items-end">
+          
+          {/* Left Column: What This Is */}
+          <div className="md:col-span-3 animate-enter-left">
+             <div className="mb-4 flex items-center gap-2">
+                <div className="h-[1px] w-8 bg-white/20"></div>
+                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/50">Context</span>
+             </div>
+             <p className="text-sm text-zinc-400 font-light leading-relaxed">
+               Mythic frameworks as tools for meaning-making. Progressive web apps that respect attention. Psychological concepts as navigable experiences.
+             </p>
+          </div>
+
+          {/* Center Space (Empty for Pillar) */}
+          <div className="hidden md:block md:col-span-6"></div>
+
+          {/* Right Column: How It Was Made */}
+          <div className="md:col-span-3 animate-enter-right text-left md:text-right">
+             <div className="mb-4 flex items-center gap-2 md:justify-end">
+                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/50">Protocol</span>
+                <div className="h-[1px] w-8 bg-white/20"></div>
+             </div>
+             <p className="text-sm text-zinc-400 font-light leading-relaxed">
+               AI-scaffolded, human-directed. I designed the architecture and defined the constraints. Acceleration without abdication.
+             </p>
+          </div>
+
         </div>
 
       </main>
