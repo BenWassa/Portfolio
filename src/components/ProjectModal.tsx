@@ -358,12 +358,12 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
         ref={modalRef}
         id="modal-content"
         className={`
-            relative w-full bg-[#121212] border border-white/10 shadow-2xl overflow-hidden
+            relative w-full bg-[#121212] border border-white/10 shadow-2xl
             transform transition-all duration-500 ease-out
             ${isOpen ? 'scale-100 translate-y-0 opacity-100' : 'scale-95 translate-y-8 opacity-0'}
             ${isLandscape 
                 ? 'max-w-6xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:grid md:grid-cols-[1.2fr_1fr] rounded-none md:rounded-2xl' 
-                : 'max-w-4xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:flex-row rounded-none md:rounded-2xl'
+                : 'max-w-4xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:flex-row rounded-none md:rounded-2xl overflow-hidden'
             }
         `}
       >
