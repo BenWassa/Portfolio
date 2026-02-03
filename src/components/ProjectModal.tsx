@@ -198,7 +198,7 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ p
       </div>
 
       {/* Right: Content */}
-      <div className="w-full h-full p-8 md:p-10 flex flex-col overflow-y-auto">
+      <div className="flex-1 p-8 md:p-10 flex flex-col overflow-y-auto">
         
         {/* Header Section */}
         <div className="mb-6">
