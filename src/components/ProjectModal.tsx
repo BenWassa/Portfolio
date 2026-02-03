@@ -221,8 +221,6 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ p
             >
               {project.tag}
             </span>
-            {/* Separator dot */}
-            <span className="w-0.5 h-0.5 bg-zinc-600 rounded-full" />
 
             {/* Status */}
             <div className="flex items-center gap-1.5">
@@ -296,7 +294,7 @@ const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ proj
             >
               {project.tag}
             </span>
-             <span className="w-0.5 h-0.5 bg-zinc-600 rounded-full" />
+             
              <div className="flex items-center gap-1.5">
               <span className={`w-1.5 h-1.5 rounded-full ${getStatusDotClass(project.status)}`} />
               <span className={`text-[10px] font-bold tracking-wider uppercase ${getStatusTextClass(project.status)}`}>

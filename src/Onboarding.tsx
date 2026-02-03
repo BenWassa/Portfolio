@@ -83,7 +83,18 @@ const Onboarding = () => {
       <style>{styleTag}</style>
 
       {/* 1. Ambient Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950/50 to-black z-0 pointer-events-none"></div>
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div
+          className="absolute inset-0 opacity-15 mix-blend-soft-light"
+          style={{
+            backgroundImage:
+              'url(https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2064&auto=format&fit=crop)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950/50 to-black" />
+      </div>
 
       {/* 2. The Visual: Slanted Light Pillar */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -128,32 +139,31 @@ const Onboarding = () => {
             </h1>
           </div>
           
-          <div className="mt-12 animate-enter-sub">
+          <div className="mt-12 animate-enter-sub flex items-center justify-center">
             <GlassSurface
-              width="fit-content"
-              height="fit-content"
+              width={420}
+              height={80}
               borderRadius={999}
+              backgroundOpacity={0.06}
+              saturation={1}
+              borderWidth={0.07}
+              brightness={50}
+              opacity={0.93}
+              blur={11}
               displace={0.5}
               distortionScale={-180}
               redOffset={0}
               greenOffset={10}
               blueOffset={20}
-              backgroundOpacity={0.1}
-              saturation={1}
-              brightness={50}
-              opacity={0.93}
-              mixBlendMode="screen"
-              className="inline-flex"
+              className="shadow-2xl hover:scale-[1.02] transition-transform duration-300"
             >
-              <div className="flex items-center gap-4 pl-1 pr-1 py-1">
-                 <button
-                    onClick={handleEnter}
-                    className="group relative flex items-center gap-3 px-8 py-3 bg-transparent text-white rounded-full transition-all duration-500 shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_-10px_rgba(255,255,255,0.5)] hover:scale-[1.02]"
-                  >
-                    <span className="text-xs font-bold tracking-[0.15em] uppercase">Enter System</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </button>
-              </div>
+              <button
+                onClick={handleEnter}
+                className="group w-full h-full flex items-center justify-center gap-3 px-10 text-white/90 hover:text-white transition-colors"
+              >
+                <span className="text-xs font-bold tracking-[0.2em] uppercase">Enter System</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </button>
             </GlassSurface>
           </div>
         </div>
