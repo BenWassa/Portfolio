@@ -34,15 +34,59 @@ const TECH_ICON_MAP: Record<string, TechIconData> = {
   HTML: { short: 'HTML', color: '#f97316' },
   CSS: { short: 'CSS', color: '#38bdf8' },
   JavaScript: { short: 'JS', color: '#facc15' },
-  'Web Audio': { short: 'AUD', color: '#ec4899' },
-  Responsive: { short: 'RWD', color: '#22d3ee' },
-  Python: { short: 'PY', color: '#38bdf8' },
-  Markdown: { short: 'MD', color: '#94a3b8' },
+  'Web Audio Engine': { short: 'AUD', color: '#ec4899' },
+  'Prompt-Driven Flow': { short: 'PDF', color: '#a855f7' },
+  'Static Narrative Site': { short: 'SNS', color: '#22d3ee' },
+  'Long-form Layout': { short: 'LFL', color: '#94a3b8' },
+  'Multimedia Scaffolding': { short: 'MMS', color: '#f59e0b' },
+  'Interactive Guide': { short: 'IG', color: '#10b981' },
+  'Live HTML Experiences': { short: 'LHE', color: '#06b6d4' },
+  'Research Synthesis': { short: 'RS', color: '#8b5cf6' },
+  'Narrative Research': { short: 'NR', color: '#dc2626' },
+  'Cross-Cultural Analysis': { short: 'CCA', color: '#d4af37' },
+  'Mythic Structure': { short: 'MS', color: '#2d2520' },
+  'Data Analysis Tool': { short: 'DAT', color: '#8B5CF6' },
+  pandas: { short: 'PD', color: '#150458' },
+  Streamlit: { short: 'ST', color: '#ff4b4b' },
+  'Plotly Visualization': { short: 'PV', color: '#3f4f75' },
+  'Audio Feature Extraction': { short: 'AFE', color: '#ec4899' },
+  'Offline-First PWA': { short: 'PWA', color: '#3b82f6' },
+  IndexedDB: { short: 'IDB', color: '#1c1c21' },
+  'Service Worker': { short: 'SW', color: '#0b0b0f' },
+  'Local-Only Privacy': { short: 'LOP', color: '#09090b' },
+  'Client-Side Dashboard': { short: 'CSD', color: '#d4956d' },
   React: { short: 'RE', color: '#22d3ee' },
   TypeScript: { short: 'TS', color: '#60a5fa' },
-  Vite: { short: 'VT', color: '#a855f7' },
   Tailwind: { short: 'TW', color: '#38bdf8' },
+  'Data Visualization': { short: 'DV', color: '#b06a3a' },
+  'Framer Motion': { short: 'FM', color: '#8b5c3c' },
+  JSON: { short: 'JSON', color: '#3d2a1f' },
+  'Local Persistence': { short: 'LP', color: '#d4956d' },
+  'Spaced Repetition Logic': { short: 'SRL', color: '#b06a3a' },
+  'Instant Game PWA': { short: 'IGP', color: '#3b82f6' },
+  Vite: { short: 'VT', color: '#a855f7' },
+  'Zero-Latency UI': { short: 'ZLU', color: '#1f2937' },
+  Installable: { short: 'INS', color: '#374151' },
+  'Offline Capable': { short: 'OC', color: '#111827' },
+  'Real-Time Sync App': { short: 'RTSA', color: '#aa6c4b' },
   Firebase: { short: 'FB', color: '#f59e0b' },
+  'Firestore Realtime': { short: 'FSR', color: '#be185d' },
+  '3D Elements (Three.js)': { short: '3D', color: '#831843' },
+  'Community Tracker': { short: 'CT', color: '#ef4444' },
+  'Live Leaderboard': { short: 'LL', color: '#b91c1c' },
+  'PWA Installable': { short: 'PWA', color: '#7f1d1d' },
+  'Chart.js Analytics': { short: 'CJA', color: '#d4956d' },
+  'Local-First Utility': { short: 'LFU', color: '#84cc16' },
+  'File System Access API': { short: 'FSAA', color: '#65a30d' },
+  'Privacy-Centric': { short: 'PC', color: '#4b5320' },
+  'Private Journaling PWA': { short: 'PJP', color: '#8b5cf6' },
+  'Encrypted Local Storage': { short: 'ELS', color: '#6d28d9' },
+  'Export to JSON/Zip': { short: 'EJZ', color: '#4c1d95' },
+  'Interactive Visualization': { short: 'IV', color: '#06b6d4' },
+  'WebGL (OGL)': { short: 'WGL', color: '#0891b2' },
+  'Dynamic Modeling': { short: 'DM', color: '#164e63' },
+  Python: { short: 'PY', color: '#3776ab' },
+  Markdown: { short: 'MD', color: '#083fa1' },
   // ... (Add others as needed, default fallback exists)
 };
 
@@ -54,33 +98,77 @@ const getTechData = (tech: string): TechIconData => {
   };
 };
 
-// --- Component: Tech Stack (New Minimal Design) ---
-const TechStack: React.FC<{ techStack?: string[] }> = ({ techStack }) => {
-  if (!techStack?.length) return null;
+// --- Component: System Specs (New Structured Design) ---
+const SystemSpecs: React.FC<{ techSpecs?: { model: string; stack: string[]; features: string[] } }> = ({ techSpecs }) => {
+  if (!techSpecs) return null;
 
   return (
-    <div className="mt-auto pt-6 border-t border-white/5">
-      <div className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 mb-3">
-        Technologies
+    <div className="mt-auto pt-4 border-t border-white/5">
+      <div className="text-[9px] font-mono uppercase tracking-widest text-zinc-500 mb-3">
+        System Architecture
       </div>
-      <div className="flex flex-wrap gap-2">
-        {techStack.map((tech) => {
-          const data = getTechData(tech);
-          return (
-            <div
-              key={tech}
-              className="group flex items-center gap-2 px-2.5 py-1.5 rounded bg-white/[0.03] border border-white/[0.08] hover:border-white/20 transition-colors"
-            >
-              <span
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ backgroundColor: data.color, boxShadow: `0 0 6px ${data.color}40` }}
-              />
-              <span className="text-[11px] font-medium text-zinc-300 group-hover:text-white transition-colors">
-                {tech}
-              </span>
-            </div>
-          );
-        })}
+
+      {/* Model */}
+      <div className="mb-4">
+        <div className="text-[10px] font-medium text-zinc-400 mb-2 uppercase tracking-wide">
+          Model
+        </div>
+        <div className="px-3 py-2 rounded-lg border border-white/20 bg-transparent hover:border-white/30 transition-colors">
+          <span className="text-[13px] font-medium text-white/90">{techSpecs.model}</span>
+        </div>
+      </div>
+
+      {/* Stack & Features - Two Column Layout */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        {/* Stack - Vertical */}
+        <div>
+          <div className="text-[10px] font-medium text-zinc-400 mb-2 uppercase tracking-wide">
+            Stack
+          </div>
+          <div className="space-y-2">
+            {techSpecs.stack.map((tech) => {
+              const data = getTechData(tech);
+              return (
+                <div
+                  key={tech}
+                  className="group flex items-center gap-2 px-3 py-2 rounded-full border-2 transition-all hover:scale-102 hover:-translate-y-0.5"
+                  style={{
+                    borderColor: `${data.color}60`,
+                    backgroundColor: 'transparent',
+                    boxShadow: `inset 0 0 12px ${data.color}15, 0 0 8px ${data.color}20`,
+                  }}
+                >
+                  <span
+                    className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: data.color, boxShadow: `0 0 4px ${data.color}` }}
+                  />
+                  <span className="text-[11px] font-medium text-zinc-300 group-hover:text-zinc-100 transition-colors">
+                    {tech}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Features - Vertical */}
+        <div>
+          <div className="text-[10px] font-medium text-zinc-400 mb-2 uppercase tracking-wide">
+            Features
+          </div>
+          <div className="space-y-2">
+            {techSpecs.features.map((feature) => (
+              <div
+                key={feature}
+                className="px-2.5 py-1.5 rounded-lg border border-white/10 bg-transparent text-zinc-300 text-[11px] font-medium transition-all hover:-translate-y-0.5"
+              >
+                {feature}
+              </div>
+            ))}
+          </div>
+        </div>
+        
       </div>
     </div>
   );
@@ -92,7 +180,7 @@ const FormattedDescription: React.FC<{ text: string }> = ({ text }) => {
   const paragraphs = text.split('\n\n').filter(Boolean);
 
   return (
-    <div className="space-y-4 text-zinc-300 text-[15px] leading-relaxed font-light">
+    <div className="space-y-3 text-zinc-300 text-[14px] leading-[1.6] font-light">
       {paragraphs.map((para, i) => (
         <p key={i}>{para}</p>
       ))}
@@ -107,12 +195,9 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ p
   return (
     <>
       {/* Left: Image (Bleed, no padding) */}
-      <div className="relative w-full h-full min-h-[300px] md:min-h-0 overflow-hidden bg-black group">
-         {/* Subtle overlay gradient to blend image into background if needed */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent opacity-20 z-10 pointer-events-none" />
-        
+      <div className="relative w-full h-[300px] md:h-full overflow-hidden bg-black group">
         <img
-          className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-[1.02]"
           src={project.img}
           alt={project.alt}
           loading="lazy"
@@ -120,11 +205,11 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ p
       </div>
 
       {/* Right: Content */}
-      <div className="w-full h-full p-8 md:p-10 flex flex-col overflow-y-auto">
+      <div className="w-full min-h-0 p-6 md:p-8 flex flex-col overflow-y-auto overflow-x-hidden">
         
         {/* Header Section */}
-        <div className="mb-6">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight">
+        <div className="mb-4">
+          <h2 className="font-display text-xl md:text-2xl font-bold text-white mb-2 tracking-tight">
             {project.title}
           </h2>
           
@@ -137,9 +222,6 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ p
               {project.tag}
             </span>
 
-            {/* Separator dot */}
-            <span className="w-0.5 h-0.5 bg-zinc-600 rounded-full" />
-
             {/* Status */}
             <div className="flex items-center gap-1.5">
               <span className={`w-1.5 h-1.5 rounded-full ${getStatusDotClass(project.status)}`} />
@@ -151,16 +233,16 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ p
         </div>
 
         {/* Description */}
-        <div className="mb-8">
+        <div className="mb-5">
           <FormattedDescription text={project.fullDesc || project.desc} />
         </div>
 
-        {/* Tech Stack (Pushed to bottom via mt-auto in component) */}
-        <TechStack techStack={project.techStack} />
+        {/* System Specs (Pushed to bottom via mt-auto in component) */}
+        <SystemSpecs techSpecs={project.techSpecs} />
 
         {/* Footer Actions */}
         {project.href && (
-          <div className="mt-8 pt-6 border-t border-white/10 flex justify-end">
+          <div className="mt-6 pt-4 border-t border-white/10 flex justify-end">
              <a
               href={project.href}
               target="_blank"
@@ -212,7 +294,7 @@ const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ proj
             >
               {project.tag}
             </span>
-             <span className="w-0.5 h-0.5 bg-zinc-600 rounded-full" />
+             
              <div className="flex items-center gap-1.5">
               <span className={`w-1.5 h-1.5 rounded-full ${getStatusDotClass(project.status)}`} />
               <span className={`text-[10px] font-bold tracking-wider uppercase ${getStatusTextClass(project.status)}`}>
@@ -227,7 +309,7 @@ const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ proj
             <FormattedDescription text={project.fullDesc || project.desc} />
         </div>
 
-        <TechStack techStack={project.techStack} />
+        <SystemSpecs techSpecs={project.techSpecs} />
 
         {project.href && (
           <div className="mt-8 pt-6 border-t border-white/10 flex justify-end">
@@ -280,12 +362,12 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
         ref={modalRef}
         id="modal-content"
         className={`
-            relative w-full bg-[#121212] border border-white/10 shadow-2xl overflow-hidden
+            relative w-full bg-[#121212] border border-white/10 shadow-2xl
             transform transition-all duration-500 ease-out
             ${isOpen ? 'scale-100 translate-y-0 opacity-100' : 'scale-95 translate-y-8 opacity-0'}
             ${isLandscape 
-                ? 'max-w-6xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:grid md:grid-cols-[1.2fr_1fr] rounded-none md:rounded-2xl' 
-                : 'max-w-4xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:flex-row rounded-none md:rounded-2xl'
+                ? 'max-w-7xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:grid md:grid-cols-[1.6fr_1fr] rounded-none md:rounded-2xl md:overflow-hidden' 
+                : 'max-w-7xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:flex-row rounded-none md:rounded-2xl overflow-hidden'
             }
         `}
       >
