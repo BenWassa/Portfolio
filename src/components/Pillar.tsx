@@ -44,9 +44,16 @@ export const Pillar: React.FC<PillarProps> = ({
   }`;
   if (isActive) pillarClasses += ' active';
   if (isInactive) pillarClasses += ' inactive';
-  const hasSquareProjects = projects.some(p => p.orientation === 'square');
-  const secondaryStatus = projects.some(p => p.status === 'prototype') ? 'prototype' : 'draft';
-  const secondaryLabel = secondaryStatus === 'prototype' ? 'Prototype' : 'Draft';
+  const hasSquareProjects = projects.some((p) => p.orientation === 'square');
+  
+  // Determine secondary status (Prototype vs Draft)
+  const hasPrototypes = projects.some((p) => p.status === 'prototype');
+  const secondaryStatus = hasPrototypes ? 'prototype' : 'draft';
+  const secondaryLabel = hasPrototypes ? 'Prototype' : 'Draft';
+
+  // Filter Projects
+  const activeProjects = projects.filter((p) => p.status === 'active');
+  const secondaryProjects = projects.filter((p) => p.status === secondaryStatus);
   
   // Note: Added 'content-start' to ensure items pack correctly
   const gridClassName = hasSquareProjects
@@ -99,61 +106,51 @@ export const Pillar: React.FC<PillarProps> = ({
           <div className={gridClassName}>
             
             {/* Description moved here with col-span-full */}
-            <p className="col-span-full mb-4 max-w-xl text-white/60 font-light leading-relaxed animate-fade-in-up">
+            <p key="description" className="col-span-full mb-4 max-w-xl text-white/60 font-light leading-relaxed animate-fade-in-up">
               {description}
             </p>
-            {(() => {
-              const activeProjects = projects.filter(p => p.status === 'active');
-              const secondaryProjects = projects.filter(p => p.status === secondaryStatus);
 
-              return (
-                <>
-                  {activeProjects.length > 0 && (
-                    <>
-                      {/* Active Label */}
-                      <div className="col-span-full mt-2">
-                        <div className="flex items-center gap-2 mb-3">
-                          <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]"></div>
-                          <span className="text-xs font-mono uppercase tracking-wider font-bold text-emerald-400">
-                            Active
-                          </span>
-                        </div>
-                      </div>
-                      
-                      {activeProjects.map((project) => (
-                        <ProjectCard key={project.title} project={project} onClick={onProjectClick} />
-                      ))}
-                    </>
-                  )}
+            {/* Active Projects Section */}
+            {activeProjects.length > 0 && (
+              <>
+                <div key="header-active" className="col-span-full mt-2">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]"></div>
+                    <span className="text-xs font-mono uppercase tracking-wider font-bold text-emerald-400">
+                      Active
+                    </span>
+                  </div>
+                </div>
+                {activeProjects.map((project) => (
+                  <ProjectCard key={project.title} project={project} onClick={onProjectClick} />
+                ))}
+              </>
+            )}
 
-                  {secondaryProjects.length > 0 && (
-                    <>
-                      {/* Secondary Label */}
-                      <div className="col-span-full mt-6">
-                        <div className="flex items-center gap-2 mb-3">
-                          <div
-                            className={`w-1.5 h-1.5 rounded-full ${
-                              secondaryStatus === 'prototype' ? 'bg-amber-600' : 'bg-amber-500'
-                            }`}
-                          ></div>
-                          <span
-                            className={`text-xs font-mono uppercase tracking-wider font-bold ${
-                              secondaryStatus === 'prototype' ? 'text-amber-500' : 'text-amber-400'
-                            }`}
-                          >
-                            {secondaryLabel}
-                          </span>
-                        </div>
-                      </div>
-                      
-                      {secondaryProjects.map((project) => (
-                        <ProjectCard key={project.title} project={project} onClick={onProjectClick} />
-                      ))}
-                    </>
-                  )}
-                </>
-              );
-            })()}
+            {/* Secondary Projects Section */}
+            {secondaryProjects.length > 0 && (
+              <>
+                <div key="header-secondary" className="col-span-full mt-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div
+                      className={`w-1.5 h-1.5 rounded-full ${
+                        secondaryStatus === 'prototype' ? 'bg-amber-600' : 'bg-amber-500'
+                      }`}
+                    ></div>
+                    <span
+                      className={`text-xs font-mono uppercase tracking-wider font-bold ${
+                        secondaryStatus === 'prototype' ? 'text-amber-500' : 'text-amber-400'
+                      }`}
+                    >
+                      {secondaryLabel}
+                    </span>
+                  </div>
+                </div>
+                {secondaryProjects.map((project) => (
+                  <ProjectCard key={project.title} project={project} onClick={onProjectClick} />
+                ))}
+              </>
+            )}
           </div>
         </div>
       </div>
