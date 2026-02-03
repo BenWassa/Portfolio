@@ -378,12 +378,13 @@
     transform: translateY(0) !important;
   }
 
-  /* Modal layout: landscape on top for narrative/psych, square left for apps */
+  /* Modal layout: landscape left for narrative/psych, square left for apps */
   #modal-content[data-type='narrative'],
   #modal-content[data-type='psychology'] {
     flex-direction: column !important;
-    width: min(65vw, 720px);
+    width: min(80vw, 980px);
     max-height: 90vh;
+    align-items: stretch;
   }
 
   #modal-content[data-type='app'] {
@@ -391,6 +392,13 @@
   }
 
   @media (min-width: 768px) {
+    #modal-content[data-type='narrative'],
+    #modal-content[data-type='psychology'] {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+
     #modal-content[data-type='app'] {
       flex-direction: row;
     }
@@ -399,9 +407,10 @@
   #modal-content[data-type='narrative'] #m-media,
   #modal-content[data-type='psychology'] #m-media {
     width: 100% !important;
-    height: auto !important;
-    aspect-ratio: 3 / 2;
-    background: #0b0b0b;
+    align-self: stretch;
+    height: 100% !important;
+    aspect-ratio: auto;
+    background: transparent;
   }
 
   #modal-content[data-type='narrative'] #m-img,
@@ -410,6 +419,7 @@
     height: 100%;
     object-fit: contain;
     object-position: center;
+    display: block;
   }
 
   #modal-content[data-type='app'] #m-media {

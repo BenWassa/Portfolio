@@ -21,6 +21,7 @@ export type Project = {
   status: ProjectStatus;
   type: ProjectType;
   orientation: ProjectOrientation;
+  techStack?: string[];
 };
 
 export type ProjectDescription = {
