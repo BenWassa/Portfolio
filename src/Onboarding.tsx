@@ -30,12 +30,11 @@ const styleTag = `
 `;
 
 const Onboarding = () => {
-  const [showOnboarding, setShowOnboarding] = useState(true);
   const [isLeaving, setIsLeaving] = useState(false);
   const leaveTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
-    // Onboarding is now controlled by main.tsx, so always show when mounted
+    // Cleanup on unmount
     return () => {
       if (leaveTimeoutRef.current !== null) {
         window.clearTimeout(leaveTimeoutRef.current);
@@ -49,20 +48,13 @@ const Onboarding = () => {
     if (leaveTimeoutRef.current !== null) {
       window.clearTimeout(leaveTimeoutRef.current);
     }
+    
+    // Slight delay to allow the exit animation (blur/fade) to play before reload
     leaveTimeoutRef.current = window.setTimeout(() => {
-      // Update timestamp to mark that user has completed onboarding
       localStorage.setItem('portfolio_last_visit', new Date().toISOString());
-      // Reload the page to let main.tsx render the main app
       window.location.reload();
     }, 800);
   };
-
-  const resetExperience = () => {
-    localStorage.removeItem('portfolio_last_visit');
-    window.location.reload();
-  };
-
-  // Onboarding always shows when rendered - main.tsx handles the logic
 
   return (
     <div className="relative min-h-screen bg-[#050505] text-zinc-100 overflow-hidden font-sans antialiased selection:bg-cyan-500/30">
@@ -82,7 +74,7 @@ const Onboarding = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950/50 to-black" />
       </div>
 
-      {/* 2. The Visual: Slanted Light Pillar */}
+      {/* 2. The Visual: Slanted Light Pillar (UNTOUCHED) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="relative w-full h-screen">
           <LightPillar
@@ -103,15 +95,20 @@ const Onboarding = () => {
       </div>
 
       {/* 3. Main Content Layer - Minimal & Floating */}
-      <main className={`relative z-10 w-full min-h-screen max-w-7xl mx-auto px-6 py-12 flex flex-col justify-between transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${isLeaving ? 'opacity-0 scale-95 blur-xl' : 'opacity-100 scale-100 blur-0'}`}>
+      {/* Added blur-xl and scale-95 for a smooth "suck into the screen" exit effect */}
+      <main 
+        className={`relative z-10 w-full min-h-screen max-w-7xl mx-auto px-6 py-12 flex flex-col justify-between 
+        transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] 
+        ${isLeaving ? 'opacity-0 scale-95 blur-xl' : 'opacity-100 scale-100 blur-0'}`}
+      >
         
         {/* HEADER: Floating Top Left */}
         <div className="w-full flex justify-between items-start animate-enter-left">
-          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-zinc-400 mix-blend-difference">
+          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-zinc-500 mix-blend-difference">
             Benjamin P. Haddon
           </div>
-          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-zinc-400 mix-blend-difference hidden md:block">
-            System Status: <span className="text-zinc-200">Online</span>
+          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-zinc-500 mix-blend-difference hidden md:block">
+            System Status: <span className="text-zinc-300 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">Online</span>
           </div>
         </div>
 
@@ -124,36 +121,27 @@ const Onboarding = () => {
             </h1>
           </div>
           
-          {/* UPDATED: Premium Glassmorphism Button */}
+          {/* UPDATED: High-Polish Glass Button */}
           <div className="mt-16 animate-enter-sub flex items-center justify-center">
             <button
               onClick={handleEnter}
-              className="group relative px-12 py-6 rounded-full overflow-hidden
-                         bg-gradient-to-br from-white/[0.08] to-white/[0.03]
-                         hover:from-white/[0.15] hover:to-white/[0.08]
-                         backdrop-blur-2xl hover:backdrop-blur-3xl
-                         border border-white/20 hover:border-white/30
-                         shadow-[0_8px_32px_0_rgba(0,0,0,0.37),inset_0_1px_0_0_rgba(255,255,255,0.1)]
-                         hover:shadow-[0_8px_48px_0_rgba(255,255,255,0.15),inset_0_1px_0_0_rgba(255,255,255,0.2),0_0_80px_-10px_rgba(255,255,255,0.2)]
-                         transition-all duration-700 ease-out transform hover:scale-[1.02] hover:-translate-y-0.5
-                         before:absolute before:inset-0 before:rounded-full 
-                         before:bg-gradient-to-br before:from-white/[0.15] before:to-transparent 
-                         before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-700"
+              className="group relative px-10 py-5 rounded-full 
+                         bg-white/5 hover:bg-white/10 
+                         backdrop-blur-xl hover:backdrop-blur-2xl
+                         border border-white/10 hover:border-white/20
+                         shadow-[0_0_0_1px_rgba(255,255,255,0.02),0_8px_40px_-10px_rgba(0,0,0,0.5)]
+                         hover:shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_0_40px_-5px_rgba(255,255,255,0.1)]
+                         transition-all duration-500 ease-out transform hover:-translate-y-1"
             >
-              <div className="relative z-10 flex items-center justify-center gap-4">
-                <span className="text-xs font-bold tracking-[0.3em] uppercase text-white drop-shadow-lg">
+              <div className="flex items-center justify-center gap-4">
+                <span className="text-xs font-bold tracking-[0.25em] uppercase text-zinc-200 group-hover:text-white transition-colors">
                   Enter System
                 </span>
-                <ArrowRight className="w-4 h-4 text-white drop-shadow-lg group-hover:translate-x-1.5 transition-all duration-500" />
+                <ArrowRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-300" />
               </div>
               
-              {/* Animated shimmer effect */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/10 to-transparent 
-                            -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
-              
-              {/* Inner glow ring */}
-              <div className="absolute inset-[1px] rounded-full opacity-0 group-hover:opacity-100 
-                            bg-gradient-to-br from-white/5 to-transparent transition-opacity duration-700 pointer-events-none" />
+              {/* Inner shine effect */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
             </button>
           </div>
         </div>
@@ -162,12 +150,12 @@ const Onboarding = () => {
         <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 items-end">
           
           {/* Left Column: What This Is */}
-          <div className="md:col-span-3 animate-enter-left">
-             <div className="mb-3 flex items-center gap-3">
-                <div className="h-[1px] w-6 bg-zinc-600"></div>
-                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400">Context</span>
+          <div className="md:col-span-3 animate-enter-left flex flex-col gap-3">
+             <div className="flex items-center gap-3">
+                <div className="h-[1px] w-6 bg-zinc-700"></div>
+                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500">Context</span>
              </div>
-             <p className="text-sm text-zinc-200 font-light leading-relaxed">
+             <p className="text-sm text-zinc-300 font-light leading-relaxed">
                Mythic frameworks as tools for meaning-making. Progressive web apps that respect attention. Psychological concepts as navigable experiences.
              </p>
           </div>
@@ -176,12 +164,12 @@ const Onboarding = () => {
           <div className="hidden md:block md:col-span-6"></div>
 
           {/* Right Column: How It Was Made */}
-          <div className="md:col-span-3 animate-enter-right text-left md:text-right">
-             <div className="mb-3 flex items-center gap-3 md:justify-end">
-                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400">Protocol</span>
-                <div className="h-[1px] w-6 bg-zinc-600"></div>
+          <div className="md:col-span-3 animate-enter-right flex flex-col gap-3 text-left md:text-right md:items-end">
+             <div className="flex items-center gap-3 md:flex-row-reverse">
+                <div className="h-[1px] w-6 bg-zinc-700"></div>
+                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500">Protocol</span>
              </div>
-             <p className="text-sm text-zinc-200 font-light leading-relaxed">
+             <p className="text-sm text-zinc-300 font-light leading-relaxed">
                AI-scaffolded, human-directed. I designed the architecture and defined the constraints. Acceleration without abdication.
              </p>
           </div>
