@@ -33,6 +33,10 @@ type OnboardingProps = {
   onExitComplete: () => void;
 };
 
+const pillClassName =
+  'text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-200 bg-black/40 px-2 py-1 rounded-full border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-sm';
+const dividerClassName = 'h-px w-6 bg-white/10';
+
 const Onboarding: React.FC<OnboardingProps> = ({ onExitComplete }) => {
   const [isLeaving, setIsLeaving] = useState(false);
   const leaveTimeoutRef = useRef<number | null>(null);
@@ -68,14 +72,14 @@ const Onboarding: React.FC<OnboardingProps> = ({ onExitComplete }) => {
             backgroundImage:
               'url(https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2064&auto=format&fit=crop)',
             backgroundSize: 'cover',
-            backgroundPosition: 'center'
+            backgroundPosition: 'center',
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950/50 to-black" />
       </div>
 
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="relative w-full h-screen">
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-visible">
+        <div className="relative w-screen h-screen overflow-visible">
           <LightPillar
             intensity={1}
             rotationSpeed={0.3}
@@ -98,10 +102,8 @@ const Onboarding: React.FC<OnboardingProps> = ({ onExitComplete }) => {
       >
         {/* HEADER: Floating Top Left */}
         <div className="w-full flex justify-between items-start animate-enter-left">
-          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-zinc-300 bg-black/40 px-2 py-1 rounded-full border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.35)]">
-            Benjamin P. Haddon
-          </div>
-          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-zinc-300 bg-black/40 px-2 py-1 rounded-full border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.35)] hidden md:block">
+          <div className={pillClassName}>Benjamin P. Haddon</div>
+          <div className={`${pillClassName} hidden md:block`}>
             System Status:{' '}
             <span className="text-zinc-100 drop-shadow-[0_0_5px_rgba(255,255,255,0.35)]">
               Online
@@ -149,14 +151,12 @@ const Onboarding: React.FC<OnboardingProps> = ({ onExitComplete }) => {
           {/* Left Column: What This Is */}
           <div className="md:col-span-3 animate-enter-left flex flex-col gap-3">
             <div className="flex items-center gap-3">
-              <div className="h-[1px] w-6 bg-zinc-700"></div>
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-200 bg-black/40 px-2 py-1 rounded-full border border-white/10">
-                Context
-              </span>
+              <div className={dividerClassName} />
+              <span className={pillClassName}>Context</span>
             </div>
             <p className="text-sm text-zinc-300 font-light leading-relaxed">
-              Mythic frameworks as tools for meaning-making. Progressive web apps that respect
-              attention. Psychological concepts as navigable experiences.
+              Mythic frameworks for meaning-making. <br /> Progressive web apps that respect
+              attention. <br /> Psychological lenses distilling experience.
             </p>
           </div>
 
@@ -166,14 +166,12 @@ const Onboarding: React.FC<OnboardingProps> = ({ onExitComplete }) => {
           {/* Right Column: How It Was Made */}
           <div className="md:col-span-3 animate-enter-right flex flex-col gap-3 text-left md:text-right md:items-end">
             <div className="flex items-center gap-3 md:flex-row-reverse">
-              <div className="h-[1px] w-6 bg-zinc-700"></div>
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-200 bg-black/40 px-2 py-1 rounded-full border border-white/10">
-                Protocol
-              </span>
+              <div className={dividerClassName} />
+              <span className={pillClassName}>Protocol</span>
             </div>
             <p className="text-sm text-zinc-300 font-light leading-relaxed">
-              AI-scaffolded, human-directed. I designed the architecture and defined the
-              constraints. Acceleration without abdication.
+              AI-scaffolded, human-directed. <br /> Idea · Vision · Prototype · Portfolio-piece{' '}
+              <br /> Acceleration without abdication.
             </p>
           </div>
         </div>
