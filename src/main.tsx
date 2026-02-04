@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 // Tailwind/base styles are required for all routes (including glass demo)
 import './css/input.css';
+import App from './App';
+import Onboarding from './Onboarding';
 
 // Onboarding logic with proper session management
 const ONBOARDING_EXPIRY_DAYS = 7; // Show onboarding again after 7 days
@@ -37,14 +39,46 @@ function shouldShowOnboarding(): boolean {
 
 async function renderApp() {
   const showOnboarding = shouldShowOnboarding();
-  const { default: ExperienceShell } = await import('./ExperienceShell');
-  const component = <ExperienceShell showOnboarding={showOnboarding} />;
+  if (!showOnboarding) {
+    localStorage.setItem(VISIT_TIMESTAMP_KEY, new Date().toISOString());
+  }
+
+  const component = showOnboarding ? (
+    <OnboardingGate />
+  ) : (
+    <div className="min-h-screen opacity-100">
+      <App />
+    </div>
+  );
 
   ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
-      {component}
-    </React.StrictMode>,
+    <React.StrictMode>{component}</React.StrictMode>
   );
 }
 
 renderApp();
+
+function OnboardingGate() {
+  const [showApp, setShowApp] = React.useState(false);
+  const [appVisible, setAppVisible] = React.useState(false);
+
+  const handleExitComplete = () => {
+    setShowApp(true);
+    requestAnimationFrame(() => setAppVisible(true));
+  };
+
+  return (
+    <div className="min-h-screen">
+      {!showApp && <Onboarding onExitComplete={handleExitComplete} />}
+      {showApp ? (
+        <div
+          className={`min-h-screen transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            appVisible ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <App />
+        </div>
+      ) : null}
+    </div>
+  );
+}
