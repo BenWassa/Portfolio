@@ -487,28 +487,30 @@
    Modal Styles
    ----------------------------------------------------------------- */
 
-#modal {
-  transition: opacity 0.4s ease, visibility 0.4s ease;
-}
+  #modal {
+    transition:
+      opacity 0.4s ease,
+      visibility 0.4s ease;
+  }
 
-/* Ensure no scrollbars on the modal container itself */
-#modal-content {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
-}
+  /* Ensure no scrollbars on the modal container itself */
+  #modal-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
 
-#modal-content::-webkit-scrollbar {
-  width: 6px;
-}
-#modal-content::-webkit-scrollbar-track {
-  background: transparent;
-}
-#modal-content::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-}
+  #modal-content::-webkit-scrollbar {
+    width: 6px;
+  }
+  #modal-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  #modal-content::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+  }
 
-/* We removed the specific ID selectors for narrative/app 
+  /* We removed the specific ID selectors for narrative/app 
    because the logic is now handled via Tailwind classes 
    in the React component directly (grid-cols, etc).
 */
