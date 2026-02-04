@@ -11,19 +11,27 @@ interface ProjectModalProps {
 // --- Helper: Status Styles ---
 const getStatusDotClass = (status: ProjectStatus) => {
   switch (status) {
-    case 'active': return 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]';
-    case 'draft': return 'bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.4)]';
-    case 'prototype': return 'bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.4)]';
-    default: return 'bg-gray-500';
+    case 'active':
+      return 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]';
+    case 'draft':
+      return 'bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.4)]';
+    case 'prototype':
+      return 'bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.4)]';
+    default:
+      return 'bg-gray-500';
   }
 };
 
 const getStatusTextClass = (status: ProjectStatus) => {
   switch (status) {
-    case 'active': return 'text-emerald-400';
-    case 'draft': return 'text-amber-400';
-    case 'prototype': return 'text-rose-400';
-    default: return 'text-gray-400';
+    case 'active':
+      return 'text-emerald-400';
+    case 'draft':
+      return 'text-amber-400';
+    case 'prototype':
+      return 'text-rose-400';
+    default:
+      return 'text-gray-400';
   }
 };
 
@@ -99,7 +107,9 @@ const getTechData = (tech: string): TechIconData => {
 };
 
 // --- Component: System Specs (New Structured Design) ---
-const SystemSpecs: React.FC<{ techSpecs?: { model: string; stack: string[]; features: string[] } }> = ({ techSpecs }) => {
+const SystemSpecs: React.FC<{
+  techSpecs?: { model: string; stack: string[]; features: string[] };
+}> = ({ techSpecs }) => {
   if (!techSpecs) return null;
 
   return (
@@ -120,7 +130,6 @@ const SystemSpecs: React.FC<{ techSpecs?: { model: string; stack: string[]; feat
 
       {/* Stack & Features - Two Column Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        
         {/* Stack - Vertical */}
         <div>
           <div className="text-[10px] font-medium text-zinc-400 mb-2 uppercase tracking-wide">
@@ -168,7 +177,6 @@ const SystemSpecs: React.FC<{ techSpecs?: { model: string; stack: string[]; feat
             ))}
           </div>
         </div>
-        
       </div>
     </div>
   );
@@ -189,7 +197,10 @@ const FormattedDescription: React.FC<{ text: string }> = ({ text }) => {
 };
 
 // --- Component: Landscape Modal (Narrative) ---
-const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ project, onClose }) => {
+const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({
+  project,
+  onClose,
+}) => {
   const linkLabel = project.type === 'app' ? 'Open App' : 'Open Narrative';
 
   return (
@@ -206,16 +217,15 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ p
 
       {/* Right: Content */}
       <div className="w-full min-h-0 p-6 md:p-8 flex flex-col overflow-y-auto overflow-x-hidden">
-        
         {/* Header Section */}
         <div className="mb-4">
           <h2 className="font-display text-xl md:text-2xl font-bold text-white mb-2 tracking-tight">
             {project.title}
           </h2>
-          
+
           <div className="flex items-center flex-wrap gap-3">
-             {/* Tag */}
-            <span 
+            {/* Tag */}
+            <span
               className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded border bg-white/[0.02]"
               style={{ borderColor: `${project.theme.primary}40`, color: project.theme.primary }}
             >
@@ -225,7 +235,9 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ p
             {/* Status */}
             <div className="flex items-center gap-1.5">
               <span className={`w-1.5 h-1.5 rounded-full ${getStatusDotClass(project.status)}`} />
-              <span className={`text-[10px] font-bold tracking-wider uppercase ${getStatusTextClass(project.status)}`}>
+              <span
+                className={`text-[10px] font-bold tracking-wider uppercase ${getStatusTextClass(project.status)}`}
+              >
                 {project.status}
               </span>
             </div>
@@ -241,9 +253,9 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ p
         <SystemSpecs techSpecs={project.techSpecs} />
 
         {/* Footer Actions */}
-        {project.href && (
+        {project.href ? (
           <div className="mt-6 pt-4 border-t border-white/10 flex justify-end">
-             <a
+            <a
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
@@ -254,6 +266,16 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({ p
                 arrow_outward
               </span>
             </a>
+          </div>
+        ) : (
+          <div className="mt-6 pt-4 border-t border-white/10 flex justify-end">
+            <button
+              disabled
+              className="inline-flex items-center gap-2 text-sm font-semibold text-white/50 cursor-not-allowed"
+            >
+              Coming Soon
+              <span className="material-symbols-outlined text-lg">schedule</span>
+            </button>
           </div>
         )}
       </div>
@@ -269,9 +291,11 @@ const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ proj
     <>
       <div className="w-full md:w-[45%] bg-gradient-to-br from-zinc-900 to-black flex items-center justify-center p-12 relative overflow-hidden">
         {/* Ambient background glow based on theme */}
-        <div 
-            className="absolute inset-0 opacity-20"
-            style={{ background: `radial-gradient(circle at center, ${project.theme.primary}20 0%, transparent 70%)` }}
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            background: `radial-gradient(circle at center, ${project.theme.primary}20 0%, transparent 70%)`,
+          }}
         />
         <img
           className="w-full h-auto max-w-[280px] relative z-10 drop-shadow-2xl transform transition-transform duration-500 hover:scale-105"
@@ -284,20 +308,20 @@ const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ proj
       <div className="flex-1 p-8 md:p-10 overflow-y-auto flex flex-col">
         {/* Header */}
         <div className="mb-6">
-          <h2 className="font-display text-3xl font-bold text-white mb-3">
-            {project.title}
-          </h2>
+          <h2 className="font-display text-3xl font-bold text-white mb-3">{project.title}</h2>
           <div className="flex items-center gap-3">
-             <span 
+            <span
               className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded border bg-white/[0.02]"
               style={{ borderColor: `${project.theme.primary}40`, color: project.theme.primary }}
             >
               {project.tag}
             </span>
-             
-             <div className="flex items-center gap-1.5">
+
+            <div className="flex items-center gap-1.5">
               <span className={`w-1.5 h-1.5 rounded-full ${getStatusDotClass(project.status)}`} />
-              <span className={`text-[10px] font-bold tracking-wider uppercase ${getStatusTextClass(project.status)}`}>
+              <span
+                className={`text-[10px] font-bold tracking-wider uppercase ${getStatusTextClass(project.status)}`}
+              >
                 {project.status}
               </span>
             </div>
@@ -306,12 +330,12 @@ const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ proj
 
         {/* Description */}
         <div className="mb-8">
-            <FormattedDescription text={project.fullDesc || project.desc} />
+          <FormattedDescription text={project.fullDesc || project.desc} />
         </div>
 
         <SystemSpecs techSpecs={project.techSpecs} />
 
-        {project.href && (
+        {project.href ? (
           <div className="mt-8 pt-6 border-t border-white/10 flex justify-end">
             <a
               className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold text-sm rounded-lg hover:bg-zinc-200 transition-colors"
@@ -322,6 +346,16 @@ const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ proj
               <span>{linkLabel}</span>
               <span className="material-symbols-outlined text-base">arrow_outward</span>
             </a>
+          </div>
+        ) : (
+          <div className="mt-8 pt-6 border-t border-white/10 flex justify-end">
+            <button
+              disabled
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white/20 text-white font-semibold text-sm rounded-lg cursor-not-allowed opacity-50"
+            >
+              <span>Coming Soon</span>
+              <span className="material-symbols-outlined text-base">schedule</span>
+            </button>
           </div>
         )}
       </div>
@@ -365,8 +399,9 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
             relative w-full bg-[#121212] border border-white/10 shadow-2xl
             transform transition-all duration-500 ease-out
             ${isOpen ? 'scale-100 translate-y-0 opacity-100' : 'scale-95 translate-y-8 opacity-0'}
-            ${isLandscape 
-                ? 'max-w-7xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:grid md:grid-cols-[1.6fr_1fr] rounded-none md:rounded-2xl md:overflow-hidden' 
+            ${
+              isLandscape
+                ? 'max-w-7xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:grid md:grid-cols-[1.6fr_1fr] rounded-none md:rounded-2xl md:overflow-hidden'
                 : 'max-w-7xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:flex-row rounded-none md:rounded-2xl overflow-hidden'
             }
         `}

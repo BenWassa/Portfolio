@@ -353,4 +353,3 @@ export const projectDescriptions: ProjectDescriptions = {
     full: 'Project Ecological Constellation reimagines personality through an ecological lens. Instead of fixed types, it maps how Big Five traits function as adaptive strategies in different contexts. It reveals how your personality serves you and where it might limit you—emphasizing flexibility, context, and growth.',
   },
 };
-

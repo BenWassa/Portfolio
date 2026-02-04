@@ -11,9 +11,9 @@ export type ProjectTheme = {
 
 // NEW: The Structured Tech Taxonomy
 export interface TechSpecs {
-  model: string;       // e.g., "Offline-First PWA", "Static Narrative"
-  stack: string[];     // The core languages/frameworks (React, TS, Python)
-  features: string[];  // The key technical capabilities (IndexedDB, WebGL)
+  model: string; // e.g., "Offline-First PWA", "Static Narrative"
+  stack: string[]; // The core languages/frameworks (React, TS, Python)
+  features: string[]; // The key technical capabilities (IndexedDB, WebGL)
 }
 
 export type Project = {

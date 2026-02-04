@@ -18,8 +18,8 @@ interface LightPillarProps {
 }
 
 const LightPillar: React.FC<LightPillarProps> = ({
-  topColor = '#5227FF',
-  bottomColor = '#FF9FFC',
+  topColor = '#8b5cf6',
+  bottomColor = '#d4af37',
   intensity = 1.0,
   rotationSpeed = 0.3,
   interactive = false,
@@ -27,10 +27,10 @@ const LightPillar: React.FC<LightPillarProps> = ({
   glowAmount = 0.005,
   pillarWidth = 3.0,
   pillarHeight = 0.4,
-  noiseIntensity = 0.5,
+  noiseIntensity = 0.25,
   mixBlendMode = 'screen',
-  pillarRotation = 0,
-  quality = 'high'
+  pillarRotation = 25,
+  quality = 'high',
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
@@ -59,23 +59,38 @@ const LightPillar: React.FC<LightPillarProps> = ({
     const width = container.clientWidth;
     const height = container.clientHeight;
 
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    const isLowEndDevice = isMobile || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+    const isLowEndDevice =
+      isMobile || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
 
     let effectiveQuality = quality;
     if (isLowEndDevice && quality === 'high') effectiveQuality = 'medium';
     if (isMobile && quality !== 'low') effectiveQuality = 'low';
 
     const qualitySettings = {
-      low: { iterations: 24, waveIterations: 1, pixelRatio: 0.5, precision: 'mediump', stepMultiplier: 1.5 },
-      medium: { iterations: 40, waveIterations: 2, pixelRatio: 0.65, precision: 'mediump', stepMultiplier: 1.2 },
+      low: {
+        iterations: 24,
+        waveIterations: 1,
+        pixelRatio: 0.5,
+        precision: 'mediump',
+        stepMultiplier: 1.5,
+      },
+      medium: {
+        iterations: 40,
+        waveIterations: 2,
+        pixelRatio: 0.65,
+        precision: 'mediump',
+        stepMultiplier: 1.2,
+      },
       high: {
         iterations: 80,
         waveIterations: 4,
         pixelRatio: Math.min(window.devicePixelRatio, 2),
         precision: 'highp',
-        stepMultiplier: 1.0
-      }
+        stepMultiplier: 1.0,
+      },
     };
 
     const settings = qualitySettings[effectiveQuality] || qualitySettings.medium;
@@ -94,7 +109,7 @@ const LightPillar: React.FC<LightPillarProps> = ({
         powerPreference: effectiveQuality === 'low' ? 'low-power' : 'high-performance',
         precision: settings.precision,
         stencil: false,
-        depth: false
+        depth: false,
       });
     } catch (error) {
       console.error('Failed to create WebGL renderer:', error);
@@ -280,11 +295,11 @@ const LightPillar: React.FC<LightPillarProps> = ({
         uPillarRotCos: { value: pillarRotCos },
         uPillarRotSin: { value: pillarRotSin },
         uWaveSin: { value: waveSinValues },
-        uWaveCos: { value: waveCosValues }
+        uWaveCos: { value: waveCosValues },
       },
       transparent: true,
       depthWrite: false,
-      depthTest: false
+      depthTest: false,
     });
     materialRef.current = material;
 
@@ -320,7 +335,8 @@ const LightPillar: React.FC<LightPillarProps> = ({
     const frameTime = 1000 / targetFPS;
 
     const animate = (currentTime: number) => {
-      if (!materialRef.current || !rendererRef.current || !sceneRef.current || !cameraRef.current) return;
+      if (!materialRef.current || !rendererRef.current || !sceneRef.current || !cameraRef.current)
+        return;
 
       const deltaTime = currentTime - lastTime;
 
@@ -401,7 +417,7 @@ const LightPillar: React.FC<LightPillarProps> = ({
     noiseIntensity,
     pillarRotation,
     webGLSupported,
-    quality
+    quality,
   ]);
 
   if (!webGLSupported) {
@@ -416,7 +432,11 @@ const LightPillar: React.FC<LightPillarProps> = ({
   }
 
   return (
-    <div ref={containerRef} className={`w-full h-full absolute top-0 left-0 ${className}`} style={{ mixBlendMode }} />
+    <div
+      ref={containerRef}
+      className={`w-full h-full absolute top-0 left-0 ${className}`}
+      style={{ mixBlendMode }}
+    />
   );
 };
 
