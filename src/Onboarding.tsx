@@ -120,47 +120,67 @@ const Onboarding = () => {
         
         {/* HEADER: Floating Top Left */}
         <div className="w-full flex justify-between items-start animate-enter-left">
-          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/30 mix-blend-difference">
+          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-zinc-400 mix-blend-difference">
             Benjamin P. Haddon
           </div>
-          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/30 mix-blend-difference hidden md:block">
-            System Status: Online
+          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-zinc-400 mix-blend-difference hidden md:block">
+            System Status: <span className="text-zinc-200">Online</span>
           </div>
         </div>
 
         {/* CENTER: The Narrative Title */}
-        <div className="flex-1 flex flex-col items-center justify-center text-center -mt-20">
-          <div className="animate-enter-title mix-blend-difference">
-             {/* Switched from font-display to font-sans + serif combo */}
-            <h1 className="text-4xl md:text-7xl font-sans font-light tracking-tight text-white leading-[1.1]">
+        <div className="flex-1 flex flex-col items-center justify-center text-center -mt-12">
+          <div className="animate-enter-title relative z-20">
+            <h1 className="text-4xl md:text-7xl font-sans font-light tracking-tight text-white leading-[1.1] drop-shadow-2xl">
               A portfolio built by AI,<br />
-              <span className="font-serif italic text-white/90">directed by intention.</span>
+              <span className="font-serif italic text-white/80">directed by intention.</span>
             </h1>
           </div>
           
-          <div className="mt-12 animate-enter-sub flex items-center justify-center">
-            <div className="glass-card w-[420px] h-[80px] rounded-full shadow-2xl hover:scale-[1.02] transition-transform duration-300 flex items-center justify-center">
-              <button
-                onClick={handleEnter}
-                className="group w-full h-full flex items-center justify-center gap-3 px-10 text-white/90 hover:text-white transition-colors"
-              >
-                <span className="text-xs font-bold tracking-[0.2em] uppercase">Enter System</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
+          {/* UPDATED: Premium Glassmorphism Button */}
+          <div className="mt-16 animate-enter-sub flex items-center justify-center">
+            <button
+              onClick={handleEnter}
+              className="group relative px-12 py-6 rounded-full overflow-hidden
+                         bg-gradient-to-br from-white/[0.08] to-white/[0.03]
+                         hover:from-white/[0.15] hover:to-white/[0.08]
+                         backdrop-blur-2xl hover:backdrop-blur-3xl
+                         border border-white/20 hover:border-white/30
+                         shadow-[0_8px_32px_0_rgba(0,0,0,0.37),inset_0_1px_0_0_rgba(255,255,255,0.1)]
+                         hover:shadow-[0_8px_48px_0_rgba(255,255,255,0.15),inset_0_1px_0_0_rgba(255,255,255,0.2),0_0_80px_-10px_rgba(255,255,255,0.2)]
+                         transition-all duration-700 ease-out transform hover:scale-[1.02] hover:-translate-y-0.5
+                         before:absolute before:inset-0 before:rounded-full 
+                         before:bg-gradient-to-br before:from-white/[0.15] before:to-transparent 
+                         before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-700"
+            >
+              <div className="relative z-10 flex items-center justify-center gap-4">
+                <span className="text-xs font-bold tracking-[0.3em] uppercase text-white drop-shadow-lg">
+                  Enter System
+                </span>
+                <ArrowRight className="w-4 h-4 text-white drop-shadow-lg group-hover:translate-x-1.5 transition-all duration-500" />
+              </div>
+              
+              {/* Animated shimmer effect */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/10 to-transparent 
+                            -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
+              
+              {/* Inner glow ring */}
+              <div className="absolute inset-[1px] rounded-full opacity-0 group-hover:opacity-100 
+                            bg-gradient-to-br from-white/5 to-transparent transition-opacity duration-700 pointer-events-none" />
+            </button>
           </div>
         </div>
 
         {/* FOOTER: Minimal Text Columns */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-6 items-end">
+        <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 items-end">
           
           {/* Left Column: What This Is */}
           <div className="md:col-span-3 animate-enter-left">
-             <div className="mb-4 flex items-center gap-2">
-                <div className="h-[1px] w-8 bg-white/20"></div>
-                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/50">Context</span>
+             <div className="mb-3 flex items-center gap-3">
+                <div className="h-[1px] w-6 bg-zinc-600"></div>
+                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400">Context</span>
              </div>
-             <p className="text-sm text-zinc-400 font-light leading-relaxed">
+             <p className="text-sm text-zinc-200 font-light leading-relaxed">
                Mythic frameworks as tools for meaning-making. Progressive web apps that respect attention. Psychological concepts as navigable experiences.
              </p>
           </div>
@@ -170,11 +190,11 @@ const Onboarding = () => {
 
           {/* Right Column: How It Was Made */}
           <div className="md:col-span-3 animate-enter-right text-left md:text-right">
-             <div className="mb-4 flex items-center gap-2 md:justify-end">
-                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/50">Protocol</span>
-                <div className="h-[1px] w-8 bg-white/20"></div>
+             <div className="mb-3 flex items-center gap-3 md:justify-end">
+                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400">Protocol</span>
+                <div className="h-[1px] w-6 bg-zinc-600"></div>
              </div>
-             <p className="text-sm text-zinc-400 font-light leading-relaxed">
+             <p className="text-sm text-zinc-200 font-light leading-relaxed">
                AI-scaffolded, human-directed. I designed the architecture and defined the constraints. Acceleration without abdication.
              </p>
           </div>
