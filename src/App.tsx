@@ -65,6 +65,14 @@ const App: React.FC = () => {
           <div className="hidden md:block text-xs font-mono opacity-80">PORTFOLIO</div>
         </div>
         <div className="flex items-center gap-6 text-sm font-medium pointer-events-auto">
+          <a
+            href="?onboarding=true"
+            className="transition-all duration-300 flex items-center gap-2 hover:text-cyan-400 uppercase tracking-widest text-xs opacity-70 hover:opacity-100"
+            title="Replay onboarding"
+          >
+            <span className="material-symbols-outlined text-sm">refresh</span>
+            <span className="hidden md:inline">Replay Intro</span>
+          </a>
           <button
             onClick={handleResetView}
             className={`transition-all duration-300 flex items-center gap-2 hover:text-red-400 uppercase tracking-widest text-xs ${
