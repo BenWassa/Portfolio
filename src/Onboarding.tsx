@@ -35,11 +35,7 @@ const Onboarding = () => {
   const leaveTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const hasVisited = localStorage.getItem('portfolio_visited');
-    if (hasVisited === 'true') {
-      setShowOnboarding(false);
-    }
-
+    // Onboarding is now controlled by main.tsx, so always show when mounted
     return () => {
       if (leaveTimeoutRef.current !== null) {
         window.clearTimeout(leaveTimeoutRef.current);
@@ -54,28 +50,19 @@ const Onboarding = () => {
       window.clearTimeout(leaveTimeoutRef.current);
     }
     leaveTimeoutRef.current = window.setTimeout(() => {
-      localStorage.setItem('portfolio_visited', 'true');
-      setShowOnboarding(false);
-      setIsLeaving(false);
-      leaveTimeoutRef.current = null;
+      // Update timestamp to mark that user has completed onboarding
+      localStorage.setItem('portfolio_last_visit', new Date().toISOString());
+      // Reload the page to let main.tsx render the main app
+      window.location.reload();
     }, 800);
   };
 
   const resetExperience = () => {
-    localStorage.removeItem('portfolio_visited');
-    setShowOnboarding(true);
+    localStorage.removeItem('portfolio_last_visit');
+    window.location.reload();
   };
 
-  if (!showOnboarding) {
-    return (
-      <div className="min-h-screen bg-zinc-950 text-zinc-300 flex flex-col items-center justify-center p-8 font-sans antialiased">
-        <h1 className="text-4xl font-serif italic tracking-tight mb-6 text-white">Main Portfolio View</h1>
-        <button onClick={resetExperience} className="px-6 py-2 text-sm border border-zinc-800 hover:bg-zinc-900 rounded-full transition-colors">
-          Reset Onboarding Experience
-        </button>
-      </div>
-    );
-  }
+  // Onboarding always shows when rendered - main.tsx handles the logic
 
   return (
     <div className="relative min-h-screen bg-[#050505] text-zinc-100 overflow-hidden font-sans antialiased selection:bg-cyan-500/30">
