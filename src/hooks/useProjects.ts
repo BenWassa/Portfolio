@@ -13,5 +13,5 @@ export const useProjects = (): {
       app: getSortedProjects('app'),
       psychology: getSortedProjects('psychology'),
     }),
-    [],
+    []
   );

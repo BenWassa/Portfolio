@@ -44,8 +44,8 @@ export const Pillar: React.FC<PillarProps> = ({
   }`;
   if (isActive) pillarClasses += ' active';
   if (isInactive) pillarClasses += ' inactive';
-  const hasSquareProjects = projects.some(p => p.orientation === 'square');
-  const secondaryStatus = projects.some(p => p.status === 'prototype') ? 'prototype' : 'draft';
+  const hasSquareProjects = projects.some((p) => p.orientation === 'square');
+  const secondaryStatus = projects.some((p) => p.status === 'prototype') ? 'prototype' : 'draft';
   const secondaryLabel = secondaryStatus === 'prototype' ? 'Prototype' : 'Draft';
   const gridClassName = hasSquareProjects
     ? 'flex-1 overflow-y-auto overflow-x-hidden no-scrollbar grid grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-8 pb-8 w-full pr-6 items-start content-start auto-rows-max'
@@ -68,10 +68,7 @@ export const Pillar: React.FC<PillarProps> = ({
       </div>
 
       <div className="pillar-title text-center z-10 pointer-events-none">
-        <h2
-          className={titleClassName}
-          style={{ color: baseColor }}
-        >
+        <h2 className={titleClassName} style={{ color: baseColor }}>
           {title}
         </h2>
         <span className="font-display text-xs uppercase tracking-[0.3em] text-white/70">
@@ -89,15 +86,13 @@ export const Pillar: React.FC<PillarProps> = ({
               {throughline}
             </div>
             <h3 className={headingClassName}>{heading}</h3>
-            <p className="mt-4 max-w-xl text-white/60 font-light leading-relaxed">
-              {description}
-            </p>
+            <p className="mt-4 max-w-xl text-white/60 font-light leading-relaxed">{description}</p>
           </header>
 
           <div className={gridClassName}>
             {(() => {
-              const activeProjects = projects.filter(p => p.status === 'active');
-              const secondaryProjects = projects.filter(p => p.status === secondaryStatus);
+              const activeProjects = projects.filter((p) => p.status === 'active');
+              const secondaryProjects = projects.filter((p) => p.status === secondaryStatus);
 
               return (
                 <>
@@ -112,7 +107,11 @@ export const Pillar: React.FC<PillarProps> = ({
                         </div>
                       </div>
                       {activeProjects.map((project) => (
-                        <ProjectCard key={project.title} project={project} onClick={onProjectClick} />
+                        <ProjectCard
+                          key={project.title}
+                          project={project}
+                          onClick={onProjectClick}
+                        />
                       ))}
                     </>
                   )}
@@ -120,7 +119,9 @@ export const Pillar: React.FC<PillarProps> = ({
                   {secondaryProjects.length > 0 && (
                     <>
                       <div className="col-span-full">
-                        <div className={`flex items-center gap-2 mb-3 ${activeProjects.length ? 'mt-4' : ''}`}>
+                        <div
+                          className={`flex items-center gap-2 mb-3 ${activeProjects.length ? 'mt-4' : ''}`}
+                        >
                           <div
                             className={`w-1.5 h-1.5 rounded-full ${
                               secondaryStatus === 'prototype' ? 'bg-amber-600' : 'bg-amber-500'
@@ -136,7 +137,11 @@ export const Pillar: React.FC<PillarProps> = ({
                         </div>
                       </div>
                       {secondaryProjects.map((project) => (
-                        <ProjectCard key={project.title} project={project} onClick={onProjectClick} />
+                        <ProjectCard
+                          key={project.title}
+                          project={project}
+                          onClick={onProjectClick}
+                        />
                       ))}
                     </>
                   )}
