@@ -253,7 +253,7 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({
         <SystemSpecs techSpecs={project.techSpecs} />
 
         {/* Footer Actions */}
-        {project.href && (
+        {project.href ? (
           <div className="mt-6 pt-4 border-t border-white/10 flex justify-end">
             <a
               href={project.href}
@@ -266,6 +266,16 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({
                 arrow_outward
               </span>
             </a>
+          </div>
+        ) : (
+          <div className="mt-6 pt-4 border-t border-white/10 flex justify-end">
+            <button
+              disabled
+              className="inline-flex items-center gap-2 text-sm font-semibold text-white/50 cursor-not-allowed"
+            >
+              Coming Soon
+              <span className="material-symbols-outlined text-lg">schedule</span>
+            </button>
           </div>
         )}
       </div>
@@ -325,7 +335,7 @@ const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ proj
 
         <SystemSpecs techSpecs={project.techSpecs} />
 
-        {project.href && (
+        {project.href ? (
           <div className="mt-8 pt-6 border-t border-white/10 flex justify-end">
             <a
               className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold text-sm rounded-lg hover:bg-zinc-200 transition-colors"
@@ -336,6 +346,16 @@ const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ proj
               <span>{linkLabel}</span>
               <span className="material-symbols-outlined text-base">arrow_outward</span>
             </a>
+          </div>
+        ) : (
+          <div className="mt-8 pt-6 border-t border-white/10 flex justify-end">
+            <button
+              disabled
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white/20 text-white font-semibold text-sm rounded-lg cursor-not-allowed opacity-50"
+            >
+              <span>Coming Soon</span>
+              <span className="material-symbols-outlined text-base">schedule</span>
+            </button>
           </div>
         )}
       </div>

@@ -77,14 +77,12 @@ const Onboarding: React.FC<OnboardingProps> = ({ onExitComplete }) => {
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="relative w-full h-screen">
           <LightPillar
-            topColor="#5227FF"
-            bottomColor="#FF9FFC"
             intensity={1}
             rotationSpeed={0.3}
             glowAmount={0.002}
             pillarWidth={3}
             pillarHeight={0.4}
-            noiseIntensity={0.5}
+            noiseIntensity={0.25}
             pillarRotation={25}
             interactive={false}
             mixBlendMode="screen"
@@ -100,12 +98,12 @@ const Onboarding: React.FC<OnboardingProps> = ({ onExitComplete }) => {
       >
         {/* HEADER: Floating Top Left */}
         <div className="w-full flex justify-between items-start animate-enter-left">
-          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-zinc-500 mix-blend-difference">
+          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-zinc-300 bg-black/40 px-2 py-1 rounded-full border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.35)]">
             Benjamin P. Haddon
           </div>
-          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-zinc-500 mix-blend-difference hidden md:block">
+          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-zinc-300 bg-black/40 px-2 py-1 rounded-full border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.35)] hidden md:block">
             System Status:{' '}
-            <span className="text-zinc-300 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">
+            <span className="text-zinc-100 drop-shadow-[0_0_5px_rgba(255,255,255,0.35)]">
               Online
             </span>
           </div>
@@ -115,9 +113,9 @@ const Onboarding: React.FC<OnboardingProps> = ({ onExitComplete }) => {
         <div className="flex-1 flex flex-col items-center justify-center text-center -mt-12">
           <div className="animate-enter-title relative z-20">
             <h1 className="text-4xl md:text-7xl font-sans font-light tracking-tight text-white leading-[1.1] drop-shadow-2xl">
-              A portfolio built by AI,
+              An interactive portfolio,
               <br />
-              <span className="font-serif italic text-white/80">directed by intention.</span>
+              <span className="font-serif italic text-white/80">searching for meaning.</span>
             </h1>
           </div>
 
@@ -135,7 +133,7 @@ const Onboarding: React.FC<OnboardingProps> = ({ onExitComplete }) => {
             >
               <div className="flex items-center justify-center gap-4">
                 <span className="text-xs font-bold tracking-[0.25em] uppercase text-zinc-200 group-hover:text-white transition-colors">
-                  Enter System
+                  View Portfolio
                 </span>
                 <ArrowRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-300" />
               </div>
@@ -152,7 +150,7 @@ const Onboarding: React.FC<OnboardingProps> = ({ onExitComplete }) => {
           <div className="md:col-span-3 animate-enter-left flex flex-col gap-3">
             <div className="flex items-center gap-3">
               <div className="h-[1px] w-6 bg-zinc-700"></div>
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500">
+              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-200 bg-black/40 px-2 py-1 rounded-full border border-white/10">
                 Context
               </span>
             </div>
@@ -169,7 +167,7 @@ const Onboarding: React.FC<OnboardingProps> = ({ onExitComplete }) => {
           <div className="md:col-span-3 animate-enter-right flex flex-col gap-3 text-left md:text-right md:items-end">
             <div className="flex items-center gap-3 md:flex-row-reverse">
               <div className="h-[1px] w-6 bg-zinc-700"></div>
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500">
+              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-200 bg-black/40 px-2 py-1 rounded-full border border-white/10">
                 Protocol
               </span>
             </div>

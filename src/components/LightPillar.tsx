@@ -18,8 +18,8 @@ interface LightPillarProps {
 }
 
 const LightPillar: React.FC<LightPillarProps> = ({
-  topColor = '#5227FF',
-  bottomColor = '#FF9FFC',
+  topColor = '#8b5cf6',
+  bottomColor = '#d4af37',
   intensity = 1.0,
   rotationSpeed = 0.3,
   interactive = false,
@@ -27,9 +27,9 @@ const LightPillar: React.FC<LightPillarProps> = ({
   glowAmount = 0.005,
   pillarWidth = 3.0,
   pillarHeight = 0.4,
-  noiseIntensity = 0.5,
+  noiseIntensity = 0.25,
   mixBlendMode = 'screen',
-  pillarRotation = 0,
+  pillarRotation = 25,
   quality = 'high',
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
