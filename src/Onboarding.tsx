@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import LightPillar from './components/LightPillar';
-import GlassSurface from './components/GlassSurface';
 
 /* Custom CSS for directional animations */
 const styleTag = `
@@ -140,23 +139,7 @@ const Onboarding = () => {
           </div>
           
           <div className="mt-12 animate-enter-sub flex items-center justify-center">
-            <GlassSurface
-              width={420}
-              height={80}
-              borderRadius={999}
-              backgroundOpacity={0.06}
-              saturation={1}
-              borderWidth={0.07}
-              brightness={50}
-              opacity={0.93}
-              blur={11}
-              displace={0.5}
-              distortionScale={-180}
-              redOffset={0}
-              greenOffset={10}
-              blueOffset={20}
-              className="shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-            >
+            <div className="glass-card w-[420px] h-[80px] rounded-full shadow-2xl hover:scale-[1.02] transition-transform duration-300 flex items-center justify-center">
               <button
                 onClick={handleEnter}
                 className="group w-full h-full flex items-center justify-center gap-3 px-10 text-white/90 hover:text-white transition-colors"
@@ -164,7 +147,7 @@ const Onboarding = () => {
                 <span className="text-xs font-bold tracking-[0.2em] uppercase">Enter System</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </button>
-            </GlassSurface>
+            </div>
           </div>
         </div>
 
