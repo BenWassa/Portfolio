@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import LightPillar from './components/LightPillar';
 
 /* Custom CSS for directional animations */
 const styleTag = `
@@ -29,78 +28,17 @@ const styleTag = `
   }
 `;
 
-const Onboarding = () => {
-  const [isLeaving, setIsLeaving] = useState(false);
-  const leaveTimeoutRef = useRef<number | null>(null);
+type OnboardingProps = {
+  onEnter: () => void;
+};
 
-  useEffect(() => {
-    // Cleanup on unmount
-    return () => {
-      if (leaveTimeoutRef.current !== null) {
-        window.clearTimeout(leaveTimeoutRef.current);
-        leaveTimeoutRef.current = null;
-      }
-    };
-  }, []);
-
-  const handleEnter = () => {
-    setIsLeaving(true);
-    if (leaveTimeoutRef.current !== null) {
-      window.clearTimeout(leaveTimeoutRef.current);
-    }
-    
-    // Slight delay to allow the exit animation (blur/fade) to play before reload
-    leaveTimeoutRef.current = window.setTimeout(() => {
-      localStorage.setItem('portfolio_last_visit', new Date().toISOString());
-      window.location.reload();
-    }, 800);
-  };
+const Onboarding: React.FC<OnboardingProps> = ({ onEnter }) => {
 
   return (
-    <div className="relative min-h-screen bg-[#050505] text-zinc-100 overflow-hidden font-sans antialiased selection:bg-cyan-500/30">
+    <div className="relative min-h-screen text-zinc-100 overflow-hidden font-sans antialiased selection:bg-cyan-500/30">
       <style>{styleTag}</style>
 
-      {/* 1. Ambient Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div
-          className="absolute inset-0 opacity-15 mix-blend-soft-light"
-          style={{
-            backgroundImage:
-              'url(https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2064&auto=format&fit=crop)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950/50 to-black" />
-      </div>
-
-      {/* 2. The Visual: Slanted Light Pillar (UNTOUCHED) */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="relative w-full h-screen">
-          <LightPillar
-            topColor="#5227FF"
-            bottomColor="#FF9FFC"
-            intensity={1}
-            rotationSpeed={0.3}
-            glowAmount={0.002}
-            pillarWidth={3}
-            pillarHeight={0.4}
-            noiseIntensity={0.5}
-            pillarRotation={25}
-            interactive={false}
-            mixBlendMode="screen"
-            quality="high"
-          />
-        </div>
-      </div>
-
-      {/* 3. Main Content Layer - Minimal & Floating */}
-      {/* Added blur-xl and scale-95 for a smooth "suck into the screen" exit effect */}
-      <main 
-        className={`relative z-10 w-full min-h-screen max-w-7xl mx-auto px-6 py-12 flex flex-col justify-between 
-        transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] 
-        ${isLeaving ? 'opacity-0 scale-95 blur-xl' : 'opacity-100 scale-100 blur-0'}`}
-      >
+      <main className="relative z-10 w-full min-h-screen max-w-7xl mx-auto px-6 py-12 flex flex-col justify-between">
         
         {/* HEADER: Floating Top Left */}
         <div className="w-full flex justify-between items-start animate-enter-left">
@@ -124,7 +62,7 @@ const Onboarding = () => {
           {/* UPDATED: High-Polish Glass Button */}
           <div className="mt-16 animate-enter-sub flex items-center justify-center">
             <button
-              onClick={handleEnter}
+              onClick={onEnter}
               className="group relative px-10 py-5 rounded-full 
                          bg-white/5 hover:bg-white/10 
                          backdrop-blur-xl hover:backdrop-blur-2xl

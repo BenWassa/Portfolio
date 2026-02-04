@@ -35,23 +35,10 @@ function shouldShowOnboarding(): boolean {
   }
 }
 
-function updateLastVisitTimestamp(): void {
-  localStorage.setItem(VISIT_TIMESTAMP_KEY, new Date().toISOString());
-}
-
 async function renderApp() {
   const showOnboarding = shouldShowOnboarding();
-  let component;
-
-  if (showOnboarding) {
-    const { default: Onboarding } = await import('./Onboarding');
-    component = <Onboarding />;
-  } else {
-    // Update timestamp when entering main app (not on refresh)
-    updateLastVisitTimestamp();
-    const { default: App } = await import('./App');
-    component = <App />;
-  }
+  const { default: ExperienceShell } = await import('./ExperienceShell');
+  const component = <ExperienceShell showOnboarding={showOnboarding} />;
 
   ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
