@@ -5,6 +5,13 @@ import './css/input.css';
 import App from './App';
 import Onboarding from './Onboarding';
 
+// Log app version
+console.log(
+  '%c Benjamin P. Haddon Portfolio',
+  'font-size: 14px; font-weight: bold; color: #d4af37;'
+);
+console.log('%c v3.6.0', 'font-size: 12px; color: #888; margin-bottom: 10px;');
+
 // Onboarding logic with proper session management
 const ONBOARDING_EXPIRY_DAYS = 7; // Show onboarding again after 7 days
 const VISIT_TIMESTAMP_KEY = 'portfolio_last_visit';
