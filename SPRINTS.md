@@ -111,6 +111,12 @@ Goal: Migrate the current Vite + vanilla JS portfolio to a component-based React
 **Tasks:**
 - [ ] Visual parity check against current v1.2.0
 - [x] Optimize image loading (lazy loading, suspense)
+- [x] Improve PNG loading UX (skeletons + progressive reveal)
+- [x] Generate responsive PNG sizes and use `srcset` / `sizes`
+- [x] Add `loading="lazy"` + `decoding="async"` for below-the-fold images
+- [x] Use blur-up or tiny placeholder (LQIP) for initial render
+- [x] Preload or eager-load hero/above-the-fold images only
+- [ ] Verify asset compression (pngquant/oxipng) and cache headers
 - [ ] Add loading states for async operations
 - [ ] Run Lighthouse audit and address issues
 - [x] ESLint + Prettier pass on all TypeScript files

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { Project, ProjectStatus } from '../types';
+import { useImageLoading } from '../hooks/useImageLoading';
+import { getResponsiveImageProps } from '../utils/imageUtils';
 
 interface ProjectCardProps {
   project: Project;
@@ -34,24 +36,14 @@ const getStatusLabel = (status: ProjectStatus) => {
 };
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
-  const [showFallback, setShowFallback] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    if (cardRef.current) observer.observe(cardRef.current);
-    return () => observer.disconnect();
-  }, []);
+  
+  // Use custom hook for image loading management
+  const imageLoading = useImageLoading({ enableIntersectionObserver: true, threshold: 0.1 });
+  const { isLoaded: imageLoaded, isInView, handleLoad, handleError, ref: imageContainerRef } = imageLoading;
+  
+  // Get responsive image props (eager for modal, lazy for cards)
+  const imageProps = getResponsiveImageProps(project.img, false);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -76,9 +68,22 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) =>
           onClick(project);
         }}
       >
-        <div className="project-card__media relative">
+        <div className="project-card__media relative" ref={imageContainerRef}>
+          {!isInView && (
+            <div className="absolute inset-0 bg-zinc-800 animate-pulse" />
+          )}
           {isInView && (
-            <img src={project.img} alt={project.alt} className="project-card__img" loading="lazy" />
+            <img
+              src={imageProps.src}
+              srcSet={imageProps.srcSet}
+              sizes={imageProps.sizes}
+              alt={project.alt}
+              className="project-card__img"
+              loading={imageProps.loading}
+              decoding={imageProps.decoding}
+              onLoad={handleLoad}
+              onError={handleError}
+            />
           )}
         </div>
 
@@ -111,7 +116,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) =>
   // 2. THE CINEMATIC MINIMALIST (Landscape/Narrative) - REDESIGNED
   return (
     <div
-      ref={cardRef}
+      ref={imageContainerRef}
       className="group relative w-full aspect-[16/9] overflow-hidden rounded-xl border border-white/10 bg-zinc-900 cursor-pointer transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,0,0,0.5)] hover:border-white/20"
       onClick={(e) => {
         e.stopPropagation();
@@ -120,19 +125,25 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) =>
     >
       {/* Image Layer - Full Bleed */}
       <div className="absolute inset-0 w-full h-full">
-        {!imageLoaded && !showFallback && (
-          <div className="absolute inset-0 bg-zinc-800 animate-pulse" />
+        {/* Skeleton Loader with subtle shimmer */}
+        {!imageLoaded && (
+          <div className="absolute inset-0 bg-zinc-800 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-zinc-700/50 to-transparent animate-[shimmer_2s_infinite]" />
+          </div>
         )}
         {isInView && (
           <img
-            src={project.img}
+            src={imageProps.src}
+            srcSet={imageProps.srcSet}
+            sizes={imageProps.sizes}
             alt={project.alt}
-            className={`w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${
-              imageLoaded ? 'opacity-100' : 'opacity-0'
+            className={`w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 ${
+              imageLoaded ? 'opacity-100 blur-0' : 'opacity-0 blur-sm'
             }`}
-            loading="lazy"
-            onLoad={() => setImageLoaded(true)}
-            onError={() => setShowFallback(true)}
+            loading={imageProps.loading}
+            decoding={imageProps.decoding}
+            onLoad={handleLoad}
+            onError={handleError}
           />
         )}
       </div>

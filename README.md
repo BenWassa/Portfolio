@@ -93,6 +93,14 @@ The `docs/` folder is ready for static hosting.
 - React components with reusable structure
 - Utility-first CSS (Tailwind)
 
+🚀 **Performance Optimized**
+- Lazy loading for below-the-fold images
+- Eager loading for above-the-fold content (modals)
+- Progressive skeleton loaders with shimmer effects
+- Async image decoding (non-blocking)
+- Blur-up placeholder transitions
+- Infrastructure ready for responsive images (srcset/sizes)
+
 ## Projects
 
 ### Narrative Throughline
@@ -117,6 +125,19 @@ The `docs/` folder is ready for static hosting.
 - **React + TypeScript** - Component-based UI with type safety
 - **PostCSS** - Autoprefixing & processing
 - **GitHub Pages** - Static hosting from `docs/` folder
+
+### Image Optimization
+
+The portfolio includes comprehensive image loading optimizations:
+
+- **Custom Hooks**: `useImageLoading` hook manages intersection observer and loading states
+- **Utility Functions**: `imageUtils.ts` provides responsive image props and preloading
+- **Skeleton Loaders**: Progressive reveal with shimmer animations during load
+- **Smart Loading**: Lazy loading for cards, eager loading for modals
+- **Async Decoding**: Non-blocking image decode with `decoding="async"`
+- **Future-Ready**: Infrastructure for srcset/sizes when responsive images are generated
+
+See `docs/IMAGE_OPTIMIZATION.md` for detailed implementation and best practices.
 
 ## Configuration
 
