@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import type { Project, ProjectStatus } from '../types';
 import { useScrollLock } from '../hooks/useScrollLock';
+import { getResponsiveImageProps } from '../utils/imageUtils';
 
 interface ProjectModalProps {
   project: Project | null;
@@ -201,17 +202,32 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({
   project,
   onClose,
 }) => {
+  const [imageLoaded, setImageLoaded] = React.useState(false);
   const linkLabel = project.type === 'app' ? 'Open App' : 'Open Narrative';
+  
+  // Modal images are above-the-fold, use eager loading
+  const imageProps = getResponsiveImageProps(project.img, true);
 
   return (
     <>
       {/* Left: Image (Bleed, no padding) */}
       <div className="relative w-full h-[300px] md:h-full overflow-hidden bg-black group">
+        {!imageLoaded && (
+          <div className="absolute inset-0 bg-zinc-900 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-zinc-800/50 to-transparent animate-[shimmer_2s_infinite]" />
+          </div>
+        )}
         <img
-          className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-[1.02]"
-          src={project.img}
+          className={`w-full h-full object-cover transition-all duration-[2s] ease-out group-hover:scale-[1.02] ${
+            imageLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          src={imageProps.src}
+          srcSet={imageProps.srcSet}
+          sizes={imageProps.sizes}
           alt={project.alt}
-          loading="lazy"
+          loading={imageProps.loading}
+          decoding={imageProps.decoding}
+          onLoad={() => setImageLoaded(true)}
         />
       </div>
 
@@ -285,7 +301,11 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({
 
 // --- Component: Square Modal (App) ---
 const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ project, onClose }) => {
+  const [imageLoaded, setImageLoaded] = React.useState(false);
   const linkLabel = 'Open App';
+  
+  // Modal images are above-the-fold, use eager loading
+  const imageProps = getResponsiveImageProps(project.img, true);
 
   return (
     <>
@@ -297,11 +317,22 @@ const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ proj
             background: `radial-gradient(circle at center, ${project.theme.primary}20 0%, transparent 70%)`,
           }}
         />
+        {!imageLoaded && (
+          <div className="w-full h-auto max-w-[280px] aspect-square relative z-10 bg-zinc-800 rounded-lg overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-zinc-700/50 to-transparent animate-[shimmer_2s_infinite]" />
+          </div>
+        )}
         <img
-          className="w-full h-auto max-w-[280px] relative z-10 drop-shadow-2xl transform transition-transform duration-500 hover:scale-105"
-          src={project.img}
+          className={`w-full h-auto max-w-[280px] relative z-10 drop-shadow-2xl transform transition-all duration-500 hover:scale-105 ${
+            imageLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          src={imageProps.src}
+          srcSet={imageProps.srcSet}
+          sizes={imageProps.sizes}
           alt={project.alt}
-          loading="lazy"
+          loading={imageProps.loading}
+          decoding={imageProps.decoding}
+          onLoad={() => setImageLoaded(true)}
         />
       </div>
 

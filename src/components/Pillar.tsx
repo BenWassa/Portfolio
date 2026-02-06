@@ -100,10 +100,11 @@ export const Pillar: React.FC<PillarProps> = ({
                     <>
                       <div className="col-span-full">
                         <div className="flex items-center gap-2 mb-3">
-                          <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]"></div>
+                          <div className="h-px flex-1 bg-gradient-to-r from-emerald-500/50 to-transparent"></div>
                           <span className="text-xs font-mono uppercase tracking-wider font-bold text-emerald-400">
                             Active
                           </span>
+                          <div className="h-px flex-1 bg-gradient-to-l from-emerald-500/50 to-transparent"></div>
                         </div>
                       </div>
                       {activeProjects.map((project) => (
@@ -119,14 +120,10 @@ export const Pillar: React.FC<PillarProps> = ({
                   {secondaryProjects.length > 0 && (
                     <>
                       <div className="col-span-full">
-                        <div
-                          className={`flex items-center gap-2 mb-3 ${activeProjects.length ? 'mt-4' : ''}`}
-                        >
-                          <div
-                            className={`w-1.5 h-1.5 rounded-full ${
-                              secondaryStatus === 'prototype' ? 'bg-amber-600' : 'bg-amber-500'
-                            }`}
-                          ></div>
+                        <div className={`flex items-center gap-2 mb-3 ${activeProjects.length ? 'mt-6' : ''}`}>
+                          <div className={`h-px flex-1 bg-gradient-to-r ${
+                            secondaryStatus === 'prototype' ? 'from-amber-600/50' : 'from-amber-500/50'
+                          } to-transparent`}></div>
                           <span
                             className={`text-xs font-mono uppercase tracking-wider font-bold ${
                               secondaryStatus === 'prototype' ? 'text-amber-500' : 'text-amber-400'
@@ -134,6 +131,9 @@ export const Pillar: React.FC<PillarProps> = ({
                           >
                             {secondaryLabel}
                           </span>
+                          <div className={`h-px flex-1 bg-gradient-to-l ${
+                            secondaryStatus === 'prototype' ? 'from-amber-600/50' : 'from-amber-500/50'
+                          } to-transparent`}></div>
                         </div>
                       </div>
                       {secondaryProjects.map((project) => (
