@@ -180,7 +180,7 @@ export const projectsData: Project[] = [
     title: 'PushUp Challenge',
     tag: 'Fitness Challenge App',
     desc: 'Pushup challenge tracker with community accountability.',
-    href: 'https://benwassa.github.io/template-pushup/',
+    href: 'https://benwassa.github.io/the-pushup-challenge-2025/?mode=demo',
     img: 'assets/projects/pushup.png',
     alt: 'PushUp - Fitness App',
     theme: { primary: '#ef4444', secondary: '#b91c1c', tertiary: '#7f1d1d', bg: '#4c0519' },
