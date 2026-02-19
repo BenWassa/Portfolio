@@ -163,6 +163,28 @@ Edit `src/js/project-descriptions.ts`:
 }
 ```
 
+### Keep Portfolio + LLM Contexts In Sync
+
+Store project context files in `llm-project-contexts/` using the template:
+- `llm-project-contexts/LLM_PROJECT_CONTEXT_TEMPLATE.md`
+
+Run sync checks after updating projects or context docs:
+
+```bash
+npm run context:check
+```
+
+Strict mode (requires a context file for every portfolio project):
+
+```bash
+npm run context:check:all
+```
+
+The check validates:
+- Context project names map to real portfolio projects.
+- `Production app` links in context files match `href` in `src/js/project-descriptions.ts`.
+- Required context sections exist.
+
 ### Project Statuses
 
 Projects are categorized by development status, displayed as colored badges in the portfolio:

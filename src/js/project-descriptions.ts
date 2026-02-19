@@ -161,9 +161,9 @@ export const projectsData: Project[] = [
   },
   {
     title: 'Hearth',
-    tag: 'Shared Watchlist',
-    desc: 'Shared watchlist to decide what to watch together.',
-    href: 'https://benwassa.github.io/template-hearth/',
+    tag: 'Shared Watchlist v2',
+    desc: 'A shared watchlist for couples with TMDB metadata and a portfolio-safe demo mode.',
+    href: 'https://hearthv2--hearthv2.us-east4.hosted.app/?mode=demo',
     img: 'assets/projects/hearth.png',
     alt: 'Hearth - Watchlist',
     theme: { primary: '#aa6c4b', secondary: '#be185d', tertiary: '#831843', bg: '#3f0f4d' },
@@ -171,9 +171,9 @@ export const projectsData: Project[] = [
     type: 'app',
     orientation: 'square',
     techSpecs: {
-      model: 'Real-Time Sync App',
-      stack: ['React', 'Firebase'],
-      features: ['Firestore Realtime', '3D Elements (Three.js)'],
+      model: 'Firebase-Backed Watchlist App',
+      stack: ['React', 'JavaScript', 'Firebase', 'Node.js', 'Express', 'Tailwind'],
+      features: ['TMDB Metadata Pipeline', 'Realtime Firestore Sync', 'Demo Mode (?mode=demo)'],
     },
   },
   {
@@ -319,8 +319,8 @@ export const projectDescriptions: ProjectDescriptions = {
 
   hearth: {
     portfolio:
-      'A calm, shared watchlist PWA that helps couples decide what to watch together without algorithmic noise.',
-    full: "Project Hearth is a two-player watchlist designed for couples who want to decide what to watch without endless scrolling or recommendations. It's about shared intent, simple browsing, and actual human decision-making. Clean, focused, and built with intimacy in mind.",
+      'A shared watchlist app for couples with TMDB-backed metadata, real-time sync, and a portfolio-safe demo mode.',
+    full: 'Project Hearth v2 is a collaborative watchlist app built to reduce decision fatigue when choosing what to watch together. It combines a React frontend, Firebase Auth + Firestore persistence, and a Node/Express API layer that proxies and normalizes TMDB metadata. The product supports shared spaces, show episode progress, and a streamlined Tonight flow, with a dedicated `?mode=demo` path for reliable portfolio testing without affecting live user data.',
   },
 
   pushupchallenge: {

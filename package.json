@@ -12,6 +12,8 @@
     "lint:fix": "eslint src/ --fix",
     "format": "prettier --write \"src/**/*.{js,json,css}\"",
     "format:check": "prettier --check \"src/**/*.{js,json,css}\"",
+    "context:check": "node scripts/check-portfolio-contexts.mjs",
+    "context:check:all": "node scripts/check-portfolio-contexts.mjs --require-all",
     "deploy": "npm run build && echo 'Ready to deploy from docs/'"
   },
   "keywords": [
