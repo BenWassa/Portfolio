@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "portfolio:project-docs": "node scripts/generate-portfolio-project-docs.mjs",
+    "portfolio:project-docs:compile": "node scripts/compile-portfolio-project-docs.mjs",
+    "build": "npm run portfolio:project-docs && npm run portfolio:project-docs:compile && vite build",
     "preview": "vite preview",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",

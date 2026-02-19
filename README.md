@@ -185,6 +185,19 @@ The check validates:
 - `Production app` links in context files match `href` in `src/js/project-descriptions.ts`.
 - Required context sections exist.
 
+### Auto-Generated Project MD Records
+
+On every `npm run build`, timestamped Markdown records are regenerated for each portfolio project from `src/js/project-descriptions.ts`:
+
+- Folder: `llm-project-contexts/portfolio-project-docs/`
+- Index: `llm-project-contexts/portfolio-project-docs/INDEX.md`
+
+Run manually anytime:
+
+```bash
+npm run portfolio:project-docs
+```
+
 ### Multi-Repo LLM Context Rollout
 
 Inventory file:

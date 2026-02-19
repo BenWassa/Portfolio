@@ -1,0 +1,36 @@
+# Punchbuggy - Portfolio Project Record
+
+Generated: 2026-02-19T07:11:41.722Z
+Source: `src/js/project-descriptions.ts`
+Branch: main
+Commit: 84cc759
+Project slug: `punchbuggy`
+
+## Snapshot
+- Title: Punchbuggy
+- Tag: Game
+- Status: `active`
+- Type: `app`
+- Orientation: `square`
+- Live URL: https://benwassa.github.io/punchbuggy/
+- Image path: `assets/projects/punchbuggy.png`
+- Image alt: Punchbuggy - Game
+
+## Core Description
+- Card description: Minimalist punchbuggy game with instant feedback.
+- Portfolio summary: A minimalist game PWA—no punchbacks, just instant feedback and genuine enjoyment.
+- Full description: Project Punchbuggy is a game designed for pure play. It strips away gamification, accounts, and complexity to deliver immediate, honest fun. Built for quick sessions and infinite replayability, it proves that elegance and engagement don't require addiction mechanics.
+
+## Technical Profile
+- Model: Instant Game PWA
+- Stack: `JavaScript`, `Vite`
+- Key features:
+- Zero-Latency UI
+- Installable
+- Offline Capable
+
+## Theme
+- Primary: `#3b82f6`
+- Secondary: `#1f2937`
+- Tertiary: `#374151`
+- Background: `#111827`
