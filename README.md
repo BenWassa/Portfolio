@@ -185,6 +185,35 @@ The check validates:
 - `Production app` links in context files match `href` in `src/js/project-descriptions.ts`.
 - Required context sections exist.
 
+### Multi-Repo LLM Context Rollout
+
+Inventory file:
+- `llm-project-contexts/repo-rollout.csv`
+
+First pass dry run:
+
+```bash
+npm run context:rollout:dry
+```
+
+Execute first pass (clone missing repos, prefill `LLM_CONTEXT.md`, commit/push enabled where `commit_enabled=yes`):
+
+```bash
+npm run context:rollout:first
+```
+
+Validate first pass repos:
+
+```bash
+npm run context:validate:first
+```
+
+Optional edge-case generation pass (no commit by default):
+
+```bash
+npm run context:rollout:edge
+```
+
 ### Project Statuses
 
 Projects are categorized by development status, displayed as colored badges in the portfolio:

@@ -1,0 +1,23 @@
+project_title,repo_slug,repo_url,local_path,pass,auto_fill,commit_enabled,public_mode,notes
+Skywalker,Skywalker,https://github.com/BenWassa/Skywalker,../Skywalker,first_pass,yes,yes,public_canonical,unambiguous
+Sankofa,sankofa,https://github.com/BenWassa/sankofa,../sankofa,first_pass,yes,yes,public_canonical,unambiguous
+Dukkha,dukkha,https://github.com/BenWassa/dukkha,../dukkha,first_pass,yes,yes,public_canonical,unambiguous
+Agoge,agoge,https://github.com/BenWassa/agoge,../agoge,first_pass,yes,yes,public_canonical,unambiguous
+Orpheus,orpheus,https://github.com/BenWassa/orpheus,../orpheus,first_pass,yes,yes,not_live,unambiguous
+drop,drop,https://github.com/BenWassa/drop,../drop,first_pass,yes,yes,public_canonical,unambiguous
+STARK,STARK,https://github.com/BenWassa/STARK,../STARK,first_pass,yes,yes,public_canonical,unambiguous
+Punchbuggy,punchbuggy,https://github.com/BenWassa/punchbuggy,../punchbuggy,first_pass,yes,yes,public_canonical,unambiguous
+PushUp Challenge,the-pushup-challenge-2025,https://github.com/BenWassa/the-pushup-challenge-2025,../the-pushup-challenge-2025,first_pass,yes,yes,public_canonical,unambiguous
+Wrestle,wrestlePWA,https://github.com/BenWassa/wrestlePWA,../wrestlePWA,first_pass,yes,yes,public_canonical,unambiguous
+Narrative,Narrative,https://github.com/BenWassa/Narrative,../Narrative,first_pass,yes,yes,public_canonical,unambiguous
+Ecological Constellation,ecological-constellation,https://github.com/BenWassa/ecological-constellation,../ecological-constellation,first_pass,yes,yes,public_canonical,unambiguous
+Hearth,hearth_v2,https://github.com/BenWassa/hearth_v2,../hearth_v2,first_pass,yes,yes,public_template,canonical-latest
+Hearth,hearthMVP,https://github.com/BenWassa/hearthMVP,../hearthMVP,edge_case,yes,no,private_legacy,legacy-earlier-version
+Hearth,template-hearth,https://github.com/BenWassa/template-hearth,../template-hearth,edge_case,yes,no,public_template,template-variant
+Vox,Vox_Showcase,https://github.com/BenWassa/Vox_Showcase,../Vox_Showcase,first_pass,yes,yes,public_template,canonical-portfolio-version
+Vox,Vox,https://github.com/BenWassa/Vox,../Vox,edge_case,yes,no,private_personal,private-personal-origin
+Morpheus,template-morpheus,https://github.com/BenWassa/template-morpheus,../template-morpheus,edge_case,yes,no,public_template,possible-template-variant-review
+Morpheus,morpheus-dream-archive,https://github.com/BenWassa/morpheus-dream-archive,../morpheus-dream-archive,edge_case,yes,no,private_personal,possible-production-variant-review
+Narrative,narrative-template,https://github.com/BenWassa/narrative-template,../narrative-template,edge_case,yes,no,public_template,possible-template-variant-review
+PushUp Challenge,template-pushup,https://github.com/BenWassa/template-pushup,../template-pushup,edge_case,yes,no,public_template,possible-template-variant-review
+Wrestle,wrestle-template,https://github.com/BenWassa/wrestle-template,../wrestle-template,edge_case,yes,no,public_template,possible-template-variant-review

@@ -7,6 +7,7 @@ Use this as `LLM_CONTEXT.md` when handing Hearth to another LLM.
 - One-line description: Shared watchlist app for couples, with calm decision support and a demo mode for portfolio/testing.
 - Current status: `active`
 - Primary owner: Benjamin Haddon
+- Public access mode: `public_template` (public demo/template route by design to protect private/canonical data)
 - Last updated (YYYY-MM-DD): 2026-02-18
 
 ## 2) Purpose and Scope

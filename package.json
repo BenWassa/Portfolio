@@ -14,6 +14,11 @@
     "format:check": "prettier --check \"src/**/*.{js,json,css}\"",
     "context:check": "node scripts/check-portfolio-contexts.mjs",
     "context:check:all": "node scripts/check-portfolio-contexts.mjs --require-all",
+    "context:rollout:dry": "node scripts/rollout-llm-contexts.mjs --pass first_pass --clone-missing --dry-run",
+    "context:rollout:first": "node scripts/rollout-llm-contexts.mjs --pass first_pass --clone-missing --commit",
+    "context:rollout:edge": "node scripts/rollout-llm-contexts.mjs --pass edge_case --clone-missing",
+    "context:validate:first": "node scripts/validate-llm-contexts.mjs --pass first_pass",
+    "context:validate:all": "node scripts/validate-llm-contexts.mjs --pass all",
     "deploy": "npm run build && echo 'Ready to deploy from docs/'"
   },
   "keywords": [
