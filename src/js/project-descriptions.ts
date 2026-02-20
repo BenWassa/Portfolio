@@ -18,7 +18,7 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Single-Page Narrative',
       stack: ['HTML', 'CSS', 'JavaScript'],
-      features: ['Web Audio Engine', 'Prompt-Driven Flow'],
+      features: ['Audio Playback', 'Guided Prompts'],
     },
   },
   {
@@ -35,7 +35,7 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Static Narrative Site',
       stack: ['HTML', 'CSS', 'JavaScript'],
-      features: ['Long-form Layout', 'Multimedia Scaffolding'],
+      features: ['Long-Form Content', 'Multimedia Content'],
     },
   },
   {
@@ -52,7 +52,7 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Interactive Guide',
       stack: ['Python', 'HTML', 'CSS'],
-      features: ['Live HTML Experiences', 'Research Synthesis'],
+      features: ['Interactive Content', 'Research Synthesis'],
     },
   },
   {
@@ -86,7 +86,7 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Data Analysis Tool',
       stack: ['Python', 'pandas', 'Streamlit'],
-      features: ['Plotly Visualization', 'Audio Feature Extraction'],
+      features: ['Listening Pattern Charts', 'Audio Analysis'],
     },
   },
 
@@ -105,7 +105,7 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Offline-First PWA',
       stack: ['JavaScript', 'HTML', 'CSS'],
-      features: ['IndexedDB', 'Service Worker', 'Local-Only Privacy'],
+      features: ['Offline-First', 'IndexedDB Storage', 'Daily Scoring'],
     },
   },
   {
@@ -122,7 +122,7 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Client-Side Dashboard',
       stack: ['React', 'TypeScript', 'Tailwind'],
-      features: ['Data Visualization', 'IndexedDB', 'Framer Motion'],
+      features: ['Fitness Metrics Dashboard', 'IndexedDB Storage', 'Animated UI'],
     },
   },
   {
@@ -139,7 +139,7 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Offline-First App',
       stack: ['JavaScript', 'JSON'],
-      features: ['Local Persistence', 'Spaced Repetition Logic'],
+      features: ['Offline-First', 'Local Storage', 'Spaced Repetition'],
     },
   },
   {
@@ -156,12 +156,12 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Instant Game PWA',
       stack: ['JavaScript', 'Vite'],
-      features: ['Zero-Latency UI', 'Installable', 'Offline Capable'],
+      features: ['No Account Required', 'Minimalist Gameplay', 'Offline-First'],
     },
   },
   {
     title: 'Hearth',
-    tag: 'Shared Watchlist v2',
+    tag: 'Shared Watchlist',
     desc: 'A shared watchlist for couples with TMDB metadata and a portfolio-safe demo mode.',
     href: 'https://hearthv2--hearthv2.us-east4.hosted.app/?mode=demo',
     img: 'assets/projects/hearth.png',
@@ -173,7 +173,7 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Firebase-Backed Watchlist App',
       stack: ['React', 'JavaScript', 'Firebase', 'Node.js', 'Express', 'Tailwind'],
-      features: ['TMDB Metadata Pipeline', 'Realtime Firestore Sync', 'Demo Mode (?mode=demo)'],
+      features: ['External API Integration', 'Real-Time Sync', 'Demo Mode'],
     },
   },
   {
@@ -190,7 +190,7 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Community Tracker',
       stack: ['React', 'Firebase'],
-      features: ['Live Leaderboard', 'PWA Installable'],
+      features: ['Leaderboard', 'Community Progress Tracking'],
     },
   },
   {
@@ -207,7 +207,7 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Offline-First PWA',
       stack: ['JavaScript', 'Tailwind'],
-      features: ['IndexedDB', 'Chart.js Analytics', 'Local-Only'],
+      features: ['Offline-First', 'IndexedDB Storage', 'Training Trend Charts'],
     },
   },
   {
@@ -224,7 +224,7 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Local-First Utility',
       stack: ['React', 'TypeScript'],
-      features: ['File System Access API', 'IndexedDB', 'Privacy-Centric'],
+      features: ['File System Access', 'IndexedDB Storage', 'Offline-First'],
     },
   },
   {
@@ -241,7 +241,7 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Private Journaling PWA',
       stack: ['React', 'Tailwind'],
-      features: ['Encrypted Local Storage', 'Export to JSON/Zip'],
+      features: ['Encrypted Storage', 'Data Export'],
     },
   },
   {
@@ -258,7 +258,7 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Interactive Visualization',
       stack: ['React', 'TypeScript'],
-      features: ['WebGL (OGL)', 'Dynamic Modeling'],
+      features: ['WebGL Rendering', 'Interactive Modeling'],
     },
   },
 ];
@@ -285,7 +285,7 @@ export const projectDescriptions: ProjectDescriptions = {
   vox: {
     portfolio:
       'Advanced language-learning dashboard with progress tracking, analytics, and adaptive learning algorithms (in development).',
-    full: 'Project Vox is a pilot framework for building a rigorous, self-directed language learning system. It emphasizes grammar mastery, transparent vocab tracking, and real-world sentence production - eschewing gamified fluff in favor of deliberate, adaptive practice. Designed to function fully offline with clean JSON architecture, Vox visualizes progress like a growing reservoir of knowledge, where vocabulary adds volume, grammar shapes the container, and output waters the fields of fluency. It serves as both prototype and proof-of-concept for a learner-first, data-transparent alternative to mainstream apps.',
+    full: 'Vox is a pilot framework for building a rigorous, self-directed language learning system. It emphasizes grammar mastery, transparent vocab tracking, and real-world sentence production - eschewing gamified fluff in favor of deliberate, adaptive practice. Designed to function fully offline with clean JSON architecture, Vox visualizes progress like a growing reservoir of knowledge, where vocabulary adds volume, grammar shapes the container, and output waters the fields of fluency. It serves as both prototype and proof-of-concept for a learner-first, data-transparent alternative to mainstream apps.',
   },
 
   orpheus: {
@@ -303,53 +303,53 @@ export const projectDescriptions: ProjectDescriptions = {
   stark: {
     portfolio:
       'A data visualization PWA that unifies strength, endurance, mobility, and recovery into one elegant Fitness Index, complete with VO2 max and trend insights.',
-    full: 'Project STARK is a static Progressive Web App built with React and TailwindCSS, designed to turn physiological data into a clear visual story of fitness and recovery. It blends performance metrics, VO2 max estimation, and normative comparisons into an elegant offline dashboard that values transparency, simplicity, and privacy. All calculations are client-side, data is stored in IndexedDB, and users can install it as a PWA - no logins, no servers, just insight.',
+    full: 'STARK is a static Progressive Web App built with React and TailwindCSS, designed to turn physiological data into a clear visual story of fitness and recovery. It blends performance metrics, VO2 max estimation, and normative comparisons into an elegant offline dashboard that values transparency, simplicity, and privacy. All calculations are client-side, data is stored in IndexedDB, and users can install it as a PWA - no logins, no servers, just insight.',
   },
 
   drop: {
     portfolio:
       'A mindful daily tracker for Sleep, Fitness, Mind, and Spirit - built as a pure vanilla JavaScript PWA that values quality, reflection, and sustained growth over streaks or perfection.',
-    full: "Project drop is a minimalist, framework-free Progressive Web App designed for reflective self-tracking across four life domains: Sleep, Fitness, Mind, and Spirit. It integrates a philosophically grounded scoring model based on weighted trends and intrinsic motivation, emphasizing balance, consistency, and self-awareness. The app runs fully offline, includes IndexedDB auto-backups, and features an elegant interface optimized for touch and accessibility. It's a digital companion for maintaining mindful engagement with your growth - not a habit tracker, but a quality tracker.",
+    full: "drop is a minimalist, framework-free Progressive Web App designed for reflective self-tracking across four life domains: Sleep, Fitness, Mind, and Spirit. It integrates a philosophically grounded scoring model based on weighted trends and intrinsic motivation, emphasizing balance, consistency, and self-awareness. The app runs fully offline, includes IndexedDB auto-backups, and features an elegant interface optimized for touch and accessibility. It's a digital companion for maintaining mindful engagement with your growth - not a habit tracker, but a quality tracker.",
   },
 
   punchbuggy: {
     portfolio: 'A minimalist game PWA—no punchbacks, just instant feedback and genuine enjoyment.',
-    full: "Project Punchbuggy is a game designed for pure play. It strips away gamification, accounts, and complexity to deliver immediate, honest fun. Built for quick sessions and infinite replayability, it proves that elegance and engagement don't require addiction mechanics.",
+    full: "Punchbuggy is a game designed for pure play. It strips away gamification, accounts, and complexity to deliver immediate, honest fun. Built for quick sessions and infinite replayability, it proves that elegance and engagement don't require addiction mechanics.",
   },
 
   hearth: {
     portfolio:
       'A shared watchlist app for couples with TMDB-backed metadata, real-time sync, and a portfolio-safe demo mode.',
-    full: 'Project Hearth v2 is a collaborative watchlist app built to reduce decision fatigue when choosing what to watch together. It combines a React frontend, Firebase Auth + Firestore persistence, and a Node/Express API layer that proxies and normalizes TMDB metadata. The product supports shared spaces, show episode progress, and a streamlined Tonight flow, with a dedicated `?mode=demo` path for reliable portfolio testing without affecting live user data.',
+    full: 'Hearth is a collaborative watchlist app built to reduce decision fatigue when choosing what to watch together. It combines a React frontend, Firebase Auth + Firestore persistence, and a Node/Express API layer that proxies and normalizes TMDB metadata. The product supports shared spaces, show episode progress, and a streamlined Tonight flow, with a dedicated `?mode=demo` path for reliable portfolio testing without affecting live user data.',
   },
 
   pushupchallenge: {
     portfolio:
       'A time-bound fitness app supporting the Pushup Challenge with tracking and community accountability.',
-    full: 'Project PushUp Challenge is a specialized app built for the annual Pushup Challenge. It provides clean tracking of daily progress, community leaderboards, and sustainable progression without gamification. Designed for participants who take the challenge seriously and want transparent data.',
+    full: 'PushUp Challenge is a specialized app built for the annual Pushup Challenge. It provides clean tracking of daily progress, community leaderboards, and sustainable progression without gamification. Designed for participants who take the challenge seriously and want transparent data.',
   },
 
   wrestle: {
     portfolio:
       'An offline-first training log for wrestlers—honest tracking without accounts or gamification.',
-    full: 'Project Wrestle is built for grapplers. It strips away social features and focuses on what matters: honest, structured tracking of techniques, matches, and improvements. No accounts, no notifications, no algorithms—just a reliable record of your training and progress.',
+    full: 'Wrestle is built for grapplers. It strips away social features and focuses on what matters: honest, structured tracking of techniques, matches, and improvements. No accounts, no notifications, no algorithms—just a reliable record of your training and progress.',
   },
 
   narrative: {
     portfolio:
       'A fast, offline-first travel photo organizer that sorts images by story role instead of time.',
-    full: 'Project Narrative transforms how you organize travel photos. Instead of chronological sorting, it categorizes images by their role in your story: opening moments, key scenes, unexpected details, climax, reflection. It turns a photo library into a narrative arc, making memories more vivid and meaningful.',
+    full: 'Narrative transforms how you organize travel photos. Instead of chronological sorting, it categorizes images by their role in your story: opening moments, key scenes, unexpected details, climax, reflection. It turns a photo library into a narrative arc, making memories more vivid and meaningful.',
   },
 
   morpheus: {
     portfolio:
-      'A personal archive for recording and reflecting on dreams, treating the unconscious as meaningful signal.',
-    full: 'Project Morpheus is a dream journal designed for serious reflection. It provides structure for recording dreams, tracking patterns, and exploring emotional resonance without interpretation. Built on the belief that dreams are psychological signal worth listening to—not for divination, but for self-understanding.',
+      'A personal archive for recording and reflecting on dreams, with an AI image-generation workflow for scene visualization.',
+    full: "Project Morpheus is a dream journal designed for serious reflection, with part of the workflow intentionally happening outside the app. It provides structure for recording dreams, tracking patterns, and exploring emotional resonance without interpretation, then supports creating visuals for chosen scenes using your preferred AI image-generation tool. Built on the belief that dreams are psychological signal worth listening to - not for divination, but for self-understanding.",
   },
 
   ecologicalconstellation: {
     portfolio:
       'A personality framework mapping Big Five traits to ecological strategies rather than fixed types.',
-    full: 'Project Ecological Constellation reimagines personality through an ecological lens. Instead of fixed types, it maps how Big Five traits function as adaptive strategies in different contexts. It reveals how your personality serves you and where it might limit you—emphasizing flexibility, context, and growth.',
+    full: 'Ecological Constellation reimagines personality through an ecological lens. Instead of fixed types, it maps how Big Five traits function as adaptive strategies in different contexts. It reveals how your personality serves you and where it might limit you—emphasizing flexibility, context, and growth.',
   },
 };
