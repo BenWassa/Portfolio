@@ -1,6 +1,6 @@
 # Portfolio Project Records (Compiled)
 
-Generated: 2026-02-20T19:12:47.343Z
+Generated: 2026-02-20T19:19:22.531Z
 Source folder: `llm-project-contexts/portfolio-project-docs/`
 Total project docs: 15
 
@@ -28,10 +28,10 @@ Source file: `agoge.md`
 
 # Agoge - Portfolio Project Record
 
-Generated: 2026-02-20T19:12:47.219Z
+Generated: 2026-02-20T19:19:22.412Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 098add7
+Commit: 77c98b2
 Project slug: `agoge`
 
 ## Snapshot
@@ -53,6 +53,7 @@ Project slug: `agoge`
 - Model: Narrative Research
 - Stack: `Python`, `Markdown`
 - Key features:
+- Audio Playback
 - Cross-Cultural Analysis
 - Mythic Structure
 
@@ -71,10 +72,10 @@ Source file: `drop.md`
 
 # drop - Portfolio Project Record
 
-Generated: 2026-02-20T19:12:47.219Z
+Generated: 2026-02-20T19:19:22.412Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 098add7
+Commit: 77c98b2
 Project slug: `drop`
 
 ## Snapshot
@@ -115,10 +116,10 @@ Source file: `dukkha.md`
 
 # Dukkha - Portfolio Project Record
 
-Generated: 2026-02-20T19:12:47.219Z
+Generated: 2026-02-20T19:19:22.412Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 098add7
+Commit: 77c98b2
 Project slug: `dukkha`
 
 ## Snapshot
@@ -158,10 +159,10 @@ Source file: `ecological-constellation.md`
 
 # Ecological Constellation - Portfolio Project Record
 
-Generated: 2026-02-20T19:12:47.219Z
+Generated: 2026-02-20T19:19:22.412Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 098add7
+Commit: 77c98b2
 Project slug: `ecological-constellation`
 
 ## Snapshot
@@ -201,10 +202,10 @@ Source file: `hearth.md`
 
 # Hearth - Portfolio Project Record
 
-Generated: 2026-02-20T19:12:47.219Z
+Generated: 2026-02-20T19:19:22.412Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 098add7
+Commit: 77c98b2
 Project slug: `hearth`
 
 ## Snapshot
@@ -245,10 +246,10 @@ Source file: `morpheus.md`
 
 # Morpheus - Portfolio Project Record
 
-Generated: 2026-02-20T19:12:47.219Z
+Generated: 2026-02-20T19:19:22.412Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 098add7
+Commit: 77c98b2
 Project slug: `morpheus`
 
 ## Snapshot
@@ -270,8 +271,9 @@ Project slug: `morpheus`
 - Model: Private Journaling PWA
 - Stack: `React`, `Tailwind`
 - Key features:
-- Encrypted Storage
-- Data Export
+- Dream Entry Logging
+- Pattern Tracking
+- External AI Scene Visualization
 
 ## Theme
 - Primary: `#8b5cf6`
@@ -288,10 +290,10 @@ Source file: `narrative.md`
 
 # Narrative - Portfolio Project Record
 
-Generated: 2026-02-20T19:12:47.219Z
+Generated: 2026-02-20T19:19:22.412Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 098add7
+Commit: 77c98b2
 Project slug: `narrative`
 
 ## Snapshot
@@ -332,10 +334,10 @@ Source file: `orpheus.md`
 
 # Orpheus - Portfolio Project Record
 
-Generated: 2026-02-20T19:12:47.219Z
+Generated: 2026-02-20T19:19:22.412Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 098add7
+Commit: 77c98b2
 Project slug: `orpheus`
 
 ## Snapshot
@@ -375,10 +377,10 @@ Source file: `punchbuggy.md`
 
 # Punchbuggy - Portfolio Project Record
 
-Generated: 2026-02-20T19:12:47.219Z
+Generated: 2026-02-20T19:19:22.412Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 098add7
+Commit: 77c98b2
 Project slug: `punchbuggy`
 
 ## Snapshot
@@ -401,7 +403,7 @@ Project slug: `punchbuggy`
 - Stack: `JavaScript`, `Vite`
 - Key features:
 - No Account Required
-- Minimalist Gameplay
+- No Gamification Loops
 - Offline-First
 
 ## Theme
@@ -419,10 +421,10 @@ Source file: `pushup-challenge.md`
 
 # PushUp Challenge - Portfolio Project Record
 
-Generated: 2026-02-20T19:12:47.219Z
+Generated: 2026-02-20T19:19:22.412Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 098add7
+Commit: 77c98b2
 Project slug: `pushup-challenge`
 
 ## Snapshot
@@ -462,10 +464,10 @@ Source file: `sankofa.md`
 
 # Sankofa - Portfolio Project Record
 
-Generated: 2026-02-20T19:12:47.219Z
+Generated: 2026-02-20T19:19:22.412Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 098add7
+Commit: 77c98b2
 Project slug: `sankofa`
 
 ## Snapshot
@@ -487,6 +489,7 @@ Project slug: `sankofa`
 - Model: Static Narrative Site
 - Stack: `HTML`, `CSS`, `JavaScript`
 - Key features:
+- Audio Playback
 - Long-Form Content
 - Multimedia Content
 
@@ -505,10 +508,10 @@ Source file: `skywalker.md`
 
 # Skywalker - Portfolio Project Record
 
-Generated: 2026-02-20T19:12:47.219Z
+Generated: 2026-02-20T19:19:22.412Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 098add7
+Commit: 77c98b2
 Project slug: `skywalker`
 
 ## Snapshot
@@ -532,6 +535,7 @@ Project slug: `skywalker`
 - Key features:
 - Audio Playback
 - Guided Prompts
+- Custom AI Artwork
 
 ## Theme
 - Primary: `#3B82F6`
@@ -548,10 +552,10 @@ Source file: `stark.md`
 
 # STARK - Portfolio Project Record
 
-Generated: 2026-02-20T19:12:47.219Z
+Generated: 2026-02-20T19:19:22.412Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 098add7
+Commit: 77c98b2
 Project slug: `stark`
 
 ## Snapshot
@@ -592,10 +596,10 @@ Source file: `vox.md`
 
 # Vox - Portfolio Project Record
 
-Generated: 2026-02-20T19:12:47.219Z
+Generated: 2026-02-20T19:19:22.412Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 098add7
+Commit: 77c98b2
 Project slug: `vox`
 
 ## Snapshot
@@ -636,10 +640,10 @@ Source file: `wrestle.md`
 
 # Wrestle - Portfolio Project Record
 
-Generated: 2026-02-20T19:12:47.219Z
+Generated: 2026-02-20T19:19:22.412Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 098add7
+Commit: 77c98b2
 Project slug: `wrestle`
 
 ## Snapshot

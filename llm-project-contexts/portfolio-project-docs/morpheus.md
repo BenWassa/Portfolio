@@ -1,9 +1,9 @@
 # Morpheus - Portfolio Project Record
 
-Generated: 2026-02-20T19:12:47.219Z
+Generated: 2026-02-20T19:19:22.412Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 098add7
+Commit: 77c98b2
 Project slug: `morpheus`
 
 ## Snapshot
@@ -25,8 +25,9 @@ Project slug: `morpheus`
 - Model: Private Journaling PWA
 - Stack: `React`, `Tailwind`
 - Key features:
-- Encrypted Storage
-- Data Export
+- Dream Entry Logging
+- Pattern Tracking
+- External AI Scene Visualization
 
 ## Theme
 - Primary: `#8b5cf6`

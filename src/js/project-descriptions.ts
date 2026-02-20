@@ -18,7 +18,7 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Single-Page Narrative',
       stack: ['HTML', 'CSS', 'JavaScript'],
-      features: ['Audio Playback', 'Guided Prompts'],
+      features: ['Audio Playback', 'Guided Prompts', 'Custom AI Artwork'],
     },
   },
   {
@@ -35,7 +35,7 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Static Narrative Site',
       stack: ['HTML', 'CSS', 'JavaScript'],
-      features: ['Long-Form Content', 'Multimedia Content'],
+      features: ['Audio Playback', 'Long-Form Content', 'Multimedia Content'],
     },
   },
   {
@@ -69,7 +69,7 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Narrative Research',
       stack: ['Python', 'Markdown'],
-      features: ['Cross-Cultural Analysis', 'Mythic Structure'],
+      features: ['Audio Playback', 'Cross-Cultural Analysis', 'Mythic Structure'],
     },
   },
   {
@@ -156,7 +156,7 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Instant Game PWA',
       stack: ['JavaScript', 'Vite'],
-      features: ['No Account Required', 'Minimalist Gameplay', 'Offline-First'],
+      features: ['No Account Required', 'No Gamification Loops', 'Offline-First'],
     },
   },
   {
@@ -241,7 +241,7 @@ export const projectsData: Project[] = [
     techSpecs: {
       model: 'Private Journaling PWA',
       stack: ['React', 'Tailwind'],
-      features: ['Encrypted Storage', 'Data Export'],
+      features: ['Dream Entry Logging', 'Pattern Tracking', 'External AI Scene Visualization'],
     },
   },
   {
