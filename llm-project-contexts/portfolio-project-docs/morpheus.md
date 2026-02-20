@@ -1,9 +1,9 @@
 # Morpheus - Portfolio Project Record
 
-Generated: 2026-02-19T07:11:41.722Z
+Generated: 2026-02-20T19:12:47.219Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 84cc759
+Commit: 098add7
 Project slug: `morpheus`
 
 ## Snapshot
@@ -18,15 +18,15 @@ Project slug: `morpheus`
 
 ## Core Description
 - Card description: A dream journal designed for serious reflection.
-- Portfolio summary: A personal archive for recording and reflecting on dreams, treating the unconscious as meaningful signal.
-- Full description: Project Morpheus is a dream journal designed for serious reflection. It provides structure for recording dreams, tracking patterns, and exploring emotional resonance without interpretation. Built on the belief that dreams are psychological signal worth listening to—not for divination, but for self-understanding.
+- Portfolio summary: A personal archive for recording and reflecting on dreams, with an AI image-generation workflow for scene visualization.
+- Full description: Project Morpheus is a dream journal designed for serious reflection, with part of the workflow intentionally happening outside the app. It provides structure for recording dreams, tracking patterns, and exploring emotional resonance without interpretation, then supports creating visuals for chosen scenes using your preferred AI image-generation tool. Built on the belief that dreams are psychological signal worth listening to - not for divination, but for self-understanding.
 
 ## Technical Profile
 - Model: Private Journaling PWA
 - Stack: `React`, `Tailwind`
 - Key features:
-- Encrypted Local Storage
-- Export to JSON/Zip
+- Encrypted Storage
+- Data Export
 
 ## Theme
 - Primary: `#8b5cf6`

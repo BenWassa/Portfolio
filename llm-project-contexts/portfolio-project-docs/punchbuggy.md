@@ -1,9 +1,9 @@
 # Punchbuggy - Portfolio Project Record
 
-Generated: 2026-02-19T07:11:41.722Z
+Generated: 2026-02-20T19:12:47.219Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 84cc759
+Commit: 098add7
 Project slug: `punchbuggy`
 
 ## Snapshot
@@ -19,15 +19,15 @@ Project slug: `punchbuggy`
 ## Core Description
 - Card description: Minimalist punchbuggy game with instant feedback.
 - Portfolio summary: A minimalist game PWA—no punchbacks, just instant feedback and genuine enjoyment.
-- Full description: Project Punchbuggy is a game designed for pure play. It strips away gamification, accounts, and complexity to deliver immediate, honest fun. Built for quick sessions and infinite replayability, it proves that elegance and engagement don't require addiction mechanics.
+- Full description: Punchbuggy is a game designed for pure play. It strips away gamification, accounts, and complexity to deliver immediate, honest fun. Built for quick sessions and infinite replayability, it proves that elegance and engagement don't require addiction mechanics.
 
 ## Technical Profile
 - Model: Instant Game PWA
 - Stack: `JavaScript`, `Vite`
 - Key features:
-- Zero-Latency UI
-- Installable
-- Offline Capable
+- No Account Required
+- Minimalist Gameplay
+- Offline-First
 
 ## Theme
 - Primary: `#3b82f6`

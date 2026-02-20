@@ -1,9 +1,9 @@
 # Ecological Constellation - Portfolio Project Record
 
-Generated: 2026-02-19T07:11:41.722Z
+Generated: 2026-02-20T19:12:47.219Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 84cc759
+Commit: 098add7
 Project slug: `ecological-constellation`
 
 ## Snapshot
@@ -19,14 +19,14 @@ Project slug: `ecological-constellation`
 ## Core Description
 - Card description: A personality framework mapping Big Five traits to ecological strategies.
 - Portfolio summary: A personality framework mapping Big Five traits to ecological strategies rather than fixed types.
-- Full description: Project Ecological Constellation reimagines personality through an ecological lens. Instead of fixed types, it maps how Big Five traits function as adaptive strategies in different contexts. It reveals how your personality serves you and where it might limit you—emphasizing flexibility, context, and growth.
+- Full description: Ecological Constellation reimagines personality through an ecological lens. Instead of fixed types, it maps how Big Five traits function as adaptive strategies in different contexts. It reveals how your personality serves you and where it might limit you—emphasizing flexibility, context, and growth.
 
 ## Technical Profile
 - Model: Interactive Visualization
 - Stack: `React`, `TypeScript`
 - Key features:
-- WebGL (OGL)
-- Dynamic Modeling
+- WebGL Rendering
+- Interactive Modeling
 
 ## Theme
 - Primary: `#06b6d4`

@@ -1,9 +1,9 @@
 # Orpheus - Portfolio Project Record
 
-Generated: 2026-02-19T07:11:41.722Z
+Generated: 2026-02-20T19:12:47.219Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 84cc759
+Commit: 098add7
 Project slug: `orpheus`
 
 ## Snapshot
@@ -25,8 +25,8 @@ Project slug: `orpheus`
 - Model: Data Analysis Tool
 - Stack: `Python`, `pandas`, `Streamlit`
 - Key features:
-- Plotly Visualization
-- Audio Feature Extraction
+- Listening Pattern Charts
+- Audio Analysis
 
 ## Theme
 - Primary: `#8B5CF6`

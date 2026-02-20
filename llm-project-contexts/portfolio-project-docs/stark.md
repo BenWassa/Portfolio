@@ -1,9 +1,9 @@
 # STARK - Portfolio Project Record
 
-Generated: 2026-02-19T07:11:41.722Z
+Generated: 2026-02-20T19:12:47.219Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 84cc759
+Commit: 098add7
 Project slug: `stark`
 
 ## Snapshot
@@ -19,15 +19,15 @@ Project slug: `stark`
 ## Core Description
 - Card description: Fitness intelligence dashboard for strength, endurance, recovery.
 - Portfolio summary: A data visualization PWA that unifies strength, endurance, mobility, and recovery into one elegant Fitness Index, complete with VO2 max and trend insights.
-- Full description: Project STARK is a static Progressive Web App built with React and TailwindCSS, designed to turn physiological data into a clear visual story of fitness and recovery. It blends performance metrics, VO2 max estimation, and normative comparisons into an elegant offline dashboard that values transparency, simplicity, and privacy. All calculations are client-side, data is stored in IndexedDB, and users can install it as a PWA - no logins, no servers, just insight.
+- Full description: STARK is a static Progressive Web App built with React and TailwindCSS, designed to turn physiological data into a clear visual story of fitness and recovery. It blends performance metrics, VO2 max estimation, and normative comparisons into an elegant offline dashboard that values transparency, simplicity, and privacy. All calculations are client-side, data is stored in IndexedDB, and users can install it as a PWA - no logins, no servers, just insight.
 
 ## Technical Profile
 - Model: Client-Side Dashboard
 - Stack: `React`, `TypeScript`, `Tailwind`
 - Key features:
-- Data Visualization
-- IndexedDB
-- Framer Motion
+- Fitness Metrics Dashboard
+- IndexedDB Storage
+- Animated UI
 
 ## Theme
 - Primary: `#d4956d`

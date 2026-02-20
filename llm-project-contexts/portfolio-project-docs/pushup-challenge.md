@@ -1,9 +1,9 @@
 # PushUp Challenge - Portfolio Project Record
 
-Generated: 2026-02-19T07:11:41.722Z
+Generated: 2026-02-20T19:12:47.219Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 84cc759
+Commit: 098add7
 Project slug: `pushup-challenge`
 
 ## Snapshot
@@ -19,14 +19,14 @@ Project slug: `pushup-challenge`
 ## Core Description
 - Card description: Pushup challenge tracker with community accountability.
 - Portfolio summary: A time-bound fitness app supporting the Pushup Challenge with tracking and community accountability.
-- Full description: Project PushUp Challenge is a specialized app built for the annual Pushup Challenge. It provides clean tracking of daily progress, community leaderboards, and sustainable progression without gamification. Designed for participants who take the challenge seriously and want transparent data.
+- Full description: PushUp Challenge is a specialized app built for the annual Pushup Challenge. It provides clean tracking of daily progress, community leaderboards, and sustainable progression without gamification. Designed for participants who take the challenge seriously and want transparent data.
 
 ## Technical Profile
 - Model: Community Tracker
 - Stack: `React`, `Firebase`
 - Key features:
-- Live Leaderboard
-- PWA Installable
+- Leaderboard
+- Community Progress Tracking
 
 ## Theme
 - Primary: `#ef4444`

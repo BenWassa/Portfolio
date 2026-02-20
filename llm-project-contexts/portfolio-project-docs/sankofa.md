@@ -1,9 +1,9 @@
 # Sankofa - Portfolio Project Record
 
-Generated: 2026-02-19T07:11:41.722Z
+Generated: 2026-02-20T19:12:47.219Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 84cc759
+Commit: 098add7
 Project slug: `sankofa`
 
 ## Snapshot
@@ -25,8 +25,8 @@ Project slug: `sankofa`
 - Model: Static Narrative Site
 - Stack: `HTML`, `CSS`, `JavaScript`
 - Key features:
-- Long-form Layout
-- Multimedia Scaffolding
+- Long-Form Content
+- Multimedia Content
 
 ## Theme
 - Primary: `#d4af37`

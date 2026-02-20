@@ -1,9 +1,9 @@
 # Narrative - Portfolio Project Record
 
-Generated: 2026-02-19T07:11:41.722Z
+Generated: 2026-02-20T19:12:47.219Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 84cc759
+Commit: 098add7
 Project slug: `narrative`
 
 ## Snapshot
@@ -19,15 +19,15 @@ Project slug: `narrative`
 ## Core Description
 - Card description: Organize travel photos and videos by story role.
 - Portfolio summary: A fast, offline-first travel photo organizer that sorts images by story role instead of time.
-- Full description: Project Narrative transforms how you organize travel photos. Instead of chronological sorting, it categorizes images by their role in your story: opening moments, key scenes, unexpected details, climax, reflection. It turns a photo library into a narrative arc, making memories more vivid and meaningful.
+- Full description: Narrative transforms how you organize travel photos. Instead of chronological sorting, it categorizes images by their role in your story: opening moments, key scenes, unexpected details, climax, reflection. It turns a photo library into a narrative arc, making memories more vivid and meaningful.
 
 ## Technical Profile
 - Model: Local-First Utility
 - Stack: `React`, `TypeScript`
 - Key features:
-- File System Access API
-- IndexedDB
-- Privacy-Centric
+- File System Access
+- IndexedDB Storage
+- Offline-First
 
 ## Theme
 - Primary: `#84cc16`

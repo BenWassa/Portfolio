@@ -1,9 +1,9 @@
 # Skywalker - Portfolio Project Record
 
-Generated: 2026-02-19T07:11:41.722Z
+Generated: 2026-02-20T19:12:47.219Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 84cc759
+Commit: 098add7
 Project slug: `skywalker`
 
 ## Snapshot
@@ -25,8 +25,8 @@ Project slug: `skywalker`
 - Model: Single-Page Narrative
 - Stack: `HTML`, `CSS`, `JavaScript`
 - Key features:
-- Web Audio Engine
-- Prompt-Driven Flow
+- Audio Playback
+- Guided Prompts
 
 ## Theme
 - Primary: `#3B82F6`
