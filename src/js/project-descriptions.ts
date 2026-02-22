@@ -214,7 +214,7 @@ export const projectsData: Project[] = [
     title: 'Narrative',
     tag: 'Travel Photo Organizer',
     desc: 'Organize travel photos and videos by story role.',
-    href: 'https://benwassa.github.io/Narrative/',
+    href: 'https://benwassa.github.io/narrative-template/',
     img: 'assets/projects/narrative.png',
     alt: 'Narrative - Photo Tool',
     theme: { primary: '#84cc16', secondary: '#65a30d', tertiary: '#4b5320', bg: '#202601' },

@@ -1,9 +1,9 @@
 # Narrative - Portfolio Project Record
 
-Generated: 2026-02-20T19:19:22.412Z
+Generated: 2026-02-22T22:44:50.785Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 77c98b2
+Commit: de7d7e9
 Project slug: `narrative`
 
 ## Snapshot
@@ -12,7 +12,7 @@ Project slug: `narrative`
 - Status: `active`
 - Type: `app`
 - Orientation: `square`
-- Live URL: https://benwassa.github.io/Narrative/
+- Live URL: https://benwassa.github.io/narrative-template/
 - Image path: `assets/projects/narrative.png`
 - Image alt: Narrative - Photo Tool
 

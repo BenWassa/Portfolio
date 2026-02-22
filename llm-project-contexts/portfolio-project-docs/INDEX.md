@@ -1,9 +1,9 @@
 # Portfolio Project Docs Index
 
-Generated: 2026-02-20T19:19:22.412Z
+Generated: 2026-02-22T22:44:50.785Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 77c98b2
+Commit: de7d7e9
 Total projects: 15
 
 This folder is auto-generated on build. Edit source project data in `src/js/project-descriptions.ts`.
@@ -22,6 +22,6 @@ This folder is auto-generated on build. Edit source project data in `src/js/proj
 | Hearth | `active` | `app` | https://hearthv2--hearthv2.us-east4.hosted.app/?mode=demo | [hearth.md](hearth.md) |
 | PushUp Challenge | `active` | `app` | https://benwassa.github.io/the-pushup-challenge-2025/?mode=demo | [pushup-challenge.md](pushup-challenge.md) |
 | Wrestle | `active` | `app` | https://benwassa.github.io/wrestlePWA/ | [wrestle.md](wrestle.md) |
-| Narrative | `active` | `app` | https://benwassa.github.io/Narrative/ | [narrative.md](narrative.md) |
+| Narrative | `active` | `app` | https://benwassa.github.io/narrative-template/ | [narrative.md](narrative.md) |
 | Morpheus | `active` | `app` | https://benwassa.github.io/template-morpheus/ | [morpheus.md](morpheus.md) |
 | Ecological Constellation | `active` | `app` | https://benwassa.github.io/ecological-constellation/ | [ecological-constellation.md](ecological-constellation.md) |

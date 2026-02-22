@@ -1,6 +1,6 @@
 # Portfolio Project Records (Compiled)
 
-Generated: 2026-02-20T19:19:22.531Z
+Generated: 2026-02-22T22:44:50.917Z
 Source folder: `llm-project-contexts/portfolio-project-docs/`
 Total project docs: 15
 
@@ -28,10 +28,10 @@ Source file: `agoge.md`
 
 # Agoge - Portfolio Project Record
 
-Generated: 2026-02-20T19:19:22.412Z
+Generated: 2026-02-22T22:44:50.785Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 77c98b2
+Commit: de7d7e9
 Project slug: `agoge`
 
 ## Snapshot
@@ -72,10 +72,10 @@ Source file: `drop.md`
 
 # drop - Portfolio Project Record
 
-Generated: 2026-02-20T19:19:22.412Z
+Generated: 2026-02-22T22:44:50.785Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 77c98b2
+Commit: de7d7e9
 Project slug: `drop`
 
 ## Snapshot
@@ -116,10 +116,10 @@ Source file: `dukkha.md`
 
 # Dukkha - Portfolio Project Record
 
-Generated: 2026-02-20T19:19:22.412Z
+Generated: 2026-02-22T22:44:50.785Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 77c98b2
+Commit: de7d7e9
 Project slug: `dukkha`
 
 ## Snapshot
@@ -159,10 +159,10 @@ Source file: `ecological-constellation.md`
 
 # Ecological Constellation - Portfolio Project Record
 
-Generated: 2026-02-20T19:19:22.412Z
+Generated: 2026-02-22T22:44:50.785Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 77c98b2
+Commit: de7d7e9
 Project slug: `ecological-constellation`
 
 ## Snapshot
@@ -202,10 +202,10 @@ Source file: `hearth.md`
 
 # Hearth - Portfolio Project Record
 
-Generated: 2026-02-20T19:19:22.412Z
+Generated: 2026-02-22T22:44:50.785Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 77c98b2
+Commit: de7d7e9
 Project slug: `hearth`
 
 ## Snapshot
@@ -246,10 +246,10 @@ Source file: `morpheus.md`
 
 # Morpheus - Portfolio Project Record
 
-Generated: 2026-02-20T19:19:22.412Z
+Generated: 2026-02-22T22:44:50.785Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 77c98b2
+Commit: de7d7e9
 Project slug: `morpheus`
 
 ## Snapshot
@@ -290,10 +290,10 @@ Source file: `narrative.md`
 
 # Narrative - Portfolio Project Record
 
-Generated: 2026-02-20T19:19:22.412Z
+Generated: 2026-02-22T22:44:50.785Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 77c98b2
+Commit: de7d7e9
 Project slug: `narrative`
 
 ## Snapshot
@@ -302,7 +302,7 @@ Project slug: `narrative`
 - Status: `active`
 - Type: `app`
 - Orientation: `square`
-- Live URL: https://benwassa.github.io/Narrative/
+- Live URL: https://benwassa.github.io/narrative-template/
 - Image path: `assets/projects/narrative.png`
 - Image alt: Narrative - Photo Tool
 
@@ -334,10 +334,10 @@ Source file: `orpheus.md`
 
 # Orpheus - Portfolio Project Record
 
-Generated: 2026-02-20T19:19:22.412Z
+Generated: 2026-02-22T22:44:50.785Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 77c98b2
+Commit: de7d7e9
 Project slug: `orpheus`
 
 ## Snapshot
@@ -377,10 +377,10 @@ Source file: `punchbuggy.md`
 
 # Punchbuggy - Portfolio Project Record
 
-Generated: 2026-02-20T19:19:22.412Z
+Generated: 2026-02-22T22:44:50.785Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 77c98b2
+Commit: de7d7e9
 Project slug: `punchbuggy`
 
 ## Snapshot
@@ -421,10 +421,10 @@ Source file: `pushup-challenge.md`
 
 # PushUp Challenge - Portfolio Project Record
 
-Generated: 2026-02-20T19:19:22.412Z
+Generated: 2026-02-22T22:44:50.785Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 77c98b2
+Commit: de7d7e9
 Project slug: `pushup-challenge`
 
 ## Snapshot
@@ -464,10 +464,10 @@ Source file: `sankofa.md`
 
 # Sankofa - Portfolio Project Record
 
-Generated: 2026-02-20T19:19:22.412Z
+Generated: 2026-02-22T22:44:50.785Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 77c98b2
+Commit: de7d7e9
 Project slug: `sankofa`
 
 ## Snapshot
@@ -508,10 +508,10 @@ Source file: `skywalker.md`
 
 # Skywalker - Portfolio Project Record
 
-Generated: 2026-02-20T19:19:22.412Z
+Generated: 2026-02-22T22:44:50.785Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 77c98b2
+Commit: de7d7e9
 Project slug: `skywalker`
 
 ## Snapshot
@@ -552,10 +552,10 @@ Source file: `stark.md`
 
 # STARK - Portfolio Project Record
 
-Generated: 2026-02-20T19:19:22.412Z
+Generated: 2026-02-22T22:44:50.785Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 77c98b2
+Commit: de7d7e9
 Project slug: `stark`
 
 ## Snapshot
@@ -596,10 +596,10 @@ Source file: `vox.md`
 
 # Vox - Portfolio Project Record
 
-Generated: 2026-02-20T19:19:22.412Z
+Generated: 2026-02-22T22:44:50.785Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 77c98b2
+Commit: de7d7e9
 Project slug: `vox`
 
 ## Snapshot
@@ -640,10 +640,10 @@ Source file: `wrestle.md`
 
 # Wrestle - Portfolio Project Record
 
-Generated: 2026-02-20T19:19:22.412Z
+Generated: 2026-02-22T22:44:50.785Z
 Source: `src/js/project-descriptions.ts`
 Branch: main
-Commit: 77c98b2
+Commit: de7d7e9
 Project slug: `wrestle`
 
 ## Snapshot
