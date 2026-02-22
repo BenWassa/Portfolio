@@ -302,39 +302,93 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({
 // --- Component: Square Modal (App) ---
 const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ project, onClose }) => {
   const [imageLoaded, setImageLoaded] = React.useState(false);
+  const [iframeLoaded, setIframeLoaded] = React.useState(false);
   const linkLabel = 'Open App';
-  
+
   // Modal images are above-the-fold, use eager loading
   const imageProps = getResponsiveImageProps(project.img, true);
 
-  return (
-    <>
-      <div className="w-full md:w-[45%] bg-gradient-to-br from-zinc-900 to-black flex items-center justify-center p-12 relative overflow-hidden">
-        {/* Ambient background glow based on theme */}
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            background: `radial-gradient(circle at center, ${project.theme.primary}20 0%, transparent 70%)`,
-          }}
-        />
-        {!imageLoaded && (
-          <div className="w-full h-auto max-w-[280px] aspect-square relative z-10 bg-zinc-800 rounded-lg overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-zinc-700/50 to-transparent animate-[shimmer_2s_infinite]" />
+  const leftPanel = project.embedUrl ? (
+    // --- Live Embed Panel ---
+    <div
+      className="w-full md:w-[45%] relative overflow-hidden flex items-center justify-center bg-black py-8"
+    >
+      {/* Subtle ambient glow */}
+      <div
+        className="absolute inset-0 opacity-10 pointer-events-none"
+        style={{
+          background: `radial-gradient(circle at center, ${project.theme.primary} 0%, transparent 70%)`,
+        }}
+      />
+
+      {/* Phone chrome bezel — height driven by container so it never overflows */}
+      <div
+        className="relative z-10 rounded-[32px] overflow-hidden"
+        style={{
+          width: '220px',
+          height: 'min(476px, calc(95vh - 6rem))',
+          boxShadow: `0 32px 64px rgba(0,0,0,0.7), 0 0 0 6px #1c1c1e, 0 0 0 7px #333`,
+          background: '#000',
+        }}
+      >
+        {/* Loading shimmer */}
+        {!iframeLoaded && (
+          <div className="absolute inset-0 bg-zinc-900 overflow-hidden z-10">
+            <div className="absolute inset-0 bg-gradient-to-b from-zinc-800/60 via-zinc-700/30 to-zinc-800/60 animate-pulse" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 opacity-40">
+              <div className="w-8 h-8 rounded-full border-2 border-zinc-500 border-t-transparent animate-spin" />
+              <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Loading</span>
+            </div>
           </div>
         )}
-        <img
-          className={`w-full h-auto max-w-[280px] relative z-10 drop-shadow-2xl transform transition-all duration-500 hover:scale-105 ${
-            imageLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
-          src={imageProps.src}
-          srcSet={imageProps.srcSet}
-          sizes={imageProps.sizes}
-          alt={project.alt}
-          loading={imageProps.loading}
-          decoding={imageProps.decoding}
-          onLoad={() => setImageLoaded(true)}
+        <iframe
+          src={project.embedUrl}
+          title={`${project.title} live demo`}
+          className="w-full h-full border-none block"
+          loading="lazy"
+          sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-presentation"
+          onLoad={() => setIframeLoaded(true)}
         />
       </div>
+
+      {/* "Live Demo" badge */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-sm border border-white/10">
+        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)] animate-pulse" />
+        <span className="text-[9px] font-mono uppercase tracking-widest text-zinc-400">Live Demo</span>
+      </div>
+    </div>
+  ) : (
+    // --- Static Screenshot Panel (existing) ---
+    <div className="w-full md:w-[45%] bg-gradient-to-br from-zinc-900 to-black flex items-center justify-center p-12 relative overflow-hidden">
+      <div
+        className="absolute inset-0 opacity-20"
+        style={{
+          background: `radial-gradient(circle at center, ${project.theme.primary}20 0%, transparent 70%)`,
+        }}
+      />
+      {!imageLoaded && (
+        <div className="w-full h-auto max-w-[280px] aspect-square relative z-10 bg-zinc-800 rounded-lg overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-zinc-700/50 to-transparent animate-[shimmer_2s_infinite]" />
+        </div>
+      )}
+      <img
+        className={`w-full h-auto max-w-[280px] relative z-10 drop-shadow-2xl transform transition-all duration-500 hover:scale-105 ${
+          imageLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+        src={imageProps.src}
+        srcSet={imageProps.srcSet}
+        sizes={imageProps.sizes}
+        alt={project.alt}
+        loading={imageProps.loading}
+        decoding={imageProps.decoding}
+        onLoad={() => setImageLoaded(true)}
+      />
+    </div>
+  );
+
+  return (
+    <>
+      {leftPanel}
 
       <div className="flex-1 p-8 md:p-10 overflow-y-auto flex flex-col">
         {/* Header */}
@@ -412,6 +466,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
   if (!project) return null;
 
   const isLandscape = project.orientation === 'landscape';
+  const hasEmbed = !isLandscape && !!project.embedUrl;
 
   return (
     <div
@@ -433,7 +488,9 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
             ${
               isLandscape
                 ? 'max-w-7xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:grid md:grid-cols-[1.6fr_1fr] rounded-none md:rounded-2xl md:overflow-hidden'
-                : 'max-w-7xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:flex-row rounded-none md:rounded-2xl overflow-hidden'
+                : hasEmbed
+                  ? 'max-w-7xl h-full md:h-auto md:max-h-[95vh] flex flex-col md:flex-row rounded-none md:rounded-2xl overflow-hidden'
+                  : 'max-w-7xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:flex-row rounded-none md:rounded-2xl overflow-hidden'
             }
         `}
       >

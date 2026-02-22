@@ -22,6 +22,7 @@ export type Project = {
   desc: string;
   fullDesc?: string;
   href: string | null;
+  embedUrl?: string; // Optional: renders a live iframe embed inside the modal instead of the static screenshot
   img: string;
   alt: string;
   theme: ProjectTheme;
