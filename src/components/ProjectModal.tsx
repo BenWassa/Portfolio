@@ -311,7 +311,7 @@ const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ proj
   const leftPanel = project.embedUrl ? (
     // --- Live Embed Panel ---
     <div
-      className="w-full md:w-[45%] relative overflow-hidden flex items-center justify-center bg-black py-8"
+      className="w-full md:w-[45%] self-stretch relative overflow-hidden flex items-center justify-center bg-black py-8"
     >
       {/* Subtle ambient glow */}
       <div
@@ -321,12 +321,13 @@ const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ proj
         }}
       />
 
-      {/* Phone chrome bezel — height driven by container so it never overflows */}
+      {/* Phone chrome bezel — fills panel height, capped at natural phone ratio */}
       <div
         className="relative z-10 rounded-[32px] overflow-hidden"
         style={{
-          width: '220px',
-          height: 'min(476px, calc(95vh - 6rem))',
+          width: '392px',
+          height: '100%',
+          maxHeight: '873px',
           boxShadow: `0 32px 64px rgba(0,0,0,0.7), 0 0 0 6px #1c1c1e, 0 0 0 7px #333`,
           background: '#000',
         }}
@@ -489,7 +490,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
               isLandscape
                 ? 'max-w-7xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:grid md:grid-cols-[1.6fr_1fr] rounded-none md:rounded-2xl md:overflow-hidden'
                 : hasEmbed
-                  ? 'max-w-7xl h-full md:h-auto md:max-h-[95vh] flex flex-col md:flex-row rounded-none md:rounded-2xl overflow-hidden'
+                  ? 'max-w-7xl h-full md:h-[90vh] md:max-h-[90vh] flex flex-col md:flex-row rounded-none md:rounded-2xl overflow-hidden'
                   : 'max-w-7xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:flex-row rounded-none md:rounded-2xl overflow-hidden'
             }
         `}
