@@ -475,7 +475,8 @@ const SquareEmbedModal: React.FC<{ project: Project; onClose: () => void }> = ({
       </div>
 
       {/* Right: content card, centred vertically */}
-      <div className="w-full md:w-[45%] self-center m-6 p-8 md:p-10 overflow-y-auto flex flex-col rounded-2xl bg-[#121212] border border-white/10 shadow-2xl">
+      <div className="w-full md:w-[45%] self-stretch flex items-center py-6 px-4 md:px-6 overflow-hidden">
+        <div className="w-full max-h-full overflow-y-auto flex flex-col p-6 md:p-8 rounded-2xl bg-[#121212] border border-white/10 shadow-2xl">
         <div className="mb-6">
           <h2 className="font-display text-3xl font-bold text-white mb-3">{project.title}</h2>
           <div className="flex items-center gap-3">
@@ -536,6 +537,7 @@ const SquareEmbedModal: React.FC<{ project: Project; onClose: () => void }> = ({
             </button>
           </div>
         )}
+        </div>
       </div>
     </>
   );
