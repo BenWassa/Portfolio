@@ -435,15 +435,17 @@ const SquareEmbedModal: React.FC<{ project: Project; onClose: () => void }> = ({
         </div>
 
         {/* Live Demo badge */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-sm border border-white/10">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-sm border border-white/10">
           <span
-            className="w-1.5 h-1.5 rounded-full animate-pulse"
+            className="w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0"
             style={{
               backgroundColor: project.theme.primary,
               boxShadow: `0 0 6px ${project.theme.primary}cc`,
             }}
           />
           <span className="text-[9px] font-mono uppercase tracking-widest text-zinc-400">Live Demo</span>
+          <span className="text-[9px] text-zinc-600">·</span>
+          <span className="text-[9px] font-mono text-zinc-500">best on mobile</span>
         </div>
       </div>
 
@@ -471,9 +473,9 @@ const SquareEmbedModal: React.FC<{ project: Project; onClose: () => void }> = ({
         </div>
         <SystemSpecs techSpecs={project.techSpecs} />
         {project.href ? (
-          <div className="mt-8 pt-6 border-t border-white/10 flex justify-end">
+          <div className="mt-8 pt-6 border-t border-white/10 flex flex-col gap-3">
             <a
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold text-sm rounded-lg hover:bg-zinc-200 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold text-sm rounded-lg hover:bg-zinc-200 transition-colors self-end"
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
@@ -481,6 +483,25 @@ const SquareEmbedModal: React.FC<{ project: Project; onClose: () => void }> = ({
               <span>{linkLabel}</span>
               <span className="material-symbols-outlined text-base">arrow_outward</span>
             </a>
+            {/* Desktop swipe hint */}
+            <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#bbb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
+                <defs>
+                  <mask id="phone-cutout-right">
+                    <rect width="24" height="24" fill="white"/>
+                    <rect x="13" y="9" width="9" height="14" rx="2.5" fill="black" stroke="none"/>
+                  </mask>
+                </defs>
+                <g mask="url(#phone-cutout-right)">
+                  <rect x="2" y="3" width="20" height="13" rx="2"/>
+                  <path d="M2 16h20"/>
+                </g>
+                <rect x="14.5" y="10.5" width="6" height="11" rx="1.5"/>
+              </svg>
+              <p className="text-[10px] text-zinc-500 leading-relaxed">
+                On desktop, open the app then enable <span className="text-zinc-400 font-mono">DevTools → Device Toolbar</span> for full touch emulation.
+              </p>
+            </div>
           </div>
         ) : (
           <div className="mt-8 pt-6 border-t border-white/10 flex justify-end">
