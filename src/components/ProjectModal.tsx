@@ -428,7 +428,7 @@ const SquareEmbedModal: React.FC<{ project: Project; onClose: () => void }> = ({
             </div>
           )}
           <iframe
-            src={project.embedUrl}
+            src={project.demoUrl}
             title={`${project.title} live demo`}
             className="w-full h-full border-none block"
             loading="lazy"
@@ -439,7 +439,13 @@ const SquareEmbedModal: React.FC<{ project: Project; onClose: () => void }> = ({
 
         {/* Live Demo badge */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-sm border border-white/10">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)] animate-pulse" />
+          <span
+            className="w-1.5 h-1.5 rounded-full animate-pulse"
+            style={{
+              backgroundColor: project.theme.primary,
+              boxShadow: `0 0 6px ${project.theme.primary}cc`,
+            }}
+          />
           <span className="text-[9px] font-mono uppercase tracking-widest text-zinc-400">Live Demo</span>
         </div>
       </div>
@@ -494,7 +500,7 @@ const SquareEmbedModal: React.FC<{ project: Project; onClose: () => void }> = ({
 
 // --- Component: Square Modal — router ---
 const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ project, onClose }) => {
-  if (project.embedUrl) return <SquareEmbedModal project={project} onClose={onClose} />;
+  if (project.demoUrl) return <SquareEmbedModal project={project} onClose={onClose} />;
   return <SquareImageModal project={project} onClose={onClose} />;
 };
 
@@ -516,7 +522,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
   if (!project) return null;
 
   const isLandscape = project.orientation === 'landscape';
-  const hasEmbed = !isLandscape && !!project.embedUrl;
+  const hasEmbed = !isLandscape && !!project.demoUrl;
 
   return (
     <div
