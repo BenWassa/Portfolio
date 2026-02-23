@@ -203,7 +203,7 @@ export const projectsData: Project[] = [
     tag: 'Grappling Training Log',
     desc: 'Offline-first training log for wrestlers.',
     href: 'https://benwassa.github.io/wrestlePWA/',
-      demoUrl: 'https://benwassa.github.io/wrestlePWA/',
+      demoUrl: 'https://benwassa.github.io/wrestle-template/',
     img: 'assets/projects/wrestle.png',
     alt: 'Wrestle - Log',
     theme: { primary: '#d4956d', secondary: '#b06a3a', tertiary: '#8b5c3c', bg: '#3d2a1f' },
