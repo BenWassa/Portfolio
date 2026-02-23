@@ -386,12 +386,29 @@ const SquareImageModal: React.FC<{ project: Project; onClose: () => void }> = ({
 // --- Component: Square Modal — Live Embed variant ---
 const SquareEmbedModal: React.FC<{ project: Project; onClose: () => void }> = ({ project, onClose }) => {
   const [iframeLoaded, setIframeLoaded] = React.useState(false);
+  const [phoneScale, setPhoneScale] = React.useState(1);
+  const panelRef = React.useRef<HTMLDivElement>(null);
   const linkLabel = 'Open App';
+
+  // Compute scale so the 873px-tall bezel fits within the panel height
+  React.useEffect(() => {
+    const update = () => {
+      const panelH = panelRef.current?.clientHeight ?? window.innerHeight;
+      const padding = 64; // breathing room top/bottom
+      const scale = Math.min(1, (panelH - padding) / 873);
+      setPhoneScale(scale);
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    if (panelRef.current) ro.observe(panelRef.current);
+    return () => ro.disconnect();
+  }, []);
 
   return (
     <>
       {/* Left: live phone embed */}
       <div
+        ref={panelRef}
         className="w-full md:w-[55%] self-stretch relative overflow-hidden flex items-center justify-center bg-gradient-to-br from-zinc-900 to-black"
       >
         {/* Subtle grid texture */}
@@ -405,16 +422,23 @@ const SquareEmbedModal: React.FC<{ project: Project; onClose: () => void }> = ({
         {/* Vignette */}
         <div className="absolute inset-0 pointer-events-none" style={{ boxShadow: 'inset 0 0 80px rgba(0,0,0,0.6)' }} />
 
-        {/* Phone bezel */}
+        {/* Phone bezel — scaled to fit viewport height */}
         <div
-          className="relative z-10 rounded-[36px] overflow-hidden flex-shrink-0"
+          className="relative z-10 flex-shrink-0"
           style={{
             width: '392px',
             height: '873px',
-            boxShadow: `0 48px 96px rgba(0,0,0,0.8), 0 0 0 8px #1c1c1e, 0 0 0 9px #2a2a2a`,
-            background: '#000',
+            transform: `scale(${phoneScale})`,
+            transformOrigin: 'center center',
           }}
         >
+          <div
+            className="w-full h-full rounded-[36px] overflow-hidden"
+            style={{
+              boxShadow: `0 48px 96px rgba(0,0,0,0.8), 0 0 0 8px #1c1c1e, 0 0 0 9px #2a2a2a`,
+              background: '#000',
+            }}
+          >
           {!iframeLoaded && (
             <div className="absolute inset-0 bg-zinc-900 overflow-hidden z-10">
               <div className="absolute inset-0 bg-gradient-to-b from-zinc-800/60 via-zinc-700/30 to-zinc-800/60 animate-pulse" />
@@ -432,6 +456,7 @@ const SquareEmbedModal: React.FC<{ project: Project; onClose: () => void }> = ({
             sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-presentation"
             onLoad={() => setIframeLoaded(true)}
           />
+          </div>
         </div>
 
         {/* Live Demo badge */}
