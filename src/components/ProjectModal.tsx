@@ -299,12 +299,11 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({
   );
 };
 
-// --- Component: Square Modal (App) ---
-const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ project, onClose }) => {
+// --- Component: Square Modal — Static Image variant (original) ---
+const SquareImageModal: React.FC<{ project: Project; onClose: () => void }> = ({ project, onClose }) => {
   const [imageLoaded, setImageLoaded] = React.useState(false);
   const linkLabel = 'Open App';
-  
-  // Modal images are above-the-fold, use eager loading
+
   const imageProps = getResponsiveImageProps(project.img, true);
 
   return (
@@ -347,25 +346,18 @@ const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ proj
             >
               {project.tag}
             </span>
-
             <div className="flex items-center gap-1.5">
               <span className={`w-1.5 h-1.5 rounded-full ${getStatusDotClass(project.status)}`} />
-              <span
-                className={`text-[10px] font-bold tracking-wider uppercase ${getStatusTextClass(project.status)}`}
-              >
+              <span className={`text-[10px] font-bold tracking-wider uppercase ${getStatusTextClass(project.status)}`}>
                 {project.status}
               </span>
             </div>
           </div>
         </div>
-
-        {/* Description */}
         <div className="mb-8">
           <FormattedDescription text={project.fullDesc || project.desc} />
         </div>
-
         <SystemSpecs techSpecs={project.techSpecs} />
-
         {project.href ? (
           <div className="mt-8 pt-6 border-t border-white/10 flex justify-end">
             <a
@@ -380,10 +372,7 @@ const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ proj
           </div>
         ) : (
           <div className="mt-8 pt-6 border-t border-white/10 flex justify-end">
-            <button
-              disabled
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white/20 text-white font-semibold text-sm rounded-lg cursor-not-allowed opacity-50"
-            >
+            <button disabled className="inline-flex items-center gap-2 px-6 py-3 bg-white/20 text-white font-semibold text-sm rounded-lg cursor-not-allowed opacity-50">
               <span>Coming Soon</span>
               <span className="material-symbols-outlined text-base">schedule</span>
             </button>
@@ -392,6 +381,145 @@ const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ proj
       </div>
     </>
   );
+};
+
+// --- Component: Square Modal — Live Embed variant ---
+const SquareEmbedModal: React.FC<{ project: Project; onClose: () => void }> = ({ project, onClose }) => {
+  const [iframeLoaded, setIframeLoaded] = React.useState(false);
+  const linkLabel = 'Open App';
+
+  return (
+    <>
+      {/* Left: live phone embed */}
+      <div
+        className="w-full md:w-[55%] self-stretch relative overflow-hidden flex items-center justify-center bg-gradient-to-br from-zinc-900 to-black"
+      >
+        {/* Subtle grid texture */}
+        <div
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{
+            backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
+            backgroundSize: '32px 32px',
+          }}
+        />
+        {/* Vignette */}
+        <div className="absolute inset-0 pointer-events-none" style={{ boxShadow: 'inset 0 0 80px rgba(0,0,0,0.6)' }} />
+
+        {/* Phone bezel */}
+        <div
+          className="relative z-10 rounded-[36px] overflow-hidden flex-shrink-0"
+          style={{
+            width: '392px',
+            height: '873px',
+            boxShadow: `0 48px 96px rgba(0,0,0,0.8), 0 0 0 8px #1c1c1e, 0 0 0 9px #2a2a2a`,
+            background: '#000',
+          }}
+        >
+          {!iframeLoaded && (
+            <div className="absolute inset-0 bg-zinc-900 overflow-hidden z-10">
+              <div className="absolute inset-0 bg-gradient-to-b from-zinc-800/60 via-zinc-700/30 to-zinc-800/60 animate-pulse" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 opacity-40">
+                <div className="w-8 h-8 rounded-full border-2 border-zinc-500 border-t-transparent animate-spin" />
+                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Loading</span>
+              </div>
+            </div>
+          )}
+          <iframe
+            src={project.demoUrl}
+            title={`${project.title} live demo`}
+            className="w-full h-full border-none block"
+            loading="lazy"
+            sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-presentation"
+            onLoad={() => setIframeLoaded(true)}
+          />
+        </div>
+
+        {/* Live Demo badge */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-sm border border-white/10">
+          <span
+            className="w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0"
+            style={{
+              backgroundColor: project.theme.primary,
+              boxShadow: `0 0 6px ${project.theme.primary}cc`,
+            }}
+          />
+          <span className="text-[9px] font-mono uppercase tracking-widest text-zinc-400">Live Demo</span>
+          <span className="text-[9px] text-zinc-600">·</span>
+          <span className="text-[9px] font-mono text-zinc-500">best on mobile</span>
+        </div>
+      </div>
+
+      {/* Right: content card, centred vertically */}
+      <div className="w-full md:w-[45%] self-center m-6 p-8 md:p-10 overflow-y-auto flex flex-col rounded-2xl bg-[#121212] border border-white/10 shadow-2xl">
+        <div className="mb-6">
+          <h2 className="font-display text-3xl font-bold text-white mb-3">{project.title}</h2>
+          <div className="flex items-center gap-3">
+            <span
+              className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded border bg-white/[0.02]"
+              style={{ borderColor: `${project.theme.primary}40`, color: project.theme.primary }}
+            >
+              {project.tag}
+            </span>
+            <div className="flex items-center gap-1.5">
+              <span className={`w-1.5 h-1.5 rounded-full ${getStatusDotClass(project.status)}`} />
+              <span className={`text-[10px] font-bold tracking-wider uppercase ${getStatusTextClass(project.status)}`}>
+                {project.status}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div className="mb-8">
+          <FormattedDescription text={project.fullDesc || project.desc} />
+        </div>
+        <SystemSpecs techSpecs={project.techSpecs} />
+        {project.href ? (
+          <div className="mt-8 pt-6 border-t border-white/10 flex flex-col gap-3">
+            <a
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold text-sm rounded-lg hover:bg-zinc-200 transition-colors self-end"
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>{linkLabel}</span>
+              <span className="material-symbols-outlined text-base">arrow_outward</span>
+            </a>
+            {/* Desktop swipe hint */}
+            <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#bbb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
+                <defs>
+                  <mask id="phone-cutout-right">
+                    <rect width="24" height="24" fill="white"/>
+                    <rect x="14.5" y="9" width="9" height="14" rx="2.5" fill="black" stroke="none"/>
+                  </mask>
+                </defs>
+                <g mask="url(#phone-cutout-right)">
+                  <rect x="2" y="3" width="20" height="13" rx="2"/>
+                  <path d="M2 16h20"/>
+                </g>
+                <rect x="15" y="10.5" width="6" height="11" rx="1.5"/>
+              </svg>
+              <p className="text-[10px] text-zinc-500 leading-relaxed">
+                On desktop, open the app then enable <span className="text-zinc-400 font-mono">DevTools → Device Toolbar</span> for full touch emulation.
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div className="mt-8 pt-6 border-t border-white/10 flex justify-end">
+            <button disabled className="inline-flex items-center gap-2 px-6 py-3 bg-white/20 text-white font-semibold text-sm rounded-lg cursor-not-allowed opacity-50">
+              <span>Coming Soon</span>
+              <span className="material-symbols-outlined text-base">schedule</span>
+            </button>
+          </div>
+        )}
+      </div>
+    </>
+  );
+};
+
+// --- Component: Square Modal — router ---
+const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ project, onClose }) => {
+  if (project.demoUrl) return <SquareEmbedModal project={project} onClose={onClose} />;
+  return <SquareImageModal project={project} onClose={onClose} />;
 };
 
 export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose }) => {
@@ -412,6 +540,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
   if (!project) return null;
 
   const isLandscape = project.orientation === 'landscape';
+  const hasEmbed = !isLandscape && !!project.demoUrl;
 
   return (
     <div
@@ -427,13 +556,15 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
         ref={modalRef}
         id="modal-content"
         className={`
-            relative w-full bg-[#121212] border border-white/10 shadow-2xl
+            relative w-full border border-white/10 shadow-2xl
             transform transition-all duration-500 ease-out
             ${isOpen ? 'scale-100 translate-y-0 opacity-100' : 'scale-95 translate-y-8 opacity-0'}
             ${
               isLandscape
-                ? 'max-w-7xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:grid md:grid-cols-[1.6fr_1fr] rounded-none md:rounded-2xl md:overflow-hidden'
-                : 'max-w-7xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:flex-row rounded-none md:rounded-2xl overflow-hidden'
+                ? 'max-w-7xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:grid md:grid-cols-[1.6fr_1fr] rounded-none md:rounded-2xl md:overflow-hidden bg-[#121212]'
+                : hasEmbed
+                  ? 'max-w-7xl h-full md:h-[90vh] md:max-h-[90vh] flex flex-col md:flex-row rounded-none md:rounded-2xl overflow-hidden bg-transparent'
+                  : 'max-w-7xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:flex-row rounded-none md:rounded-2xl overflow-hidden bg-[#121212]'
             }
         `}
       >

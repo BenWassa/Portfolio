@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import './css/input.css';
 import App from './App';
 import Onboarding from './Onboarding';
+import EmbedDemo from './EmbedDemo';
 
 // Log app version
 console.log(
@@ -45,6 +46,17 @@ function shouldShowOnboarding(): boolean {
 }
 
 async function renderApp() {
+  // Check for embed demo route
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('demo') === 'embeds') {
+    ReactDOM.createRoot(document.getElementById('root')!).render(
+      <React.StrictMode>
+        <EmbedDemo />
+      </React.StrictMode>
+    );
+    return;
+  }
+
   const showOnboarding = shouldShowOnboarding();
   if (!showOnboarding) {
     localStorage.setItem(VISIT_TIMESTAMP_KEY, new Date().toISOString());
