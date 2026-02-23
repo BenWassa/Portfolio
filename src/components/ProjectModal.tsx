@@ -489,14 +489,14 @@ const SquareEmbedModal: React.FC<{ project: Project; onClose: () => void }> = ({
                 <defs>
                   <mask id="phone-cutout-right">
                     <rect width="24" height="24" fill="white"/>
-                    <rect x="13" y="9" width="9" height="14" rx="2.5" fill="black" stroke="none"/>
+                    <rect x="14.5" y="9" width="9" height="14" rx="2.5" fill="black" stroke="none"/>
                   </mask>
                 </defs>
                 <g mask="url(#phone-cutout-right)">
                   <rect x="2" y="3" width="20" height="13" rx="2"/>
                   <path d="M2 16h20"/>
                 </g>
-                <rect x="14.5" y="10.5" width="6" height="11" rx="1.5"/>
+                <rect x="15" y="10.5" width="6" height="11" rx="1.5"/>
               </svg>
               <p className="text-[10px] text-zinc-500 leading-relaxed">
                 On desktop, open the app then enable <span className="text-zinc-400 font-mono">DevTools → Device Toolbar</span> for full touch emulation.
