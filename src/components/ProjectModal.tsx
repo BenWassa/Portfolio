@@ -392,10 +392,7 @@ const SquareEmbedModal: React.FC<{ project: Project; onClose: () => void }> = ({
     <>
       {/* Left: live phone embed */}
       <div
-        className="w-full md:w-[55%] self-stretch relative overflow-hidden flex items-center justify-center"
-        style={{
-          background: `radial-gradient(ellipse at center, ${project.theme.primary}18 0%, ${project.theme.bg}cc 55%, #000 100%)`,
-        }}
+        className="w-full md:w-[55%] self-stretch relative overflow-hidden flex items-center justify-center bg-gradient-to-br from-zinc-900 to-black"
       >
         {/* Subtle grid texture */}
         <div
