@@ -563,7 +563,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
               isLandscape
                 ? 'max-w-7xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:grid md:grid-cols-[1.6fr_1fr] rounded-none md:rounded-2xl md:overflow-hidden bg-[#121212]'
                 : hasEmbed
-                  ? 'max-w-7xl h-full md:h-[90vh] md:max-h-[90vh] flex flex-col md:flex-row rounded-none md:rounded-2xl overflow-hidden bg-transparent'
+                  ? 'max-w-7xl h-full md:h-auto md:max-h-[min(90vh,_900px)] flex flex-col md:flex-row rounded-none md:rounded-2xl overflow-hidden bg-transparent'
                   : 'max-w-7xl h-full md:h-auto md:max-h-[85vh] flex flex-col md:flex-row rounded-none md:rounded-2xl overflow-hidden bg-[#121212]'
             }
         `}
