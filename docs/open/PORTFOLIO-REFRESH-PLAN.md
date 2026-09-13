@@ -1,7 +1,7 @@
 ---
 status: open
 lane: opus
-issues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+issues: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
 owner: Ben
 updated: 2026-09-13
 ---
@@ -106,9 +106,9 @@ Currently `main` has **zero** GitHub-side protection rules — the convention is
 Because Pages deploys from `main`'s `/docs` path, protecting `main` and deploying are entangled.
 Resolution, in order:
 
-1. Move Pages to a GitHub Actions build (issue #1). `main` becomes source-only; `dist/` is the
+1. Move Pages to a GitHub Actions build (issue #5). `main` becomes source-only; `dist/` is the
    artifact and is git-ignored. Workflows already exist in `flag` and `poseidon` to copy.
-2. Then enable branch protection on `main` (issue #2) — PRs required, force-push blocked.
+2. Then enable branch protection on `main` (issue #6) — PRs required, force-push blocked.
 
 This branch does the safe half: build output now targets `dist/`, and
 `.github/workflows/deploy-pages.yml` is in place. The stale `docs/` build artifacts are left
@@ -142,40 +142,40 @@ than deciding.
 
 | # | Issue | Lane |
 |---|---|---|
-| 1 | Migrate Pages to GitHub Actions, retire `docs/` as build output | standard |
-| 2 | Enable branch protection on `main` | human |
-| 3 | Adopt `CLAUDE.md`, work lanes, and this plan | opus |
+| 5 | Migrate Pages to GitHub Actions, retire `docs/` as build output | standard |
+| 6 | Enable branch protection on `main` | human |
+| 7 | Adopt `CLAUDE.md`, work lanes, and this plan | opus |
 
 ### Phase 1 — Decide · gated on Ben, blocks all content work
 
 | # | Issue | Lane |
 |---|---|---|
-| 4 | Per-project triage of 32 candidates | **human** |
-| 5 | Re-verify the 15 displayed projects against current repo state | opus |
-| 6 | Resolve the `Narrative` name collision | opus |
-| 7 | Decide fate of 9 undeployed public repos (Tier C) | opus |
+| 8 | Per-project triage of 32 candidates | **human** |
+| 9 | Re-verify the 15 displayed projects against current repo state | opus |
+| 10 | Resolve the `Narrative` name collision | opus |
+| 11 | Decide fate of 9 undeployed public repos (Tier C) | opus |
 
 ### Phase 2 — Architecture · build the container before filling it
 
 | # | Issue | Lane |
 |---|---|---|
-| 8 | Two-tier IA: featured grid + full-work index | opus |
-| 9 | Project schema v2 (`repoUrl`, `lastVerified`, `demoMode`, `tier`) | opus |
-| 10 | Automated staleness + link-health check in CI | standard |
+| 12 | Two-tier IA: featured grid + full-work index | opus |
+| 13 | Project schema v2 (`repoUrl`, `lastVerified`, `demoMode`, `tier`) | opus |
+| 14 | Automated staleness + link-health check in CI | standard |
 
 ### Phase 3 — Demo-mode standard
 
 | # | Issue | Lane |
 |---|---|---|
-| 11 | Import `DEMO_STATE_PLAYBOOK.md` as the repo-level standard | standard |
-| 12 | Migrate Morpheus, Narrative, Wrestle off template repos to demo mode | opus |
+| 15 | Import `DEMO_STATE_PLAYBOOK.md` as the repo-level standard | standard |
+| 16 | Migrate Morpheus, Narrative, Wrestle off template repos to demo mode | opus |
 
 ### Phase 4 — Content production · parallelizable, fan out here
 
 | # | Issue | Lane |
 |---|---|---|
-| 13 | Screenshot and asset pipeline for approved projects | standard |
-| 14 | Write cards (copy + `techSpecs`) for approved projects | opus |
+| 17 | Screenshot and asset pipeline for approved projects | standard |
+| 18 | Write cards (copy + `techSpecs`) for approved projects | opus |
 
 Phases 0–3 are sequential. Phase 4 fans out per project once phases 1–2 land, and is where
 parallel agents actually pay off. Sequencing Phase 4 before Phase 2 would mean writing cards

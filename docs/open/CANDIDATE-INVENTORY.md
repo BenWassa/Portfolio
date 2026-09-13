@@ -1,7 +1,7 @@
 ---
 status: open
 lane: human
-issues: [4]
+issues: [8]
 owner: Ben
 updated: 2026-09-13
 ---
@@ -172,7 +172,7 @@ PoliVis is an open-source civic intelligence platform that helps people see poli
 
 - **`Narrative` name collision.** The portfolio's existing "Narrative" card points at
   `narrative-template`. This separate `Narrative` repo is a travel photo organizer — a
-  different product entirely. Two things cannot share one name on the site. See issue #6.
+  different product entirely. Two things cannot share one name on the site. See issue #10.
 - **`morpheus-dream-archive` supersedes the displayed template.** The "Morpheus" card points
   at `template-morpheus` (pushed 2026-02-23) while the real product shipped 2026-07-17.
   What visitors see is ~5 months behind what you built.
@@ -320,7 +320,7 @@ A dynamic tool that visualizes the brain’s hidden neurochemical shifts as a li
 
 **Template repos** — `narrative-template`, `wrestle-template`, `template-morpheus`,
 `template-hearth`, `template-pushup`. These are the drift problem, not candidates.
-Their fate is decided in issue #12.
+Their fate is decided in issue #16.
 
 **Utilities and backups** — `backup_portfolio`, `-Template-`, `Test_Vox`, `static`,
 `hearth-poster-admin`, `CV_QR`, `macrosbackup`, `Apps`.
