@@ -61,3 +61,9 @@ test-results/
 
 # Ignore generated images if any (enable if you generate preview assets)
 # docs/generated_images/
+
+# Graphify outputs and temporary extraction files
+graphify-out/
+.graphify_*.json
+.graphify_*.txt
+.graphify_chunk_*.json
