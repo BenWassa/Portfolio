@@ -1,0 +1,67 @@
+{
+  "dir": "vox-v2",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [
+      "no mode=demo / demo=1 / ?preview / isDemo / demoMode anywhere in src",
+      "no env-based mode switch (.env.example carries only GEMINI_API_KEY and APP_URL, both AI Studio boilerplate)",
+      "no mode resolver — useCampaignData() reads localStorage or falls back to an all-zero default"
+    ],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": true,
+    "evidence": [
+      "src/hooks/useCampaignData.ts:92-105 (DEFAULT_DATA: listeningMinutes 0, conversationMinutes 0, sentences 0, toneSessions 0, logs [], sentencesList [], activeSentenceBlock null — a first-time visitor sees an entirely empty tracker)",
+      "src/hooks/useCampaignData.ts:107,114,126 (STORAGE_KEY 'mandarin_campaign_v2'; all state read from and written to localStorage)",
+      "src/hooks/useCampaignData.ts:162-165 (fetch('/data/sentences_phase1.csv') + Papa.parse — 58 curriculum sentences ship as static content, but that is the app's syllabus, not seeded user activity)",
+      "src/hooks/useCampaignData.ts:17-22 (LISTENING_SOURCES: 3 hardcoded real podcasts/channels)",
+      "src/hooks/useCampaignData.ts:32-41 (TONE_MINIMAL_PAIRS: 8 hardcoded tone minimal pairs)",
+      "src/App.tsx:16-31 (7 routes, no auth guard, no login — the whole app is reachable anonymously)"
+    ],
+    "notes": "No demo mode, but also nothing standing in the way of one: this is a pure client-side SPA with zero auth, zero backend calls and all state in one localStorage key. It is already embeddable today — it would simply render an empty dashboard with 0/240 minutes and no history. A convincing demo is one small change: when localStorage is empty, hydrate DEFAULT_DATA with a few weeks of plausible logs (the analytics, streak and phase-detection screens then all light up). Writes need no blocking because they only ever touch the viewer's own browser storage."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-03-02",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": false,
+    "kind": "none in-repo (originated as a Google AI Studio app)",
+    "url": "https://ai.studio/apps/01ae40c9-2630-4637-af9a-932ace6da730 (from the unedited template README; this is the AI Studio editor link, not a published site)",
+    "evidence": "No .github/workflows, no firebase.json/vercel.json/netlify.toml/CNAME, no homepage field in package.json. A local dist/ exists (gitignored) so it has been built. README.md:9 carries the AI Studio app link; .env.example documents APP_URL as 'injected at runtime with the Cloud Run service URL', implying AI Studio hosting rather than anything configured here."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": [
+      "React 19 + TypeScript 5.8 + Vite 6",
+      "React Router 7 (7 routes)",
+      "Tailwind CSS 4 via @tailwindcss/vite",
+      "motion (Framer Motion successor)",
+      "lucide-react, clsx, tailwind-merge, date-fns",
+      "papaparse (CSV curriculum loading)",
+      "localStorage as the only persistence — no backend, no database, no auth",
+      "custom build-versioning script + in-app update checker"
+    ],
+    "build_cmd": "npm run build (prebuild runs scripts/generate-version.mjs); npm run dev (vite, port 3000); npm run lint (tsc --noEmit only — there are no tests)",
+    "screenshots": [],
+    "one_liner": "A single-purpose Mandarin study tracker ('Vox') that runs a structured multi-phase campaign: it detects the current phase, enforces one timed training block at a time (sentence, listening or tone-drill), logs minutes against weekly targets, runs tone minimal-pair drills from a built-in set, anchors a weekly review on Fridays, and charts streaks and consistency — all client-side in the browser.",
+    "readme_quality": "Substantively absent — see drift flags. README.md is the 20-line Google AI Studio template with a stock banner; the real documentation is docs/SPRINTS.md, docs/LearningProfile.md and docs/tech-stack.md."
+  },
+  "drift_flags": [
+    "README IS UNEDITED BOILERPLATE: README.md is still the Google AI Studio scaffold — title 'Run and deploy your AI Studio app', a stock GitHub banner image, and instructions to set GEMINI_API_KEY. It never names Vox, Mandarin, or anything the app does. package.json:2 is likewise still \"name\": \"react-example\" at version 0.0.0, and metadata.json has empty name and description. Anyone landing on this repo learns nothing about it.",
+    "TECH-STACK DOC DESCRIBES A BACKEND THAT DOES NOT EXIST: docs/tech-stack.md lists a '## Backend — Express, SQLite via better-sqlite3, dotenv' and '## AI / Integrations — Google GenAI SDK'. git ls-files shows no server file at all, and grep across src/ finds zero imports of express, better-sqlite3, dotenv or @google/genai. Five production dependencies (@google/genai, better-sqlite3, express, dotenv, and their @types) are dead weight in package.json.",
+    "LATENT KEY-LEAK PATTERN: vite.config.ts:32 does define: { 'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY) }, which inlines whatever that env var holds directly into the public client bundle. Nothing currently reads it and no .env/.env.local exists on disk (only .env.example), and I scanned the built dist/ for AIza-prefixed strings and found none — so there is no leak today. But if a real Gemini key is ever put in .env.local, a build publishes it verbatim in the JS. Worth removing the define line since nothing uses it.",
+    "HALF-REMOVED FEATURE: commit 6dc6974 'Remove Sentences section from app UI and routes', yet the sentence machinery is still live — useCampaignData.ts still fetches and parses public/data/sentences_phase1.csv, still exports Sentence/SentenceStatus types, and BlockSession.tsx and Log.tsx still reference sentences. Two of the last three commits (90dd657, e04123c) are fixes to that supposedly-removed CSV. Both sentences_phase1.csv and sentences_phase1_no_id.csv are tracked.",
+    "STALLED: 20 commits total, 18 of them on 2026-02-28 (a single 7-sprint push), last touched 2026-03-02 — roughly six months idle at audit time. Single branch, clean, fully pushed.",
+    "NO SECRETS COMMITTED (verified): git ls-files finds only .env.example, which contains literal placeholders ('MY_GEMINI_API_KEY', 'MY_APP_URL'). .env* is gitignored.",
+    "PERSONAL CONTENT: docs/LearningProfile.md is a first-person profile ('Mandarin Learning Profile – Ben') covering motivation ('Relationship integration', 'Native speaker partner access'), prior language levels and skill priorities. Benign, but it is personal material that would ship with a public repo.",
+    "NO TESTS: npm run lint is tsc --noEmit; there is no test script and no test file in the tree."
+  ],
+  "recommendation": "demo",
+  "rationale": "Technically the easiest embed in the batch — a self-contained client-side SPA with no auth, no backend and no keys, already built to dist/ — and the product idea (a deliberately narrow training-dojo tracker that enforces one block at a time) reads clearly in a screenshot. Two things must happen first: seed the empty default state so the dashboard and analytics are not all zeros, and write an actual README, because the current one is untouched AI Studio boilerplate that does not mention the project.",
+  "confidence": "high"
+}

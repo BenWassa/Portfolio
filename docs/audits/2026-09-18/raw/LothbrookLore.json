@@ -1,0 +1,64 @@
+{
+  "dir": "LothbrookLore",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      "playthrough_tracker.html:1980",
+      "playthrough_tracker.html:1984",
+      "playthrough_tracker.html:1987",
+      "playthrough_tracker.html:1999",
+      "playthrough_tracker.html:1403",
+      "playthrough_tracker.html:1696",
+      "playthrough_tracker.html:1357"
+    ],
+    "notes": "This is the repo in the batch where a demo mode would matter most, and it has none. playthrough_tracker.html is a real single-file app with 49 localStorage call sites and genuine durable state (episodes, episodeMeta, sessionNotes, stateSnapshot, providedFiles, currentSeason, tasks). Its cold start is completely blank: loadData() at :1980 reads every key with an empty fallback - `localStorage.getItem('stateSnapshot') || ''` (:1984), `|| ''` for notes (:1987), `JSON.parse(... || '[]')` for episodes and tasks (:1999) - so a first-time visitor, or anyone loading it in an iframe, sees an empty shell with zero episodes and a '0' on every counter. There is no seeds file, no fixture, no mode gate, no ?demo trigger, no env var, and no bundled default state anywhere in the file. Writes are never blocked - autoSave() (:1403) fires on a 1000ms debounce straight into localStorage, and Ctrl/Cmd+S saves everything. There is no auth at all, so nothing to isolate. The irony worth recording: the repo already contains an ideal deterministic seed - 12 finished Season 0 episodes, 5,759 lines - and the tracker cannot read any of it. Its only contact with repo files is fetch('VERSION') for a version badge (:1696) and a static href to downloads/season_00_starter_pack.zip (:1357)."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-01-01",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": false,
+    "kind": "",
+    "url": "",
+    "evidence": "Nothing at all: no .github/ directory, no workflow, no CNAME, no .nojekyll, no firebase.json/vercel.json/netlify.toml, no package.json, no docs/ folder, and - notably - no .gitignore either (which is why .DS_Store files are committed). There is also no index.html anywhere in the repo, so even switching GitHub Pages on at the repo root would serve a 404 at /LothbrookLore/; the app would only be reachable at the explicit path /LothbrookLore/playthrough_tracker.html. Both of the tracker's runtime file references (VERSION and downloads/season_00_starter_pack.zip) are repo-root-relative and would resolve correctly under a root-served Pages deploy."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": [
+      "Single-file vanilla HTML/CSS/JS app (playthrough_tracker.html, 2,023 lines, zero dependencies, no build)",
+      "localStorage as the entire persistence layer",
+      "Markdown as the content format (canon bible, engine rules, episode scripts, state templates)",
+      "One Python 3 utility (split_episodes.py, stdlib only: re + pathlib)"
+    ],
+    "build_cmd": "None. No package.json, no build step, no dependencies - open playthrough_tracker.html directly, or serve the repo root so fetch('VERSION') and the starter-pack ZIP resolve.",
+    "screenshots": [
+      "sessions/season_00/Raw and Notes/readometer-stats.png"
+    ],
+    "one_liner": "A rules framework and browser-based session tracker for running a long-form, LLM-narrated Viking-era roleplay campaign where the stakes are social standing, obligation and delayed consequence rather than combat stats - shipping with a full canon bible, relationship web, episode/season structure rules, and one completed 12-episode season of finished narrative prose."
+  },
+  "drift_flags": [
+    "SYSTEM_REVIEW.md is a 400-line self-audit that confirms six user-reported bugs plus more, calls the app 'functionally complete but architecturally misaligned', and lays out a costed 5-phase, 9-14 hour fix roadmap. It was committed 2025-12-31. playthrough_tracker.html's last commit is 2025-12-30 - the day BEFORE. Not one line of that roadmap was ever implemented; the repo went silent two days later. Every bug the document confirms is still live in the shipped file.",
+    "SYSTEM_REVIEW.md is dated 'December 30, 2024' in its header and footer, but its own commit and every commit it describes are December 2025 - the date is wrong by a full year.",
+    "The confirmed, still-unfixed bugs are user-visible: episodes are stored in one global array with no seasonId, so switching to Season 1 still displays Season 0's episodes and the 'Total Episodes Logged' counter sums across seasons; session notes are a single blob despite an episode-selector dropdown implying per-episode scoping, so switching episodes silently loses notes; saveState() never updates lastStateUpdate, making the 'Since Last State Update' metric false; and the per-episode 'State updated' checkbox is, in the review's own word, 'decorative'.",
+    "README says 'Early-stage framework. Structure-first. Content-light by design.' That is flatly untrue of the repo as it stands: Season 0 is finished - 12 episodes totalling 5,759 lines of narrative prose, each with its own review document, plus an edit log and an integrity report. The README describes the project as it was conceived, not as it is, and undersells the one genuinely complete thing in it.",
+    "README documents the rules framework and says nothing whatsoever about playthrough_tracker.html - the 2,023-line application that is the repo's only executable artefact and its only candidate for a portfolio embed.",
+    "Content is duplicated between the live tree and a committed snapshot: season_00_starter_pack/ holds copies of canon/CANON_BIBLE.md, canon/RELATIONSHIP_WEB.md, engine/EPISODE_SPINE.md, engine/SEASON_SPINE.md, engine/SESSION_SETUP.md, state/STATE_TEMPLATE.md and state/characters/bersi_kodransson.md that also exist at the repo root, and downloads/season_00_starter_pack.zip is a third frozen copy built 2025-12-30. Three versions of the same canon with no sync mechanism.",
+    "Season 1 is scaffolded and abandoned: 9 episode scaffolds (1,015 lines) plus initial_state.md and a raw chat log exist, but no episodes were played or written. The final commit - 'Add children (Koðrán and Sigrid) to initial_state.md' - is a Season 1 setup edit, so the repo stopped mid-preparation for a season that never started.",
+    "sessions/season_01/REFONLY_session_01.md and 'Rollo chat.md' are loose working files sitting in the session directory with no explanation in any README.",
+    "No .gitignore at all, so .DS_Store is committed at the repo root, in sessions/ and in sessions/season_01/.",
+    "Version drift: VERSION reads 1.0.1 and SYSTEM_REVIEW recommends bumping to 2.0.0 after the storage refactor; no bump ever happened because no refactor ever happened.",
+    "Dormant 260 days (HEAD 2026-01-01, today 2026-09-18)."
+  ],
+  "recommendation": "demo",
+  "rationale": "Honest read: the tool is abandoned but the work is not - Season 0 is genuinely finished-and-unpublished, a complete 12-episode narrative with reviews and an integrity report, and the tracker around it is real single-file craft (export to JSON/Markdown/clipboard, a transcript splitter with preview-and-confirm, keyboard shortcuts, ARIA labels, debounced autosave) rather than a scaffold. It qualifies as `demo` under the spec's 'could cheaply get demo mode' clause and only under that clause: the single blocking fact is that loadData() cold-starts empty, so embedding it today shows an empty shell with zeroes on every counter. The cheap fix is a default-state object seeded from the 12 Season 0 episodes that already exist in the repo, applied when localStorage is empty - do not attempt the 9-14 hour storage refactor in SYSTEM_REVIEW.md, which is a different and much larger job, and note that publishing the repo also publishes that unflattering bug list.",
+  "confidence": "medium"
+}

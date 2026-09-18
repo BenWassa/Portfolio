@@ -1,0 +1,53 @@
+{
+  "dir": "NightShift",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": ["VITE_FB_API_KEY / VITE_FB_PROJECT_ID presence check (a config gate, not a demo gate)"],
+    "seed_data": true,
+    "blocks_writes": false,
+    "auth_isolated": true,
+    "evidence": [
+      "almanac/src/seed.ts:1",
+      "almanac/src/seed.ts:20",
+      "almanac/src/App.tsx:9",
+      "almanac/src/App.tsx:44",
+      "almanac/src/App.tsx:50",
+      "almanac/almanac.jsx:9",
+      "almanac/almanac.jsx:303",
+      "almanac/firestore.rules:5"
+    ],
+    "notes": "No demo/preview/template trigger anywhere. What exists instead: (1) almanac/src/seed.ts — ~14 real hand-written starter projects imported once into Firestore via writeBatch, surfaced as an 'Import starter projects' button on an empty ledger; not deterministic (crypto.randomUUID per milestone) and it WRITES to the live database. (2) almanac/almanac.jsx — a 676-line self-contained prototype of the whole UI with in-memory state, the same seeded projects, and a hardcoded 'today' of 2026-07-07 (line 303); it is kept 'for reference' and is not wired into main.tsx. (3) App.tsx:9 gates on Firebase env vars and shows a 'No Firebase config' screen — a setup gate, not a demo mode. Real use is hard-gated behind Google sign-in (App.tsx:50) with per-uid Firestore rules (firestore.rules:5), so auth is isolated but there is no anonymous or demo path."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-08-09",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 3,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "firebase-hosting (declared, not provisioned)",
+    "url": "",
+    "evidence": "almanac/firebase.json declares hosting public:'dist' with SPA rewrites and a firestore.rules target, but no .firebaserc / project id is committed and almanac/README.md still lists 'create a Firebase project, enable Google auth, create Firestore, fill .env' as outstanding. No .github/ directory in the local clone at all. Nothing is live."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["React 19", "Vite 7", "TypeScript 5.6", "Zustand 5", "Firebase 12 (Auth + Firestore)", "lucide-react", "Node >=20"],
+    "build_cmd": "npm run build  (root delegates to `npm run build --prefix almanac` = tsc --noEmit && vite build)",
+    "screenshots": [],
+    "one_liner": "A Firebase-backed 'nocturnal ledger' (ALMANAC) that tracks many long-running personal projects by season/sprint/burst cadence with milestone checklists and a next-action per project — living inside a larger repo that specifies an overnight autonomous-agent routine and its parked read-only Control Centre."
+  },
+  "drift_flags": [
+    "Local main is 3 commits BEHIND origin/main, including 'Add scheduled inventory refresh, an assignment CLI, CI, and a vision doc' — which is why the local clone has no .github/ directory while the remote has CI. (Remote refs may themselves be stale; no fetch was run.)",
+    "Two stale remote agent branches: origin/claude/autonomous-coding-work-backend-qhg614 and origin/claude/open-issues-ui-fixes-415vl3.",
+    "Identity split: the top of README.md still describes Night Shift as an overnight agent + Control Centre; a status note mid-README says the actual app is now ALMANAC and the whole Control Centre stack is parked in archive/. The README's folder map and the repo's name point at two different products.",
+    "archive/apps/web/.next build output (a whole committed Next.js SSR chunk tree) is still in the tree, inflating the repo and confusing any stack detection.",
+    "hub/inventory.json is dated 2026-06-11 while HEAD is 2026-08-09 — the 'source of truth for portfolio state' is two months stale.",
+    "almanac/README.md 'Where this stands (2026-07-07)' lists four manual Firebase-console steps that have never been done, so the app cannot boot for anyone who clones it."
+  ],
+  "recommendation": "demo",
+  "rationale": "The shipped app is login-walled and not deployed, so it is not embeddable as-is — but almanac/almanac.jsx is already a complete, self-contained, in-memory, seeded version of the exact same UI with a frozen date, which makes a genuine demo build a near-zero-cost wiring change rather than new work. Recommend demo contingent on pointing main.tsx at the prototype; downgrade to link if that rewiring is not done.",
+  "confidence": "medium"
+}

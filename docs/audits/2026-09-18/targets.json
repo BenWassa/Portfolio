@@ -1,0 +1,482 @@
+[
+ {
+  "dir": "Arbeit_2025",
+  "path": "/Users/benjaminhaddon/Github Repos/Arbeit_2025",
+  "gh_repo": "Arbeit_2025",
+  "last_commit": "2025-12-12",
+  "days_idle": 277,
+  "private": true,
+  "description": "This repository contains a de-identified backup of projects and tools developed during 2025 at Ontario Health. The work includes various studies, scripts, documentation, and reports created for personal records.",
+  "brief": "This repository contains a de-identified backup of projects and tools developed during 2025 at Ontario Health. The work includes various studies, scripts, documentation, and reports created for personal records."
+ },
+ {
+  "dir": "Ares",
+  "path": "/Users/benjaminhaddon/Github Repos/Ares",
+  "gh_repo": "Ares",
+  "last_commit": "2026-09-06",
+  "days_idle": 9,
+  "private": false,
+  "description": "Ares is a static digital humanities publication built around Dutton, Boyanowsky & Bond (2005), Extreme Mass Homicide: From Military Massacre to Genocide. It combines long-form analytical reading with eight historical case studies while treating provenance, uncertainty and testim\u2026",
+  "brief": "A web-based exploration of extreme mass homicide through psychological and historical lenses."
+ },
+ {
+  "dir": "CV-Updates",
+  "path": "/Users/benjaminhaddon/Github Repos/CV-Updates",
+  "gh_repo": "CV-Updates",
+  "last_commit": "2026-08-14",
+  "days_idle": 32,
+  "private": true,
+  "description": "This repo is the single, structured record of my professional work , not just a folder of resumes. It exists because important information about what I've done is scattered across isolated ChatGPT Projects, old worklogs, resume versions, and application files, with no one place\u2026",
+  "brief": "This repository contains a curated archive of worklog entries and CV-ready points for Ontario Health projects, with a focus on occupational health research, data automation, and workflow optimization."
+ },
+ {
+  "dir": "FamilyPlan",
+  "path": "/Users/benjaminhaddon/Github Repos/FamilyPlan",
+  "gh_repo": "FamilyPlan",
+  "last_commit": "2026-03-17",
+  "days_idle": 182,
+  "private": true,
+  "description": "FamilyPlan is a living planning system for family formation, income resilience, and child development in high cost environments.",
+  "brief": "FamilyPlan is a living planning system for family formation, income resilience, and child development in high cost environments."
+ },
+ {
+  "dir": "HAUS",
+  "path": "/Users/benjaminhaddon/Github Repos/HAUS",
+  "gh_repo": "HAUS",
+  "last_commit": "2026-08-09",
+  "days_idle": 38,
+  "private": true,
+  "description": "Mobile-first household task manager. React + Vite + Tailwind, backed by Firebase Firestore, Storage, and Google Auth.",
+  "brief": "Mobile-first household task manager. React + Vite + Tailwind, backed by Firebase Firestore, Storage, and Google Auth."
+ },
+ {
+  "dir": "Hermes",
+  "path": "/Users/benjaminhaddon/Github Repos/Hermes",
+  "gh_repo": "Hermes",
+  "last_commit": "2026-09-15",
+  "days_idle": 0,
+  "private": false,
+  "description": "An autonomous overnight pipeline that assembles a personalized Toronto morning newspaper, renders it as a static web page, and pushes a notification after a successful publication. The publication target remains 05:17 America/Toronto. GitHub is scheduled through a bounded UTC ca\u2026",
+  "brief": "Hermes is a mobile-first intelligence dashboard for daily AI-generated geopolitical and macroeconomic briefings."
+ },
+ {
+  "dir": "Iris",
+  "path": "/Users/benjaminhaddon/Github Repos/Iris",
+  "gh_repo": "Iris",
+  "last_commit": "2025-07-23",
+  "days_idle": 420,
+  "private": false,
+  "description": "(Requires Python 3.13, Flask, pandas, numpy)",
+  "brief": "A poetic, science-informed visualization that maps five neurochemical inputs onto emotions in a live valence-arousal space."
+ },
+ {
+  "dir": "Janus",
+  "path": "/Users/benjaminhaddon/Github Repos/Janus",
+  "gh_repo": "Janus",
+  "last_commit": "2025-08-15",
+  "days_idle": 396,
+  "private": false,
+  "description": "A retro-inspired text RPG where your story shapes , and secretly reveals , your psychological profile. Decisions guide the plot and quietly measure traits like openness, risk tolerance, and attachment style, culminating in a personalized \"Hero's Chronicle\" of mind and myth.",
+  "brief": "A retro-inspired text RPG where your story shapes , and secretly reveals , your psychological profile. Decisions guide the plot and quietly measure traits like openness, risk tolerance, and attachment style, culminating in a personalized \"Hero's Chronicle\" of mind and myth."
+ },
+ {
+  "dir": "JobQuestOS",
+  "path": "/Users/benjaminhaddon/Github Repos/JobQuestOS",
+  "gh_repo": "JobQuestOS",
+  "last_commit": "2026-01-12",
+  "days_idle": 246,
+  "private": true,
+  "description": "JobQuestOS is a personal operating system for running a job search as a disciplined 9, 5. It exists to reduce cognitive overload, prevent mental spirals, and replace overwhelm with clear, repeatable execution.",
+  "brief": "JobQuestOS is a personal operating system for running a job search as a disciplined 9, 5. It exists to reduce cognitive overload, prevent mental spirals, and replace overwhelm with clear, repeatable execution."
+ },
+ {
+  "dir": "LothbrookLore",
+  "path": "/Users/benjaminhaddon/Github Repos/LothbrookLore",
+  "gh_repo": "LothbrookLore",
+  "last_commit": "2026-01-01",
+  "days_idle": 257,
+  "private": true,
+  "description": "Lothbrook Lore is a lightweight interactive storytelling engine designed for grounded, consequence-driven roleplay set in a historically constrained Viking-era world.",
+  "brief": "Lothbrook Lore is a lightweight interactive storytelling engine designed for grounded, consequence-driven roleplay set in a historically constrained Viking-era world."
+ },
+ {
+  "dir": "Narrative",
+  "path": "/Users/benjaminhaddon/Github Repos/Narrative",
+  "gh_repo": "Narrative",
+  "last_commit": "2026-07-22",
+  "days_idle": 56,
+  "private": false,
+  "description": "Fast, narrative-driven travel photo organizer. Sort your trip photos by story role with single keystrokes and export a safe rename script.",
+  "brief": "Fast, narrative-driven travel photo organizer. Sort your trip photos by story role with single keystrokes and export a safe rename script."
+ },
+ {
+  "dir": "NightShift",
+  "path": "/Users/benjaminhaddon/Github Repos/NightShift",
+  "gh_repo": null,
+  "last_commit": null,
+  "days_idle": null,
+  "private": null,
+  "description": "",
+  "brief": ""
+ },
+ {
+  "dir": "Orion",
+  "path": "/Users/benjaminhaddon/Github Repos/Orion",
+  "gh_repo": "Orion",
+  "last_commit": "2026-06-13",
+  "days_idle": 95,
+  "private": false,
+  "description": "Orion is a mythically structured, psychologically adaptive navigation hub that maps users to archetypal growth Gates.",
+  "brief": "A mythically structured, psychologically adaptive navigation system for soul-centered digital journeys."
+ },
+ {
+  "dir": "Project-Loki",
+  "path": "/Users/benjaminhaddon/Github Repos/Project-Loki",
+  "gh_repo": "Project-Loki",
+  "last_commit": "2025-12-17",
+  "days_idle": 272,
+  "private": false,
+  "description": "Project Loki is a mission to help individuals reclaim agency in a world shaped by algorithms. By revealing the subtle forces that nudge behavior, it equips people to rise above digital determinism and become deliberate architects of their own lives.",
+  "brief": "Project Loki is a mission to help individuals reclaim agency in a world shaped by algorithms. By revealing the subtle forces that nudge behavior, it equips people to rise above digital determinism and become deliberate architects of their own lives."
+ },
+ {
+  "dir": "Psi",
+  "path": "/Users/benjaminhaddon/Github Repos/Psi",
+  "gh_repo": "Psi",
+  "last_commit": "2025-08-08",
+  "days_idle": 403,
+  "private": false,
+  "description": "Interactive companion to The Mind Unfolding , explore the history of psychology by time and by idea.",
+  "brief": "Interactive companion to The Mind Unfolding , explore the history of psychology by time and by idea."
+ },
+ {
+  "dir": "Telos",
+  "path": "/Users/benjaminhaddon/Github Repos/Telos",
+  "gh_repo": "Telos",
+  "last_commit": "2026-07-23",
+  "days_idle": 55,
+  "private": true,
+  "description": "A personal goal system. Greek: the end for the sake of which a thing is done.",
+  "brief": "A personal goal system. Greek: the end for the sake of which a thing is done."
+ },
+ {
+  "dir": "Vox",
+  "path": "/Users/benjaminhaddon/Github Repos/Vox",
+  "gh_repo": "Vox",
+  "last_commit": "2025-09-04",
+  "days_idle": 376,
+  "private": true,
+  "description": "A lean, adaptive language learning tracker",
+  "brief": "A lean, adaptive language learning tracker"
+ },
+ {
+  "dir": "ZEIT",
+  "path": "/Users/benjaminhaddon/Github Repos/ZEIT",
+  "gh_repo": "ZEIT",
+  "last_commit": "2026-04-20",
+  "days_idle": 149,
+  "private": true,
+  "description": "A personal identity operating system , a mobile-first web app for tracking who you are, what you're building toward, and how your weeks align with your deeper values.",
+  "brief": "A personal identity operating system , a mobile-first web app for tracking who you are, what you're building toward, and how your weeks align with your deeper values."
+ },
+ {
+  "dir": "almanac",
+  "path": "/Users/benjaminhaddon/Github Repos/almanac",
+  "gh_repo": "almanac",
+  "last_commit": "2026-09-15",
+  "days_idle": 0,
+  "private": true,
+  "description": "A nocturnal ledger for tracking long-running personal projects by season, cadence, and milestone , and the command centre for the overnight work those projects need.",
+  "brief": "A nocturnal ledger for tracking long-running personal projects by season, cadence, and milestone , and the command centre for the overnight work those projects need."
+ },
+ {
+  "dir": "ancestral-dream",
+  "path": "/Users/benjaminhaddon/Github Repos/ancestral-dream",
+  "gh_repo": "ancestral-dream",
+  "last_commit": "2026-07-18",
+  "days_idle": 59,
+  "private": true,
+  "description": "Production repository for the graphic novel adaptation of Vignette 1: First Flicker.",
+  "brief": "Production repository for the graphic novel adaptation of Vignette 1: First Flicker."
+ },
+ {
+  "dir": "arc",
+  "path": "/Users/benjaminhaddon/Github Repos/arc",
+  "gh_repo": "arc",
+  "last_commit": "2026-08-07",
+  "days_idle": 40,
+  "private": false,
+  "description": "An active personal manifesto, built as a progressive web app: seven laws of governed capability, five gates before action, and the counterfeit each virtue turns into.",
+  "brief": "An active personal manifesto, built as a progressive web app: seven laws of governed capability, five gates before action, and the counterfeit each virtue turns into."
+ },
+ {
+  "dir": "argus",
+  "path": "/Users/benjaminhaddon/Github Repos/argus",
+  "gh_repo": "argus",
+  "last_commit": "2026-09-15",
+  "days_idle": 0,
+  "private": false,
+  "description": "Argus is a mobile-first library of finite, closed-scope competencies. Each topic has an explicit scored boundary and can be genuinely completed through delayed recall rather than mere exposure.",
+  "brief": "Argus is a mobile-first library of finite, closed-scope competencies. Each topic has a defined boundary and can be genuinely completed through delayed recall rather than mere exposure."
+ },
+ {
+  "dir": "chefs-journal",
+  "path": "/Users/benjaminhaddon/Github Repos/chefs-journal",
+  "gh_repo": "chefs-journal",
+  "last_commit": "2026-08-21",
+  "days_idle": 25,
+  "private": true,
+  "description": "Chef's Journal is a React + Vite app for recording meals, ratings, notes, and photos. It uses Firebase Authentication (Google sign-in) and Cloud Firestore.",
+  "brief": "Chef's Journal is a React + Vite app for recording meals, ratings, notes, and photos. It uses Firebase Authentication (Google sign-in) and Cloud Firestore."
+ },
+ {
+  "dir": "coffee-chat-os",
+  "path": "/Users/benjaminhaddon/Github Repos/coffee-chat-os",
+  "gh_repo": "coffee-chat-os",
+  "last_commit": "2026-02-09",
+  "days_idle": 218,
+  "private": true,
+  "description": "Coffee Chat OS is a lightweight, local-first web app for tracking consulting coffee chats, referrals, and follow-ups , without turning into a heavy CRM.",
+  "brief": "Coffee Chat OS is a lightweight, local-first web app for tracking consulting coffee chats, referrals, and follow-ups , without turning into a heavy CRM."
+ },
+ {
+  "dir": "faust",
+  "path": "/Users/benjaminhaddon/Github Repos/faust",
+  "gh_repo": "faust",
+  "last_commit": "2026-07-02",
+  "days_idle": 75,
+  "private": false,
+  "description": "A digital essay + diagnostic tool exploring how career became identity in modern cities, why extreme ambition is rational yet destructive, and what alternative frameworks offer. Research-driven analysis of workism, platform dynamics, and paths toward flourishing beyond performan\u2026",
+  "brief": "A digital essay exploring how career became identity in modern cities, why extreme ambition is rational yet destructive, and what alternative frameworks offer. Research-driven analysis of workism, platform dynamics, and paths toward flourishing beyond performance."
+ },
+ {
+  "dir": "flag",
+  "path": "/Users/benjaminhaddon/Github Repos/flag",
+  "gh_repo": "flag",
+  "last_commit": "2026-09-12",
+  "days_idle": 3,
+  "private": false,
+  "description": "Atlas is a mobile-first geography-learning PWA across Flags, Locations, Outlines and Neighbours.",
+  "brief": ""
+ },
+ {
+  "dir": "great-decoupling",
+  "path": "/Users/benjaminhaddon/Github Repos/great-decoupling",
+  "gh_repo": "great-decoupling",
+  "last_commit": "2026-01-13",
+  "days_idle": 245,
+  "private": false,
+  "description": "This repository hosts a structured research project examining the growing decoupling between economic indicators, lived experience, institutional performance, and social outcomes in the modern economy.",
+  "brief": "This repository hosts a structured research project examining the growing decoupling between economic indicators, lived experience, institutional performance, and social outcomes in the modern economy."
+ },
+ {
+  "dir": "hearthMVP",
+  "path": "/Users/benjaminhaddon/Github Repos/hearthMVP",
+  "gh_repo": "hearthMVP",
+  "last_commit": "2026-02-13",
+  "days_idle": 215,
+  "private": true,
+  "description": "Hearth is a calm, shared watchlist for couples that turns choosing what to watch into a small, pleasant ritual.",
+  "brief": "Hearth is a calm, shared watchlist for couples that turns choosing what to watch into a small, pleasant ritual."
+ },
+ {
+  "dir": "hestia",
+  "path": "/Users/benjaminhaddon/Github Repos/hestia",
+  "gh_repo": "hestia",
+  "last_commit": "2026-09-14",
+  "days_idle": 1,
+  "private": true,
+  "description": "Personal Toronto condo-rental search constrained by two commutes.",
+  "brief": ""
+ },
+ {
+  "dir": "iroh",
+  "path": "/Users/benjaminhaddon/Github Repos/iroh",
+  "gh_repo": "iroh",
+  "last_commit": "2026-02-13",
+  "days_idle": 214,
+  "private": true,
+  "description": "Thread is a reflective journaling system for continuity and long-horizon pattern recognition.",
+  "brief": "Thread is a reflective journaling system for continuity and long-horizon pattern recognition."
+ },
+ {
+  "dir": "jarvis-core",
+  "path": "/Users/benjaminhaddon/Github Repos/jarvis-core",
+  "gh_repo": "jarvis-core",
+  "last_commit": "2026-02-04",
+  "days_idle": 223,
+  "private": true,
+  "description": "JARVIS Core is a personal digital butler and control plane for intent-driven delegation.",
+  "brief": "JARVIS Core is a personal digital butler and control plane for intent-driven delegation."
+ },
+ {
+  "dir": "layer-up",
+  "path": "/Users/benjaminhaddon/Github Repos/layer-up",
+  "gh_repo": "layer-up",
+  "last_commit": "2026-04-04",
+  "days_idle": 165,
+  "private": false,
+  "description": "IMPORTANT: Pushing to GitHub does NOT automatically create a production release.",
+  "brief": "A weather-aware clothing planner that helps translate current conditions into practical layers, with local-first storage and optional cross-device sync."
+ },
+ {
+  "dir": "liebestraum",
+  "path": "/Users/benjaminhaddon/Github Repos/liebestraum",
+  "gh_repo": "liebestraum",
+  "last_commit": "2026-08-15",
+  "days_idle": 31,
+  "private": true,
+  "description": "A single-page React experience built with Vite, React 19, Tailwind CSS, and Firebase that models a \"couple's adventure log.\" Home, timeline, map, detail, settings, possibilities, and memory creation flows rely on live reads/writes to Firestore.",
+  "brief": "A single-page React experience built with Vite, React 19, Tailwind CSS, and Firebase that models a \"couple's adventure log.\" Home, timeline, map, detail, settings, possibilities, and memory creation flows rely on live reads/writes to Firestore."
+ },
+ {
+  "dir": "macht",
+  "path": "/Users/benjaminhaddon/Github Repos/macht",
+  "gh_repo": "macht",
+  "last_commit": "2026-08-11",
+  "days_idle": 36,
+  "private": false,
+  "description": "Access the live beta here: https://BenWassa.github.io/macht/",
+  "brief": "An offline-first, minimalist powerlifting tracker for the gym, with estimated one-rep maxes, rest timers, plate math, and injury-aware substitutions."
+ },
+ {
+  "dir": "marvel",
+  "path": "/Users/benjaminhaddon/Github Repos/marvel",
+  "gh_repo": null,
+  "last_commit": null,
+  "days_idle": null,
+  "private": null,
+  "description": "",
+  "brief": ""
+ },
+ {
+  "dir": "mirror-laws",
+  "path": "/Users/benjaminhaddon/Github Repos/mirror-laws",
+  "gh_repo": "mirror-laws",
+  "last_commit": "2026-07-27",
+  "days_idle": 51,
+  "private": true,
+  "description": "A virtuous answer to all 48 of Robert Greene's laws of power.",
+  "brief": "A virtuous answer to all 48 of Robert Greene's Laws of Power."
+ },
+ {
+  "dir": "morpheus-dream-archive",
+  "path": "/Users/benjaminhaddon/Github Repos/morpheus-dream-archive",
+  "gh_repo": "morpheus-dream-archive",
+  "last_commit": "2026-07-17",
+  "days_idle": 60,
+  "private": false,
+  "description": "A private, glassmorphic PWA for archiving and browsing structured dream entries, backed by Firebase Auth, Firestore, and Storage.",
+  "brief": "A personal subconscious archive for capturing, organizing, and visualizing dreams"
+ },
+ {
+  "dir": "odysseus",
+  "path": "/Users/benjaminhaddon/Github Repos/odysseus",
+  "gh_repo": null,
+  "last_commit": null,
+  "days_idle": null,
+  "private": null,
+  "description": "",
+  "brief": ""
+ },
+ {
+  "dir": "orpheus",
+  "path": "/Users/benjaminhaddon/Github Repos/orpheus",
+  "gh_repo": "orpheus",
+  "last_commit": "2026-07-02",
+  "days_idle": 75,
+  "private": false,
+  "description": "Decode your emotional underworld through the music that moves you.",
+  "brief": "Decode your emotional underworld through the music that moves you."
+ },
+ {
+  "dir": "pantheon",
+  "path": "/Users/benjaminhaddon/Github Repos/pantheon",
+  "gh_repo": "pantheon",
+  "last_commit": "2026-07-02",
+  "days_idle": 75,
+  "private": false,
+  "description": "A personal daily-learning app. One theme a day, six resonant facets, explored at the reader's pace. An antidote to shallow feeds, built by and for one reader. The goal is depth and delight, not reach.",
+  "brief": "A personal daily-learning app. One theme a day, six resonant facets, explored at the reader's pace. An antidote to shallow feeds, built by and for one reader. The goal is depth and delight, not reach."
+ },
+ {
+  "dir": "personal-history-compiler",
+  "path": "/Users/benjaminhaddon/Github Repos/personal-history-compiler",
+  "gh_repo": "personal-history-compiler",
+  "last_commit": "2026-07-18",
+  "days_idle": 59,
+  "private": true,
+  "description": "Reconstruct personal history month by month from Google Calendar without entering events one at a time.",
+  "brief": "Reconstruct personal history month by month from Google Calendar without entering events one at a time."
+ },
+ {
+  "dir": "poseidon",
+  "path": "/Users/benjaminhaddon/Github Repos/poseidon",
+  "gh_repo": "poseidon",
+  "last_commit": "2026-09-16",
+  "days_idle": 0,
+  "private": false,
+  "description": "A beautiful personal atlas of your underwater life.",
+  "brief": ""
+ },
+ {
+  "dir": "psyche",
+  "path": "/Users/benjaminhaddon/Github Repos/psyche",
+  "gh_repo": "psyche",
+  "last_commit": "2026-07-12",
+  "days_idle": 65,
+  "private": false,
+  "description": "Psyche is the working repository for the psychology literacy app: product requirements, design system, research synthesis, and content architecture.",
+  "brief": "Psyche is the working repository for the psychology literacy app: product requirements, design system, research synthesis, and content architecture."
+ },
+ {
+  "dir": "static",
+  "path": "/Users/benjaminhaddon/Github Repos/static",
+  "gh_repo": "static",
+  "last_commit": "2026-06-27",
+  "days_idle": 81,
+  "private": false,
+  "description": "A full, dependency-free mobile web app lives at the repository root (index.html). It turns the manuscript and research into a calm, scannable, drill-down guide designed specifically for autistic and AuDHD readers , deep focus on what grabs you, scannable surfaces, and a one-tap\u2026",
+  "brief": "A practical, research-grounded guide for adults recognizing autistic patterns in themselves, with clear explanations, self-observation frameworks, and concrete strategies."
+ },
+ {
+  "dir": "template-hearth",
+  "path": "/Users/benjaminhaddon/Github Repos/template-hearth",
+  "gh_repo": "template-hearth",
+  "last_commit": "2026-01-30",
+  "days_idle": 228,
+  "private": false,
+  "description": "Hearth is a calm, shared watchlist for couples that turns choosing what to watch into a small, pleasant ritual.",
+  "brief": "Hearth is a calm, shared watchlist for couples that turns choosing what to watch into a small, pleasant ritual."
+ },
+ {
+  "dir": "template-pushup",
+  "path": "/Users/benjaminhaddon/Github Repos/template-pushup",
+  "gh_repo": "template-pushup",
+  "last_commit": "2026-02-07",
+  "days_idle": 220,
+  "private": false,
+  "description": "This is a template version of the PushUp Challenge app that uses browser local storage only. No Firebase, no accounts, no backend.",
+  "brief": "This is a template version of the PushUp Challenge app that uses browser local storage only. No Firebase, no accounts, no backend."
+ },
+ {
+  "dir": "theos",
+  "path": "/Users/benjaminhaddon/Github Repos/theos",
+  "gh_repo": "theos",
+  "last_commit": "2026-07-25",
+  "days_idle": 52,
+  "private": false,
+  "description": "A static, content-first site built with Astro. No React, no database, no accounts, just Markdown + JSON compiled to plain HTML, hostable anywhere for free. Built to stay maintainable by one non-coding person.",
+  "brief": "A static, content-first site built with Astro. No React, no database, no accounts, just Markdown + JSON compiled to plain HTML, hostable anywhere for free. Built to stay maintainable by one non-coding person."
+ },
+ {
+  "dir": "vox-v2",
+  "path": "/Users/benjaminhaddon/Github Repos/vox-v2",
+  "gh_repo": "vox-v2",
+  "last_commit": "2026-03-02",
+  "days_idle": 197,
+  "private": true,
+  "description": "<div align=\"center\"> <img width=\"1200\" height=\"475\" alt=\"GHBanner\" src=\"https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6\" /> </div>",
+  "brief": "A Mandarin learning system that organizes daily listening, pronunciation, vocabulary, and conversation work into a phased path from foundations to fluency."
+ }
+]

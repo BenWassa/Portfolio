@@ -1,0 +1,74 @@
+{
+  "dir": "layer-up",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": [
+      "In-app UI button only: Settings -> 'Test or reset' -> 'Load 25 Demo Logs' (src/views/SettingsView.jsx:120-122), wired to onLoadDemoLogs in src/App.jsx:296-298.",
+      "Env mode gate exists but is NOT a demo gate: VITE_FIREBASE_ENABLED (src/firebase.js:5) switches cloud sync on/off, not real-vs-seeded content.",
+      "No URL trigger of any kind - no ?demo, ?mode=demo, ?preview, no hash parameter, no route."
+    ],
+    "seed_data": true,
+    "blocks_writes": false,
+    "auth_isolated": true,
+    "evidence": [
+      "src/constants.js:150",
+      "src/constants.js:168",
+      "src/constants.js:175",
+      "src/constants.js:176",
+      "src/App.jsx:296",
+      "src/views/SettingsView.jsx:120",
+      "src/storage.js:62",
+      "src/firebase.js:5",
+      "src/firebase.js:57",
+      "src/firebase.js:73",
+      "firestore.rules:5"
+    ],
+    "notes": "The best demo affordance in this batch of six, and still short of playbook on three counts. What exists: generateDemoLogs(count = 25) at src/constants.js:150 fabricates a plausible 25-day history - temperature, feels-like, humidity, wind, precipitation, UV, weather code, activity, duration, comfort rating - and runs each synthetic day through the real phase1Recommend() so the outfits are internally consistent with the app's own logic. It is reachable from a labelled button in Settings. What is missing: (1) NOT DETERMINISTIC - every field is Math.random() (constants.js:168-186) and ids are `demo-${i}-${Date.now()}` (constants.js:175), so no two loads produce the same dataset and nothing is reproducible; location is hardcoded 'Toronto, ON' regardless of the user's real geolocation. (2) NO WRITE GUARD - App.jsx:297 is `setLogs((prev) => [...prev, ...generateDemoLogs(25)])`, which APPENDS demo rows into the same array as genuine logs and then persists them through the normal saveAppState path (storage.js:62) into localStorage and, when sync is on, into the user's Firestore document. Demo data is indistinguishable from real data afterwards except by the 'demo-' id prefix, which nothing filters on; the only way back is the destructive 'Clear All Logs'. (3) NO MODE GATE - it is a manual button buried in Settings, not addressable by URL or env, so an iframe or a shared link cannot land anyone in a populated state. auth_isolated is recorded true but deserves a caveat: the app never asks anyone to sign in, uses signInAnonymously (firebase.js:73) with per-uid document scoping and correct matching Firestore rules (firestore.rules:5), so every visitor is already isolated - but that is the app's general architecture, not a demo-specific accommodation."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-04-03",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "firebase hosting + firestore (manual CLI deploy, no CI)",
+    "url": "https://layer-up-d17b0.web.app (and https://layer-up-d17b0.firebaseapp.com)",
+    "evidence": "firebase.json defines hosting from `dist` with an SPA rewrite (** -> /index.html), no-cache headers on index.html/manifest/icon and a 1-year immutable cache on /assets/**, plus firestore rules+indexes. .firebaserc pins the project to layer-up-d17b0. package.json exposes `deploy`, `release` and `release:beta` as `firebase deploy --only hosting,firestore`. Strong evidence a deploy actually ran: .firebase/hosting.ZGlzdA.cache lists the deployed file manifest with hashes, and both it and dist/ are timestamped 2026-04-03 20:26 - the same day as the last commit. There is no GitHub Actions workflow; README warns in bold that 'Pushing to GitHub does NOT automatically create a production release.'"
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": [
+      "React 18 + Vite 5, plain CSS (src/styles.css), no UI framework, no router (tab state in useState)",
+      "Firebase 10 - Anonymous Auth + Firestore (optional sync), Firebase Hosting",
+      "Installable PWA: public/manifest.webmanifest + a hand-written service worker (public/sw.js, cache 'layerup-v1')",
+      "Live data with no API key required: Open-Meteo forecast API (App.jsx:134), ipapi.co for IP geolocation with browser geolocation preferred (App.jsx:91-97)",
+      "ESLint 9 flat config + Prettier 3"
+    ],
+    "build_cmd": "npm install && npm run build (vite build); deploy with npm run deploy or npm run release:beta",
+    "screenshots": [
+      "public/LayerUp.png (1.5 MB app icon, not a screenshot - no UI captures exist in the repo)"
+    ],
+    "one_liner": "A mobile PWA that pulls live local weather, asks what you are about to do and for how long, recommends a specific six-slot outfit (base, mid, outer, bottom, accessories, footwear), then learns from how cold or hot you actually felt - logged comfort ratings feed per-activity temperature offsets that shift future recommendations through four escalating personalisation phases."
+  },
+  "drift_flags": [
+    "PRODUCTION BUG, highest-value finding: .env contains `VITE_FIREBASE_ENABLED=TRUE` (uppercase - verified byte-for-byte with od), but src/firebase.js:5 tests `import.meta.env.VITE_FIREBASE_ENABLED === 'true'`, a strict case-sensitive comparison against lowercase. 'TRUE' !== 'true', so isEnabled is a compile-time constant false and Vite dead-code-eliminates the entire Firebase path. Confirmed in the shipped bundle: dist/assets/index-EjIGMZyr.js contains zero occurrences of the project id 'layer-up-d17b0', zero of 'firebaseapp', and zero of 'signInAnonymously'. The live app is localStorage-only. Cloud sync, anonymous auth and the Firestore document have never worked in production, and they fail silently because every guarded function early-returns null rather than throwing. .env.example correctly shows lowercase `false`, so the typo was introduced by hand when the real .env was created.",
+    "Corroborating that the symptom was noticed but misdiagnosed: the remote branch origin/claude/force-firebase-redeploy-aNBFY is 1 commit ahead of main and its single commit is 'chore: update package-lock.json after npm install'. The branch name says someone was trying to force a redeploy to make Firebase work; the actual cause was one character of casing in an untracked file, so redeploying could never have fixed it.",
+    "app.jsx at the repo root is a 1,863-line single-file version of the whole application - the pre-refactor monolith - still tracked and still being touched as recently as 2026-04-02 ('Add lint and prettier tooling'). It duplicates all of src/ (2,375 lines across 18 modules) with no marker of which is authoritative. Vite builds from index.html -> src/main.jsx, so app.jsx is dead code that lint and format still process.",
+    "1,777 lines of markdown across 7 root-level documents (DOCUMENTATION_INDEX, IMPLEMENTATION_CHECKLIST, MOBILE_BEST_PRACTICES, MOBILE_UI_VISUAL_GUIDE, MOBILE_UPGRADE_README, MOBILE_UPGRADE_SUMMARY, README) - six of them about a single mobile-UI upgrade - against 2,375 lines of application source. The README itself is 102 lines and its description of the product is the two words 'Weather and clothing'.",
+    "public/LayerUp.png is 1.5 MB and is both the PWA icon and a service-worker precache entry (sw.js urlsToCache), so every first visit downloads 1.5 MB before the app is usable - on the mobile-first PWA whose repo contains 344 lines of MOBILE_BEST_PRACTICES.md.",
+    "The service worker is hand-rolled with a hardcoded cache name 'layerup-v1' that is never bumped, and it precaches '/' and '/index.html' while firebase.json sets no-cache headers on index.html - the two caching strategies work against each other, and a returning user can be served a stale shell indefinitely.",
+    "Demo logs are written into the same store as real logs with no separation (see demo_mode notes) - loading them is a one-way action reversible only by deleting everything.",
+    "Version drift: package.json says 1.1.0-beta.0 and the Settings footer renders '{appVersion} · Beta'; the app has been sitting at a beta version tag for 168 days with no release since.",
+    "Both merged feature branches were left undeleted - ui/impeccable-refresh exists locally AND remotely at 0 commits ahead of main; origin/claude/force-firebase-redeploy-aNBFY is the stale 1-commit branch above.",
+    "src/.DS_Store is tracked despite .gitignore listing .DS_Store (it predates the rule).",
+    ".gitignore excludes .agents/, .claude/, .impeccable.md and skills-lock.json, all of which exist on disk - agent tooling state that is local-only, so a fresh clone behaves differently from this working copy.",
+    "Idle 168 days (HEAD 2026-04-03, today 2026-09-18). Working tree is completely clean and nothing is unpushed."
+  ],
+  "recommendation": "demo",
+  "rationale": "This is the most genuinely embeddable application of the six: a deployed, installable PWA that already works for an anonymous stranger with no login and no API key - it geolocates by IP, pulls live Open-Meteo weather, and ships a 25-log demo-history generator plus real empty states. Two cheap changes make it iframe-ready: promote the existing 'Load 25 Demo Logs' button to a URL trigger (?demo=1) so a portfolio embed lands pre-populated and the personalisation phases are actually visible, and seed it deterministically into a session-scoped store instead of appending into the user's real log array. Separately and independently of the portfolio decision, the VITE_FIREBASE_ENABLED=TRUE casing bug is worth fixing or the whole Firebase layer worth deleting - right now the repo carries a full sync architecture, a Firestore ruleset and a Firebase dependency that the shipped bundle proves are inert.",
+  "confidence": "high"
+}

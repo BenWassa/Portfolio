@@ -1,0 +1,49 @@
+{
+  "dir": "FamilyPlan",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": [],
+    "seed_data": true,
+    "blocks_writes": true,
+    "auth_isolated": false,
+    "evidence": [
+      "dashboard/src/App.jsx:27",
+      "dashboard/src/views/DashboardProfessional.jsx:4",
+      "data/output/mock_familyplan.json",
+      "data/README.md:39",
+      "exports/math-economics-flat10/App.jsx:27"
+    ],
+    "notes": "No mode gate of any kind: no URL param, no env var, no resolver. A fixture DOES exist (data/output/mock_familyplan.json, 1.6KB) and an older export (exports/math-economics-flat10/App.jsx:27) imports it as `mockData`, but the ACTIVE dashboard hard-imports data/output/generated_familyplan.json at build time (App.jsx:27, DashboardProfessional.jsx:4) and data/README.md:39 explicitly demotes the mock to 'legacy reference only ... should not be treated as the active dashboard source'. blocks_writes is true only incidentally — the app has no persistence at all, it is a pure read-only client-side calculator over one baked-in JSON. Swapping the import to the mock is a one-line change, so a real demo mode is cheap."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-03-17",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "github-pages-docs-folder",
+    "url": "https://benwassa.github.io/FamilyPlan/",
+    "evidence": "vite.config.js base:'/FamilyPlan/' + build.outDir '../docs'; docs/index.html and docs/.nojekyll are committed; README.md deployment section names the URL. No Actions workflow — Pages serves /docs from main directly."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["React 18", "Vite 5", "Tailwind 3", "Recharts 2", "Zod 4", "Vitest 4", "JavaScript (ESM)"],
+    "build_cmd": "npm run build  (plus `npm run build:data` to regenerate data/output/generated_familyplan.json)",
+    "screenshots": [],
+    "one_liner": "A client-side React/Recharts dashboard over a JSON-assembled economics engine that projects household income, childcare and housing costs, and affordability/buffer headroom across a multi-decade family timeline."
+  },
+  "drift_flags": [
+    "PRIVACY: the deployed GitHub Pages build embeds the owner's own household financial plan — generated_familyplan.json carries grossIncome <REDACTED> netIncome <REDACTED> monthlyBurn <REDACTED> liquidAssets <REDACTED> child birth years, province ON — and data/source/income_history.json carries year-by-year real income. This is already public at benwassa.github.io/FamilyPlan.",
+    "README and data/README both still document mock_familyplan.json as a data/output 'contract' while data/README.md:39 calls it dead legacy; the file is referenced by no live code.",
+    "docs/ build output is committed and is only as fresh as the last manual `npm run build` — no CI enforces it (docs/ and source last touched the same commit today, so currently in sync, but nothing keeps it that way).",
+    "Only icon PNGs in repo — no screenshots or preview imagery for a portfolio card.",
+    "exports/ and _archive/ hold three near-duplicate forks of the dashboard (math-economics-flat10, math-economics-review-2026-02-20, ClaudeDashboard.tsx, GeminiDashboard.jsx), so 'which App.jsx is real' is ambiguous from a cold read."
+  ],
+  "recommendation": "demo",
+  "rationale": "Technically the strongest embed candidate here — a fully static, no-auth, no-backend React dashboard already building to /docs and already live on Pages. But it should only be embedded after swapping the data import to mock_familyplan.json (or a fresh scrubbed fixture), because as shipped it publishes the owner's real household income and net worth.",
+  "confidence": "high"
+}

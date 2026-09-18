@@ -61,11 +61,39 @@ Migration order, cheapest-first:
 | Hearth | `hearth_v2?mode=demo` | ✅ already correct — reference implementation |
 | PushUp | `the-pushup-challenge-2025?mode=demo` | ✅ already correct |
 | Wrestle | `wrestle-template` | `wrestlePWA?mode=demo` (repo is private — needs Pages-only publish) |
-| Morpheus | `template-morpheus` | `morpheus-dream-archive?mode=demo` |
+| Morpheus | `template-morpheus` | ⚠️ **keep the fork for now** — see correction below |
 | Narrative | `narrative-template` | resolve name collision first, then demo mode |
+
+> **Correction (2026-09-18 audit).** The original plan assumed every template fork was
+> pure drift and could be retired by repointing the card at the real product. The
+> 48-repo audit confirms that for `template-pushup` and `template-hearth`, and
+> **refutes it for `template-morpheus`**.
+>
+> `morpheus-dream-archive` is gated behind Google sign-in plus a hardcoded UID whitelist
+> (`src/config/whitelist.js`), ships an empty `public/index.json`, and
+> `vite.config.js:15-26` *throws* without Firebase env vars — no credential-free build is
+> currently possible. Repointing that card today would replace a working demo with a
+> sign-in wall.
+>
+> Build demo mode in the real repo **first**, then retire the fork. Detail:
+> `docs/audits/2026-09-18/CROSS-PROJECT-PATTERNS.md`.
 
 Once a project's demo mode passes the playbook's acceptance checklist, its template repo is
 archived — not deleted, archived, so old links keep resolving.
+
+### 2.1b Method before selection
+
+Which projects get demos, and how each is built, is settled in
+**`docs/DEMO-MODE-METHODS.md`** — a decision rule, five project archetypes, a per-archetype
+recipe, ten traps observed in real repos, and an acceptance checklist. Read it before
+assigning demo work.
+
+Evidence behind it: `docs/audits/2026-09-18/`.
+
+The single most actionable finding: **five projects have complete, working demo paths that
+no visitor can reach**, each blocked by one constant, env-var case, or missing CI variable
+(`almanac`, `jarvis-core`, `layer-up`, `pantheon`, `HAUS`). Roughly an afternoon's work for
+five newly embeddable projects.
 
 ### 2.2 Two-tier information architecture
 

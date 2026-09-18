@@ -1,0 +1,52 @@
+{
+  "dir": "psyche",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": true,
+    "evidence": [
+      "grep -rniE 'demo|isDemo|demoMode|mode=demo|fixture|seed' over src/ returns zero hits (only unrelated prose matches in content/layers/*.md)",
+      "grep -rn 'firebase|firestore' src/ returns zero hits — the app never talks to Firebase",
+      "package.json dependencies are only react + react-dom; `firebase` is not a dependency at all (only firebase-tools as a devDependency)",
+      "src/data/domains.ts and src/data/inspectorCopy.ts are the content source — authored encyclopedia copy, not demo fixtures"
+    ],
+    "notes": "No demo affordance exists, and none is needed: the app is a read-only static encyclopedia with no accounts, no user data, and no network calls. README states the design ethos explicitly — \"no gamification, no accounts, no push notifications.\" It is demo-safe by nature rather than by a mode gate, so `none` is the honest classification even though embeddability is unaffected."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-05-03",
+    "uncommitted": 2,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "firebase-hosting",
+    "url": "https://psyche-555.web.app",
+    "evidence": ".firebaserc default project `psyche-555`; firebase.json hosting with SPA rewrite; .github/workflows/firebase-hosting-merge.yml deploys to channel `live` on push to main and firebase-hosting-pull-request.yml builds preview channels. BUT see drift: hosting.public is \"public\", not \"dist\"."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["React 19", "Vite 6", "TypeScript 5.8", "Tailwind CSS 4 (@tailwindcss/vite)", "vite-plugin-pwa 0.21 + workbox", "Firebase Hosting"],
+    "build_cmd": "npm run build  (vite build -> dist/); only quality gate is npm run lint (tsc --noEmit)",
+    "screenshots": ["public/ink_in_water.mp4 (16.7 MB background video — the only visual asset in the repo)"],
+    "one_liner": "A psychology-literacy PWA that renders roughly 28 theories across six domains in visual grammars matched to each theory's actual structure — a Big Five hierarchy, an attachment plane, a bias catalogue — with inspector panels that tier every claim by evidence quality from cornerstone to popular-but-revised."
+  },
+  "drift_flags": [
+    "DEPLOY IS BROKEN BY CONFIG: firebase.json sets hosting.public = \"public\", but Vite builds the app to dist/. The GitHub Actions deploy therefore publishes the stale standalone public/index.html (4.6 KB, dated May 3) plus a 16.7 MB mp4 — not the React app. The live site at psyche-555.web.app is almost certainly not the app this repo builds.",
+    "firebase.json declares firestore rules + indexes and firestore.rules/firestore.indexes.json are committed, but nothing in src/ imports firebase and `firebase` is not a dependency. Dead backend configuration.",
+    "README (uncommitted version) claims \"dist/ — production build artifact; committed to repo\"; `git ls-files dist` returns nothing. dist/ exists only on disk. The README asserts a repo state that is not true.",
+    "The substantive 106-line README exists only as an uncommitted working-tree change (+99/-17 over the 24-line committed version). GitHub still shows the old stub README. Also untracked: ideas.md.",
+    "README's own \"What's missing\" is a long honest defect list: visual grammars 2-12 unbuilt, EvidenceCard renders nowhere, Settings rows (Manage Subscription, Export Library, Sign Out) are visible no-ops, Self & Identity inspector copy thin, no test suite.",
+    "README notes PWA icons are not generated (public/ has no favicon/apple-touch-icon/icon-*.png) while vite.config.ts VitePWA includeAssets lists exactly those files — the manifest references icons that do not exist.",
+    "README flags CLAUDE.md as stale: it describes a single-file app, the codebase has been split into views/domains/components/hooks.",
+    "Oldest active code repo of the four apps — HEAD 2026-05-03, ~4.5 months stale.",
+    "16.7 MB mp4 committed in public/ and served on every page load."
+  ],
+  "recommendation": "demo",
+  "rationale": "Static, account-free, network-free content app — inherently safe to embed, and the Personality domain is genuinely finished and visually distinctive. Gated on two fixes: point firebase.json hosting.public at dist/ so the deploy actually ships the app, and commit the good README. If those are not done it drops to `index`, because the live URL currently does not serve the project.",
+  "confidence": "high"
+}

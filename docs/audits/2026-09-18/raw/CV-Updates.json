@@ -1,0 +1,46 @@
+{
+  "dir": "CV-Updates",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      "No package.json, no source code, no HTML — the repo is 604 tracked files of .md, .docx and .pdf",
+      "grep for demo/template/mode= triggers across the repo returns nothing relevant",
+      "Top-level layout is README.md, Resume/, records/, profile-snapshots/, documents/, archive/ — a document store, not an application"
+    ],
+    "notes": "Not software. Demo mode does not apply."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-08-14",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": false,
+    "kind": "",
+    "url": "",
+    "evidence": "No .github/, no firebase.json, no vercel.json, no netlify.toml, no CNAME, no docs/ build output, no package.json. Nothing deployable exists."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["Markdown records with a documented schema", "Word/PDF resume artifacts", "VS Code workspace file"],
+    "build_cmd": "",
+    "screenshots": [],
+    "one_liner": "A private, schema-driven evidence system that consolidates scattered worklogs, ChatGPT-project exports and resume versions into verifiable per-employer/per-project records, from which resumes, interview stories and proposal credentials are derived with traceability back to source."
+  },
+  "drift_flags": [
+    "Contains identifiable personal and client-confidential material: named consulting engagements at Blackline (municipal IT master plans, child & youth mental-health strategy, disability services strategic planning, FOI modernization), an Ivey academic transcript under documents/education/, LinkedIn profile PDF captures, and dozens of employer-targeted resumes and cover letters (Accenture, Deloitte, EY, IBM, CIBC, Mastercard, AstraZeneca, City of Toronto, Lifemark, Ontario Health). Must never be surfaced on a public portfolio.",
+    "~17 stale remote branches, mostly `intake/blackline-*` pursuit branches from Aug 2026 plus three `claude/*` agent branches, none merged or cleaned up.",
+    "Contains client pursuit material named by prospect — a confidentiality concern independent of the portfolio question. Worth confirming the GitHub repo is private.",
+    "Local clone is fully clean and in sync (0 uncommitted, 0 unpushed) — no freshness problem, just not portfolio material."
+  ],
+  "recommendation": "skip",
+  "rationale": "A private career and consulting evidence archive holding resumes, a transcript, LinkedIn captures and named client engagements — no code, no deployable artifact, and content that should not be publicly referenced at all.",
+  "confidence": "high"
+}

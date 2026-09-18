@@ -1,0 +1,64 @@
+{
+  "dir": "theos",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [
+      "none — and none is needed. Grep for demo|mock|sample|fixture across src/ and scripts/ returns zero matches."
+    ],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      "astro.config.mjs:2-15 — 'static, zero-runtime-framework output. No React, no client framework.' Only a few KB of progressive-enhancement JS ships.",
+      "README.md:6-8 — 'A static, content-first site... No React, no database, no accounts, just Markdown + JSON compiled to plain HTML.'",
+      "package.json dependencies — astro only. No auth, no data layer, no client state.",
+      "src/content/traditions/{christianity,hinduism,islam}/01-origins.md … 07-tensions.md — 21 authored Markdown sections, 5,848 words total",
+      "src/pages/ — three routes: index.astro, [tradition].astro, governance.astro"
+    ],
+    "notes": "The demo-mode question does not apply: this is a pre-rendered static site with no user data, no accounts, and nothing to write. Every visitor sees the full product by default, which is functionally better than a demo mode. Recorded as 'none' rather than 'playbook' because the spec's criteria (mode gate, seeds, write guards) describe machinery this architecture has no use for — do not read 'none' here as a gap."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-07-25",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": false,
+    "kind": "none — a dist/ build exists in the working tree but nothing publishes it",
+    "url": "unknown; astro.config.mjs declares the placeholder site 'https://project-theos.example'",
+    "evidence": "No .github/ directory, no workflows, no firebase.json, no vercel.json, no netlify.toml, no CNAME. astro.config.mjs:9 site is the literal placeholder 'https://project-theos.example'. No base path is configured, so a GitHub Pages project-path deploy (/theos/) would break every absolute asset URL. dist/ and docs/infographics exist locally but are not wired to any host. THIS IS THE ONLY REPO IN THE BATCH WITH NO DEPLOYMENT AT ALL."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": [
+      "Astro 5.13 (static output, build.format: 'directory')",
+      "TypeScript 5.7 + @astrojs/check",
+      "Zod content collections (src/content.config.ts — enforced content contract)",
+      "Markdown + JSON content, no framework runtime",
+      "@fortawesome/free-solid-svg-icons (build-time symbol generation)",
+      "Node scripts: check-sourcing.mjs (editorial gate), gen-symbols.mjs"
+    ],
+    "build_cmd": "npm run build (npm run check:sourcing && astro build → dist/); npm run check:sourcing -- --strict blocks on unreviewed narrative/testimony",
+    "screenshots": [
+      "docs/infographics/ and dist/infographics/ (generated infographic assets)",
+      "public/favicon.svg",
+      "immersive_religions_alpha_v1.tsx (the original React prototype, kept at repo root as a visual reference)"
+    ],
+    "one_liner": "A static Astro site that seats you inside one world religion at a time — seven authored sections per tradition (origins, beliefs, a day in the life, practice, text, symbols, tensions) with per-tradition palettes, symbols, ambient audio, and a citation gate that refuses to ship unsourced claims."
+  },
+  "drift_flags": [
+    "NOT DEPLOYED. No CI, no host config, and astro.config.mjs still carries the placeholder site URL 'https://project-theos.example'. The README's build instructions work locally but nothing publishes. This is the single biggest gap between the repo's polish and its reach.",
+    "No base path set, so dropping it onto GitHub Pages at /theos/ will break asset URLs — it needs either a custom domain or base:'/theos/' before a Pages deploy will work.",
+    "Content is 3 of an implied larger set of traditions (christianity, hinduism, islam only), and every one of the 21 sections is still unreviewed: 12 are review_status:draft and 9 are needs-practitioner-review. Zero sections are marked reviewed. `npm run check:sourcing -- --strict` is designed to block on exactly this, so the strict gate cannot currently pass.",
+    "PLAN.md:218 states the governance dashboard is 'Excluded from production build', but dist/governance/ exists in the committed build output — the editorial cockpit is in the shippable artifact.",
+    "immersive_religions_alpha_v1.tsx, a React prototype, sits at repo root in a project whose defining architectural decision (astro.config.mjs:3) is 'No React' — a 1,000-line artefact of the abandoned approach with no note saying it is historical.",
+    "Six planning/spec markdown files at root (PLAN.md, PRODUCT.md, DESIGN.md, DESIGN.json, DECISIONS.md, religions-prd.md, CREDITS.md) against 46 source files — documentation outweighs implementation.",
+    "dist/ is committed but there is no CI to regenerate it, so it will silently go stale against src/."
+  ],
+  "recommendation": "demo",
+  "rationale": "Architecturally this is the ideal portfolio embed — a pure static site with no accounts, no backend, real authored prose, and a genuinely distinctive editorial concept — and the writing quality is high. The blocker is purely operational: it has never been deployed, the site URL is a placeholder, and no base path is set, so the first job is a Pages/Netlify workflow, not any demo-mode work.",
+  "confidence": "high"
+}

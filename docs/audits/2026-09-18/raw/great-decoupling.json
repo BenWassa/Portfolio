@@ -1,0 +1,50 @@
+{
+  "dir": "great-decoupling",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      "No package.json, no src/, no application code of any kind — the repo is markdown, PDFs, one PNG and HTML files",
+      "grep for demo/template/isDemo/mode= triggers across the repo returns nothing relevant",
+      "docs/index.html, docs/visual.html, docs/narrative.html, docs/brief.html are all 0 bytes (verified with ls -l)"
+    ],
+    "notes": "Not an application — a research and publishing project. Demo mode is not a meaningful axis here. The question that matters instead is whether anything renders, and the answer is: exactly one untracked 126 KB standalone HTML infographic."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-01-13",
+    "uncommitted": 3,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": false,
+    "kind": "github-pages (intended, non-functional)",
+    "url": "https://benwassa.github.io/great-decoupling/ (would serve a blank page)",
+    "evidence": "A docs/ directory exists with index.html/visual.html/narrative.html/brief.html, the conventional GitHub Pages docs/ layout, and README describes a three-layer Pages site. All four files are 0 bytes and committed at 0 bytes. No .github/ directory, no workflow, no CNAME, no build step, no package.json homepage."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["Static HTML (single self-contained Google AI Studio export)", "Markdown research documents", "no build tooling, no package manager"],
+    "build_cmd": "",
+    "screenshots": ["visuals/components/infographi_v1.png (6.5 MB screenshot of the infographic)"],
+    "one_liner": "A research-and-publishing project documenting the post-1973 divergence of US worker productivity from wages and how it dismantled the single-income household, designed as three epistemically-linked layers — a scrolling visual infographic, a narrative essay, and a sourced analytic brief — of which only the infographic exists."
+  },
+  "drift_flags": [
+    "THE ONLY REAL DELIVERABLE IS NOT IN GIT. `git status` shows `?? assets/` — assets/the-great-decoupling.html (126,707 bytes, the complete scrolling infographic) is untracked and has never been pushed. `git ls-files` confirms assets/ contains no tracked file. Anyone cloning this repo gets nothing renderable.",
+    "The commit titled \"feat: add infographic\" (1df897c) actually added only research/.DS_Store and a 6.5 MB PNG screenshot — not the infographic HTML. The commit message misdescribes its own contents.",
+    "All four docs/*.html Pages files are committed at 0 bytes; the GitHub Pages site, if enabled, serves blank pages.",
+    "analysis/brief.md, analysis/narrative.md, analysis/notes.md, data/methodology.md and visuals/README.md are all empty stubs. data/raw/ and data/processed/ are empty directories.",
+    "The README's substantive 74-line rewrite is uncommitted (+57/-49 in the working tree); the pushed README is a different document.",
+    ".DS_Store files are tracked in git (root and research/) and .DS_Store shows as modified — no .gitignore exists.",
+    "The infographic embeds AI-generated images from external lh3.googleusercontent.com URLs, which are ephemeral — the one working artifact may already be partially broken.",
+    "README's own methodology declares a claim ledger as the prerequisite for all synthesis; no claim ledger exists. Stalest repo of the six (HEAD 2026-01-13, ~8 months)."
+  ],
+  "recommendation": "index",
+  "rationale": "Real research with a genuinely striking finished infographic, but nothing is deployed, the Pages site is four empty files, and the single artifact worth showing is not even committed. A text listing is honest today; committing assets/the-great-decoupling.html as docs/index.html is a one-commit change that would promote it to `demo`.",
+  "confidence": "high"
+}

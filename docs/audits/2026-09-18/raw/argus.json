@@ -1,0 +1,67 @@
+{
+  "dir": "argus",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": [
+      "env trigger: absence of the four required VITE_FIREBASE_* variables switches the whole app to a local-only, ungated build",
+      "npm run build:e2e — a first-class script that blanks every VITE_FIREBASE_* var and produces exactly that build",
+      ".env.example documents 'leaving these unset is a supported configuration'"
+    ],
+    "seed_data": true,
+    "blocks_writes": true,
+    "auth_isolated": true,
+    "evidence": [
+      "src/services/sync/syncConfig.ts:43-48",
+      "src/services/sync/syncConfig.ts:60-70",
+      "src/services/sync/syncConfig.ts:89-96",
+      "src/app/gate/AuthGate.tsx:6-18",
+      "src/app/gate/AuthGate.test.tsx:10-18",
+      "src/domain/library/catalogSeed.ts:34",
+      "src/infrastructure/persistence/libraryMigrations.ts:4",
+      "src/infrastructure/persistence/libraryMigrations.ts:90",
+      "src/domain/library/catalog.ts:28",
+      "src/services/inbox/inboxConfig.ts:32",
+      "package.json (scripts.build:e2e)",
+      "README.md ('A build with no Firebase configuration ... has nothing to gate and stays entirely local')"
+    ],
+    "notes": "The closest thing to playbook in this batch, reached from a different direction. There IS a real mode gate, it is just env-shaped rather than URL-shaped: readSyncConfig returns {configured:false} when any of VITE_FIREBASE_API_KEY/AUTH_DOMAIN/PROJECT_ID/APP_ID is blank (syncConfig.ts:43-70), and AuthGate.tsx deliberately does not gate an unconfigured build — its own comment calls this 'the configuration the repository has always supported, where there is nothing to sign in to and Argus is a local-only app'. Deterministic seed data exists and is the product, not a fixture: seedLibrary() in catalogSeed.ts:34 (NATO alphabet, full A-Z Morse, compass bearings) is what libraryMigrations.ts:90 installs for a new library. Durable remote writes are structurally impossible in that build — there is no Firebase backend to push to, so nothing reaches Firestore. Held at partial rather than playbook for two honest reasons: there is no ?mode=demo or VITE_*_DEMO runtime trigger (the switch is build-time only), and a visitor's progress still writes to the same localStorage keys a real local user would use, with no demo namespacing and no reset-to-seed. Both are cheap to add. Note syncConfig.ts also hard-refuses to build if any VITE_ var matches PRIVATE_KEY|SERVICE_ACCOUNT|CLIENT_SECRET|GITHUB_TOKEN|ADMIN_KEY — unusually careful."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-09-18",
+    "uncommitted": 18,
+    "unpushed": 1,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "firebase-hosting (manual CLI deploy from dist/, SPA rewrite, immutable asset caching)",
+    "url": "https://argus-b7a5a.web.app",
+    "evidence": "firebase.json (hosting.public 'dist', rewrite ** -> /index.html, Google sign-in provider, firestore rules+indexes); package.json scripts.deploy:hosting; README.md ('The production site is https://argus-b7a5a.web.app ... GitHub Pages is retired'); vite.config.ts:124 base '/'; .github/workflows/validate.yml explicitly states CI does not deploy"
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["React 19", "TypeScript 5.8", "Vite 7", "Firebase 12 (Auth + Firestore)", "motion 13", "Vitest 4", "Playwright 1.63", "@firebase/rules-unit-testing"],
+    "build_cmd": "npm run build  (tsc -b && vite build); demo-shaped build: npm run build:e2e",
+    "screenshots": [
+      "public/media/splash-poster.jpg",
+      "public/icons/argus-icon-512.png",
+      "public/icons/argus-maskable-512.png",
+      "icon_original.png"
+    ],
+    "one_liner": "A mobile-first spaced-repetition app built around finitely-scoped competencies — each topic (NATO alphabet, Morse A-Z, compass bearings) declares an explicit scored boundary so it can actually be finished via delayed recall rather than endless exposure — with a separate ungraded Learn surface, a scheduler that decides whether a Test result is timely enough to advance retention, and optional Google-account sync that reports conflicts instead of overwriting either device."
+  },
+  "drift_flags": [
+    "18 uncommitted modified files plus 1 unpushed commit ('Simplify Morse keyed placement and audio startup'). The dirty set is coherent and mid-refactor — Morse curriculum (lesson.ts, lessonSitting.ts, listening.ts), study/journey.ts, libraryParser.ts, TopicPage.tsx, MorseLesson.tsx, their tests, and docs/open/PROGRESS_ARCHITECTURE.md — i.e. live work in progress on the default branch, not stray noise.",
+    "README states the offline-first runtime guarantee is NOT yet true of the current localStorage/service-worker implementation and is active scope in issue #113. Honest of the README, but it means any 'works offline' portfolio claim would be premature.",
+    "Production requires Google sign-in and the Firestore rules are rendered for a single owner email (firestore.rules.template + ARGUS_OWNER_EMAIL), so https://argus-b7a5a.web.app is NOT publicly viewable — a visitor hits SignInScreen and gets no further. The public-looking URL is effectively private.",
+    "Deploy is manual CLI only by deliberate design; validate.yml runs tests and a build sanity check but never deploys, so the live site can silently lag main.",
+    "Working tree carries generated/local clutter: six .graphify_*.json files, graphify-out/, dist/, firebase-debug.log, firestore-debug.log, .env.local, .firebase/ (all untracked/ignored — none appear in git ls-files).",
+    "Six local branches beyond main (integration/upgrade-reconciliation, issue-93-progress-safety-closeout, refactor/src-structure, upgrade, wip/exposure-test-tap-closeout) and 13 remote ones, several looking like abandoned closeouts.",
+    "Root-level doc sprawl (AGENTS.md, CLAUDE.md, DESIGN.md, DESIGN.json, PRODUCT.md, argus-prd.md, README.md) plus a large docs/open + docs/closed tree."
+  ],
+  "recommendation": "demo",
+  "rationale": "It is the most polished and most actively developed project in this batch and it is already one npm script from an embeddable build: `npm run build:e2e` yields an unauthenticated, fully local app that installs a real seeded library on first run, so the demo can show genuine learning content rather than an empty shell. The live URL cannot be embedded — it demands Google sign-in as the owner — so the demo must be a separately deployed unconfigured build, and demo-namespaced storage plus a reset-to-seed would take it to playbook.",
+  "confidence": "high"
+}

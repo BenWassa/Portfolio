@@ -1,0 +1,62 @@
+{
+  "dir": "Telos",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      "src/App.jsx:34",
+      "firestore.rules:23",
+      "firestore.rules:25",
+      "firestore.rules:29",
+      "src/state.jsx:229",
+      "src/state.jsx:114",
+      "src/state.jsx:31",
+      "src/firebase.js:14"
+    ],
+    "notes": "Zero demo affordance. A grep for mode=demo / mode=template / demo=1 / ?preview / isDemo / demoMode / resolveMode / getAppState / seed* / fixtures / mock* / sample-data across all of src/ returns nothing. There is no .env.example at all. src/App.jsx:34 is an unconditional auth wall -- `if (!user) return <main className=\"auth-gate\">...Continue with Google...` -- so an unauthenticated visitor sees only a sign-in button and never reaches the four surfaces (Tonight/Week/Trends/Setup). Firestore access is hard-whitelisted to one literal UID: firestore.rules:23-29, `isWhitelisted() { return request.auth != null && request.auth.uid == 'gGSqYrLBr4QUQ00R9tSOTrtplc23'; }` with `isAuthenticated()` defined as exactly that check, so even another signed-in Google account is denied every read and write. FEASIBILITY OF ADDING ONE (the specific question asked): high, and cheaper than it looks. The state layer already has a complete backend-free path -- `freshDb()` (src/state.jsx:31) builds a valid v1 record with five seeded domains, `loadLocalSeed()` (src/state.jsx:114) hydrates React state from localStorage BEFORE auth resolves, and critically `saveChanges` (src/state.jsx:229) opens with `if (!user) return;`, so every durable write is already a no-op without a signed-in user. A `?demo=1` branch would therefore need only two changes: bypass the `if (!user)` gate in App.jsx and swap `loadLocalSeed()` for a generator that fills `checkins` with ~28 days of plausible binary taps plus a horizon statement and a couple of week commitments. No Firestore rule change is needed and no real data can leak, because the demo user never authenticates and so never matches the whitelisted UID. The one thing to also stub is the Week tab's clipboard debrief export (src/lib/exportDebrief.js), which would otherwise emit the fabricated data as if real. Deterministic seeding (fixed dates relative to 'today') is required or the Trends 14-day bars will differ per visit."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-07-22",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "firebase-hosting",
+    "url": "https://telos-2f6ba.web.app",
+    "evidence": "firebase.json declares `hosting.public: \"dist\"` with an SPA rewrite, plus `firestore` (enterprise edition, named database `telos`, northamerica-northeast1) and an `auth` block naming googleSignIn with supportEmail <REDACTED_EMAIL@googlemail.com>. package.json `deploy` script: `npm run build && npx -y firebase-tools@latest deploy --only hosting`. README confirms project `telos-2f6ba` (project number 279937033044). A .firebase/ cache directory is present, indicating it has actually been deployed. No CNAME, so the URL is the default *.web.app / *.firebaseapp.com pair."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": [
+      "Vite 6",
+      "React 18 (JSX, no TypeScript)",
+      "Firebase 12 (Auth + Firestore Enterprise)",
+      "framer-motion",
+      "lucide-react",
+      "vite-plugin-pwa",
+      "plain CSS"
+    ],
+    "build_cmd": "npm run build",
+    "screenshots": [],
+    "one_liner": "A deliberately minimal personal PWA for closing the gap between stated and enacted values: each night you tap one binary button per life-domain and leave a single shared note, and each Sunday it copies a markdown debrief -- horizon statement, days-vs-target per domain, daily notes, last week's commitments -- to the clipboard to paste into Claude, which supplies all the interpretation the app deliberately refuses to."
+  },
+  "drift_flags": [
+    "firestore.rules is whitelisted to a single hardcoded UID ('gGSqYrLBr4QUQ00R9tSOTrtplc23', firestore.rules:23-25). The README says only 'Sign in with Google to keep one private record across devices' and the rules' own header comment describes a generic per-UID model -- neither discloses that the app is a one-person allowlist. Anyone else who signs in reaches the auth gate, passes it, and then hits a permission-denied backend error.",
+    "The deployed Firebase Hosting site (telos-2f6ba.web.app) is presumably live and publicly reachable, but the only thing a visitor can see is the sign-in screen. Any portfolio link to it shows a dead end, not the product.",
+    "README advertises v1.1 push notifications 'via Firebase Cloud Messaging and a scheduled Cloud Function' on the roadmap; there is no functions/ directory and no FCM code in src/ -- correctly marked roadmap, but there is no messaging groundwork at all.",
+    "docs/telos-prd.md is named the 'full specification' and single source of truth; not cross-checked against the shipped four surfaces in this pass.",
+    "Local branch `domains-binary-overhaul` still exists (and on origin) alongside main -- likely a merged-and-abandoned lane.",
+    "`dist/` and `node_modules/` are present in the working tree; dist/ contains a built bundle whose freshness relative to v0.5.0 was not verified.",
+    "firestore-rules-analysis.md sits at repo root as a loose working artifact rather than under docs/."
+  ],
+  "recommendation": "link",
+  "rationale": "Today it is unembeddable: a hard Google sign-in wall in front of a single-UID Firestore allowlist over the owner's real journal, so there is nothing a visitor could ever be shown. It is nonetheless the most polished and most recent app in this batch, and the state layer is unusually demo-friendly (writes already no-op without a user), so it is the single best candidate to promote from `link` to `demo` with roughly a day's work.",
+  "confidence": "high"
+}

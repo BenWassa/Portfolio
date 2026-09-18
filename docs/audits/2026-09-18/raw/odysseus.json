@@ -1,0 +1,53 @@
+{
+  "dir": "odysseus",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": [
+      "scripts/demo_email/seed_demo_emails.py --reset (idempotent fake mailbox seeding)",
+      "demo@odysseus.local Dovecot account deliberately has no mbsync channel",
+      "docs/index.html hover-to-play tour landing page with recorded GIFs"
+    ],
+    "seed_data": true,
+    "blocks_writes": false,
+    "auth_isolated": true,
+    "evidence": [
+      "scripts/demo_email/seed_demo_emails.py:1-22",
+      "tests/test_companion_pairing.py",
+      "docs/index.html",
+      "docs/chat.gif",
+      "docs/research.gif",
+      "docs/compare.gif",
+      "README.md:32-33"
+    ],
+    "notes": "Recorded for completeness, but this is upstream's demo tooling, not the user's. seed_demo_emails.py populates a throwaway local-only mailbox with obviously-fake-but-realistic messages (unread/flagged mix, a reply thread, an attachment, a newsletter, a calendar invite, a spammy one) so the email-assistant features can be shown without exposing real mail; --reset makes it deterministic. That plus the GIF-tour landing page is real demo craft, but there is no in-app runtime demo gate and nothing blocks writes, so: partial."
+  },
+  "git": {
+    "branch": "dev",
+    "head_date": "2026-06-05",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/dev"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "self-hosted (Docker Compose / systemd unit / macOS app bundle); docs/ is a marketing landing page",
+    "url": "none — it is self-hosted software, not a hosted site",
+    "evidence": "Dockerfile; docker-compose.yml + docker-compose.gpu-nvidia.yml + docker-compose.gpu-amd.yml; install-service.sh; odysseus-ui.service; build-macos-app.sh; launch-windows.ps1; .github/workflows/ci.yml (no deploy job)"
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["Python (app.py, pyproject.toml)", "@anthropic-ai/sdk", "opencode agent runtime", "MCP servers", "ChromaDB + fastembed", "Docker", "vLLM / llama.cpp / Ollama / OpenRouter / OpenAI / Copilot backends", "IMAP/SMTP", "CalDAV", "PWA frontend"],
+    "build_cmd": "docker compose up (recommended); python app.py",
+    "screenshots": ["docs/odysseus.jpg", "docs/chat.gif", "docs/research.gif", "docs/compare.gif", "docs/document.gif", "docs/notes.gif"],
+    "one_liner": "A self-hosted, local-first AI workspace — a ChatGPT/Claude-style UI you run on your own hardware — bundling chat against local or API models, a tool-using agent, hardware-aware model recommendation and serving, multi-step deep research, blind model comparison, a document editor, vector memory and skills, an IMAP/SMTP inbox with AI triage, notes/tasks and a CalDAV calendar."
+  },
+  "drift_flags": [
+    "NOT THE USER'S PROJECT. origin is https://github.com/pewdiepie-archdaemon/odysseus.git, not BenWassa. Across 905 commits there are zero authored by this user — `git log --author=haddon` and `--author=BenWassa` both return nothing. Top authors are pewdiepie-archdaemon (125), Afonso Coutinho (110), 'red person' (77). This is a third-party MIT-licensed OSS project cloned for local use.",
+    "An untracked .env (7KB, gitignored) sits in the working tree — a local runtime config for the user's own instance, further evidence this is a deployment, not a contribution.",
+    "Working tree is 3+ months stale (2026-06-05) against an upstream that merges PRs numbered in the 2900s, so the local clone is far behind."
+  ],
+  "recommendation": "skip",
+  "rationale": "This is somebody else's open-source project cloned to run locally — 905 commits, none by the user — so presenting it as portfolio work would misrepresent authorship. The only honest use would be a 'tools I self-host' note, which is not portfolio material.",
+  "confidence": "high"
+}

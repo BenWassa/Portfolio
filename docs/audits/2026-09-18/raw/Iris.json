@@ -1,0 +1,68 @@
+{
+  "dir": "Iris",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": [
+      "No URL, env or config trigger of any kind exists. The only thing literally labelled 'demo' is a UI affordance: five preset emotion buttons that call testEmotionDisplay(emotion) and stamp the confidence readout with the string `Demo Mode: NN%` where NN is Math.random()*20+80.",
+      "startEmotionDemo() in docs/js/updateEmotionDot.js is an auto-cycling attract loop, exported but never imported or called by any page."
+    ],
+    "seed_data": true,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      "docs/index.html:295",
+      "docs/index.html:320",
+      "docs/index.html:332",
+      "docs/index.html:363",
+      "docs/index.html:325",
+      "docs/js/updateEmotionDot.js:114",
+      "standalone/docs/index.html:120",
+      "standalone/docs/js/inference.js:1",
+      "data/emotion_core_5.csv:1"
+    ],
+    "notes": "Two different front-ends with opposite demo characteristics, and the wrong one is in the Pages-serving folder. docs/index.html hardcodes `const API_URL = 'http://localhost:5000/infer'` (docs/index.html:295) and drives the sliders through fetch(); its catch handler (docs/index.html:332) does NOT fall back to local inference - it writes 'Error' / 'Unable to reach backend. Please start the API server.' into the UI. So the page GitHub Pages would serve is dead on arrival for any visitor without the Flask server running locally. By contrast standalone/docs/index.html is a complete client-side port: it imports inferEmotion from ./js/inference.js (standalone/docs/index.html:120) and that file re-implements the cosine-similarity engine in JS over an inlined emotionData array of the same five profiles (standalone/docs/js/inference.js:1-47), so it runs fully offline with zero backend. The seed data is real and deterministic - the same five emotion/neurochemical profiles appear in data/emotion_core_5.csv, inlined in docs/index.html as emotionCoords + emotionNeurochemistry, and again in standalone/docs/js/inference.js - but there is no mode gate choosing between real and seeded state, and no resolver file. blocks_writes and auth_isolated are recorded false because the app is entirely stateless: no accounts, no persistence, no localStorage, no export/import, nothing durable to guard. Not 'playbook' - it has seeds without a gate, which the spec explicitly calls partial."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2025-07-22",
+    "uncommitted": 1,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": false,
+    "kind": "",
+    "url": "",
+    "evidence": "No .github/ directory at all, no workflows, no firebase.json, no vercel.json, no netlify.toml, no CNAME, no package.json (so no homepage field), no Dockerfile. A docs/ directory exists and is the conventional GitHub Pages source folder, so Pages could be switched on with no code change - but it has not been, and the README's 'What's missing' section states plainly: 'No deployment config (no Dockerfile, no hosting path, no env management)'. If Pages were enabled from /docs the implied URL would be https://benwassa.github.io/Iris/ - which would serve the backend-dependent page, not the standalone one."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": [
+      "Python 3 / Flask REST API (api.py, POST /infer, flask-cors)",
+      "pandas + numpy + scikit-learn (sklearn.metrics.pairwise.cosine_similarity) for the inference engine",
+      "Vanilla HTML/CSS/JS front-end, inline SVG visualisation, ES modules, Google Fonts (Cinzel + Inter)",
+      "pytest test suite (testing/)",
+      "CSV as the data store (data/emotion_core_5.csv)"
+    ],
+    "build_cmd": "None. No requirements.txt, pyproject.toml, package.json or lockfile exists. README instructs `pip install flask flask-cors pandas numpy scikit-learn` manually, then `python api.py`, then open docs/index.html.",
+    "screenshots": [],
+    "one_liner": "A five-slider neurochemical mixer (dopamine, serotonin, oxytocin, cortisol, norepinephrine, each 0-100) that runs the input vector through cosine similarity against a five-emotion reference table and renders the winning emotion as an animated dot moving across a colour-coded Valence-Arousal quadrant map."
+  },
+  "drift_flags": [
+    "The README in the working tree is an uncommitted full rewrite (61 insertions / 219 deletions) that has never been committed or pushed, so the README on GitHub is a different, older document than the one on disk. Same pattern as Ares.",
+    "README calls standalone/ 'Duplicate of docs/ - purpose unclear, likely legacy'. That is wrong and it is the single most consequential error in the repo: standalone/ is not a duplicate, it is the only version that works without a running Flask server, because standalone/docs/js/inference.js re-implements the engine in JavaScript. The README dismisses the one deployable artefact in the repo.",
+    "docs/index.html is the file a GitHub Pages /docs deployment would serve, and it hard-codes http://localhost:5000 with no client-side fallback - it renders 'Unable to reach backend' for every visitor. The directory name docs/ implies publishability that the file's contents contradict.",
+    "README claims '19 tests passing' as current fact; the suite has not been run in this audit (read-only) and dependencies are undeclared, so that number is a 2025-07 assertion, not a verified state.",
+    "The five-emotion profile data is triplicated - data/emotion_core_5.csv, an inline emotionNeurochemistry object in docs/index.html, and the emotionData array in standalone/docs/js/inference.js - with no generation step keeping them in sync.",
+    "data/emotion_chem_profiles.csv (the extended emotion set) is committed but wired to nothing; README's own 'Next Step' is to connect it, and that step was never taken.",
+    "Compiled Python bytecode is committed to git: __pycache__/api.cpython-313.pyc, __pycache__/engine.cpython-313.pyc and four files under testing/__pycache__/ are all tracked (git ls-files). There is no .gitignore in the repo at all.",
+    "docs/test.html is a committed zero-byte file, added by the most recent commit (3392be3, 'chore: Add initial test.html file for documentation purposes'). The last thing that happened to this repo was committing an empty file.",
+    "docs/backup/index_backup.html and docs/backup/styles_backup.css are committed snapshots living inside the would-be publish directory, and docs/emotion-explorer-quadrants.html is a 718-line third parallel copy of the same UI. Three-plus versions of one page, no indication which is canonical.",
+    "Stale remote branch origin/codex/create-standalone-version-for-project-iris sits 1 commit ahead of main (2025-07-21) and was never deleted after merge.",
+    "Dormant 423 days (HEAD 2025-07-22, today 2026-09-18) - the oldest repo in this batch of six."
+  ],
+  "recommendation": "demo",
+  "rationale": "standalone/docs/ is a finished, self-contained, zero-dependency client-side build of the whole idea - it already does the inference in the browser, so it is iframe-ready the moment it has a URL, and the work is repointing GitHub Pages at that folder rather than writing anything. The caveat is that the repo does not know this about itself: the README calls that folder legacy and the Pages-conventional docs/ folder holds the broken backend-dependent copy, so publishing requires a deliberate five-minute decision about which file is canonical - not a revival of the Python half, which can stay dormant.",
+  "confidence": "high"
+}

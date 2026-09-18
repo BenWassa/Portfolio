@@ -1,0 +1,58 @@
+{
+  "dir": "faust",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": true,
+    "evidence": [
+      "src/cities/index.js",
+      "src/views/",
+      "vite.config.js"
+    ],
+    "notes": "No demo affordance and none needed. A grep across src/, scripts/ and vite.config.js for localStorage, sessionStorage, fetch(, isDemo, demoMode, mode=, seed, mock and sample returns zero hits — the site has no user data, no persistence, no network calls and no auth. Every view is an editorial HTML string and the city comparison data is authored research content in src/cities/index.js, not sample data. There is therefore nothing to gate: the deployed site already is the full public experience. Classified 'none' strictly (no mode resolver, no fixtures, no write guard exists to cite), not as a defect."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-02-06",
+    "uncommitted": 1,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "github-pages (docs/ folder, committed build output)",
+    "url": "https://benwassa.github.io/faust/",
+    "evidence": "vite.config.js is a multi-entry build with base '/faust/' writing to docs/; docs/ is committed and tracked (docs/index.html, docs/archetypes/*.html, docs/assets/). README states the live URL explicitly. No .github/workflows, no CNAME — Pages serves /docs on main."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["Vite 7", "vanilla JS SPA with hash routing", "Tailwind CSS 3", "PostCSS", "Vitest (configured, unused)", "ESLint/Prettier"],
+    "build_cmd": "npm run build",
+    "screenshots": [
+      "faust/public/infographics/architecture-of-ambition-beyond-workism.png",
+      "faust/public/infographics/architecture-of-ambition-identity-fragility-vs-resilience.png",
+      "faust/public/infographics/digital-panopticon-career-anxiety-problem-solution.png",
+      "faust/public/infographics/digital-panopticon-professional-worth.png",
+      "faust/public/infographics/toronto-trap-defensive-ambition-burnout.png",
+      "faust/public/toronto.png",
+      "faust/public/vancouver.png",
+      "faust/public/london.png",
+      "faust/public/nyc.png"
+    ],
+    "one_liner": "A deployed long-form digital essay and self-diagnostic that argues extreme career ambition in expensive cities is a 'rational maladaptation', walking through seven chapters (system, cities, machines, casualties, exits, resources) with source-backed economic comparisons for Toronto/Vancouver/London/NYC and five standalone archetype pages."
+  },
+  "drift_flags": [
+    "README.md is modified and uncommitted (78 insertions / 76 deletions): the working tree has replaced the public-facing 'Project Faust — The Architecture of Ambition' README with an internal audit/INDEX format containing portfolio-triage sections ('Overlap / merge candidates', 'Cluster Role', speculative comparisons to psyche/dukkha/Orpheus/Janus/Ares). Committing this as-is would publish internal curation notes as the repo's front page.",
+    "That same working-tree README self-documents unfinished work: 'Sprint 6 (Final Polish) incomplete', open city source verifications in documentation/CITIES_FIGURE_SOURCE_TRACKER.md, and 'The Machines'/'The Practice' lacking content depth.",
+    "Vitest + @vitest/coverage-v8 + jsdom are installed devDependencies but there is no test script in package.json and no test files.",
+    "README references public/unnamed.png as a 'stale asset'; that file is not present in public/ — the note is itself stale.",
+    "Three overlapping dead-content directories at root: archive/ (COMMISSION.md, PROJECT_STATUS.md, archived_sprints].md — note the stray bracket in the filename), backup/archetypes/, and documentation/ alongside a separate docs/ build output. The docs/ vs documentation/ split is easy to confuse.",
+    "docs/ build output is committed and currently in sync with src (both last touched by the same 2026-02-06 commit), but nothing enforces that."
+  ],
+  "recommendation": "demo",
+  "rationale": "Fully static, zero user data, already live at benwassa.github.io/faust/ — it embeds in an iframe with no work at all, and it is the most visually finished artefact of the six. Resolve the uncommitted README rewrite before linking, since the working-tree version exposes internal portfolio-triage notes.",
+  "confidence": "high"
+}

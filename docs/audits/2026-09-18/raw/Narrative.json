@@ -1,0 +1,53 @@
+{
+  "dir": "Narrative",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      "grep -rni 'demo' over src/, README.md and index.html returns zero hits",
+      "No .env.example file exists in the repo",
+      "Every 'mock*' hit is inside src/features/photo-organizer/utils/__tests__/*.test.ts (vitest fixtures, not app seed data)",
+      "'template' hits are unrelated: src/features/photo-organizer/utils/videoTimeline.ts:42,194,266 (render template id 'recap-v1') and CSS grid-template rules",
+      "README.md:23 — \"Local-only storage: Project state stored in localStorage + IndexedDB handles\"",
+      "README.md:40 — requires a \"Chromium-based browser (File System Access API)\""
+    ],
+    "notes": "No demo affordance at all, and adding one would not be cheap. The app's first action is a File System Access API directory picker against the user's own photo library; there is no data path that does not start from a real local folder, and IndexedDB stores origin-scoped directory handles. A deployed visitor lands on an empty project picker. Seeding it would mean building a whole alternate in-memory photo source plus bundling sample images — not a config flag."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-07-21",
+    "uncommitted": 1,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "github-pages",
+    "url": "https://benwassa.github.io/Narrative/",
+    "evidence": ".github/workflows/deploy-pages.yml (upload-pages-artifact path ./docs -> deploy-pages) but it is `on: workflow_dispatch` only — never fires on push. vite.config.ts sets base '/Narrative/' for builds and outDir 'docs' with emptyOutDir false; docs/index.html and 22 docs files are committed. .github/workflows/ci.yml runs lint, vitest, ts-prune and depcheck on push/PR. No CNAME."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["React 18", "Vite", "TypeScript", "Tailwind CSS 3", "idb (IndexedDB)", "heic2any", "react-window", "lucide-react", "Vitest + Testing Library", "Python tooling (beat-sync, enrich, recap-v1 render)"],
+    "build_cmd": "npm run build  (format + lint + test + vite build into docs/)",
+    "screenshots": ["public/assets/Narrative_icon.png", "public/assets/Narrative_old.png"],
+    "one_liner": "A keyboard-first, local-only travel-photo curation tool that reads a trip folder straight off disk, lets you tag every shot with a single-letter story role, and emits a copy-based bash rename script that reorganises the trip into day folders without ever touching the originals."
+  },
+  "drift_flags": [
+    "The Pages deploy workflow is `on: workflow_dispatch` only — docs/ is committed as build output, so the live site reflects whatever was last built and committed by hand, not main. Deployment freshness is not automated despite the workflow existing.",
+    "docs/ is both a committed build output directory and the documentation directory (ARCHITECTURE.md, SPRINT_10_*.md etc. live alongside built assets), with emptyOutDir:false to avoid clobbering them. Fragile arrangement.",
+    "A .venv/ with scipy and scikit-learn is present in the working tree of a TypeScript repo (Python tooling under tools/), plus coverage/ and node_modules/ on disk. Untracked `music/` directory is the one uncommitted item.",
+    "4 archive/* branches locally and on origin (archive/dev, archive/chore/ui-consolidation, archive/feature/apply-organization, archive/feature/recap-v1-motion) plus an origin/fix-inspect-ux — explicitly abandoned WIP retained on the remote.",
+    "README documents a long feature list (dashboard, year grouping, resume-last-project, breadcrumb) that could not be verified against a running app in a read-only audit; no screenshots in-repo to corroborate the UI.",
+    "Only functional in Chromium browsers — a portfolio iframe would silently fail for Safari/Firefox visitors.",
+    "README has no live demo link, which is at least consistent with the app being unusable without a local folder.",
+    "Second-oldest app repo (HEAD 2026-07-21, ~2 months stale)."
+  ],
+  "recommendation": "link",
+  "rationale": "Genuinely substantial, well-tested work with CI and a real README, but it is structurally unembeddable: it needs the visitor's own photo folder via a Chromium-only filesystem API, so an iframe shows an empty picker. Best served by a card that links to the repo or a recorded walkthrough.",
+  "confidence": "high"
+}

@@ -1,0 +1,69 @@
+{
+  "dir": "pantheon",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": [
+      "none — no ?mode=demo, no demo env var, no mode resolver. Grep for mode=demo|demoMode|isDemo|demo=1|VITE_*_DEMO across src/ and scripts/ returns zero product hits (the only 'seed' matches are unrelated form-seeding in the Studio UI)."
+    ],
+    "seed_data": true,
+    "blocks_writes": true,
+    "auth_isolated": true,
+    "evidence": [
+      "README.md:19-21 — 'Local-first: no backend, no accounts. Content ships as portable JSON, lazy-loaded one day at a time.'",
+      "content/days/001-hubris.json … 007-repair.json — 7 fully authored days of real content ship in the repo and into dist/content/days",
+      "src/store/persistence.ts:36-53 — the only durable state is a localStorage blob (current day, per-day open record, per-facet read state); there is no network write path",
+      "package.json dependencies — react, react-dom, zustand only. No Firebase, no auth SDK, no API client.",
+      "src/store/dayAdvance.ts:30-51 — advanceSequence(): first-ever use unlocks Day 1 only; a new calendar day advances by exactly one; index is clamped to the highest published day",
+      "src/store/useAppStore.ts:52-93 — currentDayIndex is read from persisted state; there is no setDay/goToDay override exposed"
+    ],
+    "notes": "Pantheon does not need a demo mode in the usual sense — there is no user data to hide and no account to create, so the shipped content IS the demo. That satisfies the seed/no-durable-write/no-auth parts of the playbook by construction. It falls short of 'playbook' for one reason that matters a lot for an embed: there is no mode gate and no day override, and src/store/dayAdvance.ts hard-limits a first-time visitor to Day 1 of the 7 published days, with no way to browse further without returning tomorrow (or hand-editing localStorage). A portfolio iframe would therefore show exactly one day's six tiles, forever, to every visitor. A tiny 'showcase' gate (e.g. ?mode=demo letting the reader page freely across published days) would flip this to playbook with minimal work."
+  },
+  "git": {
+    "branch": "claude/mobile-studio-game-ui-o8db8r",
+    "head_date": "2026-06-23",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/claude/mobile-studio-game-ui-o8db8r",
+    "note": "Clean and in sync with its OWN upstream, but the working tree is parked on a merged feature branch, not main. Relative to origin/main (HEAD 2026-07-02) the checkout is 0 ahead / 3 behind. Two other local/remote feature branches exist (studio-review-flow-upgrade, plus 5 remote claude/* branches and feat/pwa)."
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "GitHub Pages via Actions (actions/upload-pages-artifact from dist/)",
+    "url": "https://benwassa.github.io/pantheon/",
+    "evidence": ".github/workflows/pages.yml (push to main; runs lint, sync --check, test, build with GITHUB_PAGES=true, uploads dist/); vite.config.ts:9 sets base='/pantheon/' when GITHUB_PAGES==='true'; .github/workflows/ci.yml also present; dist/ is committed in the working tree"
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": [
+      "React 18",
+      "Vite 5",
+      "TypeScript 5.6 (strict, tsc --noEmit in build)",
+      "Tailwind CSS 3",
+      "Zustand 4 (state)",
+      "vite-plugin-pwa",
+      "Vitest + Testing Library (unit, component, and a content 'trust gate')",
+      "AJV + ajv-formats for JSON Schema content validation",
+      "tsx-run Node scripts for manifest build, validation, ingest, sync, scout"
+    ],
+    "build_cmd": "npm run build (build-manifest + validate, then tsc --noEmit && vite build); GITHUB_PAGES=true for the Pages base path",
+    "screenshots": [
+      "content/images/placeholder.svg — the ONLY image in the content library",
+      "public/pwa-512.png, public/pwa-192.png, public/apple-touch-icon.png, public/favicon.svg (icons only)"
+    ],
+    "one_liner": "A once-a-day reading app that presents a single theme as six hidden tiles — Person, Picture, Poem, Principle, Passage, Parallel — each revealing a short sourced piece chosen to rhyme with the others, with the next day unlocking only at local midnight."
+  },
+  "drift_flags": [
+    "Working tree is checked out on claude/mobile-studio-game-ui-o8db8r (HEAD 2026-06-23), three commits behind origin/main (2026-07-02). Any local inspection or build here is not what Pages deploys.",
+    "README describes 'tiles with sourced images use them as backgrounds' and the whole Picture facet, but content/images contains exactly one file: placeholder.svg. The app's most visual feature currently has no assets.",
+    "Only 7 days of content exist for an app whose core premise is an indefinite daily sequence — a returning reader is 'caught up' (clamped) after one week.",
+    "mobile-studio.html is a rollup input (vite.config.ts:117) and ships in dist/, so the private editorial review layer is built and published to the public Pages site. studio.html is correctly excluded, which makes the mobile one look like an oversight rather than a decision.",
+    "dist/content/studio-manifest.json is generated into the deployed output — internal review metadata on a public URL. (content/judgments.jsonl itself is NOT shipped, so the exposure is limited to the manifest.)",
+    "Six stale remote feature branches (five claude/*, plus feat/pwa and studio-review-flow-upgrade) with no cleanup.",
+    "dist/ is committed to the repo while CI builds its own artifact from source — two sources of truth for the deployed output.",
+    "Repo root is cluttered with tooling debris (.graphify_*.json x6, graphify-out/) and five loose planning markdown files (prd-1.md, data-model.md, editorial-charter.md, studio.md, PRODUCT.md)."
+  ],
+  "recommendation": "demo",
+  "rationale": "It is already a local-first, backend-free, fully-seeded static app that deploys to Pages and needs no login — the cheapest genuine embed in this batch, and the most distinctive concept. The one blocker is the by-design daily unlock, which pins every visitor to Day 1 of 7; a small showcase gate (free navigation across published days under ?mode=demo) plus some real Picture-facet imagery would make it a strong live iframe.",
+  "confidence": "high"
+}

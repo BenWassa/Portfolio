@@ -1,0 +1,59 @@
+{
+  "dir": "Orion",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      "src/App.tsx:1",
+      "src/components/CoreMap/CoreMap.tsx:6",
+      "src/components/CoreMap/CoreMap.tsx:34",
+      "src/data/projects.ts:3"
+    ],
+    "notes": "Grepping src/, index.html and vite.config.mts for mode=demo, demoMode, isDemo, _DEMO, mock, fixture, seed, sample-data and localStorage returns zero hits. There is no env file, no .env.example, no mode resolver and no persistence layer of any kind - the only state in the entire app is one React useState holding the currently selected gate (CoreMap.tsx:17). A demo mode would be meaningless here because the app has no real mode to contrast with: everything on screen is hardcoded literals. src/data/projects.ts does look like a seed file - 313 lines, 20 project records with status/maturity/medium/audience fields - but it is NOT seed data for a demo mode, and more importantly it is imported by nothing: grepping src/ for 'ORION_PROJECTS' outside its own definition returns no results. The visible UI is driven instead by a separate 5-element hardcoded `gates` array literal at CoreMap.tsx:6. Recorded 'none' rather than 'partial' because nothing in the repo attempts a real-vs-demo distinction."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-06-12",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": false,
+    "kind": "",
+    "url": "",
+    "evidence": "No .github/ directory, no workflow, no CNAME, no vercel.json, no netlify.toml, no firebase.json, no homepage field in package.json, no docs/ build output (docs/ holds markdown planning docs, not a build). dist/ exists on disk from a local build dated 2026-06-12 but is gitignored, so it is not published. Additionally vite.config.mts declares no `base` - so even if GitHub Pages were switched on, a project-site deploy at /Orion/ would request /assets/... from the domain root and 404 on every asset. TODO.md Phase 8 lists 'Deploy to GitHub Pages or the selected target' as an unchecked box; README says deployment is 'the intended path'."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": [
+      "React 18 + TypeScript 5 + Vite 5 (@vitejs/plugin-react)",
+      "Plain CSS (135 lines across 3 files) - no Tailwind config despite tailwind-merge being a dependency",
+      "Declared but entirely unused: react-router-dom 7, lucide-react, clsx, tailwind-merge",
+      "Google Fonts (Merriweather, Open Sans)"
+    ],
+    "build_cmd": "npm install && npm run build (vite build); also npm run dev, npm run typecheck (tsc --noEmit), npm run preview",
+    "screenshots": [],
+    "one_liner": "An intended navigation portal for the author's whole project universe - a 'where are you, here is what to read next' router - which currently exists as a single-screen React prototype: five mythic Gate nodes (Skywalker, Sankofa, Agoge, Ares, Orpheus) arranged on a circle, each opening a side panel with a paragraph of flavour text."
+  },
+  "drift_flags": [
+    "The central claim of the architecture is untrue in the code: src/data/projects.ts defines a 20-project registry and README says it 'should be the source of truth for cards, filters, guide results, and future detail pages', but no file imports it. The rendered map reads from a hardcoded 5-element array in CoreMap.tsx:6. TODO.md is honest about this ('The current visible Core Map is still hardcoded and does not consume the registry') - the README is not.",
+    "1,825 lines of planning documentation in docs/commission-pack/ (8 files: product commission, information architecture, registry draft, sprint plan, design-system brief, build prompt, upgrade review) against 147 lines of live application code once the orphaned registry is excluded. A ~12:1 planning-to-code ratio.",
+    "All four runtime dependencies are unused. react-router-dom 7 is installed but there is no router - TODO.md Phase 3 defers routing. lucide-react, clsx and tailwind-merge appear in no source file, and there is no tailwind.config or postcss.config at all, so tailwind-merge is dependency cargo from a template.",
+    "The two interactive affordances are both non-functional. The centre 'Where Are You?' button - the product's headline feature, the psychological router the whole commission pack is about - fires `alert('Psychological Profiling Quiz initializing...')` (CoreMap.tsx:34). The 'Enter Gate' button in InfoPanel has no onClick handler at all, only a disabled attribute.",
+    "The five Gates displayed and the 20 projects in the registry are different sets with different semantics, and nothing reconciles them - so the visible map is not a view of the inventory it claims to map.",
+    "Registry records have no URL field: grepping projects.ts for liveUrl/repoUrl/url returns nothing, and TODO.md confirms 'Project URLs are not yet audited or present in the registry.' A portal with no links out.",
+    "Two full generations of the same app are kept alongside the third: archive/legacy-static/ (277 lines) and archive/original-scaffold/ (376 lines plus Windows .bat helpers and Python status-generator scripts that will not run on macOS).",
+    "TODO.md records 'npm install --package-lock-only previously reported two npm audit findings' as a deferred item; the lockfile is unaudited and node_modules is present from an install made on or before 2026-06-12.",
+    "vite.config.mts has no `base`, which silently breaks the GitHub Pages deployment the README and TODO both name as the target.",
+    "Phase 0's last unchecked box is 'Create initial GitHub issues from this backlog' - the backlog was never converted into tracked work, and the repo stopped four commits later.",
+    "NOT long-dormant, contrary to the batch premise: HEAD is 2026-06-12, i.e. 98 days idle as of 2026-09-18 - by a wide margin the freshest of the four 'dormant' repos, and the working tree is completely clean."
+  ],
+  "recommendation": "skip",
+  "rationale": "As a portfolio artefact this is a scaffold, not a project: one screen, five hardcoded nodes, an alert() where the core feature should be, an orphaned registry, four unused dependencies and no deploy path - there is nothing here a visitor could use and nothing that would survive being embedded. Its actual value is as an input to the Portfolio repo rather than an entry in it: src/data/projects.ts is a curated, typed inventory of 20 projects with status, maturity, medium and audience already modelled, and docs/commission-pack/02_ORION_PROJECT_REGISTRY_DRAFT.md is the prose behind it - worth harvesting for the portfolio's own project metadata even though Orion itself should not get a card.",
+  "confidence": "high"
+}

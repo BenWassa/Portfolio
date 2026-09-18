@@ -1,0 +1,68 @@
+{
+  "dir": "hestia",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": [
+      "npm run seed:demo (package.json:12 -> scripts/seed-demo.ts) pushes a hardcoded 12-listing demo dataset to the PRODUCTION Firestore project hestia-2f6ca",
+      "no URL trigger (mode=demo / ?preview / isDemo / demoMode) exists anywhere in src, web or scripts",
+      "no env-var mode switch; .env.example only has REPLIERS_API_KEY and GOOGLE_ROUTES_API_KEY"
+    ],
+    "seed_data": true,
+    "blocks_writes": true,
+    "auth_isolated": false,
+    "evidence": [
+      "scripts/seed-demo.ts:1-12 (\"Pushes the current demo dataset ... to Firestore so the hosted app has something to show\")",
+      "scripts/seed-demo.ts:24-36 (12 deterministic hardcoded listing rows, 7 eligible / 5 ineligible)",
+      "scripts/seed-demo.ts:80 (\"Seeded https://hestia-2f6ca.web.app with the demo dataset.\")",
+      "package.json:12 (\"seed:demo\": \"tsx scripts/seed-demo.ts\")",
+      "firestore.rules:60-70 (allow write: if false on listings and runs; Admin SDK only)",
+      "firestore.rules:47-56 (isAllowlisted() hardcodes three personal Gmail addresses)",
+      "web/index.html:79,155-181 (Google sign-in gate; unauthorized accounts see an error, no anonymous/demo path)",
+      "src/output/html.ts:19-25 (renderHtml produces a fully self-contained, no-network HTML report)"
+    ],
+    "notes": "There is deterministic demo data and durable writes are hard-blocked for clients, but there is no mode gate at all: the demo dataset is written into the single real Firestore project, and the hosted web view is gated behind Google sign-in with a three-address email allowlist. Nothing anonymous can see anything. However, a demo is genuinely cheap here: src/output/html.ts already emits a single self-contained static HTML report (out/hestia-2026-09-13T03-04-58.html exists locally, gitignored) with sortable/filterable rows and no network calls, and seed-demo.ts already holds the fixture rows to feed it."
+  },
+  "git": {
+    "branch": "phase-1-rental-pipeline",
+    "head_date": "2026-09-12",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/phase-1-rental-pipeline"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "firebase-hosting + firestore",
+    "url": "https://hestia-2f6ca.web.app",
+    "evidence": "firebase.json (hosting.public=\"web\", SPA rewrite, firestore rules/indexes, auth.googleSignIn with authorizedRedirectUris https://hestia-2f6ca.web.app); .firebaserc default project hestia-2f6ca; scripts/seed-demo.ts:80"
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": [
+      "TypeScript (ESM, no build step, tsx at runtime)",
+      "Node >=22",
+      "zod",
+      "firebase-admin ^14.4.0",
+      "vitest (61 tests)",
+      "Firebase Hosting + Firestore + Google Auth (vanilla ES-module web client, no framework)",
+      "Google Routes API",
+      "Repliers listings API"
+    ],
+    "build_cmd": "none (no build); npm run run:search -- --file inputs/example-listings.csv; npm test; npm run typecheck",
+    "screenshots": [],
+    "one_liner": "A CLI pipeline that pulls Toronto rental listings (from a Repliers feed or a CSV/JSON export), scores each address against two people's separate transit commutes via the Google Routes API with inclusive time thresholds, and emits a CSV plus a self-contained sortable HTML comparison table of the listings that work for both — with an optional Firebase-hosted, sign-in-gated web view of the same data."
+  },
+  "drift_flags": [
+    "STALE STATUS DOC: docs/PROJECT_STATUS.md (as of 2026-09-12) states 'Deployment/hosting: None. Phase 1 is intentionally manual/local.' but the HEAD commit c3c0551 (same day) added Firebase Hosting + Google Auth + a Firestore-backed web view, and firebase.json/.firebaserc are committed.",
+    "README SILENT ON HOSTING: README.md never mentions the deployed web app, Firebase, or hestia-2f6ca.web.app — it documents only the local CLI path. Grep for 'hosting|firebase|web.app' in README.md returns nothing.",
+    "PERSONAL DATA COMMITTED: firestore.rules:47-56 hardcodes three personal email addresses (<REDACTED_EMAIL@googlemail.com>, <REDACTED_EMAIL@gmail.com>, and a second person's gmail); firebase.json embeds supportEmail <REDACTED_EMAIL@googlemail.com>. Not credentials, but real PII including a third party's address — should be scrubbed or the repo kept private before any portfolio linkage.",
+    "PERSONAL CONTEXT: the project encodes two real workplace addresses (1300 Bay St, 111 Queen St E) and a real apartment hunt with a named partner ('Ben'/'Vicky' labels in commit 1d4a783 and seed-demo reasons).",
+    "NO SECRETS COMMITTED (verified): .env exists locally with 2 populated keys but is gitignored (.gitignore:2) and confirmed untracked; git ls-files shows only .env.example. A .githooks/pre-commit secret guard is committed. This repo is clean on the committed-credential axis.",
+    "FEATURE BRANCH IS THE REAL HEAD: all 5 commits of the rental pipeline live on origin/phase-1-rental-pipeline and are not merged to main; origin/main is 5 commits behind the actual project. Seven other remote branches (issue-1, issue-2, issue-6, issue-7, docs/*, housekeeping/*) remain unmerged.",
+    "STATED BLOCKER: README and PROJECT_STATUS both admit the Repliers API key only returns US MLS data, so the live-listing path cannot actually retrieve Toronto rentals; only the --file CSV path works today.",
+    "GRAPHIFY ARTIFACTS COMMITTED: .graphify_analysis.json, .graphify_extract.json, .graphify_labels.json and graphify-out/ (incl. a generated graph.html) are tracked — tooling output living in the repo."
+  ],
+  "recommendation": "link",
+  "rationale": "Genuinely well-engineered (61 tests, explicit contracts, cost-confirmation before paid API calls, tight Firestore rules) and the strongest documentation discipline in this batch, but the deployed artifact is a Google-sign-in-gated report for two named people, and the subject matter is a personal apartment hunt containing a partner's email and real workplace addresses. Link with a card; a live embed would need seed-demo rows rendered through src/output/html.ts as a standalone static page and the PII scrubbed first — cheap work, but not free.",
+  "confidence": "high"
+}

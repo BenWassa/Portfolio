@@ -1,0 +1,58 @@
+{
+  "dir": "Hermes",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": [
+      "no runtime mode switch; the published artifact is a static page with no user data",
+      "python -m src.render __main__ block renders the site from a committed fixture edition"
+    ],
+    "seed_data": true,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      "src/render.py:61",
+      "src/images.py:30",
+      "src/curate.py:299",
+      "src/curate.py:320",
+      "data/fixtures/edition_sample.json",
+      "template/index.template.html"
+    ],
+    "notes": "Demo mode is arguably moot here: Hermes is an unauthenticated static-site generator. The published GitHub Pages page (docs/index.html) contains only public news content, so there is nothing personal to hide behind a demo gate. What does exist is a deterministic seed: data/fixtures/edition_sample.json (a full 15KB June-2026 edition) plus a __main__ preview path in src/render.py:61 that renders the real template from it with no API keys. That is a genuine offline preview build but not a mode gate, so: partial. There is no ?mode=demo, no VITE_/env demo flag, and no write guard (nothing durable is written client-side)."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-09-11",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 1,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "github-pages (main /docs, published by a scheduled Actions cron, not by pages-build)",
+    "url": "https://BenWassa.github.io/Hermes/",
+    "evidence": ".github/workflows/build.yml (cron 05:17/05:37/06:17/07:17 America/Toronto, commits+pushes docs/index.html); .github/workflows/notify.yml:65 (PAGES_URL default https://BenWassa.github.io/Hermes/); .env.example PAGES_URL; README.md:291; docs/index.html tracked in git"
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["Python 3.11", "requests", "feedparser", "google-genai (Gemini 2.5 Flash)", "jinja2", "python-dotenv", "vanilla HTML/CSS/JS template", "GitHub Actions", "ntfy.sh"],
+    "build_cmd": "python -m src.build  (offline preview: python -m src.render)",
+    "screenshots": [
+      "archive/v1-hermes/assets/Hermes_vector.png",
+      "archive/v1-hermes/assets/hermes_pixel.png",
+      "archive/v1-hermes/assets/hermes_icon.png"
+    ],
+    "one_liner": "An overnight Python pipeline that pulls Toronto weather, Guardian/NYT/Perigon world news, Toronto RSS and a registry of followed writers, has Gemini dedupe/section/rank/summarize them in one call, renders the result into a static newspaper page, commits it to GitHub Pages at 05:17 local time, and pushes an ntfy.sh notification linking to it."
+  },
+  "drift_flags": [
+    "The only in-repo images are v1 archive icons — there is no screenshot of the v2 newspaper UI anywhere in the repo, so a portfolio card has no asset to use without capturing one.",
+    "Local origin/main ref is stale: it shows only 1 commit behind (the 2026-09-12 edition) while the pipeline publishes daily and today is 2026-09-18, so the real remote is ~6 editions ahead. Fetch is not permitted here, so treat 'behind: 1' as a floor, not a count.",
+    "Very heavy branch sprawl: 30 remote branches (sports-34..39, voices-26/29/31, issue-11/13/17/25, several claude/* and copilot/*, plus one explicitly named 'sports-38-broadsheet-rendering-DO-NOT-USE'). Two local feature branches (feature/crucix-integration-v2, feature/the-daily-v2) are also unmerged.",
+    "Root-level documentation sprawl: 15 top-level .md files (SPORTS_V2 x5, VOICES x4, PRD, PRODUCT, DESIGN, BUILD_INSTRUCTIONS, FOLLOWING_INTEGRATION) — several read as completed-sprint notes rather than durable docs.",
+    "A .venv and a graphify-out directory sit in the working tree.",
+    "README documents a Sports V2 surface across 5 separate spec docs; the shipped pipeline diagram in the README does not include a sports stage, so the docs claim more surface than the documented pipeline does."
+  ],
+  "recommendation": "demo",
+  "rationale": "The live GitHub Pages edition is already a public, zero-auth, self-updating artifact with no personal data, so it can be iframed directly with no demo-mode work at all — and it is the rare portfolio piece that is provably alive, rebuilding itself every morning. The only preparation needed is capturing a screenshot, since the repo has none of the v2 UI.",
+  "confidence": "high"
+}

@@ -1,0 +1,51 @@
+{
+  "dir": "Janus",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": [],
+    "seed_data": true,
+    "blocks_writes": true,
+    "auth_isolated": true,
+    "evidence": [
+      "pilot_humility_hubris/frontend/data.js:5",
+      "pilot_humility_hubris/frontend/index.html:1",
+      "pilot_humility_hubris/frontend/app.js:133",
+      "pilot_humility_hubris/frontend/app.js:53",
+      "docs/development/dashboards/gemini_dashboard_files.md:355"
+    ],
+    "notes": "No mode gate anywhere. What exists instead is a fully self-contained static browser prototype at pilot_humility_hubris/frontend/ (index.html + app.js + data.js + style.css + 8 SVG portraits) whose entire narrative corpus is hardcoded in data.js (`export const scenes = [...]`, 221 lines, deterministic). It makes zero network calls; the only persistence is the visitor's own localStorage keys `janusState` and `janusTelemetry` (app.js:133, app.js:53), so there is no durable shared write and no auth at all. Per the spec this is 'hardcoded sample content with no switch' = partial. Separately, docs/development/dashboards/gemini_dashboard_files.md:355-358 specs an `AdapterMode = 'fixtures' | 'api' | 'file'` with fixtures as the default for the Dash dashboard, but that is a design document only -- no `src/dashboard/` code implements it and there is no `public/fixtures/` directory in the repo. The main product (src/main.py) is a Python CLI RPG with no web surface and therefore no demo mode."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2025-08-15",
+    "uncommitted": 1,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": false,
+    "kind": "",
+    "url": "",
+    "evidence": "No .github/workflows, no firebase.json/vercel.json/netlify.toml/CNAME, no package.json (so no `homepage`). deployment/build_alpha.py only packages a distributable zip of the CLI game; there is no web deploy path. README's 'What's missing' section admits: 'No web or mobile deployment path; Windows .bat launchers only for CLI'."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["Python 3 (stdlib)", "Dash", "Plotly", "pytest", "vanilla JS ES modules", "HTML/CSS (prototype frontend)"],
+    "build_cmd": "python src/main.py  (no pip install target; deployment/build_alpha.py builds a zip)",
+    "screenshots": [],
+    "one_liner": "A Python CLI text RPG across three acts (Mirrors/Beasts/Whispers) whose branching choices carry weighted tags across a 12-category 'hamartia' trait taxonomy, resolving at the end into a dual-trait archetype delivered as a personalized 'Hero's Chronicle', with a Dash dashboard for running simulated policy-persona playthroughs and calibrating the scoring multipliers."
+  },
+  "drift_flags": [
+    "The README on disk is UNCOMMITTED: `git status` shows ` M README.md` and `git diff --stat` reports 131 insertions / 96 deletions. Everything quoted above (the INDEX block, 'What works', 'What's missing', 'Overlap / merge candidates') exists only in the working tree, not in origin/main. The public GitHub README is the older, much thinner version.",
+    "`.env` is tracked in git (`git ls-files .env` returns it) and `.gitignore` contains no `.env` rule. Content is benign here (`PYTHONPATH=.`) but the pattern means any future secret added to that file commits silently.",
+    "README documents modules that do not exist: it states the `src/modules/` files specced in docs/design/psychology_profiling_module.md (traits.py, scoring_engine.py, profile_generator.py, behavioral_analyzer.py, chronicle_writer.py) 'are not yet separate modules'. The design doc still describes them as the architecture.",
+    "No dependency manifest at root (no requirements.txt, no pyproject.toml). Dash/Plotly deps live only in src/dashboard/requirements.txt; everything else is implicit. A clean clone cannot be reproducibly installed.",
+    "Stale remote branch `origin/codex/update-documentation-for-dashboard-upgrade` with no local counterpart.",
+    "data/playtests/logs.json and data/playtests/survey_results.json contain playtest session records; the README itself flags 'verify before sharing'. Not audited for PII in this pass.",
+    "HEAD is 2025-08-15 -- over a year stale relative to every other repo in this batch."
+  ],
+  "recommendation": "link",
+  "rationale": "The shippable artifact is a Python CLI game with no web deploy path, so it cannot be embedded as-is; but pilot_humility_hubris/frontend/ is a genuinely self-contained static prototype that could be dropped onto GitHub Pages in an afternoon and then embedded. Until that is actually built and deployed, a card that links to the repo is the honest treatment.",
+  "confidence": "high"
+}

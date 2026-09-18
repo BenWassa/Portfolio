@@ -1,0 +1,74 @@
+{
+  "dir": "iroh",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [
+      "no mode=demo / demo=1 / ?preview / isDemo / demoMode / VITE_*_MODE trigger anywhere in src, app, lib, server or .env.example",
+      "the only sample-ish thing is a single hardcoded sentence used by a dev-only test button"
+    ],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      "src/App.tsx:79 (\"Sign in with Google to access your journal. Anonymous access is disabled.\") — the app renders nothing but a sign-in card without a Google session",
+      "src/views/HomeView.tsx:34-35 (devSample: one hardcoded reflection sentence)",
+      "src/views/HomeView.tsx:38,106 (setShowDevTest(!import.meta.env.PROD) — the sample is hidden in production builds and, when used, writes a REAL entry via submitReflection)",
+      "server/src/routes/api.ts:22 (router.use(requireAuth) — every API route requires a verified Firebase ID token)",
+      "server/src/middleware.ts:34 (adminAuth.verifyIdToken)",
+      "firebase/firestore.rules:4-9 (allow read, write: if false for all documents; all access is via the Admin-SDK server)",
+      ".env.example (VITE_FIREBASE_* + GEMINI_API_KEY only — no mode flag)"
+    ],
+    "notes": "Not just absent but deliberately closed: anonymous access is explicitly disabled and there is no unauthenticated render path. The devSample string is a developer convenience that submits a genuine entry to the real backend and is stripped in production, so it is not a demo affordance. A demo would require building an unauthenticated read-only route plus fixture entries and a Gemini-call stub — this is the most expensive demo retrofit in the batch."
+  },
+  "git": {
+    "branch": "dev",
+    "head_date": "2026-02-13",
+    "uncommitted": 1,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/dev"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "firebase-app-hosting (Vite frontend + Express API on one runtime) + firestore rules",
+    "url": "",
+    "evidence": "apphosting.production.yaml (buildCommand npm ci && npm run build:frontend, runCommand npm run start, FIREBASE_PROJECT_ID=thread-40646, secrets for FIREBASE_PRIVATE_KEY/CLIENT_EMAIL/GEMINI_API_KEY/CORS_ORIGIN); .firebaserc default thread-40646; firebase.json (firestore only). No workflow files (.github contains only copilot-instructions.md) and no deployed URL is written down anywhere in the repo."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": [
+      "Vite 7 + React 19 + TypeScript",
+      "React Router 7",
+      "Tailwind CSS 4",
+      "Express 5 API (tsx runtime, no compile step)",
+      "Firebase Auth (Google) + Firestore + firebase-admin 12",
+      "@google/genai (Gemini 2.5 Flash)",
+      "Vitest (3 test files)",
+      "PWA (public/sw.js + manifest.json)"
+    ],
+    "build_cmd": "npm run build (vite build); npm run start for the production API+static server",
+    "screenshots": [
+      "public/thread.png",
+      "public/thread_original.png",
+      "public/thread_vector.png",
+      "public/icon-192.png",
+      "public/icon-512.png",
+      "public/apple-touch-icon.png"
+    ],
+    "one_liner": "A private reflective-journaling PWA ('Thread') where each entry is sent to Gemini through an authenticated Express API that returns a structured analysis, then aggregates entries into periodic syntheses and long-horizon insight views over Firestore."
+  },
+  "drift_flags": [
+    "LOCAL SERVICE ACCOUNT KEY ON DISK: .secrets/firebase-adminsdk.json (2,376 bytes, dated 2026-02-06) sits in the working tree. It is correctly gitignored (.gitignore:27) and confirmed NOT tracked and NOT present anywhere in the 123-commit history (git log --diff-filter=A over '*.secrets*'/'*adminsdk*'/'.env*' returns nothing). So: not a committed-secret incident, but a live admin private key for project thread-40646 is sitting in a working directory — rotate/relocate if this folder is ever zipped or shared. .env.local is likewise present and ignored (.gitignore:36).",
+    "DUPLICATE DEAD FRONTEND: README.md:15 says 'Legacy Next app/ code has been removed to keep a single frontend path', but app/ is still fully tracked (8 components/views + globals.css + favicon) and its files DIFFER from their src/ twins (diff on HomeView.tsx shows they have drifted apart). Two copies of the UI, one of them stale and unreachable.",
+    "STALE ASSESSMENT DOC: ASSESSMENT.md (2026-02-05) reviews a Next.js app with app/api/* route handlers, unauthenticated /api/clear, /api/import and /api/export, and permissive Firestore rules. None of that matches HEAD: the API is now Express under server/src with router.use(requireAuth), and firestore.rules is now a blanket deny. The document reads as current findings but describes an architecture that no longer exists.",
+    "NODE_MODULES IN HISTORY: server/node_modules was committed at some point (found via git grep over history at ac52128) — history is bloated even though the tree is clean now.",
+    "UNCOMMITTED WORK: SPRINTS.md has 206 uncommitted added lines in the working tree.",
+    "UNMERGED BRANCHES / dev IS THE TRUTH: HEAD is on dev with origin/main behind it; archive-vercel-app and feature/vite-react-port remain as remote branches. The last commit is a 'Merge main into dev' conflict resolution.",
+    "NO DEPLOYED URL RECORDED: App Hosting config is complete and points at project thread-40646, but nothing in the repo states the live URL, and there is no CI workflow — deploys are manual and undocumented apart from FIREBASE_SETUP_CHECKLIST.md.",
+    "LOCAL-ONLY ARTIFACT CLUTTER: project_snapshot_2026-02-12/ plus project_snapshot_2026-02-12.zip and an empty exports/ dir sit in the working tree (all gitignored).",
+    "SENSITIVE DOMAIN: this is a personal journal containing the author's own reflections; the production Firestore holds real diary entries. Nothing personal is committed, but any demo must not touch the real project."
+  ],
+  "recommendation": "link",
+  "rationale": "A real, deployed, non-trivial product (auth, LLM analysis, synthesis pipeline, PWA) and the most substantial app in this batch, but it is a private journal with anonymous access explicitly disabled and no unauthenticated surface, so it can never be iframed as-is. Card with a link plus screenshots; note that no live URL is recorded anywhere, so that would need to be recovered before linking.",
+  "confidence": "high"
+}
