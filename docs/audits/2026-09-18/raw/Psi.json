@@ -1,0 +1,66 @@
+{
+  "dir": "Psi",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      "docs/index.html:6",
+      "docs/index.html:104",
+      "docs/index.html:140",
+      "docs/assets/app.js:123",
+      "docs/assets/data.json:1"
+    ],
+    "notes": "Not applicable rather than missing, and deliberately so. Psi's deployable artefact is a static site with no accounts, no backend, no persistence, no localStorage and no writes of any kind - docs/assets/app.js does exactly two fetches, one for ./assets/data.json (app.js:123) and one for the per-episode HTML fragment (app.js:100), and renders them. There is no real-vs-demo distinction to gate because there is no user state. A case could be made for 'partial' since the whole site openly declares itself provisional - the <title> is 'The Mind Unfolding - Dual-Mode Mockup' (docs/index.html:6), the About modal says 'This prototype demonstrates the UX and interaction model' (docs/index.html:140), and the episode view ships the hardcoded string 'This page is under construction' (docs/index.html:104) - but that is placeholder copy, not a demo affordance. No mode resolver, no fixtures directory, no env trigger, no seed/mock/demo identifier appears anywhere in the repo. The content in data.json (4 timeline eras, 3 themes) is intended final content that is merely thin, not seed data standing in for real data."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2025-08-08",
+    "uncommitted": 1,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": false,
+    "kind": "github-pages (prepared, not wired)",
+    "url": "https://benwassa.github.io/Psi/ (implied, unverified)",
+    "evidence": "No .github/ directory, no workflow, no CNAME, no firebase.json/vercel.json/netlify.toml, no package.json. But the repo is visibly staged for GitHub Pages from /docs: docs/.nojekyll exists, docs/404.html is a purpose-built client-side-routing fallback, and the README gives the exact manual step - 'Deploy to GitHub Pages: repo Settings -> Pages -> Branch: main, folder: /docs.' Whether that toggle was ever flipped in repo settings cannot be determined from the clone. .vscode/tasks.json defines a local 'Serve docs' task on port 5173."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": [
+      "Vanilla HTML/CSS/JS, no framework, no build step, no dependencies",
+      "Single JSON content store (docs/assets/data.json) fetched at runtime",
+      "Hash-based client-side routing with a GitHub Pages 404.html fallback",
+      "Markdown for scripts, research and planning; PDFs for research summaries"
+    ],
+    "build_cmd": "None - no package.json and no build. Served statically: `npx serve docs` or `python3 -m http.server --directory docs 5173` (file:// breaks the data.json fetch).",
+    "screenshots": [
+      "content/images/20250807_1110_Symbolic Still Life_simple_compose_01k22h6va0e5frjxdpknhsy6d8.png",
+      "content/images/20250807_1111_Ethereal Psi Symbol_simple_compose_01k22hampaegkbh9ewah2tgadc.png",
+      "content/images/20250807_1112_Luminous Psi Symbol_simple_compose_01k22hbz3ees1vy3600kv8y80e.png",
+      "content/images/20250807_1120_Glowing Psi in Neon_simple_compose_01k22hvb7nfscv1a3mp5cybv4z.png",
+      "docs/assets/og-placeholder.png"
+    ],
+    "one_liner": "A production repo for an unmade narrative audio series on the history of psychology, containing a finished 231-line Episode 1 script, a five-prompt multi-AI research corpus, and a small dependency-free companion website that lets you browse four pre-modern eras either chronologically (Timeline mode) or by recurring concept across cultures (Theme mode)."
+  },
+  "drift_flags": [
+    "The README in the working tree is an uncommitted full rewrite (73 insertions / 169 deletions) never committed or pushed - the README on GitHub is a different, older document. Same pattern as Iris and Ares.",
+    "It is an audio series with no audio. audio/ contains only a README and seven competing markdown drafts of the same Episode 1 script; .gitignore excludes audio/raw/ and audio/processed/ and neither directory exists. Nothing was ever recorded. This is the project's stated core deliverable.",
+    "docs/404.html hard-codes its redirect target as '/Psi/docs/index.html' (both in the meta refresh and in the JS location.replace). If Pages is deployed the documented way - source = branch main, folder = /docs - then docs/ IS the site root and the live index lives at /Psi/index.html, so every 404 would redirect to a second 404. The fallback is broken for the only deployment mode the README describes.",
+    "Seven overlapping Episode 1 drafts (Ep1 v3.1, Ep1 v3, Claude v1, Claude v2, Gemini v1, v2.1, v2) are all committed with no marker of which is canonical except a README sentence; scripts/001-first-episode.md and scripts/002-second-episode.md are 3-line stubs reading '*Dual-narrator script goes here.*' while the real 231-line script sits in audio/drafting/. The README flags this as needing reconciliation and it was never reconciled.",
+    "The site's own copy contradicts any claim that it is finished: title 'Dual-Mode Mockup', About text 'This prototype demonstrates the UX and interaction model', and a literal 'This page is under construction' banner above every episode page.",
+    "Footer reads '(c) 2024 The Mind Unfolding' while all repo activity is 2025 - a copied-template year that was never corrected.",
+    "docs/assets/og-placeholder.png is still the social preview image, so any shared link renders a placeholder card.",
+    "The four docs/content/*.html fragments are genuine 7-9 line summaries, not the episode script - the site and the finished Ep1 script share subject matter but are not connected by any pipeline; data.json and the script would drift independently.",
+    "10.6 MB of the 21 MB repo is source research material (7.5 MB of AI-generated PNGs in content/images, 3.1 MB of research PDFs) committed directly, with no LFS.",
+    "Two stale remote branches never deleted after merge: origin/codex/add-content-from-research-reports-to-sites and origin/codex/redesign-layout-and-ui-for-index.html (the latter now 0 commits ahead of main).",
+    "Dormant 406 days (HEAD 2025-08-08, today 2026-09-18)."
+  ],
+  "recommendation": "index",
+  "rationale": "Honestly assessed, this is abandoned mid-production rather than finished-but-unpublished: the research corpus and the Episode 1 script are genuinely complete, but the thing they were for - the audio - was never started, and the website is a self-declared four-card mockup that tells its own visitors it is under construction. The site would be trivial to host (static, no data, no build), so if it earns a portfolio slot it should be a text listing pointing at the writing, not an embedded iframe whose primary click-through lands on an 'under construction' page; promote it to `demo` only after the placeholder copy and the broken 404 redirect are fixed and there is something behind the episode links.",
+  "confidence": "high"
+}

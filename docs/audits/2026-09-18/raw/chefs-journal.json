@@ -1,0 +1,74 @@
+{
+  "dir": "chefs-journal",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": [
+      "?snapshot=true — a real URL query-param mode gate read at runtime",
+      "it bypasses the Google sign-in wall, synthesises a fake user, and injects 8 deterministic fixture meals",
+      "no env-var switch; .env / apphosting env carry only VITE_FIREBASE_* and VITE_HOUSEHOLD_ID"
+    ],
+    "seed_data": true,
+    "blocks_writes": false,
+    "auth_isolated": true,
+    "evidence": [
+      "src/App.jsx:264 (const isSnapshotMode = new URLSearchParams(window.location.search).get(\"snapshot\") === \"true\";)",
+      "src/App.jsx:267 (effectiveUser = isSnapshotMode ? { email: \"demo@example.com\", displayName: \"Demo User\" } : user)",
+      "src/App.jsx:284-301 (effectiveMeals = 8 generated fixtures: 'Sample Dish', 3/3/3/3 ratings, garlic/olive oil/chicken thighs ingredients, fixed pros/cons)",
+      "src/App.jsx:793 (if (!user && !isSnapshotMode) return <SignInView .../> — the gate that snapshot mode skips)",
+      "src/App.jsx:263,266 (comment 'Force skeleton loading state during boneyard snapshot capture'; effectiveMealsLoading = isSnapshotMode ? true : mealsLoading)",
+      "firestore.rules:5-27 (isAuthenticated() + isHouseholdMember() required for every path — an unauthenticated snapshot session cannot read or write real data)",
+      "src/bones/registry.js, src/bones/meal-card.bones.json, src/bones/dashboard-stats.bones.json (boneyard-js skeleton artifacts this mode exists to generate)"
+    ],
+    "notes": "The only repo in this batch with a genuine runtime URL mode gate, deterministic fixtures AND an auth bypass — but it was built to capture skeleton-loader screenshots for boneyard-js, not to demo the product: it deliberately forces the loading/skeleton state on (line 266), so ?snapshot=true shows shimmer placeholders rather than the 8 seeded meals. Nothing explicitly guards writes in this mode; durable writes are stopped only incidentally, by Firestore rules rejecting the unauthenticated client (so a demo user clicking save would see an error, not a no-op). Upgrading this into a proper playbook demo is cheap and mechanical: stop forcing the loading flag, richer fixtures, and short-circuit the write helpers."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-08-21",
+    "uncommitted": 0,
+    "unpushed": 1,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "firebase-hosting (dist) + firestore/storage rules, with a parallel App Hosting config",
+    "url": "https://chefs-journal-1b491.web.app (implied by .firebaserc / authDomain; no URL is written down anywhere in the repo)",
+    "evidence": "firebase.json (hosting.public=\"dist\", SPA rewrite, immutable asset cache headers, no-cache on index.html and sw.js; firestore + storage rules; emulator on 8080); .firebaserc default chefs-journal-1b491; apphosting.yaml AND apphosting.production.yaml (identical, App Hosting build env); .firebase/hosting.ZGlzdA.cache is committed, proving real `firebase deploy` runs"
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": [
+      "React 19 + Vite 7 (JSX, no TypeScript)",
+      "Tailwind CSS 4 + PostCSS",
+      "Firebase 12 (Auth Google provider, Firestore, Storage)",
+      "lucide-react icons",
+      "boneyard-js (generated skeleton loaders)",
+      "node --test unit tests (9 test files under src/lib)",
+      "@firebase/rules-unit-testing (test/firestore.rules.test.js)",
+      "Node importer side-pipeline (firebase-admin) under recipe-import/"
+    ],
+    "build_cmd": "npm run build (vite build); npm test (node --test src/lib/*.test.js); npm run test:rules (firestore emulator)",
+    "screenshots": [
+      "public/skeleton-loader.png",
+      "public/icon.png",
+      "public/icon-192.png",
+      "public/icon-512.png",
+      "public/apple-touch-icon.png"
+    ],
+    "one_liner": "A household cooking journal PWA where two signed-in members share one Firestore-backed log of cooked meals — structured ingredients, taste/texture/visuals ratings, photos and notes — plus a cookbook of recipes, a shopping list with a curated quick-add catalogue and frequent-item suggestions, and an offline OCR importer that bulk-loads scanned recipe cards."
+  },
+  "drift_flags": [
+    "FIREBASE WEB CONFIG COMMITTED IN PLAINTEXT: apphosting.yaml and apphosting.production.yaml both hardcode VITE_FIREBASE_API_KEY (<REDACTED_API_KEY>), app id, sender id and bucket, while README instructs keeping these in a gitignored .env. Firebase web API keys are public-by-design (they ship in the client bundle) so this is NOT a credential leak — the real protection is firestore.rules/storage.rules, which are strict here — but it is inconsistent with the repo's own stated handling and should be a conscious choice before the repo is made public.",
+    "NO REAL SECRETS COMMITTED (verified): git ls-files finds only recipe-import/importer/.env.example; the local .env (6 VITE_FIREBASE_* values, same public web config) is gitignored (.gitignore:27) and untracked; service-account*.json and raw PDF scans are explicitly ignored.",
+    "BUILD CACHE IS TRACKED, AND IS THE UNPUSHED WORK: .firebase/hosting.ZGlzdA.cache is committed, so every deploy dirties the tree. The single unpushed commit (07b1a26 'firesbae misc', 2026-08-21) contains nothing but churn in that cache file — a typo'd commit message over a generated artifact.",
+    "TWO COMPETING DEPLOY CONFIGS: firebase.json configures classic Hosting from dist/, while apphosting.yaml + apphosting.production.yaml configure Firebase App Hosting with byte-identical contents. Nothing says which is live, and the duplicate pair serves no purpose.",
+    "NO LIVE URL RECORDED: no web.app/hosted.app URL appears in README, docs/, PRODUCT.md or DESIGN.md, despite a deployed hosting cache. README says 'your production domain (when applicable)'.",
+    "FIVE UNMERGED BRANCHES: local feat/shopping-home-frequent-items, feature/recipe-lifecycle-prd, fix/issue-12-disable-pull-refresh plus remote claude/dining-courses-workflow-y60wjy and claude/ingredient-logging-extraction-njpk8u — parked work streams around the documented-but-unshipped recipe lifecycle PRD.",
+    "MANUAL MEMBERSHIP PROVISIONING: README documents that each user needs a hand-created Firestore member document at artifacts/default-app-id/households/shared-household/members/<uid>. There is no self-serve onboarding, so a stranger signing in with Google gets an authenticated session with zero access — worth knowing before linking it publicly.",
+    "THIN IMPORT DATASET vs BIG PIPELINE DOC: recipe-import/ has a full README, PRD reference, importer, backfill and enrichment scripts, but recipes.import.json holds only 3 recipes OCR'd from Chef's Plate meal-kit cards. Note the _note field records the source scan filename; the recipes are transcribed third-party meal-kit content, which argues against surfacing that data publicly.",
+    "PERSONAL/SHARED-HOUSEHOLD DATA: the production Firestore holds a real two-person household's meal history and photos. Nothing personal is committed, but any public demo must point away from chefs-journal-1b491."
+  ],
+  "recommendation": "demo",
+  "rationale": "This is the most finished and best-tested app in the batch (9 unit test files plus emulator-run Firestore rules tests, strict field-level validation rules, PWA, versioned releases) and it already has the exact machinery a portfolio demo needs — a URL mode gate, an auth bypass, and inline fixtures — just aimed at skeleton capture instead of at showing the product. Repointing that same gate at a seeded demo dataset and stubbing writes is a small, well-defined change, which makes this the best embed candidate here; ship it against demo fixtures, never against the live household project.",
+  "confidence": "high"
+}

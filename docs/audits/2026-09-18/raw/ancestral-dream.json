@@ -1,0 +1,48 @@
+{
+  "dir": "ancestral-dream",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [],
+    "notes": "Not applicable — there is no application. The repo contains zero .js/.ts/.py/.html files; it is entirely markdown (story bible, script, panel commissions, prompts) plus PNGs. The only 'template' hit is prompts/panel-template.md, an image-generation prompt template, not a demo affordance."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-07-18",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": false,
+    "kind": "",
+    "url": "",
+    "evidence": "No .github/, no firebase.json, vercel.json, netlify.toml, CNAME, package.json or docs/ build output. exports/ exists in the folder map but is empty on disk."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["Markdown", "AI image generation workflow (ChatGPT Projects)", "no code"],
+    "build_cmd": "",
+    "screenshots": [
+      "assets/references/art-direction-board.png",
+      "assets/references/ben-locked-v1.png",
+      "assets/references/truck-locked-v1.png",
+      "assets/references/lot-locked-v1.png"
+    ],
+    "one_liner": "A production pipeline repo for an AI-assisted graphic-novel adaptation of one vignette — locked character/vehicle/location reference art, a continuity bible, per-panel commission prompts, and a rubric-gated review workflow that forbids generating whole pages."
+  },
+  "drift_flags": [
+    "README and production/status.csv describe an in-flight production, but nothing has actually been produced: assets/panels/ holds only a .DS_Store, assets/pages/ and exports/ are empty, and every row in status.csv is 'ready'/'in_progress'/'not_started' with zero locked panels. The four reference PNGs and a folder of throwaway raw-experiment page renders are the entire visual output.",
+    "The four locked references are the only approved art, yet the workflow's step 0 ('lock references first') is the sole completed step of an 8-step golden workflow.",
+    "scripts/ contains only a README — the 'future assembly or utility scripts' do not exist.",
+    "An unmerged local branch docs/chatgpt-image-workflow sits alongside main.",
+    "Content overlap: the sibling repo `static` has an unpushed commit adding ComicBook/MD_Drafts/the-ancestral-dream-thread.md and ~43MB of Vignette 1 art exploration — this project's material is accumulating in the wrong repository."
+  ],
+  "recommendation": "index",
+  "rationale": "Real, well-structured creative process work with a genuinely interesting methodology, but there is no artifact to show — no finished panel, no page, no code, no deploy. It merits a line in a text listing of ongoing work, not a card, until at least one assembled page exists.",
+  "confidence": "high"
+}

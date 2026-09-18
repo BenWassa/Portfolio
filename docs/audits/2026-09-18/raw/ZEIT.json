@@ -1,0 +1,56 @@
+{
+  "dir": "ZEIT",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      "src/constants.js:11",
+      "src/constants.js:37",
+      "src/constants.js:71",
+      "src/constants.js:104",
+      "src/components/Onboarding.jsx:6",
+      "src/IdentityOS.jsx:21",
+      "src/IdentityOS.jsx:89",
+      "src/firebase.js:29",
+      "src/storage.js:4",
+      "src/storage.js:11"
+    ],
+    "notes": "No demo, preview or mock mode of any kind. The grep hits on 'seed' are SEED_VALUES / SEED_ROLES / SEED_DESIRES in src/constants.js, which are the DEFAULT_IDENTITY template a real first-time user is initialised from (Onboarding.jsx:6: 'No generic wizard. Identity is seeded from DEFAULT_IDENTITY on first load.') - not demo fixtures, and they are the owner's own value/role taxonomy rather than neutral sample content. Every read and write goes straight to Firestore at users/{uid}/data/{key} behind an awaited ensureAuth() (src/storage.js:4,11), so nothing renders without a real Google sign-in. src/IdentityOS.jsx:21 hardcodes a single-UID allowlist, so no one but the owner can get past the gate at all."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-04-22",
+    "uncommitted": 1,
+    "unpushed": 2,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "firebase-hosting",
+    "url": "https://zeit-fdbfb.web.app (implied by .firebaserc default project zeit-fdbfb; no custom domain or CNAME in repo)",
+    "evidence": "firebase.json hosting public=dist with SPA rewrite; .firebaserc default zeit-fdbfb; package.json deploy script 'npm run build && firebase deploy'; no .github/workflows directory - deploys are manual from a developer machine"
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["Vite 5", "React 18 (JSX, no TypeScript)", "Tailwind CSS 3", "Firebase 10 (Auth + Firestore + Hosting)", "vite-plugin-pwa", "standard-version"],
+    "build_cmd": "npm run build",
+    "screenshots": ["public/ZEIT.png", "public/ZEIT_v2.png"],
+    "one_liner": "A private single-user 'identity operating system' web app: you rank a fixed set of core values, track which life roles are active/partial/emerging/dormant, declare a current season with a theme, plan and review weeks against it, log where you are drifting from your values, and hold long-range desires on a horizon - all synced per-user to Firestore."
+  },
+  "drift_flags": [
+    "README says 'Access is restricted to an allowlisted set of users', but the allowlist is client-side only: ALLOWED_UIDS in src/IdentityOS.jsx:21 contains exactly one hardcoded UID, while firestore.rules only enforces request.auth.uid == userId. Any Google account can authenticate and write its own users/{uid} subtree; the allowlist is a UI gate, not a security boundary.",
+    "README documents five surfaces (Identity, Season, This Week, Drift, Horizons) but src/views contains six - TodayView.jsx is undocumented.",
+    "2 unpushed commits on main, one of which is exactly that undocumented feature: 23b7578 'feat: add Today landing surface' plus 9846518 'feat: add UX review document'. Local HEAD is ahead of what is deployed/published.",
+    "1 untracked file: archive/make-a-plan-to-snug-hejlsberg.md.",
+    "No CI at all - .github contains only copilot-instructions.md. Deploy is a manual `npm run deploy` from a laptop, so the live site's contents are unverifiable from the repo.",
+    "The app's default content is the owner's personal identity model (roles including Partner/Consultant/Son, a personal values ranking); ben-identity-gather.md at the repo root is raw personal material. Anything embedded publicly would display the owner's private self-assessment framework.",
+    "An uncommitted stale remote branch exists: origin/copilot/run-release-patch-and-deploy."
+  ],
+  "recommendation": "index",
+  "rationale": "It is genuinely private single-user software - a hardcoded one-UID gate, Firestore-only persistence, and default content that is the owner's own identity model - so it can neither be embedded nor usefully linked; a visitor sees a sign-in wall and then a rejection screen. It is real, shipped work (v1.1.3, PWA, conventional releases) and deserves a text listing with a screenshot at most.",
+  "confidence": "high"
+}

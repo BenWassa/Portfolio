@@ -1,0 +1,69 @@
+{
+  "dir": "HAUS",
+  "demo_mode": {
+    "level": "playbook",
+    "triggers": [
+      "VITE_DEMO=true (env gate, build-time only)",
+      ".env.demo committed with VITE_DEMO=true",
+      "npm run dev:demo -> vite --mode demo --port 5174"
+    ],
+    "seed_data": true,
+    "blocks_writes": true,
+    "auth_isolated": true,
+    "evidence": [
+      "App.jsx:27",
+      "App.jsx:150",
+      "App.jsx:151",
+      "App.jsx:183",
+      "App.jsx:230",
+      "App.jsx:231",
+      "App.jsx:232",
+      "App.jsx:261",
+      "App.jsx:448",
+      "src/demo/demoStore.js:19",
+      "src/demo/demoStore.js:23",
+      "src/demo/demoStore.js:50",
+      "src/demo/demoStore.js:571",
+      "src/demo/demoStore.js:675",
+      "src/demo/demoStore.js:854",
+      "src/components/Settings.jsx:824",
+      "src/components/Settings.jsx:826",
+      "src/components/Settings.jsx:854",
+      ".env.demo:1",
+      "package.json (scripts.dev:demo)"
+    ],
+    "notes": "Real mode gate: IS_DEMO swaps the entire data layer (App.jsx:230-232 picks demoStore over useHomeData/firebaseActions), so no Firestore write path is reachable in demo. Seeds are deterministic with stable IDs (DEMO_HOME_ID 'demo-home', DEMO_CONDO_HOME_ID 'demo-condo', DEMO_MEMBER_ID 'demo-alex', two sample homes 'Maple Street House' and 'Juniper Loft' with members, rooms, tasks, subtasks, phases and session state). Auth is isolated: authState is forced to 'signed-in' with a fake demoUser and the Firebase auth listener is skipped (App.jsx:183). Settings exposes an explicit 'Reset demo data' control (Settings.jsx:826-847) and the admin WhitelistManager is hidden in demo. Two gaps vs the hearth_v2 playbook: (1) no URL trigger (no ?mode=demo / ?demo=1 / URLSearchParams anywhere in the codebase), so demo cannot be reached on a hosted production build; (2) demo mutations persist to localStorage keys hk_demo_state_v2_* rather than being in-memory/ephemeral, so reset is a button rather than a refresh."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-08-08",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "firebase-hosting",
+    "url": "https://haus-4cfd8.web.app",
+    "evidence": "firebase.json (hosting.public = dist), .firebaserc, .github/workflows/deploy.yml (FirebaseExtended/action-hosting-deploy, projectId haus-4cfd8, channelId live, on push to main)"
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["React 18", "Vite 8", "Tailwind CSS 3", "Firebase (Auth/Firestore/Storage/Hosting)", "@dnd-kit", "Vitest", "standard-version"],
+    "build_cmd": "npm run build (runs scripts/validate-firebase-env.mjs then vite build)",
+    "screenshots": ["public/HAUS.png", "public/HAUS_noBG.png", "archive/HAUS_v1.png"],
+    "one_liner": "A mobile-first shared household task manager where a home joins by 6-character code and tasks are ranked by an urgency x importance x resource-fit matrix so a household can see what is actually doable in the time and people available right now."
+  },
+  "drift_flags": [
+    "Demo mode is fully built but never deployed: .github/workflows/deploy.yml passes only production VITE_FIREBASE_* secrets and never sets VITE_DEMO, so the live Firebase Hosting site is auth-gated only. Demo exists solely as a localhost target (port 5174).",
+    "No URL trigger for demo mode; grep for URLSearchParams/location.search across src returns nothing. Embedding requires a second build/deploy target rather than a query string.",
+    "Five root-level SWIPE_DELETE_*.md documents (SPEC, SUMMARY, IMPLEMENTATION, QUICK_REFERENCE, VISUAL_WALKTHROUGH) for a single feature — doc sprawl at repo root alongside AGENTS.md, CLAUDE.md, DESIGN.md, DESIGN.json, PRODUCT.md.",
+    "Four stale remote branches from agent runs: origin/claude/add-user-whitelist-Cda1U, origin/claude/fix-uid-whitelist-loading-DEafN, origin/copilot/fix-firebase-deploy-issue, origin/copilot/update-codebase-for-release.",
+    "firebase-adminsdk.json and .env sit in the working tree; both are gitignored (.gitignore:21, .gitignore:9) and untracked, so not leaked, but a service-account key living in the repo root is a hazard.",
+    "Access is whitelist-gated by UID in src/data/whitelist.js plus an APP_ADMIN_UID check in App.jsx:448, so the public URL shows nothing to a visitor."
+  ],
+  "recommendation": "demo",
+  "rationale": "HAUS already has the best demo implementation in this batch — a real mode gate that swaps the whole data layer, 870 lines of deterministic seed store, fake user, and a reset control. The only work needed to embed it is building with VITE_DEMO=true and deploying that to a second Firebase Hosting channel or Pages path (and ideally adding a ?mode=demo URL trigger).",
+  "confidence": "high"
+}

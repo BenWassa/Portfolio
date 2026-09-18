@@ -1,0 +1,23 @@
+{
+ "liebestraum": "committed Firebase admin private key (verified) + plaintext API keys",
+ "FamilyPlan": "public Pages build serves real household income (verified)",
+ "coffee-chat-os": ".env.local tracked; 14 named third-party personal notes committed",
+ "Arbeit_2025": "employer/personal documents; README falsely claims de-identified",
+ "CV-Updates": "client-confidential named pursuits in repo",
+ "hestia": "third-party email hardcoded in firestore.rules; real work unmerged on branch",
+ "Janus": ".env tracked with no .gitignore rule",
+ "vox-v2": "vite define would inline GEMINI_API_KEY into public bundle",
+ "great-decoupling": "deliverable untracked; docs/*.html committed at 0 bytes",
+ "psyche": "firebase.json serves public/ not dist/ \u2014 live site is not the app",
+ "jarvis-core": "hosting root has no index.html \u2014 deploy publishes a blank site",
+ "Iris": "docs/ build hardcoded to localhost:5000 \u2014 visitors see a backend error",
+ "layer-up": "VITE_FIREBASE_ENABLED case mismatch \u2014 cloud sync never worked in prod",
+ "static": "unpushed 80MB commit; pages.yml uploads path:. (would publish drafts/PDFs)",
+ "HAUS": "demo mode fully built but workflow never sets VITE_DEMO \u2014 never deployed",
+ "morpheus-dream-archive": "Pages build hard-fails without Firebase secrets; index.json empty",
+ "template-pushup": "zero seed data \u2014 demo renders an empty tracker",
+ "pantheon": "dayAdvance pins every visitor to Day 1 \u2014 embed shows one day forever",
+ "theos": "never deployed; astro.config still holds placeholder site URL",
+ "Ares": "non-standard entry point \u2014 Pages would not serve the real document",
+ "ZEIT": "allowlist is client-side only but documented as access restriction"
+}

@@ -1,0 +1,80 @@
+{
+  "dir": "poseidon",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": [
+      "URL trigger: ?mock=0|3|5|15|30 and ?mock=off|real",
+      "localStorage trigger: poseidon.dev.selection",
+      "In-app dev badge picker (bottom-right) that sets the selection and reloads",
+      "Hard gate: import.meta.env.DEV"
+    ],
+    "seed_data": true,
+    "blocks_writes": true,
+    "auth_isolated": true,
+    "evidence": [
+      "apps/web/src/main.tsx:22",
+      "apps/web/src/main.tsx:33",
+      "apps/web/src/main.tsx:39",
+      "apps/web/src/dev/mode.ts:9",
+      "apps/web/src/dev/selection.ts:14",
+      "apps/web/src/dev/selection.ts:35",
+      "apps/web/src/dev/selection.ts:51",
+      "apps/web/src/dev/mock-data.ts:40",
+      "apps/web/src/dev/mock-data.ts:359",
+      "apps/web/src/dev/mock-data.ts:401",
+      "apps/web/src/auth/AuthGate.tsx:23",
+      "docs/DEV_MOCK_DATA.md:1",
+      "apps/web/scripts/mock-mode-acceptance.mjs"
+    ],
+    "notes": "Mechanically this is the most sophisticated demo system in the batch - deterministic MOCK_DIVE_SEQUENCE seeds at five preset sizes (0/3/5/15/30 dives), an in-memory MemoryPersistence client so nothing durable is ever written, no Firebase initialisation at all, resolution order query-param -> stored choice -> real app, an in-app switcher badge, its own acceptance script (npm run test:mock) and a dedicated doc. It is classified 'partial' rather than 'playbook' for one reason: the whole thing is fenced behind an inline `if (import.meta.env.DEV)` in main.tsx:22, written that way deliberately so Vite's build-time replacement makes the mock branch unreachable and tree-shakeable. The shipped production bundle contains no mock path, so `?mock=15` on the live site does nothing. Production always falls through to AuthProvider + AuthGate, which requires a Google sign-in AND a manually 'approved' status before any UI renders."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-09-18",
+    "uncommitted": 1,
+    "unpushed": 2,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "github-pages + firebase-hosting",
+    "url": "https://benwassa.github.io/poseidon/",
+    "evidence": ".github/workflows/deploy-pages.yml (validate content/assets, typecheck, test, Playwright field-readiness, then build with POSEIDON_BASE_PATH=/poseidon/ and VITE_FIREBASE_* secrets); firebase.json hosting public=apps/web/dist; .firebaserc default project poseidon-e1e34; docs/PROJECT_STATUS.md:17 states the URL"
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["npm workspaces monorepo (packages/domain + apps/web)", "React + Vite", "strict TypeScript", "Tailwind CSS v4", "React Router (HashRouter)", "Firebase Auth + Firestore", "vite-plugin-pwa", "Vitest", "Playwright", "Python 3.12 asset/content validators", "release-please"],
+    "build_cmd": "npm run build  (full gate: npm run gate)",
+    "screenshots": [
+      "docs/evidence/01-home.jpg",
+      "docs/evidence/02-journal.jpg",
+      "docs/evidence/03-dive-detail.jpg",
+      "docs/evidence/04-log-where.jpg",
+      "docs/evidence/05-log-creatures.jpg",
+      "docs/evidence/05b-log-memory.jpg",
+      "docs/evidence/06-collection.jpg",
+      "docs/evidence/07-creature-detail.jpg",
+      "docs/evidence/08-atlas.jpg",
+      "docs/evidence/09-place-detail.jpg",
+      "docs/evidence/10-data-backup.jpg",
+      "docs/evidence/11-home-empty.jpg",
+      "docs/evidence/12-collection-empty.jpg",
+      "docs/evidence/13-landscape.jpg",
+      "docs/evidence/14-wide.jpg"
+    ],
+    "one_liner": "A mobile-first PWA dive journal that records each recreational dive (site, depth, conditions, memory note), lets the diver pick the creatures they saw from an illustrated marine catalogue, and accumulates those encounters into a personal creature collection and a geographic Atlas of places dived."
+  },
+  "drift_flags": [
+    "The live site cannot be demonstrated: production strips the mock branch (main.tsx:22) and AuthGate requires an approved Google account, so anyone opening https://benwassa.github.io/poseidon/ sees only a sign-in / pending-approval screen.",
+    "2 unpushed commits on main, including a release commit (106bbeb 'release: v0.1.2') and a feature commit (0a491b7 'feat(web): add source art review surface'). The tagged/published release state is behind the local one.",
+    "1 uncommitted modification: apps/web/src/dev/DevAssetReview.tsx.",
+    "Very heavy branch sprawl: ~45 remote branches (art batches, issue branches, docs branches, release-please) plus 3 stale local ones. README explicitly says old branches 'should be deleted once their useful work is merged' - they have not been.",
+    "Two deploy targets configured (GitHub Pages and Firebase Hosting for poseidon-e1e34) but only the Pages one is wired to CI; the Firebase target implies a second live URL with no automation behind it.",
+    "A 2026-09-07 creature-source-library zip is committed at the repo root (poseidon-creature-source-library-2026-09-07.zip) - a build artefact in version control.",
+    "A .venv directory exists in the working tree."
+  ],
+  "recommendation": "demo",
+  "rationale": "The demo machinery already exists and is production-quality (in-memory client, five deterministic seed presets, acceptance test, docs); the only blocker is the deliberate import.meta.env.DEV fence, which a build-flag swap (e.g. VITE_POSEIDON_DEMO) plus a demo Pages build would lift in a handful of lines. Visually it is the strongest portfolio piece here and it already ships 15 evidence screenshots for the card.",
+  "confidence": "medium"
+}

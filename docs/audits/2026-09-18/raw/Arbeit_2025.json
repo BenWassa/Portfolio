@@ -1,0 +1,46 @@
+{
+  "dir": "Arbeit_2025",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [],
+    "notes": "Not an application. The repo is a document archive (PDF/DOCX/XLSX/PPTX/TXT plus a handful of R scripts and Rmd READMEs). No package.json, no build, no web entry point, so demo mode is not applicable."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2025-12-09",
+    "uncommitted": 2,
+    "unpushed": 0,
+    "behind": 3,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": false,
+    "kind": "",
+    "url": "",
+    "evidence": "No .github/workflows, firebase.json, vercel.json, netlify.toml, CNAME, docs/ output or package.json homepage anywhere in the tree."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["R", "Markdown", "Office documents (PDF/DOCX/XLSX/PPTX)"],
+    "build_cmd": "",
+    "screenshots": [
+      "Arbeit_2025/Veterans_Administration_Centre_VAC/documentation/VAC_Process Flow_TitleAbstractScreening_horizontal.png",
+      "Arbeit_2025/WSIB_Exposure_Study/documentation/Consolidated Data Cleaning Process Flow.docx",
+      "Arbeit_2025/Beard_Study_STT/reports/BPH_STT_ConciseResults.html"
+    ],
+    "one_liner": "A personal backup of occupational-health research work done at Ontario Health in 2025 (beard/respirator fit studies, a VAC systematic-review screening pilot, WSIB exposure data-cleaning sub-projects) plus the author's internal HR performance-development file."
+  },
+  "drift_flags": [
+    "README documents a 'Respirator_Fit_Test_Study_RFS' folder that does not exist in the tree.",
+    "README claims 'All content has been de-identified', but the repo contains signed employer forms, a health-and-safety certificate, an oath of office naming a third party ('MK signed'), insurance/elections confirmations and ID screenshots under Reference_OH/ and Reference_OH/Personal/ — plus named PDP goal documents ('Haddon, Benjamin Peter 2025-26 Goal Setting'). If the GitHub remote is public this is a live privacy exposure.",
+    "Local clone is 3 commits behind origin/main (stale ref, no fetch performed) and has 2 untracked .DS_Store files.",
+    "Employer-owned work product (Ontario Health / WSIB / VAC project material) stored in a personal repo raises an IP/confidentiality question independent of portfolio use."
+  ],
+  "recommendation": "skip",
+  "rationale": "This is a work/consulting document archive with no runnable artefact, no deploy path and no README-facing narrative; it also carries personal and employer-confidential documents. It is not portfolio material and should arguably be made private rather than indexed.",
+  "confidence": "high"
+}

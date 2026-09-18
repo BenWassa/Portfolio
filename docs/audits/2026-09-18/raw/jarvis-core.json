@@ -1,0 +1,65 @@
+{
+  "dir": "jarvis-core",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": [
+      "MOCK_ENABLED — a hardcoded module-level boolean in frontend/src/api.js, currently false",
+      "no URL trigger (mode=demo / demo=1 / ?preview), no env var, no runtime resolver; flipping the demo requires editing source"
+    ],
+    "seed_data": true,
+    "blocks_writes": true,
+    "auth_isolated": false,
+    "evidence": [
+      "frontend/src/api.js:4 (const MOCK_ENABLED = false;)",
+      "frontend/src/api.js:11-62 (MOCK_RESPONSES: full deterministic clarification / proposal / approval payloads — three calendar options, three proposed times incl. one with a stated conflict, and a complete approval summary)",
+      "frontend/src/api.js:66-77 (getMockResponse routes on keywords in the typed command: 'clarify' -> clarification, 'schedule'/'meeting'/'propose' -> proposal, else approval)",
+      "frontend/src/api.js:87-89,141-143,166-168,191-196 (every one of the four API methods short-circuits on MOCK_ENABLED before any fetch, so the mock path performs zero network and zero durable writes)",
+      "frontend/src/auth.js:1-2 (entire file is two comment lines — there is no auth at all, so no demo/real user distinction exists)",
+      "firestore.rules:5-19 (allow read, write: if false everywhere; no client can write regardless of mode)"
+    ],
+    "notes": "This is the cheapest demo retrofit in the batch and the only repo already carrying a mock/real switch. The mock layer is complete, deterministic, keyword-driven and covers the whole UI flow, but the switch is a compile-time constant set to false with no gate, and the real path points at a localhost emulator, so today the deployed UI works in neither mode. Changing line 4 to true (or reading it from a URL/env flag) yields a fully working, backend-free, self-contained demo of the entire command -> clarify -> propose -> approve flow."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-02-04",
+    "uncommitted": 1,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "firebase-hosting + cloud-functions + firestore (MISCONFIGURED — see drift)",
+    "url": "https://jarvis-core-467f7.web.app (implied by .firebaserc; never stated in the repo and almost certainly serving nothing)",
+    "evidence": "firebase.json (hosting.public = \"frontend/public\", SPA rewrite to /index.html; functions.source = \"backend/functions\"; emulators on 8082/5001/5002); .firebaserc default jarvis-core-467f7; .github/workflows/ci.yml (format/lint/build only — no deploy job); frontend/DEPLOYMENT.md documents `firebase deploy --only hosting`"
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": [
+      "Vanilla JS PWA frontend (no framework), Vite 7 dev server",
+      "Firebase Cloud Functions (TypeScript) + Firestore",
+      "@google/generative-ai (Gemini) for intent classification only",
+      "zod",
+      "Prettier + ESLint 9 + Husky + lint-staged + standard-version",
+      "GitHub Actions CI"
+    ],
+    "build_cmd": "npm run dev (concurrently: firebase emulators:start + vite); frontend: npm run build (vite build); backend: npm --prefix backend/functions run build (tsc)",
+    "screenshots": [],
+    "one_liner": "A 'digital butler' control plane where a typed natural-language command is classified into a fixed intent taxonomy by Gemini, then run through a deterministic policy engine that decides whether to clarify, propose options, request explicit approval, or reject — with every step written to Firestore as append-only audit logs and no action ever executed by the model.",
+    "docs_note": "Unusually heavy governance layer for its size: README, ARCHITECTURE.md, GOVERNANCE.md, SECURITY.md, ROADMAP.md plus 13 files under docs/ (intent taxonomy, security matrix, butler charter, command flow, scope). The design docs substantially outweigh the implementation."
+  },
+  "drift_flags": [
+    "HOSTING ROOT IS EMPTY OF HTML: firebase.json sets hosting.public = \"frontend/public\", but that directory contains only manifest.json and service-worker.js — no index.html. The SPA rewrite sends every request to /index.html, which does not exist there. The real entrypoint is frontend/index.html (a Vite entry referencing /src/styles.css and ES modules) and no vite build output is wired into hosting. A `firebase deploy --only hosting` as documented in frontend/DEPLOYMENT.md would publish a blank site.",
+    "FRONTEND POINTS AT LOCALHOST: frontend/src/api.js:5 hardcodes API_BASE_URL = 'http://127.0.0.1:5001/jarvis-core-467f7/us-central1' — the Firebase functions emulator. With MOCK_ENABLED=false, any deployed copy of the UI calls the developer's own machine and fails.",
+    "README CONTRADICTS CONFIG: README.md:23 says 'Frontend: PWA (GitHub Pages)'; the repo is configured for Firebase Hosting (firebase.json) with no Pages workflow. README.md:27 says 'Auth: Firebase Auth (passkeys / biometrics)'; frontend/src/auth.js is two comment lines and implements nothing, and docs/PROJECT_STATE.md admits the backend uses a temporary hardcoded 'admin_v1' user id.",
+    "DOC/CODE MISMATCH ON MOCKING: docs/PROJECT_STATE.md states 'The frontend PWA renders ... using mocked API responses' and lists 'Frontend API wiring to the Firebase backend (currently mocked)' as not-yet-wired, but MOCK_ENABLED was set to false in the last commit — so the shipped state is the opposite of what the status doc describes, and the UI now has no working data source at all.",
+    "THREE OVERLAPPING BACKENDS: (a) backend/functions/*.ts at the top level (approvals/, audit/, calendar/ with createEvent/proposeTimes/readCalendar, classifyIntent.ts, policyEngine.ts), (b) backend/functions/src/*.ts — a second, differently-organised copy of index/classifyIntent/policyEngine/audit plus commandHandler and clarificationHandler, and (c) a top-level functions/ directory that is untouched `firebase init functions` boilerplate (node 24, firebase-functions ^7) while firebase.json deploys backend/functions (node 18, firebase-functions ^4). It is not evident from the tree which copy is live.",
+    "FEATURES DOCUMENTED BUT NOT WIRED: PROJECT_STATE.md itself lists calendar integration, time inference, the Gemini summarisation prompt, auth, and the execution layer as unwired — i.e. the calendar-first product promised by README and the docs/ set performs no calendar read or write.",
+    "SINGLE-DAY PROJECT, THEN STOPPED: all 8 commits land on 2026-02-04 and nothing has happened since (~7 months stale at audit time). One branch only, clean, pushed.",
+    "TRACKED JUNK: .DS_Store is committed AND is the sole uncommitted modification in the tree; firestore-debug.log sits in the working directory.",
+    "NO SECRETS COMMITTED (verified): git ls-files finds no .env, key, credential or service-account file; README's 'No production credentials committed' claim holds."
+  ],
+  "recommendation": "demo",
+  "rationale": "The architecture story (AI interprets intent, a deterministic policy engine owns authority, everything is audited, nothing executes without explicit approval) is genuinely the most portfolio-legible idea in this batch, and the complete mock layer means a convincing click-through of the clarify/propose/approve flow is one edited constant plus a corrected hosting root away — with no backend, no keys and no data. Embed it explicitly as an interaction prototype; do not present it as a working calendar assistant, because the calendar layer is unimplemented and the current deploy config would ship a blank page.",
+  "confidence": "high"
+}

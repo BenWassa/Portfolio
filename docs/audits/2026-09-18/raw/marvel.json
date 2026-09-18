@@ -1,0 +1,52 @@
+{
+  "dir": "marvel",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": [],
+    "seed_data": true,
+    "blocks_writes": false,
+    "auth_isolated": true,
+    "evidence": [
+      "src/data.ts:1-938 — INITIAL_TIMELINE_NODES and UNIVERSE_TRACKS: the entire catalogue is a hardcoded, deterministic TypeScript constant",
+      "src/App.tsx:2 — `import { INITIAL_TIMELINE_NODES } from './data'`",
+      "src/App.tsx:15-16 — only persistence is localStorage keys `chronometric_loom_nodes_v2` and `marvel_screen_atlas_route_v1`",
+      "src/App.tsx:30 — `// Fall through to the seeded catalogue.` on corrupt storage",
+      "src/App.tsx:53-60 — writes go to localStorage inside try/catch; comment: \"Progress remains in memory when storage is unavailable\"",
+      "grep for genai|GEMINI|API_KEY across src/ returns zero hits — no backend call is ever made"
+    ],
+    "notes": "There is no demo *mode* — there is no non-demo mode to switch away from. The app is 100% static seeded content with per-browser localStorage for watch state, no auth, no network, no server. That makes it trivially embeddable but it is `partial` by the spec's letter: seed data with no mode gate and no write guard (none is needed, since no write is durable beyond the viewer's own browser). Every visitor to an iframe would get a clean seeded atlas."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-09-17",
+    "uncommitted": 4,
+    "unpushed": 3,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "github-pages",
+    "url": "https://benwassa.github.io/marvel/",
+    "evidence": ".github/workflows/pages.yml (push to main + workflow_dispatch, builds with GITHUB_PAGES=true, configure-pages/upload-pages-artifact/deploy-pages); vite.config.ts base = '/marvel/' when GITHUB_PAGES === 'true'. Also .github/workflows/frontend-check.yml runs lint+test+build on PR and push."
+  },
+  "readiness": {
+    "has_readme": false,
+    "stack": ["React 19", "Vite 8", "TypeScript 7 (preview)", "Tailwind CSS 4 (@tailwindcss/vite)", "motion 12", "lucide-react", "tsx --test"],
+    "build_cmd": "npm run build  (vite build); checks: npm run lint (tsc --noEmit) && npm test",
+    "screenshots": ["public/favicon.svg"],
+    "one_liner": "An interactive cartographic atlas of Marvel screen continuities that lays every film and series out as parallel universe tracks — Spider, legacy mutant, MCU and more — with curated viewing routes, release-order context and a per-browser watched-state overlay."
+  },
+  "drift_flags": [
+    "NO README AT ALL. The repo's only prose is metadata.json and the index.html meta description. For a portfolio card this is the single biggest gap — a visitor arriving from GitHub sees bare source.",
+    "3 unpushed commits on main (a7a62e0 vite watcher symlink, 2e3843f ignore graphify artifacts, 3b16714 vite dev setup) — the deployed Pages build is behind local work.",
+    "4 uncommitted paths: modified .gitignore plus untracked DESIGN.json, DESIGN.md, PRODUCT.md — the design/product docs exist locally and have never been committed.",
+    ".env.example documents GEMINI_API_KEY and APP_URL as required, but nothing in src/ reads either; @google/genai, express and dotenv are declared dependencies with zero imports. Leftover Google AI Studio scaffolding — the app needs no key at all.",
+    "package.json still named \"react-example\" at version 0.0.0; `clean` script removes a server.js that does not exist.",
+    "package-lock.json is present but the Pages workflow uses `npm install`, not `npm ci`, with commit a69b6a8 titled \"Fix Pages dependency install for lockfile-free repo\" — the workflow and the lockfile disagree about whether this repo has one.",
+    "Vite 8 / TypeScript 7 / @vitejs/plugin-react 6 are unusually forward versions; CI pins Node 22 — build reproducibility depends on those prereleases staying available."
+  ],
+  "recommendation": "demo",
+  "rationale": "A finished, self-contained, zero-backend static app already wired to GitHub Pages — it is embeddable in an iframe today with no demo-mode work at all. The only real cost is writing a README and pushing the three local commits.",
+  "confidence": "high"
+}

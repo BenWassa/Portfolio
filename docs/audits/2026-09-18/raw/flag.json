@@ -1,0 +1,49 @@
+{
+  "dir": "flag",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      "src/react/useAuth.ts:31",
+      "src/infrastructure/firebase.ts:29",
+      "src/infrastructure/cloud-sync-service.ts:1",
+      "src/main.tsx:16"
+    ],
+    "notes": "No demo/template/preview affordance exists and none is needed. Atlas is a content-driven learning app: all 195 flags, country outlines, location and neighbour data ship as static assets, and progress is local-first in `flag-atlas:*` localStorage namespaces. Sign-in (Google, via src/infrastructure/firebase.ts:29) is entirely optional and exists only for cloud backup/sync - main.tsx:16 explicitly comments that the Firebase module is not imported on the critical path and a Firebase failure must never prevent Atlas from starting. A first-time anonymous visitor gets the full product immediately, which is functionally what a demo mode would provide. There is no seeded/fake state and no write-blocking, hence the honest classification is 'none'."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-09-12",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "github-pages (primary) + firebase-hosting (secondary)",
+    "url": "https://BenWassa.github.io/flag/ (Pages) and the atlas-3c48a Firebase Hosting site",
+    "evidence": ".github/workflows/pages.yml (triggered by successful CI workflow_run on main, downloads the tested flag-atlas-dist artifact, verifies the atlas-build SHA meta tag, deploys); .github/workflows/firebase-deploy.yml; firebase.json hosting public=dist with per-path cache headers; .firebaserc default atlas-3c48a; vite.config.ts:71 base './' (relative base, so it works under any path - iframe-friendly)"
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["Vite 8", "React 19", "TypeScript 5.8 (strict, multi-project)", "vite-plugin-pwa", "Firebase Auth + Firestore (optional cloud sync)", "d3-geo / topojson / maplibre-gl (map asset generation)", "Vitest", "Playwright (desktop/mobile/PWA acceptance projects)"],
+    "build_cmd": "npm run build  (full gate: npm test, which chains check + unit + firebase rules + build + ~40 verify:* scripts)",
+    "screenshots": [],
+    "one_liner": "A mobile-first offline-capable PWA that teaches world geography across four domains - flags, country locations, country outlines and land-border neighbours - navigated through an interactive 3D Earth where the learner picks a continent or region and then starts a Learn (familiarisation) or Play (scored retrieval) session, with per-region mastery tracked locally and optionally backed up to Firestore."
+  },
+  "drift_flags": [
+    "Extreme branch sprawl against the repo's own stated policy: ~40 remote branches (issue-*, spike/*, claude/*, docs/*, noop, noop-2, archive/*) and 7 local ones, while README says old feature/spike/agent branches 'are not project history and should be deleted once their useful work is merged, superseded or captured'.",
+    "One local branch has real unmerged work: issue-212-broad-suite-reconciliation is 2 commits ahead of main; the other six local branches are 0 ahead (fully merged, safe to delete).",
+    "Untracked heavy directories sit in the working tree: dist-spike-maplibre, .pwa-runtime-builds, .verify-dist, spike-evidence-maplibre, test-results, graphify-out, experiments, research.",
+    "No screenshot or preview imagery in the repo at all - only PWA app icons under public/icons/. For the most polished project here, that is the biggest portfolio gap.",
+    "README describes two live hosts (Pages primary, Firebase secondary) but never states either URL, so there is no canonical link to put on a portfolio card.",
+    "Firebase web config (apiKey, authDomain atlas-3c48a.firebaseapp.com, storageBucket) is hardcoded in src/infrastructure/firebase.ts:14-22 rather than read from env, unlike every other Firebase project in this batch. Not a secret leak (web config is public by design) but it is inconsistent and pins the build to one project."
+  ],
+  "recommendation": "demo",
+  "rationale": "Anonymous first-load already shows the complete product with real content and no login, `base: './'` means it runs under any path, and it is the most rigorously tested and recently worked repo in the set - it is embeddable as-is with no demo-mode work at all. It needs a stated URL and at least one screenshot before it can be carded.",
+  "confidence": "high"
+}

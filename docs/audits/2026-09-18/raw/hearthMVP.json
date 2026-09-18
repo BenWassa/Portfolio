@@ -1,0 +1,51 @@
+{
+  "dir": "hearthMVP",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": true,
+    "evidence": [
+      "src/services/firebase/auth.js:29",
+      "src/services/firebase/auth.js:24",
+      "src/views/OnboardingView.js:1",
+      "poster-map.json:1",
+      "src/views/SeasonTrackerMockup.js"
+    ],
+    "notes": "Exhaustive grep for mode=demo, demo=1, ?preview, isDemo, demoMode, *_DEMO, resolveMode, getAppState across src/, server/ and api/ returns nothing (the only package-lock hit is an unrelated dependency string). What exists is auth ISOLATION, not a demo mode: signInUser falls through to signInAnonymously (auth.js:29) unless a custom token is supplied (auth.js:24), so every unauthenticated visitor gets a private throwaway Firestore identity. But that identity starts EMPTY — OnboardingView then asks for the couple's real names, and every add/import writes to live Firestore. No seeded shelf exists: no starter/curated/catalog/DEFAULT_ITEMS constant anywhere in src/config or src/domain. poster-map.json is an asset lookup table (title -> poster path), not seed content, and SeasonTrackerMockup.js is a UI mockup view, not demo state. The anonymous-auth plumbing means a playbook-grade demo mode is cheap to add, but none is present today."
+  },
+  "git": {
+    "branch": "firebase-app-hosting-vnext",
+    "head_date": "2026-02-13",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/firebase-app-hosting-vnext"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "firebase-app-hosting (+ a contradictory GitHub Pages claim)",
+    "url": "",
+    "evidence": "apphosting.yaml declares runConfig/buildCommand `npm run build`/runCommand `npm run start:apphosting` and APP_ID hearth-app-hosting; server/index.js is the runtime entrypoint; firebase.json only configures the App Hosting emulator on port 5002 (no hosting/firestore targets). .github/workflows/deploy.yml builds on push to main but its final comment says 'Deployment is handled by GitHub Pages serving /docs from main' — which is false, docs/ contains markdown design docs, not a build output. No live URL appears anywhere in README, docs/ or SPRINTS.md."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["React 18 (create-react-app / react-scripts)", "Firebase 10 (Auth + Firestore)", "Express 4 (server/ + api/)", "Tailwind", "three.js 0.167", "lucide-react", "clsx/tailwind-merge", "JavaScript"],
+    "build_cmd": "npm run build  (DISABLE_ESLINT_PLUGIN=true react-scripts build; prebuild runs scripts/setupFirebaseConfig.js + versioning checks)",
+    "screenshots": ["_archive/legacy-github-pages/docs/posters/hero.jpg", "src/assets/hearth_vector.png", "hearth_nobg.png"],
+    "one_liner": "A deliberately small React + Firebase 'calm watchlist' for two people: a shared shelf of saved films and shows, vibe/energy tags, a 'Tonight' tray, a no-algorithm decision helper that just picks for you, and JSON/CSV import with a preview-and-fix step."
+  },
+  "drift_flags": [
+    "Checked-out branch firebase-app-hosting-vnext is 19 commits AHEAD of main, and .github/workflows/deploy.yml only runs on push to main — so the entire App Hosting migration is built and tested by nothing.",
+    "deploy.yml's closing comment ('GitHub Pages serving /docs from main') directly contradicts README.md:125 ('Primary runtime target is Firebase App Hosting') and docs/ holds no build output. Two mutually exclusive deployment stories in one repo.",
+    "SPRINTS.md declares 'Working Branch: backend-live-metadata-foundation' — that branch exists neither locally nor on origin.",
+    "The app cannot boot from a clean clone: public/firebase-config.js and .env.local are both gitignored and there is no committed example for the frontend config (only .env.api.example, which covers the backend media API).",
+    "Five branches (main, dev, modular, dev-finish-time-plan, firebase-app-hosting-vnext) all last touched Jan-Feb 2026 with dev and modular each carrying 1-2 commits that never landed on main.",
+    "SPRINTS.md is a 'Planning'-status program plan for a live-metadata backend that HEAD has only partially built — README already documents the outcome as current.",
+    "Head date 2026-02-13 makes this the oldest repo in the batch by ~4 months."
+  ],
+  "recommendation": "link",
+  "rationale": "The most product-complete app of the six — clear thesis, real domain layer, CI with lint/format/test gates — but it is unlaunched, needs uncommitted Firebase credentials to even render, and every session writes live user data to Firestore, so it cannot be dropped in an iframe today. Worth a card that links to the repo; it becomes a demo candidate only if someone adds a seeded read-only shelf on top of the existing anonymous-auth path.",
+  "confidence": "high"
+}

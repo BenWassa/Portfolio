@@ -1,0 +1,60 @@
+{
+  "dir": "orpheus",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": [],
+    "seed_data": true,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      "frontend/src/data/sampleReport.ts:3",
+      "frontend/src/app/App.tsx:21",
+      "frontend/src/services/reportService.ts:5",
+      "frontend/src/services/reportService.ts:11",
+      "frontend/vite.config.ts:1",
+      "frontend/src/screens/dashboard/lib/exportReport.ts:4"
+    ],
+    "notes": "A complete, deterministic 290-line fixture exists at frontend/src/data/sampleReport.ts (a fully-typed OrpheusReport with state/trait emotion+theme distributions, clusters, trends, evidence tracks) but it is imported NOWHERE - `grep -rn sampleReport frontend/src` returns only its own declaration. There is no mode gate of any kind: no ?demo/?mode param, no VITE_* env flag, no .env.example. App.tsx unconditionally calls loadProfiles() -> fetch('/api/profiles') on mount and falls back to an empty profile-selection screen with the message 'Could not load profiles. Run the local server and try again.' (frontend/src/app/App.tsx:29). Critically, /api/profiles and /api/reports/latest are implemented ONLY as Vite dev/preview-server middleware inside frontend/vite.config.ts (configureServer/configurePreviewServer), reading the local filesystem at data/output/reports. A static `vite build` therefore ships no API at all, so a deployed build renders the empty state forever. No auth exists anywhere in the app. The only write path is exportReport.ts, a client-side Blob download - no durable writes to guard."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-05-31",
+    "uncommitted": 1,
+    "unpushed": 0,
+    "behind": 2,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "github-pages (gh-pages branch, via peaceiris/actions-gh-pages) - BROKEN",
+    "url": "https://benwassa.github.io/orpheus/ (implied; serving stale v1 content)",
+    "evidence": ".github/workflows/deploy_docs.yml builds with `python 01_setup/export_static_site.py --input-dir 04_data/raw --out-dir docs`, but neither 01_setup/ nor 04_data/ exists at repo root any more - both were moved to archive/v1/. The build step fails on every push to main. origin/gh-pages does exist with a 2026-05-26 deploy containing v1 artifacts (index.html, ben-rap-x.html, x-rap-x.html, assets/, docs/) - i.e. the repo HAS been deployed once, but what is published is the abandoned v1 static report, not the v2 React dashboard. No workflow, vercel.json, netlify.toml or CNAME targets frontend/."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["Python 3.11", "Click CLI", "SQLite", "transformers (BART-large-mnli)", "sentence-transformers", "scikit-learn (DBSCAN/GMM)", "React 19", "TypeScript 5.8", "Vite 6", "lucide-react"],
+    "build_cmd": "npm --prefix frontend run build  (tsc --noEmit && vite build); Python: pip install -e \".[dev]\"",
+    "screenshots": [
+      "archive/v1/05_output/visualizations/listening_timeline.png",
+      "archive/v1/05_output/visualizations/monthly_heatmap.png",
+      "archive/v1/05_output/visualizations/top_artists.png",
+      "archive/v1/05_output/visualizations/audio_features_radar.png",
+      "archive/v1/05_output/visualizations/emotion_timeline.png"
+    ],
+    "one_liner": "A local-first Python pipeline that ingests a Spotify Extended Streaming History export, scores each track across 8 emotions and 8 themes with local transformer models, separates a 3-day 'state' window from a 90-day 'trait' window using engagement-weighted exponential decay, and renders the result in a React dashboard written as a narrative letter about yourself rather than an analytics grid."
+  },
+  "drift_flags": [
+    "README 'What's missing' claims: \"Frontend frontend/src/ files are not visible in the repo root (likely in node_modules or untracked)\". FALSE - all 25 files under frontend/src are tracked (git ls-files frontend/src).",
+    "README claims \"config.yaml contains real API credentials (Spotify client secret, Genius token) - should not be in version control\". Misleading - config.yaml is listed in .gitignore:96 and is NOT tracked; only config.yaml.template is committed. The stated risk is already mitigated.",
+    "deploy_docs.yml is a v1-era workflow pointing at 01_setup/ and 04_data/, paths that now live under archive/v1/. The Pages job has been failing on every push to main since the v2 restructure.",
+    "origin/gh-pages publishes the v1 static report site while the repo's actual product is the v2 React dashboard - anyone who finds the Pages URL sees dead work.",
+    "Local main is 2 commits behind origin/main (eb90a2d 'Merge PR #10 ... repo-assessment-consolidate', a04100d 'Consolidate status docs; add narrative, temporal, and experimental report layers'). Ref may be stale - no fetch performed.",
+    "frontend/dist/ is present on disk (260K, built) but untracked and gitignored - a stale local build artifact.",
+    "Large personal data in the working tree: my_spotify_data.zip (2.2MB), 'Spotify Extended Streaming History/', data/output/reports/Ben/*.json (~60-75KB each), data/cache/*.db. All correctly untracked/gitignored, but they are the reason the app cannot simply be deployed with real data.",
+    "README states scoring coverage is ~13% (17 plays in the state window against a 4,243-track catalog), so the real reports it can generate are statistically unreliable - an argument for demoing the fixture rather than real output.",
+    "Repo root is littered with tooling residue: 8 .graphify_*.json files, graphify-out/, .venv/, .pytest_cache/, .ruff_cache/, orpheus.egg-info/, frontend_upgrade_handoff/, archive/v1/ - noisy for a portfolio visitor."
+  ],
+  "recommendation": "demo",
+  "rationale": "Directly answering the question posed: YES, orpheus is genuinely close to shippable, and the gap is smaller than the README suggests. The React dashboard is finished work - 12 components, a completed narrative-layout UI pass (every box in UI_UPGRADE_TODO.md is checked), and a complete typed sample report already sitting in the repo. The single blocker is that sampleReport.ts was never wired in and the report API exists only as Vite dev-server middleware, so a static build shows an empty state. Wiring the fixture in as the fallback when /api/profiles is unavailable or empty is roughly a ten-line change in frontend/src/app/App.tsx, needs no backend, exposes zero personal data, and yields a fully static embeddable dashboard. The competing signal is that the Python pipeline behind it is only 13% scored, so the demo must be honestly framed as a sample report - which the fixture's own metadata.note already does.",
+  "confidence": "high"
+}

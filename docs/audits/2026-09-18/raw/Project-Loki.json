@@ -1,0 +1,49 @@
+{
+  "dir": "Project-Loki",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      "src/features/analyzer/utils/storage.js:1",
+      "src/features/analyzer/utils/storage.js:16",
+      "package.json (no firebase/auth dependency)"
+    ],
+    "notes": "Nothing matching mode=demo, isDemo, demoMode, *_DEMO, VITE_*_MODE, resolveMode, or any fixtures/mock/seed directory exists anywhere in src/. Level is honestly 'none'. But the level understates embeddability: the app has no auth, no backend and no network calls. All state is a single localStorage key, loki_sessions_v1 (src/features/analyzer/utils/storage.js:1), written by saveSession at :16. There is no real user data to protect and no seeded content to show — a visitor starts empty and creates their own session by walking the 8-step flow, which is exactly the thing worth demonstrating. Adding seeded sessions so the Dashboard is not empty on arrival would be the only cheap improvement."
+  },
+  "git": {
+    "branch": "feature/analyzer-ui-refresh",
+    "head_date": "2026-02-02",
+    "uncommitted": 1,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/feature/analyzer-ui-refresh"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "github-pages (Actions: build then upload-pages-artifact from ./docs)",
+    "url": "https://BenWassa.github.io/Project-Loki/",
+    "evidence": ".github/workflows/pages.yml (on push to main; npm ci, npm run build, upload ./docs, deploy-pages); vite.config.js:7 base '/Project-Loki/'; vite.config.js build.outDir 'docs'"
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["React 18", "Vite 7", "React Router 6", "Tailwind 3", "framer-motion 8", "lucide-react", "Vitest 4", "localStorage only"],
+    "build_cmd": "npm run build  (vite build -> docs/)",
+    "screenshots": [],
+    "one_liner": "A single-page React diagnostic that takes a task you are stuck on, narrows your symptoms to one of seven Pirsig-derived 'gumption traps' (Egotism, Anxiety, Impatience, Boredom, Fog, Intermittent Failure, Reassembly Failure) through calibration questions, then runs you through a timed four-step intervention playbook and logs the session to localStorage with a dashboard and JSON export."
+  },
+  "drift_flags": [
+    "HEAD is on feature/analyzer-ui-refresh, not main, and the two have genuinely diverged: 9 commits on the feature branch are absent from main (including 'Modularize analyzer screens', 'Fix analyzer export and trim UI', and Sprints 1-4 restructuring) while 6 commits on main are absent from the feature branch. CI deploys only from main, so the live GitHub Pages site is NOT the code in this working tree — it predates the entire features-based restructure.",
+    "README.md has 148 deleted / 60 added uncommitted lines: the working copy replaces the old vision-led 'Project Loki is a mission to help individuals reclaim agency' README with a factual INDEX-style one. The rewrite is the accurate document and it is unstaged.",
+    "The uncommitted README asserts 'deployed to GitHub Pages via CI' — true of main, but not of the branch being edited.",
+    "docs/ build output is committed to git (docs/assets/index-COdr8OVM.css, docs/assets/index-iRJc3_EN.js) while pages.yml also rebuilds it in CI, so the tracked bundle is a stale duplicate of whatever CI last produced.",
+    "project-loki-nutshell.zip is committed at the repo root. The README itself flags it as 'unknown archive, likely a snapshot; not referenced by the app'.",
+    "README admits the larger 'Loki OS' vision (philosophy/tools/metrics site) is documented but unbuilt, and that src/pages/home.jsx exists as a stub for it; infrastructure/analyzer_schema_v3.sql is a frozen Postgres schema wired to nothing.",
+    "No screenshot or preview image exists anywhere in the repo."
+  ],
+  "recommendation": "demo",
+  "rationale": "It is a self-contained, auth-free, backend-free React SPA already building to GitHub Pages under the correct base path — the cheapest genuine iframe embed in this batch, requiring no demo mode at all. The real work before embedding is git hygiene, not code: merge feature/analyzer-ui-refresh to main so the deployed site matches the restructured app, and commit the rewritten README.",
+  "confidence": "high"
+}

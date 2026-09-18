@@ -1,0 +1,59 @@
+{
+  "dir": "macht",
+  "demo_mode": {
+    "level": "playbook",
+    "triggers": [
+      "Vite mode gate: import.meta.env.MODE === 'demo'",
+      "Env gate: VITE_DEMO_MODE === 'true'",
+      "npm scripts: dev:demo (vite --mode demo), build:demo (vite build --mode demo)"
+    ],
+    "seed_data": true,
+    "blocks_writes": true,
+    "auth_isolated": true,
+    "evidence": [
+      "src/lib/demoMode.ts:10",
+      "src/lib/demoMode.ts:11",
+      "src/lib/demoMode.ts:13",
+      "src/data/demoData.ts:140",
+      "src/state/useHistoryStore.ts:41",
+      "src/state/useHistoryStore.ts:70",
+      "src/components/DemoModeBanner.tsx:5",
+      "src/components/DemoModeBanner.tsx:7",
+      "package.json:9",
+      "package.json:11"
+    ],
+    "notes": "The cleanest demo implementation of the six. A single resolver (src/lib/demoMode.ts) derives IS_DEMO_MODE from the Vite mode or VITE_DEMO_MODE, and demoStorageKey() suffixes every persisted zustand store key with '_demo' (macht_history, macht_injuries, macht_settings, macht_custom_exercises, macht_ui, macht_workout). Durable writes are therefore namespace-isolated rather than blocked: a demo session can never overwrite a real user's localStorage. DEMO_HISTORY in src/data/demoData.ts is deterministic (built from fixed weight/rep/RPE tuples through brzyckiE1rm), and DemoModeBanner renders a visible 'Demo mode' banner with a Reset button that clears only the _demo keys. There is no auth in the app at all (local-storage only), so auth isolation is trivially satisfied. The one gap vs the hearth playbook is that there is no URL trigger (?mode=demo) - the mode is fixed at build time."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-06-19",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "github-pages",
+    "url": "https://BenWassa.github.io/macht/",
+    "evidence": ".github/workflows/deploy.yml (push to main -> npm run build -> upload ./dist -> deploy-pages); package.json:5 homepage field"
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["Vite 6", "React 18", "TypeScript 5.6", "Tailwind CSS 4", "Zustand 5", "framer-motion", "vite-plugin-pwa", "Vitest"],
+    "build_cmd": "npm run build  (demo build: npm run build:demo)",
+    "screenshots": [],
+    "one_liner": "An offline-first PWA powerlifting tracker that logs sets with weight/reps/RPE, computes estimated 1RM via the Brzycki formula, runs rest timers and plate math, and substitutes exercises around recorded injuries - all persisted to localStorage with no account."
+  },
+  "drift_flags": [
+    "Deployed build is NOT the demo build: .github/workflows/deploy.yml:31 runs `npm run build`, so the live GitHub Pages beta uses the production storage keys, not the demo ones. build:demo exists but nothing ever runs it in CI.",
+    "Production default state is not empty: src/state/useHistoryStore.ts:41 falls back to MOCK_HISTORY when not in demo mode, so a first-time beta tester opening the live site sees fabricated workout history rather than an empty log.",
+    "Hardcoded personal medical data ships to every user: src/data/mockData.ts:3 INITIAL_INJURIES seeds a specific 'Left anteroinferior labral tear' profile with forbidden/caution movement tags. This is the owner's own injury, shipped as the default for all users.",
+    "README markets the GitHub Pages URL as a 'Beta' for external testers but never mentions demo mode; the demo affordance is undocumented.",
+    "Three stale local branches (barbell-measure-scale-backup, claude/fix-open-issues, impeccable/ux-critique-fixes) plus an unmerged remote branch claude/workout-progress-strength-metrics-h69lu3.",
+    "No screenshots or preview imagery anywhere in the repo - only PWA icons and two logo files in public/."
+  ],
+  "recommendation": "demo",
+  "rationale": "It already has a build-time demo mode with deterministic seed data, storage-key isolation and a reset banner, and it is a self-contained local-storage PWA with no auth or backend - the single best iframe candidate in this batch. The only work is pointing a deploy (or a second Pages path) at `npm run build:demo`.",
+  "confidence": "high"
+}

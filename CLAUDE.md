@@ -63,9 +63,19 @@ npm run portfolio:project-docs && npm run portfolio:project-docs:compile
 ## 5. Demo mode over template repos
 
 Live demos are preferred to forked template repos, because templates drift.
-The canonical standard is `docs/DEMO_STATE_PLAYBOOK.md` (imported from `hearth_v2`).
-A project qualifies for an iframe `demoUrl` only when it meets that playbook's
-acceptance checklist.
+
+- `docs/DEMO_STATE_PLAYBOOK.md` — the normative spec: what "done" means.
+- `docs/DEMO-MODE-METHODS.md` — which projects get a demo and how to build one per
+  project archetype. **Read this before starting any demo work.**
+- `docs/audits/` — the evidence, and how to re-run an estate-wide audit without
+  redesigning it.
+
+A project qualifies for an iframe `demoUrl` only when it passes the acceptance
+checklist in `DEMO-MODE-METHODS.md` §4 — which requires *loading the deployed URL and
+looking at it*. A 200 response is not evidence: this audit found three live sites
+returning 200 while serving something broken or wrong.
+
+Never fork a project to create a demo. Forks are snapshots and rot silently.
 
 ## 6. Before you finish
 

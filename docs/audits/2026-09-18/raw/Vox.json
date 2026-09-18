@@ -1,0 +1,53 @@
+{
+  "dir": "Vox",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": ["default CSV auto-load on page open (no URL or env flag)"],
+    "seed_data": true,
+    "blocks_writes": true,
+    "auth_isolated": true,
+    "evidence": [
+      "docs/index.html:117",
+      "docs/index.html:118",
+      "docs/index.html:119",
+      "docs/index.html:64",
+      "docs/index.html:43",
+      "docs/index.html:438",
+      "docs/data/vocab_progress_es.csv:1",
+      "archive/spanish/vocab_progress_es.template.csv:1"
+    ],
+    "notes": "No mode flag exists (no mode=demo, isDemo, demoMode, env vars or .env.example anywhere), but the dashboard behaves as a permanent demo: docs/index.html:117-119 declares csvPaths = { spanish: 'data/vocab_progress_es.csv', mandarin: 'data/vocab_progress_zh.csv' } and loads Spanish by default, with the banner at :64 reading 'No CSV loaded. Selecting Spanish by default.' Both bundled CSVs are deterministic 149-row committed vocabulary sets. There is no backend and no persistence: the only write path is a client-side CSV download (docs/index.html:438-454) and the only import is a user-chosen local file (:43-47), so nothing durable can be written by a visitor. Two template CSVs exist (archive/*/vocab_progress_*.template.csv) but both are 0 bytes."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2025-09-04",
+    "uncommitted": 1,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "github-pages (docs/ folder, hand-written — no build step)",
+    "url": "https://benwassa.github.io/Vox/",
+    "evidence": "docs/index.html, docs/mobile.html, docs/style.css and docs/data/*.csv are hand-authored and committed; all asset paths are relative ('data/vocab_progress_es.csv', 'images/Spain_flag.png'). No .github/workflows, no CNAME, no package.json — Pages must be set to serve /docs on main."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["static HTML", "vanilla JS (inline, no build)", "hand-rolled CSV parser", "CSS"],
+    "build_cmd": "",
+    "screenshots": ["Vox/docs/images/Spain_flag.png", "Vox/docs/images/China_flag.png"],
+    "one_liner": "A dependency-free static dashboard that loads a bundled Spanish-A1 or Mandarin-HSK1 vocabulary CSV (word, translation, seen/practiced/tested counters, status), lets you filter and update rows in the browser, and exports the edited CSV back out — the UI half of a CSV-plus-ChatGPT language-learning tracker."
+  },
+  "drift_flags": [
+    "README describes the repo layout as spanish/, mandarin/, prompts/ at the root, but those directories were moved under archive/ — the documented structure no longer matches the tree.",
+    "README describes Vox as 'not a full app — a structured system of logs + prompts' and its 'Future Extensions' list a 'simple dashboard for visualization (optional)' as not-yet-built, yet docs/index.html + docs/mobile.html (1,398 lines) are exactly that dashboard, already written and deployable. The README understates the repo by a whole artefact.",
+    "README lists a hard goal of 'Spanish A1 by Nov 7, 2025'; HEAD is 2025-09-04 and nothing has been committed since, so the project reads as abandoned mid-goal.",
+    "'Vox v1.0 Pilot (deprecated).zip' — a 12 MB deprecated binary — is committed at the repo root, dominating clone size.",
+    "archive/*/vocab_progress_*.template.csv are both 0 bytes despite a commit history that adds then removes then re-adds 'template files'.",
+    "Two stale remote branches (codex/create-license.md-with-dual-licensing, hd5iur-codex/set-up-project-structure-and-files) left open; one untracked .DS_Store locally."
+  ],
+  "recommendation": "demo",
+  "rationale": "The docs/ dashboard is a zero-dependency static page that self-loads committed sample data, needs no login or backend, and cannot write anything durable — it iframes safely as-is. The caveat is that it is a modest single-view CSV table, so it earns a small card rather than a headline slot.",
+  "confidence": "high"
+}

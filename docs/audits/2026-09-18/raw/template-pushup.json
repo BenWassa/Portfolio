@@ -1,0 +1,68 @@
+{
+  "dir": "template-pushup",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": [
+      "none — no URL, env, or runtime trigger exists. The fork is permanently and only the local-storage build."
+    ],
+    "seed_data": false,
+    "blocks_writes": true,
+    "auth_isolated": true,
+    "evidence": [
+      "src/hooks/useAuth.js:1-9 — the entire auth hook is a stub: useState({ uid: 'local-user' }), db: null, loading: false. No Firebase, no sign-in.",
+      "src/utils/localStore.js:1 — const STORAGE_KEY = 'pushup_users_v1'; all reads/writes go to localStorage only",
+      "src/utils/localStore.js:17-25 — writeUsers() persists to localStorage and dispatches a same-tab event; there is no network write path anywhere in src/",
+      "package.json dependencies — only lucide-react, react, react-dom. Firebase is absent, so durable/remote writes are structurally impossible.",
+      "grep -riE 'seed|demo|sample|mock' across src/ returns ZERO matches — there is no seeded content of any kind",
+      "README.md:1-4 — 'a template version of the PushUp Challenge app that uses browser local storage only. No Firebase, no accounts, no backend.'",
+      "README.md:20-22 — documents pushup_users_v1 as the storage key and tells the user to clear it to reset"
+    ],
+    "notes": "Writes are 'blocked' only in the sense that there is no backend to write to — mutations still persist per-browser in localStorage with no reset control in the UI. Critically there is NO seed data: a visitor lands on an empty app, must invent a username, and must tap rep buttons themselves before anything appears. The contribution calendar, streak stats, and leaderboard all render empty on first load, which is close to the worst case for an iframe embed. It is auth-isolated (fake local-user) and has no mode gate."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-02-07",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "GitHub Pages from committed docs/ build output (manual, no Actions workflow)",
+    "url": "https://benwassa.github.io/template-pushup/",
+    "evidence": "vite.config.js base:'/template-pushup/'; package.json build:pages = 'npm run lint && vite build --outDir docs && touch docs/.nojekyll'; docs/index.html + docs/assets committed; HEAD commit is literally 'Fix base path for GitHub Pages deployment'; no .github/ directory"
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": [
+      "React 19",
+      "Vite 7",
+      "Tailwind CSS 4 (@tailwindcss/postcss)",
+      "lucide-react",
+      "JavaScript (JSX), localStorage persistence",
+      "PWA manifest + service worker in public/"
+    ],
+    "build_cmd": "npm run build (lint + vite build); npm run build:pages for the docs/ Pages output",
+    "screenshots": [
+      "public/icon-512.png, public/icon-192.png, public/apple-touch-icon.png (app icons only — no UI screenshots in repo)"
+    ],
+    "one_liner": "A push-up rep tracker with one-tap logging (+1/+10/+20/+25), undo, a GitHub-style monthly contribution calendar, streak and average stats, and a leaderboard across the usernames stored in your browser."
+  },
+  "drift_flags": [
+    "README advertises a 'Local leaderboard' and 'Monthly contribution calendar' as features, but with zero seed data every one of those surfaces renders empty until the visitor manually logs reps — the README describes the shape of the app, not what a visitor actually sees.",
+    "package.json version is 0.0.0 and name 'template-pushup' while the upstream the-pushup-challenge-2025 is at 1.12.0 — no version relationship is tracked between fork and origin.",
+    "HEAD (2026-02-07) is the same day upstream committed 'Add demo local mode and email-only sign-in flow'. The fork was superseded on the day of its last commit and has received nothing since.",
+    "Deploy is manual committed build output with no CI, so docs/ can silently drift from src/.",
+    "A service worker is shipped (public/sw.js, docs/sw.js) for a build with no offline data story beyond localStorage; combined with committed docs/ this makes stale-cache confusion likely on the Pages URL."
+  ],
+  "recommendation": "skip",
+  "rationale": "Upstream the-pushup-challenge-2025 shipped an equivalent demo mode as a real gated mode on 2026-02-07 (src/utils/mode.js), so this fork provides nothing the product does not. And neither build seeds data, so as a portfolio embed it shows an empty tracker either way.",
+  "confidence": "high",
+  "template_fork_comparison": {
+    "question": "Does the-pushup-challenge-2025 have demo affordances template-pushup was created to provide?",
+    "answer": "YES, and with a proper mode gate the fork lacks. the-pushup-challenge-2025/src/utils/mode.js defines STORAGE_MODES.CLOUD/DEMO, resolves demo from ?mode=demo (getStorageMode) or the VITE_DEMO_MODE build flag, and exposes isDemoStorageMode(). It is wired through all three data hooks: useAuth.js:122-123 synthesizes { uid: 'demo-user', isDemo: true } and short-circuits Firebase init, sign-in and sign-out (lines 96, 109, 140, 159); useUserData.js:118 swaps loadCloudProfile for loadDemoProfile and guards every mutation (lines 130, 173, 208, 246); useLeaderboard.js:16-31 reads listDemoUsers() from localStorage (key pushup_demo_users_v1) instead of subscribing to Firestore. README.md:27 lists 'Demo mode with local-only storage' as a feature and README.md:187 documents VITE_DEMO_MODE.",
+    "what_the_fork_still_does_uniquely": "Nothing. The one difference is cosmetic: the fork's localStorage key is pushup_users_v1 vs the product's pushup_demo_users_v1, and the fork's auth stub is hardcoded rather than mode-switched. The fork has no seed data, so it does not even win on content. Timeline confirms the intent: the fork's final commit (2026-02-07, base-path fix) lands the same day upstream committed 'Add demo local mode and email-only sign-in flow' — the capability was folded back into the product.",
+    "verdict": "REDUNDANT. Point the portfolio at the-pushup-challenge-2025 with ?mode=demo and retire template-pushup. Caveat worth acting on first: demo mode in BOTH repos starts with an empty dataset, so an embed will show a blank tracker. If this project is going on the portfolio, the real work is adding a deterministic seed (a few demo users with rep history so the calendar, streaks and leaderboard have something to render) to the product's demo mode — not keeping the fork."
+  }
+}

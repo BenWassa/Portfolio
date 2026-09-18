@@ -1,0 +1,65 @@
+{
+  "dir": "arc",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [
+      "none — and none is required. Grep for demo|mock|sample|fixture across src/ returns a single unrelated prose comment (src/components/plates/PlateViewer.tsx:12)."
+    ],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      "package.json dependencies — react and react-dom only. No backend client, no auth, no storage library.",
+      "README.md:7-8 — 'No third-party requests at runtime — fonts are self-hosted and nothing is sent anywhere.'",
+      "src/content/*.ts (9 modules, 323 lines) — the entire manifesto ships as typed data compiled into the bundle",
+      "grep for localStorage across src/ returns zero hits — the interactive runner's state is in-memory (src/components/runner/runnerState.ts)",
+      "src/sw/sw.ts + vite-plugin-pwa + workbox-* — the only persistence is an offline asset cache"
+    ],
+    "notes": "There is nothing to demo-gate: no accounts, no user data, no durable writes, no network calls. Every visitor already gets the complete product, and the interactive 'filter runner' resets cleanly on reload because its state never leaves memory. Recorded as 'none' because none of the playbook's machinery exists — but unlike morpheus, that is a property of the architecture, not a gap. This is the most embed-ready repo in the batch."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-08-06",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "GitHub Pages via Actions (typecheck + lint + build, upload-pages-artifact from dist/)",
+    "url": "https://benwassa.github.io/arc/",
+    "evidence": ".github/workflows/pages.yml (push to main; npm ci → typecheck → lint → build → configure-pages → upload dist/ → deploy to the github-pages environment); vite.config.ts:7 base:'/arc/' matches the Pages project path; README.md:5 states the live URL; dist/ is correctly gitignored so CI is the single source of truth"
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": [
+      "React 19",
+      "Vite 8",
+      "TypeScript 6 (project references, tsc -b in build)",
+      "vite-plugin-pwa + workbox (precaching, routing, strategies, window)",
+      "Hand-written CSS design system in @layers (src/styles/global.css) — no Tailwind, no UI library",
+      "Self-hosted fonts, zero runtime third-party requests"
+    ],
+    "build_cmd": "npm run build (tsc -b && vite build → dist/)",
+    "screenshots": [
+      "public/screenshots/desktop.png",
+      "public/screenshots/mobile.png",
+      "public/screenshots/social.png",
+      "public/plates/ (engraved plate imagery)",
+      "public/emblems/",
+      "public/icons/ + public/icon.svg"
+    ],
+    "one_liner": "A personal manifesto rebuilt as an offline-capable PWA: seven laws of governed capability, the counterfeit each virtue degrades into, and an interactive five-gate runner that walks a proposed action through the gates and returns a verdict."
+  },
+  "drift_flags": [
+    "The content corpus is small — 323 lines across 9 typed modules — for a project presented as a full manifesto. It is finished and coherent, not padded, but a reviewer expecting long-form will find it brief.",
+    "README's Layout table omits src/components/plates/, which is where the most recent two commits (2026-08-06, the plate viewer and emblem work) landed. The docs are one feature behind the code.",
+    "Dependency versions are aggressively bleeding-edge (Vite 8, TypeScript 6, ESLint 10, React 19.2.8, @types/node 26). Nothing is broken today, but CI pins nothing beyond the lockfile and a transitive break would take the Pages deploy with it.",
+    "public/screenshots/{desktop,mobile,social}.png exist and are the best preview assets in the whole batch, but nothing in the README references them — they are invisible to anyone reading the repo.",
+    "Untracked local build debris in the working tree (dist/, graphify-out/, *.tsbuildinfo) — all correctly gitignored, so cosmetic only."
+  ],
+  "recommendation": "demo",
+  "rationale": "Clean, current (HEAD 2026-08-06), fully deployed with CI, correct base path, zero backend, zero accounts, in-memory interactive state, and ready-made desktop/mobile/social screenshots. It can be iframed exactly as-is with no work at all — it is the reference case for what the other repos should look like.",
+  "confidence": "high"
+}

@@ -1,0 +1,49 @@
+{
+  "dir": "personal-history-compiler",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      ".gitignore:14",
+      ".gitignore:16",
+      ".gitignore:17",
+      "scripts/compile.mjs",
+      "lib/compiler.mjs"
+    ],
+    "notes": "No demo affordance, and there is no UI to host one — the active product is a Node CLI (npm run compile -> scripts/compile.mjs -> lib/compiler.mjs, 256 lines total) plus a repo-local agent skill under .agents/skills/reconstruct-month/. Grep for demo, sample, fixture, seed and mock across lib/, scripts/, test/ and the archived web-app source returns zero hits. The design is deliberately the opposite of a demo: .gitignore excludes *.ics, *.ical/, generated/ and private/, so every input and output is local-only by construction (verified with git check-ignore — the real calendar export, generated/LIFE_CONTEXT.md and private/KNOWLEDGE.md are all correctly ignored and untracked)."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-07-18",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": false,
+    "kind": "",
+    "url": "",
+    "evidence": "No .github/workflows, firebase.json, vercel.json, netlify.toml, CNAME or homepage field. The only deploy artefact in the repo is archive/web-app/Dockerfile + compose.yaml, which belongs to the retired web-app approach and is explicitly marked as not the current direction in archive/README.md."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["Node.js ESM CLI", "node-ical", "node:test", "Markdown", "Claude Code / Codex agent skill (.agents + .claude/skills/reconstruct-month)"],
+    "build_cmd": "npm run compile -- --input ./your-google-calendar-export --calendars \"...\"",
+    "screenshots": [],
+    "one_liner": "A deterministic Node CLI that parses Google Calendar .ics exports into private month-by-month evidence files, paired with a repo-local agent skill that walks an AI through reconstructing one month of personal history at a time from that evidence."
+  },
+  "drift_flags": [
+    "Substantial pivot debris: archive/web-app/ still carries a complete Fastify + React + TypeScript + Docker implementation (~40 tracked files) alongside archive/project_state_web_app/'s 10-file snapshot, for a product direction the repo abandoned. The dead archive is several times the size of the 256-line live compiler, so the repo looks larger and more built-out than the active work is.",
+    "README's 'Start here' block tells the user to run --list-calendars then --calendars with exact names, but the repo ships no example export and no fixture, so nothing in the repo is runnable end-to-end by a reader — there is nothing to try.",
+    "generated/ holds 31 year files (1996-2026) plus LIFE_CONTEXT.md and INDEX.md that exist locally but are gitignored; the remote repo therefore shows a tool with no evidence it has ever been run.",
+    "The user's real calendar export (<REDACTED_EMAIL@googlemail.com.ical>/, two .ics files including a family calendar) sits in the working directory — correctly gitignored, but it is live personal data in a repo folder, one .gitignore edit away from exposure.",
+    "Only one test file (test/compiler.test.mjs, 73 lines) for the whole compiler, and the docs/ directory carries six planning documents (VISION, PLAN, APPROACH, two research commissions, SOURCE_DECISIONS) against that 256 lines of implementation — heavily plan-weighted."
+  ],
+  "recommendation": "index",
+  "rationale": "Genuine, well-scoped work with a clear idea, but it is a local CLI over intensely private calendar data: there is nothing to embed, nothing to link to, and no runnable example a visitor could try. It merits a text listing describing the approach rather than a card.",
+  "confidence": "high"
+}

@@ -1,0 +1,53 @@
+{
+  "dir": "mirror-laws",
+  "demo_mode": {
+    "level": "none",
+    "triggers": [],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      "git ls-files: the tree is 100% Markdown manuscript, plus docs/build-draft.py and a committed Mirror-Laws.epub — there is no application, no package.json, no web surface and therefore nothing a demo mode could gate",
+      "docs/build-draft.py:1-30 (python-docx compiler: Markdown chapters -> Mirror-Laws-Draft.docx)"
+    ],
+    "notes": "Not applicable by category: this is a book manuscript repository, not software. The 'demo' analogue would be publishing sample chapters as a static site, which nothing here is set up to do."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-06-27",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": false,
+    "kind": "",
+    "url": "",
+    "evidence": "No .github/workflows, no firebase.json/vercel.json/netlify.toml/CNAME, no docs/ build output intended for Pages (docs/ holds project documentation, not a site), no package.json homepage. The only 'build' is docs/build-draft.py producing a local .docx, plus a hand-made .epub."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": [
+      "Markdown manuscript (one file per law)",
+      "Python + python-docx (docs/build-draft.py) for the revision .docx",
+      "EPUB output (Mirror-Laws.epub, committed)",
+      "A committed Claude skill: .claude/skills/mirror-laws-editorial-guardian/ (SKILL.md + style card, edit taxonomy, pass checklists, active-doc authority)"
+    ],
+    "build_cmd": "python docs/build-draft.py (requires python-docx; a local venv/ exists, self-ignored)",
+    "screenshots": [],
+    "one_liner": "A complete ~102,000-word nonfiction manuscript that answers each of Robert Greene's 48 Laws of Power with a 'mirror law' arguing that distributed power outlasts concentrated power — 48 one-file-per-law chapters organised into five Books, voiced through six recurring archetypes, with preface, two front essays, six interludes and a closing essay, plus a Python compiler that assembles the whole thing into a revision document."
+  },
+  "drift_flags": [
+    "NO SECRETS, NO PERSONAL DATA: nothing sensitive found — the repo is prose plus a build script. Clean.",
+    "SELF-DOCUMENTED PROVENANCE DRIFT (already handled): docs/status.md:3-5 explicitly warns that 'celebratory subtitles inside the draft files (several of which claim \"All 48 Complete\") are inaccurate' and names itself the source of truth. The stale claims live in archive/original-drafts/ filenames. This is drift that has been identified and quarantined rather than left to mislead — unusually disciplined.",
+    "README NEXT-STEP IS STALE: README's 'Next Practical Step' says to consolidate the manuscript into a single revision document, but that has since happened twice — Mirror-Laws-Draft.docx (2026-06-13, gitignored) and Mirror-Laws.epub (committed 2026-06-27 in commit 142b9ca 'epub'). docs/status.md is likewise stamped 2026-06-12, before both artifacts.",
+    "INCONSISTENT ARTIFACT POLICY: .gitignore excludes Mirror-Laws-Draft.docx but Mirror-Laws.epub (294 KB binary) is tracked — two generated outputs of the same manuscript treated opposite ways.",
+    "TWO REMOTE BRANCHES ALREADY MERGED: origin/claude/editorial-cleanup-draft-8aq1f0 and origin/claude/mirror-laws-editorial-sprint-6bkcg4 are both 0 commits ahead of main — leftover branch clutter, not lost work.",
+    "DORMANT: last activity 2026-06-27, roughly three months before this audit, and the previous burst of 8 commits all landed on 2026-06-13. 39 commits total.",
+    "IP / PUBLISHING SENSITIVITY: the work is explicitly framed as a chapter-by-chapter response to Robert Greene's 48 Laws of Power. Nothing here is infringing on its face, but publishing the full text on a portfolio site is a publishing decision (rights, prior-publication, and how much to give away) rather than a curation decision."
+  ],
+  "recommendation": "index",
+  "rationale": "Real, finished, substantial work — a complete manuscript with genuine editorial infrastructure — but it is prose, not software: there is nothing to embed, no deploy target, and no product surface a portfolio card could show beyond a cover and a blurb. List it as a writing project with a one-paragraph description; it only graduates to a linked card if a sample chapter or the EPUB is deliberately published somewhere.",
+  "confidence": "high"
+}

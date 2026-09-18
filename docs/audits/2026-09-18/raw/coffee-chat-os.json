@@ -1,0 +1,65 @@
+{
+  "dir": "coffee-chat-os",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": [
+      "\"Load Sample Data\" button in the UI (no URL or env trigger)"
+    ],
+    "seed_data": true,
+    "blocks_writes": false,
+    "auth_isolated": true,
+    "evidence": [
+      "src/utils/seedData.js:8",
+      "src/utils/seedData.js:191",
+      "src/components/SeedDataLoader.jsx:5",
+      "src/components/SeedDataLoader.jsx:36",
+      "src/components/SeedDataLoader.jsx:45",
+      "src/App.jsx:138",
+      "src/App.jsx:347",
+      "src/utils/firebase.js:35",
+      "src/components/AuthUI.jsx:5"
+    ],
+    "notes": "There is seed data and a loader button, but no mode gate and no write guard -- so this is partial, and in the worst direction. `SEED_DATA` (src/utils/seedData.js:8) is a hand-converted dump of the owner's OWN 'Job Applications Tracker.csv' -- the file comment says so verbatim: 'Sample seed data converted from Job Applications Tracker.csv / Only includes active/useful statuses (excludes Rejected)'. It carries real employers, real job-posting URLs (blacklineconsulting.ca, ravljobs.applytojobs.ca, shn.wd10.myworkdayjobs.com) and real application dates. The SeedDataLoader button's own subtitle reads 'Has 6 active jobs from your tracker' (SeedDataLoader.jsx:45). So the 'sample' data is not synthetic -- it is the user's live job search. Worse, pressing it does not enter any demo state: `handleLoadSeedData` calls `onLoadSeedData` -> App.jsx:138 `loadSeedData`, which writes straight through to the real Firestore store; there is no isDemo flag, no mode query param, no *_DEMO env var (`.env.example` contains only the six VITE_FIREBASE_* keys), and nothing disables export/import/save. `getSeedData()` (seedData.js:191) returns `people: []` and only the extracted company/role rows, so the button seeds roles but never contacts -- the contact side has no seed at all. Auth is marked isolated only in the narrow sense that src/utils/firebase.js:35 uses `signInAnonymously` and AuthUI.jsx is a stub returning null ('Removed for anonymous auth - no UI needed'); that is anonymity of convenience, not a demo sandbox."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-02-09",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": false,
+    "kind": "",
+    "url": "",
+    "evidence": "No firebase.json, no firestore.rules, no vercel.json / netlify.toml / CNAME, no .github/workflows, no `homepage` in package.json. FIREBASE_SETUP.md documents creating a Firebase project by hand but nothing in the repo automates or pins a deploy. Note the absence of firestore.rules is itself a finding: the app writes to Firestore under anonymous auth with no rules file under version control."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": [
+      "Vite 5",
+      "React 18",
+      "Tailwind CSS 3 (custom glassmorphism utilities)",
+      "Firebase 12 (anonymous Auth + Firestore)",
+      "lucide-react",
+      "ESLint + Prettier"
+    ],
+    "build_cmd": "npm run build",
+    "screenshots": [],
+    "one_liner": "A deliberately anti-CRM networking tracker for a consulting job hunt: every contact is one glassmorphic card carrying exactly one Next Action (outreach / schedule / prep / follow-up / ask for referral / wait), open job roles are tracked once per company and inherited by all contacts there, and the default view shows only the people who currently have something to do."
+  },
+  "drift_flags": [
+    "SEVERE PRIVACY EXPOSURE -- 14 files under coffeechats/ are committed to the public repo and are real, named third-party coffee-chat notes exported from Notion: 'Aaron Doerfler', 'Alana Morrone', 'Brianna Forbes-Crowe', 'Jake Janicki', 'Jennifer Wittig', 'Jimmy Yang', 'Kiel Delmundo', 'Nick Patel', 'Nikola Lapenna', 'Robert \"Berto\" Mill', 'Sarah Sunderji', 'Sunil Verma', 'Will Fu'. Confirmed tracked via `git ls-files`.",
+    "'Networking & Coffee Chat Tracker.csv' is likewise tracked and contains real names mapped to employers, chat dates and private notes -- e.g. row 2: 'Kiel Delmundo,EY,Ivey Peer,October 23 2025,...,Senior Tech Consultant,,Completed'. 'Job Applications Tracker.csv' is also tracked. These are third parties' data, not just the owner's.",
+    "SECRET LEAK -- `.env.local` is TRACKED in git (`git ls-files` returns it) and holds populated VITE_FIREBASE_* values. Its own first line reads '# Firebase Configuration (DO NOT COMMIT - This file is in .gitignore)' -- but .gitignore contains only `node_modules`, `dist`, `.DS_Store`. The file asserts a protection that does not exist. (Firebase web config is low-sensitivity by design, but the project is thereby identified and, with no firestore.rules in the repo, may be writable by any anonymous client.)",
+    "README says 'LocalStorage for persistence / No backend required' under Tech Stack, and its Project Structure tree lists only main.jsx / App.jsx / index.css. The actual app has 13 components, a Firebase anonymous-auth context, firestoreHooks, and `firebase: ^12.8.0` as a dependency. The README describes a previous architecture.",
+    "FIREBASE_SETUP.md says the app 'uses Firebase Firestore for secure cloud data storage with GitHub authentication'; the code uses anonymous auth (src/utils/firebase.js:35) and AuthUI.jsx is an empty stub. Three documents describe three different auth models.",
+    "src/utils/firebase.js:18 still carries 'TODO: Replace with your Firebase config from Firebase Console' above code that already reads from env.",
+    "A successor repo `coffee-chat-os-v2` exists alongside this one under ~/Github Repos/, which suggests this clone is the superseded generation.",
+    "HEAD is 2026-02-09 -- seven months stale."
+  ],
+  "recommendation": "skip",
+  "rationale": "This is an active personal job-search tool whose repository contains real named third parties' contact details and private conversation notes plus a tracked .env.local, so it must not be embedded, linked, or indexed from a public portfolio; the immediate action is remediation (purge coffeechats/, both CSVs and .env.local from history, add a .gitignore, add firestore.rules), not curation. If the concept is wanted on the portfolio at all, feature coffee-chat-os-v2 instead.",
+  "confidence": "high"
+}

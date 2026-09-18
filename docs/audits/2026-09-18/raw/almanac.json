@@ -1,0 +1,53 @@
+{
+  "dir": "almanac",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": ["import.meta.env.DEV (Vite build-mode gate only — no URL param, no env flag)"],
+    "seed_data": true,
+    "blocks_writes": true,
+    "auth_isolated": true,
+    "evidence": [
+      "src/app/App.tsx:12 — `if (import.meta.env.DEV) { return <DemoApp /> }` is the entire mode gate",
+      "src/app/App.tsx:6 — `const DemoApp = lazy(() => import(\"@/app/DemoApp\"))`",
+      "src/app/DemoApp.tsx:4 — `import inventory from \"../../data/github-inventory.json\"` (129 KB deterministic captured seed)",
+      "src/app/DemoApp.tsx:10-12 — localStorage keys `almanac.inventory-decisions.v1`, `almanac.demo-seasons.v1`, `almanac.demo-assignments.v1`",
+      "src/app/AppShell.tsx:21 — `{demo && <div className=\"demo-banner\">Local demo · changes are not saved</div>}`",
+      "src/features/settings/SettingsView.tsx:6-7 — Firebase-backed store kept lazy so the fixture demo never initializes Firebase",
+      "src/features/settings/SettingsView.tsx:28 — demo branch hides Google sign-in and GitHub capture",
+      ".env.example:1 — \"Local development always uses demo data. These values are used by production builds.\""
+    ],
+    "notes": "Structurally this is the closest of the six to the playbook: a dedicated DemoApp component, deterministic seed data, a visible demo banner, and durable writes guarded by construction (DemoApp never touches Firestore — all mutations go to localStorage, and Firebase modules are lazy so they are never even initialized). Held back from `playbook` for one reason: the gate is `import.meta.env.DEV`, a build-time constant. A production bundle can never reach DemoApp — it renders the Firebase setup screen or the authenticated app. Adding a `?mode=demo` / `VITE_DEMO=1` branch alongside the DEV check would make it playbook-grade with a few lines."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-09-16",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "firebase-hosting",
+    "url": "https://almanac-4631c.web.app",
+    "evidence": "firebase.json (hosting.public = \"dist\", SPA rewrite, cleanUrls); .firebaserc default project `almanac-4631c`; local .firebase/ cache indicates prior manual deploys. No hosting deploy workflow — .github/workflows/ contains only refresh-inventory.yml (nightly GitHub capture -> Firestore publish), so hosting deploys are manual `firebase deploy`."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["React 19", "Vite 6", "TypeScript 5.7", "Zustand 5", "Firebase 12 (Auth + Firestore)", "vite-plugin-pwa", "Vitest", "ESLint 9"],
+    "build_cmd": "npm run build  (tsc -b && vite build); full gate: npm run check",
+    "screenshots": ["public/favicon.svg", "public/pwa-192x192.png", "public/pwa-512x512.png", "public/apple-touch-icon.png"],
+    "one_liner": "A season-and-cadence ledger for long-running personal projects that ingests a nightly capture of every GitHub repo you own and queues overnight agent work against them, returning draft pull requests by morning."
+  },
+  "drift_flags": [
+    "README says \"Development automatically uses the captured GitHub inventory when Firebase is not configured\", but src/app/App.tsx:12 short-circuits on DEV unconditionally — a configured dev environment still gets the demo, never Firebase. README and code disagree about the condition.",
+    "No hosting deploy workflow despite a complete firebase.json; the live site only updates when someone runs `firebase deploy` by hand, so the deployed build's freshness is unverifiable from the repo.",
+    "13 remote branches open (codex/*, claude/*, backend/*, ops/*, night-shift, fix/*) against a single-author project — substantial in-flight/abandoned branch sprawl.",
+    "`codex/production-verification-audit` is checked out in a separate worktree (git branch shows `+`), i.e. there is live work parked outside main.",
+    "No PWA/app screenshots anywhere in-repo — only icons. A portfolio card would need a capture taken by hand.",
+    "dist/ exists on disk but is not tracked (correctly gitignored) — noted only because psyche makes the opposite claim."
+  ],
+  "recommendation": "demo",
+  "rationale": "It already has a complete, deterministic, write-safe demo path with real seeded content and a demo banner; the only blocker to embedding it is that the gate is DEV-only, which is a few lines to fix. Most portfolio-ready of the six by a wide margin.",
+  "confidence": "high"
+}

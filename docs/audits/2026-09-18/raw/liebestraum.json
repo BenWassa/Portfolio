@@ -1,0 +1,58 @@
+{
+  "dir": "liebestraum",
+  "demo_mode": {
+    "level": "none",
+    "triggers": ["?recap=force", "?recap=reset"],
+    "seed_data": false,
+    "blocks_writes": false,
+    "auth_isolated": false,
+    "evidence": [
+      "src/hooks/useFirebaseAuth.js:3",
+      "src/lib/firebase.js",
+      "firestore.rules:5",
+      "firestore.rules:9",
+      "firestore.rules:26",
+      ".env.example:1",
+      "README.md:129"
+    ],
+    "notes": "No demo affordance. Grep across src/, server.mjs and vite.config.js for isDemo, demoMode, DEMO, mode=demo, guest, signInAnonymously, readOnly returns only false positives (crossOrigin=\"anonymous\" in DetailView.jsx:183, an IndexedDB 'readonly' transaction in src/lib/outbox/db.js:120). Auth is Google-popup-only (useFirebaseAuth.js -> signInWithGoogle in src/lib/firebase.js); there is no anonymous path. firestore.rules gates every collection behind isSignedIn() plus pair membership (isPairMember/isPairOwner), and src/lib/firebase.js throws at boot if the Firebase env vars are absent, so the app cannot even start without a real project. The only URL-triggered state overrides that exist are ?recap=force and ?recap=reset (documented README.md:129), which replay the annual-recap cover for an already-signed-in user — not a data mode. Adding a real demo mode would be expensive: every view is driven by live onSnapshot reads through src/hooks/useAdventures.js, so it needs a fixture layer plus a write guard on the outbox/Storage upload paths."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-08-15",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "firebase app hosting (auto-rollout from main) + firestore/storage rules",
+    "url": "https://liebestraum--liebestraum-597db.us-east5.hosted.app",
+    "evidence": "apphosting.yaml and apphosting.production.yaml define runConfig and BUILD/RUNTIME env for the App Hosting backend; firebase.json wires firestore.rules and storage.rules; README documents auto-rollout from main and names the production domain in the storage.cors.json section."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["React 19", "Vite 7", "Tailwind CSS 3 + typography", "Firebase (Auth/Firestore/Storage) + firebase-admin", "Express 5 (server.mjs)", "Mapbox GL + react-map-gl", "@google/genai (Gemini)", "vite-plugin-pwa", "Vitest + fake-indexeddb", "lucide-react"],
+    "build_cmd": "npm run build (or npm run build:release for version/commit metadata)",
+    "screenshots": [
+      "liebestraum/20251006_124021-COLLAGE.jpg",
+      "liebestraum/public/possibilities/banners/trip.png",
+      "liebestraum/public/possibilities/banners/outdoor.png",
+      "liebestraum/public/possibilities/banners/culture.png",
+      "liebestraum/public/icon-512.png"
+    ],
+    "one_liner": "A pair-scoped PWA where two people log shared memories — title, date, geocoded location, photos — and browse them as a timeline, a clustered Mapbox map with temporal filtering, travel stats and flag collections, plus an AI-summarised 'possibilities' list of places to go and an annual recap."
+  },
+  "drift_flags": [
+    "CRITICAL — a Firebase admin service-account private key is committed and tracked: liebestraum-597db-firebase-adminsdk-fbsvc-96dddc02da.json contains private_key and is listed by `git ls-files` (entered history in commit 1c57b2f). This grants full admin access to the liebestraum-597db project, bypassing all firestore.rules. It needs key revocation in GCP plus history scrubbing, not just a .gitignore entry.",
+    "CRITICAL — apphosting.yaml and apphosting.production.yaml commit server-private API keys as plaintext `value:` entries: GOOGLE_PLACES_API_KEY, MAPBOX_GEOCODING_TOKEN and GEMINI_API_KEY (all three appear literally in both files).",
+    "Direct README contradiction: README.md instructs 'Use `secret:` references only for server-private credentials (for this app: GOOGLE_PLACES_API_KEY, MAPBOX_GEOCODING_TOKEN, and GEMINI_API_KEY)' — the checked-in apphosting files do the exact opposite for all three.",
+    "apphosting.yaml and apphosting.production.yaml are byte-identical duplicates maintained by hand (README explains the CLI requires both), so they will drift the moment one is edited alone; the header comment in apphosting.yaml also misdescribes it as the 'production' environment file.",
+    "graphify-out/ (GRAPH_REPORT.md, graph.html, graph.json) is committed tooling output, and 20251006_124021-COLLAGE.jpg sits untracked-looking at the repo root — both are workspace debris in an otherwise disciplined repo.",
+    "Three stale remote claude/* branches (fix-city-counting-ArpQ3, fix-memory-save-issue-D5jWq, open-issues-ldpjmz) left open on the remote."
+  ],
+  "recommendation": "link",
+  "rationale": "By far the most substantial engineering here (369 commits, 208 tracked files, React 19 + Firebase + Mapbox + Gemini, real tests and an offline outbox), but it is a private two-person app behind a Google sign-in wall — a visitor hits an auth gate, so it cannot be embedded, and a demo mode would be a project in itself. Worth a card that links to the repo/case study rather than the live URL. Fix the committed admin key before pointing any public attention at this repo.",
+  "confidence": "high"
+}

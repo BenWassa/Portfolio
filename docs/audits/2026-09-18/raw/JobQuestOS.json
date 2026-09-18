@@ -1,0 +1,49 @@
+{
+  "dir": "JobQuestOS",
+  "demo_mode": {
+    "level": "partial",
+    "triggers": [],
+    "seed_data": true,
+    "blocks_writes": false,
+    "auth_isolated": true,
+    "evidence": [
+      "src/app.js:18",
+      "src/app.js:187",
+      "src/app.js:210",
+      "public/version.json:1"
+    ],
+    "notes": "No mode gate of any kind: grep for mode=demo, mode=template, demo=1, ?preview, isDemo, demoMode, *_DEMO and VITE_*_MODE across src/, scripts/, public/, index.html and *.md returns nothing, and there is no .env.example. It scores 'partial' only because the app is inherently demo-shaped: the entire day schedule is a hardcoded literal array (src/app.js:18 onward, with title/desc/timer/guardrail per block), there is no backend and no auth, and the only persisted state is a per-browser weekly counter in localStorage under key 'jobquest_weekly_stats' (read src/app.js:187, written src/app.js:210). A first-time visitor therefore sees full realistic content with zero setup, but nothing blocks writes and there is no way to reset to a curated state."
+  },
+  "git": {
+    "branch": "main",
+    "head_date": "2026-01-12",
+    "uncommitted": 0,
+    "unpushed": 0,
+    "behind": 0,
+    "upstream": "origin/main"
+  },
+  "deploy": {
+    "configured": true,
+    "kind": "github-pages (docs/ folder, committed build output)",
+    "url": "https://benwassa.github.io/JobQuestOS/",
+    "evidence": "vite.config.mjs sets base '/JobQuestOS/' and build.outDir 'docs'; docs/ contains a committed production build (docs/index.html, docs/assets/index-eaKvxbpt.js, docs/sw.js). No .github/workflows — Pages must be set to serve /docs on main."
+  },
+  "readiness": {
+    "has_readme": true,
+    "stack": ["Vite 6", "vanilla JS (ES modules)", "Tailwind CSS 3", "PostCSS", "PWA (manifest.json + public/sw.js)", "ESLint/Prettier"],
+    "build_cmd": "npm run build",
+    "screenshots": ["JobQuestOS/infographic.png", "JobQuestOS/docs/assets/infographic-BvHMT8Ys.png"],
+    "one_liner": "A single-page PWA that renders a fixed 9-to-5 job-search day as timed blocks with per-block guardrails and a local weekly momentum counter (focus blocks, outreach touches, artifacts), so the search is executed as a schedule rather than improvised."
+  },
+  "drift_flags": [
+    "README is pure manifesto — it documents the daily structure and philosophy but never mentions that the repo is a working web app, never gives the live GitHub Pages URL, and never lists the build commands.",
+    "package.json 'homepage' points at the GitHub README (https://github.com/BenWassa/JobQuestOS#readme), not the deployed Pages URL, so the repo's own metadata hides the demo.",
+    "package.json declares \"main\": \"sw.js\" and \"type\": \"commonjs\" for what is an ESM Vite app — vestigial/incorrect metadata.",
+    "\"test\": \"echo \\\"Error: no test specified\\\" && exit 1\" — no tests at all.",
+    "Duplicated app source: scripts/app.js is an older copy of src/app.js (same localStorage logic at scripts/app.js:109/132 vs src/app.js:187/210) with no build referencing it; archive/ holds four superseded standalone HTML versions (JobQuest-OS.html, JobQuestOS_v2.html, backup.html, test.html), and 'new UX.md' is an untracked-looking spec file at repo root.",
+    "docs/ build output is committed and currently in sync with src (both last touched by 9494fa3, 2026-01-12), but there is no CI to keep it that way — a future src edit without a rebuild silently ships stale."
+  ],
+  "recommendation": "demo",
+  "rationale": "Self-contained static PWA with hardcoded content, no login and no server — it renders correctly in an iframe with zero setup and is already deployed at benwassa.github.io/JobQuestOS/. The only work needed is pointing the portfolio card at that URL and, ideally, fixing the README so the project reads as a shipped app.",
+  "confidence": "high"
+}
