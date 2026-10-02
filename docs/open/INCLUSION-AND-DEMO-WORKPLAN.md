@@ -1,7 +1,7 @@
 ---
 status: open
 lane: opus
-issues: [8, 9, 10, 12, 13, 14, 16, 17, 18, 21, 22, 23, 24, 25, 26, 27, 28]
+issues: [8, 9, 10, 12, 13, 14, 16, 17, 18, 21, 22, 23, 24, 25, 26, 27, 28, 31]
 owner: Ben
 updated: 2026-10-02
 ---
@@ -23,6 +23,10 @@ Rulings use the `DEMO-MODE-METHODS.md` §1 vocabulary:
 | `link` | 13 | Featured card, links out, no iframe |
 | `index` | 10 | Text line in a full-work index, no card |
 | `skip` | 60 | Not portfolio material |
+
+> **Moved out of the public repo (2026-10-02, #31):** the per-repo audit findings, security actions and raw audit JSON now live
+> in the private `BenWassa/almanac` repo under `docs/portfolio-audit/`. Paths below pointing into `docs/audits/2026-09-18/` for
+> `FINDINGS-BY-PROJECT.md`, `SECURITY-ACTIONS.md`, `targets.json`, `material-drift.json` and `raw/` resolve there, not here.
 
 ## 1. Where the site stands against the rulings
 
@@ -63,7 +67,7 @@ secrets. It lives in the real repo behind a flag — never a fork.
 
 | # | Repo | Ruling | Status |
 |---|---|---|---|
-| A | `morpheus-dream-archive` | demo | **Settled → build demo mode** (opus, #16). Removes the sign-in wall and UID whitelist for the demo path and relaxes the `vite.config.js` build guard. The `template-morpheus` card stays until it passes the checklist, then is retired. |
+| A | `morpheus-dream-archive` | demo | **Settled → keep `template-morpheus` as the demo** (Ben, 2026-10-02: a clean separate demo repo "might make sense"). Same documented exception as Narrative. No demo mode is built in the real repo for now; revisit if the template drifts too far. Card = repo `morpheus-dream-archive`, `demoUrl` = `template-morpheus`. |
 | B | `Narrative` | demo | **Settled → use `narrative-template` as the demo.** It is the clean, separate demo Ben already built: 33 stock photos, a preset project, no folder picker, no backend. Card = repo `Narrative`, `demoUrl` = `narrative-template`. Deliberate exception to CLAUDE.md §5 (see below). The #10 "name collision" was a misreading: the template is the same app. |
 | C | `liebestraum` | demo | **Settled → build demo mode** (opus). Mock layer needs no Mapbox/Gemini/geocoding keys. Do #20 item 2 (rotate the admin key) *before* any agent pushes from this repo, and the demo build must not read `apphosting*.yaml`. |
 | D | `FamilyPlan` | link | **Settled → rebuild with synthetic figures.** Real income is still public today: Pages must go offline now (#20 item 1, human, urgent) regardless. The card ships only after redeploy from synthetic data. |
@@ -84,9 +88,8 @@ no backend, no auth — so drift costs the demo features, not correctness or saf
 the staleness check (#14) compares `narrative-template` against `Narrative` and flags it. This
 needs a carve-out sentence in `DEMO-MODE-METHODS.md` and CLAUDE.md §5; neither is edited yet.
 
-**Open (Q1):** the same pattern may apply to `template-morpheus` (a working demo per the audit)
-and `wrestle-template`. If Ben wants separate clean demo repos there too, #16 changes from
-"build demo mode in the real repo" to "keep the template, refresh it". Not decided.
+**Q1 resolved (Ben, 2026-10-02):** Morpheus keeps its clean separate demo repo (`template-morpheus`) under this
+same exception; Wrestle does not (`wrestle-template` is archived and retired once `wrestlePWA` has its own demo).
 
 ## 3. What each `demo` ruling needs
 
@@ -102,10 +105,10 @@ by loading the deployed URL (CLAUDE.md §5).
 | Vox | partial, embeds as-is | Confirm which repo the card should target | standard |
 | poseidon | machinery complete, fenced by `import.meta.env.DEV` | Build-flag swap + demo Pages build | standard (spec'd) |
 | argus | `npm run build:e2e` already yields a local-only ungated build | Deploy that build as the demo target | standard (spec'd) |
-| HAUS | demo fully built, never deployed | Build with `VITE_DEMO=true`, add `?mode=demo`, deploy | standard (spec'd) |
+| HAUS | demo build merged (PR #9) | Publish via GitHub Pages from the private repo (works on this account: wrestlePWA, Vox are private with public Pages) | standard |
 | chefs-journal | `?snapshot=true` gate exists, private repo | Publish a Pages/Hosting target | opus (privacy call) |
-| wrestlePWA | repoint off `wrestle-template` | Verify repo has a credential-free path; else build | opus |
-| morpheus-dream-archive | none | Full playbook demo mode (A) | opus |
+| wrestlePWA | **no separate demo repo** (Ben, 2026-10-02: not needed) | Real repo gets the demo: local-only state, so seed fixtures + reset (Archetype 2), no sign-in. Repoint `demoUrl` off `wrestle-template`; Pages is already live on this private repo (#24) | opus |
+| morpheus-dream-archive | demo = `template-morpheus` (clean separate repo, ~5 months stale) | Re-verify the template loads with sample data; retarget card repo to `morpheus-dream-archive` (#16) | opus |
 | Narrative | demo = `narrative-template` (clean separate repo, drifted) | Re-verify it loads with sample data; record template-vs-Narrative drift; retarget card to repo `Narrative` + that demoUrl (#10) | opus |
 | liebestraum | none | Full playbook demo mode, after key rotation (C) | opus |
 | FamilyPlan (`link`) | public build contains real income | Take Pages offline; redeploy from synthetic data (D) | human, then standard |
@@ -115,7 +118,7 @@ by loading the deployed URL (CLAUDE.md §5).
 Dependencies are real; the first two gates decide how much runs in parallel.
 
 ```
-Gate 0  Ben answers Q1 below (A–F settled) · #20 items 1–2 done before touching FamilyPlan/liebestraum
+Gate 0  card design questions (later) · FamilyPlan Pages off ✅ · HAUS published via Pages · #20 items 1–2 done before touching FamilyPlan/liebestraum
 Gate 1  WS1 Foundation        #5 Pages Actions · #13 schema v2 · #12 two-tier IA
           └─ unblocks ─►  WS3 Cards (writing into a schema about to change is the main waste risk)
 WS2 Demo enablement   independent of WS1 — separate repos, can start now
