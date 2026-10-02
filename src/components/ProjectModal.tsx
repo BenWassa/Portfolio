@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
-import type { Project, ProjectStatus } from '../types';
+import type { FeaturedProject, ProjectStatus } from '../types';
 import { useScrollLock } from '../hooks/useScrollLock';
 import { getResponsiveImageProps } from '../utils/imageUtils';
 
 interface ProjectModalProps {
-  project: Project | null;
+  project: FeaturedProject | null;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -198,7 +198,7 @@ const FormattedDescription: React.FC<{ text: string }> = ({ text }) => {
 };
 
 // --- Component: Landscape Modal (Narrative) ---
-const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({
+const LandscapeModal: React.FC<{ project: FeaturedProject; onClose: () => void }> = ({
   project,
   onClose,
 }) => {
@@ -300,7 +300,7 @@ const LandscapeModal: React.FC<{ project: Project; onClose: () => void }> = ({
 };
 
 // --- Component: Square Modal — Static Image variant (original) ---
-const SquareImageModal: React.FC<{ project: Project; onClose: () => void }> = ({ project, onClose }) => {
+const SquareImageModal: React.FC<{ project: FeaturedProject; onClose: () => void }> = ({ project, onClose }) => {
   const [imageLoaded, setImageLoaded] = React.useState(false);
   const linkLabel = 'Open App';
 
@@ -384,7 +384,7 @@ const SquareImageModal: React.FC<{ project: Project; onClose: () => void }> = ({
 };
 
 // --- Component: Square Modal — Live Embed variant ---
-const SquareEmbedModal: React.FC<{ project: Project; onClose: () => void }> = ({ project, onClose }) => {
+const SquareEmbedModal: React.FC<{ project: FeaturedProject; onClose: () => void }> = ({ project, onClose }) => {
   const [iframeLoaded, setIframeLoaded] = React.useState(false);
   const [phoneScale, setPhoneScale] = React.useState(1);
   const panelRef = React.useRef<HTMLDivElement>(null);
@@ -544,7 +544,7 @@ const SquareEmbedModal: React.FC<{ project: Project; onClose: () => void }> = ({
 };
 
 // --- Component: Square Modal — router ---
-const SquareModal: React.FC<{ project: Project; onClose: () => void }> = ({ project, onClose }) => {
+const SquareModal: React.FC<{ project: FeaturedProject; onClose: () => void }> = ({ project, onClose }) => {
   if (project.demoUrl) return <SquareEmbedModal project={project} onClose={onClose} />;
   return <SquareImageModal project={project} onClose={onClose} />;
 };

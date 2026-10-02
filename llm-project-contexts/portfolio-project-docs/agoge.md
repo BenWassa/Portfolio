@@ -1,18 +1,24 @@
 # Agoge - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `agoge`
 
 ## Snapshot
 - Title: Agoge
+- Tier: `featured`
 - Tag: Scientific-Narrative Guide
 - Status: `draft`
 - Type: `narrative`
 - Orientation: `landscape`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/agoge/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/agoge
+- Last verified: 2026-10-02
 - Image path: `assets/projects/Agoge.png`
 - Image alt: Agoge - Rites of passage
 

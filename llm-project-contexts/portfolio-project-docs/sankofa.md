@@ -1,18 +1,24 @@
 # Sankofa - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `sankofa`
 
 ## Snapshot
 - Title: Sankofa
+- Tier: `featured`
 - Tag: Scientific-Narrative Guide
 - Status: `active`
 - Type: `narrative`
 - Orientation: `landscape`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/sankofa/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/sankofa
+- Last verified: 2026-10-02
 - Image path: `assets/projects/Sankofa.png`
 - Image alt: Sankofa - Narrative System
 

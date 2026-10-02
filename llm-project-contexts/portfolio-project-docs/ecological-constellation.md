@@ -1,18 +1,24 @@
 # Ecological Constellation - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `ecological-constellation`
 
 ## Snapshot
 - Title: Ecological Constellation
+- Tier: `featured`
 - Tag: Personality Framework
 - Status: `active`
 - Type: `app`
 - Orientation: `square`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/ecological-constellation/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/ecological-constellation
+- Last verified: 2026-10-02
 - Image path: `assets/projects/ecological.png`
 - Image alt: Ecological Constellation
 

@@ -1,6 +1,6 @@
 # Portfolio Project Records (Compiled)
 
-Generated: 2026-02-23T16:36:08.288Z
+Generated: 2026-10-02T19:41:03.453Z
 Source folder: `llm-project-contexts/portfolio-project-docs/`
 Total project docs: 15
 
@@ -28,19 +28,25 @@ Source file: `agoge.md`
 
 # Agoge - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `agoge`
 
 ## Snapshot
 - Title: Agoge
+- Tier: `featured`
 - Tag: Scientific-Narrative Guide
 - Status: `draft`
 - Type: `narrative`
 - Orientation: `landscape`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/agoge/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/agoge
+- Last verified: 2026-10-02
 - Image path: `assets/projects/Agoge.png`
 - Image alt: Agoge - Rites of passage
 
@@ -72,19 +78,25 @@ Source file: `drop.md`
 
 # drop - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `drop`
 
 ## Snapshot
 - Title: drop
+- Tier: `featured`
 - Tag: Daily Domain Tracker
 - Status: `active`
 - Type: `app`
 - Orientation: `square`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/drop/
+- Demo URL: https://benwassa.github.io/drop/
+- Demo mode: `live`
+- Repo URL: https://github.com/BenWassa/drop
+- Last verified: 2026-10-02
 - Image path: `assets/projects/drop.png`
 - Image alt: drop - Tracker
 
@@ -116,19 +128,25 @@ Source file: `dukkha.md`
 
 # Dukkha - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `dukkha`
 
 ## Snapshot
 - Title: Dukkha
+- Tier: `featured`
 - Tag: Scientific-Narrative Guide
 - Status: `draft`
 - Type: `psychology`
 - Orientation: `landscape`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/dukkha/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/dukkha
+- Last verified: 2026-10-02
 - Image path: `assets/projects/Dukkha.png`
 - Image alt: Dukkha - Digital well-being
 
@@ -159,19 +177,25 @@ Source file: `ecological-constellation.md`
 
 # Ecological Constellation - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `ecological-constellation`
 
 ## Snapshot
 - Title: Ecological Constellation
+- Tier: `featured`
 - Tag: Personality Framework
 - Status: `active`
 - Type: `app`
 - Orientation: `square`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/ecological-constellation/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/ecological-constellation
+- Last verified: 2026-10-02
 - Image path: `assets/projects/ecological.png`
 - Image alt: Ecological Constellation
 
@@ -202,19 +226,25 @@ Source file: `hearth.md`
 
 # Hearth - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `hearth`
 
 ## Snapshot
 - Title: Hearth
+- Tier: `featured`
 - Tag: Shared Watchlist
 - Status: `active`
 - Type: `app`
 - Orientation: `square`
+- Year: (not set)
 - Live URL: https://hearthv2--hearthv2.us-east4.hosted.app/?mode=demo
+- Demo URL: https://hearthv2--hearthv2.us-east4.hosted.app/?mode=demo
+- Demo mode: `playbook`
+- Repo URL: https://github.com/BenWassa/hearth_v2
+- Last verified: 2026-10-02
 - Image path: `assets/projects/hearth.png`
 - Image alt: Hearth - Watchlist
 
@@ -246,19 +276,25 @@ Source file: `morpheus.md`
 
 # Morpheus - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `morpheus`
 
 ## Snapshot
 - Title: Morpheus
+- Tier: `featured`
 - Tag: Dream Journal
 - Status: `active`
 - Type: `app`
 - Orientation: `square`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/template-morpheus/
+- Demo URL: (not set)
+- Demo mode: `template`
+- Repo URL: https://github.com/BenWassa/morpheus-dream-archive
+- Last verified: (not verified)
 - Image path: `assets/projects/morpheus.png`
 - Image alt: Morpheus - Journal
 
@@ -290,19 +326,25 @@ Source file: `narrative.md`
 
 # Narrative - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `narrative`
 
 ## Snapshot
 - Title: Narrative
+- Tier: `featured`
 - Tag: Travel Photo Organizer
 - Status: `active`
 - Type: `app`
 - Orientation: `square`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/narrative-template/
+- Demo URL: (not set)
+- Demo mode: `template`
+- Repo URL: https://github.com/BenWassa/Narrative
+- Last verified: (not verified)
 - Image path: `assets/projects/narrative.png`
 - Image alt: Narrative - Photo Tool
 
@@ -334,19 +376,25 @@ Source file: `orpheus.md`
 
 # Orpheus - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `orpheus`
 
 ## Snapshot
 - Title: Orpheus
+- Tier: `featured`
 - Tag: Music Research Tool
 - Status: `draft`
 - Type: `psychology`
 - Orientation: `landscape`
+- Year: (not set)
 - Live URL: (not set)
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/orpheus
+- Last verified: (not verified)
 - Image path: `assets/projects/Orpheus.png`
 - Image alt: Orpheus - Audio Analysis
 
@@ -377,19 +425,25 @@ Source file: `punchbuggy.md`
 
 # Punchbuggy - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `punchbuggy`
 
 ## Snapshot
 - Title: Punchbuggy
+- Tier: `featured`
 - Tag: Game
 - Status: `active`
 - Type: `app`
 - Orientation: `square`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/punchbuggy/
+- Demo URL: https://benwassa.github.io/punchbuggy/
+- Demo mode: `live`
+- Repo URL: https://github.com/BenWassa/punchbuggy
+- Last verified: 2026-10-02
 - Image path: `assets/projects/punchbuggy.png`
 - Image alt: Punchbuggy - Game
 
@@ -421,19 +475,25 @@ Source file: `pushup-challenge.md`
 
 # PushUp Challenge - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `pushup-challenge`
 
 ## Snapshot
 - Title: PushUp Challenge
+- Tier: `featured`
 - Tag: Fitness Challenge App
 - Status: `active`
 - Type: `app`
 - Orientation: `square`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/the-pushup-challenge-2025/?mode=demo
+- Demo URL: https://benwassa.github.io/the-pushup-challenge-2025/?mode=demo
+- Demo mode: `playbook`
+- Repo URL: https://github.com/BenWassa/the-pushup-challenge-2025
+- Last verified: 2026-10-02
 - Image path: `assets/projects/pushup.png`
 - Image alt: PushUp - Fitness App
 
@@ -464,19 +524,25 @@ Source file: `sankofa.md`
 
 # Sankofa - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `sankofa`
 
 ## Snapshot
 - Title: Sankofa
+- Tier: `featured`
 - Tag: Scientific-Narrative Guide
 - Status: `active`
 - Type: `narrative`
 - Orientation: `landscape`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/sankofa/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/sankofa
+- Last verified: 2026-10-02
 - Image path: `assets/projects/Sankofa.png`
 - Image alt: Sankofa - Narrative System
 
@@ -508,19 +574,25 @@ Source file: `skywalker.md`
 
 # Skywalker - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `skywalker`
 
 ## Snapshot
 - Title: Skywalker
+- Tier: `featured`
 - Tag: Movie-Narrative Guide
 - Status: `active`
 - Type: `narrative`
 - Orientation: `landscape`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/Skywalker/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/Skywalker
+- Last verified: 2026-10-02
 - Image path: `assets/projects/Skywalker.png`
 - Image alt: Skywalker - Narrative System
 
@@ -552,19 +624,25 @@ Source file: `stark.md`
 
 # STARK - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `stark`
 
 ## Snapshot
 - Title: STARK
+- Tier: `featured`
 - Tag: Fitness Intelligence
 - Status: `prototype`
 - Type: `app`
 - Orientation: `square`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/STARK/
+- Demo URL: https://benwassa.github.io/STARK/
+- Demo mode: `live`
+- Repo URL: https://github.com/BenWassa/STARK
+- Last verified: 2026-10-02
 - Image path: `assets/projects/stark.png`
 - Image alt: STARK - Fitness PWA
 
@@ -596,19 +674,25 @@ Source file: `vox.md`
 
 # Vox - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `vox`
 
 ## Snapshot
 - Title: Vox
+- Tier: `featured`
 - Tag: Language Learning Tracker
 - Status: `prototype`
 - Type: `app`
 - Orientation: `square`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/Vox_Showcase/
+- Demo URL: (not set)
+- Demo mode: `template`
+- Repo URL: https://github.com/BenWassa/Vox
+- Last verified: (not verified)
 - Image path: `assets/projects/vox.png`
 - Image alt: Vox - Language Tool
 
@@ -640,19 +724,25 @@ Source file: `wrestle.md`
 
 # Wrestle - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `wrestle`
 
 ## Snapshot
 - Title: Wrestle
+- Tier: `featured`
 - Tag: Grappling Training Log
 - Status: `active`
 - Type: `app`
 - Orientation: `square`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/wrestlePWA/
+- Demo URL: https://benwassa.github.io/wrestle-template/
+- Demo mode: `template`
+- Repo URL: https://github.com/BenWassa/wrestlePWA
+- Last verified: (not verified)
 - Image path: `assets/projects/wrestle.png`
 - Image alt: Wrestle - Log
 

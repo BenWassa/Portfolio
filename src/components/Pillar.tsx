@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Project } from '../types';
+import type { FeaturedProject } from '../types';
 import { ProjectCard } from './ProjectCard';
 
 interface PillarProps {
@@ -14,11 +14,11 @@ interface PillarProps {
   titleClassName?: string;
   headingClassName?: string;
   className?: string;
-  projects: Project[];
+  projects: FeaturedProject[];
   isActive: boolean;
   isInactive: boolean;
   onActivate: (id: string) => void;
-  onProjectClick: (project: Project) => void;
+  onProjectClick: (project: FeaturedProject) => void;
 }
 
 export const Pillar: React.FC<PillarProps> = ({

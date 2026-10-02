@@ -1,17 +1,23 @@
 import { useMemo } from 'react';
-import { getSortedProjects } from '../data/projects';
-import type { Project } from '../types';
+import { getIndexProjects, getSortedProjects } from '../data/projects';
+import type { FeaturedProject, IndexProject, ProjectType } from '../types';
 
-export const useProjects = (): {
-  narrative: Project[];
-  app: Project[];
-  psychology: Project[];
-} =>
+export type PillarProjects = {
+  featured: FeaturedProject[];
+  index: IndexProject[];
+};
+
+const forType = (type: ProjectType): PillarProjects => ({
+  featured: getSortedProjects(type),
+  index: getIndexProjects(type),
+});
+
+export const useProjects = (): Record<ProjectType, PillarProjects> =>
   useMemo(
     () => ({
-      narrative: getSortedProjects('narrative'),
-      app: getSortedProjects('app'),
-      psychology: getSortedProjects('psychology'),
+      narrative: forType('narrative'),
+      app: forType('app'),
+      psychology: forType('psychology'),
     }),
     []
   );
