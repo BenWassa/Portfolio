@@ -3,10 +3,14 @@ status: open
 lane: opus
 issues: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
 owner: Ben
-updated: 2026-09-13
+updated: 2026-09-19
 ---
 
 # Portfolio Refresh — scoping plan
+
+> **2026-10-02 update.** Phase 1 triage (#8) is done — rulings live in Almanac and are snapshotted in
+> `demo-rulings.json`. Current scope, conflicts and workstreams: `INCLUSION-AND-DEMO-WORKPLAN.md`.
+> The 32-candidate framing below predates that; counts there are historical.
 
 Audit date **2026-09-13**. Portfolio last touched **2026-02-23** (~7 months).
 
@@ -24,7 +28,7 @@ that the site does not reflect (`punchbuggy` → 2026-08-14, `hearth_v2` → 202
 **The scale.** 98 repos: 51 public, 47 private, no forks, no archives. After excluding
 templates, backups, utilities and 22 professional/consulting repos, the triage set is
 **32 candidates** — 17 live-and-public, 6 live-but-private, 9 public-but-undeployed.
-See `CANDIDATE-INVENTORY.md`.
+See `docs/closed/CANDIDATE-INVENTORY.md` (superseded by `INCLUSION-AND-DEMO-WORKPLAN.md`).
 
 ### The three real problems
 
@@ -61,11 +65,67 @@ Migration order, cheapest-first:
 | Hearth | `hearth_v2?mode=demo` | ✅ already correct — reference implementation |
 | PushUp | `the-pushup-challenge-2025?mode=demo` | ✅ already correct |
 | Wrestle | `wrestle-template` | `wrestlePWA?mode=demo` (repo is private — needs Pages-only publish) |
-| Morpheus | `template-morpheus` | `morpheus-dream-archive?mode=demo` |
+| Morpheus | `template-morpheus` | ⚠️ **keep the fork for now** — see correction below |
 | Narrative | `narrative-template` | resolve name collision first, then demo mode |
+
+> **Correction (2026-09-18 audit).** The original plan assumed every template fork was
+> pure drift and could be retired by repointing the card at the real product. The
+> 48-repo audit confirms that for `template-pushup` and `template-hearth`, and
+> **refutes it for `template-morpheus`**.
+>
+> `morpheus-dream-archive` is gated behind Google sign-in plus a hardcoded UID whitelist
+> (`src/config/whitelist.js`), ships an empty `public/index.json`, and
+> `vite.config.js:15-26` *throws* without Firebase env vars — no credential-free build is
+> currently possible. Repointing that card today would replace a working demo with a
+> sign-in wall.
+>
+> Build demo mode in the real repo **first**, then retire the fork. Detail:
+> `docs/audits/2026-09-18/CROSS-PROJECT-PATTERNS.md`.
 
 Once a project's demo mode passes the playbook's acceptance checklist, its template repo is
 archived — not deleted, archived, so old links keep resolving.
+
+### 2.1b Method before selection
+
+Which projects get demos, and how each is built, is settled in
+**`docs/DEMO-MODE-METHODS.md`** — a decision rule, five project archetypes, a per-archetype
+recipe, ten traps observed in real repos, and an acceptance checklist. Read it before
+assigning demo work.
+
+Evidence behind it: `docs/audits/2026-09-18/`.
+
+The single most actionable finding: **five projects have complete, working demo paths that
+no visitor can reach**, each blocked by one constant, env-var case, or missing CI variable
+(`almanac`, `jarvis-core`, `layer-up`, `pantheon`, `HAUS`). Roughly an afternoon's work for
+five newly embeddable projects.
+
+### 2.1c Where the demo decision is recorded (issue 8)
+
+The triage in issue 8 is a **human** call over ~98 repos, so it needs a surface rather than
+a spreadsheet. That surface is Almanac, which is already the index of every repo Ben owns.
+
+- **Field.** `human.demo_intent` in Almanac's `data/github-inventory.json`, one of
+  `demo` / `link` / `index` / `skip` — the same vocabulary as `DEMO-MODE-METHODS.md` §1, so a
+  decision needs no translation to act on. The `human` block is carried over wholesale by
+  `capture-github.mjs`, so a ruling survives every nightly capture.
+- **Evidence alongside it.** `finalize.py` writes `claude.demo_state`
+  (`playbook|partial|none`) and `claude.demo_rec` (the audit's recommendation) into the same
+  inventory, structured rather than buried in the assessment prose. 46 of 98 repos carry
+  both; the rest are marked as unaudited rather than guessed at.
+- **The surface.** Almanac's Ledger has a *Demo pass* queue — one card per repo, showing the
+  brief, what demo machinery exists today, and what the audit recommended, pre-marked so the
+  click is a confirmation or an override.
+
+**What this unlocks.** Once the pass is done, "is the current demo sufficient?" stops being a
+judgment and becomes a lookup — intent against state:
+
+| | state `none` | state `partial` | state `playbook` |
+|---|---|---|---|
+| want `demo` | build it | finish it (the five one-constant fixes above) | verify and embed |
+| want `link`/`index`/`skip` | nothing to do | dead machinery, consider deleting | over-built |
+
+Decisions come back out of Almanac as `demo-intent.json` and merge into the inventory with
+`npm run demo:apply -- <file> --write`.
 
 ### 2.2 Two-tier information architecture
 
@@ -151,6 +211,7 @@ than deciding.
 | # | Issue | Lane |
 |---|---|---|
 | 8 | Per-project triage of 32 candidates | **human** |
+| 8a | ~~Build the demo-pass surface in Almanac~~ — done, see §2.1c | standard |
 | 9 | Re-verify the 15 displayed projects against current repo state | opus |
 | 10 | Resolve the `Narrative` name collision | opus |
 | 11 | Decide fate of 9 undeployed public repos (Tier C) | opus |

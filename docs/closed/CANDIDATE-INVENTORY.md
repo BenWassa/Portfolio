@@ -1,12 +1,16 @@
 ---
-status: open
+status: closed
 lane: human
 issues: [8]
 owner: Ben
-updated: 2026-09-13
+updated: 2026-10-02
 ---
 
 # Candidate Inventory — per-project triage
+
+> **Closed 2026-10-02.** Superseded: triage was done in Almanac (`human.demo_intent`, all 98 repos)
+> rather than in this file. Rulings: `docs/open/demo-rulings.json`; plan:
+> `docs/open/INCLUSION-AND-DEMO-WORKPLAN.md`. Kept for provenance — the decision fields below were never filled in.
 
 Audit run 2026-09-13 against all **98** repos under `BenWassa`
 (51 public, 47 private, 0 forks, 0 archived).
