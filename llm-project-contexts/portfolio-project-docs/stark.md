@@ -19,7 +19,7 @@ Project slug: `stark`
 - Demo mode: `live`
 - Repo URL: https://github.com/BenWassa/STARK
 - Last verified: 2026-10-02
-- Image path: `assets/projects/stark.png`
+- Image path: `assets/projects/STARK.png`
 - Image alt: STARK - Fitness PWA
 
 ## Core Description

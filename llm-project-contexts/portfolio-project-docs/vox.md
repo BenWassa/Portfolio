@@ -19,7 +19,7 @@ Project slug: `vox`
 - Demo mode: `template`
 - Repo URL: https://github.com/BenWassa/Vox
 - Last verified: (not verified)
-- Image path: `assets/projects/vox.png`
+- Image path: `assets/projects/Vox.png`
 - Image alt: Vox - Language Tool
 
 ## Core Description
