@@ -102,6 +102,7 @@ const App: React.FC = () => {
           headingClassName="text-4xl md:text-5xl font-serif text-white italic"
           className="bg-[#0c0a09]"
           projects={projectsByType.narrative.featured}
+          indexProjects={projectsByType.narrative.index}
           isActive={activePillar === 'narrative'}
           isInactive={activePillar !== null && activePillar !== 'narrative'}
           onActivate={handlePillarActivate}
@@ -121,6 +122,7 @@ const App: React.FC = () => {
           headingClassName="text-4xl md:text-5xl font-display font-bold text-white"
           className="bg-[#0f172a]"
           projects={projectsByType.app.featured}
+          indexProjects={projectsByType.app.index}
           isActive={activePillar === 'pwa'}
           isInactive={activePillar !== null && activePillar !== 'pwa'}
           onActivate={handlePillarActivate}
@@ -140,6 +142,7 @@ const App: React.FC = () => {
           headingClassName="text-4xl md:text-5xl font-display font-light text-white"
           className="bg-[#0f0f23] border-r-0"
           projects={projectsByType.psychology.featured}
+          indexProjects={projectsByType.psychology.index}
           isActive={activePillar === 'psych'}
           isInactive={activePillar !== null && activePillar !== 'psych'}
           onActivate={handlePillarActivate}
