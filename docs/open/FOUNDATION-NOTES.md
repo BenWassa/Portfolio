@@ -103,7 +103,10 @@ public through its Pages URL.
 
 ## 4. Things I saw while verifying (not acted on)
 
-- **Blocker for #5:** `src/public/assets/projects/STARK.png` and `Vox.png` are referenced as
+- **Blocker for #5 (RESOLVED on `fix/image-filename-case`):** the `img` paths in
+  `src/js/project-descriptions.ts` now use the on-disk names `STARK.png` / `Vox.png`; an
+  exact-case check of `dist/` found 19 image refs, 0 mismatches. Original finding:
+  `src/public/assets/projects/STARK.png` and `Vox.png` are referenced as
   `stark.png` / `vox.png`. The live site works only because the old `docs/` build on `main` has
   lowercase copies. A Linux Actions build is case-sensitive, so **both card images will 404 after
   the Pages flip** unless the files are renamed (or the paths changed).
