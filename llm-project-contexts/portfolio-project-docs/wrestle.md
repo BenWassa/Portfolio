@@ -1,18 +1,24 @@
 # Wrestle - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `wrestle`
 
 ## Snapshot
 - Title: Wrestle
+- Tier: `featured`
 - Tag: Grappling Training Log
 - Status: `active`
 - Type: `app`
 - Orientation: `square`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/wrestlePWA/
+- Demo URL: https://benwassa.github.io/wrestle-template/
+- Demo mode: `template`
+- Repo URL: https://github.com/BenWassa/wrestlePWA
+- Last verified: (not verified)
 - Image path: `assets/projects/wrestle.png`
 - Image alt: Wrestle - Log
 

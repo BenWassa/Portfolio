@@ -1,18 +1,24 @@
 # PushUp Challenge - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `pushup-challenge`
 
 ## Snapshot
 - Title: PushUp Challenge
+- Tier: `featured`
 - Tag: Fitness Challenge App
 - Status: `active`
 - Type: `app`
 - Orientation: `square`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/the-pushup-challenge-2025/?mode=demo
+- Demo URL: https://benwassa.github.io/the-pushup-challenge-2025/?mode=demo
+- Demo mode: `playbook`
+- Repo URL: https://github.com/BenWassa/the-pushup-challenge-2025
+- Last verified: 2026-10-02
 - Image path: `assets/projects/pushup.png`
 - Image alt: PushUp - Fitness App
 

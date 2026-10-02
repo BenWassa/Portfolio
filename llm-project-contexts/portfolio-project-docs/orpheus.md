@@ -1,18 +1,24 @@
 # Orpheus - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `orpheus`
 
 ## Snapshot
 - Title: Orpheus
+- Tier: `featured`
 - Tag: Music Research Tool
 - Status: `draft`
 - Type: `psychology`
 - Orientation: `landscape`
+- Year: (not set)
 - Live URL: (not set)
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/orpheus
+- Last verified: (not verified)
 - Image path: `assets/projects/Orpheus.png`
 - Image alt: Orpheus - Audio Analysis
 

@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Pillar } from './components/Pillar';
 import { ProjectModal } from './components/ProjectModal';
-import type { Project } from './types';
+import type { FeaturedProject } from './types';
 import { useProjects } from './hooks/useProjects';
 
 const App: React.FC = () => {
   const [activePillar, setActivePillar] = useState<string | null>(null);
-  const [modalProject, setModalProject] = useState<Project | null>(null);
+  const [modalProject, setModalProject] = useState<FeaturedProject | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const closeTimerRef = useRef<number | null>(null);
 
@@ -21,7 +21,7 @@ const App: React.FC = () => {
     setActivePillar(null);
   };
 
-  const handleProjectClick = (project: Project) => {
+  const handleProjectClick = (project: FeaturedProject) => {
     if (closeTimerRef.current) window.clearTimeout(closeTimerRef.current);
     setModalProject(project);
     setIsModalOpen(true);
@@ -101,7 +101,8 @@ const App: React.FC = () => {
           titleClassName="font-serif text-4xl md:text-6xl italic mb-2"
           headingClassName="text-4xl md:text-5xl font-serif text-white italic"
           className="bg-[#0c0a09]"
-          projects={projectsByType.narrative}
+          projects={projectsByType.narrative.featured}
+          indexProjects={projectsByType.narrative.index}
           isActive={activePillar === 'narrative'}
           isInactive={activePillar !== null && activePillar !== 'narrative'}
           onActivate={handlePillarActivate}
@@ -120,7 +121,8 @@ const App: React.FC = () => {
           titleClassName="font-display text-4xl md:text-6xl font-bold mb-2"
           headingClassName="text-4xl md:text-5xl font-display font-bold text-white"
           className="bg-[#0f172a]"
-          projects={projectsByType.app}
+          projects={projectsByType.app.featured}
+          indexProjects={projectsByType.app.index}
           isActive={activePillar === 'pwa'}
           isInactive={activePillar !== null && activePillar !== 'pwa'}
           onActivate={handlePillarActivate}
@@ -139,7 +141,8 @@ const App: React.FC = () => {
           titleClassName="font-display text-4xl md:text-6xl font-light mb-2"
           headingClassName="text-4xl md:text-5xl font-display font-light text-white"
           className="bg-[#0f0f23] border-r-0"
-          projects={projectsByType.psychology}
+          projects={projectsByType.psychology.featured}
+          indexProjects={projectsByType.psychology.index}
           isActive={activePillar === 'psych'}
           isInactive={activePillar !== null && activePillar !== 'psych'}
           onActivate={handlePillarActivate}

@@ -67,6 +67,8 @@ const renderProjectDoc = ({ project, description, generatedAt, commit, branch })
   const slug = toSlug(project.title);
   const stack = (project.techSpecs?.stack || []).map((item) => `\`${item}\``).join(', ') || 'N/A';
   const features = (project.techSpecs?.features || []).map((item) => `- ${item}`).join('\n') || '- N/A';
+  // Index-tier entries carry no card fields (tag, status, image, ...).
+  const na = (value) => value ?? 'n/a';
 
   return `# ${project.title} - Portfolio Project Record
 
@@ -78,13 +80,19 @@ Project slug: \`${slug}\`
 
 ## Snapshot
 - Title: ${project.title}
-- Tag: ${project.tag}
-- Status: \`${project.status}\`
+- Tier: \`${na(project.tier)}\`
+- Tag: ${na(project.tag)}
+- Status: \`${na(project.status)}\`
 - Type: \`${project.type}\`
-- Orientation: \`${project.orientation}\`
+- Orientation: \`${na(project.orientation)}\`
+- Year: ${project.year ?? '(not set)'}
 - Live URL: ${project.href || '(not set)'}
-- Image path: \`${project.img}\`
-- Image alt: ${project.alt}
+- Demo URL: ${project.demoUrl || '(not set)'}
+- Demo mode: \`${na(project.demoMode)}\`
+- Repo URL: ${project.repoUrl || '(not set)'}
+- Last verified: ${project.lastVerified || '(not verified)'}
+- Image path: \`${na(project.img)}\`
+- Image alt: ${na(project.alt)}
 
 ## Core Description
 - Card description: ${project.desc}
@@ -109,9 +117,9 @@ const renderIndexDoc = ({ projects, generatedAt, commit, branch }) => {
   const rows = projects
     .map(
       (p) =>
-        `| ${p.title} | \`${p.status}\` | \`${p.type}\` | ${p.href || '(not set)'} | [${toDocName(p.title)}](${toDocName(
-          p.title
-        )}) |`
+        `| ${p.title} | \`${p.tier ?? 'n/a'}\` | \`${p.status ?? 'n/a'}\` | \`${p.type}\` | \`${
+          p.demoMode ?? 'n/a'
+        }\` | ${p.lastVerified || '—'} | ${p.href || '(not set)'} | [${toDocName(p.title)}](${toDocName(p.title)}) |`
     )
     .join('\n');
 
@@ -125,8 +133,8 @@ Total projects: ${projects.length}
 
 This folder is auto-generated on build. Edit source project data in \`src/js/project-descriptions.ts\`.
 
-| Project | Status | Type | Live URL | Doc |
-| --- | --- | --- | --- | --- |
+| Project | Tier | Status | Type | Demo mode | Last verified | Live URL | Doc |
+| --- | --- | --- | --- | --- | --- | --- | --- |
 ${rows}
 `;
 };

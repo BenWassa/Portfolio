@@ -1,18 +1,24 @@
 # Dukkha - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `dukkha`
 
 ## Snapshot
 - Title: Dukkha
+- Tier: `featured`
 - Tag: Scientific-Narrative Guide
 - Status: `draft`
 - Type: `psychology`
 - Orientation: `landscape`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/dukkha/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/dukkha
+- Last verified: 2026-10-02
 - Image path: `assets/projects/Dukkha.png`
 - Image alt: Dukkha - Digital well-being
 

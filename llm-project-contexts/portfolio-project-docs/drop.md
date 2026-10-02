@@ -1,18 +1,24 @@
 # drop - Portfolio Project Record
 
-Generated: 2026-02-23T16:36:08.146Z
+Generated: 2026-10-02T19:41:03.203Z
 Source: `src/js/project-descriptions.ts`
-Branch: main
-Commit: b373de8
+Branch: feat/schema-v2-two-tier-ia
+Commit: 98da12c
 Project slug: `drop`
 
 ## Snapshot
 - Title: drop
+- Tier: `featured`
 - Tag: Daily Domain Tracker
 - Status: `active`
 - Type: `app`
 - Orientation: `square`
+- Year: (not set)
 - Live URL: https://benwassa.github.io/drop/
+- Demo URL: https://benwassa.github.io/drop/
+- Demo mode: `live`
+- Repo URL: https://github.com/BenWassa/drop
+- Last verified: 2026-10-02
 - Image path: `assets/projects/drop.png`
 - Image alt: drop - Tracker
 

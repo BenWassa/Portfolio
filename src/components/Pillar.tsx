@@ -1,6 +1,7 @@
 import React from 'react';
-import type { Project } from '../types';
+import type { FeaturedProject, IndexProject, ProjectStatus } from '../types';
 import { ProjectCard } from './ProjectCard';
+import { ProjectIndex } from './ProjectIndex';
 
 interface PillarProps {
   id: string;
@@ -14,12 +15,26 @@ interface PillarProps {
   titleClassName?: string;
   headingClassName?: string;
   className?: string;
-  projects: Project[];
+  projects: FeaturedProject[];
+  indexProjects?: IndexProject[];
   isActive: boolean;
   isInactive: boolean;
   onActivate: (id: string) => void;
-  onProjectClick: (project: Project) => void;
+  onProjectClick: (project: FeaturedProject) => void;
 }
+
+// Featured cards are grouped by status, in this order. Every non-empty group gets its own
+// divider, so a pillar holding both draft and prototype cards shows both.
+const STATUS_GROUPS: {
+  status: ProjectStatus;
+  label: string;
+  line: string;
+  text: string;
+}[] = [
+  { status: 'active', label: 'Active', line: 'from-emerald-500/50', text: 'text-emerald-400' },
+  { status: 'draft', label: 'Draft', line: 'from-amber-500/50', text: 'text-amber-400' },
+  { status: 'prototype', label: 'Prototype', line: 'from-amber-600/50', text: 'text-amber-500' },
+];
 
 export const Pillar: React.FC<PillarProps> = ({
   id,
@@ -34,6 +49,7 @@ export const Pillar: React.FC<PillarProps> = ({
   headingClassName,
   className,
   projects,
+  indexProjects = [],
   isActive,
   isInactive,
   onActivate,
@@ -45,11 +61,13 @@ export const Pillar: React.FC<PillarProps> = ({
   if (isActive) pillarClasses += ' active';
   if (isInactive) pillarClasses += ' inactive';
   const hasSquareProjects = projects.some((p) => p.orientation === 'square');
-  const secondaryStatus = projects.some((p) => p.status === 'prototype') ? 'prototype' : 'draft';
-  const secondaryLabel = secondaryStatus === 'prototype' ? 'Prototype' : 'Draft';
   const gridClassName = hasSquareProjects
-    ? 'flex-1 overflow-y-auto overflow-x-hidden no-scrollbar grid grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-8 pb-8 w-full pr-6 items-start content-start auto-rows-max'
-    : 'flex-1 overflow-y-auto overflow-x-hidden no-scrollbar grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-8 w-full pr-6 items-start content-start auto-rows-max';
+    ? 'grid grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-8 w-full items-start content-start auto-rows-max'
+    : 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 w-full items-start content-start auto-rows-max';
+  const groups = STATUS_GROUPS.map((group) => ({
+    ...group,
+    projects: projects.filter((p) => p.status === group.status),
+  })).filter((group) => group.projects.length > 0);
 
   return (
     <section
@@ -89,65 +107,35 @@ export const Pillar: React.FC<PillarProps> = ({
             <p className="mt-4 max-w-xl text-white/60 font-light leading-relaxed">{description}</p>
           </header>
 
-          <div className={gridClassName}>
-            {(() => {
-              const activeProjects = projects.filter((p) => p.status === 'active');
-              const secondaryProjects = projects.filter((p) => p.status === secondaryStatus);
+          {/* One scroll area: featured grid, then the index tier (if any).
+              -ml-2/pl-2 leaves room for index-row hover/focus rings without moving content. */}
+          <div className="flex-1 overflow-y-auto overflow-x-hidden no-scrollbar pb-8 pr-6 -ml-2 pl-2">
+            <div className={gridClassName}>
+              {groups.map((group, groupIndex) => (
+                <React.Fragment key={group.status}>
+                  <div className="col-span-full">
+                    <div className={`flex items-center gap-2 mb-3 ${groupIndex > 0 ? 'mt-6' : ''}`}>
+                      <div
+                        className={`h-px flex-1 bg-gradient-to-r ${group.line} to-transparent`}
+                      ></div>
+                      <span
+                        className={`text-xs font-mono uppercase tracking-wider font-bold ${group.text}`}
+                      >
+                        {group.label}
+                      </span>
+                      <div
+                        className={`h-px flex-1 bg-gradient-to-l ${group.line} to-transparent`}
+                      ></div>
+                    </div>
+                  </div>
+                  {group.projects.map((project) => (
+                    <ProjectCard key={project.title} project={project} onClick={onProjectClick} />
+                  ))}
+                </React.Fragment>
+              ))}
+            </div>
 
-              return (
-                <>
-                  {activeProjects.length > 0 && (
-                    <>
-                      <div className="col-span-full">
-                        <div className="flex items-center gap-2 mb-3">
-                          <div className="h-px flex-1 bg-gradient-to-r from-emerald-500/50 to-transparent"></div>
-                          <span className="text-xs font-mono uppercase tracking-wider font-bold text-emerald-400">
-                            Active
-                          </span>
-                          <div className="h-px flex-1 bg-gradient-to-l from-emerald-500/50 to-transparent"></div>
-                        </div>
-                      </div>
-                      {activeProjects.map((project) => (
-                        <ProjectCard
-                          key={project.title}
-                          project={project}
-                          onClick={onProjectClick}
-                        />
-                      ))}
-                    </>
-                  )}
-
-                  {secondaryProjects.length > 0 && (
-                    <>
-                      <div className="col-span-full">
-                        <div className={`flex items-center gap-2 mb-3 ${activeProjects.length ? 'mt-6' : ''}`}>
-                          <div className={`h-px flex-1 bg-gradient-to-r ${
-                            secondaryStatus === 'prototype' ? 'from-amber-600/50' : 'from-amber-500/50'
-                          } to-transparent`}></div>
-                          <span
-                            className={`text-xs font-mono uppercase tracking-wider font-bold ${
-                              secondaryStatus === 'prototype' ? 'text-amber-500' : 'text-amber-400'
-                            }`}
-                          >
-                            {secondaryLabel}
-                          </span>
-                          <div className={`h-px flex-1 bg-gradient-to-l ${
-                            secondaryStatus === 'prototype' ? 'from-amber-600/50' : 'from-amber-500/50'
-                          } to-transparent`}></div>
-                        </div>
-                      </div>
-                      {secondaryProjects.map((project) => (
-                        <ProjectCard
-                          key={project.title}
-                          project={project}
-                          onClick={onProjectClick}
-                        />
-                      ))}
-                    </>
-                  )}
-                </>
-              );
-            })()}
+            <ProjectIndex pillarId={id} projects={indexProjects} accentColor={baseColor} />
           </div>
         </div>
       </div>

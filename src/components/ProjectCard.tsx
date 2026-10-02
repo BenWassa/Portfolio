@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import type { Project, ProjectStatus } from '../types';
+import type { FeaturedProject, ProjectStatus } from '../types';
 import { useImageLoading } from '../hooks/useImageLoading';
 import { getResponsiveImageProps } from '../utils/imageUtils';
 
 interface ProjectCardProps {
-  project: Project;
-  onClick: (project: Project) => void;
+  project: FeaturedProject;
+  onClick: (project: FeaturedProject) => void;
 }
 
 // Keep helper for Square cards only
