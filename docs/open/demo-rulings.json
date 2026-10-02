@@ -1,0 +1,401 @@
+{
+  "source": "almanac Firestore project almanac-4631c via scripts/pull-decisions.mjs, pulled 2026-10-02",
+  "note": "ruling = human.demo_intent. skip (59 repos) omitted. auditDemoState/auditRec = Claude 2026-09-18 audit, null where not audited. onSiteAs = card currently shown; Vox ruling covers private repo Vox, card targets public Vox_Showcase.",
+  "counts": {
+    "demo": 15,
+    "link": 13,
+    "index": 10
+  },
+  "rows": [
+    {
+      "repo": "poseidon",
+      "ruling": "demo",
+      "visibility": "public",
+      "lifecycle": "active",
+      "lastCommit": "2026-09-16",
+      "auditDemoState": "partial",
+      "auditRec": "demo",
+      "onSiteAs": null
+    },
+    {
+      "repo": "Hermes",
+      "ruling": "link",
+      "visibility": "public",
+      "lifecycle": "maintaining",
+      "lastCommit": "2026-09-15",
+      "auditDemoState": "partial",
+      "auditRec": "demo",
+      "onSiteAs": null
+    },
+    {
+      "repo": "argus",
+      "ruling": "demo",
+      "visibility": "public",
+      "lifecycle": "dormant",
+      "lastCommit": "2026-09-15",
+      "auditDemoState": "partial",
+      "auditRec": "demo",
+      "onSiteAs": null
+    },
+    {
+      "repo": "flag",
+      "ruling": "demo",
+      "visibility": "public",
+      "lifecycle": "active",
+      "lastCommit": "2026-09-12",
+      "auditDemoState": "none",
+      "auditRec": "demo",
+      "onSiteAs": null
+    },
+    {
+      "repo": "Ares",
+      "ruling": "link",
+      "visibility": "public",
+      "lifecycle": "dormant",
+      "lastCommit": "2026-09-06",
+      "auditDemoState": "none",
+      "auditRec": "demo",
+      "onSiteAs": null
+    },
+    {
+      "repo": "chefs-journal",
+      "ruling": "demo",
+      "visibility": "private",
+      "lifecycle": "maintaining",
+      "lastCommit": "2026-08-21",
+      "auditDemoState": "partial",
+      "auditRec": "demo",
+      "onSiteAs": null
+    },
+    {
+      "repo": "demeter",
+      "ruling": "index",
+      "visibility": "public",
+      "lifecycle": "dormant",
+      "lastCommit": "2026-08-20",
+      "auditDemoState": null,
+      "auditRec": null,
+      "onSiteAs": null
+    },
+    {
+      "repo": "liebestraum",
+      "ruling": "demo",
+      "visibility": "private",
+      "lifecycle": "maintaining",
+      "lastCommit": "2026-08-15",
+      "auditDemoState": "none",
+      "auditRec": "link",
+      "onSiteAs": null
+    },
+    {
+      "repo": "hearth_v2",
+      "ruling": "demo",
+      "visibility": "public",
+      "lifecycle": "maintaining",
+      "lastCommit": "2026-08-15",
+      "auditDemoState": null,
+      "auditRec": null,
+      "onSiteAs": "Hearth"
+    },
+    {
+      "repo": "macht",
+      "ruling": "link",
+      "visibility": "public",
+      "lifecycle": "dormant",
+      "lastCommit": "2026-08-11",
+      "auditDemoState": "playbook",
+      "auditRec": "demo",
+      "onSiteAs": null
+    },
+    {
+      "repo": "HAUS",
+      "ruling": "demo",
+      "visibility": "private",
+      "lifecycle": "maintaining",
+      "lastCommit": "2026-08-09",
+      "auditDemoState": "playbook",
+      "auditRec": "demo",
+      "onSiteAs": null
+    },
+    {
+      "repo": "padme",
+      "ruling": "index",
+      "visibility": "public",
+      "lifecycle": "dormant",
+      "lastCommit": "2026-08-09",
+      "auditDemoState": null,
+      "auditRec": null,
+      "onSiteAs": null
+    },
+    {
+      "repo": "arc",
+      "ruling": "index",
+      "visibility": "public",
+      "lifecycle": "active",
+      "lastCommit": "2026-08-07",
+      "auditDemoState": "none",
+      "auditRec": "demo",
+      "onSiteAs": null
+    },
+    {
+      "repo": "Narrative",
+      "ruling": "demo",
+      "visibility": "public",
+      "lifecycle": "maintaining",
+      "lastCommit": "2026-07-22",
+      "auditDemoState": "none",
+      "auditRec": "link",
+      "onSiteAs": null
+    },
+    {
+      "repo": "morpheus-dream-archive",
+      "ruling": "demo",
+      "visibility": "public",
+      "lifecycle": "maintaining",
+      "lastCommit": "2026-07-17",
+      "auditDemoState": "none",
+      "auditRec": "link",
+      "onSiteAs": null
+    },
+    {
+      "repo": "psyche",
+      "ruling": "index",
+      "visibility": "public",
+      "lifecycle": "dormant",
+      "lastCommit": "2026-07-12",
+      "auditDemoState": "none",
+      "auditRec": "demo",
+      "onSiteAs": null
+    },
+    {
+      "repo": "orpheus",
+      "ruling": "index",
+      "visibility": "public",
+      "lifecycle": "dormant",
+      "lastCommit": "2026-07-02",
+      "auditDemoState": "partial",
+      "auditRec": "demo",
+      "onSiteAs": "Orpheus (href null)"
+    },
+    {
+      "repo": "faust",
+      "ruling": "index",
+      "visibility": "public",
+      "lifecycle": "dormant",
+      "lastCommit": "2026-07-02",
+      "auditDemoState": "none",
+      "auditRec": "demo",
+      "onSiteAs": null
+    },
+    {
+      "repo": "pantheon",
+      "ruling": "link",
+      "visibility": "public",
+      "lifecycle": "dormant",
+      "lastCommit": "2026-07-02",
+      "auditDemoState": "partial",
+      "auditRec": "demo",
+      "onSiteAs": null
+    },
+    {
+      "repo": "static",
+      "ruling": "index",
+      "visibility": "public",
+      "lifecycle": "dormant",
+      "lastCommit": "2026-06-27",
+      "auditDemoState": "none",
+      "auditRec": "demo",
+      "onSiteAs": null
+    },
+    {
+      "repo": "punchbuggy",
+      "ruling": "demo",
+      "visibility": "public",
+      "lifecycle": "maintaining",
+      "lastCommit": "2026-06-15",
+      "auditDemoState": null,
+      "auditRec": null,
+      "onSiteAs": "Punchbuggy"
+    },
+    {
+      "repo": "layer-up",
+      "ruling": "link",
+      "visibility": "public",
+      "lifecycle": "dormant",
+      "lastCommit": "2026-04-04",
+      "auditDemoState": "partial",
+      "auditRec": "demo",
+      "onSiteAs": null
+    },
+    {
+      "repo": "FamilyPlan",
+      "ruling": "link",
+      "visibility": "private",
+      "lifecycle": "maintaining",
+      "lastCommit": "2026-03-17",
+      "auditDemoState": "partial",
+      "auditRec": "demo",
+      "onSiteAs": null
+    },
+    {
+      "repo": "vox-v2",
+      "ruling": "index",
+      "visibility": "private",
+      "lifecycle": "dormant",
+      "lastCommit": "2026-03-02",
+      "auditDemoState": "none",
+      "auditRec": "demo",
+      "onSiteAs": null
+    },
+    {
+      "repo": "Skywalker",
+      "ruling": "link",
+      "visibility": "public",
+      "lifecycle": "maintaining",
+      "lastCommit": "2026-02-19",
+      "auditDemoState": null,
+      "auditRec": null,
+      "onSiteAs": "Skywalker"
+    },
+    {
+      "repo": "sankofa",
+      "ruling": "link",
+      "visibility": "public",
+      "lifecycle": "maintaining",
+      "lastCommit": "2026-02-19",
+      "auditDemoState": null,
+      "auditRec": null,
+      "onSiteAs": "Sankofa"
+    },
+    {
+      "repo": "dukkha",
+      "ruling": "link",
+      "visibility": "public",
+      "lifecycle": "maintaining",
+      "lastCommit": "2026-02-19",
+      "auditDemoState": null,
+      "auditRec": null,
+      "onSiteAs": "Dukkha"
+    },
+    {
+      "repo": "agoge",
+      "ruling": "link",
+      "visibility": "public",
+      "lifecycle": "dormant",
+      "lastCommit": "2026-02-19",
+      "auditDemoState": null,
+      "auditRec": null,
+      "onSiteAs": "Agoge"
+    },
+    {
+      "repo": "drop",
+      "ruling": "demo",
+      "visibility": "public",
+      "lifecycle": "dormant",
+      "lastCommit": "2026-02-19",
+      "auditDemoState": null,
+      "auditRec": null,
+      "onSiteAs": "drop"
+    },
+    {
+      "repo": "wrestlePWA",
+      "ruling": "demo",
+      "visibility": "private",
+      "lifecycle": "archived",
+      "lastCommit": "2026-02-19",
+      "auditDemoState": null,
+      "auditRec": null,
+      "onSiteAs": "Wrestle (demoUrl -> wrestle-template)"
+    },
+    {
+      "repo": "STARK",
+      "ruling": "demo",
+      "visibility": "public",
+      "lifecycle": "dormant",
+      "lastCommit": "2026-02-19",
+      "auditDemoState": null,
+      "auditRec": null,
+      "onSiteAs": "STARK"
+    },
+    {
+      "repo": "the-pushup-challenge-2025",
+      "ruling": "demo",
+      "visibility": "public",
+      "lifecycle": "archived",
+      "lastCommit": "2026-02-19",
+      "auditDemoState": null,
+      "auditRec": null,
+      "onSiteAs": "PushUp Challenge"
+    },
+    {
+      "repo": "ecological-constellation",
+      "ruling": "link",
+      "visibility": "public",
+      "lifecycle": "maintaining",
+      "lastCommit": "2026-02-19",
+      "auditDemoState": null,
+      "auditRec": null,
+      "onSiteAs": "Ecological Constellation"
+    },
+    {
+      "repo": "iroh",
+      "ruling": "index",
+      "visibility": "private",
+      "lifecycle": "dormant",
+      "lastCommit": "2026-02-13",
+      "auditDemoState": "none",
+      "auditRec": "link",
+      "onSiteAs": null
+    },
+    {
+      "repo": "great-decoupling",
+      "ruling": "index",
+      "visibility": "public",
+      "lifecycle": "dormant",
+      "lastCommit": "2026-01-13",
+      "auditDemoState": "none",
+      "auditRec": "index",
+      "onSiteAs": null
+    },
+    {
+      "repo": "Vox",
+      "ruling": "demo",
+      "visibility": "private",
+      "lifecycle": "maintaining",
+      "lastCommit": "2025-09-04",
+      "auditDemoState": "partial",
+      "auditRec": "demo",
+      "onSiteAs": null
+    },
+    {
+      "repo": "Psi",
+      "ruling": "link",
+      "visibility": "public",
+      "lifecycle": "dormant",
+      "lastCommit": "2025-08-08",
+      "auditDemoState": "none",
+      "auditRec": "index",
+      "onSiteAs": null
+    },
+    {
+      "repo": "Iris",
+      "ruling": "link",
+      "visibility": "public",
+      "lifecycle": "dormant",
+      "lastCommit": "2025-07-23",
+      "auditDemoState": "partial",
+      "auditRec": "demo",
+      "onSiteAs": null
+    }
+  ],
+  "overrides": [
+    {
+      "repo": "pysche-app",
+      "almanac": "index",
+      "ruling": "skip",
+      "decidedBy": "Ben",
+      "date": "2026-10-02",
+      "note": "Almanac Firestore not yet updated; flip it there."
+    }
+  ]
+}
