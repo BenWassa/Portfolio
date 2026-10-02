@@ -9,6 +9,8 @@ yarn-error.log*
 
 # Build outputs
 dist/
+# NOTE: build output moved from docs/ -> dist/ (Pages now deploys via Actions).
+# docs/ is reserved for agent work lanes: docs/open, docs/closed.
 build/
 test1/dist/
 coverage/
