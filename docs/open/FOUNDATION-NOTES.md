@@ -70,6 +70,10 @@ public through its Pages URL.
 
 **IA / scaling 15 → ~28 (needs a call before WS3 writes cards):**
 
+0. **Featured count vs. #12's target.** #12 asks for a "curated ~18-24, not a wall". The rulings
+   give **28** featured cards (15 `demo` + 13 `link`). Either accept 28, or move some `link`
+   rulings to `index`. The container works either way. This is the cutoff question #12 leaves
+   open, and why this PR only says "part of #12".
 1. **Pillar balance.** Under the workplan, Orpheus moves to the index, which leaves **Psyche with
    one card** (Dukkha). Most of the 14 new featured repos read as apps, so Systems could reach
    about 24 icons while Narrative has 3. Which pillar each new card goes into is a taxonomy call.
@@ -81,8 +85,9 @@ public through its Pages URL.
 3. **Phone viewport.** On a 390px phone the pillar header takes about 45% of the height before
    the first card, so a 24-icon Systems grid scrolls inside a short window. Options: collapse or
    shorten the header once scrolled, or accept it.
-4. **Index placement and label.** I put the index per pillar. The alternative is one site-wide
-   "All work" view, which would need new navigation. The label "Index · N" is container chrome
+4. **Index placement and label.** I put the index per pillar, as a section with no routing, which
+   keeps to the `SPRINTS.md` no-routing non-goal. The alternative is a site-wide "All work" view
+   or an `/all-work` route, which #12 lists as an option. The label "Index · N" is container chrome
    and you may want different copy. Rows sort by newest year first, then title.
 5. **What `year` means for index rows.** First release or last activity? WS5 needs one rule.
 6. **Status vocabulary.** Cards use `active | draft | prototype`; the rulings use lifecycle
