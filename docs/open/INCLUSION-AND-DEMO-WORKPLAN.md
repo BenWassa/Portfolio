@@ -113,6 +113,26 @@ by loading the deployed URL (CLAUDE.md §5).
 | liebestraum | none | Full playbook demo mode, after key rotation (C) | opus |
 | FamilyPlan (`link`) | public build contains real income | Take Pages offline; redeploy from synthetic data (D) | human, then standard |
 
+### WS3 batch 1: cards written (2026-10-02, branch `content/demo-cards-batch-1`)
+
+For every card below, the demo was loaded in the site's own embed modal at 1440px and 390px and
+the screenshot was looked at. None of the embeds logged console errors, and every `href`/`demoUrl`
+returns 200.
+
+| Card | Change | `demoMode` | `lastVerified` |
+|---|---|---|---|
+| Poseidon | **new**, demo `poseidon/demo/`, href is the real app (sign-in) | playbook | 2026-10-02 |
+| Argus | **new**, demo = Pages demo build | playbook | 2026-10-02 |
+| HAUS | **new**, demo = Pages demo build (private repo; `repoUrl` set, not rendered) | playbook | 2026-10-02 |
+| Flag | **new**, embeds production as-is (in-app name "Atlas") | live | 2026-10-02 |
+| Chef's Journal | **new**, demo = Pages demo build (private repo; `repoUrl` set, not rendered) | playbook | 2026-10-02 |
+| Wrestle | `demoUrl` → `wrestlePWA/demo/`; copy corrected (anonymous sign-in + Firestore, not "no accounts") | template → playbook | 2026-10-02 |
+| Narrative | href → real `Narrative/`; `demoUrl` → `narrative-template` (opens on the sample project, no folder picker); copy says the demo is a sample on an earlier version | template | unset (template lags repo) |
+| Morpheus | `demoUrl` added (`template-morpheus`, populated archive); copy describes `morpheus-dream-archive` and says the demo is an older snapshot | template | unset (template lags repo) |
+
+Vox and Orpheus were not touched. Card images are new 1024×1024 crops of the live demos. Layout
+observations are in `FOUNDATION-NOTES.md` §5.
+
 ## 4. Workstreams
 
 Dependencies are real; the first two gates decide how much runs in parallel.

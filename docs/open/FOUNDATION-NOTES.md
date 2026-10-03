@@ -120,3 +120,29 @@ public through its Pages URL.
   this is only the wording.
 - `src/js/app.js` is a leftover entry point that nothing imports. If it ever came back, it would
   treat index entries as cards.
+
+## 5. Batch 1 observations (2026-10-02, `content/demo-cards-batch-1`)
+
+Five app cards added (Poseidon, Argus, HAUS, Flag, Chef's Journal): featured goes 15 → 20, and
+Systems goes 10 → 15 cards (13 Active, 2 Prototype). Looked at full-grid screenshots at 1440px
+and 390px. Reported only; the grid was not changed.
+
+- **Two image languages.** The older square cards use illustrated app-icon art (Hearth,
+  Punchbuggy, PushUp, Wrestle, drop). The five new ones are cropped screenshots of the live demos,
+  framed as rounded squares at the same 1024×1024 RGBA. Poseidon and Flag hold up at icon size.
+  Argus, HAUS and Chef's Journal are UI-dense and read as noise at 90px on a phone. If Ben prefers
+  icons, every repo ships its own (`argus/public/icons/argus-icon-512.png`, `HAUS/public/HAUS.png`,
+  `chefs-journal/public/icon.png`, `flag/public/icons/`, `poseidon/tools/brand`).
+- **Pillar balance is worse.** Systems now has 15 cards; Narrative has 3 and Psyche has 2
+  (Dukkha, Orpheus). §3 item 1 still needs a decision.
+- **1440px:** 5 columns × 3 Active rows plus a Prototype row. Fine. Cards are uniform at 212×240
+  and no titles overflow.
+- **390px:** 3 columns of 90px tiles, so 13 Active cards make 5 rows. The pillar header still
+  fills about 52% of the first screen (§3 item 3). Long titles wrap onto two lines ("Chef's
+  Journal", "Ecological Constellation", "PushUp Challenge"), which makes those tiles 138px tall
+  instead of 118px and leaves the rows ragged.
+- **Phone modal (all embed cards, not only the new ones):** the scaled phone bezel overlaps the
+  "Live Demo · best on mobile" badge below it.
+- **Narrative's demo in the phone frame:** `narrative-template` is a desktop, keyboard-first tool.
+  In the 392px bezel its header buttons wrap and the photo grid is tiny. It works, but it doesn't
+  show the product well.
