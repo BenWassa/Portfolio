@@ -243,9 +243,9 @@ export const projectsData: Project[] = [
   {
     title: 'Wrestle',
     tag: 'Grappling Training Log',
-    desc: 'Offline-first training log for wrestlers.',
+    desc: 'Training log for wrestlers: mat hours, intensity and consistency.',
     href: 'https://benwassa.github.io/wrestlePWA/',
-      demoUrl: 'https://benwassa.github.io/wrestle-template/',
+    demoUrl: 'https://benwassa.github.io/wrestlePWA/demo/',
     img: 'assets/projects/wrestle.png',
     alt: 'Wrestle - Log',
     theme: { primary: '#d4956d', secondary: '#b06a3a', tertiary: '#8b5c3c', bg: '#3d2a1f' },
@@ -254,18 +254,20 @@ export const projectsData: Project[] = [
     orientation: 'square',
     tier: 'featured',
     repoUrl: 'https://github.com/BenWassa/wrestlePWA',
-    demoMode: 'template',
+    demoMode: 'playbook',
+    lastVerified: '2026-10-02',
     techSpecs: {
       model: 'Offline-First PWA',
-      stack: ['JavaScript', 'Tailwind'],
-      features: ['Offline-First', 'IndexedDB Storage', 'Training Trend Charts'],
+      stack: ['JavaScript', 'Tailwind', 'Firebase', 'Vite'],
+      features: ['Anonymous Cloud Sync', 'Offline Sync Queue', 'Training Trend Charts'],
     },
   },
   {
     title: 'Narrative',
     tag: 'Travel Photo Organizer',
-    desc: 'Organize travel photos and videos by story role.',
-    href: 'https://benwassa.github.io/narrative-template/',
+    desc: 'Keyboard-first curation of travel photos by story role.',
+    href: 'https://benwassa.github.io/Narrative/',
+    demoUrl: 'https://benwassa.github.io/narrative-template/',
     img: 'assets/projects/narrative.png',
     alt: 'Narrative - Photo Tool',
     theme: { primary: '#84cc16', secondary: '#65a30d', tertiary: '#4b5320', bg: '#202601' },
@@ -277,15 +279,16 @@ export const projectsData: Project[] = [
     demoMode: 'template',
     techSpecs: {
       model: 'Local-First Utility',
-      stack: ['React', 'TypeScript'],
-      features: ['File System Access', 'IndexedDB Storage', 'Offline-First'],
+      stack: ['React', 'TypeScript', 'Vite', 'Tailwind'],
+      features: ['File System Access', 'IndexedDB Storage', 'Rename Script Export'],
     },
   },
   {
     title: 'Morpheus',
-    tag: 'Dream Journal',
-    desc: 'A dream journal designed for serious reflection.',
+    tag: 'Dream Archive',
+    desc: 'A glassmorphic archive for structured dream entries and scene images.',
     href: 'https://benwassa.github.io/template-morpheus/',
+    demoUrl: 'https://benwassa.github.io/template-morpheus/',
     img: 'assets/projects/morpheus.png',
     alt: 'Morpheus - Journal',
     theme: { primary: '#8b5cf6', secondary: '#6d28d9', tertiary: '#4c1d95', bg: '#2e1065' },
@@ -297,8 +300,118 @@ export const projectsData: Project[] = [
     demoMode: 'template',
     techSpecs: {
       model: 'Private Journaling PWA',
-      stack: ['React', 'Tailwind'],
-      features: ['Dream Entry Logging', 'Pattern Tracking', 'External AI Scene Visualization'],
+      stack: ['React', 'Vite', 'Tailwind', 'Firebase'],
+      features: ['AI-Structured Entry Import', 'Scene Image Storage', 'Glassmorphism UI'],
+    },
+  },
+  {
+    title: 'Poseidon',
+    tag: 'Dive Journal',
+    desc: 'A dive journal that turns every logged dive into a personal marine atlas.',
+    href: 'https://benwassa.github.io/poseidon/',
+    demoUrl: 'https://benwassa.github.io/poseidon/demo/',
+    img: 'assets/projects/poseidon.png',
+    alt: 'Poseidon - Dive Journal',
+    theme: { primary: '#22a3c9', secondary: '#0b5e7e', tertiary: '#083f54', bg: '#04212e' },
+    status: 'active',
+    type: 'app',
+    orientation: 'square',
+    tier: 'featured',
+    repoUrl: 'https://github.com/BenWassa/poseidon',
+    demoMode: 'playbook',
+    lastVerified: '2026-10-02',
+    techSpecs: {
+      model: 'Offline-First PWA',
+      stack: ['React', 'TypeScript', 'Tailwind', 'Firebase'],
+      features: ['Illustrated Creature Catalogue', 'Offline Persistence', 'Demo Mode'],
+    },
+  },
+  {
+    title: 'Argus',
+    tag: 'Spaced Repetition',
+    desc: 'Spaced-repetition learning for finite skills you can actually finish.',
+    href: 'https://benwassa.github.io/argus/',
+    demoUrl: 'https://benwassa.github.io/argus/',
+    img: 'assets/projects/argus.png',
+    alt: 'Argus - Learning App',
+    theme: { primary: '#cbd5e1', secondary: '#2b3038', tertiary: '#1a1d22', bg: '#101215' },
+    status: 'active',
+    type: 'app',
+    orientation: 'square',
+    tier: 'featured',
+    repoUrl: 'https://github.com/BenWassa/argus',
+    demoMode: 'playbook',
+    lastVerified: '2026-10-02',
+    techSpecs: {
+      model: 'Local-First Learning App',
+      stack: ['React', 'TypeScript', 'Vite', 'Firebase'],
+      features: ['Spaced Repetition Scheduler', 'Web Audio Morse Drills', 'Demo Mode'],
+    },
+  },
+  {
+    title: 'HAUS',
+    tag: 'Household Task Manager',
+    desc: 'Shared household tasks, ranked by what can actually get done today.',
+    href: 'https://benwassa.github.io/HAUS/',
+    demoUrl: 'https://benwassa.github.io/HAUS/',
+    img: 'assets/projects/haus.png',
+    alt: 'HAUS - Household Tasks',
+    theme: { primary: '#e0a948', secondary: '#a16d32', tertiary: '#5c3d22', bg: '#2b1d12' },
+    status: 'active',
+    type: 'app',
+    orientation: 'square',
+    tier: 'featured',
+    repoUrl: 'https://github.com/BenWassa/HAUS',
+    demoMode: 'playbook',
+    lastVerified: '2026-10-02',
+    techSpecs: {
+      model: 'Firebase-Backed Shared App',
+      stack: ['React', 'Vite', 'Tailwind', 'Firebase'],
+      features: ['Urgency × Importance Matrix', 'Real-Time Sync', 'Demo Mode'],
+    },
+  },
+  {
+    title: 'Flag',
+    tag: 'Geography Trainer',
+    desc: 'Learn world flags, locations, outlines and neighbours on a 3D Earth.',
+    href: 'https://benwassa.github.io/flag/',
+    demoUrl: 'https://benwassa.github.io/flag/',
+    img: 'assets/projects/flag.png',
+    alt: 'Flag - Geography App',
+    theme: { primary: '#7fb77e', secondary: '#1a4a66', tertiary: '#12283a', bg: '#0d1117' },
+    status: 'active',
+    type: 'app',
+    orientation: 'square',
+    tier: 'featured',
+    repoUrl: 'https://github.com/BenWassa/flag',
+    demoMode: 'live',
+    lastVerified: '2026-10-02',
+    techSpecs: {
+      model: 'Offline-First PWA',
+      stack: ['React', 'TypeScript', 'Three.js', 'Vite'],
+      features: ['Interactive 3D Globe', 'Region Mastery Tracking', 'Optional Cloud Backup'],
+    },
+  },
+  {
+    title: "Chef's Journal",
+    tag: 'Cooking Journal',
+    desc: 'A shared household cooking journal with ratings, a cookbook and a shopping list.',
+    href: 'https://benwassa.github.io/chefs-journal/',
+    demoUrl: 'https://benwassa.github.io/chefs-journal/',
+    img: 'assets/projects/chefs-journal.png',
+    alt: "Chef's Journal - Cooking Journal",
+    theme: { primary: '#f43f5e', secondary: '#4f46e5', tertiary: '#312e81', bg: '#1e1b4b' },
+    status: 'active',
+    type: 'app',
+    orientation: 'square',
+    tier: 'featured',
+    repoUrl: 'https://github.com/BenWassa/chefs-journal',
+    demoMode: 'playbook',
+    lastVerified: '2026-10-02',
+    techSpecs: {
+      model: 'Firebase-Backed PWA',
+      stack: ['React', 'Vite', 'Tailwind', 'Firebase'],
+      features: ['Shared Household Journal', 'Structured Ingredient Logging', 'Demo Mode'],
     },
   },
   {
@@ -392,20 +505,50 @@ export const projectDescriptions: ProjectDescriptions = {
 
   wrestle: {
     portfolio:
-      'An offline-first training log for wrestlers—honest tracking without accounts or gamification.',
-    full: 'Wrestle is built for grapplers. It strips away social features and focuses on what matters: honest, structured tracking of techniques, matches, and improvements. No accounts, no notifications, no algorithms—just a reliable record of your training and progress.',
+      'An offline-first training log for wrestlers that signs each visitor in anonymously and keeps their sessions in the cloud.',
+    full: 'Wrestle (MatMind in the app) is built for grapplers. Each session records duration, intensity, session type and technique notes, and the dashboard turns them into a rank earned through mat hours, a 30-day consistency heatmap, and volume-versus-intensity charts. Every visitor is signed in anonymously and their log lives in Firestore, behind an offline-first PWA shell that queues writes and syncs them when the connection returns. The embedded demo is a fictional wrestler with seeded history and no backend; it resets on reload.',
   },
 
   narrative: {
     portfolio:
-      'A fast, offline-first travel photo organizer that sorts images by story role instead of time.',
-    full: 'Narrative transforms how you organize travel photos. Instead of chronological sorting, it categorizes images by their role in your story: opening moments, key scenes, unexpected details, climax, reflection. It turns a photo library into a narrative arc, making memories more vivid and meaningful.',
+      'A local-first, keyboard-driven travel photo curation tool that sorts a trip by story role and exports a safe rename script.',
+    full: 'Narrative curates a trip by story role instead of by timestamp. It reads a trip folder straight off disk, groups the photos by day, and assigns each shot a role with a single keystroke: A–E for the story, M for mood and food, X to archive. It then generates a copy-based rename script, so the originals are never touched. Everything stays in the browser (Chromium, for folder access). The embedded demo is a separate sample - a preset project of stock photos built from an earlier version of the app.',
   },
 
   morpheus: {
     portfolio:
-      'A personal archive for recording and reflecting on dreams, with an AI image-generation workflow for scene visualization.',
-    full: "Project Morpheus is a dream journal designed for serious reflection, with part of the workflow intentionally happening outside the app. It provides structure for recording dreams, tracking patterns, and exploring emotional resonance without interpretation, then supports creating visuals for chosen scenes using your preferred AI image-generation tool. Built on the belief that dreams are psychological signal worth listening to - not for divination, but for self-understanding.",
+      'An installable dream archive: paste AI-structured JSON of a dream, attach scene images, and browse the entries as a card gallery.',
+    full: 'Project Morpheus is a private dream archive, with part of the workflow intentionally happening outside the app. A dream is structured into JSON with a bundled AI prompt, pasted in alongside scene images from your preferred image tool, and joins a glassmorphic card gallery. The real app is an installable PWA on Firestore and Storage (v1.7.6, July 2026), behind Google sign-in. The embedded demo is a sample archive on an older template snapshot: it shows the gallery and reading experience, not the current app.',
+  },
+
+  poseidon: {
+    portfolio:
+      'A mobile-first dive journal PWA: log each dive, pick the creatures you met from an illustrated marine catalogue, and build a personal collection and Atlas.',
+    full: 'Poseidon is a personal atlas of an underwater life. Logging a dive ends with the part that matters most: choosing the creatures you met from an illustrated marine catalogue. Every dive feeds a journal, a growing creature collection and an Atlas of places dived, persisted locally and exportable as JSON. The real app sits behind Google sign-in; the embedded demo runs on sample dives held in memory and resets on reload.',
+  },
+
+  argus: {
+    portfolio:
+      'A spaced-repetition app built on finite competencies - NATO alphabet, Morse, compass bearings - each with a scored boundary, so it can actually be finished.',
+    full: "Argus treats some knowledge as finite and finishable. Each topic - the NATO alphabet, Morse A–Z, compass bearings - declares a scored boundary and counts as complete only once it survives delayed recall. Learn is ungraded practice; Test is the single scored interaction, and a scheduler decides whether a result advances retention. Production syncs across the owner's devices via Google sign-in; the embedded demo is a local-only build on sample progress that resets on reload.",
+  },
+
+  haus: {
+    portfolio:
+      'A phone-first shared household task manager that ranks every task by urgency × importance × resource fit.',
+    full: 'HAUS plans housework around the session, not the backlog. A household joins with a six-character code and shares one view of every room and task - there are no private lists. The Planning View scores each task by urgency × importance × resource fit, so work that suits the people present and the hours available rises to the top, while tasks with absent assignees or too little time sink. Production runs on Firebase with real-time sync; the embedded demo swaps in a seeded sample household with no sign-in and resets on refresh.',
+  },
+
+  flag: {
+    portfolio:
+      'An offline-capable geography PWA for flags, locations, outlines and land-border neighbours, navigated through an interactive 3D Earth.',
+    full: 'Flag (Atlas in the app) teaches world geography across four domains: the flags of 195 sovereign states, country locations, outlines, and land-border neighbours. You choose a domain, turn an interactive Earth to pick a continent or region, then start Learn for familiarisation or Play for scored recall. Mastery is tracked per region and domain and kept deliberately scarce, so a gold region or the World Crown means something. Progress stays on the device, with optional Google sign-in for backup - which is why the card embeds the production app as-is.',
+  },
+
+  chefsjournal: {
+    portfolio:
+      "A household cooking journal PWA for logging the meals you cook, with ratings, a cookbook and a shared shopping list.",
+    full: "Chef's Journal is a shared record of what a household actually cooks. Each meal is logged with structured ingredients, taste, texture and visuals ratings, photos and notes, and builds into favourites and stats over time. A cookbook holds the recipes and a shopping list keeps the next trip in one place. Production is a Google sign-in PWA on Firestore, shared between household members; the embedded demo runs on a sample journal of fictional meals with no sign-in, and nothing is saved.",
   },
 
   ecologicalconstellation: {
