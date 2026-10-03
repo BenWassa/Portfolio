@@ -1,9 +1,9 @@
 # Narrative - Portfolio Project Record
 
-Generated: 2026-10-02T19:41:03.203Z
+Generated: 2026-10-03T01:34:51.899Z
 Source: `src/js/project-descriptions.ts`
-Branch: feat/schema-v2-two-tier-ia
-Commit: 98da12c
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
 Project slug: `narrative`
 
 ## Snapshot
@@ -14,8 +14,8 @@ Project slug: `narrative`
 - Type: `app`
 - Orientation: `square`
 - Year: (not set)
-- Live URL: https://benwassa.github.io/narrative-template/
-- Demo URL: (not set)
+- Live URL: https://benwassa.github.io/Narrative/
+- Demo URL: https://benwassa.github.io/narrative-template/
 - Demo mode: `template`
 - Repo URL: https://github.com/BenWassa/Narrative
 - Last verified: (not verified)
@@ -23,17 +23,17 @@ Project slug: `narrative`
 - Image alt: Narrative - Photo Tool
 
 ## Core Description
-- Card description: Organize travel photos and videos by story role.
-- Portfolio summary: A fast, offline-first travel photo organizer that sorts images by story role instead of time.
-- Full description: Narrative transforms how you organize travel photos. Instead of chronological sorting, it categorizes images by their role in your story: opening moments, key scenes, unexpected details, climax, reflection. It turns a photo library into a narrative arc, making memories more vivid and meaningful.
+- Card description: Keyboard-first curation of travel photos by story role.
+- Portfolio summary: A local-first, keyboard-driven travel photo curation tool that sorts a trip by story role and exports a safe rename script.
+- Full description: Narrative curates a trip by story role instead of by timestamp. It reads a trip folder straight off disk, groups the photos by day, and assigns each shot a role with a single keystroke: A–E for the story, M for mood and food, X to archive. It then generates a copy-based rename script, so the originals are never touched. Everything stays in the browser (Chromium, for folder access). The embedded demo is a separate sample - a preset project of stock photos built from an earlier version of the app.
 
 ## Technical Profile
 - Model: Local-First Utility
-- Stack: `React`, `TypeScript`
+- Stack: `React`, `TypeScript`, `Vite`, `Tailwind`
 - Key features:
 - File System Access
 - IndexedDB Storage
-- Offline-First
+- Rename Script Export
 
 ## Theme
 - Primary: `#84cc16`

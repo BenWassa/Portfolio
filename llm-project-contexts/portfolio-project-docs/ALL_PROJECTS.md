@@ -1,18 +1,23 @@
 # Portfolio Project Records (Compiled)
 
-Generated: 2026-10-02T19:41:03.453Z
+Generated: 2026-10-03T01:34:52.021Z
 Source folder: `llm-project-contexts/portfolio-project-docs/`
-Total project docs: 15
+Total project docs: 20
 
 ## Included Files
 - [agoge.md](./agoge.md)
+- [argus.md](./argus.md)
+- [chef-s-journal.md](./chef-s-journal.md)
 - [drop.md](./drop.md)
 - [dukkha.md](./dukkha.md)
 - [ecological-constellation.md](./ecological-constellation.md)
+- [flag.md](./flag.md)
+- [haus.md](./haus.md)
 - [hearth.md](./hearth.md)
 - [morpheus.md](./morpheus.md)
 - [narrative.md](./narrative.md)
 - [orpheus.md](./orpheus.md)
+- [poseidon.md](./poseidon.md)
 - [punchbuggy.md](./punchbuggy.md)
 - [pushup-challenge.md](./pushup-challenge.md)
 - [sankofa.md](./sankofa.md)
@@ -28,10 +33,10 @@ Source file: `agoge.md`
 
 # Agoge - Portfolio Project Record
 
-Generated: 2026-10-02T19:41:03.203Z
+Generated: 2026-10-03T01:34:51.899Z
 Source: `src/js/project-descriptions.ts`
-Branch: feat/schema-v2-two-tier-ia
-Commit: 98da12c
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
 Project slug: `agoge`
 
 ## Snapshot
@@ -73,15 +78,115 @@ Project slug: `agoge`
 
 ---
 
+## Argus - Portfolio Project Record
+Source file: `argus.md`
+
+# Argus - Portfolio Project Record
+
+Generated: 2026-10-03T01:34:51.899Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
+Project slug: `argus`
+
+## Snapshot
+- Title: Argus
+- Tier: `featured`
+- Tag: Spaced Repetition
+- Status: `active`
+- Type: `app`
+- Orientation: `square`
+- Year: (not set)
+- Live URL: https://benwassa.github.io/argus/
+- Demo URL: https://benwassa.github.io/argus/
+- Demo mode: `playbook`
+- Repo URL: https://github.com/BenWassa/argus
+- Last verified: 2026-10-02
+- Image path: `assets/projects/argus.png`
+- Image alt: Argus - Learning App
+
+## Core Description
+- Card description: Spaced-repetition learning for finite skills you can actually finish.
+- Portfolio summary: A spaced-repetition app built on finite competencies - NATO alphabet, Morse, compass bearings - each with a scored boundary, so it can actually be finished.
+- Full description: Argus treats some knowledge as finite and finishable. Each topic - the NATO alphabet, Morse A–Z, compass bearings - declares a scored boundary and counts as complete only once it survives delayed recall. Learn is ungraded practice; Test is the single scored interaction, and a scheduler decides whether a result advances retention. Production syncs across the owner's devices via Google sign-in; the embedded demo is a local-only build on sample progress that resets on reload.
+
+## Technical Profile
+- Model: Local-First Learning App
+- Stack: `React`, `TypeScript`, `Vite`, `Firebase`
+- Key features:
+- Spaced Repetition Scheduler
+- Web Audio Morse Drills
+- Demo Mode
+
+## Theme
+- Primary: `#cbd5e1`
+- Secondary: `#2b3038`
+- Tertiary: `#1a1d22`
+- Background: `#101215`
+
+
+
+---
+
+## Chef's Journal - Portfolio Project Record
+Source file: `chef-s-journal.md`
+
+# Chef's Journal - Portfolio Project Record
+
+Generated: 2026-10-03T01:34:51.899Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
+Project slug: `chef-s-journal`
+
+## Snapshot
+- Title: Chef's Journal
+- Tier: `featured`
+- Tag: Cooking Journal
+- Status: `active`
+- Type: `app`
+- Orientation: `square`
+- Year: (not set)
+- Live URL: https://benwassa.github.io/chefs-journal/
+- Demo URL: https://benwassa.github.io/chefs-journal/
+- Demo mode: `playbook`
+- Repo URL: https://github.com/BenWassa/chefs-journal
+- Last verified: 2026-10-02
+- Image path: `assets/projects/chefs-journal.png`
+- Image alt: Chef's Journal - Cooking Journal
+
+## Core Description
+- Card description: A shared household cooking journal with ratings, a cookbook and a shopping list.
+- Portfolio summary: A household cooking journal PWA for logging the meals you cook, with ratings, a cookbook and a shared shopping list.
+- Full description: Chef's Journal is a shared record of what a household actually cooks. Each meal is logged with structured ingredients, taste, texture and visuals ratings, photos and notes, and builds into favourites and stats over time. A cookbook holds the recipes and a shopping list keeps the next trip in one place. Production is a Google sign-in PWA on Firestore, shared between household members; the embedded demo runs on a sample journal of fictional meals with no sign-in, and nothing is saved.
+
+## Technical Profile
+- Model: Firebase-Backed PWA
+- Stack: `React`, `Vite`, `Tailwind`, `Firebase`
+- Key features:
+- Shared Household Journal
+- Structured Ingredient Logging
+- Demo Mode
+
+## Theme
+- Primary: `#f43f5e`
+- Secondary: `#4f46e5`
+- Tertiary: `#312e81`
+- Background: `#1e1b4b`
+
+
+
+---
+
 ## drop - Portfolio Project Record
 Source file: `drop.md`
 
 # drop - Portfolio Project Record
 
-Generated: 2026-10-02T19:41:03.203Z
+Generated: 2026-10-03T01:34:51.899Z
 Source: `src/js/project-descriptions.ts`
-Branch: feat/schema-v2-two-tier-ia
-Commit: 98da12c
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
 Project slug: `drop`
 
 ## Snapshot
@@ -128,10 +233,10 @@ Source file: `dukkha.md`
 
 # Dukkha - Portfolio Project Record
 
-Generated: 2026-10-02T19:41:03.203Z
+Generated: 2026-10-03T01:34:51.899Z
 Source: `src/js/project-descriptions.ts`
-Branch: feat/schema-v2-two-tier-ia
-Commit: 98da12c
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
 Project slug: `dukkha`
 
 ## Snapshot
@@ -177,10 +282,10 @@ Source file: `ecological-constellation.md`
 
 # Ecological Constellation - Portfolio Project Record
 
-Generated: 2026-10-02T19:41:03.203Z
+Generated: 2026-10-03T01:34:51.899Z
 Source: `src/js/project-descriptions.ts`
-Branch: feat/schema-v2-two-tier-ia
-Commit: 98da12c
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
 Project slug: `ecological-constellation`
 
 ## Snapshot
@@ -221,15 +326,115 @@ Project slug: `ecological-constellation`
 
 ---
 
+## Flag - Portfolio Project Record
+Source file: `flag.md`
+
+# Flag - Portfolio Project Record
+
+Generated: 2026-10-03T01:34:51.899Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
+Project slug: `flag`
+
+## Snapshot
+- Title: Flag
+- Tier: `featured`
+- Tag: Geography Trainer
+- Status: `active`
+- Type: `app`
+- Orientation: `square`
+- Year: (not set)
+- Live URL: https://benwassa.github.io/flag/
+- Demo URL: https://benwassa.github.io/flag/
+- Demo mode: `live`
+- Repo URL: https://github.com/BenWassa/flag
+- Last verified: 2026-10-02
+- Image path: `assets/projects/flag.png`
+- Image alt: Flag - Geography App
+
+## Core Description
+- Card description: Learn world flags, locations, outlines and neighbours on a 3D Earth.
+- Portfolio summary: An offline-capable geography PWA for flags, locations, outlines and land-border neighbours, navigated through an interactive 3D Earth.
+- Full description: Flag (Atlas in the app) teaches world geography across four domains: the flags of 195 sovereign states, country locations, outlines, and land-border neighbours. You choose a domain, turn an interactive Earth to pick a continent or region, then start Learn for familiarisation or Play for scored recall. Mastery is tracked per region and domain and kept deliberately scarce, so a gold region or the World Crown means something. Progress stays on the device, with optional Google sign-in for backup - which is why the card embeds the production app as-is.
+
+## Technical Profile
+- Model: Offline-First PWA
+- Stack: `React`, `TypeScript`, `Three.js`, `Vite`
+- Key features:
+- Interactive 3D Globe
+- Region Mastery Tracking
+- Optional Cloud Backup
+
+## Theme
+- Primary: `#7fb77e`
+- Secondary: `#1a4a66`
+- Tertiary: `#12283a`
+- Background: `#0d1117`
+
+
+
+---
+
+## HAUS - Portfolio Project Record
+Source file: `haus.md`
+
+# HAUS - Portfolio Project Record
+
+Generated: 2026-10-03T01:34:51.899Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
+Project slug: `haus`
+
+## Snapshot
+- Title: HAUS
+- Tier: `featured`
+- Tag: Household Task Manager
+- Status: `active`
+- Type: `app`
+- Orientation: `square`
+- Year: (not set)
+- Live URL: https://benwassa.github.io/HAUS/
+- Demo URL: https://benwassa.github.io/HAUS/
+- Demo mode: `playbook`
+- Repo URL: https://github.com/BenWassa/HAUS
+- Last verified: 2026-10-02
+- Image path: `assets/projects/haus.png`
+- Image alt: HAUS - Household Tasks
+
+## Core Description
+- Card description: Shared household tasks, ranked by what can actually get done today.
+- Portfolio summary: A phone-first shared household task manager that ranks every task by urgency × importance × resource fit.
+- Full description: HAUS plans housework around the session, not the backlog. A household joins with a six-character code and shares one view of every room and task - there are no private lists. The Planning View scores each task by urgency × importance × resource fit, so work that suits the people present and the hours available rises to the top, while tasks with absent assignees or too little time sink. Production runs on Firebase with real-time sync; the embedded demo swaps in a seeded sample household with no sign-in and resets on refresh.
+
+## Technical Profile
+- Model: Firebase-Backed Shared App
+- Stack: `React`, `Vite`, `Tailwind`, `Firebase`
+- Key features:
+- Urgency × Importance Matrix
+- Real-Time Sync
+- Demo Mode
+
+## Theme
+- Primary: `#e0a948`
+- Secondary: `#a16d32`
+- Tertiary: `#5c3d22`
+- Background: `#2b1d12`
+
+
+
+---
+
 ## Hearth - Portfolio Project Record
 Source file: `hearth.md`
 
 # Hearth - Portfolio Project Record
 
-Generated: 2026-10-02T19:41:03.203Z
+Generated: 2026-10-03T01:34:51.899Z
 Source: `src/js/project-descriptions.ts`
-Branch: feat/schema-v2-two-tier-ia
-Commit: 98da12c
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
 Project slug: `hearth`
 
 ## Snapshot
@@ -276,22 +481,22 @@ Source file: `morpheus.md`
 
 # Morpheus - Portfolio Project Record
 
-Generated: 2026-10-02T19:41:03.203Z
+Generated: 2026-10-03T01:34:51.899Z
 Source: `src/js/project-descriptions.ts`
-Branch: feat/schema-v2-two-tier-ia
-Commit: 98da12c
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
 Project slug: `morpheus`
 
 ## Snapshot
 - Title: Morpheus
 - Tier: `featured`
-- Tag: Dream Journal
+- Tag: Dream Archive
 - Status: `active`
 - Type: `app`
 - Orientation: `square`
 - Year: (not set)
 - Live URL: https://benwassa.github.io/template-morpheus/
-- Demo URL: (not set)
+- Demo URL: https://benwassa.github.io/template-morpheus/
 - Demo mode: `template`
 - Repo URL: https://github.com/BenWassa/morpheus-dream-archive
 - Last verified: (not verified)
@@ -299,17 +504,17 @@ Project slug: `morpheus`
 - Image alt: Morpheus - Journal
 
 ## Core Description
-- Card description: A dream journal designed for serious reflection.
-- Portfolio summary: A personal archive for recording and reflecting on dreams, with an AI image-generation workflow for scene visualization.
-- Full description: Project Morpheus is a dream journal designed for serious reflection, with part of the workflow intentionally happening outside the app. It provides structure for recording dreams, tracking patterns, and exploring emotional resonance without interpretation, then supports creating visuals for chosen scenes using your preferred AI image-generation tool. Built on the belief that dreams are psychological signal worth listening to - not for divination, but for self-understanding.
+- Card description: A glassmorphic archive for structured dream entries and scene images.
+- Portfolio summary: An installable dream archive: paste AI-structured JSON of a dream, attach scene images, and browse the entries as a card gallery.
+- Full description: Project Morpheus is a private dream archive, with part of the workflow intentionally happening outside the app. A dream is structured into JSON with a bundled AI prompt, pasted in alongside scene images from your preferred image tool, and joins a glassmorphic card gallery. The real app is an installable PWA on Firestore and Storage (v1.7.6, July 2026), behind Google sign-in. The embedded demo is a sample archive on an older template snapshot: it shows the gallery and reading experience, not the current app.
 
 ## Technical Profile
 - Model: Private Journaling PWA
-- Stack: `React`, `Tailwind`
+- Stack: `React`, `Vite`, `Tailwind`, `Firebase`
 - Key features:
-- Dream Entry Logging
-- Pattern Tracking
-- External AI Scene Visualization
+- AI-Structured Entry Import
+- Scene Image Storage
+- Glassmorphism UI
 
 ## Theme
 - Primary: `#8b5cf6`
@@ -326,10 +531,10 @@ Source file: `narrative.md`
 
 # Narrative - Portfolio Project Record
 
-Generated: 2026-10-02T19:41:03.203Z
+Generated: 2026-10-03T01:34:51.899Z
 Source: `src/js/project-descriptions.ts`
-Branch: feat/schema-v2-two-tier-ia
-Commit: 98da12c
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
 Project slug: `narrative`
 
 ## Snapshot
@@ -340,8 +545,8 @@ Project slug: `narrative`
 - Type: `app`
 - Orientation: `square`
 - Year: (not set)
-- Live URL: https://benwassa.github.io/narrative-template/
-- Demo URL: (not set)
+- Live URL: https://benwassa.github.io/Narrative/
+- Demo URL: https://benwassa.github.io/narrative-template/
 - Demo mode: `template`
 - Repo URL: https://github.com/BenWassa/Narrative
 - Last verified: (not verified)
@@ -349,17 +554,17 @@ Project slug: `narrative`
 - Image alt: Narrative - Photo Tool
 
 ## Core Description
-- Card description: Organize travel photos and videos by story role.
-- Portfolio summary: A fast, offline-first travel photo organizer that sorts images by story role instead of time.
-- Full description: Narrative transforms how you organize travel photos. Instead of chronological sorting, it categorizes images by their role in your story: opening moments, key scenes, unexpected details, climax, reflection. It turns a photo library into a narrative arc, making memories more vivid and meaningful.
+- Card description: Keyboard-first curation of travel photos by story role.
+- Portfolio summary: A local-first, keyboard-driven travel photo curation tool that sorts a trip by story role and exports a safe rename script.
+- Full description: Narrative curates a trip by story role instead of by timestamp. It reads a trip folder straight off disk, groups the photos by day, and assigns each shot a role with a single keystroke: A–E for the story, M for mood and food, X to archive. It then generates a copy-based rename script, so the originals are never touched. Everything stays in the browser (Chromium, for folder access). The embedded demo is a separate sample - a preset project of stock photos built from an earlier version of the app.
 
 ## Technical Profile
 - Model: Local-First Utility
-- Stack: `React`, `TypeScript`
+- Stack: `React`, `TypeScript`, `Vite`, `Tailwind`
 - Key features:
 - File System Access
 - IndexedDB Storage
-- Offline-First
+- Rename Script Export
 
 ## Theme
 - Primary: `#84cc16`
@@ -376,10 +581,10 @@ Source file: `orpheus.md`
 
 # Orpheus - Portfolio Project Record
 
-Generated: 2026-10-02T19:41:03.203Z
+Generated: 2026-10-03T01:34:51.899Z
 Source: `src/js/project-descriptions.ts`
-Branch: feat/schema-v2-two-tier-ia
-Commit: 98da12c
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
 Project slug: `orpheus`
 
 ## Snapshot
@@ -420,15 +625,65 @@ Project slug: `orpheus`
 
 ---
 
+## Poseidon - Portfolio Project Record
+Source file: `poseidon.md`
+
+# Poseidon - Portfolio Project Record
+
+Generated: 2026-10-03T01:34:51.899Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
+Project slug: `poseidon`
+
+## Snapshot
+- Title: Poseidon
+- Tier: `featured`
+- Tag: Dive Journal
+- Status: `active`
+- Type: `app`
+- Orientation: `square`
+- Year: (not set)
+- Live URL: https://benwassa.github.io/poseidon/
+- Demo URL: https://benwassa.github.io/poseidon/demo/
+- Demo mode: `playbook`
+- Repo URL: https://github.com/BenWassa/poseidon
+- Last verified: 2026-10-02
+- Image path: `assets/projects/poseidon.png`
+- Image alt: Poseidon - Dive Journal
+
+## Core Description
+- Card description: A dive journal that turns every logged dive into a personal marine atlas.
+- Portfolio summary: A mobile-first dive journal PWA: log each dive, pick the creatures you met from an illustrated marine catalogue, and build a personal collection and Atlas.
+- Full description: Poseidon is a personal atlas of an underwater life. Logging a dive ends with the part that matters most: choosing the creatures you met from an illustrated marine catalogue. Every dive feeds a journal, a growing creature collection and an Atlas of places dived, persisted locally and exportable as JSON. The real app sits behind Google sign-in; the embedded demo runs on sample dives held in memory and resets on reload.
+
+## Technical Profile
+- Model: Offline-First PWA
+- Stack: `React`, `TypeScript`, `Tailwind`, `Firebase`
+- Key features:
+- Illustrated Creature Catalogue
+- Offline Persistence
+- Demo Mode
+
+## Theme
+- Primary: `#22a3c9`
+- Secondary: `#0b5e7e`
+- Tertiary: `#083f54`
+- Background: `#04212e`
+
+
+
+---
+
 ## Punchbuggy - Portfolio Project Record
 Source file: `punchbuggy.md`
 
 # Punchbuggy - Portfolio Project Record
 
-Generated: 2026-10-02T19:41:03.203Z
+Generated: 2026-10-03T01:34:51.899Z
 Source: `src/js/project-descriptions.ts`
-Branch: feat/schema-v2-two-tier-ia
-Commit: 98da12c
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
 Project slug: `punchbuggy`
 
 ## Snapshot
@@ -475,10 +730,10 @@ Source file: `pushup-challenge.md`
 
 # PushUp Challenge - Portfolio Project Record
 
-Generated: 2026-10-02T19:41:03.203Z
+Generated: 2026-10-03T01:34:51.899Z
 Source: `src/js/project-descriptions.ts`
-Branch: feat/schema-v2-two-tier-ia
-Commit: 98da12c
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
 Project slug: `pushup-challenge`
 
 ## Snapshot
@@ -524,10 +779,10 @@ Source file: `sankofa.md`
 
 # Sankofa - Portfolio Project Record
 
-Generated: 2026-10-02T19:41:03.203Z
+Generated: 2026-10-03T01:34:51.899Z
 Source: `src/js/project-descriptions.ts`
-Branch: feat/schema-v2-two-tier-ia
-Commit: 98da12c
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
 Project slug: `sankofa`
 
 ## Snapshot
@@ -574,10 +829,10 @@ Source file: `skywalker.md`
 
 # Skywalker - Portfolio Project Record
 
-Generated: 2026-10-02T19:41:03.203Z
+Generated: 2026-10-03T01:34:51.899Z
 Source: `src/js/project-descriptions.ts`
-Branch: feat/schema-v2-two-tier-ia
-Commit: 98da12c
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
 Project slug: `skywalker`
 
 ## Snapshot
@@ -624,10 +879,10 @@ Source file: `stark.md`
 
 # STARK - Portfolio Project Record
 
-Generated: 2026-10-02T19:41:03.203Z
+Generated: 2026-10-03T01:34:51.899Z
 Source: `src/js/project-descriptions.ts`
-Branch: feat/schema-v2-two-tier-ia
-Commit: 98da12c
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
 Project slug: `stark`
 
 ## Snapshot
@@ -674,10 +929,10 @@ Source file: `vox.md`
 
 # Vox - Portfolio Project Record
 
-Generated: 2026-10-02T19:41:03.203Z
+Generated: 2026-10-03T01:34:51.899Z
 Source: `src/js/project-descriptions.ts`
-Branch: feat/schema-v2-two-tier-ia
-Commit: 98da12c
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
 Project slug: `vox`
 
 ## Snapshot
@@ -724,10 +979,10 @@ Source file: `wrestle.md`
 
 # Wrestle - Portfolio Project Record
 
-Generated: 2026-10-02T19:41:03.203Z
+Generated: 2026-10-03T01:34:51.899Z
 Source: `src/js/project-descriptions.ts`
-Branch: feat/schema-v2-two-tier-ia
-Commit: 98da12c
+Branch: content/demo-cards-batch-1
+Commit: 7d470af
 Project slug: `wrestle`
 
 ## Snapshot
@@ -739,24 +994,24 @@ Project slug: `wrestle`
 - Orientation: `square`
 - Year: (not set)
 - Live URL: https://benwassa.github.io/wrestlePWA/
-- Demo URL: https://benwassa.github.io/wrestle-template/
-- Demo mode: `template`
+- Demo URL: https://benwassa.github.io/wrestlePWA/demo/
+- Demo mode: `playbook`
 - Repo URL: https://github.com/BenWassa/wrestlePWA
-- Last verified: (not verified)
+- Last verified: 2026-10-02
 - Image path: `assets/projects/wrestle.png`
 - Image alt: Wrestle - Log
 
 ## Core Description
-- Card description: Offline-first training log for wrestlers.
-- Portfolio summary: An offline-first training log for wrestlers—honest tracking without accounts or gamification.
-- Full description: Wrestle is built for grapplers. It strips away social features and focuses on what matters: honest, structured tracking of techniques, matches, and improvements. No accounts, no notifications, no algorithms—just a reliable record of your training and progress.
+- Card description: Training log for wrestlers: mat hours, intensity and consistency.
+- Portfolio summary: An offline-first training log for wrestlers that signs each visitor in anonymously and keeps their sessions in the cloud.
+- Full description: Wrestle (MatMind in the app) is built for grapplers. Each session records duration, intensity, session type and technique notes, and the dashboard turns them into a rank earned through mat hours, a 30-day consistency heatmap, and volume-versus-intensity charts. Every visitor is signed in anonymously and their log lives in Firestore, behind an offline-first PWA shell that queues writes and syncs them when the connection returns. The embedded demo is a fictional wrestler with seeded history and no backend; it resets on reload.
 
 ## Technical Profile
 - Model: Offline-First PWA
-- Stack: `JavaScript`, `Tailwind`
+- Stack: `JavaScript`, `Tailwind`, `Firebase`, `Vite`
 - Key features:
-- Offline-First
-- IndexedDB Storage
+- Anonymous Cloud Sync
+- Offline Sync Queue
 - Training Trend Charts
 
 ## Theme
