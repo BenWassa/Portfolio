@@ -77,3 +77,15 @@ acceptance checklist.
 ## 7. Knowledge graph
 
 See `AGENTS.md` for the graphify conventions (`graphify-out/`).
+
+## 8. Brag videos
+
+This repo is the home for `/brag` launch videos across all projects. Output is split per project.
+
+- **Output directory (overrides the skill's default `brag-output/`):** `brag/<project>/`, where `<project>` is the lowercase repo or card slug (`hearth`, `hermes`). Pass it as the output dir when running `/brag`; never create `brag-output/` or timestamped `brag-output-*` dirs here.
+- Re-rolling a project overwrites its folder in place (git keeps history). Only use a suffixed folder (`brag/hearth-v2/`) when Ben wants to keep both.
+- Each folder follows the layout in `brag/README.md`: `brag.mp4`, `brag.jpg`, `share-copy.txt`, `brag-plan.md`, `composition-brief.md`, `composition/`, `work/`.
+- **Every new video gets a row in the table in `brag/README.md`** (video, poster, share copy links).
+- Keep the bundled music track out of git (`composition/assets/music/` is gitignored; its licence is undocumented). Likewise `work/` intermediates: states, fragments, wavs, raw renders.
+- Source projects live in sibling repos (`../hearth_v2`, `../Hermes`). Brag work is read-only against them.
+- Normal branch rules apply: `content/…` branch, commit only when asked, never on `main`.
