@@ -46,3 +46,7 @@ brag/<project>/v<N>/
 
 Never edit or delete a past version's files. Keep `composition/assets/music/` out of git
 (see `.gitignore`).
+
+Hermes compositions load proprietary system fonts (SF Pro, SF Mono, Arial, Georgia) from
+`composition/assets/fonts/*.ttf`. Those are gitignored; to re-render a Hermes version, copy them from
+macOS (`/System/Library/Fonts`, `/Library/Fonts`) into that folder first. HAUS's open-source woff2 fonts are tracked.
