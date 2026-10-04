@@ -80,12 +80,13 @@ See `AGENTS.md` for the graphify conventions (`graphify-out/`).
 
 ## 8. Brag videos
 
-This repo is the home for `/brag` launch videos across all projects. Output is split per project.
+This repo is the home for `/brag` launch videos across all projects. Output is split per project, and every iteration is kept as a numbered version.
 
-- **Output directory (overrides the skill's default `brag-output/`):** `brag/<project>/`, where `<project>` is the lowercase repo or card slug (`hearth`, `hermes`). Pass it as the output dir when running `/brag`; never create `brag-output/` or timestamped `brag-output-*` dirs here.
-- Re-rolling a project overwrites its folder in place (git keeps history). Only use a suffixed folder (`brag/hearth-v2/`) when Ben wants to keep both.
-- Each folder follows the layout in `brag/README.md`: `brag.mp4`, `brag.jpg`, `share-copy.txt`, `brag-plan.md`, `composition-brief.md`, `composition/`, `work/`.
-- **Every new video gets a row in the table in `brag/README.md`** (video, poster, share copy links).
-- Keep the bundled music track out of git (`composition/assets/music/` is gitignored; its licence is undocumented). Likewise `work/` intermediates: states, fragments, wavs, raw renders.
+- **Output directory (overrides the skill's default `brag-output/`):** `brag/<project>/v<N>/`, where `<project>` is the lowercase repo or card slug (`hearth`, `hermes`) and `<N>` is the next unused version number (a project's first run is `v1`). Pass it as the output dir when running `/brag`. Never create `brag-output/` or timestamped `brag-output-*` dirs here.
+- **Never overwrite or delete a past version.** Any change that produces a new `brag.mp4` (re-roll, new angle, re-cut, re-render) goes in a new `v<N+1>/`. To build on an earlier version, copy what you reuse (scripts, composition) into the new folder and edit the copy; earlier versions stay frozen as rendered.
+- From `v2` on, each version's `brag-plan.md` opens with what changed from the previous version and why.
+- Each version folder follows the layout in `brag/README.md`: `brag.mp4`, `brag.jpg`, `share-copy.txt`, `brag-plan.md`, `composition-brief.md`, `composition/`, `work/`.
+- **Every version gets a row in the table in `brag/README.md`** (version, one-line angle, video, poster, share copy), newest first within each project.
+- Keep the bundled music track out of git (`composition/assets/music/` is gitignored for every version; its licence is undocumented). Likewise `work/` intermediates: states, fragments, wavs, raw renders.
 - Source projects live in sibling repos (`../hearth_v2`, `../Hermes`). Brag work is read-only against them.
 - Normal branch rules apply: `content/…` branch, commit only when asked, never on `main`.

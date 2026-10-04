@@ -9,4 +9,4 @@ Rules:
 
 ## brag videos
 
-`/brag` output goes in `brag/<project>/` (not `brag-output/`), and each video gets a row in `brag/README.md`. Full rules: `CLAUDE.md` §8.
+`/brag` output goes in `brag/<project>/v<N>/` (not `brag-output/`). Every iteration is a new version folder; never overwrite a past one. Each version gets a row in `brag/README.md`. Full rules: `CLAUDE.md` §8.
