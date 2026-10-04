@@ -1,30 +1,43 @@
 # Brag videos
 
 Short launch-style videos for the projects in this portfolio, made with the `/brag` skill
-(Hyperframes). One folder per project: `brag/<project>/`.
+(Hyperframes). One folder per project, one subfolder per iteration: `brag/<project>/v<N>/`.
+Past versions are never overwritten.
 
 ## Watch
 
-| Project | Video | Poster | Share copy |
-|---|---|---|---|
-| Hearth | [brag/hearth/brag.mp4](hearth/brag.mp4) (22.6s, 1080p) | [brag.jpg](hearth/brag.jpg) | [share-copy.txt](hearth/share-copy.txt) |
+Newest version first within each project.
+
+| Project | Version | Angle                                                                                                                                                                                                                   | Video                                             | Poster                         | Share copy                                 |
+| ------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | ------------------------------ | ------------------------------------------ |
+| Hermes  | v4      | "Three news apps. Endless feeds. No finish line." The problem first, then "One finished paper." on the music drop; same tour as v3, slower holds on the beat grid                                                       | [brag.mp4](hermes/v4/brag.mp4) (48.6s, 1080×1920) | [brag.jpg](hermes/v4/brag.jpg) | [share-copy.txt](hermes/v4/share-copy.txt) |
+| Hermes  | v3      | "I replaced three news apps with one finished paper." Masthead macro, real run log, push at 7:07, then a camera tour of the front page, weather, four sections, Ask AI, Following, the weekly Voices push and dark mode | [brag.mp4](hermes/v3/brag.mp4) (31.0s, 1080×1920) | [brag.jpg](hermes/v3/brag.jpg) | [share-copy.txt](hermes/v3/share-copy.txt) |
+| Hermes  | v2      | "A circulation of one." Real run log, real push and real captures of the Oct 2 edition, tapped through on a phone                                                                                                       | [brag.mp4](hermes/v2/brag.mp4) (24.8s, 1080×1920) | [brag.jpg](hermes/v2/brag.jpg) | [share-copy.txt](hermes/v2/share-copy.txt) |
+| Hermes  | v1      | "A newspaper that delivers itself." Deadpan 5:17 AM clock and a hand-drawn recreation of one screen. Re-rendered from the preserved composition (original render wasn't kept)                                           | [brag.mp4](hermes/v1/brag.mp4) (22.4s, 1080×1920) | [brag.jpg](hermes/v1/brag.jpg) | [share-copy.txt](hermes/v1/share-copy.txt) |
+| Hearth  | v2      | "Still scrolling." Endless feed vs. your own shelf: save + tag the mood, then pick by mood tonight; clock pays off "9:04 PM. Already watching."                                                                         | [brag.mp4](hearth/v2/brag.mp4) (22.2s, 1080p)     | [brag.jpg](hearth/v2/brag.jpg) | [share-copy.txt](hearth/v2/share-copy.txt) |
+| Hearth  | v1      | "You pick." chat standoff, then a tour of the real app (Tonight rails, Save for Us)                                                                                                                                     | [brag.mp4](hearth/v1/brag.mp4) (22.6s, 1080p)     | [brag.jpg](hearth/v1/brag.jpg) | [share-copy.txt](hearth/v1/share-copy.txt) |
 
 On GitHub, click the `.mp4` to play it in the browser.
 
 ## Folder layout
 
 ```
-brag/<project>/
+brag/<project>/v<N>/
   brag.mp4            final render (poster baked in as frame 0)
   brag.jpg            poster / thumbnail
   share-copy.txt      post text
-  brag-plan.md        angle + storyboard
+  brag-plan.md        angle + storyboard (from v2 on: what changed and why)
   composition-brief.md
   composition/        Hyperframes project (npx hyperframes preview)
   work/               capture + build scripts used to regenerate it
 ```
 
-## Adding a project
+## Adding a project or a new version
 
-Run `/brag <project>`, then move the output into `brag/<project>/` and add a row above.
-Keep the composition's `assets/music/` out of git (see `.gitignore`).
+1. Pick the next unused version number (`v1` for a new project).
+2. Run `/brag <project>` with `brag/<project>/v<N>/` as the output directory. To build on an
+   earlier version, copy its `work/` scripts and `composition/` into the new folder and edit the copy.
+3. Add a row to the table above with a one-line angle.
+
+Never edit or delete a past version's files. Keep `composition/assets/music/` out of git
+(see `.gitignore`).

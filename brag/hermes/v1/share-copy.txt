@@ -1,0 +1,1 @@
+My newspaper builds itself at 5:17 AM and sends one push: "Today's edition is ready." No second user, no engagement metric.
