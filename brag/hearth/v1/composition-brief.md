@@ -4,8 +4,8 @@
 Create a short launch-style brag video for Hearth, a calm shared watchlist for couples.
 
 ## Output
-- Composition directory: `brag/hearth/composition/`
-- Rendered video: `brag/hearth/brag.mp4`
+- Composition directory: `brag/hearth/v1/composition/`
+- Rendered video: `brag/hearth/v1/brag.mp4`
 - Format: landscape — 1920x1080, 30fps
 - Duration: 22.6 seconds
 
@@ -44,7 +44,7 @@ Create a short launch-style brag video for Hearth, a calm shared watchlist for c
 - Visual references from the project: Hearth flame logo (`src/assets/hearth_vector.png`), the onboarding "HEARTH / GATHER AROUND" lockup, amber primary button, stone-950 shell with radial warm glow, poster rails, hero title logos
 
 ## Storyboard
-Use the storyboard in `brag/hearth/brag-plan.md` as the creative contract.
+Use the storyboard in `brag/hearth/v1/brag-plan.md` as the creative contract.
 
 Scene summary:
 1. The standoff — 3.6s — four chat bubbles: the "you pick" volley, ending on unresolved typing dots
@@ -69,7 +69,7 @@ Scene summary:
   - lockup — one warm accent
 - SFX selection guidance: low-HF-risk picks from `sfx-analysis.md` (impactSoft_medium, interface/click_00x, ui/click2, interface/drop_00x, impactWood_light/medium); keep repeated ticks quiet
 - Exact SFX choice: chosen against the implemented animation
-- Audio files: copied into `brag/hearth/composition/assets/`
+- Audio files: copied into `brag/hearth/v1/composition/assets/`
 
 ## Hyperframes Instructions
 Composition-building domain skills: `hyperframes-core`, `hyperframes-animation`, `hyperframes-creative`, `hyperframes-keyframes`, `hyperframes-cli`. /brag owns the creative contract; Hyperframes conventions own implementation.
