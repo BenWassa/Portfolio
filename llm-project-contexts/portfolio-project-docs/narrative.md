@@ -1,9 +1,9 @@
 # Narrative - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `narrative`
 
 ## Snapshot
@@ -25,7 +25,7 @@ Project slug: `narrative`
 ## Core Description
 - Card description: Keyboard-first curation of travel photos by story role.
 - Portfolio summary: A local-first, keyboard-driven travel photo curation tool that sorts a trip by story role and exports a safe rename script.
-- Full description: Narrative curates a trip by story role instead of by timestamp. It reads a trip folder straight off disk, groups the photos by day, and assigns each shot a role with a single keystroke: A–E for the story, M for mood and food, X to archive. It then generates a copy-based rename script, so the originals are never touched. Everything stays in the browser (Chromium, for folder access). The embedded demo is a separate sample - a preset project of stock photos built from an earlier version of the app.
+- Full description: Narrative curates a trip by story role instead of by timestamp. It reads a trip folder straight off disk, groups the photos by day, and assigns each shot a role with a single keystroke: A–E for the story, M for mood and food, X to archive. It then generates a copy-based rename script, so the originals are never touched. Everything stays in the browser (Chromium, for folder access). The embedded demo is a separate sample - a preset project of stock photos built from an earlier snapshot. The demo and production use separate version numbers, so the demo label does not indicate a newer production release.
 
 ## Technical Profile
 - Model: Local-First Utility

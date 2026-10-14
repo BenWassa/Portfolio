@@ -149,3 +149,12 @@ A project qualifies for `demoMode: 'playbook'` and an iframe `demoUrl` only when
 
 Archetype 1 projects (nothing to protect) are exempt from seeds/reset/auth items but
 must still pass the iframe, content, and verification checks.
+
+## Approved sample-demo exceptions
+
+Ben approved `narrative-template` for Narrative and `template-morpheus` for Morpheus
+on 2026-10-02. These existing isolated samples can remain while the real apps evolve.
+Label them as older sample snapshots, retain `demoMode: 'template'`, and track drift
+with `npm run health`. Template and production version numbers are independent.
+Wrestle uses the real repository's playbook demo; the exception does not extend to
+`wrestle-template` or authorize new demo forks.

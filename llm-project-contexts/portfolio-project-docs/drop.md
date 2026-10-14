@@ -1,9 +1,9 @@
 # drop - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `drop`
 
 ## Snapshot

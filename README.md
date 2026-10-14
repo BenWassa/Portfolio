@@ -263,3 +263,15 @@ MIT
 
 Benjamin P. Haddon - https://benwassa.github.io/
 - Reuse or redistribution requires prior written permission. See `docs/LICENSE.md` for details and the permission request process.
+
+## Portfolio health
+
+Run `npm run health` to check every project link and compare source-repo activity
+with `lastVerified`. Broken links fail the run; stale cards, unverified entries, and
+separate demo templates lagging production by more than 30 days produce warnings.
+The workflow runs Mondays at 06:17 UTC and can be dispatched manually. It does not
+deploy the site. Private source repositories are reported as not checkable unless
+a read-only `PORTFOLIO_HEALTH_TOKEN` is configured; adding a token is optional.
+
+Use `npm run health -- --skip-stale` for link-only checks or
+`npm run health -- --threshold-days=60` to change the template warning threshold.

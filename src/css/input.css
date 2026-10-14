@@ -194,8 +194,17 @@
     overflow: visible;
   }
 
+  /* One icon shape for every square card (issue #35). The PNGs under
+     assets/projects/ carry different baked-in corner radii (about 10% to 25%),
+     so the card clips them all to the same rounded square. The radius is a
+     percentage of the tile (22.37% is the iOS app-icon ratio), so it scales from
+     the 90px phone tile to the 212px desktop tile. This only rounds corners
+     further; it cannot remove a larger baked radius or transparent padding
+     (see docs/open/ICON-ROUNDING-REVIEW.md). */
   .project-card[data-orientation='square'] .project-card__img {
     @apply w-full h-full;
+    --icon-radius: 22.37%;
+    border-radius: var(--icon-radius);
     filter: grayscale(0%);
     opacity: 1;
     object-fit: contain;

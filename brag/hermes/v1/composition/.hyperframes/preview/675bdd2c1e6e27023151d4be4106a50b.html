@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script data-hf-gsap-fallback>
+(function(){
+  var cdnBase="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/";
+  var loaded={};
+  function loadFallback(file){
+    if(loaded[file])return loaded[file];
+    return loaded[file]=new Promise(function(ok,fail){
+      var s=document.createElement("script");
+      s.src=cdnBase+file;s.onload=ok;s.onerror=fail;
+      document.head.appendChild(s);
+    });
+  }
+  document.addEventListener("error",function(e){
+    var t=e.target;
+    if(!t||t.tagName!=="SCRIPT"||!t.src)return;
+    var m=t.src.match(/gsap[^/]*\/dist\/(.+\.js)/);
+    if(m)loadFallback(m[1]);
+  },true);
+})();
+</script>
+<meta name="hyperframes-studio-preview">
+<base href="/api/projects/composition/preview/"><style data-hyperframes-text-rendering="true">html,body,*{text-rendering:geometricPrecision}</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <title>The Daily — brag</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Daily Serif"; src: url("assets/fonts/georgia.ttf"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Daily Serif"; src: url("assets/fonts/georgia-bold.ttf"); font-weight: 700; font-style: normal; }
+      @font-face { font-family: "Daily Serif"; src: url("assets/fonts/georgia-italic.ttf"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Daily Sans"; src: url("assets/fonts/arial.ttf"); font-weight: 400; }
+      @font-face { font-family: "Daily Sans"; src: url("assets/fonts/arial-bold.ttf"); font-weight: 700; }
+      :root {
+        --paper: #faf8f3; --desk: #efece6; --ink: #17130d; --ink-sub: #453f38; --meta: #5b564e;
+        --rule: #dcd6cc; --navy: #1a2744; --red: #8b1a1a; --tint-open: #f2ede4; --tint-analysis: #ece6da;
+        --night: #151a22; --night-deep: #0e1219; --cream: #e9e3d5; --cream-dim: #bcb6a8;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--night-deep); font-family: "Daily Serif", serif; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--night); }
+      .bg { position: absolute; inset: 0; background: radial-gradient(120% 80% at 50% 40%, #1b2334 0%, var(--night) 55%, var(--night-deep) 100%); }
+      #glow { position: absolute; left: 140px; top: 460px; width: 800px; height: 800px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(111,130,168,.55) 0%, rgba(111,130,168,0) 68%); opacity: .5; }
+      .clip { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+      .scene { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+      .label { font-family: "Daily Sans", sans-serif; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
+
+      /* S1 */
+      #clock { position: absolute; left: 0; width: 1080px; top: 560px; text-align: center; font-size: 300px; font-weight: 700; color: var(--cream); letter-spacing: -.02em; line-height: 1; }
+      #clock small { font-size: 110px; letter-spacing: .02em; margin-left: 14px; color: var(--cream-dim); }
+      #tz { position: absolute; left: 0; width: 1080px; top: 900px; text-align: center; font-size: 34px; color: var(--cream-dim); }
+      #written { position: absolute; left: 140px; width: 800px; top: 1080px; text-align: center; font-size: 74px; line-height: 1.15; color: var(--cream); font-style: italic; }
+      #rule1 { position: absolute; left: 440px; width: 200px; height: 4px; top: 1010px; background: #d1726b; transform-origin: 50% 50%; }
+
+      /* S2 */
+      #p-head { position: absolute; left: 120px; top: 360px; font-size: 34px; color: var(--cream-dim); }
+      #p-title { position: absolute; left: 120px; top: 420px; font-size: 92px; font-weight: 700; color: var(--cream); line-height: 1; }
+      .row { position: absolute; left: 120px; width: 840px; height: 150px; display: flex; align-items: center; border-top: 2px solid #2a303a; font-size: 72px; color: var(--cream); }
+      .row .n { font-family: "Daily Sans", sans-serif; font-weight: 700; font-size: 30px; letter-spacing: .12em; color: var(--cream-dim); width: 90px; }
+      .row .chk { margin-left: auto; width: 76px; height: 76px; border-radius: 50%; border: 4px solid #3b4a6c; display: flex; align-items: center; justify-content: center; font-family: "Daily Sans", sans-serif; font-weight: 700; font-size: 44px; color: var(--night); }
+      .row .chk i { font-style: normal; opacity: 0; }
+
+      /* S3 */
+      #lock-date { position: absolute; left: 0; width: 1080px; top: 620px; text-align: center; font-size: 56px; color: var(--cream-dim); }
+      #lock-big { position: absolute; left: 0; width: 1080px; top: 410px; text-align: center; font-size: 190px; color: var(--cream); font-weight: 700; letter-spacing: -.02em; }
+      #notif { position: absolute; left: 70px; width: 940px; top: 860px; height: 320px; border-radius: 56px; background: rgba(247,244,238,.96); padding: 44px 52px; box-shadow: 0 40px 100px rgba(0,0,0,.5); }
+      #notif .app { display: flex; align-items: center; gap: 20px; font-family: "Daily Sans", sans-serif; font-weight: 700; font-size: 28px; letter-spacing: .12em; color: #5b564e; }
+      #notif .ico { width: 56px; height: 56px; border-radius: 14px; background: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 34px; }
+      #notif .t { font-size: 58px; font-weight: 700; color: var(--ink); margin-top: 28px; }
+      #notif .b { font-size: 50px; color: var(--ink-sub); margin-top: 12px; }
+
+      /* S4 phone */
+      #phoneWrap { position: absolute; left: 111px; top: 150px; width: 858px; height: 1540px; }
+      #phone { position: absolute; left: 0; top: 0; width: 390px; height: 700px; transform: scale(2.2); transform-origin: 0 0; border-radius: 30px; overflow: hidden;
+        background: var(--paper); box-shadow: 0 0 0 7px #2a303a, 0 0 0 9px #0e1219, 0 30px 80px rgba(0,0,0,.55); }
+      .masthead { border-bottom: 4px solid var(--navy); padding: 22px 20px 12px; background: var(--paper); }
+      .masthead .date { font-family: "Daily Sans", sans-serif; font-size: 11px; color: #5b564e; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
+      .masthead .title { font-size: 38px; font-weight: 700; letter-spacing: -.01em; color: var(--navy); line-height: 1; margin-bottom: 3px; }
+      .masthead .tagline { font-family: "Daily Sans", sans-serif; font-size: 10px; color: #5b564e; letter-spacing: .18em; text-transform: uppercase; }
+      .weather { display: flex; align-items: center; gap: 10px; background: var(--navy); color: #f7f4ee; padding: 9px 20px; font-family: "Daily Sans", sans-serif; font-size: 11.5px; font-weight: 700; letter-spacing: .04em; }
+      .weather .sp { margin-left: auto; opacity: .7; }
+      .tabs { display: flex; white-space: nowrap; border-bottom: 1px solid var(--rule); overflow: hidden; background: var(--paper); }
+      .tabs .in { display: flex; }
+      .tab { font-family: "Daily Sans", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #5b564e; padding: 13px 11px 11px; border-bottom: 3px solid transparent; }
+      .tab.active { color: var(--navy); border-bottom-color: var(--navy); }
+      .card { position: relative; margin: 0; padding: 18px 20px 16px; background: var(--paper); }
+      .card2 { position: relative; padding: 16px 20px 16px; border-bottom: 1px solid var(--rule); background: var(--paper); }
+      .card2 .hl { font-size: 17px; }
+      .card2 .tog { top: 34px; }
+      #rest { position: relative; z-index: 2; background: var(--paper); border-top: 1px solid var(--rule); }
+      .kicker { font-family: "Daily Sans", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: .12em; color: var(--red); text-transform: uppercase; margin-bottom: 6px; }
+      .hl { font-size: 22px; font-weight: 700; line-height: 1.25; color: var(--ink); padding-right: 24px; }
+      .sub { font-size: 14px; color: var(--ink-sub); line-height: 1.4; font-style: italic; margin-top: 6px; }
+      .time { font-family: "Daily Sans", sans-serif; font-size: 11px; color: #5b564e; margin-top: 6px; }
+      .tog { position: absolute; right: 20px; top: 38px; color: var(--navy); opacity: .5; font-size: 18px; }
+      .expand { position: absolute; left: 0; right: 0; top: 100%; height: 212px; z-index: 1; background: var(--tint-open); padding: 0 20px 16px; }
+      .expand .rule { border-top: 1px solid #e3ded4; padding-top: 12px; }
+      .sumtext { font-size: 13.5px; color: var(--ink-sub); line-height: 1.6; }
+      .analysis { margin-top: 12px; padding: 10px 14px; background: var(--tint-analysis); font-size: 14px; line-height: 1.55; color: var(--ink-sub); font-style: italic; }
+      .alabel { display: block; font-family: "Daily Sans", sans-serif; font-style: normal; font-weight: 700; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--navy); margin-bottom: 4px; }
+      #cursor { position: absolute; left: 0; top: 0; width: 26px; height: 26px; border-radius: 50%; background: rgba(26,39,68,.28); border: 2px solid var(--navy); z-index: 5; }
+
+      /* S5 */
+      #o-mast { position: absolute; left: 0; width: 1080px; top: 330px; text-align: center; font-size: 150px; font-weight: 700; color: var(--cream); letter-spacing: -.01em; line-height: 1; }
+      #o-bar { position: absolute; left: 140px; width: 800px; height: 8px; top: 520px; background: #6f82a8; transform-origin: 0 50%; }
+      #o-date { position: absolute; left: 0; width: 1080px; top: 570px; text-align: center; font-size: 28px; color: var(--cream-dim); }
+      #o-1 { position: absolute; left: 100px; width: 880px; top: 800px; text-align: center; font-size: 104px; font-weight: 700; line-height: 1.1; color: var(--cream); }
+      #o-2 { position: absolute; left: 100px; width: 880px; top: 1180px; text-align: center; font-size: 64px; line-height: 1.25; color: var(--cream-dim); font-style: italic; }
+    </style>
+  <script data-hyperframes-preview-runtime="1" src="/api/runtime.js"></script>
+<meta name="hyperframes-project-signature" content="fe93caae01e54771a7a6e1fc">
+</head>
+  <body>
+    <div data-hf-id="hf-j74u" id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="22.4">
+      <div data-hf-id="hf-m7dd" class="bg"></div>
+      <div data-hf-id="hf-27c6" id="glow"></div>
+
+      <!-- S1 -->
+      <section data-hf-id="hf-6g15" id="s1" class="clip" data-start="0" data-duration="3.5" data-track-index="1">
+        <div data-hf-id="hf-c9t7" class="scene" id="s1in">
+          <div data-hf-id="hf-jove" id="clock">5:17<small data-hf-id="hf-ztxy">AM</small></div>
+          <div data-hf-id="hf-920c" id="tz" class="label">America/Toronto</div>
+          <div data-hf-id="hf-ifig" id="rule1"></div>
+          <div data-hf-id="hf-csqt" id="written">The paper is being written.</div>
+        </div>
+      </section>
+
+      <!-- S2 -->
+      <section data-hf-id="hf-clri" id="s2" class="clip" data-start="3.5" data-duration="4.5" data-track-index="2">
+        <div data-hf-id="hf-31gg" class="scene" id="s2in">
+          <div data-hf-id="hf-wy7h" id="p-head" class="label">05:17 · The Daily</div>
+          <div data-hf-id="hf-t7yg" id="p-title">Overnight.</div>
+          <div data-hf-id="hf-nnlg" class="row" style="top:560px"><span data-hf-id="hf-kp5a" class="n">01</span>fetch<span data-hf-id="hf-qbaf" class="chk"><i data-hf-id="hf-q7i5">✓</i></span></div>
+          <div data-hf-id="hf-ur0a" class="row" style="top:710px"><span data-hf-id="hf-l3gb" class="n">02</span>normalize<span data-hf-id="hf-vuiv" class="chk"><i data-hf-id="hf-qrv5">✓</i></span></div>
+          <div data-hf-id="hf-6zj7" class="row" style="top:860px"><span data-hf-id="hf-lhrc" class="n">03</span>curate (Gemini)<span data-hf-id="hf-vg7u" class="chk"><i data-hf-id="hf-rys8">✓</i></span></div>
+          <div data-hf-id="hf-gey9" class="row" style="top:1010px"><span data-hf-id="hf-ipm5" class="n">04</span>render<span data-hf-id="hf-v1wt" class="chk"><i data-hf-id="hf-rkh7">✓</i></span></div>
+          <div data-hf-id="hf-c8my" class="row" style="top:1160px"><span data-hf-id="hf-j3x6" class="n">05</span>deploy<span data-hf-id="hf-xu20" class="chk"><i data-hf-id="hf-pky2">✓</i></span></div>
+          <div data-hf-id="hf-amtb" class="row" style="top:1310px"><span data-hf-id="hf-ji87" class="n">06</span>notify<span data-hf-id="hf-xfqz" class="chk"><i data-hf-id="hf-p6n1">✓</i></span></div>
+        </div>
+      </section>
+
+      <!-- S3 -->
+      <section data-hf-id="hf-3quw" id="s3" class="clip" data-start="8" data-duration="2.9" data-track-index="3">
+        <div data-hf-id="hf-84lh" class="scene" id="s3in">
+          <div data-hf-id="hf-atgb" id="lock-date" class="label" style="font-size:44px">Wednesday, July 22</div>
+          
+          <div data-hf-id="hf-bfrx" id="notif">
+            <div data-hf-id="hf-gk5l" class="app"><span data-hf-id="hf-rj9t" class="ico">📰</span><span data-hf-id="hf-bxey">NTFY</span></div>
+            <div data-hf-id="hf-oxfr" class="t">The Daily — Jul 22</div>
+            <div data-hf-id="hf-22vi" class="b">Today’s edition is ready.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S4 -->
+      <section data-hf-id="hf-f4ra" id="s4" class="clip" data-start="10.9" data-duration="7.11" data-track-index="4">
+        <div data-hf-id="hf-dyju" class="scene" id="s4in">
+          <div data-hf-id="hf-2s5b" id="phoneWrap">
+            <div data-hf-id="hf-5iuv" id="phone">
+              <div data-hf-id="hf-ukjd" class="masthead">
+                <div data-hf-id="hf-50vs" class="date">Wednesday, July 22, 2026</div>
+                <div data-hf-id="hf-0abk" class="title">THE DAILY</div>
+                <div data-hf-id="hf-1sfg" class="tagline">Toronto · World · Sports · Business · Opinion</div>
+              </div>
+              <div data-hf-id="hf-i3p0" class="weather"><span data-hf-id="hf-gs18">⛅</span><span data-hf-id="hf-vvjw">Overcast</span><span data-hf-id="hf-hb29">21° / 13°</span><span data-hf-id="hf-d2ww" class="sp">▼</span></div>
+              <div data-hf-id="hf-v5t9" class="tabs" data-layout-allow-overflow=""><div data-hf-id="hf-9dgb" class="in" id="tabsin" data-layout-allow-overflow="">
+                <span data-hf-id="hf-ej2v" class="tab">Toronto</span><span data-hf-id="hf-finq" class="tab">World</span><span data-hf-id="hf-7hkl" class="tab">Sports</span><span data-hf-id="hf-yl12" class="tab active">Business</span><span data-hf-id="hf-rxbs" class="tab">Opinion</span>
+              </div></div>
+              <div data-hf-id="hf-4zky" class="card" id="card">
+                <div data-hf-id="hf-b01b" class="kicker">Corporate Takeover</div>
+                <div data-hf-id="hf-tgsp" class="hl">Segro Board U-Turns, Accepts £14bn Takeover Bid by US Rival Prologis</div>
+                <div data-hf-id="hf-senp" class="sub">The FTSE 100 landlord's board unanimously recommends the 'best and final offer.'</div>
+                <div data-hf-id="hf-6u6o" class="time">1:32 PM</div>
+                <div data-hf-id="hf-55x0" class="tog" id="tog">▾</div>
+                <div data-hf-id="hf-9nia" class="expand" id="expand"><div data-hf-id="hf-a46i" class="rule">
+                  <div data-hf-id="hf-mrwo" class="sumtext">The board of FTSE 100 landlord Segro has U-turned on its previous stance, now unanimously recommending the £14 billion takeover bid from US rival Prologis.</div>
+                  <div data-hf-id="hf-wwbu" class="analysis"><span data-hf-id="hf-luid" class="alabel">Why it matters</span>The acquisition of Segro by Prologis underscores a broader trend of UK companies being acquired by foreign entities.</div>
+                </div></div>
+              </div>
+              <div data-hf-id="hf-p95u" id="rest" data-layout-allow-overflow="">
+                <div data-hf-id="hf-a9ms" class="card2"><div data-hf-id="hf-7l3u" class="kicker">US Politics</div><div data-hf-id="hf-1qqf" class="hl">Crypto Bill Mired in Debate Over Rules to Stop President from Selling Coins</div><div data-hf-id="hf-yd73" class="sub">Democrats and Republicans are clashing over the Clarity Act, a major crypto industry bill, as it approaches a Senate vote.</div><div data-hf-id="hf-ayu8" class="time">7:01 PM</div><div data-hf-id="hf-6c9c" class="tog">▾</div></div>
+                <div data-hf-id="hf-y8ak" class="card2"><div data-hf-id="hf-8qwr" class="kicker">Air Travel</div><div data-hf-id="hf-3k6t" class="hl">Three US Airports Plan to Replace TSA Agents with Private Security</div><div data-hf-id="hf-q1iu" class="sub">The move to a new security model sparks union concerns over potential public safety risks.</div><div data-hf-id="hf-s1g5" class="time">5:06 PM</div><div data-hf-id="hf-6lpk" class="tog">▾</div></div>
+              </div>
+              <div data-hf-id="hf-8gdj" id="cursor"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S5 -->
+      <section data-hf-id="hf-w0z5" id="s5" class="clip" data-start="18.01" data-duration="4.39" data-track-index="5">
+        <div data-hf-id="hf-y4dj" class="scene" id="s5in">
+          <div data-hf-id="hf-te1o" id="o-mast">THE DAILY</div>
+          <div data-hf-id="hf-sx9k" id="o-bar"></div>
+          <div data-hf-id="hf-5p56" id="o-date" class="label">Toronto · World · Sports · Business · Opinion</div>
+          <div data-hf-id="hf-a0sx" id="o-1">One finite, finished paper.</div>
+          <div data-hf-id="hf-q7j7" id="o-2">No second user.<br data-hf-id="hf-x5px">No engagement metric.</div>
+        </div>
+      </section>
+
+      <audio data-hf-id="hf-3nxg" id="bed" src="assets/music/bed.mp3" data-start="0" data-duration="22.4" data-track-index="20" data-volume="1" data-end="22.4"></audio>
+      <audio data-hf-id="hf-92mw" id="sfx0" src="assets/sfx/click2.ogg" data-start="4.1" data-duration="0.06" data-track-index="31" data-volume="0.6" data-end="4.159999999999999"></audio>
+      <audio data-hf-id="hf-wi25" id="sfx1" src="assets/sfx/click2.ogg" data-start="4.64" data-duration="0.06" data-track-index="32" data-volume="0.6" data-end="4.699999999999999"></audio>
+      <audio data-hf-id="hf-cw7b" id="sfx2" src="assets/sfx/click2.ogg" data-start="5.19" data-duration="0.06" data-track-index="30" data-volume="0.6" data-end="5.25"></audio>
+      <audio data-hf-id="hf-w4tc" id="sfx3" src="assets/sfx/click2.ogg" data-start="5.74" data-duration="0.06" data-track-index="31" data-volume="0.6" data-end="5.8"></audio>
+      <audio data-hf-id="hf-3z6y" id="sfx4" src="assets/sfx/click2.ogg" data-start="6.28" data-duration="0.06" data-track-index="32" data-volume="0.6" data-end="6.34"></audio>
+      <audio data-hf-id="hf-gv2l" id="sfx5" src="assets/sfx/click2.ogg" data-start="6.82" data-duration="0.06" data-track-index="30" data-volume="0.6" data-end="6.88"></audio>
+      <audio data-hf-id="hf-wbp1" id="sfx6" src="assets/sfx/bong_001.ogg" data-start="8.73" data-duration="0.12" data-track-index="31" data-volume="0.7" data-end="8.85"></audio>
+      <audio data-hf-id="hf-p4bo" id="sfx7" src="assets/sfx/click_003.ogg" data-start="13.11" data-duration="0.02" data-track-index="32" data-volume="1" data-end="13.129999999999999"></audio>
+      <audio data-hf-id="hf-ujix" id="sfx8" src="assets/sfx/impactSoft_medium_001.ogg" data-start="18.55" data-duration="0.18" data-track-index="30" data-volume="0.5" data-end="18.73"></audio>
+      <audio data-hf-id="hf-okmu" id="sfx9" src="assets/sfx/impactSoft_medium_001.ogg" data-start="20.19" data-duration="0.18" data-track-index="31" data-volume="0.45" data-end="20.37"></audio>
+    </div>
+    
+  <script>window.__timelines = window.__timelines || {};
+const tl = gsap.timeline({ paused: true });
+const RMS = [0.367, 0.528, 0.617, 0.441, 0.274, 0.425, 0.579, 0.634, 0.561, 0.52, 0.584, 0.479, 0.482, 0.467, 0.509, 0.411, 0.545, 0.59, 0.434, 0.578, 0.631, 0.663, 0.687, 0.673, 0.6, 0.412, 0.26, 0.486, 0.596, 0.616, 0.482, 0.524, 0.609, 0.419, 0.358, 0.484, 0.573, 0.43, 0.59, 0.617, 0.522, 0.643, 0.707, 0.692, 0.643, 0.592, 0.558, 0.37, 0.232, 0.46, 0.587, 0.582, 0.425, 0.501, 0.553, 0.381, 0.399, 0.462, 0.47, 0.319, 0.508, 0.491, 0.476, 0.572, 0.606, 0.715, 0.732, 0.614, 0.483, 0.31, 0.299, 0.55, 0.646, 0.633, 0.417, 0.524, 0.581, 0.507, 0.598, 0.666, 0.654, 0.575, 0.696, 0.663, 0.647, 0.72, 0.625, 0.69, 0.759, 0.774, 0.637, 0.406, 0.478, 0.626, 0.677, 0.631, 0.443, 0.59, 0.616, 0.499, 0.459, 0.543, 0.494, 0.562, 0.651, 0.585, 0.619, 0.675, 0.673, 0.741, 0.768, 0.707, 0.504, 0.318, 0.474, 0.642, 0.68, 0.531, 0.51, 0.614, 0.595, 0.431, 0.441, 0.594, 0.57, 0.668, 0.753, 0.66, 0.717, 0.768, 0.704, 0.777, 0.766, 0.724, 0.487, 0.308, 0.498, 0.652, 0.682, 0.528, 0.569, 0.678, 0.547, 0.473, 0.51, 0.601, 0.424, 0.595, 0.631, 0.543, 0.645, 0.69, 0.747, 0.785, 0.772, 0.583, 0.376, 0.237, 0.495, 0.61, 0.647, 0.468, 0.521, 0.631, 0.439, 0.391, 0.529, 0.643, 0.528, 0.661, 0.717, 0.595, 0.695, 0.743, 0.846, 0.854, 0.815, 0.655, 0.401, 0.322, 0.567, 0.619, 0.585, 0.36, 0.501, 0.661, 0.504, 0.412, 0.5, 0.545, 0.469, 0.618, 0.557, 0.53, 0.631, 0.672, 0.738, 0.765, 0.755, 0.533, 0.323, 0.48, 0.631, 0.697, 0.598, 0.367, 0.528, 0.684, 0.535, 0.367, 0.501, 0.524, 0.561, 0.681, 0.67, 0.616, 0.626, 0.626, 0.721, 0.673, 0.622, 0.457, 0.282, 0.459];
+RMS.forEach((v, i) => {
+  tl.to("#glow", { scale: 0.94 + v * 0.14, opacity: 0.32 + v * 0.3, duration: 0.1, ease: "none" }, i * 0.1);
+});
+function sceneInOut(id, start, dur) {
+  tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out" }, start);
+  tl.to(id, { opacity: 0, duration: 0.3, ease: "power2.in" }, start + dur - 0.3);
+}
+sceneInOut("#s1in", 0, 3.5);
+sceneInOut("#s2in", 3.5, 4.5);
+sceneInOut("#s3in", 8, 2.9);
+sceneInOut("#s4in", 10.9, 7.11);
+tl.fromTo("#s5in", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out" }, 18.01);
+tl.fromTo("#clock", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 0.27);
+tl.fromTo("#tz", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.82);
+tl.fromTo("#rule1", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 1.1);
+tl.fromTo("#written", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 1.37);
+tl.fromTo("#p-head", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 3.7);
+tl.fromTo("#p-title", { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, 3.75);
+const rowT = [4.1, 4.64, 5.19, 5.74, 6.28, 6.82];
+document.querySelectorAll("#s2in .row").forEach((r, i) => {
+  tl.fromTo(r, { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, rowT[i]);
+  const chk = r.querySelector(".chk");
+  tl.fromTo(chk, { backgroundColor: "rgba(0,0,0,0)" }, { backgroundColor: "#a3b3d2", duration: 0.2 }, rowT[i] + 0.25);
+  tl.fromTo(r.querySelector(".chk i"), { opacity: 0 }, { opacity: 1, duration: 0.15 }, rowT[i] + 0.3);
+});
+tl.fromTo("#lock-date", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 8.2);
+tl.fromTo("#notif", { y: -160, opacity: 0, scale: 0.96 }, { y: 0, opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.4)" }, 8.73);
+tl.fromTo("#phoneWrap", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 11);
+tl.fromTo("#expand", { opacity: 0, y: 6 }, { opacity: 0, y: 6, duration: 0.01 }, 0);
+tl.fromTo("#cursor", { x: 330, y: 690, opacity: 0 }, { x: 330, y: 690, opacity: 0, duration: 0.01 }, 0);
+tl.to("#cursor", { opacity: 1, duration: 0.2 }, 11.9);
+tl.to("#cursor", { x: 290, y: 330, duration: 1.1, ease: "power2.inOut" }, 11.95);
+tl.to("#cursor", { scale: 0.7, duration: 0.08, yoyo: true, repeat: 1 }, 13.11);
+tl.to("#card", { backgroundColor: "#f2ede4", duration: 0.35 }, 13.15);
+tl.to("#tog", { rotation: 180, duration: 0.35, ease: "power2.out", transformOrigin: "50% 50%" }, 13.15);
+tl.to("#rest", { y: 212, duration: 0.5, ease: "power3.out" }, 13.15);
+tl.to("#expand", { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 13.2);
+tl.to("#cursor", { opacity: 0, duration: 0.3 }, 13.9);
+tl.fromTo("#o-mast", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 18.1);
+tl.fromTo("#o-bar", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power3.out" }, 18.2);
+tl.fromTo("#o-date", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 18.5);
+tl.fromTo("#o-1", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 18.55);
+tl.fromTo("#o-2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 20.19);
+tl.set("#bed", { volume: 0.55 }, 0);
+tl.to("#bed", { volume: 0, duration: 1.1, ease: "none" }, 21.3);
+window.__timelines["main"] = tl;</script></body>
+</html>

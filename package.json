@@ -14,6 +14,7 @@
     "lint:fix": "eslint src/ --fix",
     "format": "prettier --write \"src/**/*.{js,json,css}\"",
     "format:check": "prettier --check \"src/**/*.{js,json,css}\"",
+    "health": "node scripts/check-portfolio-health.mjs",
     "context:check": "node scripts/check-portfolio-contexts.mjs",
     "context:check:all": "node scripts/check-portfolio-contexts.mjs --require-all",
     "context:rollout:dry": "node scripts/rollout-llm-contexts.mjs --pass first_pass --clone-missing --dry-run",
@@ -21,7 +22,9 @@
     "context:rollout:edge": "node scripts/rollout-llm-contexts.mjs --pass edge_case --clone-missing",
     "context:validate:first": "node scripts/validate-llm-contexts.mjs --pass first_pass",
     "context:validate:all": "node scripts/validate-llm-contexts.mjs --pass all",
-    "deploy": "npm run build && echo 'Ready to deploy from docs/'"
+    "deploy": "npm run build && echo 'Ready to deploy from docs/'",
+    "prebuild": "node scripts/optimize-project-images.mjs",
+    "predev": "node scripts/optimize-project-images.mjs"
   },
   "keywords": [
     "portfolio",
@@ -36,6 +39,7 @@
     "@tailwindcss/typography": "^0.5.10",
     "@types/react": "^19.2.10",
     "@types/react-dom": "^19.2.3",
+    "@types/three": "^0.167.2",
     "@vitejs/plugin-react": "^5.1.2",
     "autoprefixer": "^10.4.17",
     "eslint": "^9.39.2",
@@ -43,6 +47,7 @@
     "eslint-plugin-prettier": "^5.5.5",
     "postcss": "^8.4.32",
     "prettier": "^3.8.1",
+    "sharp": "^0.35.5",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.9.3",
     "vite": "^5.4.0"

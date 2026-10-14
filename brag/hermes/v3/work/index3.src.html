@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>The Daily — brag</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Daily Serif"; src: url("assets/fonts/georgia.ttf"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Daily Serif"; src: url("assets/fonts/georgia-bold.ttf"); font-weight: 700; font-style: normal; }
+      @font-face { font-family: "Daily Serif"; src: url("assets/fonts/georgia-italic.ttf"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Daily Sans"; src: url("assets/fonts/arial.ttf"); font-weight: 400; }
+      @font-face { font-family: "Daily Sans"; src: url("assets/fonts/arial-bold.ttf"); font-weight: 700; }
+      @font-face { font-family: "Phone Sans"; src: url("assets/fonts/sf-pro.ttf"); font-weight: 100 900; }
+      @font-face { font-family: "Daily Mono"; src: url("assets/fonts/sf-mono.ttf"); font-weight: 100 900; }
+
+      :root { --paper: #faf8f3; --night: #151a22; --night-deep: #0e1219; --cream: #e9e3d5; --cream-dim: #bcb6a8; --heat: #d1726b; --rule-dark: #2a303a; }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--night-deep); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--night); font-family: "Daily Serif", serif; }
+      .bg { position: absolute; inset: 0; background: radial-gradient(120% 75% at 50% 50%, #1b2334 0%, var(--night) 55%, var(--night-deep) 100%); }
+      #glow { position: absolute; left: 90px; top: 620px; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(111,130,168,.45) 0%, rgba(111,130,168,0) 66%); opacity: .4; }
+      .kicker { font-family: "Daily Sans", sans-serif; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--heat); }
+
+      /* camera + device (built at 1 CSS px = 1 screen point; the camera scales it) */
+      #cam { position: absolute; left: 0; top: 0; width: 417px; height: 876px; transform-origin: 0 0; z-index: 10; }
+      #device { position: absolute; left: 0; top: 0; width: 417px; height: 876px; border-radius: 67px; background: #0b0d12; padding: 12px;
+        box-shadow: 0 0 0 1.5px #3a4150, 0 0 0 3px #11141a, 0 30px 70px rgba(0,0,0,.6); }
+      #screen { position: relative; width: 393px; height: 852px; border-radius: 55px; overflow: hidden; background: #000; }
+
+      #lock { position: absolute; inset: 0; opacity: 0; background: linear-gradient(165deg, #2b3a5c 0%, #18213a 42%, #0d1220 100%); }
+      #lock::after { content: ""; position: absolute; inset: 0; background: radial-gradient(70% 45% at 50% 30%, rgba(209,114,107,.22) 0%, rgba(209,114,107,0) 70%); }
+      #lk-date { position: absolute; left: 0; width: 100%; top: 66px; line-height: 1; text-align: center; font-family: "Phone Sans", sans-serif; font-weight: 600; font-size: 21px; color: rgba(255,255,255,.92); z-index: 1; }
+      #lk-time { position: absolute; left: 0; width: 100%; top: 96px; line-height: 1; text-align: center; font-family: "Phone Sans", sans-serif; font-weight: 700; font-size: 98px; letter-spacing: -.01em; color: #fff; z-index: 1; }
+      .nbanner { position: absolute; border-radius: 22px; background: rgba(246,244,239,.96); box-shadow: 0 10px 34px rgba(0,0,0,.32); font-family: "Phone Sans", sans-serif; opacity: 0; }
+      .nbanner .ic { position: absolute; left: 14px; top: 18px; width: 38px; height: 38px; border-radius: 9px; background: #2f7a6a; color: #fff; font-weight: 800; font-size: 12px; display: flex; align-items: center; justify-content: center; letter-spacing: -.02em; }
+      .nbanner .ti { position: absolute; left: 62px; top: 16px; font-weight: 600; font-size: 15px; color: #111; }
+      .nbanner .bd { position: absolute; left: 62px; top: 37px; width: 296px; font-weight: 400; font-size: 15px; line-height: 1.3; color: #1d1d1f; }
+      .nbanner .nw { position: absolute; right: 16px; top: 17px; font-size: 13px; color: #55555a; }
+      #banner { left: 12px; width: 369px; top: 560px; height: 78px; z-index: 2; }
+      #wbanner { left: 8px; width: 377px; top: 56px; height: 116px; z-index: 5; }
+
+      #applayer { position: absolute; inset: 0; z-index: 4; opacity: 0; overflow: hidden; background: var(--paper); transform-origin: 196px 599px; }
+      .st { position: absolute; left: 0; top: 50px; width: 393px; height: 802px; overflow: hidden; opacity: 0; background: var(--paper); }
+      .st .pg { position: absolute; left: 0; top: 0; width: 393px; display: block; }
+      .st .pin { position: absolute; left: 0; top: 0; width: 393px; height: 44px; background-repeat: no-repeat; background-position: 0 0; background-size: 393px auto; }
+      #st-front { opacity: 1; }
+      #st-voices { box-shadow: -14px 0 34px rgba(0,0,0,.22); }
+
+      .sb { position: absolute; left: 0; top: 0; width: 100%; height: 50px; font-family: "Phone Sans", sans-serif; }
+      #sb-app { background: var(--paper); color: #111; }
+      #sb-lock { color: #fff; z-index: 3; opacity: 0; }
+      #sb-dark { background: #151a22; color: #f0eadc; }
+      .sb .tm { position: absolute; left: 36px; top: 14px; width: 56px; height: 22px; display: block; }
+      .sb .ics { position: absolute; right: 26px; top: 19px; display: flex; align-items: center; gap: 6px; }
+      .sb svg { display: block; }
+      #dwrap { position: absolute; left: 0; top: 0; width: 393px; height: 852px; overflow: hidden; z-index: 6; visibility: hidden; }
+      #dinner { position: absolute; left: 0; top: 0; width: 393px; height: 852px; background: #151a22; }
+      #dinner > img { position: absolute; left: 0; top: 50px; width: 393px; display: block; }
+      #island { position: absolute; left: 134px; top: 11px; width: 125px; height: 37px; border-radius: 19px; background: #000; z-index: 8; }
+      #home { position: absolute; left: 129.5px; bottom: 8px; width: 134px; height: 5px; border-radius: 99px; background: #17130d; z-index: 8; }
+      .tap { position: absolute; width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%; z-index: 9; opacity: 0; background: rgba(23,19,13,.2); box-shadow: 0 0 0 2px rgba(255,255,255,.9), 0 2px 8px rgba(0,0,0,.25); }
+      .ring { position: absolute; width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%; z-index: 9; opacity: 0; border: 2px solid rgba(26,39,68,.55); }
+
+      /* overlays */
+      #vig { position: absolute; left: 0; top: 1380px; width: 1080px; height: 540px; z-index: 11; background: linear-gradient(to bottom, rgba(14,18,25,0) 0%, rgba(14,18,25,.85) 55%, #0e1219 100%); }
+      #scrim { position: absolute; left: 0; top: 0; width: 1080px; height: 440px; z-index: 12; background: linear-gradient(to bottom, #0e1219 0px, #0e1219 300px, rgba(14,18,25,0) 440px); }
+      #caps { position: absolute; left: 0; top: 0; width: 1080px; height: 420px; z-index: 15; }
+      .cap { position: absolute; left: 20px; width: 1040px; top: 118px; text-align: center; opacity: 0; }
+      .cap .k { font-size: 26px; }
+      .cap .h { margin: 18px auto 0; font-size: 56px; font-weight: 700; line-height: 1.08; color: var(--cream); white-space: nowrap; }
+      .sec .h { font-size: 92px; letter-spacing: -.01em; }
+      #fadein { position: absolute; inset: 0; background: #0e1219; z-index: 40; }
+
+      /* S1 hook text */
+      #s1 { z-index: 16; }
+      #hook { position: absolute; left: 30px; width: 1020px; top: 150px; text-align: center; font-size: 64px; font-weight: 700; line-height: 1.08; color: var(--cream); }
+      #hook span { display: block; }
+
+      /* S2 the run */
+      #s2 { z-index: 20; }
+      #s2 .full { position: absolute; inset: 0; background: radial-gradient(120% 75% at 50% 45%, #1b2334 0%, var(--night) 55%, var(--night-deep) 100%); }
+      #r-kick { position: absolute; left: 90px; top: 470px; font-size: 30px; }
+      #r-head { position: absolute; left: 90px; width: 900px; top: 524px; font-size: 92px; font-weight: 700; line-height: 1.08; color: var(--cream); }
+      #r-head span { display: block; }
+      #log { position: absolute; left: 90px; width: 900px; top: 860px; border-radius: 28px; background: var(--night-deep); border: 2px solid var(--rule-dark); padding: 34px 40px 30px; box-shadow: 0 40px 90px rgba(0,0,0,.45); }
+      #log .hd { display: flex; align-items: center; gap: 18px; padding-bottom: 22px; margin-bottom: 18px; border-bottom: 2px solid var(--rule-dark); }
+      #log .wf { font-family: "Daily Sans", sans-serif; font-weight: 700; font-size: 32px; color: var(--cream); }
+      #log .chip { font-family: "Daily Mono", monospace; font-size: 22px; color: var(--cream-dim); border: 2px solid #3b4a6c; border-radius: 999px; padding: 4px 14px; }
+      #log .ok { margin-left: auto; font-family: "Daily Mono", monospace; font-size: 26px; color: #7ccf8f; font-weight: 600; }
+      #log .ln { font-family: "Daily Mono", monospace; font-size: 28px; line-height: 2; color: var(--cream); white-space: nowrap; }
+      #log .ln .t { color: #8f897d; margin-right: 26px; }
+      #log .ln b { font-weight: 700; color: #ffffff; }
+
+      /* S12 outro */
+      #s12 { z-index: 20; }
+      #o-mast { position: absolute; left: 0; width: 1080px; top: 600px; text-align: center; font-size: 150px; font-weight: 700; color: var(--cream); letter-spacing: -.01em; line-height: 1; }
+      #o-bar { position: absolute; left: 140px; width: 800px; height: 8px; top: 792px; background: #6f82a8; transform-origin: 0 50%; }
+      #o-tag { position: absolute; left: 0; width: 1080px; top: 842px; text-align: center; font-family: "Daily Sans", sans-serif; font-weight: 700; font-size: 28px; letter-spacing: .2em; color: var(--cream-dim); }
+      #o-1 { position: absolute; left: 40px; width: 1000px; top: 1040px; text-align: center; font-size: 88px; font-weight: 700; line-height: 1.08; color: var(--cream); }
+      #o-1 span { display: block; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="31">
+      <div class="bg"></div>
+      <div id="glow"></div>
+
+      <!-- The phone: one persistent device, framed by a virtual camera -->
+      <div id="cam" data-layout-allow-overflow>
+        <div id="device">
+          <div id="screen">
+            <div id="lock">
+              <div id="lk-date">Friday, October 2</div>
+              <div id="lk-time">7:07</div>
+              <div class="nbanner" id="banner"><div class="ic">ntfy</div><div class="ti">📰 The Daily — Oct 2</div><div class="bd">Today’s edition is ready.</div><div class="nw">now</div></div>
+            </div>
+            <div class="sb" id="sb-lock"><div class="ics">/*ICONS_WHITE*/</div></div>
+
+            <div id="applayer">
+              <div class="st" id="st-front" data-layout-allow-overflow><img class="pg" src="assets/app/front6.png" alt="" /></div>
+              <div class="st" id="st-weather" data-layout-allow-overflow><img class="pg" src="assets/app/weather.png" alt="" /></div>
+              <div class="st" id="st-toronto" data-layout-allow-overflow><img class="pg" src="assets/app/toronto.png" alt="" /></div>
+              <div class="st" id="st-world" data-layout-allow-overflow><img class="pg" src="assets/app/world.png" alt="" /></div>
+              <div class="st" id="st-sports" data-layout-allow-overflow><img class="pg" src="assets/app/sports.png" alt="" /></div>
+              <div class="st" id="st-business" data-layout-allow-overflow><img class="pg" src="assets/app/business.png" alt="" /></div>
+              <div class="st" id="st-bopen" data-layout-allow-overflow><img class="pg" src="assets/app/business_open.png" alt="" data-layout-allow-overflow /><div class="pin" style="background-image:url(assets/app/business_open.png)"></div></div>
+              <div class="st" id="st-bask" data-layout-allow-overflow><img class="pg" src="assets/app/business_ask.png" alt="" data-layout-allow-overflow /><div class="pin" style="background-image:url(assets/app/business_ask.png)"></div></div>
+              <div class="st" id="st-opinion" data-layout-allow-overflow><img class="pg" src="assets/app/opinion.png" alt="" data-layout-allow-overflow /><div class="pin" style="background-image:url(assets/app/opinion.png)"></div></div>
+              <div class="st" id="st-voices" data-layout-allow-overflow><img class="pg" src="assets/app/voices.png" alt="" data-layout-allow-overflow /></div>
+              <div class="sb" id="sb-app"><img class="tm" src="assets/ui/time-dark.png" alt="7:07" /><div class="ics">/*ICONS_DARK*/</div></div>
+              <div id="dwrap"><div id="dinner"><div class="sb" id="sb-dark"><img class="tm" src="assets/ui/time-light.png" alt="7:07" /><div class="ics">/*ICONS_LIGHT*/</div></div><img src="assets/app/front_dark.png" alt="" /></div></div>
+            </div>
+
+            <div class="nbanner" id="wbanner"><div class="ic">ntfy</div><div class="ti">📝 Voices this week</div><div class="bd">Your one weekly Voices brief is ready. This week: Tyler Cowen, Arthur C. Brooks.</div><div class="nw">now</div></div>
+            <div id="island"></div>
+            <div id="home"></div>
+            <div id="taps"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="vig"></div>
+      <div id="scrim"></div>
+      <div id="caps"></div>
+
+      <!-- S1: hook line over the masthead macro -->
+      <section id="s1" class="clip" data-start="0" data-duration="3.55" data-track-index="1">
+        <div id="hook"><span>I replaced three news apps</span><span>with one finished paper.</span></div>
+      </section>
+
+      <!-- S2: this morning's real run -->
+      <section id="s2" class="clip" data-start="3.55" data-duration="3.35" data-track-index="2">
+        <div class="full" id="s2in">
+          <div id="r-kick" class="kicker">It writes itself</div>
+          <div id="r-head"><span>188 stories in.</span><span>27 make the paper.</span></div>
+          <div id="log">
+            <div class="hd"><span class="wf">Build The Daily</span><span class="chip">schedule</span><span class="ok" id="log-ok">✓ 1m 49s</span></div>
+            <div class="ln"><span class="t">07:05:57</span>normalized <b>188</b> stories</div>
+            <div class="ln"><span class="t">07:06:50</span>gemini-2.5-flash · 200 OK</div>
+            <div class="ln"><span class="t">07:06:50</span>sections=6 stories=<b>27</b> following=6</div>
+            <div class="ln"><span class="t">07:07:02</span>ntfy · “Today’s edition is ready.”</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S12: end card -->
+      <section id="s12" class="clip" data-start="28.3" data-duration="2.7" data-track-index="4">
+        <div id="o-mast">THE DAILY</div>
+        <div id="o-bar"></div>
+        <div id="o-tag">TORONTO · WORLD · SPORTS · BUSINESS · OPINION</div>
+        <div id="o-1"><span>Ten minutes.</span><span>Then you’re done.</span></div>
+      </section>
+
+      <div id="fadein"></div>
+
+      <audio id="bed" src="assets/music/bed-mix.wav" data-start="0" data-duration="31" data-track-index="20" data-volume="1"></audio>
+      <!--SFX-->
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const RMS = /*RMS*/[];
+
+      // ---- camera rig: frame a region of the screen (screen points) into the content box below the captions
+      const BZ = 12;                                        // bezel
+      const BOX = { x: 40, y: 430, w: 1000, h: 1450 };
+      const fit = (rx, ry, rw, rh) => {
+        const k = Math.min(BOX.w / rw, BOX.h / rh);
+        return { x: BOX.x + BOX.w / 2 - k * (BZ + rx + rw / 2), y: BOX.y + BOX.h / 2 - k * (BZ + ry + rh / 2), scale: k };
+      };
+      const at = (cx, cy, k, X, Y) => ({ x: X - k * (BZ + cx), y: Y - k * (BZ + cy), scale: k });
+      const CAM = {
+        hookA: at(136, 103, 4.0, 540, 1060),
+        hookB: at(136, 103, 4.12, 540, 1060),
+        full: { x: 173, y: 318, scale: 1.76 },
+        lock: fit(0, 70, 393, 640),
+        front: fit(0, 50, 393, 670),
+        weather: fit(0, 100, 393, 360),
+        sections: fit(0, 50, 393, 580),
+        sports: fit(0, 290, 393, 560),
+        storyWide: fit(0, 50, 393, 802),
+        analysis: fit(0, 300, 393, 552),
+        panel: fit(0, 440, 393, 412),
+        follow: fit(0, 50, 393, 600),
+        followIn: at(196.5, 350, 2.56, 540, 1140),
+        voicesTop: fit(0, 50, 393, 580),
+        voicesList: fit(0, 68, 393, 572),
+      };
+      const move = (to, t, d = 0.6, ease = "power3.inOut") => tl.to("#cam", { x: to.x, y: to.y, scale: to.scale, duration: d, ease }, t);
+
+      // audio-reactive (subtle): precomputed music RMS drives the background glow
+      RMS.forEach((v, i) => tl.to("#glow", { scale: 0.94 + v * 0.14, opacity: 0.28 + v * 0.26, duration: 0.1, ease: "none" }, i * 0.1));
+
+      // ---- initial state (hook shows the app; lock screen hidden until the push beat)
+      // initial transforms are applied immediately (outside the timeline); hidden layers are hidden in CSS
+      gsap.set("#cam", CAM.hookA);
+      gsap.set("#dwrap", { y: -852 });
+      gsap.set("#dinner", { y: 852 });
+      gsap.set("#st-voices", { x: 393 });
+      gsap.set("#st-bask .pg", { y: -203 });
+      tl.fromTo("#applayer", { opacity: 0 }, { opacity: 1, duration: 0.02, ease: "none" }, 0);
+      tl.to("#fadein", { opacity: 0, duration: 0.3, ease: "power1.out" }, 0);
+
+      // ---- S1 hook: masthead macro, line lands on 0.27/0.55, pull back reveals the phone
+      tl.to("#cam", { ...CAM.hookB, duration: 2.3, ease: "sine.inOut" }, 0.1);
+      tl.fromTo("#hook span", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.28 }, 0.27); // beat-grid: 0.27, 0.55
+      move(CAM.full, 2.46, 0.72, "power3.inOut"); // beat-locked: 2.46s
+      tl.to("#vig", { opacity: 0, duration: 0.5 }, 2.46);
+      tl.to("#hook", { opacity: 0, duration: 0.25, ease: "power2.in" }, 3.2);
+      tl.to("#device", { opacity: 0, duration: 0.25, ease: "power2.in" }, 3.3);
+
+      // ---- S2 the run
+      tl.fromTo("#s2in", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 3.55);
+      tl.fromTo("#r-kick", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 3.6);
+      tl.fromTo("#r-head span", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out", stagger: 0.18 }, 3.62);
+      tl.fromTo("#log", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.1); // beat-grid: 4.10
+      tl.fromTo("#log-ok", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+      [4.64, 5.19, 5.74, 6.28].forEach((t, i) => { // beat-grid: 4.64, 5.19, 5.74, 6.28
+        tl.fromTo(`#log .ln:nth-of-type(${i + 2})`, { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, t);
+      });
+      tl.to("#log-ok", { opacity: 1, duration: 0.25 }, 6.45);
+      tl.to("#s2in", { opacity: 0, duration: 0.28, ease: "power2.in" }, 6.62);
+
+      // ---- S3 push: phone returns on the lock screen, the real push lands on 7.35
+      tl.set("#lock", { opacity: 1, scale: 1 }, 6.85);
+      tl.set("#sb-lock", { opacity: 1 }, 6.85);
+      tl.set("#applayer", { opacity: 0, scale: 0.16, borderRadius: 22 }, 6.85);
+      tl.set("#home", { backgroundColor: "rgba(255,255,255,.9)" }, 6.85);
+      tl.set("#cam", { x: CAM.full.x, y: CAM.full.y + 300, scale: CAM.full.scale }, 6.85);
+      tl.to("#device", { opacity: 1, duration: 0.35 }, 6.9);
+      move(CAM.full, 6.9, 0.6, "power3.out");
+      tl.fromTo("#banner", { y: -26, opacity: 0, scale: 0.96 }, { y: 0, opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, 7.35); // beat-grid: 7.35
+      move(CAM.lock, 7.5, 0.6);
+      // tap the push → the app grows out of it while the camera pulls to the front page
+      tl.to("#applayer", { opacity: 1, duration: 0.03, ease: "none" }, 8.28);
+      tl.to("#applayer", { scale: 1, borderRadius: 55, duration: 0.46, ease: "power3.out" }, 8.28);
+      tl.to(["#lk-date", "#lk-time", "#banner"], { opacity: 0, duration: 0.24 }, 8.3);
+      tl.to("#lock", { scale: 0.95, duration: 0.46, ease: "power3.out" }, 8.28);
+      tl.to("#sb-lock", { opacity: 0, duration: 0.2 }, 8.28);
+      tl.to("#home", { backgroundColor: "#17130d", duration: 0.3 }, 8.3);
+      move(CAM.front, 8.28, 0.62);
+
+      // ---- screen states: instant cuts just after each tap (as in the app)
+      const cut = (from, to, t) => { tl.set(to, { opacity: 1 }, t); tl.set(from, { opacity: 0 }, t); };
+      cut("#st-front", "#st-weather", 10.46);  move(CAM.weather, 10.5, 0.6);
+      cut("#st-weather", "#st-toronto", 12.64); move(CAM.sections, 12.62, 0.5);
+      cut("#st-toronto", "#st-world", 13.72);
+      cut("#st-world", "#st-sports", 14.81);   move(CAM.sports, 14.78, 0.45);
+      cut("#st-sports", "#st-business", 15.9); move(CAM.sections, 15.88, 0.45);
+      cut("#st-business", "#st-bopen", 17.01);
+      tl.to("#st-bopen .pg", { y: -203, duration: 0.6, ease: "power2.inOut" }, 17.1);
+      move(CAM.storyWide, 17.1, 0.6);
+      move(CAM.analysis, 17.8, 0.6);
+      cut("#st-bopen", "#st-bask", 19.18);
+      tl.to("#st-bask .pg", { y: -330, duration: 0.5, ease: "power2.inOut" }, 19.3);
+      move(CAM.panel, 19.3, 0.55);
+      move(CAM.follow, 20.7, 0.5);
+      cut("#st-bask", "#st-opinion", 21.36);
+      tl.to("#cam", { ...CAM.followIn, duration: 1.9, ease: "sine.inOut" }, 21.45);
+
+      // ---- the weekly push (real copy) → Voices this week
+      tl.fromTo("#wbanner", { y: -120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.4)", immediateRender: false }, 23.46); // beat-locked: 23.46s
+      tl.to("#wbanner", { y: -130, opacity: 0, duration: 0.28, ease: "power2.in" }, 24.06);
+      tl.set("#st-voices", { opacity: 1 }, 24.06);
+      tl.to("#st-voices", { x: 0, duration: 0.45, ease: "power3.out" }, 24.06);
+      tl.to("#st-opinion", { x: -118, duration: 0.45, ease: "power3.out" }, 24.06);
+      move(CAM.voicesTop, 24.06, 0.55);
+      tl.to("#st-voices .pg", { y: -790, duration: 0.65, ease: "power2.inOut" }, 25.1); // beat-grid: 25.10
+      move(CAM.voicesList, 25.1, 0.65);
+
+      // ---- back to the front page, then the lamplight edition wipes in
+      tl.set("#st-front", { opacity: 1, x: -118 }, 26.74);
+      tl.set("#st-opinion", { opacity: 0 }, 26.74);
+      tl.to("#st-front", { x: 0, duration: 0.4, ease: "power3.out" }, 26.74);
+      tl.to("#st-voices", { x: 393, duration: 0.4, ease: "power3.out" }, 26.74);
+      move(CAM.full, 26.74, 0.75);
+      tl.set("#dwrap", { visibility: "visible" }, 26.9);
+      tl.to("#dwrap", { y: 0, duration: 0.55, ease: "power2.inOut" }, 26.95);
+      tl.to("#dinner", { y: 0, duration: 0.55, ease: "power2.inOut" }, 26.95);
+      tl.to("#home", { backgroundColor: "#e9e3d5", duration: 0.3 }, 27.15);
+
+      // ---- phone leaves; end card on the strong cues 28.37 / 28.92
+      tl.to("#device", { opacity: 0, duration: 0.35, ease: "power2.in" }, 28.1);
+      tl.to("#cam", { y: CAM.full.y + 60, duration: 0.35, ease: "power2.in" }, 28.1);
+      tl.fromTo("#o-mast", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 28.37); // beat-locked: 28.37s
+      tl.fromTo("#o-bar", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 28.45);
+      tl.fromTo("#o-tag", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 28.6);
+      tl.fromTo("#o-1 span", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.27 }, 28.92); // beat-locked: 28.92s
+
+      // ---- captions (kicker + headline), swapped with each tap
+      const capsEl = document.getElementById("caps");
+      const cap = (id, k, h, t, end, cls = "") => {
+        const d = document.createElement("div");
+        d.className = "cap " + cls; d.id = id;
+        d.innerHTML = (k ? `<div class="k kicker">${k}</div>` : "") + `<div class="h">${h}</div>`;
+        capsEl.appendChild(d);
+        tl.fromTo(d, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" }, t + 0.06);
+        tl.to(d, { opacity: 0, y: -10, duration: 0.16, ease: "power2.in" }, end - 0.04);
+      };
+      cap("cap-push", "7:07 a.m.", "One notification a day.", 6.94, 8.73);
+      cap("cap-front", "Front page", "Ranked and summarized by Gemini.", 8.73, 10.38);
+      cap("cap-weather", "Weather", "Toronto today. Tap for the week.", 10.38, 12.56);
+      // sections: one kicker, the section name swaps with each tab
+      const sk = document.createElement("div"); sk.className = "cap sec"; sk.id = "cap-sec";
+      sk.innerHTML = `<div class="k kicker">Sections</div>`; capsEl.appendChild(sk);
+      tl.fromTo(sk, { opacity: 0 }, { opacity: 1, duration: 0.25 }, 12.62);
+      tl.to(sk, { opacity: 0, duration: 0.16 }, 16.89);
+      [["Toronto", 12.56, 13.64], ["World", 13.64, 14.73], ["Sports", 14.73, 15.82], ["Business", 15.82, 16.93]].forEach(([name, t, end], i) => {
+        const d = document.createElement("div"); d.className = "cap sec"; d.id = "cap-sec-" + i;
+        d.innerHTML = `<div class="k kicker" style="visibility:hidden">Sections</div><div class="h">${name}</div>`; capsEl.appendChild(d);
+        tl.fromTo(d, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.28, ease: "power3.out" }, t + 0.06);
+        tl.to(d, { opacity: 0, y: -14, duration: 0.14, ease: "power2.in" }, end - 0.02);
+      });
+      cap("cap-story", "Every story", "The summary, and why it matters.", 16.93, 19.1);
+      cap("cap-ask", "Ask AI", "One tap to Claude or ChatGPT.", 19.1, 21.28);
+      cap("cap-follow", "Following", "Writers you follow, not outlets.", 21.28, 23.46);
+      cap("cap-weekly", "Once a week", "Three pieces worth your time.", 23.46, 26.74);
+      cap("cap-dark", "Dark mode", "The lamplight edition.", 26.74, 28.2);
+
+      // ---- taps (screen points, from the capture geometry); press and sound land together
+      const taps = [
+        { t: 8.22, x: 196, y: 599 },  // the push
+        { t: 10.38, x: 150, y: 178 }, // weather strip
+        { t: 12.56, x: 170, y: 321 }, // Toronto
+        { t: 13.64, x: 262, y: 72 },  // World
+        { t: 14.73, x: 283, y: 72 },  // Sports
+        { t: 15.82, x: 292, y: 321 }, // Business
+        { t: 16.93, x: 185, y: 183 }, // lead story
+        { t: 19.1, x: 175, y: 820 },  // Ask AI
+        { t: 21.28, x: 347, y: 72 },  // Opinion
+        { t: 24.01, x: 196, y: 104 }, // weekly push
+      ];
+      const tapsEl = document.getElementById("taps");
+      taps.forEach((p, i) => {
+        const d = document.createElement("div"); d.className = "tap"; d.id = "tap" + i; d.style.left = p.x + "px"; d.style.top = p.y + "px"; tapsEl.appendChild(d);
+        const r = document.createElement("div"); r.className = "ring"; r.id = "ring" + i; r.style.left = p.x + "px"; r.style.top = p.y + "px"; tapsEl.appendChild(r);
+        tl.fromTo(d, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.16, ease: "power2.out" }, p.t - 0.2);
+        tl.to(d, { scale: 0.8, duration: 0.08, ease: "power2.out" }, p.t);
+        tl.to(d, { opacity: 0, scale: 1.05, duration: 0.26, ease: "power2.in" }, p.t + 0.12);
+        tl.fromTo(r, { opacity: 0.7, scale: 1 }, { opacity: 0, scale: 2, duration: 0.42, ease: "power2.out", immediateRender: false }, p.t);
+      });
+
+      // Music level (-6 dB) and fade (30.0–31.0s) are baked into bed-mix.wav: no gain automation here.
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

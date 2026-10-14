@@ -3,7 +3,7 @@ status: open
 lane: opus
 issues: [8, 9, 10, 12, 13, 14, 16, 17, 18, 21, 22, 23, 24, 25, 26, 27, 28, 31]
 owner: Ben
-updated: 2026-10-02
+updated: 2026-10-13
 ---
 
 # Inclusion + demo workplan
@@ -133,6 +133,44 @@ returns 200.
 Vox and Orpheus were not touched. Card images are new 1024×1024 crops of the live demos. Layout
 observations are in `FOUNDATION-NOTES.md` §5.
 
+### WS5: index tier written (2026-10-13, branch `content/index-tier`)
+
+Ten text-only `IndexProject` entries added to `src/js/project-descriptions.ts`; the Orpheus card
+(`href: null`) is deleted and replaced by an index entry. `pysche-app` is not included (ruled skip).
+Built, linted and previewed at 390px and 1440px; every index row renders under the pillar below
+and its link was loaded.
+
+- **`year`** = year of the repo's first commit (`git log --max-parents=0`; GitHub `createdAt` for
+  demeter and padme, which have no local clone). Index years are *first release*, not last
+  activity (answers FOUNDATION-NOTES §3 item 5 for these ten).
+- **`href`** = the live URL when there is one, else the public repo; `null` for the two private
+  repos (vox-v2, iroh). All others returned HTTP 200 on 2026-10-13. `repoUrl` is set on all ten
+  (including the private two, as for HAUS/Vox; names end up in the bundle).
+- **`lastVerified: 2026-10-13`** only where the link loaded and matched `repoUrl`: the five Pages
+  sites (deployment SHA = repo HEAD) plus the two repo links. Unset on psyche (Firebase Hosting,
+  deployed SHA not checkable), vox-v2 and iroh (nothing public to load).
+
+| Entry | Pillar | Why | Link |
+|---|---|---|---|
+| Arc | narrative | a manifesto: long-form prose as the interface | live |
+| Faust | narrative | research essay, same family as Dukkha/Agoge | live |
+| Great Decoupling | narrative | research essay plus infographic; repo is mostly stubs | repo |
+| Demeter | app | planning atlas, installable web app | live |
+| Vox v2 | app | study tool; sits with Vox | none (private) |
+| Padme | psychology | chakra model read as psychological development | live |
+| Psyche | psychology | psychology encyclopedia | live |
+| Static | psychology | mechanics of autistic / AuDHD cognition | live |
+| Orpheus | psychology | listening history as an emotional mirror (was already there) | repo |
+| Iroh | psychology | reflective journaling; judgment call, `app` is the alternative | none (private) |
+
+Result: Narrative 3 cards + 3 index, Systems 15 cards + 2 index, Psyche 1 card + 5 index. This
+softens the Psyche-has-one-card problem (FOUNDATION-NOTES §3 item 1) on the index side only.
+
+Left for Ben: Iroh's in-app name is Thread (README, `<title>`), so the row says so. Orpheus's
+`projectDescriptions` entry (`portfolio:` line says "experimental audio interfaces") is stale and
+now feeds the generated doc; not edited, since it changes the meaning of that file. The unused
+`Orpheus.png` card image is still in `src/public/assets/projects/`.
+
 ## 4. Workstreams
 
 Dependencies are real; the first two gates decide how much runs in parallel.
@@ -153,11 +191,41 @@ WS6 Staleness CI #14  needs #13 (`repoUrl`, `lastVerified`)
 | **WS2 Demo enablement** | Per-repo changes in §3, each verified against the deployed URL | #21 + new | One agent per repo, fully parallel |
 | **WS3 Cards** | Copy + `techSpecs` + screenshot for the 24 additions and the 5 retargeted cards | #17 #18 | One agent per card after WS1; opus writes, standard captures |
 | **WS4 Brag videos** | Hermes, hearth_v2, third chosen by Ben (few projects only) | new | One agent per video |
-| **WS5 Index tier** | 10 index lines (name, one-liner, year, link) | #12 | One agent |
+| **WS5 Index tier** | 10 index lines (name, one-liner, year, link). **Written 2026-10-13, branch `content/index-tier`** (see "WS5" below) | #12 | One agent |
 | **WS6 Staleness CI** | `repoUrl` vs `lastVerified`, HTTP check on every link | #14 | One standard agent after #13 |
 
 Issues #9 (re-verify displayed cards), #10 (Narrative collision) and #16 (template retirement)
 fold into WS1/WS2 as noted on each.
+
+### Staleness and link check (WS6, #14)
+
+`npm run health` runs `scripts/check-portfolio-health.mjs`; `.github/workflows/portfolio-health.yml`
+runs it every Monday and on manual dispatch (not on push or PR, because it needs the network, and
+it never deploys). It reads `src/js/project-descriptions.ts` through the generator's `readData()`.
+
+| Section | Rule | Effect |
+|---|---|---|
+| Links | every `href` and `demoUrl` must end at HTTP 200 (redirects followed, one retry, 15s timeout) | **fails the run** |
+| Stale cards | repo default branch has a commit dated after `lastVerified` | warning, with days and commits since |
+| No `lastVerified` | the card was never verified | warning; template-backed cards are annotated as expected |
+| Template lag | for `demoMode: 'template'` cards, the template repo (from `demoUrl`) trails `repoUrl` by more than 30 days (`--threshold-days=N`) | warning. Today: Narrative and Morpheus, about 145 days |
+| Not checkable | the GitHub API returned 404 for the repo | info only |
+
+How to read it: a red run means a card link is dead; fix or retarget the card. A stale card means
+the repo moved since someone last loaded the demo; re-verify it, then bump `lastVerified`. Lagging
+templates are the accepted exception above and stay as warnings until Ben decides to rebuild them.
+
+Notes:
+
+- `repoUrl` is not rendered, so it is never fetched as a web page. It is looked up through the
+  GitHub API instead. Private repos return 404 unauthenticated, and the workflow's default token
+  only sees this repo, so they land under "Not checkable" (Wrestle, HAUS, Chef's Journal, Vox).
+  To check them, add a read-only PAT as the `PORTFOLIO_HEALTH_TOKEN` repo secret; locally, set
+  `GITHUB_TOKEN`.
+- Staleness uses the latest default-branch commit date, not `pushed_at`, because Pages deploy
+  pushes move `pushed_at`.
+- Unauthenticated runs have 60 API calls per hour; one run uses about 25.
+- Flags: `--skip-links`, `--skip-stale`, `--summary=<file>` (defaults to `$GITHUB_STEP_SUMMARY`).
 
 ### Brag videos (WS4) — deferred
 
@@ -194,3 +262,12 @@ the classic Hyperframes workflow. `/brag --tone "…"` steers style; voiceover i
 - No card targets a template repo.
 - Conflicts B, E, F have a written resolution (A, C, D settled above).
 - `npm run lint`, `npm run format:check`, `npm run build` pass; new URLs return 200.
+
+## Follow-through, 2026-10-13
+
+Current execution state and pending approvals are in `STATUS-2026-10-13.md`.
+FamilyPlan Pages is now actually disabled; a synthetic-build PR is prepared. The
+liebestraum rotation remains blocked by GCP IAM permissions. STARK refers to the
+migrated `stark-v1` product; the new `stark` app is deferred until a demo is ready.
+Vox remains a sample CSV-table showcase, with corrected claims. Narrative/Morpheus
+exceptions are now documented in CLAUDE.md and DEMO-MODE-METHODS.md.

@@ -1,9 +1,9 @@
 # Vox - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `vox`
 
 ## Snapshot
@@ -23,17 +23,17 @@ Project slug: `vox`
 - Image alt: Vox - Language Tool
 
 ## Core Description
-- Card description: Vocabulary and grammar studying tool.
-- Portfolio summary: Advanced language-learning dashboard with progress tracking, analytics, and adaptive learning algorithms (in development).
-- Full description: Vox is a pilot framework for building a rigorous, self-directed language learning system. It emphasizes grammar mastery, transparent vocab tracking, and real-world sentence production - eschewing gamified fluff in favor of deliberate, adaptive practice. Designed to function fully offline with clean JSON architecture, Vox visualizes progress like a growing reservoir of knowledge, where vocabulary adds volume, grammar shapes the container, and output waters the fields of fluency. It serves as both prototype and proof-of-concept for a learner-first, data-transparent alternative to mainstream apps.
+- Card description: A CSV vocabulary tracker for Spanish and Mandarin practice.
+- Portfolio summary: A browser-based vocabulary table for tracking Spanish and Mandarin practice with CSV import and export.
+- Full description: Vox is a small vocabulary tracker for self-directed language study. It displays Spanish and Mandarin vocabulary in tables, tracks practice counts and status, and supports uploading and exporting CSV files. The portfolio opens Vox Showcase, a separate copy populated with sample vocabulary. The current app is a static table; a broader learning dashboard is still in development.
 
 ## Technical Profile
-- Model: Offline-First App
-- Stack: `JavaScript`, `JSON`
+- Model: CSV Vocabulary Tracker
+- Stack: `HTML`, `CSS`, `JavaScript`, `CSV`
 - Key features:
-- Offline-First
-- Local Storage
-- Spaced Repetition
+- Spanish and Mandarin Tables
+- Practice Counts
+- CSV Import and Export
 
 ## Theme
 - Primary: `#d4956d`

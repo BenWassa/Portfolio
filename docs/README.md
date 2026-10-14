@@ -21,3 +21,9 @@ updated: YYYY-MM-DD
 ```
 
 See `CLAUDE.md` for the full operating rules.
+
+## Demo verification
+
+[`DEMO_STATE_PLAYBOOK.md`](./DEMO_STATE_PLAYBOOK.md) defines the demo standard.
+Copy [`DEMO-VERIFICATION-TEMPLATE.md`](./DEMO-VERIFICATION-TEMPLATE.md) into the
+project's work lane and complete it against the deployed demo.

@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>The Daily — brag</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Daily Serif"; src: url("assets/fonts/georgia.ttf"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Daily Serif"; src: url("assets/fonts/georgia-bold.ttf"); font-weight: 700; font-style: normal; }
+      @font-face { font-family: "Daily Serif"; src: url("assets/fonts/georgia-italic.ttf"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Daily Sans"; src: url("assets/fonts/arial.ttf"); font-weight: 400; }
+      @font-face { font-family: "Daily Sans"; src: url("assets/fonts/arial-bold.ttf"); font-weight: 700; }
+      @font-face { font-family: "Phone Sans"; src: url("assets/fonts/sf-pro.ttf"); font-weight: 100 900; }
+      @font-face { font-family: "Daily Mono"; src: url("assets/fonts/sf-mono.ttf"); font-weight: 100 900; }
+
+      :root { --paper: #faf8f3; --night: #151a22; --night-deep: #0e1219; --cream: #e9e3d5; --cream-dim: #bcb6a8; --heat: #d1726b; --rule-dark: #2a303a; }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--night-deep); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--night); font-family: "Daily Serif", serif; }
+      .bg { position: absolute; inset: 0; background: radial-gradient(120% 75% at 50% 50%, #1b2334 0%, var(--night) 55%, var(--night-deep) 100%); }
+      #glow { position: absolute; left: 90px; top: 620px; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(111,130,168,.45) 0%, rgba(111,130,168,0) 66%); opacity: .4; }
+      .kicker { font-family: "Daily Sans", sans-serif; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--heat); }
+
+      /* camera + device (built at 1 CSS px = 1 screen point; the camera scales it) */
+      #cam { position: absolute; left: 0; top: 0; width: 417px; height: 876px; transform-origin: 0 0; z-index: 10; }
+      #device { position: absolute; left: 0; top: 0; width: 417px; height: 876px; border-radius: 67px; background: #0b0d12; padding: 12px; opacity: 0;
+        box-shadow: 0 0 0 1.5px #3a4150, 0 0 0 3px #11141a, 0 30px 70px rgba(0,0,0,.6); }
+      #screen { position: relative; width: 393px; height: 852px; border-radius: 55px; overflow: hidden; background: #000; }
+
+      #lock { position: absolute; inset: 0; opacity: 0; background: linear-gradient(165deg, #2b3a5c 0%, #18213a 42%, #0d1220 100%); }
+      #lock::after { content: ""; position: absolute; inset: 0; background: radial-gradient(70% 45% at 50% 30%, rgba(209,114,107,.22) 0%, rgba(209,114,107,0) 70%); }
+      #lk-date { position: absolute; left: 0; width: 100%; top: 66px; line-height: 1; text-align: center; font-family: "Phone Sans", sans-serif; font-weight: 600; font-size: 21px; color: rgba(255,255,255,.92); z-index: 1; }
+      #lk-time { position: absolute; left: 0; width: 100%; top: 96px; line-height: 1; text-align: center; font-family: "Phone Sans", sans-serif; font-weight: 700; font-size: 98px; letter-spacing: -.01em; color: #fff; z-index: 1; }
+      .nbanner { position: absolute; border-radius: 22px; background: rgba(246,244,239,.96); box-shadow: 0 10px 34px rgba(0,0,0,.32); font-family: "Phone Sans", sans-serif; opacity: 0; }
+      .nbanner .ic { position: absolute; left: 14px; top: 18px; width: 38px; height: 38px; border-radius: 9px; background: #2f7a6a; color: #fff; font-weight: 800; font-size: 12px; display: flex; align-items: center; justify-content: center; letter-spacing: -.02em; }
+      .nbanner .ti { position: absolute; left: 62px; top: 16px; font-weight: 600; font-size: 15px; color: #111; }
+      .nbanner .bd { position: absolute; left: 62px; top: 37px; width: 296px; font-weight: 400; font-size: 15px; line-height: 1.3; color: #1d1d1f; }
+      .nbanner .nw { position: absolute; right: 16px; top: 17px; font-size: 13px; color: #55555a; }
+      #banner { left: 12px; width: 369px; top: 560px; height: 78px; z-index: 2; }
+      #wbanner { left: 8px; width: 377px; top: 56px; height: 116px; z-index: 5; }
+
+      #applayer { position: absolute; inset: 0; z-index: 4; opacity: 0; overflow: hidden; background: var(--paper); transform-origin: 196px 599px; }
+      .st { position: absolute; left: 0; top: 50px; width: 393px; height: 802px; overflow: hidden; opacity: 0; background: var(--paper); }
+      .st .pg { position: absolute; left: 0; top: 0; width: 393px; display: block; }
+      .st .pin { position: absolute; left: 0; top: 0; width: 393px; height: 44px; background-repeat: no-repeat; background-position: 0 0; background-size: 393px auto; }
+      #st-front { opacity: 1; }
+      #st-voices { box-shadow: -14px 0 34px rgba(0,0,0,.22); }
+
+      .sb { position: absolute; left: 0; top: 0; width: 100%; height: 50px; font-family: "Phone Sans", sans-serif; }
+      #sb-app { background: var(--paper); color: #111; }
+      #sb-lock { color: #fff; z-index: 3; opacity: 0; }
+      #sb-dark { background: #151a22; color: #f0eadc; }
+      .sb .tm { position: absolute; left: 36px; top: 14px; width: 56px; height: 22px; display: block; }
+      .sb .ics { position: absolute; right: 26px; top: 19px; display: flex; align-items: center; gap: 6px; }
+      .sb svg { display: block; }
+      #dwrap { position: absolute; left: 0; top: 0; width: 393px; height: 852px; overflow: hidden; z-index: 6; visibility: hidden; }
+      #dinner { position: absolute; left: 0; top: 0; width: 393px; height: 852px; background: #151a22; }
+      #dinner > img { position: absolute; left: 0; top: 50px; width: 393px; display: block; }
+      #island { position: absolute; left: 134px; top: 11px; width: 125px; height: 37px; border-radius: 19px; background: #000; z-index: 8; }
+      #home { position: absolute; left: 129.5px; bottom: 8px; width: 134px; height: 5px; border-radius: 99px; background: #17130d; z-index: 8; }
+      .tap { position: absolute; width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%; z-index: 9; opacity: 0; background: rgba(23,19,13,.2); box-shadow: 0 0 0 2px rgba(255,255,255,.9), 0 2px 8px rgba(0,0,0,.25); }
+      .ring { position: absolute; width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%; z-index: 9; opacity: 0; border: 2px solid rgba(26,39,68,.55); }
+
+      /* overlays */
+      #scrim { position: absolute; left: 0; top: 0; width: 1080px; height: 440px; z-index: 12; background: linear-gradient(to bottom, #0e1219 0px, #0e1219 300px, rgba(14,18,25,0) 440px); }
+      #caps { position: absolute; left: 0; top: 0; width: 1080px; height: 420px; z-index: 15; }
+      .cap { position: absolute; left: 20px; width: 1040px; top: 118px; text-align: center; opacity: 0; }
+      .cap .k { font-size: 26px; }
+      .cap .h { margin: 18px auto 0; font-size: 56px; font-weight: 700; line-height: 1.08; color: var(--cream); white-space: nowrap; }
+      .sec .h { font-size: 92px; letter-spacing: -.01em; }
+      #fadein { position: absolute; inset: 0; background: #0e1219; z-index: 40; }
+
+      /* S1 the problem: three feeds that never end (abstract skeletons, no real apps) */
+      #s1 { z-index: 16; }
+      #feeds { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; -webkit-mask-image: linear-gradient(to bottom, #000 0px, #000 1420px, rgba(0,0,0,0) 1840px); mask-image: linear-gradient(to bottom, #000 0px, #000 1420px, rgba(0,0,0,0) 1840px); }
+      .fp { position: absolute; top: 500px; width: 310px; height: 1340px; border-radius: 64px 64px 0 0; border: 3px solid #323b4d; border-bottom: 0; background: #121821; overflow: hidden; opacity: 0; }
+      .fp .isl { position: absolute; left: 50%; top: 16px; width: 96px; height: 26px; margin-left: -48px; border-radius: 14px; background: #0a0d13; z-index: 2; }
+      .fp .vp { position: absolute; left: 0; right: 0; top: 66px; bottom: 0; overflow: hidden; }
+      .fcol { position: absolute; left: 20px; top: 0; width: 264px; }
+      .fr { position: relative; margin-bottom: 24px; }
+      .fr .th { position: absolute; left: 0; top: 0; width: 78px; height: 78px; border-radius: 12px; background: #202836; }
+      .fr .hero { position: absolute; left: 0; top: 0; width: 264px; height: 128px; border-radius: 14px; background: #1d2431; }
+      .fr .b { position: absolute; height: 14px; border-radius: 7px; background: #2b3445; }
+      .fr .b.dim { background: #232b39; height: 11px; }
+      .fr .dot { position: absolute; left: -5px; top: -5px; width: 14px; height: 14px; border-radius: 50%; background: var(--heat); opacity: .6; box-shadow: 0 0 0 3px #121821; }
+
+      /* S1b the turn */
+      #s-turn { z-index: 20; }
+      #t-kick { position: absolute; left: 0; width: 1080px; top: 640px; text-align: center; font-size: 30px; opacity: 0; }
+      #t-mast { position: absolute; left: 0; width: 1080px; top: 700px; text-align: center; font-size: 150px; font-weight: 700; color: var(--cream); letter-spacing: -.01em; line-height: 1; opacity: 0; }
+      #t-bar { position: absolute; left: 140px; width: 800px; height: 8px; top: 900px; background: #6f82a8; transform-origin: 0 50%; }
+      #t-line { position: absolute; left: 40px; width: 1000px; top: 980px; text-align: center; font-size: 88px; font-weight: 700; line-height: 1.08; color: var(--cream); opacity: 0; }
+
+      /* S2 the run */
+      #s2 { z-index: 20; }
+      #s2 .full { position: absolute; inset: 0; background: radial-gradient(120% 75% at 50% 45%, #1b2334 0%, var(--night) 55%, var(--night-deep) 100%); }
+      #r-kick { position: absolute; left: 90px; top: 470px; font-size: 30px; }
+      #r-head { position: absolute; left: 90px; width: 900px; top: 524px; font-size: 92px; font-weight: 700; line-height: 1.08; color: var(--cream); }
+      #r-head span { display: block; }
+      #log { position: absolute; left: 90px; width: 900px; top: 860px; border-radius: 28px; background: var(--night-deep); border: 2px solid var(--rule-dark); padding: 34px 40px 30px; box-shadow: 0 40px 90px rgba(0,0,0,.45); }
+      #log .hd { display: flex; align-items: center; gap: 18px; padding-bottom: 22px; margin-bottom: 18px; border-bottom: 2px solid var(--rule-dark); }
+      #log .wf { font-family: "Daily Sans", sans-serif; font-weight: 700; font-size: 32px; color: var(--cream); }
+      #log .chip { font-family: "Daily Mono", monospace; font-size: 22px; color: var(--cream-dim); border: 2px solid #3b4a6c; border-radius: 999px; padding: 4px 14px; }
+      #log .ok { margin-left: auto; font-family: "Daily Mono", monospace; font-size: 26px; color: #7ccf8f; font-weight: 600; }
+      #log .ln { font-family: "Daily Mono", monospace; font-size: 28px; line-height: 2; color: var(--cream); white-space: nowrap; }
+      #log .ln .t { color: #8f897d; margin-right: 26px; }
+      #log .ln b { font-weight: 700; color: #ffffff; }
+
+      /* S12 outro */
+      #s12 { z-index: 20; }
+      #o-mast { position: absolute; left: 0; width: 1080px; top: 600px; text-align: center; font-size: 150px; font-weight: 700; color: var(--cream); letter-spacing: -.01em; line-height: 1; }
+      #o-bar { position: absolute; left: 140px; width: 800px; height: 8px; top: 792px; background: #6f82a8; transform-origin: 0 50%; }
+      #o-tag { position: absolute; left: 0; width: 1080px; top: 842px; text-align: center; font-family: "Daily Sans", sans-serif; font-weight: 700; font-size: 28px; letter-spacing: .2em; color: var(--cream-dim); }
+      #o-1 { position: absolute; left: 40px; width: 1000px; top: 1040px; text-align: center; font-size: 88px; font-weight: 700; line-height: 1.08; color: var(--cream); }
+      #o-1 span { display: block; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="{{G:121}}">
+      <div class="bg"></div>
+      <div id="glow"></div>
+
+      <!-- The phone: one persistent device, framed by a virtual camera. It stays offstage until the push. -->
+      <div id="cam" data-layout-allow-overflow>
+        <div id="device">
+          <div id="screen">
+            <div id="lock">
+              <div id="lk-date">Friday, October 2</div>
+              <div id="lk-time">7:07</div>
+              <div class="nbanner" id="banner"><div class="ic">ntfy</div><div class="ti">📰 The Daily — Oct 2</div><div class="bd">Today’s edition is ready.</div><div class="nw">now</div></div>
+            </div>
+            <div class="sb" id="sb-lock"><div class="ics">/*ICONS_WHITE*/</div></div>
+
+            <div id="applayer">
+              <div class="st" id="st-front" data-layout-allow-overflow><img class="pg" src="assets/app/front_full.png" alt="" /><div class="pin" style="display:none;background-image:url(assets/app/front_full.png);background-position:0 -153px"></div></div>
+              <div class="st" id="st-weather" data-layout-allow-overflow><img class="pg" src="assets/app/weather.png" alt="" /></div>
+              <div class="st" id="st-toronto" data-layout-allow-overflow><img class="pg" src="assets/app/toronto_scroll.png" alt="" /><div class="pin" style="background-image:url(assets/app/toronto_scroll.png)"></div></div>
+              <div class="st" id="st-world" data-layout-allow-overflow><img class="pg" src="assets/app/world_scroll.png" alt="" /><div class="pin" style="background-image:url(assets/app/world_scroll.png)"></div></div>
+              <div class="st" id="st-sports" data-layout-allow-overflow><img class="pg" src="assets/app/sports_scroll.png" alt="" /></div>
+              <div class="st" id="st-business" data-layout-allow-overflow><img class="pg" src="assets/app/business_scroll.png" alt="" /><div class="pin" style="background-image:url(assets/app/business_scroll.png)"></div></div>
+              <div class="st" id="st-bopen" data-layout-allow-overflow><img class="pg" src="assets/app/business_open.png" alt="" data-layout-allow-overflow /><div class="pin" style="background-image:url(assets/app/business_open.png)"></div></div>
+              <div class="st" id="st-bask" data-layout-allow-overflow><img class="pg" src="assets/app/business_ask.png" alt="" data-layout-allow-overflow /><div class="pin" style="background-image:url(assets/app/business_ask.png)"></div></div>
+              <div class="st" id="st-opinion" data-layout-allow-overflow><img class="pg" src="assets/app/opinion.png" alt="" data-layout-allow-overflow /><div class="pin" style="background-image:url(assets/app/opinion.png)"></div></div>
+              <div class="st" id="st-voices" data-layout-allow-overflow><img class="pg" src="assets/app/voices.png" alt="" data-layout-allow-overflow /></div>
+              <div class="sb" id="sb-app"><img class="tm" src="assets/ui/time-dark.png" alt="7:07" /><div class="ics">/*ICONS_DARK*/</div></div>
+              <div id="dwrap"><div id="dinner"><div class="sb" id="sb-dark"><img class="tm" src="assets/ui/time-light.png" alt="7:07" /><div class="ics">/*ICONS_LIGHT*/</div></div><img src="assets/app/front_dark_full.png" alt="" /></div></div>
+            </div>
+
+            <div class="nbanner" id="wbanner"><div class="ic">ntfy</div><div class="ti">📝 Voices this week</div><div class="bd">Your one weekly Voices brief is ready. This week: Tyler Cowen, Arthur C. Brooks.</div><div class="nw">now</div></div>
+            <div id="island"></div>
+            <div id="home"></div>
+            <div id="taps"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scrim"></div>
+      <div id="caps"></div>
+
+      <!-- S1: the problem. Three feeds, scrolling, never ending. Captions are built below. -->
+      <section id="s1" class="clip" data-start="0" data-duration="{{G:16}}" data-track-index="1">
+        <div id="feeds" data-layout-allow-overflow>
+          <div class="fp" id="fp0" style="left:50px" data-layout-allow-overflow><div class="isl"></div><div class="vp"><div class="fcol" id="fc0" data-layout-allow-overflow></div></div></div>
+          <div class="fp" id="fp1" style="left:385px" data-layout-allow-overflow><div class="isl"></div><div class="vp"><div class="fcol" id="fc1" data-layout-allow-overflow></div></div></div>
+          <div class="fp" id="fp2" style="left:720px" data-layout-allow-overflow><div class="isl"></div><div class="vp"><div class="fcol" id="fc2" data-layout-allow-overflow></div></div></div>
+        </div>
+      </section>
+
+      <!-- S1b: the turn. Lands on the drop in the music. -->
+      <section id="s-turn" class="clip" data-start="{{G:16}}" data-duration="{{GD:5}}" data-track-index="2">
+        <div id="t-kick" class="kicker">The fix</div>
+        <div id="t-mast">THE DAILY</div>
+        <div id="t-bar"></div>
+        <div id="t-line">One finished paper.</div>
+      </section>
+
+      <!-- S2: this morning's real run -->
+      <section id="s2" class="clip" data-start="{{G:21}}" data-duration="{{GD:9}}" data-track-index="3">
+        <div class="full" id="s2in">
+          <div id="r-kick" class="kicker">It writes itself</div>
+          <div id="r-head"><span>188 stories in.</span><span>27 make the paper.</span></div>
+          <div id="log">
+            <div class="hd"><span class="wf">Build The Daily</span><span class="chip">schedule</span><span class="ok" id="log-ok">✓ 1m 49s</span></div>
+            <div class="ln"><span class="t">07:05:57</span>normalized <b>188</b> stories</div>
+            <div class="ln"><span class="t">07:06:50</span>gemini-2.5-flash · 200 OK</div>
+            <div class="ln"><span class="t">07:06:50</span>sections=6 stories=<b>27</b> following=6</div>
+            <div class="ln"><span class="t">07:07:02</span>ntfy · “Today’s edition is ready.”</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S12: end card -->
+      <section id="s12" class="clip" data-start="{{G:115}}" data-duration="{{GD:6}}" data-track-index="4">
+        <div id="o-mast">THE DAILY</div>
+        <div id="o-bar"></div>
+        <div id="o-tag">TORONTO · WORLD · SPORTS · BUSINESS · OPINION</div>
+        <div id="o-1"><span>Ten minutes.</span><span>Then you’re done.</span></div>
+      </section>
+
+      <div id="fadein"></div>
+
+      <audio id="bed" src="assets/music/bed-mix.wav" data-start="0" data-duration="{{G:121}}" data-track-index="20" data-volume="1"></audio>
+      <!--SFX-->
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const RMS = /*RMS*/[];
+
+      // The bed (vol-10) has two beat grids: the intro runs 0.267 + n*0.5457, and from the drop at 8.73s
+      // the groove runs k*0.5457. A() times the problem act, G() times everything from the drop on.
+      const BP = 0.5457;
+      const A = (n) => +(0.267 + BP * n).toFixed(3);
+      const G = (k) => +(BP * k).toFixed(3);
+
+      // ---- camera rig: frame a region of the screen (screen points) into the content box below the captions
+      const BZ = 12;                                        // bezel
+      const BOX = { x: 40, y: 430, w: 1000, h: 1450 };
+      const fit = (rx, ry, rw, rh) => {
+        const k = Math.min(BOX.w / rw, BOX.h / rh);
+        return { x: BOX.x + BOX.w / 2 - k * (BZ + rx + rw / 2), y: BOX.y + BOX.h / 2 - k * (BZ + ry + rh / 2), scale: k };
+      };
+      const at = (cx, cy, k, X, Y) => ({ x: X - k * (BZ + cx), y: Y - k * (BZ + cy), scale: k });
+      const CAM = {
+        full: { x: 173, y: 318, scale: 1.76 },
+        lock: fit(0, 70, 393, 640),
+        front: fit(0, 50, 393, 670),
+        weather: fit(0, 100, 393, 360),
+        sections: fit(0, 50, 393, 580),
+        sports: fit(0, 290, 393, 560),
+        storyWide: fit(0, 50, 393, 802),
+        analysis: fit(0, 300, 393, 552),
+        panel: fit(0, 440, 393, 412),
+        follow: fit(0, 50, 393, 600),
+        followIn: at(196.5, 350, 2.56, 540, 1140),
+        voicesTop: fit(0, 50, 393, 580),
+        voicesList: fit(0, 68, 393, 572),
+        tabTop: fit(0, 50, 393, 600),       // tab strip + the first three stories
+        tabEnd: fit(0, 180, 393, 600),      // the same box 130pt further down the page
+        sportsEnd: fit(0, 90, 393, 600),
+        weatherDown: fit(0, 250, 393, 360), // below the week: tabs and the lead story
+        voicesEnd: fit(0, 250, 393, 572),   // the last piece, below the fold
+      };
+      const move = (to, t, d = 0.6, ease = "power3.inOut") => tl.to("#cam", { x: to.x, y: to.y, scale: to.scale, duration: d, ease }, t);
+      // slow settle during a long hold: scale about the centre of the content box so the framing never jumps
+      const drift = (c, f, t, d, dy = 0) => tl.to("#cam", { x: 540 - (540 - c.x) * f, y: 1155 - (1155 - c.y) * f + dy, scale: c.scale * f, duration: d, ease: "sine.inOut" }, t);
+
+      // scrollable pages: a proxy drives translateY of the page image; where a sticky tab strip exists the .pin
+      // crop shows once the strip would have stuck (stick = scroll offset where that happens, null = always on)
+      const scrollers = {};
+      const scroller = (id, stick, start = 0) => {
+        const host = document.getElementById(id), pg = host.querySelector(".pg"), pin = host.querySelector(".pin");
+        const o = { s: start };
+        const apply = () => { pg.style.transform = `translateY(${-o.s}px)`; if (pin && stick != null) pin.style.display = o.s >= stick ? "block" : "none"; };
+        apply();
+        scrollers[id] = { o, apply };
+      };
+      const scrollTo = (id, to, t, d, ease = "sine.inOut") => { const { o, apply } = scrollers[id]; tl.to(o, { s: to, duration: d, ease, onUpdate: apply }, t); };
+      const scrollSet = (id, v, t) => { const { o, apply } = scrollers[id]; tl.fromTo(o, { s: v }, { s: v, duration: 0.001, ease: "none", onUpdate: apply, immediateRender: false }, t); };
+      scroller("st-front", 153); scroller("st-toronto", null); scroller("st-world", null); scroller("st-business", null);
+      scroller("st-bopen", null); scroller("st-opinion", null); scroller("st-bask", null, 203); scroller("st-voices", null);
+
+      // audio-reactive (subtle): precomputed music RMS drives the background glow
+      RMS.forEach((v, i) => tl.to("#glow", { scale: 0.94 + v * 0.14, opacity: 0.28 + v * 0.26, duration: 0.1, ease: "none" }, i * 0.1));
+
+      // ---- initial state
+      gsap.set("#cam", { x: CAM.full.x, y: CAM.full.y + 300, scale: CAM.full.scale });
+      gsap.set("#dwrap", { y: -852 });
+      gsap.set("#dinner", { y: 852 });
+      gsap.set("#st-voices", { x: 393 });
+      tl.to("#fadein", { opacity: 0, duration: 0.6, ease: "power1.out" }, 0);
+
+      // ---- S1 the problem: three feeds, scrolling, never ending
+      const rng = (seed) => () => { seed |= 0; seed = (seed + 0x6d2b79f5) | 0; let t = Math.imul(seed ^ (seed >>> 15), 1 | seed); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+      [0, 1, 2].forEach((i) => {
+        const r = rng(11 + i * 7);
+        let h = 0, html = "";
+        while (h < 5600) {
+          const p = r();
+          if (p < 0.5) {
+            html += `<div class="fr" style="height:90px"><div class="th"></div>${r() < 0.4 ? '<i class="dot"></i>' : ""}<div class="b" style="left:94px;top:6px;width:${100 + Math.floor(r() * 70)}px"></div><div class="b" style="left:94px;top:32px;width:${60 + Math.floor(r() * 80)}px"></div><div class="b dim" style="left:94px;top:62px;width:56px"></div></div>`;
+            h += 114;
+          } else if (p < 0.78) {
+            html += `<div class="fr" style="height:196px"><div class="hero"></div><div class="b" style="left:0;top:142px;width:${200 + Math.floor(r() * 60)}px"></div><div class="b" style="left:0;top:168px;width:${110 + Math.floor(r() * 80)}px"></div></div>`;
+            h += 220;
+          } else {
+            html += `<div class="fr" style="height:76px"><div class="b" style="left:0;top:0;width:250px"></div><div class="b" style="left:0;top:26px;width:${180 + Math.floor(r() * 60)}px"></div><div class="b dim" style="left:0;top:52px;width:${90 + Math.floor(r() * 80)}px"></div></div>`;
+            h += 100;
+          }
+        }
+        document.getElementById("fc" + i).innerHTML = html;
+        // one phone per beat while the line says "three"; each feed then scrolls, faster and faster, until the drop
+        tl.fromTo("#fp" + i, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, A(2 + i)); // beat-grid: 1.36, 1.90, 2.45
+        tl.to("#fc" + i, { y: -[3000, 3400, 3200][i], duration: G(16) + 0.4 - A(2), ease: "power1.in" }, A(2));
+      });
+      // the feeds fall away on the drop
+      tl.to("#fp0", { x: 70, scale: 0.9, opacity: 0, duration: 0.5, ease: "power2.in" }, G(16) - 0.05);
+      tl.to("#fp1", { scale: 0.9, opacity: 0, duration: 0.5, ease: "power2.in" }, G(16) - 0.05);
+      tl.to("#fp2", { x: -70, scale: 0.9, opacity: 0, duration: 0.5, ease: "power2.in" }, G(16) - 0.05);
+
+      // ---- S1b the turn (on the drop at 8.73s): the masthead, then the promise
+      tl.fromTo("#t-kick", { opacity: 0 }, { opacity: 1, duration: 0.3 }, G(16));
+      tl.fromTo("#t-mast", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, G(16) + 0.1); // beat-locked: 8.73s drop
+      tl.fromTo("#t-bar", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, G(16) + 0.2);
+      tl.fromTo("#t-line", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, G(18)); // beat-grid: 9.82
+      tl.to(["#t-kick", "#t-mast", "#t-bar", "#t-line"], { opacity: 0, duration: 0.28, ease: "power2.in" }, G(21) - 0.3);
+
+      // ---- S2 the run: 188 in, 27 out (9 beats from G(21))
+      tl.fromTo("#s2in", { opacity: 0 }, { opacity: 1, duration: 0.25 }, G(21));
+      tl.fromTo("#r-kick", { opacity: 0 }, { opacity: 1, duration: 0.3 }, G(21) + 0.05);
+      tl.fromTo("#r-head span", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out", stagger: 0.5 }, G(21) + 0.1);
+      tl.fromTo("#log", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, G(23)); // beat-grid: card two beats after the headline
+      tl.fromTo("#log-ok", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+      [25, 26, 27, 28].forEach((k, i) => { // one log line per beat
+        tl.fromTo(`#log .ln:nth-of-type(${i + 2})`, { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, G(k));
+      });
+      tl.to("#log-ok", { opacity: 1, duration: 0.25 }, G(29));
+      tl.to("#s2in", { opacity: 0, duration: 0.28, ease: "power2.in" }, G(30) - 0.3);
+
+      // ---- S3 push (6 beats from G(30)): the phone returns on the lock screen, the real push lands on G(32)
+      tl.set("#lock", { opacity: 1, scale: 1 }, G(30) - 0.05);
+      tl.set("#sb-lock", { opacity: 1 }, G(30) - 0.05);
+      tl.set("#applayer", { opacity: 0, scale: 0.16, borderRadius: 22 }, G(30) - 0.05);
+      tl.set("#home", { backgroundColor: "rgba(255,255,255,.9)" }, G(30) - 0.05);
+      tl.set("#cam", { x: CAM.full.x, y: CAM.full.y + 300, scale: CAM.full.scale }, G(30) - 0.05);
+      tl.to("#device", { opacity: 1, duration: 0.35 }, G(30) + 0.05);
+      move(CAM.full, G(30) + 0.05, 0.7, "power3.out");
+      tl.fromTo("#banner", { y: -26, opacity: 0, scale: 0.96 }, { y: 0, opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, G(32));
+      move(CAM.lock, G(32) + 0.2, 0.7);
+      // tap the push → the app grows out of it while the camera pulls to the front page
+      const tp = G(35);
+      tl.to("#applayer", { opacity: 1, duration: 0.03, ease: "none" }, tp + 0.06);
+      tl.to("#applayer", { scale: 1, borderRadius: 55, duration: 0.46, ease: "power3.out" }, tp + 0.06);
+      tl.to(["#lk-date", "#lk-time", "#banner"], { opacity: 0, duration: 0.24 }, tp + 0.08);
+      tl.to("#lock", { scale: 0.95, duration: 0.46, ease: "power3.out" }, tp + 0.06);
+      tl.to("#sb-lock", { opacity: 0, duration: 0.2 }, tp + 0.06);
+      tl.to("#home", { backgroundColor: "#17130d", duration: 0.3 }, tp + 0.08);
+      move(CAM.front, tp + 0.06, 0.7);
+
+      // ---- Front page (9 beats from G(36)): read the top, then scroll down the whole page, slowly
+      scrollTo("st-front", 330, G(39), G(44) - G(39));
+
+      // ---- screen states: instant cuts just after each tap (as in the app)
+      const cut = (from, to, t) => { tl.set(to, { opacity: 1 }, t); tl.set(from, { opacity: 0 }, t); };
+      // Weather (6 beats from G(45)): the week, then a slow pan down to the tabs and the lead story
+      cut("#st-front", "#st-weather", G(45) + 0.08);   move(CAM.weather, G(45) + 0.12, 0.7);
+      move(CAM.weatherDown, G(45) + 3 * BP, 2 * BP, "sine.inOut");
+      // the three tab pages: cut, hold the top, then scroll the page (sticky strip stays) while the camera pans down
+      const tabScene = (from, to, id, S, pageScroll) => {
+        cut(from, to, S + 0.08); move(CAM.tabTop, S + 0.06, 0.6);
+        scrollTo(id, pageScroll, S + 2 * BP, 3 * BP);
+        move(CAM.tabEnd, S + 2 * BP, 3 * BP, "sine.inOut");
+      };
+      tabScene("#st-weather", "#st-toronto", "st-toronto", G(51), 65);   // Toronto
+      tabScene("#st-toronto", "#st-world", "st-world", G(57), 44);       // World
+      // Sports (6 beats from G(63)): a short page, so the camera does the scrolling
+      cut("#st-world", "#st-sports", G(63) + 0.08);    move(CAM.tabTop, G(63) + 0.06, 0.6);
+      move(CAM.sportsEnd, G(63) + 2 * BP, 3 * BP, "sine.inOut");
+      tabScene("#st-sports", "#st-business", "st-business", G(69), 26);  // Business
+      // Story (8 beats from G(75)): the lead expands; read the top, scroll to the summary, then why it matters
+      cut("#st-business", "#st-bopen", G(75) + 0.08);
+      move(CAM.storyWide, G(75) + 0.17, 0.7);
+      scrollTo("st-bopen", 203, G(75) + 2 * BP, 3 * BP);
+      move(CAM.analysis, G(75) + 3 * BP, 2 * BP);
+      // Ask AI (7 beats from G(83))
+      cut("#st-bopen", "#st-bask", G(83) + 0.08);
+      scrollTo("st-bask", 330, G(83) + 0.2, 1.0);
+      move(CAM.panel, G(83) + 0.2, 0.9);
+      move(CAM.follow, G(83) + 3.2, 0.5);
+      // Following (8 beats from G(90)): a long, slow push-in on the desk
+      cut("#st-bask", "#st-opinion", G(90) + 0.08);
+      tl.to("#cam", { ...CAM.followIn, duration: 4.0, ease: "sine.inOut" }, G(90) + 0.17);
+      scrollTo("st-opinion", 190, G(91), 6 * BP);
+
+      // ---- the weekly push (real copy) (11 beats from G(98)) → Voices this week
+      tl.fromTo("#wbanner", { y: -120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.4)", immediateRender: false }, G(98));
+      tl.to("#wbanner", { y: -130, opacity: 0, duration: 0.28, ease: "power2.in" }, G(99) + 0.05);
+      tl.set("#st-voices", { opacity: 1 }, G(99) + 0.05);
+      tl.to("#st-voices", { x: 0, duration: 0.45, ease: "power3.out" }, G(99) + 0.05);
+      tl.to("#st-opinion", { x: -118, duration: 0.45, ease: "power3.out" }, G(99) + 0.05);
+      move(CAM.voicesTop, G(99) + 0.05, 0.7);
+      // skip the long paragraph, rest on the first piece, then scroll on to the third
+      scrollTo("st-voices", 760, G(102), 2.2 * BP, "power2.inOut");
+      move(CAM.voicesList, G(102), 1.0);
+      scrollTo("st-voices", 958, G(105.7), 2.8 * BP);                  // the page ends here (docH 1760 - 802)
+      move(CAM.voicesEnd, G(105.7), 2.8 * BP);
+      drift(CAM.voicesEnd, 1.02, G(108.7), G(110) - G(108.7) - 0.15);
+
+      // ---- back to the front page, then the lamplight edition wipes in a beat later (5 beats from G(110))
+      scrollSet("st-front", 0, G(110));
+      tl.set("#st-front", { opacity: 1, x: -118 }, G(110));
+      tl.set("#st-opinion", { opacity: 0 }, G(110));
+      tl.to("#st-front", { x: 0, duration: 0.4, ease: "power3.out" }, G(110));
+      tl.to("#st-voices", { x: 393, duration: 0.4, ease: "power3.out" }, G(110));
+      move(CAM.full, G(110), 0.8);
+      tl.set("#dwrap", { visibility: "visible" }, G(111) - 0.05);
+      tl.to("#dwrap", { y: 0, duration: 0.6, ease: "power2.inOut" }, G(111));
+      tl.to("#dinner", { y: 0, duration: 0.6, ease: "power2.inOut" }, G(111));
+      tl.to("#home", { backgroundColor: "#e9e3d5", duration: 0.3 }, G(111) + 0.2);
+      drift(CAM.full, 1.03, G(111) + 0.8, 0.8);
+
+      // ---- phone leaves; end card on G(115) / G(116)
+      tl.to("#device", { opacity: 0, duration: 0.35, ease: "power2.in" }, G(115) - 0.27);
+      tl.to("#cam", { y: CAM.full.y + 60, duration: 0.35, ease: "power2.in" }, G(115) - 0.27);
+      tl.fromTo("#o-mast", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, G(115));
+      tl.fromTo("#o-bar", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, G(115) + 0.08);
+      tl.fromTo("#o-tag", { opacity: 0 }, { opacity: 1, duration: 0.5 }, G(115) + 0.23);
+      tl.fromTo("#o-1 span", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.27 }, G(116));
+
+      // ---- captions (kicker + headline), swapped with each tap
+      const capsEl = document.getElementById("caps");
+      const cap = (id, k, h, t, end, cls = "") => {
+        const d = document.createElement("div");
+        d.className = "cap " + cls; d.id = id;
+        d.innerHTML = (k ? `<div class="k kicker">${k}</div>` : "") + `<div class="h">${h}</div>`;
+        capsEl.appendChild(d);
+        tl.fromTo(d, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" }, t + 0.06);
+        tl.to(d, { opacity: 0, y: -10, duration: 0.16, ease: "power2.in" }, end - 0.04);
+      };
+      // a kicker that holds still while its headline swaps (the problem lines, the section names)
+      const swap = (kid, k, lines, tin, tout, cls, kfade) => {
+        const kk = document.createElement("div"); kk.className = "cap " + cls; kk.id = kid;
+        kk.innerHTML = `<div class="k kicker">${k}</div>`; capsEl.appendChild(kk);
+        tl.fromTo(kk, { opacity: 0 }, { opacity: 1, duration: kfade }, tin);
+        tl.to(kk, { opacity: 0, duration: 0.16 }, tout);
+        lines.forEach(([text, t, end], i) => {
+          const d = document.createElement("div"); d.className = "cap " + cls; d.id = kid + "-" + i;
+          d.innerHTML = `<div class="k kicker" style="visibility:hidden">${k}</div><div class="h">${text}</div>`; capsEl.appendChild(d);
+          tl.fromTo(d, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" }, t + 0.06);
+          tl.to(d, { opacity: 0, y: -14, duration: 0.14, ease: "power2.in" }, end - 0.02);
+        });
+      };
+      // the problem, one plain line at a time (each held ~2.7s)
+      swap("cap-prob", "The problem", [["Other news apps.", A(1), A(6)], ["Endless feeds.", A(6), A(11)], ["No finish line.", A(11), G(16)]], 0.4, G(16) - 0.12, "sec", 0.5);
+      cap("cap-push", "7:07 a.m.", "One notification a day.", G(30), G(36));
+      cap("cap-front", "Front page", "Ranked and summarized by Gemini.", G(36), G(45));
+      cap("cap-weather", "Weather", "Toronto today. Tap for the week.", G(45), G(51));
+      swap("cap-sec", "Sections", [["Toronto", G(51), G(57)], ["World", G(57), G(63)], ["Sports", G(63), G(69)], ["Business", G(69), G(75)]], G(51) + 0.06, G(75) - 0.1, "sec", 0.25);
+      cap("cap-story", "Every story", "The summary, and why it matters.", G(75), G(83));
+      cap("cap-ask", "Ask AI", "One tap to Claude or ChatGPT.", G(83), G(90));
+      cap("cap-follow", "Following", "Writers you follow, not outlets.", G(90), G(98));
+      cap("cap-weekly", "Once a week", "Three pieces worth your time.", G(98), G(110));
+      cap("cap-dark", "Dark mode", "The lamplight edition.", G(110), G(115) - 0.1);
+
+      // ---- taps (screen points, from the capture geometry); press and sound land together
+      const taps = [
+        { t: G(35), x: 196, y: 599 },  // the push
+        { t: G(45), x: 150, y: 178 },  // weather strip
+        { t: G(51), x: 170, y: 321 },  // Toronto
+        { t: G(57), x: 262, y: 72 },   // World
+        { t: G(63), x: 283, y: 72 },   // Sports
+        { t: G(69), x: 292, y: 321 },  // Business
+        { t: G(75), x: 185, y: 183 },  // lead story
+        { t: G(83), x: 175, y: 820 },  // Ask AI
+        { t: G(90), x: 347, y: 72 },   // Opinion
+        { t: G(99), x: 196, y: 104 },  // weekly push
+      ];
+      const tapsEl = document.getElementById("taps");
+      taps.forEach((p, i) => {
+        const d = document.createElement("div"); d.className = "tap"; d.id = "tap" + i; d.style.left = p.x + "px"; d.style.top = p.y + "px"; tapsEl.appendChild(d);
+        const r = document.createElement("div"); r.className = "ring"; r.id = "ring" + i; r.style.left = p.x + "px"; r.style.top = p.y + "px"; tapsEl.appendChild(r);
+        tl.fromTo(d, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.16, ease: "power2.out" }, p.t - 0.2);
+        tl.to(d, { scale: 0.8, duration: 0.08, ease: "power2.out" }, p.t);
+        tl.to(d, { opacity: 0, scale: 1.05, duration: 0.26, ease: "power2.in" }, p.t + 0.12);
+        tl.fromTo(r, { opacity: 0.7, scale: 1 }, { opacity: 0, scale: 2, duration: 0.42, ease: "power2.out", immediateRender: false }, p.t);
+      });
+
+      // Music level (-6 dB), the 0.8s fade-in and the 1.0s fade-out are baked into bed-mix.wav: no gain automation here.
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

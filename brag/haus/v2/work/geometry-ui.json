@@ -1,0 +1,1275 @@
+{
+ "home0": {
+  "_pageH": 2546,
+  "stat-row": {
+   "x": 41,
+   "y": 129,
+   "w": 311,
+   "h": 67
+  },
+  "stat-session": {
+   "x": 253.7,
+   "y": 129,
+   "w": 98.3,
+   "h": 67
+  },
+  "stat-session-val": {
+   "x": 266.7,
+   "y": 159,
+   "w": 72.3,
+   "h": 24
+  },
+  "who": {
+   "x": 21,
+   "y": 217,
+   "w": 351,
+   "h": 232
+  },
+  "m-alex": {
+   "x": 41,
+   "y": 317,
+   "w": 70.3,
+   "h": 116
+  },
+  "m-jordan": {
+   "x": 121.3,
+   "y": 317,
+   "w": 70.3,
+   "h": 116
+  },
+  "m-priya": {
+   "x": 201.5,
+   "y": 317,
+   "w": 70.3,
+   "h": 116
+  },
+  "m-sam": {
+   "x": 281.8,
+   "y": 317,
+   "w": 70.3,
+   "h": 116
+  },
+  "panel-urgent": {
+   "x": 20,
+   "y": 474,
+   "w": 353,
+   "h": 610
+  },
+  "ul-urgent": {
+   "x": 33,
+   "y": 669,
+   "w": 327,
+   "h": 402
+  },
+  "row-urgent-0": {
+   "x": 33,
+   "y": 669,
+   "w": 327,
+   "h": 82,
+   "title": "Replace kitchen faucet"
+  },
+  "row-urgent-1": {
+   "x": 33,
+   "y": 759,
+   "w": 327,
+   "h": 68,
+   "title": "Replace fridge water filter"
+  },
+  "row-urgent-2": {
+   "x": 33,
+   "y": 835,
+   "w": 327,
+   "h": 76,
+   "title": "Replace upstairs smoke detector batteries"
+  },
+  "row-urgent-3": {
+   "x": 33,
+   "y": 919,
+   "w": 327,
+   "h": 68,
+   "title": "Swap entry hall bulbs"
+  },
+  "row-urgent-4": {
+   "x": 33,
+   "y": 995,
+   "w": 327,
+   "h": 76,
+   "title": "Clean garage gutters"
+  },
+  "panel-bestfit": {
+   "x": 20,
+   "y": 1100,
+   "w": 353,
+   "h": 602
+  },
+  "ul-bestfit": {
+   "x": 33,
+   "y": 1295,
+   "w": 327,
+   "h": 394
+  },
+  "row-bestfit-0": {
+   "x": 33,
+   "y": 1295,
+   "w": 327,
+   "h": 82,
+   "title": "Replace kitchen faucet"
+  },
+  "row-bestfit-1": {
+   "x": 33,
+   "y": 1385,
+   "w": 327,
+   "h": 68,
+   "title": "Replace fridge water filter"
+  },
+  "row-bestfit-2": {
+   "x": 33,
+   "y": 1461,
+   "w": 327,
+   "h": 68,
+   "title": "Swap entry hall bulbs"
+  },
+  "row-bestfit-3": {
+   "x": 33,
+   "y": 1537,
+   "w": 327,
+   "h": 76,
+   "title": "Clean garage gutters"
+  },
+  "row-bestfit-4": {
+   "x": 33,
+   "y": 1621,
+   "w": 327,
+   "h": 68,
+   "title": "Fix laundry shelf anchors"
+  },
+  "panel-matrix": {
+   "x": 20,
+   "y": 1718,
+   "w": 353,
+   "h": 708
+  },
+  "btn-matrix": {
+   "x": 41,
+   "y": 1929,
+   "w": 146.3,
+   "h": 44
+  },
+  "ul-matrix": {
+   "x": 33,
+   "y": 2005,
+   "w": 327,
+   "h": 408
+  },
+  "row-matrix-0": {
+   "x": 33,
+   "y": 2005,
+   "w": 327,
+   "h": 82,
+   "title": "Replace kitchen faucet"
+  },
+  "row-matrix-1": {
+   "x": 33,
+   "y": 2095,
+   "w": 327,
+   "h": 68,
+   "title": "Replace fridge water filter"
+  },
+  "row-matrix-2": {
+   "x": 33,
+   "y": 2171,
+   "w": 327,
+   "h": 68,
+   "title": "Swap entry hall bulbs"
+  },
+  "row-matrix-3": {
+   "x": 33,
+   "y": 2247,
+   "w": 327,
+   "h": 82,
+   "title": "Reset garage shelf labels"
+  },
+  "row-matrix-4": {
+   "x": 33,
+   "y": 2337,
+   "w": 327,
+   "h": 76,
+   "title": "Clean garage gutters"
+  },
+  "nav-home": {
+   "x": 0,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-add": {
+   "x": 98.3,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-planning": {
+   "x": 196.5,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-settings": {
+   "x": 294.8,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  }
+ },
+ "home-alexout": {
+  "_pageH": 2546,
+  "stat-row": {
+   "x": 41,
+   "y": 129,
+   "w": 311,
+   "h": 67
+  },
+  "stat-session": {
+   "x": 253.7,
+   "y": 129,
+   "w": 98.3,
+   "h": 67
+  },
+  "stat-session-val": {
+   "x": 266.7,
+   "y": 159,
+   "w": 72.3,
+   "h": 24
+  },
+  "who": {
+   "x": 21,
+   "y": 217,
+   "w": 351,
+   "h": 232
+  },
+  "m-alex": {
+   "x": 41,
+   "y": 317,
+   "w": 70.3,
+   "h": 116
+  },
+  "m-jordan": {
+   "x": 121.3,
+   "y": 317,
+   "w": 70.3,
+   "h": 116
+  },
+  "m-priya": {
+   "x": 201.5,
+   "y": 317,
+   "w": 70.3,
+   "h": 116
+  },
+  "m-sam": {
+   "x": 281.8,
+   "y": 317,
+   "w": 70.3,
+   "h": 116
+  },
+  "panel-urgent": {
+   "x": 20,
+   "y": 474,
+   "w": 353,
+   "h": 610
+  },
+  "ul-urgent": {
+   "x": 33,
+   "y": 669,
+   "w": 327,
+   "h": 402
+  },
+  "row-urgent-0": {
+   "x": 33,
+   "y": 669,
+   "w": 327,
+   "h": 82,
+   "title": "Replace kitchen faucet"
+  },
+  "row-urgent-1": {
+   "x": 33,
+   "y": 759,
+   "w": 327,
+   "h": 68,
+   "title": "Replace fridge water filter"
+  },
+  "row-urgent-2": {
+   "x": 33,
+   "y": 835,
+   "w": 327,
+   "h": 76,
+   "title": "Replace upstairs smoke detector batteries"
+  },
+  "row-urgent-3": {
+   "x": 33,
+   "y": 919,
+   "w": 327,
+   "h": 68,
+   "title": "Swap entry hall bulbs"
+  },
+  "row-urgent-4": {
+   "x": 33,
+   "y": 995,
+   "w": 327,
+   "h": 76,
+   "title": "Clean garage gutters"
+  },
+  "panel-bestfit": {
+   "x": 20,
+   "y": 1100,
+   "w": 353,
+   "h": 602
+  },
+  "ul-bestfit": {
+   "x": 33,
+   "y": 1295,
+   "w": 327,
+   "h": 394
+  },
+  "row-bestfit-0": {
+   "x": 33,
+   "y": 1295,
+   "w": 327,
+   "h": 68,
+   "title": "Swap entry hall bulbs"
+  },
+  "row-bestfit-1": {
+   "x": 33,
+   "y": 1371,
+   "w": 327,
+   "h": 76,
+   "title": "Clean garage gutters"
+  },
+  "row-bestfit-2": {
+   "x": 33,
+   "y": 1455,
+   "w": 327,
+   "h": 68,
+   "title": "Fix laundry shelf anchors"
+  },
+  "row-bestfit-3": {
+   "x": 33,
+   "y": 1531,
+   "w": 327,
+   "h": 82,
+   "title": "Reset garage shelf labels"
+  },
+  "row-bestfit-4": {
+   "x": 33,
+   "y": 1621,
+   "w": 327,
+   "h": 68,
+   "title": "Clean hallway return vent"
+  },
+  "panel-matrix": {
+   "x": 20,
+   "y": 1718,
+   "w": 353,
+   "h": 708
+  },
+  "btn-matrix": {
+   "x": 41,
+   "y": 1929,
+   "w": 146.3,
+   "h": 44
+  },
+  "ul-matrix": {
+   "x": 33,
+   "y": 2005,
+   "w": 327,
+   "h": 408
+  },
+  "row-matrix-0": {
+   "x": 33,
+   "y": 2005,
+   "w": 327,
+   "h": 68,
+   "title": "Swap entry hall bulbs"
+  },
+  "row-matrix-1": {
+   "x": 33,
+   "y": 2081,
+   "w": 327,
+   "h": 82,
+   "title": "Reset garage shelf labels"
+  },
+  "row-matrix-2": {
+   "x": 33,
+   "y": 2171,
+   "w": 327,
+   "h": 82,
+   "title": "Replace kitchen faucet"
+  },
+  "row-matrix-3": {
+   "x": 33,
+   "y": 2261,
+   "w": 327,
+   "h": 68,
+   "title": "Replace fridge water filter"
+  },
+  "row-matrix-4": {
+   "x": 33,
+   "y": 2337,
+   "w": 327,
+   "h": 76,
+   "title": "Clean garage gutters"
+  },
+  "nav-home": {
+   "x": 0,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-add": {
+   "x": 98.3,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-planning": {
+   "x": 196.5,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-settings": {
+   "x": 294.8,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  }
+ },
+ "settings-out": {
+  "_pageH": 2423,
+  "session-card": {
+   "x": 20,
+   "y": 121,
+   "w": 353,
+   "h": 425
+  },
+  "chip-1h": {
+   "x": 41,
+   "y": 223,
+   "w": 39.7,
+   "h": 38
+  },
+  "chip-2h": {
+   "x": 88.7,
+   "y": 223,
+   "w": 41.8,
+   "h": 38
+  },
+  "chip-3h": {
+   "x": 138.5,
+   "y": 223,
+   "w": 41.5,
+   "h": 38
+  },
+  "chip-4h": {
+   "x": 188,
+   "y": 223,
+   "w": 42.6,
+   "h": 38
+  },
+  "chip-6h": {
+   "x": 238.6,
+   "y": 223,
+   "w": 41.8,
+   "h": 38
+  },
+  "chip-8h": {
+   "x": 288.4,
+   "y": 223,
+   "w": 42.5,
+   "h": 38
+  },
+  "who-sam": {
+   "x": 41,
+   "y": 309,
+   "w": 311,
+   "h": 216
+  },
+  "nav-home": {
+   "x": 0,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-add": {
+   "x": 98.3,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-planning": {
+   "x": 196.5,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-settings": {
+   "x": 294.8,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  }
+ },
+ "settings-out-1h": {
+  "_pageH": 2423,
+  "session-card": {
+   "x": 20,
+   "y": 121,
+   "w": 353,
+   "h": 425
+  },
+  "chip-1h": {
+   "x": 41,
+   "y": 223,
+   "w": 39.7,
+   "h": 38
+  },
+  "chip-2h": {
+   "x": 88.7,
+   "y": 223,
+   "w": 41.8,
+   "h": 38
+  },
+  "chip-3h": {
+   "x": 138.5,
+   "y": 223,
+   "w": 41.5,
+   "h": 38
+  },
+  "chip-4h": {
+   "x": 188,
+   "y": 223,
+   "w": 42.6,
+   "h": 38
+  },
+  "chip-6h": {
+   "x": 238.6,
+   "y": 223,
+   "w": 41.8,
+   "h": 38
+  },
+  "chip-8h": {
+   "x": 288.4,
+   "y": 223,
+   "w": 42.5,
+   "h": 38
+  },
+  "who-sam": {
+   "x": 41,
+   "y": 309,
+   "w": 311,
+   "h": 216
+  },
+  "nav-home": {
+   "x": 0,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-add": {
+   "x": 98.3,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-planning": {
+   "x": 196.5,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-settings": {
+   "x": 294.8,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  }
+ },
+ "home-out-1h": {
+  "_pageH": 2510,
+  "stat-row": {
+   "x": 41,
+   "y": 129,
+   "w": 311,
+   "h": 67
+  },
+  "stat-session": {
+   "x": 253.7,
+   "y": 129,
+   "w": 98.3,
+   "h": 67
+  },
+  "stat-session-val": {
+   "x": 266.7,
+   "y": 159,
+   "w": 72.3,
+   "h": 24
+  },
+  "who": {
+   "x": 21,
+   "y": 217,
+   "w": 351,
+   "h": 232
+  },
+  "m-alex": {
+   "x": 41,
+   "y": 317,
+   "w": 70.3,
+   "h": 116
+  },
+  "m-jordan": {
+   "x": 121.3,
+   "y": 317,
+   "w": 70.3,
+   "h": 116
+  },
+  "m-priya": {
+   "x": 201.5,
+   "y": 317,
+   "w": 70.3,
+   "h": 116
+  },
+  "m-sam": {
+   "x": 281.8,
+   "y": 317,
+   "w": 70.3,
+   "h": 116
+  },
+  "panel-urgent": {
+   "x": 20,
+   "y": 474,
+   "w": 353,
+   "h": 610
+  },
+  "ul-urgent": {
+   "x": 33,
+   "y": 669,
+   "w": 327,
+   "h": 402
+  },
+  "row-urgent-0": {
+   "x": 33,
+   "y": 669,
+   "w": 327,
+   "h": 82,
+   "title": "Replace kitchen faucet"
+  },
+  "row-urgent-1": {
+   "x": 33,
+   "y": 759,
+   "w": 327,
+   "h": 68,
+   "title": "Replace fridge water filter"
+  },
+  "row-urgent-2": {
+   "x": 33,
+   "y": 835,
+   "w": 327,
+   "h": 76,
+   "title": "Replace upstairs smoke detector batteries"
+  },
+  "row-urgent-3": {
+   "x": 33,
+   "y": 919,
+   "w": 327,
+   "h": 68,
+   "title": "Swap entry hall bulbs"
+  },
+  "row-urgent-4": {
+   "x": 33,
+   "y": 995,
+   "w": 327,
+   "h": 76,
+   "title": "Clean garage gutters"
+  },
+  "panel-bestfit": {
+   "x": 20,
+   "y": 1100,
+   "w": 353,
+   "h": 580
+  },
+  "ul-bestfit": {
+   "x": 33,
+   "y": 1295,
+   "w": 327,
+   "h": 372
+  },
+  "row-bestfit-0": {
+   "x": 33,
+   "y": 1295,
+   "w": 327,
+   "h": 68,
+   "title": "Swap entry hall bulbs"
+  },
+  "row-bestfit-1": {
+   "x": 33,
+   "y": 1371,
+   "w": 327,
+   "h": 68,
+   "title": "Fix laundry shelf anchors"
+  },
+  "row-bestfit-2": {
+   "x": 33,
+   "y": 1447,
+   "w": 327,
+   "h": 68,
+   "title": "Clean hallway return vent"
+  },
+  "row-bestfit-3": {
+   "x": 33,
+   "y": 1523,
+   "w": 327,
+   "h": 68,
+   "title": "Replace fridge water filter"
+  },
+  "row-bestfit-4": {
+   "x": 33,
+   "y": 1599,
+   "w": 327,
+   "h": 68,
+   "title": "Organize linen closet shelves"
+  },
+  "panel-matrix": {
+   "x": 20,
+   "y": 1696,
+   "w": 353,
+   "h": 694
+  },
+  "btn-matrix": {
+   "x": 41,
+   "y": 1907,
+   "w": 146.3,
+   "h": 44
+  },
+  "ul-matrix": {
+   "x": 33,
+   "y": 1983,
+   "w": 327,
+   "h": 394
+  },
+  "row-matrix-0": {
+   "x": 33,
+   "y": 1983,
+   "w": 327,
+   "h": 68,
+   "title": "Swap entry hall bulbs"
+  },
+  "row-matrix-1": {
+   "x": 33,
+   "y": 2059,
+   "w": 327,
+   "h": 68,
+   "title": "Replace fridge water filter"
+  },
+  "row-matrix-2": {
+   "x": 33,
+   "y": 2135,
+   "w": 327,
+   "h": 76,
+   "title": "Replace upstairs smoke detector batteries"
+  },
+  "row-matrix-3": {
+   "x": 33,
+   "y": 2219,
+   "w": 327,
+   "h": 82,
+   "title": "Reset garage shelf labels"
+  },
+  "row-matrix-4": {
+   "x": 33,
+   "y": 2309,
+   "w": 327,
+   "h": 68,
+   "title": "Fix laundry shelf anchors"
+  },
+  "nav-home": {
+   "x": 0,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-add": {
+   "x": 98.3,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-planning": {
+   "x": 196.5,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-settings": {
+   "x": 294.8,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  }
+ },
+ "matrixview": {
+  "_pageH": 852,
+  "cell-high-low": {
+   "x": 92,
+   "y": 142.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-high-medium": {
+   "x": 165.3,
+   "y": 142.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-high-high": {
+   "x": 238.5,
+   "y": 142.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-high-urgent": {
+   "x": 311.8,
+   "y": 142.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-medium-low": {
+   "x": 92,
+   "y": 203.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-medium-medium": {
+   "x": 165.3,
+   "y": 203.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-medium-high": {
+   "x": 238.5,
+   "y": 203.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-medium-urgent": {
+   "x": 311.8,
+   "y": 203.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-low-low": {
+   "x": 92,
+   "y": 264.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-low-medium": {
+   "x": 165.3,
+   "y": 264.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-low-high": {
+   "x": 238.5,
+   "y": 264.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-low-urgent": {
+   "x": 311.8,
+   "y": 264.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "nav-home": {
+   "x": 0,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-add": {
+   "x": 98.3,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-planning": {
+   "x": 196.5,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-settings": {
+   "x": 294.8,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  }
+ },
+ "matrixsheet": {
+  "_pageH": 852,
+  "cell-high-low": {
+   "x": 92,
+   "y": 142.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-high-medium": {
+   "x": 165.3,
+   "y": 142.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-high-high": {
+   "x": 238.5,
+   "y": 142.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-high-urgent": {
+   "x": 311.8,
+   "y": 142.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-medium-low": {
+   "x": 92,
+   "y": 203.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-medium-medium": {
+   "x": 165.3,
+   "y": 203.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-medium-high": {
+   "x": 238.5,
+   "y": 203.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-medium-urgent": {
+   "x": 311.8,
+   "y": 203.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-low-low": {
+   "x": 92,
+   "y": 264.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-low-medium": {
+   "x": 165.3,
+   "y": 264.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-low-high": {
+   "x": 238.5,
+   "y": 264.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "cell-low-urgent": {
+   "x": 311.8,
+   "y": 264.5,
+   "w": 66.3,
+   "h": 53
+  },
+  "nav-home": {
+   "x": 0,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-add": {
+   "x": 98.3,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-planning": {
+   "x": 196.5,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-settings": {
+   "x": 294.8,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "backdrop": {
+   "x": 0,
+   "y": 0,
+   "w": 393,
+   "h": 852,
+   "layer": true
+  },
+  "sheet-panel": {
+   "x": 0,
+   "y": 494,
+   "w": 393,
+   "h": 358,
+   "layer": true
+  },
+  "sheet-row-0": {
+   "x": 12,
+   "y": 588,
+   "w": 369,
+   "h": 68,
+   "layer": true
+  },
+  "sheet-row-1": {
+   "x": 12,
+   "y": 664,
+   "w": 369,
+   "h": 68,
+   "layer": true
+  },
+  "sheet-row-2": {
+   "x": 12,
+   "y": 740,
+   "w": 369,
+   "h": 76,
+   "layer": true
+  },
+  "_sheet": {
+   "x": 0,
+   "y": 494,
+   "w": 393,
+   "h": 358
+  }
+ },
+ "planning": {
+  "_pageH": 1721,
+  "lane-0": {
+   "x": 16,
+   "y": 147,
+   "w": 361,
+   "h": 209,
+   "title": "Unassigned"
+  },
+  "lane-1": {
+   "x": 16,
+   "y": 372,
+   "w": 361,
+   "h": 366,
+   "title": "Alex Morgan"
+  },
+  "row-faucet": {
+   "x": 17,
+   "y": 442,
+   "w": 359,
+   "h": 59
+  },
+  "lane-2": {
+   "x": 16,
+   "y": 754,
+   "w": 361,
+   "h": 268,
+   "title": "Jordan Lee"
+  },
+  "lane-3": {
+   "x": 16,
+   "y": 1038,
+   "w": 361,
+   "h": 248,
+   "title": "Priya Shah"
+  },
+  "lane-4": {
+   "x": 16,
+   "y": 1302,
+   "w": 361,
+   "h": 307,
+   "title": "Sam Rivera"
+  },
+  "nav-home": {
+   "x": 0,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-add": {
+   "x": 98.3,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-planning": {
+   "x": 196.5,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-settings": {
+   "x": 294.8,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  }
+ },
+ "task0": {
+  "_pageH": 1356,
+  "task-title": {
+   "x": 20,
+   "y": 104,
+   "w": 353,
+   "h": 36
+  },
+  "subtasks": {
+   "x": 20,
+   "y": 433,
+   "w": 353,
+   "h": 588
+  },
+  "done-counter": {
+   "x": 37,
+   "y": 474,
+   "w": 87.8,
+   "h": 16
+  },
+  "phase-prep": {
+   "x": 37,
+   "y": 515,
+   "w": 44.8,
+   "h": 19
+  },
+  "phase-install": {
+   "x": 37,
+   "y": 681,
+   "w": 47.5,
+   "h": 19
+  },
+  "check-install": {
+   "x": 47,
+   "y": 736,
+   "w": 28,
+   "h": 28
+  },
+  "phase-test": {
+   "x": 37,
+   "y": 847,
+   "w": 92.9,
+   "h": 19
+  },
+  "waiting": {
+   "x": 37,
+   "y": 886,
+   "w": 92.9,
+   "h": 16
+  },
+  "check-test": {
+   "x": 47,
+   "y": 922,
+   "w": 28,
+   "h": 28
+  },
+  "nav-home": {
+   "x": 0,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-add": {
+   "x": 98.3,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-planning": {
+   "x": 196.5,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-settings": {
+   "x": 294.8,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  }
+ },
+ "task1": {
+  "_pageH": 1336,
+  "task-title": {
+   "x": 20,
+   "y": 104,
+   "w": 353,
+   "h": 36
+  },
+  "subtasks": {
+   "x": 20,
+   "y": 433,
+   "w": 353,
+   "h": 568
+  },
+  "done-counter": {
+   "x": 37,
+   "y": 474,
+   "w": 87.8,
+   "h": 16
+  },
+  "phase-prep": {
+   "x": 37,
+   "y": 515,
+   "w": 44.8,
+   "h": 19
+  },
+  "phase-install": {
+   "x": 37,
+   "y": 681,
+   "w": 44.8,
+   "h": 19
+  },
+  "phase-test": {
+   "x": 37,
+   "y": 847,
+   "w": 47.5,
+   "h": 19
+  },
+  "check-test": {
+   "x": 47,
+   "y": 902,
+   "w": 28,
+   "h": 28
+  },
+  "nav-home": {
+   "x": 0,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-add": {
+   "x": 98.3,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-planning": {
+   "x": 196.5,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  },
+  "nav-settings": {
+   "x": 294.8,
+   "y": 762,
+   "w": 98.3,
+   "h": 90
+  }
+ }
+}
