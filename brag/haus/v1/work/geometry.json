@@ -1,0 +1,1422 @@
+{
+ "home0": {
+  "alexCard": {
+   "x": 41,
+   "y": 347.6,
+   "w": 70.3,
+   "h": 116
+  },
+  "members": [
+   {
+    "name": "Alex Morgan",
+    "rect": {
+     "x": 41,
+     "y": 347.6,
+     "w": 70.3,
+     "h": 116
+    }
+   },
+   {
+    "name": "Jordan Lee",
+    "rect": {
+     "x": 121.3,
+     "y": 347.6,
+     "w": 70.3,
+     "h": 116
+    }
+   },
+   {
+    "name": "Priya Shah",
+    "rect": {
+     "x": 201.5,
+     "y": 347.6,
+     "w": 70.3,
+     "h": 116
+    }
+   },
+   {
+    "name": "Sam Rivera",
+    "rect": {
+     "x": 281.8,
+     "y": 347.6,
+     "w": 70.3,
+     "h": 116
+    }
+   }
+  ],
+  "statSession": {
+   "x": 253.7,
+   "y": 157,
+   "w": 98.3,
+   "h": 69.6
+  },
+  "statRow": {
+   "x": 41,
+   "y": 157,
+   "w": 311,
+   "h": 69.6
+  },
+  "portraitsSection": {
+   "x": 21,
+   "y": 247.6,
+   "w": 351,
+   "h": 232
+  },
+  "openMatrixBtn": {
+   "x": 41,
+   "y": 2007.6,
+   "w": 146.3,
+   "h": 44
+  },
+  "panels": [
+   {
+    "title": "Most Urgent",
+    "rect": {
+     "x": 20,
+     "y": 504.6,
+     "w": 353,
+     "h": 628.8
+    },
+    "headRect": {
+     "x": 41,
+     "y": 577.6,
+     "w": 311,
+     "h": 43.2
+    },
+    "rows": [
+     {
+      "title": "Replace kitchen faucet",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 712.8,
+       "w": 327,
+       "h": 82
+      }
+     },
+     {
+      "title": "Replace fridge water filter",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 802.8,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Replace upstairs smoke detector batteries",
+      "sub": "Master Bedroom / Unassigned",
+      "rect": {
+       "x": 33,
+       "y": 878.8,
+       "w": 327,
+       "h": 78.8
+      }
+     },
+     {
+      "title": "Swap entry hall bulbs",
+      "sub": "Living Room / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 965.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Clean garage gutters",
+      "sub": "Garage / Jordan Lee",
+      "rect": {
+       "x": 33,
+       "y": 1041.6,
+       "w": 327,
+       "h": 78.8
+      }
+     }
+    ]
+   },
+   {
+    "title": "Best Fit",
+    "rect": {
+     "x": 20,
+     "y": 1149.4,
+     "w": 353,
+     "h": 618
+    },
+    "headRect": {
+     "x": 41,
+     "y": 1222.4,
+     "w": 311,
+     "h": 43.2
+    },
+    "rows": [
+     {
+      "title": "Replace kitchen faucet",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 1357.6,
+       "w": 327,
+       "h": 82
+      }
+     },
+     {
+      "title": "Replace fridge water filter",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 1447.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Swap entry hall bulbs",
+      "sub": "Living Room / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 1523.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Clean garage gutters",
+      "sub": "Garage / Jordan Lee",
+      "rect": {
+       "x": 33,
+       "y": 1599.6,
+       "w": 327,
+       "h": 78.8
+      }
+     },
+     {
+      "title": "Fix laundry shelf anchors",
+      "sub": "Laundry / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 1686.4,
+       "w": 327,
+       "h": 68
+      }
+     }
+    ]
+   },
+   {
+    "title": "The Matrix",
+    "rect": {
+     "x": 20,
+     "y": 1783.4,
+     "w": 353,
+     "h": 724
+    },
+    "headRect": {
+     "x": 41,
+     "y": 1856.4,
+     "w": 311,
+     "h": 43.2
+    },
+    "rows": [
+     {
+      "title": "Replace kitchen faucet",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 2083.6,
+       "w": 327,
+       "h": 82
+      }
+     },
+     {
+      "title": "Replace fridge water filter",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 2173.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Swap entry hall bulbs",
+      "sub": "Living Room / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 2249.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Reset garage shelf labels",
+      "sub": "Garage / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 2325.6,
+       "w": 327,
+       "h": 82
+      }
+     },
+     {
+      "title": "Clean garage gutters",
+      "sub": "Garage / Jordan Lee",
+      "rect": {
+       "x": 33,
+       "y": 2415.6,
+       "w": 327,
+       "h": 78.8
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "home-alexout": {
+  "panels": [
+   {
+    "title": "Most Urgent",
+    "rect": {
+     "x": 20,
+     "y": 504.6,
+     "w": 353,
+     "h": 628.8
+    },
+    "headRect": {
+     "x": 41,
+     "y": 577.6,
+     "w": 311,
+     "h": 43.2
+    },
+    "rows": [
+     {
+      "title": "Replace kitchen faucet",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 712.8,
+       "w": 327,
+       "h": 82
+      }
+     },
+     {
+      "title": "Replace fridge water filter",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 802.8,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Replace upstairs smoke detector batteries",
+      "sub": "Master Bedroom / Unassigned",
+      "rect": {
+       "x": 33,
+       "y": 878.8,
+       "w": 327,
+       "h": 78.8
+      }
+     },
+     {
+      "title": "Swap entry hall bulbs",
+      "sub": "Living Room / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 965.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Clean garage gutters",
+      "sub": "Garage / Jordan Lee",
+      "rect": {
+       "x": 33,
+       "y": 1041.6,
+       "w": 327,
+       "h": 78.8
+      }
+     }
+    ]
+   },
+   {
+    "title": "Best Fit",
+    "rect": {
+     "x": 20,
+     "y": 1149.4,
+     "w": 353,
+     "h": 618
+    },
+    "headRect": {
+     "x": 41,
+     "y": 1222.4,
+     "w": 311,
+     "h": 43.2
+    },
+    "rows": [
+     {
+      "title": "Swap entry hall bulbs",
+      "sub": "Living Room / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 1357.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Clean garage gutters",
+      "sub": "Garage / Jordan Lee",
+      "rect": {
+       "x": 33,
+       "y": 1433.6,
+       "w": 327,
+       "h": 78.8
+      }
+     },
+     {
+      "title": "Fix laundry shelf anchors",
+      "sub": "Laundry / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 1520.4,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Reset garage shelf labels",
+      "sub": "Garage / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 1596.4,
+       "w": 327,
+       "h": 82
+      }
+     },
+     {
+      "title": "Clean hallway return vent",
+      "sub": "Living Room / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 1686.4,
+       "w": 327,
+       "h": 68
+      }
+     }
+    ]
+   },
+   {
+    "title": "The Matrix",
+    "rect": {
+     "x": 20,
+     "y": 1783.4,
+     "w": 353,
+     "h": 724
+    },
+    "headRect": {
+     "x": 41,
+     "y": 1856.4,
+     "w": 311,
+     "h": 43.2
+    },
+    "rows": [
+     {
+      "title": "Swap entry hall bulbs",
+      "sub": "Living Room / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 2083.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Reset garage shelf labels",
+      "sub": "Garage / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 2159.6,
+       "w": 327,
+       "h": 82
+      }
+     },
+     {
+      "title": "Replace kitchen faucet",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 2249.6,
+       "w": 327,
+       "h": 82
+      }
+     },
+     {
+      "title": "Replace fridge water filter",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 2339.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Clean garage gutters",
+      "sub": "Garage / Jordan Lee",
+      "rect": {
+       "x": 33,
+       "y": 2415.6,
+       "w": 327,
+       "h": 78.8
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "settings": {
+  "inviteCard": {
+   "x": 41,
+   "y": 2161,
+   "w": 311,
+   "h": 86.7
+  },
+  "copyBtn": {
+   "x": 219.7,
+   "y": 2200.7,
+   "w": 55,
+   "h": 30
+  },
+  "code": {
+   "x": 57,
+   "y": 2199.7,
+   "w": 150.7,
+   "h": 32
+  },
+  "sessionChips": null
+ },
+ "home-1h": {
+  "statSession": {
+   "x": 253.7,
+   "y": 157,
+   "w": 98.3,
+   "h": 69.6
+  },
+  "openMatrixBtn": {
+   "x": 41,
+   "y": 1993.6,
+   "w": 146.3,
+   "h": 44
+  },
+  "panels": [
+   {
+    "title": "Most Urgent",
+    "rect": {
+     "x": 20,
+     "y": 504.6,
+     "w": 353,
+     "h": 628.8
+    },
+    "headRect": {
+     "x": 41,
+     "y": 577.6,
+     "w": 311,
+     "h": 43.2
+    },
+    "rows": [
+     {
+      "title": "Replace kitchen faucet",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 712.8,
+       "w": 327,
+       "h": 82
+      }
+     },
+     {
+      "title": "Replace fridge water filter",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 802.8,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Replace upstairs smoke detector batteries",
+      "sub": "Master Bedroom / Unassigned",
+      "rect": {
+       "x": 33,
+       "y": 878.8,
+       "w": 327,
+       "h": 78.8
+      }
+     },
+     {
+      "title": "Swap entry hall bulbs",
+      "sub": "Living Room / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 965.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Clean garage gutters",
+      "sub": "Garage / Jordan Lee",
+      "rect": {
+       "x": 33,
+       "y": 1041.6,
+       "w": 327,
+       "h": 78.8
+      }
+     }
+    ]
+   },
+   {
+    "title": "Best Fit",
+    "rect": {
+     "x": 20,
+     "y": 1149.4,
+     "w": 353,
+     "h": 604
+    },
+    "headRect": {
+     "x": 41,
+     "y": 1222.4,
+     "w": 311,
+     "h": 43.2
+    },
+    "rows": [
+     {
+      "title": "Replace fridge water filter",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 1357.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Swap entry hall bulbs",
+      "sub": "Living Room / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 1433.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Fix laundry shelf anchors",
+      "sub": "Laundry / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 1509.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Replace backyard string light clips",
+      "sub": "Backyard / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 1585.6,
+       "w": 327,
+       "h": 78.8
+      }
+     },
+     {
+      "title": "Clean hallway return vent",
+      "sub": "Living Room / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 1672.4,
+       "w": 327,
+       "h": 68
+      }
+     }
+    ]
+   },
+   {
+    "title": "The Matrix",
+    "rect": {
+     "x": 20,
+     "y": 1769.4,
+     "w": 353,
+     "h": 720.8
+    },
+    "headRect": {
+     "x": 41,
+     "y": 1842.4,
+     "w": 311,
+     "h": 43.2
+    },
+    "rows": [
+     {
+      "title": "Replace fridge water filter",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 2069.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Swap entry hall bulbs",
+      "sub": "Living Room / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 2145.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Replace kitchen faucet",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 2221.6,
+       "w": 327,
+       "h": 82
+      }
+     },
+     {
+      "title": "Replace upstairs smoke detector batteries",
+      "sub": "Master Bedroom / Unassigned",
+      "rect": {
+       "x": 33,
+       "y": 2311.6,
+       "w": 327,
+       "h": 78.8
+      }
+     },
+     {
+      "title": "Replace backyard string light clips",
+      "sub": "Backyard / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 2398.4,
+       "w": 327,
+       "h": 78.8
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "matrixview": {
+  "cells": [
+   {
+    "label": "High importance, Low urgency. No tasks.",
+    "rect": {
+     "x": 92,
+     "y": 142.5,
+     "w": 70.5,
+     "h": 56.4
+    }
+   },
+   {
+    "label": "High importance, Medium urgency. 2 tasks. Open list.",
+    "rect": {
+     "x": 165.3,
+     "y": 142.5,
+     "w": 70.5,
+     "h": 56.4
+    }
+   },
+   {
+    "label": "High importance, High urgency. 2 tasks. Open list.",
+    "rect": {
+     "x": 238.5,
+     "y": 142.5,
+     "w": 70.5,
+     "h": 56.4
+    }
+   },
+   {
+    "label": "High importance, Urgent urgency. 3 tasks. Open list.",
+    "rect": {
+     "x": 311.8,
+     "y": 142.5,
+     "w": 70.5,
+     "h": 56.4
+    }
+   },
+   {
+    "label": "Medium importance, Low urgency. 2 tasks. Open list.",
+    "rect": {
+     "x": 92,
+     "y": 206.9,
+     "w": 70.5,
+     "h": 56.4
+    }
+   },
+   {
+    "label": "Medium importance, Medium urgency. 2 tasks. Open list.",
+    "rect": {
+     "x": 165.3,
+     "y": 206.9,
+     "w": 70.5,
+     "h": 56.4
+    }
+   },
+   {
+    "label": "Medium importance, High urgency. 1 task. Open list.",
+    "rect": {
+     "x": 238.5,
+     "y": 206.9,
+     "w": 70.5,
+     "h": 56.4
+    }
+   },
+   {
+    "label": "Medium importance, Urgent urgency. No tasks.",
+    "rect": {
+     "x": 311.8,
+     "y": 206.9,
+     "w": 70.5,
+     "h": 56.4
+    }
+   },
+   {
+    "label": "Low importance, Low urgency. 1 task. Open list.",
+    "rect": {
+     "x": 92,
+     "y": 271.3,
+     "w": 70.5,
+     "h": 56.4
+    }
+   },
+   {
+    "label": "Low importance, Medium urgency. No tasks.",
+    "rect": {
+     "x": 165.3,
+     "y": 271.3,
+     "w": 70.5,
+     "h": 56.4
+    }
+   },
+   {
+    "label": "Low importance, High urgency. No tasks.",
+    "rect": {
+     "x": 238.5,
+     "y": 271.3,
+     "w": 70.5,
+     "h": 56.4
+    }
+   },
+   {
+    "label": "Low importance, Urgent urgency. No tasks.",
+    "rect": {
+     "x": 311.8,
+     "y": 271.3,
+     "w": 70.5,
+     "h": 56.4
+    }
+   }
+  ],
+  "grid": {
+   "x": 44,
+   "y": 142.5,
+   "w": 333,
+   "h": 238
+  }
+ },
+ "matrixsheet": {
+  "sheet": {
+   "x": 0,
+   "y": 0,
+   "w": 393,
+   "h": 852
+  },
+  "rows": [
+   {
+    "text": "",
+    "rect": {
+     "x": 337,
+     "y": 519.9,
+     "w": 36,
+     "h": 36
+    }
+   },
+   {
+    "text": "🍳",
+    "rect": {
+     "x": 12,
+     "y": 585.2,
+     "w": 369,
+     "h": 68
+    }
+   },
+   {
+    "text": "🍳",
+    "rect": {
+     "x": 12,
+     "y": 661.2,
+     "w": 369,
+     "h": 68
+    }
+   },
+   {
+    "text": "🛏️",
+    "rect": {
+     "x": 12,
+     "y": 737.2,
+     "w": 369,
+     "h": 78.8
+    }
+   }
+  ]
+ },
+ "planning": {
+  "lanes": [
+   {
+    "title": "Unassigned",
+    "rect": {
+     "x": 16,
+     "y": 319,
+     "w": 361,
+     "h": 219
+    },
+    "headRect": {
+     "x": 77,
+     "y": 332,
+     "w": 283,
+     "h": 28
+    },
+    "rows": [
+     {
+      "title": "Replace upstairs smoke detector batteries",
+      "sub": "Master Bedroom - Quick - To Do",
+      "rect": {
+       "x": 17,
+       "y": 389,
+       "w": 359,
+       "h": 64
+      }
+     },
+     {
+      "title": "Return tools to wall rack",
+      "sub": "Garage - Quick - To Do",
+      "rect": {
+       "x": 17,
+       "y": 453,
+       "w": 359,
+       "h": 84
+      }
+     }
+    ]
+   },
+   {
+    "title": "Alex Morgan",
+    "rect": {
+     "x": 16,
+     "y": 554,
+     "w": 361,
+     "h": 391
+    },
+    "headRect": {
+     "x": 77,
+     "y": 567,
+     "w": 283,
+     "h": 28
+    },
+    "rows": [
+     {
+      "title": "Replace kitchen faucet",
+      "sub": "Kitchen - Half Day - To Do - 1/3 subtasks done",
+      "rect": {
+       "x": 17,
+       "y": 624,
+       "w": 359,
+       "h": 64
+      }
+     },
+     {
+      "title": "Replace fridge water filter",
+      "sub": "Kitchen - Quick - To Do",
+      "rect": {
+       "x": 17,
+       "y": 688,
+       "w": 359,
+       "h": 64
+      }
+     },
+     {
+      "title": "Install new fixture",
+      "sub": "Kitchen - Half Day - In Progress",
+      "rect": {
+       "x": 17,
+       "y": 752,
+       "w": 359,
+       "h": 64
+      }
+     },
+     {
+      "title": "Install closet hardware",
+      "sub": "Master Bedroom - Half Day - To Do",
+      "rect": {
+       "x": 17,
+       "y": 816,
+       "w": 359,
+       "h": 64
+      }
+     },
+     {
+      "title": "Replace backyard string light clips",
+      "sub": "Backyard - Quick - To Do",
+      "rect": {
+       "x": 17,
+       "y": 880,
+       "w": 359,
+       "h": 64
+      }
+     }
+    ]
+   },
+   {
+    "title": "Jordan Lee",
+    "rect": {
+     "x": 16,
+     "y": 961,
+     "w": 361,
+     "h": 283
+    },
+    "headRect": {
+     "x": 77,
+     "y": 974,
+     "w": 283,
+     "h": 28
+    },
+    "rows": [
+     {
+      "title": "Run leak test",
+      "sub": "Kitchen - Quick - To Do",
+      "rect": {
+       "x": 17,
+       "y": 1031,
+       "w": 359,
+       "h": 84
+      }
+     },
+     {
+      "title": "Clean garage gutters",
+      "sub": "Garage - Half Day - To Do",
+      "rect": {
+       "x": 17,
+       "y": 1115,
+       "w": 359,
+       "h": 64
+      }
+     },
+     {
+      "title": "Label shelf zones",
+      "sub": "Garage - Quick - In Progress",
+      "rect": {
+       "x": 17,
+       "y": 1179,
+       "w": 359,
+       "h": 64
+      }
+     }
+    ]
+   },
+   {
+    "title": "Priya Shah",
+    "rect": {
+     "x": 16,
+     "y": 1260,
+     "w": 361,
+     "h": 263
+    },
+    "headRect": {
+     "x": 77,
+     "y": 1273,
+     "w": 283,
+     "h": 28
+    },
+    "rows": [
+     {
+      "title": "Organize linen closet shelves",
+      "sub": "Master Bedroom - Quick - To Do",
+      "rect": {
+       "x": 17,
+       "y": 1330,
+       "w": 359,
+       "h": 64
+      }
+     },
+     {
+      "title": "Sort basement donation bins",
+      "sub": "Basement - Full Day - To Do",
+      "rect": {
+       "x": 17,
+       "y": 1394,
+       "w": 359,
+       "h": 64
+      }
+     },
+     {
+      "title": "Refinish dining table scratches",
+      "sub": "Living Room - Full Day - To Do",
+      "rect": {
+       "x": 17,
+       "y": 1458,
+       "w": 359,
+       "h": 64
+      }
+     }
+    ]
+   },
+   {
+    "title": "Sam Rivera",
+    "rect": {
+     "x": 16,
+     "y": 1539,
+     "w": 361,
+     "h": 327
+    },
+    "headRect": {
+     "x": 77,
+     "y": 1552,
+     "w": 283,
+     "h": 28
+    },
+    "rows": [
+     {
+      "title": "Swap entry hall bulbs",
+      "sub": "Living Room - Quick - To Do",
+      "rect": {
+       "x": 17,
+       "y": 1609,
+       "w": 359,
+       "h": 64
+      }
+     },
+     {
+      "title": "Reset garage shelf labels",
+      "sub": "Garage - Half Day - To Do - 1/3 subtasks done",
+      "rect": {
+       "x": 17,
+       "y": 1673,
+       "w": 359,
+       "h": 64
+      }
+     },
+     {
+      "title": "Fix laundry shelf anchors",
+      "sub": "Laundry - Quick - To Do",
+      "rect": {
+       "x": 17,
+       "y": 1737,
+       "w": 359,
+       "h": 64
+      }
+     },
+     {
+      "title": "Clean hallway return vent",
+      "sub": "Living Room - Quick - To Do",
+      "rect": {
+       "x": 17,
+       "y": 1801,
+       "w": 359,
+       "h": 64
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "task0": {
+  "completeInstall": {
+   "x": 47,
+   "y": 785.8,
+   "w": 28,
+   "h": 28
+  },
+  "completeTest": {
+   "x": 47,
+   "y": 976.8,
+   "w": 28,
+   "h": 28
+  },
+  "waiting": {
+   "x": 37,
+   "y": 940.8,
+   "w": 92.9,
+   "h": 16
+  },
+  "subtasksCard": {
+   "x": 37,
+   "y": 485.8,
+   "w": 87.8,
+   "h": 44
+  },
+  "phaseHeads": [
+   {
+    "name": "Prep",
+    "rect": {
+     "x": 37,
+     "y": 554.8,
+     "w": 44.8,
+     "h": 24
+    }
+   },
+   {
+    "name": "Install",
+    "rect": {
+     "x": 37,
+     "y": 725.8,
+     "w": 47.5,
+     "h": 24
+    }
+   },
+   {
+    "name": "Test",
+    "rect": {
+     "x": 37,
+     "y": 896.8,
+     "w": 92.9,
+     "h": 24
+    }
+   }
+  ],
+  "doneCounter": {
+   "x": 37,
+   "y": 513.8,
+   "w": 87.8,
+   "h": 16
+  }
+ },
+ "task1": {
+  "doneCounter": {
+   "x": 37,
+   "y": 513.8,
+   "w": 87.8,
+   "h": 16
+  },
+  "waitingGone": true
+ },
+ "home-out-1h": {
+  "statSession": {
+   "x": 253.7,
+   "y": 157,
+   "w": 98.3,
+   "h": 69.6
+  },
+  "panels": [
+   {
+    "title": "Most Urgent",
+    "rect": {
+     "x": 20,
+     "y": 504.6,
+     "w": 353,
+     "h": 628.8
+    },
+    "headRect": {
+     "x": 41,
+     "y": 577.6,
+     "w": 311,
+     "h": 43.2
+    },
+    "rows": [
+     {
+      "title": "Replace kitchen faucet",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 712.8,
+       "w": 327,
+       "h": 82
+      }
+     },
+     {
+      "title": "Replace fridge water filter",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 802.8,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Replace upstairs smoke detector batteries",
+      "sub": "Master Bedroom / Unassigned",
+      "rect": {
+       "x": 33,
+       "y": 878.8,
+       "w": 327,
+       "h": 78.8
+      }
+     },
+     {
+      "title": "Swap entry hall bulbs",
+      "sub": "Living Room / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 965.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Clean garage gutters",
+      "sub": "Garage / Jordan Lee",
+      "rect": {
+       "x": 33,
+       "y": 1041.6,
+       "w": 327,
+       "h": 78.8
+      }
+     }
+    ]
+   },
+   {
+    "title": "Best Fit",
+    "rect": {
+     "x": 20,
+     "y": 1149.4,
+     "w": 353,
+     "h": 593.2
+    },
+    "headRect": {
+     "x": 41,
+     "y": 1222.4,
+     "w": 311,
+     "h": 43.2
+    },
+    "rows": [
+     {
+      "title": "Swap entry hall bulbs",
+      "sub": "Living Room / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 1357.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Fix laundry shelf anchors",
+      "sub": "Laundry / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 1433.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Clean hallway return vent",
+      "sub": "Living Room / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 1509.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Replace fridge water filter",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 1585.6,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Organize linen closet shelves",
+      "sub": "Master Bedroom / Priya Shah",
+      "rect": {
+       "x": 33,
+       "y": 1661.6,
+       "w": 327,
+       "h": 68
+      }
+     }
+    ]
+   },
+   {
+    "title": "The Matrix",
+    "rect": {
+     "x": 20,
+     "y": 1758.6,
+     "w": 353,
+     "h": 710
+    },
+    "headRect": {
+     "x": 41,
+     "y": 1831.6,
+     "w": 311,
+     "h": 43.2
+    },
+    "rows": [
+     {
+      "title": "Swap entry hall bulbs",
+      "sub": "Living Room / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 2058.8,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Replace fridge water filter",
+      "sub": "Kitchen / Alex Morgan",
+      "rect": {
+       "x": 33,
+       "y": 2134.8,
+       "w": 327,
+       "h": 68
+      }
+     },
+     {
+      "title": "Replace upstairs smoke detector batteries",
+      "sub": "Master Bedroom / Unassigned",
+      "rect": {
+       "x": 33,
+       "y": 2210.8,
+       "w": 327,
+       "h": 78.8
+      }
+     },
+     {
+      "title": "Reset garage shelf labels",
+      "sub": "Garage / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 2297.6,
+       "w": 327,
+       "h": 82
+      }
+     },
+     {
+      "title": "Fix laundry shelf anchors",
+      "sub": "Laundry / Sam Rivera",
+      "rect": {
+       "x": 33,
+       "y": 2387.6,
+       "w": 327,
+       "h": 68
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

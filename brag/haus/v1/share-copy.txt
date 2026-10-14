@@ -1,0 +1,1 @@
+17 jobs, 3 people home, 4 hours. HAUS plans the session, not the backlog: a shared household task manager that ranks every job by urgency × importance × what actually fits today. Live demo: https://benwassa.github.io/HAUS/
