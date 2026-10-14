@@ -1,9 +1,9 @@
 # Argus - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `argus`
 
 ## Snapshot
