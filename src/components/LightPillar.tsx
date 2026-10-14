@@ -355,7 +355,21 @@ const LightPillar: React.FC<LightPillarProps> = ({
 
       rafRef.current = requestAnimationFrame(animate);
     };
-    rafRef.current = requestAnimationFrame(animate);
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const syncAnimation = () => {
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+      if (document.hidden) return;
+      lastTime = performance.now();
+      if (motionPreference.matches) {
+        renderer.render(scene, camera);
+      } else {
+        rafRef.current = requestAnimationFrame(animate);
+      }
+    };
+    document.addEventListener('visibilitychange', syncAnimation);
+    motionPreference.addEventListener('change', syncAnimation);
+    syncAnimation();
 
     // Handle resize with debouncing
     let resizeTimeout: number | null = null;
@@ -370,6 +384,7 @@ const LightPillar: React.FC<LightPillarProps> = ({
         const newHeight = containerRef.current.clientHeight;
         rendererRef.current.setSize(newWidth, newHeight);
         materialRef.current.uniforms.uResolution.value.set(newWidth, newHeight);
+        if (motionPreference.matches) renderer.render(scene, camera);
       }, 150);
     };
 
@@ -378,6 +393,10 @@ const LightPillar: React.FC<LightPillarProps> = ({
     // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
+      document.removeEventListener('visibilitychange', syncAnimation);
+      motionPreference.removeEventListener('change', syncAnimation);
+      if (resizeTimeout !== null) clearTimeout(resizeTimeout);
+      if (mouseMoveTimeout !== null) clearTimeout(mouseMoveTimeout);
       if (interactive) {
         container.removeEventListener('mousemove', handleMouseMove);
       }
