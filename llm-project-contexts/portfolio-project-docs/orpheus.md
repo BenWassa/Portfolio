@@ -1,41 +1,40 @@
 # Orpheus - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:36:03.121Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/index-tier
+Commit: 4346c0c
 Project slug: `orpheus`
 
 ## Snapshot
 - Title: Orpheus
-- Tier: `featured`
-- Tag: Music Research Tool
-- Status: `draft`
+- Tier: `index`
+- Tag: n/a
+- Status: `n/a`
 - Type: `psychology`
-- Orientation: `landscape`
-- Year: (not set)
-- Live URL: (not set)
+- Orientation: `n/a`
+- Year: 2025
+- Live URL: https://github.com/BenWassa/orpheus
 - Demo URL: (not set)
 - Demo mode: `none`
 - Repo URL: https://github.com/BenWassa/orpheus
-- Last verified: (not verified)
-- Image path: `assets/projects/Orpheus.png`
-- Image alt: Orpheus - Audio Analysis
+- Last verified: 2026-10-13
+- Image path: `n/a`
+- Image alt: n/a
 
 ## Core Description
-- Card description: A lyrical lantern decoding the themes in your listening patterns.
+- Card description: A local-first map of the emotional patterns in your Spotify listening; in progress.
 - Portfolio summary: Experimental audio interfaces and sonic interaction patterns - exploring the intersection of sound and digital experience.
 - Full description: Project Orpheus is a lyrical lantern into the underworld of memory and emotion. By tracing the songs you play on repeat - the fixations, the phases, the sudden crescendos - it reveals the hidden narratives shaping your life. Like Orpheus descending with music as his guide, this framework transforms passive listening into active self-discovery through structured analysis, mythic symbolism, and reflective prompts. Thoughtfully designed for slow, deliberate exploration, it lets you chart emotional currents, pivotal transitions, and unmet needs inside a poetic, soul-centered map where every refrain becomes a clue to becoming more wholly yourself.
 
 ## Technical Profile
-- Model: Data Analysis Tool
-- Stack: `Python`, `pandas`, `Streamlit`
+- Model: N/A
+- Stack: N/A
 - Key features:
-- Listening Pattern Charts
-- Audio Analysis
+- N/A
 
 ## Theme
-- Primary: `#8B5CF6`
-- Secondary: `#1e1b4b`
-- Tertiary: `#1e293b`
-- Background: `#0f0f23`
+- Primary: `N/A`
+- Secondary: `N/A`
+- Tertiary: `N/A`
+- Background: `N/A`
