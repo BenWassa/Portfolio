@@ -159,6 +159,36 @@ WS6 Staleness CI #14  needs #13 (`repoUrl`, `lastVerified`)
 Issues #9 (re-verify displayed cards), #10 (Narrative collision) and #16 (template retirement)
 fold into WS1/WS2 as noted on each.
 
+### Staleness and link check (WS6, #14)
+
+`npm run health` runs `scripts/check-portfolio-health.mjs`; `.github/workflows/portfolio-health.yml`
+runs it every Monday and on manual dispatch (not on push or PR, because it needs the network, and
+it never deploys). It reads `src/js/project-descriptions.ts` through the generator's `readData()`.
+
+| Section | Rule | Effect |
+|---|---|---|
+| Links | every `href` and `demoUrl` must end at HTTP 200 (redirects followed, one retry, 15s timeout) | **fails the run** |
+| Stale cards | repo default branch has a commit dated after `lastVerified` | warning, with days and commits since |
+| No `lastVerified` | the card was never verified | warning; template-backed cards are annotated as expected |
+| Template lag | for `demoMode: 'template'` cards, the template repo (from `demoUrl`) trails `repoUrl` by more than 30 days (`--threshold-days=N`) | warning. Today: Narrative and Morpheus, about 145 days |
+| Not checkable | the GitHub API returned 404 for the repo | info only |
+
+How to read it: a red run means a card link is dead; fix or retarget the card. A stale card means
+the repo moved since someone last loaded the demo; re-verify it, then bump `lastVerified`. Lagging
+templates are the accepted exception above and stay as warnings until Ben decides to rebuild them.
+
+Notes:
+
+- `repoUrl` is not rendered, so it is never fetched as a web page. It is looked up through the
+  GitHub API instead. Private repos return 404 unauthenticated, and the workflow's default token
+  only sees this repo, so they land under "Not checkable" (Wrestle, HAUS, Chef's Journal, Vox).
+  To check them, add a read-only PAT as the `PORTFOLIO_HEALTH_TOKEN` repo secret; locally, set
+  `GITHUB_TOKEN`.
+- Staleness uses the latest default-branch commit date, not `pushed_at`, because Pages deploy
+  pushes move `pushed_at`.
+- Unauthenticated runs have 60 API calls per hour; one run uses about 25.
+- Flags: `--skip-links`, `--skip-stale`, `--summary=<file>` (defaults to `$GITHUB_STEP_SUMMARY`).
+
 ### Brag videos (WS4) — deferred
 
 **Deferred by Ben, 2026-10-02: leave for later.** No agent work. Notes kept for when it resumes.
