@@ -114,10 +114,10 @@ export const projectsData: Project[] = [
   },
   {
     title: 'STARK',
-    tag: 'Fitness Intelligence',
-    desc: 'Fitness intelligence dashboard for strength, endurance, recovery.',
-    href: 'https://benwassa.github.io/STARK/',
-      demoUrl: 'https://benwassa.github.io/STARK/',
+    tag: 'Fitness Intelligence · v1',
+    desc: 'The original STARK fitness dashboard for strength, endurance and recovery.',
+    href: 'https://benwassa.github.io/stark-v1/',
+      demoUrl: 'https://benwassa.github.io/stark-v1/',
     img: 'assets/projects/STARK.png',
     alt: 'STARK - Fitness PWA',
     theme: { primary: '#d4956d', secondary: '#b06a3a', tertiary: '#8b5c3c', bg: '#3d2a1f' },
@@ -125,19 +125,18 @@ export const projectsData: Project[] = [
     type: 'app',
     orientation: 'square',
     tier: 'featured',
-    repoUrl: 'https://github.com/BenWassa/STARK',
+    repoUrl: 'https://github.com/BenWassa/stark-v1',
     demoMode: 'live',
-    lastVerified: '2026-10-02',
     techSpecs: {
       model: 'Client-Side Dashboard',
-      stack: ['React', 'TypeScript', 'Tailwind'],
+      stack: ['React', 'JavaScript', 'Tailwind'],
       features: ['Fitness Metrics Dashboard', 'IndexedDB Storage', 'Animated UI'],
     },
   },
   {
     title: 'Vox',
     tag: 'Language Learning Tracker',
-    desc: 'Vocabulary and grammar studying tool.',
+    desc: 'A CSV vocabulary tracker for Spanish and Mandarin practice.',
     href: 'https://benwassa.github.io/Vox_Showcase/',
     img: 'assets/projects/Vox.png',
     alt: 'Vox - Language Tool',
@@ -149,9 +148,9 @@ export const projectsData: Project[] = [
     repoUrl: 'https://github.com/BenWassa/Vox',
     demoMode: 'template',
     techSpecs: {
-      model: 'Offline-First App',
-      stack: ['JavaScript', 'JSON'],
-      features: ['Offline-First', 'Local Storage', 'Spaced Repetition'],
+      model: 'CSV Vocabulary Tracker',
+      stack: ['HTML', 'CSS', 'JavaScript', 'CSV'],
+      features: ['Spanish and Mandarin Tables', 'Practice Counts', 'CSV Import and Export'],
     },
   },
   {
@@ -696,13 +695,13 @@ export const projectDescriptions: ProjectDescriptions = {
 
   vox: {
     portfolio:
-      'Advanced language-learning dashboard with progress tracking, analytics, and adaptive learning algorithms (in development).',
-    full: 'Vox is a pilot framework for building a rigorous, self-directed language learning system. It emphasizes grammar mastery, transparent vocab tracking, and real-world sentence production - eschewing gamified fluff in favor of deliberate, adaptive practice. Designed to function fully offline with clean JSON architecture, Vox visualizes progress like a growing reservoir of knowledge, where vocabulary adds volume, grammar shapes the container, and output waters the fields of fluency. It serves as both prototype and proof-of-concept for a learner-first, data-transparent alternative to mainstream apps.',
+      'A browser-based vocabulary table for tracking Spanish and Mandarin practice with CSV import and export.',
+    full: 'Vox is a small vocabulary tracker for self-directed language study. It displays Spanish and Mandarin vocabulary in tables, tracks practice counts and status, and supports uploading and exporting CSV files. The portfolio opens Vox Showcase, a separate copy populated with sample vocabulary. The current app is a static table; a broader learning dashboard is still in development.',
   },
 
   orpheus: {
     portfolio:
-      'Experimental audio interfaces and sonic interaction patterns - exploring the intersection of sound and digital experience.',
+      'A listening-history research project exploring music as a mirror of memory, emotion, and recurring life patterns.',
     full: 'Project Orpheus is a lyrical lantern into the underworld of memory and emotion. By tracing the songs you play on repeat - the fixations, the phases, the sudden crescendos - it reveals the hidden narratives shaping your life. Like Orpheus descending with music as his guide, this framework transforms passive listening into active self-discovery through structured analysis, mythic symbolism, and reflective prompts. Thoughtfully designed for slow, deliberate exploration, it lets you chart emotional currents, pivotal transitions, and unmet needs inside a poetic, soul-centered map where every refrain becomes a clue to becoming more wholly yourself.',
   },
 
@@ -715,7 +714,7 @@ export const projectDescriptions: ProjectDescriptions = {
   stark: {
     portfolio:
       'A data visualization PWA that unifies strength, endurance, mobility, and recovery into one elegant Fitness Index, complete with VO2 max and trend insights.',
-    full: 'STARK is a static Progressive Web App built with React and TailwindCSS, designed to turn physiological data into a clear visual story of fitness and recovery. It blends performance metrics, VO2 max estimation, and normative comparisons into an elegant offline dashboard that values transparency, simplicity, and privacy. All calculations are client-side, data is stored in IndexedDB, and users can install it as a PWA - no logins, no servers, just insight.',
+    full: 'STARK v1 is the original fitness dashboard, now maintained at stark-v1. A new STARK app is in early development and has no portfolio demo yet. This version is a static Progressive Web App built with React and TailwindCSS, designed to turn physiological data into a clear visual story of fitness and recovery. It blends performance metrics, VO2 max estimation, and normative comparisons into an elegant offline dashboard that values transparency, simplicity, and privacy. All calculations are client-side, data is stored in IndexedDB, and users can install it as a PWA - no logins, no servers, just insight.',
   },
 
   drop: {
@@ -750,7 +749,7 @@ export const projectDescriptions: ProjectDescriptions = {
   narrative: {
     portfolio:
       'A local-first, keyboard-driven travel photo curation tool that sorts a trip by story role and exports a safe rename script.',
-    full: 'Narrative curates a trip by story role instead of by timestamp. It reads a trip folder straight off disk, groups the photos by day, and assigns each shot a role with a single keystroke: A–E for the story, M for mood and food, X to archive. It then generates a copy-based rename script, so the originals are never touched. Everything stays in the browser (Chromium, for folder access). The embedded demo is a separate sample - a preset project of stock photos built from an earlier version of the app.',
+    full: 'Narrative curates a trip by story role instead of by timestamp. It reads a trip folder straight off disk, groups the photos by day, and assigns each shot a role with a single keystroke: A–E for the story, M for mood and food, X to archive. It then generates a copy-based rename script, so the originals are never touched. Everything stays in the browser (Chromium, for folder access). The embedded demo is a separate sample - a preset project of stock photos built from an earlier snapshot. The demo and production use separate version numbers, so the demo label does not indicate a newer production release.',
   },
 
   morpheus: {

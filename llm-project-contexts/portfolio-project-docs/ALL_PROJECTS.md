@@ -1,6 +1,6 @@
 # Portfolio Project Records (Compiled)
 
-Generated: 2026-10-14T01:40:20.254Z
+Generated: 2026-10-14T02:16:26.242Z
 Source folder: `llm-project-contexts/portfolio-project-docs/`
 Total project docs: 36
 
@@ -49,10 +49,10 @@ Source file: `agoge.md`
 
 # Agoge - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `agoge`
 
 ## Snapshot
@@ -99,10 +99,10 @@ Source file: `arc.md`
 
 # Arc - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `arc`
 
 ## Snapshot
@@ -147,10 +147,10 @@ Source file: `ares.md`
 
 # Ares - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `ares`
 
 ## Snapshot
@@ -197,10 +197,10 @@ Source file: `argus.md`
 
 # Argus - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `argus`
 
 ## Snapshot
@@ -215,7 +215,7 @@ Project slug: `argus`
 - Demo URL: https://benwassa.github.io/argus/
 - Demo mode: `playbook`
 - Repo URL: https://github.com/BenWassa/argus
-- Last verified: 2026-10-02
+- Last verified: 2026-10-13
 - Image path: `assets/projects/argus.png`
 - Image alt: Argus - Learning App
 
@@ -247,10 +247,10 @@ Source file: `chef-s-journal.md`
 
 # Chef's Journal - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `chef-s-journal`
 
 ## Snapshot
@@ -265,7 +265,7 @@ Project slug: `chef-s-journal`
 - Demo URL: https://benwassa.github.io/chefs-journal/
 - Demo mode: `playbook`
 - Repo URL: https://github.com/BenWassa/chefs-journal
-- Last verified: 2026-10-02
+- Last verified: 2026-10-13
 - Image path: `assets/projects/chefs-journal.png`
 - Image alt: Chef's Journal - Cooking Journal
 
@@ -297,10 +297,10 @@ Source file: `demeter.md`
 
 # Demeter - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `demeter`
 
 ## Snapshot
@@ -345,10 +345,10 @@ Source file: `drop.md`
 
 # drop - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `drop`
 
 ## Snapshot
@@ -395,10 +395,10 @@ Source file: `dukkha.md`
 
 # Dukkha - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `dukkha`
 
 ## Snapshot
@@ -444,10 +444,10 @@ Source file: `ecological-constellation.md`
 
 # Ecological Constellation - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `ecological-constellation`
 
 ## Snapshot
@@ -493,10 +493,10 @@ Source file: `faust.md`
 
 # Faust - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `faust`
 
 ## Snapshot
@@ -541,10 +541,10 @@ Source file: `flag.md`
 
 # Flag - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `flag`
 
 ## Snapshot
@@ -591,10 +591,10 @@ Source file: `great-decoupling.md`
 
 # Great Decoupling - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `great-decoupling`
 
 ## Snapshot
@@ -639,10 +639,10 @@ Source file: `haus.md`
 
 # HAUS - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `haus`
 
 ## Snapshot
@@ -689,10 +689,10 @@ Source file: `hearth.md`
 
 # Hearth - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `hearth`
 
 ## Snapshot
@@ -739,10 +739,10 @@ Source file: `hermes.md`
 
 # Hermes - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `hermes`
 
 ## Snapshot
@@ -789,10 +789,10 @@ Source file: `iris.md`
 
 # Iris - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `iris`
 
 ## Snapshot
@@ -839,10 +839,10 @@ Source file: `iroh.md`
 
 # Iroh - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `iroh`
 
 ## Snapshot
@@ -887,10 +887,10 @@ Source file: `layerup.md`
 
 # LayerUp - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `layerup`
 
 ## Snapshot
@@ -937,10 +937,10 @@ Source file: `macht.md`
 
 # Macht - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `macht`
 
 ## Snapshot
@@ -987,10 +987,10 @@ Source file: `morpheus.md`
 
 # Morpheus - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `morpheus`
 
 ## Snapshot
@@ -1037,10 +1037,10 @@ Source file: `narrative.md`
 
 # Narrative - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `narrative`
 
 ## Snapshot
@@ -1062,7 +1062,7 @@ Project slug: `narrative`
 ## Core Description
 - Card description: Keyboard-first curation of travel photos by story role.
 - Portfolio summary: A local-first, keyboard-driven travel photo curation tool that sorts a trip by story role and exports a safe rename script.
-- Full description: Narrative curates a trip by story role instead of by timestamp. It reads a trip folder straight off disk, groups the photos by day, and assigns each shot a role with a single keystroke: A–E for the story, M for mood and food, X to archive. It then generates a copy-based rename script, so the originals are never touched. Everything stays in the browser (Chromium, for folder access). The embedded demo is a separate sample - a preset project of stock photos built from an earlier version of the app.
+- Full description: Narrative curates a trip by story role instead of by timestamp. It reads a trip folder straight off disk, groups the photos by day, and assigns each shot a role with a single keystroke: A–E for the story, M for mood and food, X to archive. It then generates a copy-based rename script, so the originals are never touched. Everything stays in the browser (Chromium, for folder access). The embedded demo is a separate sample - a preset project of stock photos built from an earlier snapshot. The demo and production use separate version numbers, so the demo label does not indicate a newer production release.
 
 ## Technical Profile
 - Model: Local-First Utility
@@ -1087,10 +1087,10 @@ Source file: `orpheus.md`
 
 # Orpheus - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `orpheus`
 
 ## Snapshot
@@ -1111,7 +1111,7 @@ Project slug: `orpheus`
 
 ## Core Description
 - Card description: A local-first map of the emotional patterns in your Spotify listening; in progress.
-- Portfolio summary: Experimental audio interfaces and sonic interaction patterns - exploring the intersection of sound and digital experience.
+- Portfolio summary: A listening-history research project exploring music as a mirror of memory, emotion, and recurring life patterns.
 - Full description: Project Orpheus is a lyrical lantern into the underworld of memory and emotion. By tracing the songs you play on repeat - the fixations, the phases, the sudden crescendos - it reveals the hidden narratives shaping your life. Like Orpheus descending with music as his guide, this framework transforms passive listening into active self-discovery through structured analysis, mythic symbolism, and reflective prompts. Thoughtfully designed for slow, deliberate exploration, it lets you chart emotional currents, pivotal transitions, and unmet needs inside a poetic, soul-centered map where every refrain becomes a clue to becoming more wholly yourself.
 
 ## Technical Profile
@@ -1135,10 +1135,10 @@ Source file: `padme.md`
 
 # Padme - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `padme`
 
 ## Snapshot
@@ -1183,10 +1183,10 @@ Source file: `pantheon.md`
 
 # Pantheon - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `pantheon`
 
 ## Snapshot
@@ -1233,10 +1233,10 @@ Source file: `poseidon.md`
 
 # Poseidon - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `poseidon`
 
 ## Snapshot
@@ -1283,10 +1283,10 @@ Source file: `psi.md`
 
 # Psi - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `psi`
 
 ## Snapshot
@@ -1333,10 +1333,10 @@ Source file: `psyche.md`
 
 # Psyche - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `psyche`
 
 ## Snapshot
@@ -1381,10 +1381,10 @@ Source file: `punchbuggy.md`
 
 # Punchbuggy - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `punchbuggy`
 
 ## Snapshot
@@ -1431,10 +1431,10 @@ Source file: `pushup-challenge.md`
 
 # PushUp Challenge - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `pushup-challenge`
 
 ## Snapshot
@@ -1480,10 +1480,10 @@ Source file: `sankofa.md`
 
 # Sankofa - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `sankofa`
 
 ## Snapshot
@@ -1530,10 +1530,10 @@ Source file: `skywalker.md`
 
 # Skywalker - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `skywalker`
 
 ## Snapshot
@@ -1580,36 +1580,36 @@ Source file: `stark.md`
 
 # STARK - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `stark`
 
 ## Snapshot
 - Title: STARK
 - Tier: `featured`
-- Tag: Fitness Intelligence
+- Tag: Fitness Intelligence · v1
 - Status: `prototype`
 - Type: `app`
 - Orientation: `square`
 - Year: (not set)
-- Live URL: https://benwassa.github.io/STARK/
-- Demo URL: https://benwassa.github.io/STARK/
+- Live URL: https://benwassa.github.io/stark-v1/
+- Demo URL: https://benwassa.github.io/stark-v1/
 - Demo mode: `live`
-- Repo URL: https://github.com/BenWassa/STARK
-- Last verified: 2026-10-02
+- Repo URL: https://github.com/BenWassa/stark-v1
+- Last verified: (not verified)
 - Image path: `assets/projects/STARK.png`
 - Image alt: STARK - Fitness PWA
 
 ## Core Description
-- Card description: Fitness intelligence dashboard for strength, endurance, recovery.
+- Card description: The original STARK fitness dashboard for strength, endurance and recovery.
 - Portfolio summary: A data visualization PWA that unifies strength, endurance, mobility, and recovery into one elegant Fitness Index, complete with VO2 max and trend insights.
-- Full description: STARK is a static Progressive Web App built with React and TailwindCSS, designed to turn physiological data into a clear visual story of fitness and recovery. It blends performance metrics, VO2 max estimation, and normative comparisons into an elegant offline dashboard that values transparency, simplicity, and privacy. All calculations are client-side, data is stored in IndexedDB, and users can install it as a PWA - no logins, no servers, just insight.
+- Full description: STARK v1 is the original fitness dashboard, now maintained at stark-v1. A new STARK app is in early development and has no portfolio demo yet. This version is a static Progressive Web App built with React and TailwindCSS, designed to turn physiological data into a clear visual story of fitness and recovery. It blends performance metrics, VO2 max estimation, and normative comparisons into an elegant offline dashboard that values transparency, simplicity, and privacy. All calculations are client-side, data is stored in IndexedDB, and users can install it as a PWA - no logins, no servers, just insight.
 
 ## Technical Profile
 - Model: Client-Side Dashboard
-- Stack: `React`, `TypeScript`, `Tailwind`
+- Stack: `React`, `JavaScript`, `Tailwind`
 - Key features:
 - Fitness Metrics Dashboard
 - IndexedDB Storage
@@ -1630,10 +1630,10 @@ Source file: `static.md`
 
 # Static - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `static`
 
 ## Snapshot
@@ -1678,10 +1678,10 @@ Source file: `vox-v2.md`
 
 # Vox v2 - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `vox-v2`
 
 ## Snapshot
@@ -1726,10 +1726,10 @@ Source file: `vox.md`
 
 # Vox - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `vox`
 
 ## Snapshot
@@ -1749,17 +1749,17 @@ Project slug: `vox`
 - Image alt: Vox - Language Tool
 
 ## Core Description
-- Card description: Vocabulary and grammar studying tool.
-- Portfolio summary: Advanced language-learning dashboard with progress tracking, analytics, and adaptive learning algorithms (in development).
-- Full description: Vox is a pilot framework for building a rigorous, self-directed language learning system. It emphasizes grammar mastery, transparent vocab tracking, and real-world sentence production - eschewing gamified fluff in favor of deliberate, adaptive practice. Designed to function fully offline with clean JSON architecture, Vox visualizes progress like a growing reservoir of knowledge, where vocabulary adds volume, grammar shapes the container, and output waters the fields of fluency. It serves as both prototype and proof-of-concept for a learner-first, data-transparent alternative to mainstream apps.
+- Card description: A CSV vocabulary tracker for Spanish and Mandarin practice.
+- Portfolio summary: A browser-based vocabulary table for tracking Spanish and Mandarin practice with CSV import and export.
+- Full description: Vox is a small vocabulary tracker for self-directed language study. It displays Spanish and Mandarin vocabulary in tables, tracks practice counts and status, and supports uploading and exporting CSV files. The portfolio opens Vox Showcase, a separate copy populated with sample vocabulary. The current app is a static table; a broader learning dashboard is still in development.
 
 ## Technical Profile
-- Model: Offline-First App
-- Stack: `JavaScript`, `JSON`
+- Model: CSV Vocabulary Tracker
+- Stack: `HTML`, `CSS`, `JavaScript`, `CSV`
 - Key features:
-- Offline-First
-- Local Storage
-- Spaced Repetition
+- Spanish and Mandarin Tables
+- Practice Counts
+- CSV Import and Export
 
 ## Theme
 - Primary: `#d4956d`
@@ -1776,10 +1776,10 @@ Source file: `wrestle.md`
 
 # Wrestle - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `wrestle`
 
 ## Snapshot

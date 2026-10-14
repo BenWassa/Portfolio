@@ -1,9 +1,9 @@
 # Orpheus - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `orpheus`
 
 ## Snapshot
@@ -24,7 +24,7 @@ Project slug: `orpheus`
 
 ## Core Description
 - Card description: A local-first map of the emotional patterns in your Spotify listening; in progress.
-- Portfolio summary: Experimental audio interfaces and sonic interaction patterns - exploring the intersection of sound and digital experience.
+- Portfolio summary: A listening-history research project exploring music as a mirror of memory, emotion, and recurring life patterns.
 - Full description: Project Orpheus is a lyrical lantern into the underworld of memory and emotion. By tracing the songs you play on repeat - the fixations, the phases, the sudden crescendos - it reveals the hidden narratives shaping your life. Like Orpheus descending with music as his guide, this framework transforms passive listening into active self-discovery through structured analysis, mythic symbolism, and reflective prompts. Thoughtfully designed for slow, deliberate exploration, it lets you chart emotional currents, pivotal transitions, and unmet needs inside a poetic, soul-centered map where every refrain becomes a clue to becoming more wholly yourself.
 
 ## Technical Profile
