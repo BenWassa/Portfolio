@@ -2,9 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 // Tailwind/base styles are required for all routes (including glass demo)
 import './css/input.css';
-import App from './App';
-import Onboarding from './Onboarding';
-import EmbedDemo from './EmbedDemo';
+const App = React.lazy(() => import('./App'));
+const Onboarding = React.lazy(() => import('./Onboarding'));
+const EmbedDemo = React.lazy(() => import('./EmbedDemo'));
+
+const loadingScreen = (
+  <div className="min-h-screen bg-[#050505]" role="status" aria-label="Loading portfolio" />
+);
 
 // Log app version
 console.log(
@@ -51,7 +55,9 @@ async function renderApp() {
   if (urlParams.get('demo') === 'embeds') {
     ReactDOM.createRoot(document.getElementById('root')!).render(
       <React.StrictMode>
-        <EmbedDemo />
+        <React.Suspense fallback={loadingScreen}>
+          <EmbedDemo />
+        </React.Suspense>
       </React.StrictMode>
     );
     return;
@@ -71,7 +77,9 @@ async function renderApp() {
   );
 
   ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>{component}</React.StrictMode>
+    <React.StrictMode>
+      <React.Suspense fallback={loadingScreen}>{component}</React.Suspense>
+    </React.StrictMode>
   );
 }
 
