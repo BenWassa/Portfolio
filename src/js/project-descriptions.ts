@@ -321,7 +321,7 @@ export const projectsData: Project[] = [
     tier: 'featured',
     repoUrl: 'https://github.com/BenWassa/argus',
     demoMode: 'playbook',
-    lastVerified: '2026-10-02',
+    lastVerified: '2026-10-13',
     techSpecs: {
       model: 'Local-First Learning App',
       stack: ['React', 'TypeScript', 'Vite', 'Firebase'],
@@ -387,7 +387,7 @@ export const projectsData: Project[] = [
     tier: 'featured',
     repoUrl: 'https://github.com/BenWassa/chefs-journal',
     demoMode: 'playbook',
-    lastVerified: '2026-10-02',
+    lastVerified: '2026-10-13',
     techSpecs: {
       model: 'Firebase-Backed PWA',
       stack: ['React', 'Vite', 'Tailwind', 'Firebase'],
