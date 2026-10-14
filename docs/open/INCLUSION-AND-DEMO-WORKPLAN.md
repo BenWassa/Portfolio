@@ -262,3 +262,12 @@ the classic Hyperframes workflow. `/brag --tone "…"` steers style; voiceover i
 - No card targets a template repo.
 - Conflicts B, E, F have a written resolution (A, C, D settled above).
 - `npm run lint`, `npm run format:check`, `npm run build` pass; new URLs return 200.
+
+## Follow-through, 2026-10-13
+
+Current execution state and pending approvals are in `STATUS-2026-10-13.md`.
+FamilyPlan Pages is now actually disabled; a synthetic-build PR is prepared. The
+liebestraum rotation remains blocked by GCP IAM permissions. STARK refers to the
+migrated `stark-v1` product; the new `stark` app is deferred until a demo is ready.
+Vox remains a sample CSV-table showcase, with corrected claims. Narrative/Morpheus
+exceptions are now documented in CLAUDE.md and DEMO-MODE-METHODS.md.

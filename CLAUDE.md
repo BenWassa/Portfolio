@@ -67,6 +67,11 @@ The canonical standard is `docs/DEMO_STATE_PLAYBOOK.md` (imported from `hearth_v
 A project qualifies for an iframe `demoUrl` only when it meets that playbook's
 acceptance checklist.
 
+Ben approved two existing separate sample-demo exceptions: Narrative uses
+`narrative-template`, and Morpheus uses `template-morpheus` (2026-10-02). Their cards
+must identify the demos as older sample snapshots; keep `demoMode: 'template'` and
+track upstream drift with the health check. This does not authorize new demo forks.
+
 ## 6. Before you finish
 
 - `npm run lint` and `npm run format:check` pass.

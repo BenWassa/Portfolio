@@ -1,9 +1,9 @@
 # Portfolio Project Docs Index
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Total projects: 36
 
 This folder is auto-generated on build. Edit source project data in `src/js/project-descriptions.ts`.
@@ -15,7 +15,7 @@ This folder is auto-generated on build. Edit source project data in `src/js/proj
 | Dukkha | `featured` | `draft` | `psychology` | `none` | 2026-10-02 | https://benwassa.github.io/dukkha/ | [dukkha.md](dukkha.md) |
 | Agoge | `featured` | `draft` | `narrative` | `none` | 2026-10-02 | https://benwassa.github.io/agoge/ | [agoge.md](agoge.md) |
 | drop | `featured` | `active` | `app` | `live` | 2026-10-02 | https://benwassa.github.io/drop/ | [drop.md](drop.md) |
-| STARK | `featured` | `prototype` | `app` | `live` | 2026-10-02 | https://benwassa.github.io/STARK/ | [stark.md](stark.md) |
+| STARK | `featured` | `prototype` | `app` | `live` | — | https://benwassa.github.io/stark-v1/ | [stark.md](stark.md) |
 | Vox | `featured` | `prototype` | `app` | `template` | — | https://benwassa.github.io/Vox_Showcase/ | [vox.md](vox.md) |
 | Punchbuggy | `featured` | `active` | `app` | `live` | 2026-10-02 | https://benwassa.github.io/punchbuggy/ | [punchbuggy.md](punchbuggy.md) |
 | Hearth | `featured` | `active` | `app` | `playbook` | 2026-10-02 | https://hearthv2--hearthv2.us-east4.hosted.app/?mode=demo | [hearth.md](hearth.md) |
@@ -24,10 +24,10 @@ This folder is auto-generated on build. Edit source project data in `src/js/proj
 | Narrative | `featured` | `active` | `app` | `template` | — | https://benwassa.github.io/Narrative/ | [narrative.md](narrative.md) |
 | Morpheus | `featured` | `active` | `app` | `template` | — | https://benwassa.github.io/template-morpheus/ | [morpheus.md](morpheus.md) |
 | Poseidon | `featured` | `active` | `app` | `playbook` | 2026-10-02 | https://benwassa.github.io/poseidon/ | [poseidon.md](poseidon.md) |
-| Argus | `featured` | `active` | `app` | `playbook` | 2026-10-02 | https://benwassa.github.io/argus/ | [argus.md](argus.md) |
+| Argus | `featured` | `active` | `app` | `playbook` | 2026-10-13 | https://benwassa.github.io/argus/ | [argus.md](argus.md) |
 | HAUS | `featured` | `active` | `app` | `playbook` | 2026-10-02 | https://benwassa.github.io/HAUS/ | [haus.md](haus.md) |
 | Flag | `featured` | `active` | `app` | `live` | 2026-10-02 | https://benwassa.github.io/flag/ | [flag.md](flag.md) |
-| Chef's Journal | `featured` | `active` | `app` | `playbook` | 2026-10-02 | https://benwassa.github.io/chefs-journal/ | [chef-s-journal.md](chef-s-journal.md) |
+| Chef's Journal | `featured` | `active` | `app` | `playbook` | 2026-10-13 | https://benwassa.github.io/chefs-journal/ | [chef-s-journal.md](chef-s-journal.md) |
 | Ecological Constellation | `featured` | `active` | `app` | `none` | 2026-10-02 | https://benwassa.github.io/ecological-constellation/ | [ecological-constellation.md](ecological-constellation.md) |
 | Hermes | `featured` | `active` | `app` | `none` | 2026-10-13 | https://benwassa.github.io/Hermes/ | [hermes.md](hermes.md) |
 | Ares | `featured` | `active` | `psychology` | `none` | 2026-10-13 | https://benwassa.github.io/Ares/ | [ares.md](ares.md) |

@@ -1,9 +1,9 @@
 # Chef's Journal - Portfolio Project Record
 
-Generated: 2026-10-14T01:40:20.001Z
+Generated: 2026-10-14T02:16:26.093Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/link-cards-batch-2
-Commit: 28ba5f1
+Branch: content/refresh-integration
+Commit: 10448e2
 Project slug: `chef-s-journal`
 
 ## Snapshot
@@ -18,7 +18,7 @@ Project slug: `chef-s-journal`
 - Demo URL: https://benwassa.github.io/chefs-journal/
 - Demo mode: `playbook`
 - Repo URL: https://github.com/BenWassa/chefs-journal
-- Last verified: 2026-10-02
+- Last verified: 2026-10-13
 - Image path: `assets/projects/chefs-journal.png`
 - Image alt: Chef's Journal - Cooking Journal
 
