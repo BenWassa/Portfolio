@@ -3,7 +3,7 @@ status: open
 lane: opus
 issues: [8, 9, 10, 12, 13, 14, 16, 17, 18, 21, 22, 23, 24, 25, 26, 27, 28, 31]
 owner: Ben
-updated: 2026-10-02
+updated: 2026-10-13
 ---
 
 # Inclusion + demo workplan
@@ -133,6 +133,44 @@ returns 200.
 Vox and Orpheus were not touched. Card images are new 1024×1024 crops of the live demos. Layout
 observations are in `FOUNDATION-NOTES.md` §5.
 
+### WS5: index tier written (2026-10-13, branch `content/index-tier`)
+
+Ten text-only `IndexProject` entries added to `src/js/project-descriptions.ts`; the Orpheus card
+(`href: null`) is deleted and replaced by an index entry. `pysche-app` is not included (ruled skip).
+Built, linted and previewed at 390px and 1440px; every index row renders under the pillar below
+and its link was loaded.
+
+- **`year`** = year of the repo's first commit (`git log --max-parents=0`; GitHub `createdAt` for
+  demeter and padme, which have no local clone). Index years are *first release*, not last
+  activity (answers FOUNDATION-NOTES §3 item 5 for these ten).
+- **`href`** = the live URL when there is one, else the public repo; `null` for the two private
+  repos (vox-v2, iroh). All others returned HTTP 200 on 2026-10-13. `repoUrl` is set on all ten
+  (including the private two, as for HAUS/Vox; names end up in the bundle).
+- **`lastVerified: 2026-10-13`** only where the link loaded and matched `repoUrl`: the five Pages
+  sites (deployment SHA = repo HEAD) plus the two repo links. Unset on psyche (Firebase Hosting,
+  deployed SHA not checkable), vox-v2 and iroh (nothing public to load).
+
+| Entry | Pillar | Why | Link |
+|---|---|---|---|
+| Arc | narrative | a manifesto: long-form prose as the interface | live |
+| Faust | narrative | research essay, same family as Dukkha/Agoge | live |
+| Great Decoupling | narrative | research essay plus infographic; repo is mostly stubs | repo |
+| Demeter | app | planning atlas, installable web app | live |
+| Vox v2 | app | study tool; sits with Vox | none (private) |
+| Padme | psychology | chakra model read as psychological development | live |
+| Psyche | psychology | psychology encyclopedia | live |
+| Static | psychology | mechanics of autistic / AuDHD cognition | live |
+| Orpheus | psychology | listening history as an emotional mirror (was already there) | repo |
+| Iroh | psychology | reflective journaling; judgment call, `app` is the alternative | none (private) |
+
+Result: Narrative 3 cards + 3 index, Systems 15 cards + 2 index, Psyche 1 card + 5 index. This
+softens the Psyche-has-one-card problem (FOUNDATION-NOTES §3 item 1) on the index side only.
+
+Left for Ben: Iroh's in-app name is Thread (README, `<title>`), so the row says so. Orpheus's
+`projectDescriptions` entry (`portfolio:` line says "experimental audio interfaces") is stale and
+now feeds the generated doc; not edited, since it changes the meaning of that file. The unused
+`Orpheus.png` card image is still in `src/public/assets/projects/`.
+
 ## 4. Workstreams
 
 Dependencies are real; the first two gates decide how much runs in parallel.
@@ -153,7 +191,7 @@ WS6 Staleness CI #14  needs #13 (`repoUrl`, `lastVerified`)
 | **WS2 Demo enablement** | Per-repo changes in §3, each verified against the deployed URL | #21 + new | One agent per repo, fully parallel |
 | **WS3 Cards** | Copy + `techSpecs` + screenshot for the 24 additions and the 5 retargeted cards | #17 #18 | One agent per card after WS1; opus writes, standard captures |
 | **WS4 Brag videos** | Hermes, hearth_v2, third chosen by Ben (few projects only) | new | One agent per video |
-| **WS5 Index tier** | 10 index lines (name, one-liner, year, link) | #12 | One agent |
+| **WS5 Index tier** | 10 index lines (name, one-liner, year, link). **Written 2026-10-13, branch `content/index-tier`** (see "WS5" below) | #12 | One agent |
 | **WS6 Staleness CI** | `repoUrl` vs `lastVerified`, HTTP check on every link | #14 | One standard agent after #13 |
 
 Issues #9 (re-verify displayed cards), #10 (Narrative collision) and #16 (template retirement)

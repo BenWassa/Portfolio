@@ -1,28 +1,44 @@
 # Portfolio Project Records (Compiled)
 
-Generated: 2026-10-03T01:34:52.021Z
+Generated: 2026-10-14T01:40:20.254Z
 Source folder: `llm-project-contexts/portfolio-project-docs/`
-Total project docs: 20
+Total project docs: 36
 
 ## Included Files
 - [agoge.md](./agoge.md)
+- [arc.md](./arc.md)
+- [ares.md](./ares.md)
 - [argus.md](./argus.md)
 - [chef-s-journal.md](./chef-s-journal.md)
+- [demeter.md](./demeter.md)
 - [drop.md](./drop.md)
 - [dukkha.md](./dukkha.md)
 - [ecological-constellation.md](./ecological-constellation.md)
+- [faust.md](./faust.md)
 - [flag.md](./flag.md)
+- [great-decoupling.md](./great-decoupling.md)
 - [haus.md](./haus.md)
 - [hearth.md](./hearth.md)
+- [hermes.md](./hermes.md)
+- [iris.md](./iris.md)
+- [iroh.md](./iroh.md)
+- [layerup.md](./layerup.md)
+- [macht.md](./macht.md)
 - [morpheus.md](./morpheus.md)
 - [narrative.md](./narrative.md)
 - [orpheus.md](./orpheus.md)
+- [padme.md](./padme.md)
+- [pantheon.md](./pantheon.md)
 - [poseidon.md](./poseidon.md)
+- [psi.md](./psi.md)
+- [psyche.md](./psyche.md)
 - [punchbuggy.md](./punchbuggy.md)
 - [pushup-challenge.md](./pushup-challenge.md)
 - [sankofa.md](./sankofa.md)
 - [skywalker.md](./skywalker.md)
 - [stark.md](./stark.md)
+- [static.md](./static.md)
+- [vox-v2.md](./vox-v2.md)
 - [vox.md](./vox.md)
 - [wrestle.md](./wrestle.md)
 
@@ -33,10 +49,10 @@ Source file: `agoge.md`
 
 # Agoge - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `agoge`
 
 ## Snapshot
@@ -78,15 +94,113 @@ Project slug: `agoge`
 
 ---
 
+## Arc - Portfolio Project Record
+Source file: `arc.md`
+
+# Arc - Portfolio Project Record
+
+Generated: 2026-10-14T01:40:20.001Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
+Project slug: `arc`
+
+## Snapshot
+- Title: Arc
+- Tier: `index`
+- Tag: n/a
+- Status: `n/a`
+- Type: `narrative`
+- Orientation: `n/a`
+- Year: 2026
+- Live URL: https://benwassa.github.io/arc/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/arc
+- Last verified: 2026-10-13
+- Image path: `n/a`
+- Image alt: n/a
+
+## Core Description
+- Card description: A personal manifesto as a web app: seven laws of capability, five gates before action.
+- Portfolio summary: (not set)
+- Full description: (not set)
+
+## Technical Profile
+- Model: N/A
+- Stack: N/A
+- Key features:
+- N/A
+
+## Theme
+- Primary: `N/A`
+- Secondary: `N/A`
+- Tertiary: `N/A`
+- Background: `N/A`
+
+
+
+---
+
+## Ares - Portfolio Project Record
+Source file: `ares.md`
+
+# Ares - Portfolio Project Record
+
+Generated: 2026-10-14T01:40:20.001Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
+Project slug: `ares`
+
+## Snapshot
+- Title: Ares
+- Tier: `featured`
+- Tag: Digital Publication
+- Status: `active`
+- Type: `psychology`
+- Orientation: `square`
+- Year: (not set)
+- Live URL: https://benwassa.github.io/Ares/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/Ares
+- Last verified: 2026-10-13
+- Image path: `assets/projects/ares.png`
+- Image alt: Ares - Digital publication on mass killing
+
+## Core Description
+- Card description: A digital publication on eight historical cases of mass killing and the conditions that recur across them.
+- Portfolio summary: A static digital humanities publication built around a 2005 psychology paper on mass killing, with eight historical cases and a source registry.
+- Full description: Ares is a publication before it is an interface. It is built around Dutton, Boyanowsky & Bond (2005), "Extreme Mass Homicide: From Military Massacre to Genocide", and sets long-form analysis beside eight historical cases from 1915 to 1995. Its question is which human and institutional conditions recur across them, and it treats provenance, uncertainty and testimony as part of the product: Part IV is labelled as an Ares synthesis, and claims still awaiting a source trace are marked as such. The site is semantic static HTML that reads without JavaScript, with a glossary, a case chronology and a source registry on a single warm near-black ground. It is built with Astro and strict TypeScript, validated with Zod, and gated in CI by unit, accessibility and multi-browser tests before each deploy to GitHub Pages.
+
+## Technical Profile
+- Model: Static Digital Publication
+- Stack: `Astro`, `TypeScript`, `Zod`, `Playwright`
+- Key features:
+- Readable Without JavaScript
+- Glossary Lookup
+- Source & Provenance Registry
+
+## Theme
+- Primary: `#ea6553`
+- Secondary: `#7a2114`
+- Tertiary: `#241e19`
+- Background: `#0a0806`
+
+
+
+---
+
 ## Argus - Portfolio Project Record
 Source file: `argus.md`
 
 # Argus - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `argus`
 
 ## Snapshot
@@ -133,10 +247,10 @@ Source file: `chef-s-journal.md`
 
 # Chef's Journal - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `chef-s-journal`
 
 ## Snapshot
@@ -178,15 +292,63 @@ Project slug: `chef-s-journal`
 
 ---
 
+## Demeter - Portfolio Project Record
+Source file: `demeter.md`
+
+# Demeter - Portfolio Project Record
+
+Generated: 2026-10-14T01:40:20.001Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
+Project slug: `demeter`
+
+## Snapshot
+- Title: Demeter
+- Tier: `index`
+- Tag: n/a
+- Status: `n/a`
+- Type: `app`
+- Orientation: `n/a`
+- Year: 2026
+- Live URL: https://benwassa.github.io/demeter/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/demeter
+- Last verified: 2026-10-13
+- Image path: `n/a`
+- Image alt: n/a
+
+## Core Description
+- Card description: An interactive atlas for planning a resilient, semi-off-grid homestead life in Canada.
+- Portfolio summary: (not set)
+- Full description: (not set)
+
+## Technical Profile
+- Model: N/A
+- Stack: N/A
+- Key features:
+- N/A
+
+## Theme
+- Primary: `N/A`
+- Secondary: `N/A`
+- Tertiary: `N/A`
+- Background: `N/A`
+
+
+
+---
+
 ## drop - Portfolio Project Record
 Source file: `drop.md`
 
 # drop - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `drop`
 
 ## Snapshot
@@ -233,10 +395,10 @@ Source file: `dukkha.md`
 
 # Dukkha - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `dukkha`
 
 ## Snapshot
@@ -282,10 +444,10 @@ Source file: `ecological-constellation.md`
 
 # Ecological Constellation - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `ecological-constellation`
 
 ## Snapshot
@@ -326,15 +488,63 @@ Project slug: `ecological-constellation`
 
 ---
 
+## Faust - Portfolio Project Record
+Source file: `faust.md`
+
+# Faust - Portfolio Project Record
+
+Generated: 2026-10-14T01:40:20.001Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
+Project slug: `faust`
+
+## Snapshot
+- Title: Faust
+- Tier: `index`
+- Tag: n/a
+- Status: `n/a`
+- Type: `narrative`
+- Orientation: `n/a`
+- Year: 2026
+- Live URL: https://benwassa.github.io/faust/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/faust
+- Last verified: 2026-10-13
+- Image path: `n/a`
+- Image alt: n/a
+
+## Core Description
+- Card description: A research-driven digital essay on workism and career as identity in expensive global cities.
+- Portfolio summary: (not set)
+- Full description: (not set)
+
+## Technical Profile
+- Model: N/A
+- Stack: N/A
+- Key features:
+- N/A
+
+## Theme
+- Primary: `N/A`
+- Secondary: `N/A`
+- Tertiary: `N/A`
+- Background: `N/A`
+
+
+
+---
+
 ## Flag - Portfolio Project Record
 Source file: `flag.md`
 
 # Flag - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `flag`
 
 ## Snapshot
@@ -376,15 +586,63 @@ Project slug: `flag`
 
 ---
 
+## Great Decoupling - Portfolio Project Record
+Source file: `great-decoupling.md`
+
+# Great Decoupling - Portfolio Project Record
+
+Generated: 2026-10-14T01:40:20.001Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
+Project slug: `great-decoupling`
+
+## Snapshot
+- Title: Great Decoupling
+- Tier: `index`
+- Tag: n/a
+- Status: `n/a`
+- Type: `narrative`
+- Orientation: `n/a`
+- Year: 2026
+- Live URL: https://github.com/BenWassa/great-decoupling
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/great-decoupling
+- Last verified: 2026-10-13
+- Image path: `n/a`
+- Image alt: n/a
+
+## Core Description
+- Card description: Research in progress on the productivity-wage gap since the 1970s.
+- Portfolio summary: (not set)
+- Full description: (not set)
+
+## Technical Profile
+- Model: N/A
+- Stack: N/A
+- Key features:
+- N/A
+
+## Theme
+- Primary: `N/A`
+- Secondary: `N/A`
+- Tertiary: `N/A`
+- Background: `N/A`
+
+
+
+---
+
 ## HAUS - Portfolio Project Record
 Source file: `haus.md`
 
 # HAUS - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `haus`
 
 ## Snapshot
@@ -431,10 +689,10 @@ Source file: `hearth.md`
 
 # Hearth - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `hearth`
 
 ## Snapshot
@@ -476,15 +734,263 @@ Project slug: `hearth`
 
 ---
 
+## Hermes - Portfolio Project Record
+Source file: `hermes.md`
+
+# Hermes - Portfolio Project Record
+
+Generated: 2026-10-14T01:40:20.001Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
+Project slug: `hermes`
+
+## Snapshot
+- Title: Hermes
+- Tier: `featured`
+- Tag: Morning Newspaper
+- Status: `active`
+- Type: `app`
+- Orientation: `square`
+- Year: (not set)
+- Live URL: https://benwassa.github.io/Hermes/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/Hermes
+- Last verified: 2026-10-13
+- Image path: `assets/projects/hermes.png`
+- Image alt: Hermes - The Daily morning newspaper
+
+## Core Description
+- Card description: An overnight pipeline that publishes a finite Toronto morning newspaper and sends one push.
+- Portfolio summary: An autonomous pipeline that assembles a personalized Toronto morning newspaper overnight, publishes it as one static page and pushes a single notification.
+- Full description: Hermes publishes The Daily, a finished morning paper for one reader in Toronto. Overnight, a GitHub Actions job pulls world and business stories from the Guardian, NYT and Perigon APIs, adds Toronto local news from RSS, and makes one Gemini call to dedupe, section, rank and summarise them. The result is injected into a single static HTML page, deployed to GitHub Pages and announced with one ntfy push. It is built to be finite - a front page, five desks and a short list of followed writers called Voices - and a weekly job screens their new writing into a digest of at most three pieces. The page is an installable shell with a service worker, and a deterministic test suite runs against recorded fixtures rather than the live network. The published page is the live product, so the card links out instead of embedding a demo.
+
+## Technical Profile
+- Model: Autonomous Overnight Pipeline
+- Stack: `Python`, `Gemini`, `GitHub Actions`, `Vanilla JS`
+- Key features:
+- Daily Static Edition
+- Weekly Voices Digest
+- Installable Offline Shell
+
+## Theme
+- Primary: `#c8493c`
+- Secondary: `#1a2744`
+- Tertiary: `#121c33`
+- Background: `#0b1222`
+
+
+
+---
+
+## Iris - Portfolio Project Record
+Source file: `iris.md`
+
+# Iris - Portfolio Project Record
+
+Generated: 2026-10-14T01:40:20.001Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
+Project slug: `iris`
+
+## Snapshot
+- Title: Iris
+- Tier: `featured`
+- Tag: Neurochemical Emotion Explorer
+- Status: `prototype`
+- Type: `psychology`
+- Orientation: `square`
+- Year: (not set)
+- Live URL: https://github.com/BenWassa/Iris
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/Iris
+- Last verified: (not verified)
+- Image path: `assets/projects/iris.png`
+- Image alt: Iris - Neurochemical Emotion Explorer
+
+## Core Description
+- Card description: Five neurochemical sliders, mapped to an emotion and drawn as a dot on a valence-arousal canvas.
+- Portfolio summary: Five neurochemical sliders mapped to an emotion and drawn as a dot on a valence-arousal canvas.
+- Full description: Iris is an exploratory tool for reflecting on how neurochemistry and emotion relate. Five neurochemical sliders feed a small Flask API that infers an emotion by cosine similarity against five reference profiles, and the result is drawn as a point on a valence-arousal canvas. The emotion buttons work without the backend as an offline preview. It is a self-reflection toy, not a diagnostic. The project is dormant and has no live deployment, so the card links to the repository.
+
+## Technical Profile
+- Model: Flask API with Static Frontend
+- Stack: `Python`, `Flask`, `JavaScript`, `SVG`
+- Key features:
+- Cosine-Similarity Inference
+- Valence-Arousal Canvas
+- Offline Preview Mode
+
+## Theme
+- Primary: `#64ffda`
+- Secondary: `#3b3a6b`
+- Tertiary: `#1a1a2e`
+- Background: `#0a0a0f`
+
+
+
+---
+
+## Iroh - Portfolio Project Record
+Source file: `iroh.md`
+
+# Iroh - Portfolio Project Record
+
+Generated: 2026-10-14T01:40:20.001Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
+Project slug: `iroh`
+
+## Snapshot
+- Title: Iroh
+- Tier: `index`
+- Tag: n/a
+- Status: `n/a`
+- Type: `psychology`
+- Orientation: `n/a`
+- Year: 2026
+- Live URL: (not set)
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/iroh
+- Last verified: (not verified)
+- Image path: `n/a`
+- Image alt: n/a
+
+## Core Description
+- Card description: A reflective journaling app, called Thread in-app, for continuity and long-horizon pattern recognition.
+- Portfolio summary: (not set)
+- Full description: (not set)
+
+## Technical Profile
+- Model: N/A
+- Stack: N/A
+- Key features:
+- N/A
+
+## Theme
+- Primary: `N/A`
+- Secondary: `N/A`
+- Tertiary: `N/A`
+- Background: `N/A`
+
+
+
+---
+
+## LayerUp - Portfolio Project Record
+Source file: `layerup.md`
+
+# LayerUp - Portfolio Project Record
+
+Generated: 2026-10-14T01:40:20.001Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
+Project slug: `layerup`
+
+## Snapshot
+- Title: LayerUp
+- Tier: `featured`
+- Tag: Outfit Recommender
+- Status: `prototype`
+- Type: `app`
+- Orientation: `square`
+- Year: (not set)
+- Live URL: https://layer-up-d17b0.web.app/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/layer-up
+- Last verified: 2026-10-13
+- Image path: `assets/projects/layer-up.png`
+- Image alt: LayerUp - Weather and Clothing
+
+## Core Description
+- Card description: Today's weather turned into what to wear, then tuned by how each outing actually felt.
+- Portfolio summary: A weather-to-wardrobe PWA: it reads the local forecast, suggests a layer for each part of the body, and recalibrates from how each outing felt.
+- Full description: LayerUp starts from the forecast (temperature, feels-like, wind, rain) and suggests a layer for six slots: base, mid, outer, bottom, accessories and footwear. After you head out, you log how it felt, from Freezing to Sweltering, and which parts of you ran cold or hot. The suggestions begin as standard thermal rules and shift as the log grows: a personal warmth offset after 10 logs, activity patterns after 30, and matches to similar past days after 50. Logs are kept in the browser's local storage; there is no account and no sync. The link opens the live app, which asks for your location to fetch the weather.
+
+## Technical Profile
+- Model: Local-First PWA
+- Stack: `React`, `Vite`, `Open-Meteo`
+- Key features:
+- Layered Outfit Recommendations
+- Comfort Logging
+- Learns From Your Logs
+
+## Theme
+- Primary: `#2f79b8`
+- Secondary: `#1c4a6e`
+- Tertiary: `#0e1b24`
+- Background: `#07131a`
+
+
+
+---
+
+## Macht - Portfolio Project Record
+Source file: `macht.md`
+
+# Macht - Portfolio Project Record
+
+Generated: 2026-10-14T01:40:20.001Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
+Project slug: `macht`
+
+## Snapshot
+- Title: Macht
+- Tier: `featured`
+- Tag: Adaptive Strength Training
+- Status: `prototype`
+- Type: `app`
+- Orientation: `square`
+- Year: (not set)
+- Live URL: https://benwassa.github.io/macht/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/macht
+- Last verified: 2026-10-13
+- Image path: `assets/projects/macht.png`
+- Image alt: Macht - Strength Training
+
+## Core Description
+- Card description: Strength training that plans the session, logs sets fast and explains every change.
+- Portfolio summary: A mobile-first adaptive training PWA: a mesocycle program, fast set logging and a progression engine that records the reason for every change.
+- Full description: Macht is a strength and hypertrophy trainer built to be used for years. Today names the next session and how long it should take; the workout screen logs each set against last time, with a rest timer, plate maths, injury tracking and exercise substitutions. A progression engine sets the next prescription from reps, effort, recovery and the mesocycle position, and stores a plain-language reason for every change, holding steady when the evidence is thin. Estimated 1RM uses the Brzycki formula. All data stays on the device in a versioned schema with JSON backup, and the app works offline. It is a beta, mid-rebuild around the adaptive program model.
+
+## Technical Profile
+- Model: Local-First Training PWA
+- Stack: `React`, `TypeScript`, `Tailwind`, `Zustand`
+- Key features:
+- Explainable Progression Engine
+- Plate Math & Rest Timer
+- Offline-First Persistence
+
+## Theme
+- Primary: `#f06a4b`
+- Secondary: `#2c2d29`
+- Tertiary: `#20211e`
+- Background: `#0f100e`
+
+
+
+---
+
 ## Morpheus - Portfolio Project Record
 Source file: `morpheus.md`
 
 # Morpheus - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `morpheus`
 
 ## Snapshot
@@ -531,10 +1037,10 @@ Source file: `narrative.md`
 
 # Narrative - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `narrative`
 
 ## Snapshot
@@ -581,45 +1087,142 @@ Source file: `orpheus.md`
 
 # Orpheus - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `orpheus`
 
 ## Snapshot
 - Title: Orpheus
-- Tier: `featured`
-- Tag: Music Research Tool
-- Status: `draft`
+- Tier: `index`
+- Tag: n/a
+- Status: `n/a`
 - Type: `psychology`
-- Orientation: `landscape`
-- Year: (not set)
-- Live URL: (not set)
+- Orientation: `n/a`
+- Year: 2025
+- Live URL: https://github.com/BenWassa/orpheus
 - Demo URL: (not set)
 - Demo mode: `none`
 - Repo URL: https://github.com/BenWassa/orpheus
-- Last verified: (not verified)
-- Image path: `assets/projects/Orpheus.png`
-- Image alt: Orpheus - Audio Analysis
+- Last verified: 2026-10-13
+- Image path: `n/a`
+- Image alt: n/a
 
 ## Core Description
-- Card description: A lyrical lantern decoding the themes in your listening patterns.
+- Card description: A local-first map of the emotional patterns in your Spotify listening; in progress.
 - Portfolio summary: Experimental audio interfaces and sonic interaction patterns - exploring the intersection of sound and digital experience.
 - Full description: Project Orpheus is a lyrical lantern into the underworld of memory and emotion. By tracing the songs you play on repeat - the fixations, the phases, the sudden crescendos - it reveals the hidden narratives shaping your life. Like Orpheus descending with music as his guide, this framework transforms passive listening into active self-discovery through structured analysis, mythic symbolism, and reflective prompts. Thoughtfully designed for slow, deliberate exploration, it lets you chart emotional currents, pivotal transitions, and unmet needs inside a poetic, soul-centered map where every refrain becomes a clue to becoming more wholly yourself.
 
 ## Technical Profile
-- Model: Data Analysis Tool
-- Stack: `Python`, `pandas`, `Streamlit`
+- Model: N/A
+- Stack: N/A
 - Key features:
-- Listening Pattern Charts
-- Audio Analysis
+- N/A
 
 ## Theme
-- Primary: `#8B5CF6`
-- Secondary: `#1e1b4b`
-- Tertiary: `#1e293b`
-- Background: `#0f0f23`
+- Primary: `N/A`
+- Secondary: `N/A`
+- Tertiary: `N/A`
+- Background: `N/A`
+
+
+
+---
+
+## Padme - Portfolio Project Record
+Source file: `padme.md`
+
+# Padme - Portfolio Project Record
+
+Generated: 2026-10-14T01:40:20.001Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
+Project slug: `padme`
+
+## Snapshot
+- Title: Padme
+- Tier: `index`
+- Tag: n/a
+- Status: `n/a`
+- Type: `psychology`
+- Orientation: `n/a`
+- Year: 2026
+- Live URL: https://benwassa.github.io/padme/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/padme
+- Last verified: 2026-10-13
+- Image path: `n/a`
+- Image alt: n/a
+
+## Core Description
+- Card description: A comparative atlas reading the chakra system as a symbolic map of psychological development.
+- Portfolio summary: (not set)
+- Full description: (not set)
+
+## Technical Profile
+- Model: N/A
+- Stack: N/A
+- Key features:
+- N/A
+
+## Theme
+- Primary: `N/A`
+- Secondary: `N/A`
+- Tertiary: `N/A`
+- Background: `N/A`
+
+
+
+---
+
+## Pantheon - Portfolio Project Record
+Source file: `pantheon.md`
+
+# Pantheon - Portfolio Project Record
+
+Generated: 2026-10-14T01:40:20.001Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
+Project slug: `pantheon`
+
+## Snapshot
+- Title: Pantheon
+- Tier: `featured`
+- Tag: Daily Learning
+- Status: `prototype`
+- Type: `app`
+- Orientation: `square`
+- Year: (not set)
+- Live URL: https://benwassa.github.io/pantheon/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/pantheon
+- Last verified: 2026-10-13
+- Image path: `assets/projects/pantheon.png`
+- Image alt: Pantheon - Daily Learning
+
+## Core Description
+- Card description: One theme a day, six facets, each hidden until you tap it.
+- Portfolio summary: A personal daily-learning PWA: one theme a day, opened as six sourced facets (Person, Picture, Poem, Principle, Passage, Parallel) that are chosen to rhyme.
+- Full description: Pantheon is an antidote to shallow feeds, built for one reader. Each day opens a single theme (Day 1 is Hubris) as six tiles, each carrying a fixed facet type and one evocative word, and each hidden until tapped. The six are chosen to rhyme: a Person, a Picture, a Poem, a Principle, a Passage and a Parallel. A new theme unlocks once a day and the sequence waits if you miss one. Content ships as sourced JSON, held to an editorial charter by a validation gate that runs in CI, with images that are public domain or Creative Commons. A private Studio layer is used to judge AI-drafted days before they ship. It is a beta: one day is published and more are in draft.
+
+## Technical Profile
+- Model: Local-First Content PWA
+- Stack: `React`, `TypeScript`, `Tailwind`, `Zustand`
+- Key features:
+- Six-Facet Daily Structure
+- Content Validation Gate
+- Offline Reading
+
+## Theme
+- Primary: `#c9a35b`
+- Secondary: `#2a2824`
+- Tertiary: `#15151a`
+- Background: `#0a0a0c`
 
 
 
@@ -630,10 +1233,10 @@ Source file: `poseidon.md`
 
 # Poseidon - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `poseidon`
 
 ## Snapshot
@@ -675,15 +1278,113 @@ Project slug: `poseidon`
 
 ---
 
+## Psi - Portfolio Project Record
+Source file: `psi.md`
+
+# Psi - Portfolio Project Record
+
+Generated: 2026-10-14T01:40:20.001Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
+Project slug: `psi`
+
+## Snapshot
+- Title: Psi
+- Tier: `featured`
+- Tag: Audio Series Companion
+- Status: `draft`
+- Type: `psychology`
+- Orientation: `square`
+- Year: (not set)
+- Live URL: https://github.com/BenWassa/Psi
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/Psi
+- Last verified: (not verified)
+- Image path: `assets/projects/psi.png`
+- Image alt: Psi - The Mind Unfolding
+
+## Core Description
+- Card description: An audio series on the history of psychology, with a companion site you can walk by era or by idea.
+- Portfolio summary: The production repo for "The Mind Unfolding", an audio series on the history of psychology, and its companion site.
+- Full description: Psi is the working repository for The Mind Unfolding, a planned audio series that tells the history of psychology as a human story, starting with Mesopotamian dream omens, Egyptian ideas of the soul, and Orphic and Platonic psychology. The repo holds the research, a drafted script for Episode 1, and a small static companion site that shows the same four episodes two ways: along a timeline of eras, or grouped by recurring themes such as Dream Realms and Soul Architecture. No audio has been recorded yet. The site is not deployed, so this card links to the repository, where it can be served locally from the docs folder.
+
+## Technical Profile
+- Model: Static Companion Site
+- Stack: `HTML`, `CSS`, `JavaScript`
+- Key features:
+- Timeline and Theme Modes
+- Data-Driven Episodes
+- Episode 1 Script Draft
+
+## Theme
+- Primary: `#e8c97a`
+- Secondary: `#3a4a5c`
+- Tertiary: `#14202c`
+- Background: `#0b141d`
+
+
+
+---
+
+## Psyche - Portfolio Project Record
+Source file: `psyche.md`
+
+# Psyche - Portfolio Project Record
+
+Generated: 2026-10-14T01:40:20.001Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
+Project slug: `psyche`
+
+## Snapshot
+- Title: Psyche
+- Tier: `index`
+- Tag: n/a
+- Status: `n/a`
+- Type: `psychology`
+- Orientation: `n/a`
+- Year: 2026
+- Live URL: https://psyche-555.web.app/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/psyche
+- Last verified: (not verified)
+- Image path: `n/a`
+- Image alt: n/a
+
+## Core Description
+- Card description: An evidence-tiered psychology encyclopedia across six domains; still in progress.
+- Portfolio summary: (not set)
+- Full description: (not set)
+
+## Technical Profile
+- Model: N/A
+- Stack: N/A
+- Key features:
+- N/A
+
+## Theme
+- Primary: `N/A`
+- Secondary: `N/A`
+- Tertiary: `N/A`
+- Background: `N/A`
+
+
+
+---
+
 ## Punchbuggy - Portfolio Project Record
 Source file: `punchbuggy.md`
 
 # Punchbuggy - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `punchbuggy`
 
 ## Snapshot
@@ -730,10 +1431,10 @@ Source file: `pushup-challenge.md`
 
 # PushUp Challenge - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `pushup-challenge`
 
 ## Snapshot
@@ -779,10 +1480,10 @@ Source file: `sankofa.md`
 
 # Sankofa - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `sankofa`
 
 ## Snapshot
@@ -829,10 +1530,10 @@ Source file: `skywalker.md`
 
 # Skywalker - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `skywalker`
 
 ## Snapshot
@@ -879,10 +1580,10 @@ Source file: `stark.md`
 
 # STARK - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `stark`
 
 ## Snapshot
@@ -924,15 +1625,111 @@ Project slug: `stark`
 
 ---
 
+## Static - Portfolio Project Record
+Source file: `static.md`
+
+# Static - Portfolio Project Record
+
+Generated: 2026-10-14T01:40:20.001Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
+Project slug: `static`
+
+## Snapshot
+- Title: Static
+- Tier: `index`
+- Tag: n/a
+- Status: `n/a`
+- Type: `psychology`
+- Orientation: `n/a`
+- Year: 2026
+- Live URL: https://benwassa.github.io/static/
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/static
+- Last verified: 2026-10-13
+- Image path: `n/a`
+- Image alt: n/a
+
+## Core Description
+- Card description: A mobile-first guide to the mechanics of the autistic and AuDHD nervous system.
+- Portfolio summary: (not set)
+- Full description: (not set)
+
+## Technical Profile
+- Model: N/A
+- Stack: N/A
+- Key features:
+- N/A
+
+## Theme
+- Primary: `N/A`
+- Secondary: `N/A`
+- Tertiary: `N/A`
+- Background: `N/A`
+
+
+
+---
+
+## Vox v2 - Portfolio Project Record
+Source file: `vox-v2.md`
+
+# Vox v2 - Portfolio Project Record
+
+Generated: 2026-10-14T01:40:20.001Z
+Source: `src/js/project-descriptions.ts`
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
+Project slug: `vox-v2`
+
+## Snapshot
+- Title: Vox v2
+- Tier: `index`
+- Tag: n/a
+- Status: `n/a`
+- Type: `app`
+- Orientation: `n/a`
+- Year: 2026
+- Live URL: (not set)
+- Demo URL: (not set)
+- Demo mode: `none`
+- Repo URL: https://github.com/BenWassa/vox-v2
+- Last verified: (not verified)
+- Image path: `n/a`
+- Image alt: n/a
+
+## Core Description
+- Card description: A Mandarin study tool built around a daily timed block of listening and tone drills.
+- Portfolio summary: (not set)
+- Full description: (not set)
+
+## Technical Profile
+- Model: N/A
+- Stack: N/A
+- Key features:
+- N/A
+
+## Theme
+- Primary: `N/A`
+- Secondary: `N/A`
+- Tertiary: `N/A`
+- Background: `N/A`
+
+
+
+---
+
 ## Vox - Portfolio Project Record
 Source file: `vox.md`
 
 # Vox - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `vox`
 
 ## Snapshot
@@ -979,10 +1776,10 @@ Source file: `wrestle.md`
 
 # Wrestle - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
 Project slug: `wrestle`
 
 ## Snapshot
