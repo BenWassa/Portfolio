@@ -1,9 +1,9 @@
 # Argus - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:56:08.476Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: chore/reverify-cards
+Commit: 4346c0c
 Project slug: `argus`
 
 ## Snapshot
@@ -18,7 +18,7 @@ Project slug: `argus`
 - Demo URL: https://benwassa.github.io/argus/
 - Demo mode: `playbook`
 - Repo URL: https://github.com/BenWassa/argus
-- Last verified: 2026-10-02
+- Last verified: 2026-10-13
 - Image path: `assets/projects/argus.png`
 - Image alt: Argus - Learning App
 
