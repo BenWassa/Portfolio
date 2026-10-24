@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
-import LightPillar from './components/LightPillar';
+const LightPillar = React.lazy(() => import('./components/LightPillar'));
 
 /* Custom CSS for directional animations */
 const styleTag = `
@@ -80,18 +80,20 @@ const Onboarding: React.FC<OnboardingProps> = ({ onExitComplete }) => {
 
       <div className="absolute inset-0 z-0 pointer-events-none overflow-visible">
         <div className="relative w-screen h-screen overflow-visible">
-          <LightPillar
-            intensity={1}
-            rotationSpeed={0.3}
-            glowAmount={0.002}
-            pillarWidth={3}
-            pillarHeight={0.4}
-            noiseIntensity={0.25}
-            pillarRotation={25}
-            interactive={false}
-            mixBlendMode="screen"
-            quality="high"
-          />
+          <React.Suspense fallback={null}>
+            <LightPillar
+              intensity={1}
+              rotationSpeed={0.3}
+              glowAmount={0.002}
+              pillarWidth={3}
+              pillarHeight={0.4}
+              noiseIntensity={0.25}
+              pillarRotation={25}
+              interactive={false}
+              mixBlendMode="screen"
+              quality="high"
+            />
+          </React.Suspense>
         </div>
       </div>
 
