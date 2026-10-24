@@ -295,3 +295,22 @@ manually dispatched run after merge.
 First live run (2026-10-24): 37/37 links return 200. Stale: Argus, Flag, Hermes. Nine cards
 have no `lastVerified` (Iris, Iroh, Morpheus, Narrative, Psi, Psyche, STARK, Vox, Vox v2).
 The first scheduled run will therefore open the tracking issue, which is the intended signal.
+
+### Source-repo demo review, 2026-10-24
+
+Independent review of the three unmerged source-repo PRs. Nothing was merged or published.
+
+- **stark-v1 #4**: ready to merge. Build and tests pass; loads cleanly at 390px and 1440px.
+  Not playbook-grade: IndexedDB mock data persists across refresh. The live site is still the
+  old bundle, so the fix is not deployed. This release already points the card at `/stark-v1/`
+  (the previous `/STARK/` URL returns 404).
+- **PushUp #1**: ready to merge after one fix pushed to the PR head (`a44ca30`): seeded logs
+  were stamped 12:00 local, so before about 11:00 the "today" entry was rejected as future and
+  the demo opened at 0. Seeds are now capped at the reset time, with a regression test. All
+  playbook items pass. Live is still the old bundle; after merging, confirm 385/2000 and then
+  archive `template-pushup` (#16).
+- **FamilyPlan #1**: blocked, review only. No credentials in HEAD or any of 78 commits; the
+  built app makes no external requests. Remaining: hardcoded fallback cost figures
+  (`strategyDerivations.js`) that match real source values and are not covered by the
+  verifier; real data remains in the private repo's tree and history; `npm run assemble`
+  defaults to the real data. The human approval gate in #20 and #28 stands; Pages is still off.
