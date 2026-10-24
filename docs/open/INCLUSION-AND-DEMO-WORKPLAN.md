@@ -159,6 +159,14 @@ WS6 Staleness CI #14  needs #13 (`repoUrl`, `lastVerified`)
 Issues #9 (re-verify displayed cards), #10 (Narrative collision) and #16 (template retirement)
 fold into WS1/WS2 as noted on each.
 
+### PR quality gate (#46) — lane:standard
+
+`.github/workflows/pr-checks.yml`, single job `pr-quality` (lint, format, `tsc --noEmit`,
+`validate:data`, build, `smoke`); no deploy, no secrets. See README "Pull request checks".
+Left for others: require `pr-quality` in branch rules after its first green run (#6, human);
+add `context:check` once `llm-project-contexts/` duplicates are cleaned up; mobile/desktop
+layout check needs a headless-browser dependency (follow-up); external-link scan is #14.
+
 ### Brag videos (WS4) — deferred
 
 **Deferred by Ben, 2026-10-02: leave for later.** No agent work. Notes kept for when it resumes.
