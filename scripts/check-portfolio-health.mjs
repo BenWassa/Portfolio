@@ -2,7 +2,7 @@
 /**
  * Portfolio health check (issue #14).
  *
- *   npm run health [-- --threshold-days=30 --summary=health.md --skip-links --skip-stale]
+ *   npm run health [-- --threshold-days=30 --summary=health.md --skip-links --skip-stale --strict]
  *
  * Reads src/js/project-descriptions.ts via the generator's own parser and reports:
  *   1. LINKS (hard failure): every `href` and `demoUrl` must end at HTTP 200 after redirects.
@@ -12,8 +12,10 @@
  *      `demoUrl`/`href`) trails the real repo (`repoUrl`) by more than the threshold. This is the
  *      documented exception in docs/open/INCLUSION-AND-DEMO-WORKPLAN.md (Narrative, Morpheus).
  *
- * Exit code is 1 only when a link is broken (or the data cannot be parsed). Everything else is a
- * warning. A markdown summary is written to $GITHUB_STEP_SUMMARY (or --summary=<file>).
+ * Exit code is 1 when a link is broken (or the data cannot be parsed). Stale cards are warnings,
+ * unless --strict is passed: then they exit 2 so a scheduled run goes red and its tracking issue
+ * is opened (see .github/workflows/portfolio-health.yml). Template lag (the approved Narrative and
+ * Morpheus exceptions) and cards with no `lastVerified` stay warnings in both modes. A markdown summary is written to $GITHUB_STEP_SUMMARY (or --summary=<file>).
  *
  * `repoUrl` is never fetched as a web page (it is not rendered on the site). Repos are looked up
  * through the GitHub API; a 404 means private or missing, which is reported as "not checkable",
@@ -447,7 +449,8 @@ const main = async () => {
       );
   }
 
-  process.exit(linkResults.some((r) => !r.ok) ? 1 : 0);
+  if (linkResults.some((r) => !r.ok)) process.exit(1);
+  process.exit(flag('strict') && report.stale.stale.length > 0 ? 2 : 0);
 };
 
 main().catch((err) => {

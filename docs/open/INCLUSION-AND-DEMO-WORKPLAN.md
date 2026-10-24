@@ -271,3 +271,27 @@ liebestraum rotation remains blocked by GCP IAM permissions. STARK refers to the
 migrated `stark-v1` product; the new `stark` app is deferred until a demo is ready.
 Vox remains a sample CSV-table showcase, with corrected claims. Narrative/Morpheus
 exceptions are now documented in CLAUDE.md and DEMO-MODE-METHODS.md.
+
+## Release 1 candidate, 2026-10-24
+
+Branch `release/portfolio-refresh-1` is a media-free release candidate: it merges #37, #38,
+#39, #40, #42 and #43, and applies #44's resolution commits (approved copy fixes, demo
+exceptions, link labels) without any `brag/` content. Result: 26 featured cards and 10 index
+entries (3 narrative + 4 psychology + 19 app featured; 3 + 5 + 2 index).
+
+Deliberately left out, each with its own decision:
+
+- **#41 icon corner radius** (22.37% CSS rule): visual approval pending, issue #35.
+- **Launch videos** (#36, #45, `brag/`): ~273 MB of permanent history; see PR #52.
+- **Source-repo demo fixes** (stark-v1 #4, PushUp #1, FamilyPlan #1): separate repositories.
+
+Change to #40's health workflow: the scheduled run now uses `--strict`. A stale card turns the
+run red and opens or updates one tracking issue ("Portfolio health: drift detected", label
+`portfolio-health`); the issue closes on the next clean run. Template lag (the approved
+Narrative/Morpheus exceptions) and cards with no `lastVerified` remain warnings. This closes
+the gap against #14's "don't just log silently" criterion; #14 still needs a successful
+manually dispatched run after merge.
+
+First live run (2026-10-24): 37/37 links return 200. Stale: Argus, Flag, Hermes. Nine cards
+have no `lastVerified` (Iris, Iroh, Morpheus, Narrative, Psi, Psyche, STARK, Vox, Vox v2).
+The first scheduled run will therefore open the tracking issue, which is the intended signal.
