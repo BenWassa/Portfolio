@@ -14,6 +14,7 @@
     "lint:fix": "eslint src/ --fix",
     "format": "prettier --write \"src/**/*.{js,json,css}\"",
     "format:check": "prettier --check \"src/**/*.{js,json,css}\"",
+    "health": "node scripts/check-portfolio-health.mjs",
     "context:check": "node scripts/check-portfolio-contexts.mjs",
     "context:check:all": "node scripts/check-portfolio-contexts.mjs --require-all",
     "context:rollout:dry": "node scripts/rollout-llm-contexts.mjs --pass first_pass --clone-missing --dry-run",

@@ -1,0 +1,34 @@
+name: Portfolio health
+
+# Network-bound check (link health + repo staleness), so it is deliberately NOT run on push or
+# pull_request. It never builds, uploads or deploys Pages; a failure only turns this run red.
+on:
+  schedule:
+    - cron: '17 6 * * 1' # Mondays 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-health
+  cancel-in-progress: true
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # No `npm ci`: the script uses only Node built-ins.
+      - name: Check links and staleness
+        # Exits non-zero only on a broken href/demoUrl. Staleness is reported as warnings and
+        # written to the job summary. The default token can only see this repo, so private
+        # product repos are reported as "not checkable" unless PORTFOLIO_HEALTH_TOKEN (a
+        # read-only PAT) is set as a repository secret.
+        env:
+          GITHUB_TOKEN: ${{ secrets.PORTFOLIO_HEALTH_TOKEN || github.token }}
+        run: npm run health
