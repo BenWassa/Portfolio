@@ -1,10 +1,10 @@
 # Portfolio Project Docs Index
 
-Generated: 2026-10-14T01:36:03.121Z
+Generated: 2026-10-14T01:40:20.001Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/index-tier
-Commit: 4346c0c
-Total projects: 29
+Branch: content/link-cards-batch-2
+Commit: 28ba5f1
+Total projects: 36
 
 This folder is auto-generated on build. Edit source project data in `src/js/project-descriptions.ts`.
 
@@ -29,6 +29,13 @@ This folder is auto-generated on build. Edit source project data in `src/js/proj
 | Flag | `featured` | `active` | `app` | `live` | 2026-10-02 | https://benwassa.github.io/flag/ | [flag.md](flag.md) |
 | Chef's Journal | `featured` | `active` | `app` | `playbook` | 2026-10-02 | https://benwassa.github.io/chefs-journal/ | [chef-s-journal.md](chef-s-journal.md) |
 | Ecological Constellation | `featured` | `active` | `app` | `none` | 2026-10-02 | https://benwassa.github.io/ecological-constellation/ | [ecological-constellation.md](ecological-constellation.md) |
+| Hermes | `featured` | `active` | `app` | `none` | 2026-10-13 | https://benwassa.github.io/Hermes/ | [hermes.md](hermes.md) |
+| Ares | `featured` | `active` | `psychology` | `none` | 2026-10-13 | https://benwassa.github.io/Ares/ | [ares.md](ares.md) |
+| Macht | `featured` | `prototype` | `app` | `none` | 2026-10-13 | https://benwassa.github.io/macht/ | [macht.md](macht.md) |
+| Pantheon | `featured` | `prototype` | `app` | `none` | 2026-10-13 | https://benwassa.github.io/pantheon/ | [pantheon.md](pantheon.md) |
+| LayerUp | `featured` | `prototype` | `app` | `none` | 2026-10-13 | https://layer-up-d17b0.web.app/ | [layerup.md](layerup.md) |
+| Psi | `featured` | `draft` | `psychology` | `none` | — | https://github.com/BenWassa/Psi | [psi.md](psi.md) |
+| Iris | `featured` | `prototype` | `psychology` | `none` | — | https://github.com/BenWassa/Iris | [iris.md](iris.md) |
 | Demeter | `index` | `n/a` | `app` | `none` | 2026-10-13 | https://benwassa.github.io/demeter/ | [demeter.md](demeter.md) |
 | Vox v2 | `index` | `n/a` | `app` | `none` | — | (not set) | [vox-v2.md](vox-v2.md) |
 | Arc | `index` | `n/a` | `narrative` | `none` | 2026-10-13 | https://benwassa.github.io/arc/ | [arc.md](arc.md) |
