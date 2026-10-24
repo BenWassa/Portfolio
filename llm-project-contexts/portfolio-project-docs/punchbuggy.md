@@ -1,9 +1,9 @@
 # Punchbuggy - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `punchbuggy`
 
 ## Snapshot

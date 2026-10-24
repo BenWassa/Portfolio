@@ -1,6 +1,6 @@
 # Portfolio Project Records (Compiled)
 
-Generated: 2026-10-03T01:34:52.021Z
+Generated: 2026-10-14T01:59:13.507Z
 Source folder: `llm-project-contexts/portfolio-project-docs/`
 Total project docs: 20
 
@@ -33,10 +33,10 @@ Source file: `agoge.md`
 
 # Agoge - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `agoge`
 
 ## Snapshot
@@ -83,10 +83,10 @@ Source file: `argus.md`
 
 # Argus - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `argus`
 
 ## Snapshot
@@ -133,10 +133,10 @@ Source file: `chef-s-journal.md`
 
 # Chef's Journal - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `chef-s-journal`
 
 ## Snapshot
@@ -183,10 +183,10 @@ Source file: `drop.md`
 
 # drop - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `drop`
 
 ## Snapshot
@@ -233,10 +233,10 @@ Source file: `dukkha.md`
 
 # Dukkha - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `dukkha`
 
 ## Snapshot
@@ -282,10 +282,10 @@ Source file: `ecological-constellation.md`
 
 # Ecological Constellation - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `ecological-constellation`
 
 ## Snapshot
@@ -331,10 +331,10 @@ Source file: `flag.md`
 
 # Flag - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `flag`
 
 ## Snapshot
@@ -381,10 +381,10 @@ Source file: `haus.md`
 
 # HAUS - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `haus`
 
 ## Snapshot
@@ -431,10 +431,10 @@ Source file: `hearth.md`
 
 # Hearth - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `hearth`
 
 ## Snapshot
@@ -481,10 +481,10 @@ Source file: `morpheus.md`
 
 # Morpheus - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `morpheus`
 
 ## Snapshot
@@ -531,10 +531,10 @@ Source file: `narrative.md`
 
 # Narrative - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `narrative`
 
 ## Snapshot
@@ -581,10 +581,10 @@ Source file: `orpheus.md`
 
 # Orpheus - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `orpheus`
 
 ## Snapshot
@@ -630,10 +630,10 @@ Source file: `poseidon.md`
 
 # Poseidon - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `poseidon`
 
 ## Snapshot
@@ -680,10 +680,10 @@ Source file: `punchbuggy.md`
 
 # Punchbuggy - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `punchbuggy`
 
 ## Snapshot
@@ -730,10 +730,10 @@ Source file: `pushup-challenge.md`
 
 # PushUp Challenge - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `pushup-challenge`
 
 ## Snapshot
@@ -779,10 +779,10 @@ Source file: `sankofa.md`
 
 # Sankofa - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `sankofa`
 
 ## Snapshot
@@ -829,10 +829,10 @@ Source file: `skywalker.md`
 
 # Skywalker - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `skywalker`
 
 ## Snapshot
@@ -879,10 +879,10 @@ Source file: `stark.md`
 
 # STARK - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `stark`
 
 ## Snapshot
@@ -929,10 +929,10 @@ Source file: `vox.md`
 
 # Vox - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `vox`
 
 ## Snapshot
@@ -979,10 +979,10 @@ Source file: `wrestle.md`
 
 # Wrestle - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-14T01:59:13.330Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: content/brag-videos
+Commit: 936dbc2
 Project slug: `wrestle`
 
 ## Snapshot
