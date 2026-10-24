@@ -3,7 +3,7 @@ status: open
 lane: opus
 issues: [8, 9, 10, 12, 13, 14, 16, 17, 18, 21, 22, 23, 24, 25, 26, 27, 28, 31]
 owner: Ben
-updated: 2026-10-13
+updated: 2026-10-24
 ---
 
 # Inclusion + demo workplan
@@ -253,6 +253,32 @@ the classic Hyperframes workflow. `/brag --tone "…"` steers style; voiceover i
   `?mode=demo`. Hermes is a static public page so it is safe as-is.
 - Each run is inside that project's repo; add `brag-output/` to its `.gitignore`, and keep the
   rendered mp4 outside the repo unless Ben wants it committed.
+
+## Decision log
+
+### 2026-10-24: Poseidon is off the portfolio for now (Ben)
+
+- **Decision:** Poseidon's card and long-form description are removed from
+  `src/js/project-descriptions.ts`. It is not shown anywhere on the site, as a card or in the
+  index, until Ben says otherwise. No reason was recorded.
+- **This overrides** the `demo` ruling for `poseidon` in `demo-rulings.json` (an Almanac
+  snapshot, left unedited) and the batch 1 card above. The ruling in Almanac should be changed
+  to match if the pause is meant to last. `skip` would be wrong if this is temporary.
+- **Effect:** featured goes 20 → 19, Systems 15 → 14.
+- **Kept, so it can come back as a revert:** `src/public/assets/projects/poseidon.png` (the
+  batch 1 screenshot crop; it was not swapped to the app icon), the `poseidon/demo/` Pages
+  build in the `poseidon` repo, and the card as it stood in commit history. `poseidon.md` was
+  dropped from the generated project docs because the generator does not prune stale files.
+- **Re-adding it** needs a decision on the card image first (the screenshot crop or the app
+  icon from `poseidon/tools/brand/source/`, a 320px master).
+
+### 2026-10-24: App cards use the app's own icon, not a UI screenshot (Ben)
+
+Argus, HAUS and Chef's Journal now use the icon each repo ships (`argus/icon_original.png`,
+`HAUS/public/HAUS.png`, `chefs-journal/public/icon.png`), replacing the batch 1 screenshot
+crops. This is the option `FOUNDATION-NOTES.md` §5 left open. Narrative, Morpheus and
+Ecological already used their repo icons. Vox has no icon file in `Vox` or `vox-v2`, so its
+card still shows the "PROJECT VOX" art.
 
 ## 5. Definition of done (this workplan)
 

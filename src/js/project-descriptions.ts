@@ -284,28 +284,6 @@ export const projectsData: Project[] = [
     },
   },
   {
-    title: 'Poseidon',
-    tag: 'Dive Journal',
-    desc: 'A dive journal that turns every logged dive into a personal marine atlas.',
-    href: 'https://benwassa.github.io/poseidon/',
-    demoUrl: 'https://benwassa.github.io/poseidon/demo/',
-    img: 'assets/projects/poseidon.png',
-    alt: 'Poseidon - Dive Journal',
-    theme: { primary: '#22a3c9', secondary: '#0b5e7e', tertiary: '#083f54', bg: '#04212e' },
-    status: 'active',
-    type: 'app',
-    orientation: 'square',
-    tier: 'featured',
-    repoUrl: 'https://github.com/BenWassa/poseidon',
-    demoMode: 'playbook',
-    lastVerified: '2026-10-02',
-    techSpecs: {
-      model: 'Offline-First PWA',
-      stack: ['React', 'TypeScript', 'Tailwind', 'Firebase'],
-      features: ['Illustrated Creature Catalogue', 'Offline Persistence', 'Demo Mode'],
-    },
-  },
-  {
     title: 'Argus',
     tag: 'Spaced Repetition',
     desc: 'Spaced-repetition learning for finite skills you can actually finish.',
@@ -756,12 +734,6 @@ export const projectDescriptions: ProjectDescriptions = {
     portfolio:
       'An installable dream archive: paste AI-structured JSON of a dream, attach scene images, and browse the entries as a card gallery.',
     full: 'Project Morpheus is a private dream archive, with part of the workflow intentionally happening outside the app. A dream is structured into JSON with a bundled AI prompt, pasted in alongside scene images from your preferred image tool, and joins a glassmorphic card gallery. The real app is an installable PWA on Firestore and Storage (v1.7.6, July 2026), behind Google sign-in. The embedded demo is a sample archive on an older template snapshot: it shows the gallery and reading experience, not the current app.',
-  },
-
-  poseidon: {
-    portfolio:
-      'A mobile-first dive journal PWA: log each dive, pick the creatures you met from an illustrated marine catalogue, and build a personal collection and Atlas.',
-    full: 'Poseidon is a personal atlas of an underwater life. Logging a dive ends with the part that matters most: choosing the creatures you met from an illustrated marine catalogue. Every dive feeds a journal, a growing creature collection and an Atlas of places dived, persisted locally and exportable as JSON. The real app sits behind Google sign-in; the embedded demo runs on sample dives held in memory and resets on reload.',
   },
 
   argus: {
