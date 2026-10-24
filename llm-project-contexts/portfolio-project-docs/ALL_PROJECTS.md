@@ -1,8 +1,8 @@
 # Portfolio Project Records (Compiled)
 
-Generated: 2026-10-14T02:16:26.242Z
+Generated: 2026-10-24T13:37:33.686Z
 Source folder: `llm-project-contexts/portfolio-project-docs/`
-Total project docs: 36
+Total project docs: 35
 
 ## Included Files
 - [agoge.md](./agoge.md)
@@ -29,7 +29,6 @@ Total project docs: 36
 - [orpheus.md](./orpheus.md)
 - [padme.md](./padme.md)
 - [pantheon.md](./pantheon.md)
-- [poseidon.md](./poseidon.md)
 - [psi.md](./psi.md)
 - [psyche.md](./psyche.md)
 - [punchbuggy.md](./punchbuggy.md)
@@ -49,10 +48,10 @@ Source file: `agoge.md`
 
 # Agoge - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `agoge`
 
 ## Snapshot
@@ -99,10 +98,10 @@ Source file: `arc.md`
 
 # Arc - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `arc`
 
 ## Snapshot
@@ -147,10 +146,10 @@ Source file: `ares.md`
 
 # Ares - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `ares`
 
 ## Snapshot
@@ -197,10 +196,10 @@ Source file: `argus.md`
 
 # Argus - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `argus`
 
 ## Snapshot
@@ -247,10 +246,10 @@ Source file: `chef-s-journal.md`
 
 # Chef's Journal - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `chef-s-journal`
 
 ## Snapshot
@@ -297,10 +296,10 @@ Source file: `demeter.md`
 
 # Demeter - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `demeter`
 
 ## Snapshot
@@ -345,10 +344,10 @@ Source file: `drop.md`
 
 # drop - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `drop`
 
 ## Snapshot
@@ -395,10 +394,10 @@ Source file: `dukkha.md`
 
 # Dukkha - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `dukkha`
 
 ## Snapshot
@@ -444,10 +443,10 @@ Source file: `ecological-constellation.md`
 
 # Ecological Constellation - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `ecological-constellation`
 
 ## Snapshot
@@ -493,10 +492,10 @@ Source file: `faust.md`
 
 # Faust - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `faust`
 
 ## Snapshot
@@ -541,10 +540,10 @@ Source file: `flag.md`
 
 # Flag - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `flag`
 
 ## Snapshot
@@ -591,10 +590,10 @@ Source file: `great-decoupling.md`
 
 # Great Decoupling - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `great-decoupling`
 
 ## Snapshot
@@ -639,10 +638,10 @@ Source file: `haus.md`
 
 # HAUS - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `haus`
 
 ## Snapshot
@@ -689,10 +688,10 @@ Source file: `hearth.md`
 
 # Hearth - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `hearth`
 
 ## Snapshot
@@ -739,10 +738,10 @@ Source file: `hermes.md`
 
 # Hermes - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `hermes`
 
 ## Snapshot
@@ -789,10 +788,10 @@ Source file: `iris.md`
 
 # Iris - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `iris`
 
 ## Snapshot
@@ -839,10 +838,10 @@ Source file: `iroh.md`
 
 # Iroh - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `iroh`
 
 ## Snapshot
@@ -887,10 +886,10 @@ Source file: `layerup.md`
 
 # LayerUp - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `layerup`
 
 ## Snapshot
@@ -937,10 +936,10 @@ Source file: `macht.md`
 
 # Macht - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `macht`
 
 ## Snapshot
@@ -987,10 +986,10 @@ Source file: `morpheus.md`
 
 # Morpheus - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `morpheus`
 
 ## Snapshot
@@ -1037,10 +1036,10 @@ Source file: `narrative.md`
 
 # Narrative - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `narrative`
 
 ## Snapshot
@@ -1087,10 +1086,10 @@ Source file: `orpheus.md`
 
 # Orpheus - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `orpheus`
 
 ## Snapshot
@@ -1135,10 +1134,10 @@ Source file: `padme.md`
 
 # Padme - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `padme`
 
 ## Snapshot
@@ -1183,10 +1182,10 @@ Source file: `pantheon.md`
 
 # Pantheon - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `pantheon`
 
 ## Snapshot
@@ -1228,65 +1227,15 @@ Project slug: `pantheon`
 
 ---
 
-## Poseidon - Portfolio Project Record
-Source file: `poseidon.md`
-
-# Poseidon - Portfolio Project Record
-
-Generated: 2026-10-14T02:16:26.093Z
-Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
-Project slug: `poseidon`
-
-## Snapshot
-- Title: Poseidon
-- Tier: `featured`
-- Tag: Dive Journal
-- Status: `active`
-- Type: `app`
-- Orientation: `square`
-- Year: (not set)
-- Live URL: https://benwassa.github.io/poseidon/
-- Demo URL: https://benwassa.github.io/poseidon/demo/
-- Demo mode: `playbook`
-- Repo URL: https://github.com/BenWassa/poseidon
-- Last verified: 2026-10-02
-- Image path: `assets/projects/poseidon.png`
-- Image alt: Poseidon - Dive Journal
-
-## Core Description
-- Card description: A dive journal that turns every logged dive into a personal marine atlas.
-- Portfolio summary: A mobile-first dive journal PWA: log each dive, pick the creatures you met from an illustrated marine catalogue, and build a personal collection and Atlas.
-- Full description: Poseidon is a personal atlas of an underwater life. Logging a dive ends with the part that matters most: choosing the creatures you met from an illustrated marine catalogue. Every dive feeds a journal, a growing creature collection and an Atlas of places dived, persisted locally and exportable as JSON. The real app sits behind Google sign-in; the embedded demo runs on sample dives held in memory and resets on reload.
-
-## Technical Profile
-- Model: Offline-First PWA
-- Stack: `React`, `TypeScript`, `Tailwind`, `Firebase`
-- Key features:
-- Illustrated Creature Catalogue
-- Offline Persistence
-- Demo Mode
-
-## Theme
-- Primary: `#22a3c9`
-- Secondary: `#0b5e7e`
-- Tertiary: `#083f54`
-- Background: `#04212e`
-
-
-
----
-
 ## Psi - Portfolio Project Record
 Source file: `psi.md`
 
 # Psi - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `psi`
 
 ## Snapshot
@@ -1333,10 +1282,10 @@ Source file: `psyche.md`
 
 # Psyche - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `psyche`
 
 ## Snapshot
@@ -1381,10 +1330,10 @@ Source file: `punchbuggy.md`
 
 # Punchbuggy - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `punchbuggy`
 
 ## Snapshot
@@ -1431,10 +1380,10 @@ Source file: `pushup-challenge.md`
 
 # PushUp Challenge - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `pushup-challenge`
 
 ## Snapshot
@@ -1480,10 +1429,10 @@ Source file: `sankofa.md`
 
 # Sankofa - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `sankofa`
 
 ## Snapshot
@@ -1530,10 +1479,10 @@ Source file: `skywalker.md`
 
 # Skywalker - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `skywalker`
 
 ## Snapshot
@@ -1580,10 +1529,10 @@ Source file: `stark.md`
 
 # STARK - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `stark`
 
 ## Snapshot
@@ -1630,10 +1579,10 @@ Source file: `static.md`
 
 # Static - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `static`
 
 ## Snapshot
@@ -1678,10 +1627,10 @@ Source file: `vox-v2.md`
 
 # Vox v2 - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `vox-v2`
 
 ## Snapshot
@@ -1726,10 +1675,10 @@ Source file: `vox.md`
 
 # Vox - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `vox`
 
 ## Snapshot
@@ -1776,10 +1725,10 @@ Source file: `wrestle.md`
 
 # Wrestle - Portfolio Project Record
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `wrestle`
 
 ## Snapshot

@@ -302,8 +302,10 @@ exceptions are now documented in CLAUDE.md and DEMO-MODE-METHODS.md.
 
 Branch `release/portfolio-refresh-1` is a media-free release candidate: it merges #37, #38,
 #39, #40, #42 and #43, and applies #44's resolution commits (approved copy fixes, demo
-exceptions, link labels) without any `brag/` content. Result: 26 featured cards and 10 index
-entries in the data (3 narrative + 4 psychology + 19 app featured; 3 + 5 + 2 index).
+exceptions, link labels) without any `brag/` content. Result: 25 featured cards and 10 index
+entries in the data (3 narrative + 4 psychology + 18 app featured; 3 + 5 + 2 index). Poseidon is
+removed per the 2026-10-24 decision above; the Argus, HAUS and Chef's Journal icons come from
+the `content/project-app-icons` work.
 
 **Index tier is hidden in the UI (Ben, 2026-10-24).** `Pillar` no longer renders `ProjectIndex`, so
 no index section appears on the site. The 10 `tier: 'index'` entries stay in

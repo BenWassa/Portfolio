@@ -1,10 +1,10 @@
 # Portfolio Project Docs Index
 
-Generated: 2026-10-14T02:16:26.093Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/refresh-integration
-Commit: 10448e2
-Total projects: 36
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
+Total projects: 35
 
 This folder is auto-generated on build. Edit source project data in `src/js/project-descriptions.ts`.
 
@@ -23,7 +23,6 @@ This folder is auto-generated on build. Edit source project data in `src/js/proj
 | Wrestle | `featured` | `active` | `app` | `playbook` | 2026-10-02 | https://benwassa.github.io/wrestlePWA/ | [wrestle.md](wrestle.md) |
 | Narrative | `featured` | `active` | `app` | `template` | — | https://benwassa.github.io/Narrative/ | [narrative.md](narrative.md) |
 | Morpheus | `featured` | `active` | `app` | `template` | — | https://benwassa.github.io/template-morpheus/ | [morpheus.md](morpheus.md) |
-| Poseidon | `featured` | `active` | `app` | `playbook` | 2026-10-02 | https://benwassa.github.io/poseidon/ | [poseidon.md](poseidon.md) |
 | Argus | `featured` | `active` | `app` | `playbook` | 2026-10-13 | https://benwassa.github.io/argus/ | [argus.md](argus.md) |
 | HAUS | `featured` | `active` | `app` | `playbook` | 2026-10-02 | https://benwassa.github.io/HAUS/ | [haus.md](haus.md) |
 | Flag | `featured` | `active` | `app` | `live` | 2026-10-02 | https://benwassa.github.io/flag/ | [flag.md](flag.md) |
