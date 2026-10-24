@@ -1,7 +1,6 @@
 import React from 'react';
-import type { FeaturedProject, IndexProject, ProjectStatus } from '../types';
+import type { FeaturedProject, ProjectStatus } from '../types';
 import { ProjectCard } from './ProjectCard';
-import { ProjectIndex } from './ProjectIndex';
 
 interface PillarProps {
   id: string;
@@ -16,7 +15,6 @@ interface PillarProps {
   headingClassName?: string;
   className?: string;
   projects: FeaturedProject[];
-  indexProjects?: IndexProject[];
   isActive: boolean;
   isInactive: boolean;
   onActivate: (id: string) => void;
@@ -49,7 +47,6 @@ export const Pillar: React.FC<PillarProps> = ({
   headingClassName,
   className,
   projects,
-  indexProjects = [],
   isActive,
   isInactive,
   onActivate,
@@ -139,8 +136,6 @@ export const Pillar: React.FC<PillarProps> = ({
                   </React.Fragment>
                 ))}
               </div>
-
-              <ProjectIndex pillarId={id} projects={indexProjects} accentColor={baseColor} />
             </div>
           </div>
         </div>

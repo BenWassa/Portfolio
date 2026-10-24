@@ -277,7 +277,13 @@ exceptions are now documented in CLAUDE.md and DEMO-MODE-METHODS.md.
 Branch `release/portfolio-refresh-1` is a media-free release candidate: it merges #37, #38,
 #39, #40, #42 and #43, and applies #44's resolution commits (approved copy fixes, demo
 exceptions, link labels) without any `brag/` content. Result: 26 featured cards and 10 index
-entries (3 narrative + 4 psychology + 19 app featured; 3 + 5 + 2 index).
+entries in the data (3 narrative + 4 psychology + 19 app featured; 3 + 5 + 2 index).
+
+**Index tier is hidden in the UI (Ben, 2026-10-24).** `Pillar` no longer renders `ProjectIndex`, so
+no index section appears on the site. The 10 `tier: 'index'` entries stay in
+`project-descriptions.ts` (they still feed the generated project docs and the health check), and
+`ProjectIndex.tsx` is kept so the section can be switched back on by re-adding one line in
+`Pillar.tsx`. This changes the intent of #12/#26 (two-tier IA); decide whether to rescope them.
 
 Deliberately left out, each with its own decision:
 
