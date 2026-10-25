@@ -24,13 +24,12 @@ any remake; the table below is its output with a verdict grouping added.
 | Corner radius | 22.5% of icon width (230px at 1024), circular corner | ±2.5 points |
 | Icon body | edge to edge, square, no padding, no drop shadow | fills ≥97% of the canvas, within 1.5% of square |
 
-22.5% is the radius Argus already uses and sits in the middle of the existing set (Flag 20.0%,
-Ecological 21.1%, PushUp 22.4%, Argus 22.7%). It is a proposal; Ben can pick another number and
-the script's `TARGET_RADIUS` changes with it. The radius is a circular-corner equivalent
+The approved 22.5% target sits in the middle of the existing set (Flag 20.0%,
+Ecological 21.1%, PushUp 22.4%, Argus 22.7%). The approved target is encoded in the audit script as `TARGET_RADIUS`. The radius is a circular-corner equivalent
 measured from each icon's own bounds. It is accurate for comparing icons with each other, not an
 exact figure for a squircle.
 
-## Result — on the PR #67 branch
+## Result — on the PR #67 branch (all 16 square app cards)
 
 | Card | File | Canvas | Radius | Icon body | Fill | Verdict |
 |---|---|---|---|---|---|---|
@@ -48,6 +47,8 @@ exact figure for a squircle.
 | Flag | `flag.png` | 1024×1024 | 20.0% | 1024×1024 | 100% | ok |
 | Chef's Journal | `chefs-journal.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | Ecological Constellation | `ecological.png` | 1024×1024 | 21.1% | 1011×1014 | 99% | ok |
+| LayerUp | `layer-up.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
+| Psi | `psi.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 
 ## Historical diagnoses from the original audit (before corrections)
 
@@ -138,15 +139,15 @@ Update this table as icons land. "Source" is where the final 1024 square is re-c
 
 | Card | Needs | Source | Status |
 |---|---|---|---|
-| drop | re-cut to 1024 at 22.5% | `drop_rounded_full.png` | not started |
+| drop | re-cut to 1024 at 22.5% | `drop_rounded_full.png` | prepared in independent draft PR #66, pending visual approval |
 | Pantheon | re-cut to 1024 at 22.5% | `favicon.svg` without `rx` | not started |
 | Macht | re-mask at 22.5% | `logo_fullpic.png` | not started |
-| Punchbuggy | confirm art, then re-cut | `punchbuggy_old.svg` | not started |
-| PushUp Challenge | key out white or new art | `template-pushup/public/icon.png` | not started |
+| Punchbuggy | correct padding, art retained | existing portfolio app icon | prepared in draft PR #67, pending approval |
+| PushUp Challenge | correct padding, art retained | existing portfolio app icon | prepared in draft PR #67, pending approval |
 | Hermes | choose icon, then cut | undecided | needs Ben |
 | STARK, Vox, Wrestle, Narrative, HAUS | corner re-mask at 22.5%, art unchanged | the card's own PNG | done 2026-10-25 with `scripts/standardize-app-icons.mjs`; PR #56 closed |
-| Hearth, Chef's Journal, Morpheus | padding fix, then corners | none in repos | external (Ben) or PR #56 follow-up |
-| Ares, Iris | new art | none | external (Ben) |
+| Hearth, Chef's Journal, Morpheus | correct padding, art retained | existing portfolio PNGs | prepared in draft PR #67, pending approval; Hearth dark redesign excluded |
+| Ares, Iris | landscape artwork; outside square-icon scope | existing portfolio landscape art | excluded, unchanged |
 | Argus, Flag, Ecological, LayerUp, Psi | none | | ok |
 
 ### Draft PR #56: corner re-mask of five icons (another agent, 2026-10-24)
@@ -184,4 +185,4 @@ leaves the PNGs themselves wrong. Not applied.
 
 ## Done when
 
-`node scripts/audit-icon-corners.mjs` reports `ok` for every card.
+`node scripts/audit-icon-corners.mjs` reports `ok` for all **16** square app cards **on integrated `main`**, after separately approved PRs #66 and #67. The PRs both edit this document; resolve the overlap before the second merge and repeat the full audit. Visual approval is a separate gate.
