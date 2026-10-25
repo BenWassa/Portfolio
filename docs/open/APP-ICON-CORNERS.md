@@ -34,16 +34,16 @@ exact figure for a squircle.
 | Card | File | Canvas | Radius | Icon body | Fill | Verdict |
 |---|---|---|---|---|---|---|
 | drop | `drop.png` | 720×720 | 16.6% | 720×720 | 100% | remake: 720×720, not 1024×1024; radius 16.6% |
-| STARK | `STARK.png` | 1024×1024 | 9.7% | 1024×1024 | 100% | remake: radius 9.7% |
-| Vox | `Vox.png` | 1024×1024 | 9.7% | 1024×1024 | 100% | remake: radius 9.7% |
+| STARK | `STARK.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
+| Vox | `Vox.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | Punchbuggy | `punchbuggy.png` | 1024×1024 | 23.5% | 1019×972 | 95% | remake: icon fills 95% of canvas; icon body 1019×972, not square |
 | Hearth | `hearth.png` | 1024×1024 | 25.6% | 982×999 | 96% | remake: radius 25.6%; icon fills 96% of canvas; icon body 982×999, not square |
 | PushUp Challenge | `pushup.png` | 1024×1024 | 22.4% | 1012×993 | 97% | remake: icon fills 97% of canvas; icon body 1012×993, not square |
-| Wrestle | `wrestle.png` | 1024×1024 | 9.7% | 1024×1024 | 100% | remake: radius 9.7% |
-| Narrative | `narrative.png` | 1024×1024 | 9.7% | 1024×1024 | 100% | remake: radius 9.7% |
+| Wrestle | `wrestle.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
+| Narrative | `narrative.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | Morpheus | `morpheus.png` | 1024×1024 | 20.7% | 988×989 | 96% | remake: icon fills 96% of canvas |
 | Argus | `argus.png` | 1024×1024 | 22.7% | 1024×1024 | 100% | ok |
-| HAUS | `haus.png` | 1024×1024 | 9.7% | 1024×1024 | 100% | remake: radius 9.7% |
+| HAUS | `haus.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | Flag | `flag.png` | 1024×1024 | 20.0% | 1024×1024 | 100% | ok |
 | Chef's Journal | `chefs-journal.png` | 1024×1024 | 19.5% | 1004×899 | 88% | remake: radius 19.5%; icon fills 88% of canvas; icon body 1004×899, not square |
 | Ecological Constellation | `ecological.png` | 1024×1024 | 21.1% | 1011×1014 | 99% | ok |
@@ -140,7 +140,7 @@ Update this table as icons land. "Source" is where the final 1024 square is re-c
 | Punchbuggy | confirm art, then re-cut | `punchbuggy_old.svg` | not started |
 | PushUp Challenge | key out white or new art | `template-pushup/public/icon.png` | not started |
 | Hermes | choose icon, then cut | undecided | needs Ben |
-| STARK, Vox, Wrestle, Narrative, HAUS | corner re-mask at 22.5%, art unchanged | the card's own PNG | prepared in draft PR #56 (see below), not in #53 |
+| STARK, Vox, Wrestle, Narrative, HAUS | corner re-mask at 22.5%, art unchanged | the card's own PNG | done 2026-10-25 with `scripts/standardize-app-icons.mjs`; PR #56 closed |
 | Hearth, Chef's Journal, Morpheus | padding fix, then corners | none in repos | external (Ben) or PR #56 follow-up |
 | Ares, Iris | new art | none | external (Ben) |
 | Argus, Flag, Ecological, LayerUp, Psi | none | | ok |
