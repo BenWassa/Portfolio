@@ -1,15 +1,25 @@
-// Preserve drop's existing illustration; normalize only its size/corner shape.
-// Usage: node scripts/normalize-drop-icon.mjs [--write|--check]
-// Default is a dry run. Does not produce new/generated artwork.
+// Remask the native-resolution drop icon WITHOUT regenerating or upscaling art.
+// Authoritative source: BenWassa/drop, main@569205b3d090fe3c6b85d45f5159a68734b9b18c,
+// docs/icons/old/drop_rounded_full.png (1024px, blob 3ad4a6aa1d64499e584309ea420f544fd28ef224).
+// Usage: node scripts/normalize-drop-icon.mjs --source <downloaded-native.png> --write
+//        node scripts/normalize-drop-icon.mjs --check
+// No-argument invocation is informational; never changes files.
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
-const source = fileURLToPath(new URL('../src/public/assets/projects/drop.png', import.meta.url));
-const options = new Set(process.argv.slice(2));
-if ([...options].some((x) => !['--write', '--check'].includes(x)) ||
-    (options.has('--check') && options.has('--write'))) {
-  throw new Error('Usage: node scripts/normalize-drop-icon.mjs [--write|--check]');
+const destination = fileURLToPath(new URL('../src/public/assets/projects/drop.png', import.meta.url));
+const args = process.argv.slice(2);
+const sourceIndex = args.indexOf('--source');
+const source = sourceIndex >= 0 ? args[sourceIndex + 1] : null;
+const write = args.includes('--write');
+const check = args.includes('--check');
+if (args.some((arg, i) =>
+  !['--source', '--write', '--check'].includes(arg) && i !== sourceIndex + 1) ||
+    (write && (check || !source)) ||
+    (check && source) ||
+    (source && !write)) {
+  throw new Error('Usage: --source <native-1024px-png> --write | --check');
 }
 const size = 1024;
 const targetRadius = size * 0.225;
@@ -23,43 +33,36 @@ async function validate(png) {
   const alpha = (x, y) => data[(y * size + x) * 4 + 3];
   const mid = size / 2;
   for (const [x, y] of [[mid, mid], [mid, 0], [mid, size - 1], [0, mid], [size - 1, mid]]) {
-    if (alpha(x, y) !== 255) throw new Error(`Transparent or padded card edge at ${x},${y}`);
+    if (alpha(x, y) !== 255) throw new Error(`Transparent or padded edge at ${x},${y}`);
   }
   for (const [x, y] of [[0, 0], [0, size - 1], [size - 1, 0], [size - 1, size - 1]]) {
-    if (alpha(x, y) !== 0) throw new Error(`Corner must be fully transparent at ${x},${y}`);
+    if (alpha(x, y) !== 0) throw new Error(`Corners must be transparent at ${x},${y}`);
   }
-  // For a circular rounded-rectangle corner, the first opaque pixel on y=0
-  // is slightly inside the geometric radius owing to antialiasing.
   let first = 0;
   while (first < mid && alpha(first, 0) < 128) first++;
   const expected = targetRadius - Math.sqrt(targetRadius - 0.25);
   if (Math.abs(first - expected) > 8) {
-    throw new Error(`Corner too different: top starts at ${first}, expected ~${Math.round(expected)}`);
+    throw new Error(`Corner mismatch: top starts at ${first}, expected ~${Math.round(expected)}`);
   }
   return (100 * (first + Math.sqrt(first) + 0.5) / size).toFixed(2);
 }
 
-const original = await readFile(source);
-const before = await sharp(original).metadata();
-if (options.has('--check')) {
-  const radius = await validate(original);
-  console.log(`OK drop.png: ${before.width}x${before.height}, 22.5% target (measured ${radius}%), full-bleed canvas`);
+if (check) {
+  const png = await readFile(destination);
+  const radius = await validate(png);
+  console.log(`OK drop.png: 1024x1024; 22.5% target (measured ${radius}%); full-bleed canvas`);
+} else if (write) {
+  const original = await readFile(source);
+  const meta = await sharp(original).metadata();
+  if (meta.width !== size || meta.height !== size) {
+    throw new Error(`Native drop source must be 1024x1024; got ${meta.width}x${meta.height}`);
+  }
+  const png = await sharp(original).ensureAlpha()
+    .composite([{ input: mask, blend: 'dest-in' }])
+    .png({ compressionLevel: 9 }).toBuffer();
+  const radius = await validate(png);
+  await writeFile(destination, png);
+  console.log(`WROTE drop.png from native 1024px artwork: 22.5% target (measured ${radius}%), no resampling`);
 } else {
-  if (before.width !== before.height || ![720, 1024].includes(before.width)) {
-    throw new Error(`Unexpected drop source size ${before.width}x${before.height}; aborting rather than distorting art`);
-  }
-  if (before.width === 1024) {
-    await validate(original);
-    console.log('No change: drop.png is already a valid 1024px icon');
-  } else {
-    const png = await sharp(original)
-      .ensureAlpha()
-      .resize(size, size, { kernel: sharp.kernel.lanczos3 })
-      .composite([{ input: mask, blend: 'dest-in' }])
-      .png({ compressionLevel: 9 })
-      .toBuffer();
-    const radius = await validate(png);
-    if (options.has('--write')) await writeFile(source, png);
-    console.log(`${options.has('--write') ? 'WROTE' : 'DRY RUN'} drop.png: ${before.width}x${before.height} -> 1024x1024, measured radius ${radius}%`);
-  }
+  console.log('Read-only. Provide --source <native-1024px-png> --write or --check.');
 }
