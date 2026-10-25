@@ -8,9 +8,9 @@ updated: 2026-10-25
 
 # App icon corners and dimensions
 
-The square (app) cards show each app's icon. The icons do not share a corner radius, and several
-sit inside transparent padding. This document began as a pre-correction audit; the table records
-the current source assets, and the diagnosis below retains historical context.
+The square (app) cards show each app's icon. This page retains the initial audit and diagnoses,
+with the actual 21-card audit output captured from the combined approved PR #66 / #67 branch.
+PR #66 merged on 2026-10-25; PR #67 is the remaining approved correction batch.
 
 Measured with `node scripts/audit-icon-corners.mjs`, which reads the square cards out of
 `src/js/project-descriptions.ts` and the PNGs in `src/public/assets/projects/`. Re-run it after
@@ -24,51 +24,69 @@ any remake; the table below is its output with a verdict grouping added.
 | Corner radius | 22.5% of icon width (230px at 1024), circular corner | ±2.5 points |
 | Icon body | edge to edge, square, no padding, no drop shadow | fills ≥97% of the canvas, within 1.5% of square |
 
-22.5% is the radius Argus already uses and sits in the middle of the existing set (Flag 20.0%,
-Ecological 21.1%, PushUp 22.4%, Argus 22.7%). It is a proposal; Ben can pick another number and
-the script's `TARGET_RADIUS` changes with it. The radius is a circular-corner equivalent
+The approved 22.5% target sits in the middle of the existing set (Flag 20.0%,
+Ecological 21.1%, PushUp 22.4%, Argus 22.7%). The approved target is encoded in the audit script as `TARGET_RADIUS`. The radius is a circular-corner equivalent
 measured from each icon's own bounds. It is accurate for comparing icons with each other, not an
 exact figure for a squircle.
 
-## Result
+## Result — PR #67 branch after incorporating merged PR #66 (21 square-labelled cards)
 
 | Card | File | Canvas | Radius | Icon body | Fill | Verdict |
 |---|---|---|---|---|---|---|
 | drop | `drop.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | STARK | `STARK.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | Vox | `Vox.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
-| Punchbuggy | `punchbuggy.png` | 1024×1024 | 23.5% | 1019×972 | 95% | remake: icon fills 95% of canvas; icon body 1019×972, not square |
-| Hearth | `hearth.png` | 1024×1024 | 25.6% | 982×999 | 96% | remake: radius 25.6%; icon fills 96% of canvas; icon body 982×999, not square |
-| PushUp Challenge | `pushup.png` | 1024×1024 | 22.4% | 1012×993 | 97% | remake: icon fills 97% of canvas; icon body 1012×993, not square |
+| Punchbuggy | `punchbuggy.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
+| Hearth | `hearth.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
+| PushUp Challenge | `pushup.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | Wrestle | `wrestle.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | Narrative | `narrative.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
-| Morpheus | `morpheus.png` | 1024×1024 | 20.7% | 988×989 | 96% | remake: icon fills 96% of canvas |
+| Morpheus | `morpheus.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | Argus | `argus.png` | 1024×1024 | 22.7% | 1024×1024 | 100% | ok |
 | HAUS | `haus.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | Flag | `flag.png` | 1024×1024 | 20.0% | 1024×1024 | 100% | ok |
-| Chef's Journal | `chefs-journal.png` | 1024×1024 | 19.5% | 1004×899 | 88% | remake: radius 19.5%; icon fills 88% of canvas; icon body 1004×899, not square |
+| Chef's Journal | `chefs-journal.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | Ecological Constellation | `ecological.png` | 1024×1024 | 21.1% | 1011×1014 | 99% | ok |
+| Hermes | `hermes.png` | 1024×1024 | 0.0% | 1024×1024 | 100% | remake: radius 0.0% |
+| Ares | `ares.png` | 1024×1024 | 0.0% | 1024×1024 | 100% | remake: radius 0.0% |
+| Macht | `macht.png` | 1024×1024 | 19.7% | 1024×1024 | 100% | remake: radius 19.7% |
+| Pantheon | `pantheon.png` | 1024×1024 | 19.7% | 1024×1024 | 100% | remake: radius 19.7% |
+| LayerUp | `layer-up.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
+| Psi | `psi.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
+| Iris | `iris.png` | 1024×1024 | 14.7% | 1024×1024 | 100% | remake: radius 14.7% |
 
-## What needs a remake, in order of how visible it is
+### Outstanding, outside approved icon batches
 
-### 1. Corners clearly different: STARK, Vox, Wrestle, Narrative, HAUS, drop
+The full auditor reads **21** cards whose source metadata says `orientation: 'square'`. **16 pass and 5 fail.** The five failures existed before this batch and are not touched in PR #67. All five canvas sizes are 1024×1024 and have 100% measured fill; the outstanding defect is corner treatment/classification.
+
+- **Hermes:** 0.0% measured radius. Source identity (masthead vs. app icon) needs review before applying a mask.
+- **Macht:** 19.7% radius; likely a preservation-only remask pending visual approval.
+- **Pantheon:** 19.7% radius; likely a preservation-only remask pending visual approval.
+- **Ares:** 0.0%; explicitly **landscape project artwork**, not a square app icon. Its `orientation: 'square'` data value needs separate card-layout review. Do not modify artwork for this audit.
+- **Iris:** 14.7%; also explicitly **landscape project artwork**, not a square app icon, despite `orientation: 'square'`. Do not modify artwork for this audit.
+
+The temporary experiment of making the full audit a mandatory PR check failed on these five previously unscoped entries; that workflow change was reverted. The 16 approved target assets passed the same CI audit output. Keep issue #35 open until the three remaining app identities are reviewed and landscape card metadata is reconciled. The rest of PR #67 retains existing artwork.
+
+## Historical diagnoses from the original audit (before corrections)
+
+### 1. Original corner defects: STARK, Vox, Wrestle, Narrative, HAUS, drop
 
 Five icons are nearly square-cornered (9.7%) next to neighbours at 20–26%, which is the
 mismatch you can see in the grid. All five are opaque and edge to edge, so the art itself is the
 right size; they need the corner mask re-cut at 22.5%, not new artwork. Their corners are
 dark or cream background, so the larger radius clips nothing that matters.
 
-The previous drop export was 720×720 with a 16.6% radius. The correction in
-[PR #66](https://github.com/BenWassa/Portfolio/pull/66) uses the *native* 1024×1024
-original from `drop/docs/icons/old/drop_rounded_full.png` (source blob
-`3ad4a6aa1d64499e584309ea420f544fd28ef224`) and applies the approved 22.5%
-mask. No enlargement or new artwork was required. The repository audit now reports `drop`
-as `ok`, although visual approval and merging remain pending.
+The original drop export was 720×720 with a 16.6% radius. Approved PR #66 restored the
+native 1024×1024 artwork from `BenWassa/drop/docs/icons/old/drop_rounded_full.png` and
+masked it to 22.5%, without any upscale or redesign. This fix is now merged into `main`.
 
-### 2. Right-ish corners, but padded or off-centre: Chef's Journal, Punchbuggy, Hearth, PushUp, Morpheus
+### 2. Originally padded or off-centre: Chef's Journal, Punchbuggy, Hearth, PushUp, Morpheus
 
-These carry transparent margin or a soft shadow baked into the PNG, so the icon renders smaller
-than its neighbours and sits off centre.
+These originally carried transparent margins or soft shadows baked into their PNGs. The five
+were corrected in approved [PR #67](https://github.com/BenWassa/Portfolio/pull/67), with a
+[202px/90px visual preview](https://github.com/BenWassa/Portfolio/blob/fix/icon-padding-main-review/docs/open/ICON-PADDING-BATCH2-PREVIEW.png).
+The original measurements below explain why the change was necessary. Hearth retains its light
+artwork; a separate dark-mode redesign has been deferred.
 
 - **Chef's Journal is the worst.** The icon body is 1004×899, so it is not square at all, and it
   fills 88% of the canvas. The source `chefs-journal/public/icon.png` has the same shape, so this
@@ -111,7 +129,7 @@ on the site, because several repo icons are different artwork from the site's.
 
 | Card | Square original? | Best source (repo-relative) | Notes |
 |---|---|---|---|
-| drop | **Yes — used in PR #66** | `drop/docs/icons/old/drop_rounded_full.png` (1024) | Native original preserved and masked to 22.5%. Audit passes; compare 90px and 212px sizes in the PR preview. |
+| drop | **Yes — used in merged PR #66** | `drop/docs/icons/old/drop_rounded_full.png` (1024) | Native-resolution multicolour droplet illustration retained; new 1024×1024 PNG and 22.5% mask passed the audit. |
 | Argus | **Yes, already used** | `argus/icon_original.png` (1254) | Site file is already cut from it at 22.7%. |
 | Pantheon | **Yes (vector)** | `pantheon/public/favicon.svg` | `rx="14"` on a 64 viewBox; drop the `rx` for a true square at any size. `pwa-maskable-512.png` is square but only 512. |
 | Flag | **Yes (vector)** | `flag/public/icons/app-icon.svg` (1024, generated by `scripts/generate-brand-icons.mjs`) | Already `ok` (20.0%). The repo's current icon is a white globe on dark; the site's `flag.png` is a green globe in a blue ring, a different design. |
@@ -138,15 +156,15 @@ Update this table as icons land. "Source" is where the final 1024 square is re-c
 
 | Card | Needs | Source | Status |
 |---|---|---|---|
-| drop | re-cut to 1024 at 22.5% | `drop_rounded_full.png` | not started |
+| drop | re-cut to 1024 at 22.5% | `drop_rounded_full.png` | approved and merged via PR #66 (2026-10-25) |
 | Pantheon | re-cut to 1024 at 22.5% | `favicon.svg` without `rx` | not started |
 | Macht | re-mask at 22.5% | `logo_fullpic.png` | not started |
-| Punchbuggy | confirm art, then re-cut | `punchbuggy_old.svg` | not started |
-| PushUp Challenge | key out white or new art | `template-pushup/public/icon.png` | not started |
+| Punchbuggy | correct padding, art retained | existing portfolio app icon | approved correction in PR #67 |
+| PushUp Challenge | correct padding, art retained | existing portfolio app icon | approved correction in PR #67 |
 | Hermes | choose icon, then cut | undecided | needs Ben |
-| STARK, Vox, Wrestle, Narrative, HAUS | corner re-mask at 22.5%, art unchanged | the card's own PNG | done 2026-10-25 with `scripts/standardize-app-icons.mjs`; PR #56 closed |
-| Hearth, Chef's Journal, Morpheus | padding fix, then corners | none in repos | external (Ben) or PR #56 follow-up |
-| Ares, Iris | new art | none | external (Ben) |
+| STARK, Vox, Wrestle, Narrative, HAUS | corner re-mask at 22.5%, art unchanged | the card's own PNG | merged via clean replacement PR #62 on 2026-10-25 (`scripts/standardize-app-icons.mjs`); obsolete PR #56 closed unmerged |
+| Hearth, Chef's Journal, Morpheus | correct padding, art retained | existing portfolio PNGs | approved corrections in PR #67; Hearth dark redesign excluded |
+| Ares, Iris | correct mistaken square classification; leave artwork alone | existing portfolio landscape art | excluded from icon changes; metadata/layout requires separate review |
 | Argus, Flag, Ecological, LayerUp, Psi | none | | ok |
 
 ### Draft PR #56: corner re-mask of five icons (another agent, 2026-10-24)
@@ -168,7 +186,7 @@ corner pass, not new art. Checked here on 2026-10-24:
 
 Not done here: no PNG was rewritten and #56 was not touched. Whether to retarget #56 onto #53,
 or re-run its script after #53 merges, is Ben's call. Decided 2026-10-25: radius is **22.5%**, baked into the PNGs, no CSS clip (#41 is not in #53).
-Once #53 merges, re-run the script's `--write` on the five PNGs instead of merging #56.
+This was completed via merged PR #62; do not merge the obsolete stacked #56.
 
 Finding to keep in mind: for eight cards the repos hold only already-rounded files, so those
 cannot be fixed by re-cutting. They need either new square art or an upscale-and-mask of the
@@ -184,4 +202,4 @@ leaves the PNGs themselves wrong. Not applied.
 
 ## Done when
 
-`node scripts/audit-icon-corners.mjs` reports `ok` for every card.
+`node scripts/audit-icon-corners.mjs` must report `ok` for all in-scope app icons are compliant after integration into `main`. The current branch has **16/21** audit rows compliant: Hermes, Macht and Pantheon still need owner-reviewed corner treatment, while Ares/Iris need to be removed from the square-icon classification without changing their landscape artwork. PR-branch audit results alone do not close the task; verify CI and the deployed 390px/desktop page. Landscape art and deferred Hearth dark branding are outside this scope.
