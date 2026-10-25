@@ -1,0 +1,51 @@
+name: Standardize padded portfolio icons (batch 2)
+on:
+  push:
+    branches:
+      - fix/icon-padding-batch2
+    paths:
+      - .github/workflows/icon-padding-batch2.yml
+      - scripts/finalize-padded-icons.mjs
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    if: github.repository == 'BenWassa/Portfolio'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Replace Chef's Journal card screenshot with its authentic repository icon
+        run: |
+          curl --fail --location --silent --show-error --retry 3 \
+            https://raw.githubusercontent.com/BenWassa/chefs-journal/6579f300353ccbca9fedd09ba9029fc48692f736/public/icon.png \
+            --output src/public/assets/projects/chefs-journal.png
+          file src/public/assets/projects/chefs-journal.png
+      - name: Normalize only five existing assets to unrounded full-bleed square previews
+        run: |
+          node scripts/normalize-icon-squares.mjs --out "$RUNNER_TEMP/icon-norm" \
+            chefs-journal.png punchbuggy.png hearth.png pushup.png morpheus.png
+      - name: Apply approved 22.5 percent icon mask to five normalized files
+        run: node scripts/finalize-padded-icons.mjs --source "$RUNNER_TEMP/icon-norm" --write
+      - name: Verify icon dimensions, edge fill and corner geometry
+        run: node scripts/finalize-padded-icons.mjs --check
+      - name: Commit only five review assets to the branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/public/assets/projects/chefs-journal.png src/public/assets/projects/punchbuggy.png src/public/assets/projects/hearth.png src/public/assets/projects/pushup.png src/public/assets/projects/morpheus.png
+          if git diff --cached --quiet; then
+            echo "No icon changes required."
+          else
+            git commit -m "fix: use native Chef's Journal icon and normalize padded icons"
+            git push origin HEAD:fix/icon-padding-batch2
+          fi
