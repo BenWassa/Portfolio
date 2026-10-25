@@ -1,9 +1,9 @@
 # Iris - Portfolio Project Record
 
-Generated: 2026-10-24T13:37:33.549Z
+Generated: 2026-10-25T16:27:05.434Z
 Source: `src/js/project-descriptions.ts`
-Branch: release/portfolio-refresh-1
-Commit: 0813d5b
+Branch: chore/reverify-cards-2
+Commit: 78f0b2c
 Project slug: `iris`
 
 ## Snapshot
@@ -18,7 +18,7 @@ Project slug: `iris`
 - Demo URL: (not set)
 - Demo mode: `none`
 - Repo URL: https://github.com/BenWassa/Iris
-- Last verified: (not verified)
+- Last verified: 2026-10-25
 - Image path: `assets/projects/iris.png`
 - Image alt: Iris - Neurochemical Emotion Explorer
 

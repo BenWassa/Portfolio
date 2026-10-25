@@ -1,9 +1,9 @@
 # Hermes - Portfolio Project Record
 
-Generated: 2026-10-24T13:37:33.549Z
+Generated: 2026-10-25T16:27:05.434Z
 Source: `src/js/project-descriptions.ts`
-Branch: release/portfolio-refresh-1
-Commit: 0813d5b
+Branch: chore/reverify-cards-2
+Commit: 78f0b2c
 Project slug: `hermes`
 
 ## Snapshot
@@ -18,7 +18,7 @@ Project slug: `hermes`
 - Demo URL: (not set)
 - Demo mode: `none`
 - Repo URL: https://github.com/BenWassa/Hermes
-- Last verified: 2026-10-13
+- Last verified: 2026-10-25
 - Image path: `assets/projects/hermes.png`
 - Image alt: Hermes - The Daily morning newspaper
 

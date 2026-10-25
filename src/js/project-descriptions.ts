@@ -298,7 +298,7 @@ export const projectsData: Project[] = [
     tier: 'featured',
     repoUrl: 'https://github.com/BenWassa/argus',
     demoMode: 'playbook',
-    lastVerified: '2026-10-13',
+    lastVerified: '2026-10-25',
     techSpecs: {
       model: 'Local-First Learning App',
       stack: ['React', 'TypeScript', 'Vite', 'Firebase'],
@@ -342,7 +342,7 @@ export const projectsData: Project[] = [
     tier: 'featured',
     repoUrl: 'https://github.com/BenWassa/flag',
     demoMode: 'live',
-    lastVerified: '2026-10-02',
+    lastVerified: '2026-10-25',
     techSpecs: {
       model: 'Offline-First PWA',
       stack: ['React', 'TypeScript', 'Three.js', 'Vite'],
@@ -408,7 +408,7 @@ export const projectsData: Project[] = [
     tier: 'featured',
     repoUrl: 'https://github.com/BenWassa/Hermes',
     demoMode: 'none',
-    lastVerified: '2026-10-13',
+    lastVerified: '2026-10-25',
     techSpecs: {
       model: 'Autonomous Overnight Pipeline',
       stack: ['Python', 'Gemini', 'GitHub Actions', 'Vanilla JS'],
@@ -537,6 +537,7 @@ export const projectsData: Project[] = [
     tier: 'featured',
     repoUrl: 'https://github.com/BenWassa/Iris',
     demoMode: 'none',
+    lastVerified: '2026-10-25',
     techSpecs: {
       model: 'Flask API with Static Frontend',
       stack: ['Python', 'Flask', 'JavaScript', 'SVG'],
@@ -595,7 +596,7 @@ export const projectsData: Project[] = [
     year: 2026,
     repoUrl: 'https://github.com/BenWassa/great-decoupling',
     demoMode: 'none',
-    lastVerified: '2026-10-13',
+    lastVerified: '2026-10-25',
   },
   {
     title: 'Padme',
@@ -617,6 +618,7 @@ export const projectsData: Project[] = [
     year: 2026,
     repoUrl: 'https://github.com/BenWassa/psyche',
     demoMode: 'none',
+    lastVerified: '2026-10-25',
   },
   {
     title: 'Static',
@@ -649,6 +651,7 @@ export const projectsData: Project[] = [
     year: 2026,
     repoUrl: 'https://github.com/BenWassa/iroh',
     demoMode: 'none',
+    lastVerified: '2026-10-25',
   },
 ];
 
