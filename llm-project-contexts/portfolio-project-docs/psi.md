@@ -1,9 +1,9 @@
 # Psi - Portfolio Project Record
 
-Generated: 2026-10-24T13:37:33.549Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: release/portfolio-refresh-1
-Commit: 0813d5b
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `psi`
 
 ## Snapshot
@@ -18,7 +18,7 @@ Project slug: `psi`
 - Demo URL: (not set)
 - Demo mode: `none`
 - Repo URL: https://github.com/BenWassa/Psi
-- Last verified: (not verified)
+- Last verified: 2026-10-25
 - Image path: `assets/projects/psi.png`
 - Image alt: Psi - The Mind Unfolding
 

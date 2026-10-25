@@ -1,9 +1,9 @@
 # Portfolio Project Docs Index
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Total projects: 35
 
 This folder is auto-generated on build. Edit source project data in `src/js/project-descriptions.ts`.
@@ -15,11 +15,11 @@ This folder is auto-generated on build. Edit source project data in `src/js/proj
 | Dukkha | `featured` | `draft` | `psychology` | `none` | 2026-10-02 | https://benwassa.github.io/dukkha/ | [dukkha.md](dukkha.md) |
 | Agoge | `featured` | `draft` | `narrative` | `none` | 2026-10-02 | https://benwassa.github.io/agoge/ | [agoge.md](agoge.md) |
 | drop | `featured` | `active` | `app` | `live` | 2026-10-02 | https://benwassa.github.io/drop/ | [drop.md](drop.md) |
-| STARK | `featured` | `prototype` | `app` | `live` | — | https://benwassa.github.io/stark-v1/ | [stark.md](stark.md) |
+| STARK | `featured` | `prototype` | `app` | `live` | 2026-10-25 | https://benwassa.github.io/stark-v1/ | [stark.md](stark.md) |
 | Vox | `featured` | `prototype` | `app` | `template` | — | https://benwassa.github.io/Vox_Showcase/ | [vox.md](vox.md) |
 | Punchbuggy | `featured` | `active` | `app` | `live` | 2026-10-02 | https://benwassa.github.io/punchbuggy/ | [punchbuggy.md](punchbuggy.md) |
 | Hearth | `featured` | `active` | `app` | `playbook` | 2026-10-02 | https://hearthv2--hearthv2.us-east4.hosted.app/?mode=demo | [hearth.md](hearth.md) |
-| PushUp Challenge | `featured` | `active` | `app` | `playbook` | 2026-10-02 | https://benwassa.github.io/the-pushup-challenge-2025/?mode=demo | [pushup-challenge.md](pushup-challenge.md) |
+| PushUp Challenge | `featured` | `active` | `app` | `playbook` | 2026-10-25 | https://benwassa.github.io/the-pushup-challenge-2025/?mode=demo | [pushup-challenge.md](pushup-challenge.md) |
 | Wrestle | `featured` | `active` | `app` | `playbook` | 2026-10-02 | https://benwassa.github.io/wrestlePWA/ | [wrestle.md](wrestle.md) |
 | Narrative | `featured` | `active` | `app` | `template` | — | https://benwassa.github.io/Narrative/ | [narrative.md](narrative.md) |
 | Morpheus | `featured` | `active` | `app` | `template` | — | https://benwassa.github.io/template-morpheus/ | [morpheus.md](morpheus.md) |
@@ -33,7 +33,7 @@ This folder is auto-generated on build. Edit source project data in `src/js/proj
 | Macht | `featured` | `prototype` | `app` | `none` | 2026-10-13 | https://benwassa.github.io/macht/ | [macht.md](macht.md) |
 | Pantheon | `featured` | `prototype` | `app` | `none` | 2026-10-13 | https://benwassa.github.io/pantheon/ | [pantheon.md](pantheon.md) |
 | LayerUp | `featured` | `prototype` | `app` | `none` | 2026-10-13 | https://layer-up-d17b0.web.app/ | [layerup.md](layerup.md) |
-| Psi | `featured` | `draft` | `psychology` | `none` | — | https://github.com/BenWassa/Psi | [psi.md](psi.md) |
+| Psi | `featured` | `draft` | `psychology` | `none` | 2026-10-25 | https://github.com/BenWassa/Psi | [psi.md](psi.md) |
 | Iris | `featured` | `prototype` | `psychology` | `none` | 2026-10-25 | https://github.com/BenWassa/Iris | [iris.md](iris.md) |
 | Demeter | `index` | `n/a` | `app` | `none` | 2026-10-13 | https://benwassa.github.io/demeter/ | [demeter.md](demeter.md) |
 | Vox v2 | `index` | `n/a` | `app` | `none` | 2026-10-25 | (not set) | [vox-v2.md](vox-v2.md) |
