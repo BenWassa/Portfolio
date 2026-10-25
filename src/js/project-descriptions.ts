@@ -557,13 +557,14 @@ export const projectsData: Project[] = [
   },
   {
     title: 'Vox v2',
-    desc: 'A Mandarin study tool built around a daily timed block of listening and tone drills.',
+    desc: 'A Mandarin study tool built around timed daily listening blocks, with weekly targets for listening, conversation and tone drills.',
     href: null,
     type: 'app',
     tier: 'index',
     year: 2026,
     repoUrl: 'https://github.com/BenWassa/vox-v2',
     demoMode: 'none',
+    lastVerified: '2026-10-25',
   },
   {
     title: 'Arc',
