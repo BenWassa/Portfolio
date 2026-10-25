@@ -9,7 +9,8 @@ updated: 2026-10-25
 # App icon corners and dimensions
 
 The square (app) cards show each app's icon. The icons do not share a corner radius, and several
-sit inside transparent padding. This document began as a pre-correction audit; the table records\nthe current source assets, and the diagnosis below retains historical context.
+sit inside transparent padding. This document began as a pre-correction audit; the table records
+the current source assets, and the diagnosis below retains historical context.
 
 Measured with `node scripts/audit-icon-corners.mjs`, which reads the square cards out of
 `src/js/project-descriptions.ts` and the PNGs in `src/public/assets/projects/`. Re-run it after
@@ -57,9 +58,12 @@ mismatch you can see in the grid. All five are opaque and edge to edge, so the a
 right size; they need the corner mask re-cut at 22.5%, not new artwork. Their corners are
 dark or cream background, so the larger radius clips nothing that matters.
 
-drop is also 720×720 (every other icon is 1024) and its radius is 16.6%. Re-export it at
-1024×1024 with the 22.5% mask. The source is a generated illustration, so check the upscale or
-regenerate.
+The previous drop export was 720×720 with a 16.6% radius. The correction in
+[PR #66](https://github.com/BenWassa/Portfolio/pull/66) uses the *native* 1024×1024
+original from `drop/docs/icons/old/drop_rounded_full.png` (source blob
+`3ad4a6aa1d64499e584309ea420f544fd28ef224`) and applies the approved 22.5%
+mask. No enlargement or new artwork was required. The repository audit now reports `drop`
+as `ok`, although visual approval and merging remain pending.
 
 ### 2. Right-ish corners, but padded or off-centre: Chef's Journal, Punchbuggy, Hearth, PushUp, Morpheus
 
