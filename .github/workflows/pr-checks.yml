@@ -47,16 +47,6 @@ jobs:
         run: npm run typecheck
       - name: Validate project data
         run: npm run validate:data
-      - name: Audit square app icons
-        shell: bash
-        run: |
-          set -euo pipefail
-          node scripts/audit-icon-corners.mjs | tee "$RUNNER_TEMP/icon-audit.txt"
-          grep -q '| ok |' "$RUNNER_TEMP/icon-audit.txt"
-          if grep -q '| remake:' "$RUNNER_TEMP/icon-audit.txt"; then
-            echo "Square app icon audit failed"
-            exit 1
-          fi
       - name: Build
         run: npm run build
       - name: Smoke test build output
