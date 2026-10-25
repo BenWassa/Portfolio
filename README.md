@@ -259,6 +259,50 @@ Edit `tailwind.config.js`:
 
 MIT
 
+## Pull request checks
+
+Three workflows keep `main` and the live site honest. They do different jobs and never overlap.
+
+| Workflow | File | Runs on | Does |
+| --- | --- | --- | --- |
+| PR gate | `.github/workflows/pr-checks.yml` | `pull_request` into `main`, manual | Validates. Never deploys. |
+| Publish | `.github/workflows/deploy-pages.yml` | push to `main` (after merge), manual | Builds and publishes to GitHub Pages. |
+| Weekly health scan | separate workflow, coming (#14) | schedule | External-link and staleness checks. Needs the network, so it is not part of the PR gate. |
+
+### What the PR gate runs
+
+One job, named exactly **`pr-quality`**, on Node 22 with `npm ci`:
+
+1. `npm run lint`
+2. `npm run format:check`
+3. `npm run typecheck` (`tsc --noEmit`)
+4. `npm run validate:data` (`scripts/validate-project-data.mjs`): duplicate ids/titles, required fields for each tier, local image assets exist (exact letter case), https-only URLs, no credentials or token-like query params in URLs. A `demoUrl` outside the allow-listed hosts is a warning, not an error. It does no network I/O, so an offline demo never fails the check.
+5. `npm run build`
+6. `npm run smoke` (`scripts/smoke-dist.mjs`): `dist/index.html` exists, every local asset it references exists, bundles are non-empty, the manifest and its icons exist, and everything in `src/public` was copied to `dist/`.
+
+Run the same sequence locally before opening a PR:
+
+```bash
+npm run lint && npm run format:check && npm run typecheck && npm run validate:data && npm run build && npm run smoke
+```
+
+`npm run validate:data -- path/to/project-descriptions.ts --public-dir path/to/public` validates another copy of the data file, for example one pulled from another branch with `git show`.
+
+### Safety
+
+- Trigger is `pull_request`, never `pull_request_target`, so PRs from forks run with a read-only token and no secrets.
+- `permissions: contents: read` only. No Pages, deployment or `id-token` permissions, and no secrets are referenced.
+- Publishing happens only in `deploy-pages.yml`, after a merge to `main`.
+
+### Branch rules (#6)
+
+The status-check name to require in branch protection is **`pr-quality`**. Do not make it required until it has passed at least once on a real PR, otherwise a check that never reported will block every merge.
+
+### Not covered yet
+
+- `npm run context:check` is deliberately not in the gate: on current `main` it fails on duplicate and mismatched files in `llm-project-contexts/`. Add it once those are cleaned up.
+- Mobile (390px) and desktop (1440px) layout checks need a headless browser, which is not a dependency of this repo. They are a follow-up rather than something flaky shipped now.
+
 ## Contact
 
 Benjamin P. Haddon - https://benwassa.github.io/
