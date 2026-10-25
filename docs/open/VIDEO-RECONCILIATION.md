@@ -3,7 +3,7 @@ status: open
 lane: opus-recommendation
 issues: [25, 36, 44, 45]
 owner: Ben
-updated: 2026-10-24
+updated: 2026-10-25
 ---
 
 # Launch-video ("brag") reconciliation: #36, #45, and the video part of #44
@@ -13,6 +13,16 @@ numbers below were measured from the git objects of `origin/content/brag-videos-
 `origin/content/brag-videos` (#45) and `origin/content/refresh-integration` (#44), and from
 `ffprobe` / `ffmpeg` runs on a throwaway sparse checkout of #36's `brag/` tree (since removed).
 Where something is inference rather than measurement it says so.
+
+## Decision log
+
+- **2026-10-25, D3 settled (Ben): rendered videos live outside this repo.** No mp4, mov, webm,
+  wav or mp3 is committed here; `.gitignore` enforces it (`brag/**/*.mp4` and friends, plus the
+  `brag/*/v[0-9]*/` scratch folders). Venue follows the recommendation below (separate
+  `portfolio-media` repo, private for the archive, final cuts served from a Release asset or that
+  repo). The archive step (section 5, step 4) is not done yet. Still open: D1 (which projects),
+  D2 (which version is final), D4 (older versions), D5 (music, font and logo rights in the
+  renders) and D6 (how a card references a video).
 
 ## 1. Recommendation (read this first)
 
