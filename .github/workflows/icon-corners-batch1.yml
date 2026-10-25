@@ -1,0 +1,42 @@
+name: Normalize existing app icon corners (batch 1)
+# Temporary branch-scoped run to update ONLY five approved existing PNGs.
+# No changes to main, other icons, or newly commissioned artwork.
+on:
+  push:
+    branches:
+      - fix/icon-corners-batch1
+    paths:
+      - .github/workflows/icon-corners-batch1.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    if: github.repository == 'BenWassa/Portfolio'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Apply approved 22.5% mask to five original PNGs
+        run: node scripts/standardize-app-icons.mjs --write
+      - name: Check all five corrected assets
+        run: node scripts/standardize-app-icons.mjs --check
+      - name: Commit generated PNGs to this review branch only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/public/assets/projects/STARK.png src/public/assets/projects/Vox.png src/public/assets/projects/wrestle.png src/public/assets/projects/narrative.png src/public/assets/projects/haus.png
+          if git diff --cached --quiet; then
+            echo "No icon changes required."
+          else
+            git commit -m "fix: standardize first five app icon corners to 22.5%"
+            git push origin HEAD:fix/icon-corners-batch1
+          fi
