@@ -1,9 +1,9 @@
 # Vox v2 - Portfolio Project Record
 
-Generated: 2026-10-24T13:37:33.549Z
+Generated: 2026-10-25T16:29:18.701Z
 Source: `src/js/project-descriptions.ts`
-Branch: release/portfolio-refresh-1
-Commit: 0813d5b
+Branch: chore/reverify-cards-2
+Commit: 45040b0
 Project slug: `vox-v2`
 
 ## Snapshot
@@ -18,12 +18,12 @@ Project slug: `vox-v2`
 - Demo URL: (not set)
 - Demo mode: `none`
 - Repo URL: https://github.com/BenWassa/vox-v2
-- Last verified: (not verified)
+- Last verified: 2026-10-25
 - Image path: `n/a`
 - Image alt: n/a
 
 ## Core Description
-- Card description: A Mandarin study tool built around a daily timed block of listening and tone drills.
+- Card description: A Mandarin study tool built around timed daily listening blocks, with weekly targets for listening, conversation and tone drills.
 - Portfolio summary: (not set)
 - Full description: (not set)
 

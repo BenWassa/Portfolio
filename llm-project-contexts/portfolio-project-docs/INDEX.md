@@ -1,9 +1,9 @@
 # Portfolio Project Docs Index
 
-Generated: 2026-10-25T16:27:05.434Z
+Generated: 2026-10-25T16:29:18.701Z
 Source: `src/js/project-descriptions.ts`
 Branch: chore/reverify-cards-2
-Commit: 78f0b2c
+Commit: 45040b0
 Total projects: 35
 
 This folder is auto-generated on build. Edit source project data in `src/js/project-descriptions.ts`.
@@ -36,7 +36,7 @@ This folder is auto-generated on build. Edit source project data in `src/js/proj
 | Psi | `featured` | `draft` | `psychology` | `none` | — | https://github.com/BenWassa/Psi | [psi.md](psi.md) |
 | Iris | `featured` | `prototype` | `psychology` | `none` | 2026-10-25 | https://github.com/BenWassa/Iris | [iris.md](iris.md) |
 | Demeter | `index` | `n/a` | `app` | `none` | 2026-10-13 | https://benwassa.github.io/demeter/ | [demeter.md](demeter.md) |
-| Vox v2 | `index` | `n/a` | `app` | `none` | — | (not set) | [vox-v2.md](vox-v2.md) |
+| Vox v2 | `index` | `n/a` | `app` | `none` | 2026-10-25 | (not set) | [vox-v2.md](vox-v2.md) |
 | Arc | `index` | `n/a` | `narrative` | `none` | 2026-10-13 | https://benwassa.github.io/arc/ | [arc.md](arc.md) |
 | Faust | `index` | `n/a` | `narrative` | `none` | 2026-10-13 | https://benwassa.github.io/faust/ | [faust.md](faust.md) |
 | Great Decoupling | `index` | `n/a` | `narrative` | `none` | 2026-10-25 | https://github.com/BenWassa/great-decoupling | [great-decoupling.md](great-decoupling.md) |
