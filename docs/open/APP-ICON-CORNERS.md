@@ -145,7 +145,7 @@ Update this table as icons land. "Source" is where the final 1024 square is re-c
 | Punchbuggy | correct padding, art retained | existing portfolio app icon | prepared in draft PR #67, pending approval |
 | PushUp Challenge | correct padding, art retained | existing portfolio app icon | prepared in draft PR #67, pending approval |
 | Hermes | choose icon, then cut | undecided | needs Ben |
-| STARK, Vox, Wrestle, Narrative, HAUS | corner re-mask at 22.5%, art unchanged | the card's own PNG | done 2026-10-25 with `scripts/standardize-app-icons.mjs`; PR #56 closed |
+| STARK, Vox, Wrestle, Narrative, HAUS | corner re-mask at 22.5%, art unchanged | the card's own PNG | merged via clean replacement PR #62 on 2026-10-25 (`scripts/standardize-app-icons.mjs`); obsolete PR #56 closed unmerged |
 | Hearth, Chef's Journal, Morpheus | correct padding, art retained | existing portfolio PNGs | prepared in draft PR #67, pending approval; Hearth dark redesign excluded |
 | Ares, Iris | landscape artwork; outside square-icon scope | existing portfolio landscape art | excluded, unchanged |
 | Argus, Flag, Ecological, LayerUp, Psi | none | | ok |
