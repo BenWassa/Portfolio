@@ -248,7 +248,8 @@ Edit `tailwind.config.cjs`:
 
 ## License
 
-MIT
+Code is MIT. Written content, site copy, research briefs and generated images are CC BY-NC-ND 4.0, with
+attribution to Benjamin P. Haddon (GitHub: benwassa). The full terms are in [LICENSE.md](LICENSE.md).
 
 ## Pull request checks
 
@@ -297,7 +298,6 @@ The status-check name to require in branch protection is **`pr-quality`**. Do no
 ## Contact
 
 Benjamin P. Haddon - https://benwassa.github.io/
-- Reuse or redistribution requires prior written permission. See `docs/LICENSE.md` for details and the permission request process.
 
 ## Portfolio health
 
