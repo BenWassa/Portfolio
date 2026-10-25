@@ -5,6 +5,7 @@ on:
       - fix/icon-padding-batch2
     paths:
       - .github/workflows/icon-padding-batch2.yml
+      - scripts/render-icon-padding-preview.mjs
   workflow_dispatch:
 
 permissions:
