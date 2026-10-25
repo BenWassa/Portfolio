@@ -1,9 +1,9 @@
 # Flag - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-25T16:27:05.434Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: chore/reverify-cards-2
+Commit: 78f0b2c
 Project slug: `flag`
 
 ## Snapshot
@@ -18,7 +18,7 @@ Project slug: `flag`
 - Demo URL: https://benwassa.github.io/flag/
 - Demo mode: `live`
 - Repo URL: https://github.com/BenWassa/flag
-- Last verified: 2026-10-02
+- Last verified: 2026-10-25
 - Image path: `assets/projects/flag.png`
 - Image alt: Flag - Geography App
 

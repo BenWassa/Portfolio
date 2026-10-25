@@ -19,9 +19,9 @@ export default [
       },
     },
     rules: {
-      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-      'no-console': 'warn',
-      'no-undef': 'warn',
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      'no-console': 'error',
+      'no-undef': 'error',
     },
   },
 ];

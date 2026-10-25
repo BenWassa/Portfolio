@@ -37,11 +37,17 @@ const getStatusLabel = (status: ProjectStatus) => {
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  
+
   // Use custom hook for image loading management
   const imageLoading = useImageLoading({ enableIntersectionObserver: true, threshold: 0.1 });
-  const { isLoaded: imageLoaded, isInView, handleLoad, handleError, ref: imageContainerRef } = imageLoading;
-  
+  const {
+    isLoaded: imageLoaded,
+    isInView,
+    handleLoad,
+    handleError,
+    ref: imageContainerRef,
+  } = imageLoading;
+
   // Get responsive image props (eager for modal, lazy for cards)
   const imageProps = getResponsiveImageProps(project.img, false);
 
@@ -69,14 +75,16 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) =>
         }}
       >
         <div className="project-card__media relative" ref={imageContainerRef}>
-          {!isInView && (
-            <div className="absolute inset-0 bg-zinc-800 animate-pulse" />
-          )}
+          {!isInView && <div className="absolute inset-0 bg-zinc-800 animate-pulse" />}
           {isInView && (
             <img
               src={imageProps.src}
               srcSet={imageProps.srcSet}
-              sizes={imageProps.sizes}
+              sizes={
+                project.orientation === 'square'
+                  ? '(max-width: 768px) 30vw, (max-width: 1280px) 23vw, 18vw'
+                  : imageProps.sizes
+              }
               alt={project.alt}
               className="project-card__img"
               loading={imageProps.loading}
