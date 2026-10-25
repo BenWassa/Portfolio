@@ -9,7 +9,11 @@ import sharp from 'sharp';
 const directory = fileURLToPath(new URL('../src/public/assets/projects/', import.meta.url));
 const files = ['STARK.png', 'Vox.png', 'wrestle.png', 'narrative.png', 'haus.png'];
 const size = 1024;
-const radius = size * 0.225; // 230.4 px, not a baked squircle approximation.
+const radius = size * 0.225; // 230.4 px, circular corner.
+// At the top raster row (y=0.5), antialiasing makes the first opaque x
+// smaller than the geometric radius: x = r - sqrt(r - 0.25).
+const topEdgeTarget = radius - Math.sqrt(radius - 0.25);
+const estimatedRadius = (edge) => edge + Math.sqrt(edge) + 0.5;
 const args = new Set(process.argv.slice(2));
 if ([...args].some((a) => a !== '--write' && a !== '--check') || (args.has('--write') && args.has('--check'))) {
   throw new Error('Usage: node scripts/standardize-app-icons.mjs [--write|--check]');
@@ -38,12 +42,12 @@ for (const file of files) {
   if (meta.width !== size || meta.height !== size) throw new Error(`${file}: expected 1024x1024, got ${meta.width}x${meta.height}`);
   const before = await topEdgeRadius(original);
   if (args.has('--check')) {
-    const ok = Math.abs(before - radius) <= 8;
-    console.log(`${ok ? 'OK' : 'FAIL'} ${file}: ${(100 * before / size).toFixed(2)}% radius`);
+    const ok = Math.abs(before - topEdgeTarget) <= 8;
+    console.log(`${ok ? 'OK' : 'FAIL'} ${file}: ${(100 * estimatedRadius(before) / size).toFixed(2)}% radius`);
     if (!ok) failed = true;
     continue;
   }
-  if (Math.abs(before - radius) <= 2) {
+  if (Math.abs(before - topEdgeTarget) <= 2) {
     console.log(`unchanged ${file}: already at target`);
     continue;
   }
@@ -56,9 +60,9 @@ for (const file of files) {
     .png({ compressionLevel: 9 })
     .toBuffer();
   const after = await topEdgeRadius(output);
-  if (Math.abs(after - radius) > 8) throw new Error(`${file}: output radius ${after}px failed verification`);
+  if (Math.abs(after - topEdgeTarget) > 8) throw new Error(`${file}: output radius ${after}px failed verification`);
   if (args.has('--write')) await writeFile(path, output);
-  console.log(`${args.has('--write') ? 'wrote' : 'dry-run'} ${file}: ${(100 * before / size).toFixed(2)}% -> ${(100 * after / size).toFixed(2)}%`);
+  console.log(`${args.has('--write') ? 'wrote' : 'dry-run'} ${file}: ${(100 * estimatedRadius(before) / size).toFixed(2)}% -> ${(100 * estimatedRadius(after) / size).toFixed(2)}%`);
 }
 if (failed) process.exitCode = 1;
 if (!args.has('--write') && !args.has('--check')) {
