@@ -24,12 +24,10 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
-      - name: Replace Chef's Journal card screenshot with its authentic repository icon
+      - name: Confirm Chef's Journal native icon is already committed
         run: |
-          curl --fail --location --silent --show-error --retry 3 \
-            https://raw.githubusercontent.com/BenWassa/chefs-journal/6579f300353ccbca9fedd09ba9029fc48692f736/public/icon.png \
-            --output src/public/assets/projects/chefs-journal.png
           file src/public/assets/projects/chefs-journal.png
+          git ls-files --error-unmatch src/public/assets/projects/chefs-journal.png
       - name: Normalize only five existing assets to unrounded full-bleed square previews
         run: |
           node scripts/normalize-icon-squares.mjs --out "$RUNNER_TEMP/icon-norm" \
