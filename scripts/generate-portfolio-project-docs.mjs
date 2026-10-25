@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
 import vm from 'node:vm';
+import { fileURLToPath } from 'node:url';
 
 const rootDir = process.cwd();
 const sourcePath = path.join(rootDir, 'src/js/project-descriptions.ts');
@@ -28,7 +29,7 @@ const extractSection = (source, startMarker, endMarker) => {
   return from.slice(0, end).trim();
 };
 
-const readData = () => {
+export const readData = () => {
   if (!fs.existsSync(sourcePath)) throw new Error(`Missing source file: ${sourcePath}`);
   const source = fs.readFileSync(sourcePath, 'utf8');
 
@@ -160,4 +161,5 @@ const main = () => {
   console.log(`Generated ${projectsData.length} project docs in ${path.relative(rootDir, outDir)}`);
 };
 
-main();
+// Only run when executed directly, so other scripts (e.g. check-portfolio-health) can import readData.
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();

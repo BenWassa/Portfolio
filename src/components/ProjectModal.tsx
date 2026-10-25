@@ -197,13 +197,19 @@ const FormattedDescription: React.FC<{ text: string }> = ({ text }) => {
   );
 };
 
+const getLinkLabel = (project: FeaturedProject): string => {
+  if (project.href?.startsWith('https://github.com/')) return 'View Repository';
+  if (project.title === 'Hermes') return 'Read Newspaper';
+  return project.type === 'app' ? 'Open App' : 'Open Project';
+};
+
 // --- Component: Landscape Modal (Narrative) ---
 const LandscapeModal: React.FC<{ project: FeaturedProject; onClose: () => void }> = ({
   project,
   onClose,
 }) => {
   const [imageLoaded, setImageLoaded] = React.useState(false);
-  const linkLabel = project.type === 'app' ? 'Open App' : 'Open Narrative';
+  const linkLabel = getLinkLabel(project);
   
   // Modal images are above-the-fold, use eager loading
   const imageProps = getResponsiveImageProps(project.img, true);
@@ -302,7 +308,7 @@ const LandscapeModal: React.FC<{ project: FeaturedProject; onClose: () => void }
 // --- Component: Square Modal — Static Image variant (original) ---
 const SquareImageModal: React.FC<{ project: FeaturedProject; onClose: () => void }> = ({ project, onClose }) => {
   const [imageLoaded, setImageLoaded] = React.useState(false);
-  const linkLabel = 'Open App';
+  const linkLabel = getLinkLabel(project);
 
   const imageProps = getResponsiveImageProps(project.img, true);
 
@@ -388,7 +394,7 @@ const SquareEmbedModal: React.FC<{ project: FeaturedProject; onClose: () => void
   const [iframeLoaded, setIframeLoaded] = React.useState(false);
   const [phoneScale, setPhoneScale] = React.useState(1);
   const panelRef = React.useRef<HTMLDivElement>(null);
-  const linkLabel = 'Open App';
+  const linkLabel = getLinkLabel(project);
 
   // Compute scale so the 873px-tall bezel fits within the panel height
   React.useEffect(() => {

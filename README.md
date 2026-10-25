@@ -307,3 +307,21 @@ The status-check name to require in branch protection is **`pr-quality`**. Do no
 
 Benjamin P. Haddon - https://benwassa.github.io/
 - Reuse or redistribution requires prior written permission. See `docs/LICENSE.md` for details and the permission request process.
+
+## Portfolio health
+
+Run `npm run health` to check every project link and compare source-repo activity
+with `lastVerified`. Broken links fail the run. Stale cards (repo pushed after
+`lastVerified`), unverified entries, and separate demo templates lagging production by
+more than 30 days produce warnings locally.
+
+The scheduled workflow (Mondays 06:17 UTC, or manual dispatch) runs with `--strict`: any
+stale card turns the run red and opens or updates one tracking issue titled
+"Portfolio health: drift detected" (label `portfolio-health`). The issue closes itself on
+the next clean run. Template lag is reported but never gates, because Narrative and
+Morpheus are documented sample-demo exceptions. The workflow does not deploy the site.
+Private source repositories are reported as not checkable unless a read-only
+`PORTFOLIO_HEALTH_TOKEN` is configured; adding a token is optional.
+
+Use `npm run health -- --skip-stale` for link-only checks or
+`npm run health -- --threshold-days=60` to change the template warning threshold.

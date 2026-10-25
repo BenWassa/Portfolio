@@ -1,9 +1,9 @@
 # PushUp Challenge - Portfolio Project Record
 
-Generated: 2026-10-03T01:34:51.899Z
+Generated: 2026-10-24T13:37:33.549Z
 Source: `src/js/project-descriptions.ts`
-Branch: content/demo-cards-batch-1
-Commit: 7d470af
+Branch: release/portfolio-refresh-1
+Commit: 0813d5b
 Project slug: `pushup-challenge`
 
 ## Snapshot

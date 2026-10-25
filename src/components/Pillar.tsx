@@ -1,7 +1,6 @@
 import React from 'react';
-import type { FeaturedProject, IndexProject, ProjectStatus } from '../types';
+import type { FeaturedProject, ProjectStatus } from '../types';
 import { ProjectCard } from './ProjectCard';
-import { ProjectIndex } from './ProjectIndex';
 
 interface PillarProps {
   id: string;
@@ -16,7 +15,6 @@ interface PillarProps {
   headingClassName?: string;
   className?: string;
   projects: FeaturedProject[];
-  indexProjects?: IndexProject[];
   isActive: boolean;
   isInactive: boolean;
   onActivate: (id: string) => void;
@@ -49,7 +47,6 @@ export const Pillar: React.FC<PillarProps> = ({
   headingClassName,
   className,
   projects,
-  indexProjects = [],
   isActive,
   isInactive,
   onActivate,
@@ -94,51 +91,55 @@ export const Pillar: React.FC<PillarProps> = ({
         </span>
       </div>
 
-      <div className="track-content absolute inset-0 flex flex-col z-20 pt-24 pb-10 px-4 md:px-12 bg-black/90 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto w-full h-full flex flex-col">
-          <header className="mb-8 shrink-0 animate-fade-in-up">
-            <div
-              className="text-sm font-mono uppercase tracking-widest mb-2"
-              style={{ color: baseColor }}
-            >
-              {throughline}
-            </div>
-            <h3 className={headingClassName}>{heading}</h3>
-            <p className="mt-4 max-w-xl text-white/60 font-light leading-relaxed">{description}</p>
-          </header>
+      {isActive && (
+        <div className="track-content absolute inset-0 flex flex-col z-20 pt-24 pb-10 px-4 md:px-12 bg-black/90 backdrop-blur-md">
+          <div className="max-w-7xl mx-auto w-full h-full flex flex-col">
+            <header className="mb-8 shrink-0 animate-fade-in-up">
+              <div
+                className="text-sm font-mono uppercase tracking-widest mb-2"
+                style={{ color: baseColor }}
+              >
+                {throughline}
+              </div>
+              <h3 className={headingClassName}>{heading}</h3>
+              <p className="mt-4 max-w-xl text-white/60 font-light leading-relaxed">
+                {description}
+              </p>
+            </header>
 
-          {/* One scroll area: featured grid, then the index tier (if any).
+            {/* One scroll area: featured grid, then the index tier (if any).
               -ml-2/pl-2 leaves room for index-row hover/focus rings without moving content. */}
-          <div className="flex-1 overflow-y-auto overflow-x-hidden no-scrollbar pb-8 pr-6 -ml-2 pl-2">
-            <div className={gridClassName}>
-              {groups.map((group, groupIndex) => (
-                <React.Fragment key={group.status}>
-                  <div className="col-span-full">
-                    <div className={`flex items-center gap-2 mb-3 ${groupIndex > 0 ? 'mt-6' : ''}`}>
+            <div className="flex-1 overflow-y-auto overflow-x-hidden no-scrollbar pb-8 pr-6 -ml-2 pl-2">
+              <div className={gridClassName}>
+                {groups.map((group, groupIndex) => (
+                  <React.Fragment key={group.status}>
+                    <div className="col-span-full">
                       <div
-                        className={`h-px flex-1 bg-gradient-to-r ${group.line} to-transparent`}
-                      ></div>
-                      <span
-                        className={`text-xs font-mono uppercase tracking-wider font-bold ${group.text}`}
+                        className={`flex items-center gap-2 mb-3 ${groupIndex > 0 ? 'mt-6' : ''}`}
                       >
-                        {group.label}
-                      </span>
-                      <div
-                        className={`h-px flex-1 bg-gradient-to-l ${group.line} to-transparent`}
-                      ></div>
+                        <div
+                          className={`h-px flex-1 bg-gradient-to-r ${group.line} to-transparent`}
+                        ></div>
+                        <span
+                          className={`text-xs font-mono uppercase tracking-wider font-bold ${group.text}`}
+                        >
+                          {group.label}
+                        </span>
+                        <div
+                          className={`h-px flex-1 bg-gradient-to-l ${group.line} to-transparent`}
+                        ></div>
+                      </div>
                     </div>
-                  </div>
-                  {group.projects.map((project) => (
-                    <ProjectCard key={project.title} project={project} onClick={onProjectClick} />
-                  ))}
-                </React.Fragment>
-              ))}
+                    {group.projects.map((project) => (
+                      <ProjectCard key={project.title} project={project} onClick={onProjectClick} />
+                    ))}
+                  </React.Fragment>
+                ))}
+              </div>
             </div>
-
-            <ProjectIndex pillarId={id} projects={indexProjects} accentColor={baseColor} />
           </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };
