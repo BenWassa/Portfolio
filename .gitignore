@@ -69,3 +69,8 @@ graphify-out/
 .graphify_*.json
 .graphify_*.txt
 .graphify_chunk_*.json
+
+# Brag (launch video) working files. Every version folder (brag/<app>/v1, v2, ...) is local
+# scratch: raw renders, fragments, audio, QC. Only brag/<app>/current/ (the production cut) is
+# tracked. See docs/open/VIDEO-RECONCILIATION.md for where finished videos are stored.
+brag/*/v[0-9]*/
