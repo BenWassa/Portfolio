@@ -22,7 +22,6 @@
     "context:rollout:edge": "node scripts/rollout-llm-contexts.mjs --pass edge_case --clone-missing",
     "context:validate:first": "node scripts/validate-llm-contexts.mjs --pass first_pass",
     "context:validate:all": "node scripts/validate-llm-contexts.mjs --pass all",
-    "deploy": "npm run build && echo 'Ready to deploy from docs/'",
     "prebuild": "node scripts/optimize-project-images.mjs",
     "predev": "node scripts/optimize-project-images.mjs"
   },
