@@ -1,6 +1,6 @@
 # Portfolio Project Records (Compiled)
 
-Generated: 2026-10-25T16:29:18.829Z
+Generated: 2026-10-25T17:00:43.860Z
 Source folder: `llm-project-contexts/portfolio-project-docs/`
 Total project docs: 35
 
@@ -48,10 +48,10 @@ Source file: `agoge.md`
 
 # Agoge - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `agoge`
 
 ## Snapshot
@@ -98,10 +98,10 @@ Source file: `arc.md`
 
 # Arc - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `arc`
 
 ## Snapshot
@@ -146,10 +146,10 @@ Source file: `ares.md`
 
 # Ares - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `ares`
 
 ## Snapshot
@@ -196,10 +196,10 @@ Source file: `argus.md`
 
 # Argus - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `argus`
 
 ## Snapshot
@@ -246,10 +246,10 @@ Source file: `chef-s-journal.md`
 
 # Chef's Journal - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `chef-s-journal`
 
 ## Snapshot
@@ -296,10 +296,10 @@ Source file: `demeter.md`
 
 # Demeter - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `demeter`
 
 ## Snapshot
@@ -344,10 +344,10 @@ Source file: `drop.md`
 
 # drop - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `drop`
 
 ## Snapshot
@@ -394,10 +394,10 @@ Source file: `dukkha.md`
 
 # Dukkha - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `dukkha`
 
 ## Snapshot
@@ -443,10 +443,10 @@ Source file: `ecological-constellation.md`
 
 # Ecological Constellation - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `ecological-constellation`
 
 ## Snapshot
@@ -492,10 +492,10 @@ Source file: `faust.md`
 
 # Faust - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `faust`
 
 ## Snapshot
@@ -540,10 +540,10 @@ Source file: `flag.md`
 
 # Flag - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `flag`
 
 ## Snapshot
@@ -590,10 +590,10 @@ Source file: `great-decoupling.md`
 
 # Great Decoupling - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `great-decoupling`
 
 ## Snapshot
@@ -638,10 +638,10 @@ Source file: `haus.md`
 
 # HAUS - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `haus`
 
 ## Snapshot
@@ -688,10 +688,10 @@ Source file: `hearth.md`
 
 # Hearth - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `hearth`
 
 ## Snapshot
@@ -738,10 +738,10 @@ Source file: `hermes.md`
 
 # Hermes - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `hermes`
 
 ## Snapshot
@@ -788,10 +788,10 @@ Source file: `iris.md`
 
 # Iris - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `iris`
 
 ## Snapshot
@@ -838,10 +838,10 @@ Source file: `iroh.md`
 
 # Iroh - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `iroh`
 
 ## Snapshot
@@ -886,10 +886,10 @@ Source file: `layerup.md`
 
 # LayerUp - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `layerup`
 
 ## Snapshot
@@ -936,10 +936,10 @@ Source file: `macht.md`
 
 # Macht - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `macht`
 
 ## Snapshot
@@ -986,10 +986,10 @@ Source file: `morpheus.md`
 
 # Morpheus - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `morpheus`
 
 ## Snapshot
@@ -1036,10 +1036,10 @@ Source file: `narrative.md`
 
 # Narrative - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `narrative`
 
 ## Snapshot
@@ -1086,10 +1086,10 @@ Source file: `orpheus.md`
 
 # Orpheus - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `orpheus`
 
 ## Snapshot
@@ -1134,10 +1134,10 @@ Source file: `padme.md`
 
 # Padme - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `padme`
 
 ## Snapshot
@@ -1182,10 +1182,10 @@ Source file: `pantheon.md`
 
 # Pantheon - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `pantheon`
 
 ## Snapshot
@@ -1232,10 +1232,10 @@ Source file: `psi.md`
 
 # Psi - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `psi`
 
 ## Snapshot
@@ -1250,7 +1250,7 @@ Project slug: `psi`
 - Demo URL: (not set)
 - Demo mode: `none`
 - Repo URL: https://github.com/BenWassa/Psi
-- Last verified: (not verified)
+- Last verified: 2026-10-25
 - Image path: `assets/projects/psi.png`
 - Image alt: Psi - The Mind Unfolding
 
@@ -1282,10 +1282,10 @@ Source file: `psyche.md`
 
 # Psyche - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `psyche`
 
 ## Snapshot
@@ -1330,10 +1330,10 @@ Source file: `punchbuggy.md`
 
 # Punchbuggy - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `punchbuggy`
 
 ## Snapshot
@@ -1380,10 +1380,10 @@ Source file: `pushup-challenge.md`
 
 # PushUp Challenge - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `pushup-challenge`
 
 ## Snapshot
@@ -1398,7 +1398,7 @@ Project slug: `pushup-challenge`
 - Demo URL: https://benwassa.github.io/the-pushup-challenge-2025/?mode=demo
 - Demo mode: `playbook`
 - Repo URL: https://github.com/BenWassa/the-pushup-challenge-2025
-- Last verified: 2026-10-02
+- Last verified: 2026-10-25
 - Image path: `assets/projects/pushup.png`
 - Image alt: PushUp - Fitness App
 
@@ -1429,10 +1429,10 @@ Source file: `sankofa.md`
 
 # Sankofa - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `sankofa`
 
 ## Snapshot
@@ -1479,10 +1479,10 @@ Source file: `skywalker.md`
 
 # Skywalker - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `skywalker`
 
 ## Snapshot
@@ -1529,10 +1529,10 @@ Source file: `stark.md`
 
 # STARK - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `stark`
 
 ## Snapshot
@@ -1547,7 +1547,7 @@ Project slug: `stark`
 - Demo URL: https://benwassa.github.io/stark-v1/
 - Demo mode: `live`
 - Repo URL: https://github.com/BenWassa/stark-v1
-- Last verified: (not verified)
+- Last verified: 2026-10-25
 - Image path: `assets/projects/STARK.png`
 - Image alt: STARK - Fitness PWA
 
@@ -1579,10 +1579,10 @@ Source file: `static.md`
 
 # Static - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `static`
 
 ## Snapshot
@@ -1627,10 +1627,10 @@ Source file: `vox-v2.md`
 
 # Vox v2 - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `vox-v2`
 
 ## Snapshot
@@ -1675,10 +1675,10 @@ Source file: `vox.md`
 
 # Vox - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `vox`
 
 ## Snapshot
@@ -1725,10 +1725,10 @@ Source file: `wrestle.md`
 
 # Wrestle - Portfolio Project Record
 
-Generated: 2026-10-25T16:29:18.701Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: chore/reverify-cards-2
-Commit: 45040b0
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `wrestle`
 
 ## Snapshot

@@ -127,6 +127,7 @@ export const projectsData: Project[] = [
     tier: 'featured',
     repoUrl: 'https://github.com/BenWassa/stark-v1',
     demoMode: 'live',
+    lastVerified: '2026-10-25',
     techSpecs: {
       model: 'Client-Side Dashboard',
       stack: ['React', 'JavaScript', 'Tailwind'],
@@ -212,7 +213,7 @@ export const projectsData: Project[] = [
     tier: 'featured',
     repoUrl: 'https://github.com/BenWassa/the-pushup-challenge-2025',
     demoMode: 'playbook',
-    lastVerified: '2026-10-02',
+    lastVerified: '2026-10-25',
     techSpecs: {
       model: 'Community Tracker',
       stack: ['React', 'Firebase'],
@@ -517,6 +518,7 @@ export const projectsData: Project[] = [
     tier: 'featured',
     repoUrl: 'https://github.com/BenWassa/Psi',
     demoMode: 'none',
+    lastVerified: '2026-10-25',
     techSpecs: {
       model: 'Static Companion Site',
       stack: ['HTML', 'CSS', 'JavaScript'],

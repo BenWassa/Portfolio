@@ -1,9 +1,9 @@
 # Hearth - Portfolio Project Record
 
-Generated: 2026-10-24T13:37:33.549Z
+Generated: 2026-10-25T17:00:43.724Z
 Source: `src/js/project-descriptions.ts`
-Branch: release/portfolio-refresh-1
-Commit: 0813d5b
+Branch: chore/reverify-cards-3
+Commit: 3e9f134
 Project slug: `hearth`
 
 ## Snapshot
