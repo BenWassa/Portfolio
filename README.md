@@ -1,6 +1,6 @@
 # Portfolio - Benjamin P. Haddon
 
-Production-ready portfolio showcasing three throughlines: **Narrative** (mythic frameworks), **Systems** (Progressive Web Apps), and **Psyche** (psychological interfaces).
+Portfolio showcasing three throughlines: **Narrative** (mythic frameworks), **Systems** (Progressive Web Apps), and **Psyche** (psychological interfaces).
 
 ## Live Site
 
@@ -12,20 +12,20 @@ Built with React, TypeScript, Vite, and Tailwind CSS.
 
 ```
 src/
-├── index.html                   # Vite HTML entry
+├── index.html                   # Vite HTML entry (Vite root is src/)
 ├── main.tsx                     # React entry
-├── App.tsx                      # App shell
-├── components/                  # UI components
+├── App.tsx                      # App shell and pillars
+├── components/                  # Pillar, ProjectCard, ProjectModal, ProjectIndex, ...
 ├── css/input.css                # Tailwind input CSS
 ├── data/projects.ts             # Typed data helpers
 ├── hooks/                       # Custom hooks
-├── js/project-descriptions.ts   # Project data & descriptions
+├── js/project-descriptions.ts   # Project data & descriptions (single source of truth)
 ├── types.ts                     # Shared types
-└── public/                      # Static assets (images, etc.)
+└── public/                      # Static assets (project images, icons)
 
-docs/
-├── index.html                   # Built HTML
-└── assets/                      # Built assets
+scripts/                         # Build helpers, health check, generators
+docs/                            # Agent-facing plans (docs/open, docs/closed) and demo standards
+dist/                            # Build output (git-ignored, deployed by Actions)
 ```
 
 ## Setup & Development
@@ -55,18 +55,17 @@ Generate optimized assets:
 npm run build
 ```
 
-- Builds optimized assets to `docs/`
-- Ready for deployment
+- Optimizes project images, regenerates the project docs, then runs `vite build`
+- Emits to `dist/` (git-ignored)
+- Preview the result with `npm run preview`
 
 ### Deploy
 
-Push built files to GitHub Pages:
-
-```bash
-npm run deploy
-```
-
-The `docs/` folder is ready for static hosting.
+There is no manual deploy step. Merging to `main` runs
+`.github/workflows/deploy-pages.yml`, which runs `npm ci`, `npm run lint` and
+`npm run build`, uploads `dist/` as the Pages artifact, and deploys it to
+https://benwassa.github.io/Portfolio/. `main` is protected: work lands through a pull request
+(see `CLAUDE.md`). Do not commit build output to the repository.
 
 ## Features
 
@@ -103,20 +102,17 @@ The `docs/` folder is ready for static hosting.
 
 ## Projects
 
-### Narrative Throughline
-- **Skywalker** - Mythic companion using Luke's journey for self-discovery
-- **Sankofa** - Modern meaning crisis framework blending myth & research
-- **Agoge** - Rites of passage research for authentic initiation
-- **Dukkha** - Dopamine as cultural force; field guide & manifesto
+`src/js/project-descriptions.ts` is the single source of truth. Each entry has a `type`
+(`narrative`, `app` or `psychology`) that decides its pillar, and a `tier`:
 
-### Systems Throughline
-- **drop** - Mindful daily tracker (Sleep, Fitness, Mind, Spirit)
-- **STARK** - Fitness data visualization & performance dashboard
-- **Vox** - Offline-first language learning tracker
+- `featured`: a card in the pillar grid, with an image, a detail modal and, where it qualifies,
+  an embedded live demo.
+- `index`: a text-only entry for the pillar's index list. The index list is currently hidden on
+  the site (`ProjectIndex` is kept for reinstatement), so these entries are data only.
 
-### Psyche Throughline
-- **Orpheus** - Music listening patterns → emotional self-discovery
-- **Dukkha** - (also crosses into narrative)
+For the current card list and what each links to, see
+`llm-project-contexts/portfolio-project-docs/INDEX.md` (regenerated on every build) and
+`docs/open/INCLUSION-AND-DEMO-WORKPLAN.md` for why each project is in or out.
 
 ## Technology
 
@@ -124,20 +120,18 @@ The `docs/` folder is ready for static hosting.
 - **Tailwind CSS** - Utility-first, compiled to production-optimized CSS
 - **React + TypeScript** - Component-based UI with type safety
 - **PostCSS** - Autoprefixing & processing
-- **GitHub Pages** - Static hosting from `docs/` folder
+- **GitHub Pages** - Static hosting, deployed from `dist/` by GitHub Actions
 
 ### Image Optimization
 
-The portfolio includes comprehensive image loading optimizations:
-
-- **Custom Hooks**: `useImageLoading` hook manages intersection observer and loading states
-- **Utility Functions**: `imageUtils.ts` provides responsive image props and preloading
-- **Skeleton Loaders**: Progressive reveal with shimmer animations during load
-- **Smart Loading**: Lazy loading for cards, eager loading for modals
-- **Async Decoding**: Non-blocking image decode with `decoding="async"`
-- **Future-Ready**: Infrastructure for srcset/sizes when responsive images are generated
-
-See `docs/IMAGE_OPTIMIZATION.md` for detailed implementation and best practices.
+- **Build step**: `scripts/optimize-project-images.mjs` runs before `dev` and `build` and writes
+  400, 800 and 1200 px WebP variants next to each project image in
+  `src/public/assets/projects/` (the `*w.webp` files are git-ignored).
+- **Responsive delivery**: cards use `srcset` and `sizes` with the generated variants.
+- **Hooks and helpers**: `useImageLoading` handles intersection-observer lazy loading and loading
+  state; `src/utils/` provides responsive image props and preloading.
+- **Loading UX**: skeleton shimmer, lazy loading for cards, eager loading for modals, and
+  `decoding="async"`.
 
 ## Configuration
 
@@ -145,23 +139,20 @@ See `docs/IMAGE_OPTIMIZATION.md` for detailed implementation and best practices.
 
 Edit `src/js/project-descriptions.ts`:
 
-```javascript
-{
-  title: "Project Name",
-  tag: "Category",
-  desc: "Short description for card",
-  href: "https://...",
-  img: "ProjectName.png",
-  theme: {
-    primary: "#3B82F6",      // Accent color on hover
-    secondary: "#1F2937",
-    tertiary: "#151720",
-    bg: "#0A0B14"
-  },
-  status: "active",           // active | draft | prototype
-  type: "narrative"          // narrative | app | psychology
-}
+The entry shape and every allowed value (`status`, `type`, `tier`, `demoMode`, `orientation`)
+are defined in `src/types.ts`. Copy an existing entry of the same `type` and `tier` as a
+starting point rather than writing one from memory. Keep the `export const projectsData` and
+`export const projectDescriptions` markers and the literal shape intact, because
+`scripts/generate-portfolio-project-docs.mjs` parses the file.
+
+After changing project data, run:
+
+```bash
+npm run portfolio:project-docs && npm run portfolio:project-docs:compile
 ```
+
+Before opening a pull request, `npm run lint`, `npm run format:check` and `npm run build` should
+pass (see `CLAUDE.md` section 6).
 
 ### Keep Portfolio + LLM Contexts In Sync
 
@@ -243,7 +234,7 @@ For commission/project management (in `commissions/` folder), separate statuses 
 - **In progress**: Assets being audited or generated
 - **Completed**: All required assets present and verified
 
-Edit `tailwind.config.js`:
+Edit `tailwind.config.cjs`:
 - Font families (Space Grotesk, Inter, Cormorant Garamond)
 - Colors & spacing
 - Animation timings

@@ -140,9 +140,31 @@ Update this table as icons land. "Source" is where the final 1024 square is re-c
 | Punchbuggy | confirm art, then re-cut | `punchbuggy_old.svg` | not started |
 | PushUp Challenge | key out white or new art | `template-pushup/public/icon.png` | not started |
 | Hermes | choose icon, then cut | undecided | needs Ben |
-| STARK, Vox, Wrestle, Narrative, HAUS, Hearth, Chef's Journal, Morpheus | new square art | none in repos | external (Ben) |
+| STARK, Vox, Wrestle, Narrative, HAUS | corner re-mask at 22.5%, art unchanged | the card's own PNG | prepared in draft PR #56 (see below), not in #53 |
+| Hearth, Chef's Journal, Morpheus | padding fix, then corners | none in repos | external (Ben) or PR #56 follow-up |
 | Ares, Iris | new art | none | external (Ben) |
 | Argus, Flag, Ecological, LayerUp, Psi | none | | ok |
+
+### Draft PR #56: corner re-mask of five icons (another agent, 2026-10-24)
+
+`fix/icon-corners-batch1` (draft) re-masks STARK, Vox, Wrestle, Narrative and HAUS to 22.5% with
+`scripts/standardize-app-icons.mjs` (`--check` / `--write`, refuses to enlarge a bigger existing
+radius) and changes the card CSS radius from 22.37% to 22.5%. Artwork is preserved; this is a
+corner pass, not new art. Checked here on 2026-10-24:
+
+- `--check` on its branch reports 22.58% for all five, matching its report.
+- It is **stacked on #44** (`content/refresh-integration`), which Release 1 (#53) supersedes, and
+  #44 is not an ancestor of #53. Merging #56 into #44 would not reach `main`.
+- **It does not transplant as-is.** On #44's base `haus.png` is the old screenshot crop; #53 uses
+  the HAUS repo's own icon. Applying #56's PNG would put the wrong HAUS art back. The CSS hunk
+  assumes the 22.37% rule from #41, which is not in #53.
+- **The script does transplant.** Dry-run against #53's five files reports 9.76% to 22.58% for
+  each, including the repo-icon HAUS. So the clean route is to re-run `--write` on top of #53
+  (PNGs only, no CSS) rather than merge #56's PNGs.
+
+Not done here: no PNG was rewritten and #56 was not touched. Whether to retarget #56 onto #53,
+or re-run its script after #53 merges, is Ben's call. Decided 2026-10-25: radius is **22.5%**, baked into the PNGs, no CSS clip (#41 is not in #53).
+Once #53 merges, re-run the script's `--write` on the five PNGs instead of merging #56.
 
 Finding to keep in mind: for eight cards the repos hold only already-rounded files, so those
 cannot be fixed by re-cutting. They need either new square art or an upscale-and-mask of the

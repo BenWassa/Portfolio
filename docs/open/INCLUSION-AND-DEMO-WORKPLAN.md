@@ -298,7 +298,9 @@ card still shows the "PROJECT VOX" art.
 
 ## Follow-through, 2026-10-13
 
-Current execution state and pending approvals are in `STATUS-2026-10-13.md`.
+Current execution state and pending approvals are in the "Release 1 candidate" section below and
+in `HOUSEKEEPING-2026-10-24.md`. The 2026-10-13 snapshot is archived at
+`docs/closed/STATUS-2026-10-13.md`.
 FamilyPlan Pages is now actually disabled; a synthetic-build PR is prepared. The
 liebestraum rotation remains blocked by GCP IAM permissions. STARK refers to the
 migrated `stark-v1` product; the new `stark` app is deferred until a demo is ready.
