@@ -226,6 +226,13 @@ Notes:
   pushes move `pushed_at`.
 - Unauthenticated runs have 60 API calls per hour; one run uses about 25.
 - Flags: `--skip-links`, `--skip-stale`, `--summary=<file>` (defaults to `$GITHUB_STEP_SUMMARY`).
+### PR quality gate (#46) — lane:standard
+
+`.github/workflows/pr-checks.yml`, single job `pr-quality` (lint, format, `tsc --noEmit`,
+`validate:data`, build, `smoke`); no deploy, no secrets. See README "Pull request checks".
+Left for others: require `pr-quality` in branch rules after its first green run (#6, human);
+add `context:check` once `llm-project-contexts/` duplicates are cleaned up; mobile/desktop
+layout check needs a headless-browser dependency (follow-up); external-link scan is #14.
 
 ### Brag videos (WS4) — deferred
 
