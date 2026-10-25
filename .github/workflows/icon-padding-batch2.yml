@@ -1,18 +1,17 @@
-name: Standardize padded portfolio icons (batch 2)
+name: Review padded portfolio icons (batch 2)
 on:
   push:
     branches:
       - fix/icon-padding-batch2
     paths:
       - .github/workflows/icon-padding-batch2.yml
-      - scripts/finalize-padded-icons.mjs
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  normalize:
+  review:
     if: github.repository == 'BenWassa/Portfolio'
     runs-on: ubuntu-latest
     steps:
@@ -24,26 +23,26 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
-      - name: Confirm Chef's Journal native icon is already committed
-        run: |
-          file src/public/assets/projects/chefs-journal.png
-          git ls-files --error-unmatch src/public/assets/projects/chefs-journal.png
-      - name: Normalize only five existing assets to unrounded full-bleed square previews
-        run: |
-          node scripts/normalize-icon-squares.mjs --out "$RUNNER_TEMP/icon-norm" \
-            chefs-journal.png punchbuggy.png hearth.png pushup.png morpheus.png
-      - name: Apply approved 22.5 percent icon mask to five normalized files
-        run: node scripts/finalize-padded-icons.mjs --source "$RUNNER_TEMP/icon-norm" --write
-      - name: Verify icon dimensions, edge fill and corner geometry
+      - name: Verify five committed corrected icons
         run: node scripts/finalize-padded-icons.mjs --check
-      - name: Commit only five review assets to the branch
+      - name: Render review contact sheet
+        run: node scripts/render-icon-padding-preview.mjs
+      - name: Lint
+        run: npm run lint
+      - name: Check format
+        run: npm run format:check
+      - name: TypeScript check
+        run: npx tsc --noEmit
+      - name: Build
+        run: npm run build
+      - name: Commit one review image
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/public/assets/projects/chefs-journal.png src/public/assets/projects/punchbuggy.png src/public/assets/projects/hearth.png src/public/assets/projects/pushup.png src/public/assets/projects/morpheus.png
+          git add docs/open/ICON-PADDING-BATCH2-PREVIEW.png
           if git diff --cached --quiet; then
-            echo "No icon changes required."
+            echo "Review preview unchanged."
           else
-            git commit -m "fix: use native Chef's Journal icon and normalize padded icons"
+            git commit -m "docs: show five normalized app icons in a review grid"
             git push origin HEAD:fix/icon-padding-batch2
           fi
