@@ -163,8 +163,8 @@ corner pass, not new art. Checked here on 2026-10-24:
   (PNGs only, no CSS) rather than merge #56's PNGs.
 
 Not done here: no PNG was rewritten and #56 was not touched. Whether to retarget #56 onto #53,
-or re-run its script after #53 merges, is Ben's call. The CSS radius (22.37% in #41, 22.5% in
-#56) is still the open #35 decision, and #41 is not in #53.
+or re-run its script after #53 merges, is Ben's call. Decided 2026-10-25: radius is **22.5%**, baked into the PNGs, no CSS clip (#41 is not in #53).
+Once #53 merges, re-run the script's `--write` on the five PNGs instead of merging #56.
 
 Finding to keep in mind: for eight cards the repos hold only already-rounded files, so those
 cannot be fixed by re-cutting. They need either new square art or an upscale-and-mask of the

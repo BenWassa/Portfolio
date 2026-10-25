@@ -106,17 +106,29 @@ Deleting needs Ben's explicit approval. Squash-merging #53 would lose ancestry, 
 - **Closed empty PR heads:** `copilot/fix-fa5b5302-...`, `copilot/fix-defab239-...` (one empty
   commit each).
 
-## Obsolete generated artifacts (report only)
+## Obsolete generated artifacts
 
-`docs/` was the old Vite output directory and still tracks it: `docs/index.html`,
-`docs/assets/` (two hashed bundles and 15 project images), `docs/manifest.webmanifest`,
-`docs/icon.png`, `docs/icons/`, about 24 MB. Pages now deploys from `dist/`, so none of this is
-served. `CLAUDE.md` says not to reintroduce build output under `docs/`. Recommendation: remove it in
-a separate `chore/` PR after #53 merges. Not done here because it is a large deletion and the
-`docs/` folder also holds live agent docs next to it.
+Decided 2026-10-25 (Ben: delete if no longer needed). Verified unused and removed in PR #58:
+`docs/index.html`, `docs/assets/`, `docs/icons/`, `docs/icon.png`, `docs/manifest.webmanifest`
+(about 24 MB, pre-`dist/` build output; live copies are in `src/public`) and `backups/` (four
+dated snapshots, still in git history).
 
-`backups/` (46 MB, tracked) is unreferenced by the build and may be worth the same treatment;
-Ben should say whether it is wanted.
+## Lint gate
+
+Decided 2026-10-25 (Ben: use best practice). `no-unused-vars`, `no-console` and `no-undef` were
+warnings, so the PR gate never failed on them. PR #57 makes them errors. The tree has zero warnings,
+so nothing breaks today.
+
+## Decisions taken 2026-10-25
+
+- **Icon corner radius: 22.5%**, baked into the PNGs (Ben had no preference; 22.5% is what Argus,
+  the audit script and PR #56 already use). No CSS clip radius: Release 1 has none, because #41
+  is not in it.
+- **Narrative keeps its sample demo.** CLAUDE.md records it as an approved exception; the
+  link-out commit stays unapplied.
+- **Hermes icon: hold.** Leave the current card image until Ben's external icon art arrives.
+- **PR #56:** keep as is; after #53 merges, re-run `scripts/standardize-app-icons.mjs --write` on
+  the five PNGs (see `APP-ICON-CORNERS.md`). Do not merge #56's PNGs or CSS.
 
 ## Carried forward from the 2026-10-13 status
 
