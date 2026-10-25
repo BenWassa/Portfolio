@@ -14,7 +14,7 @@ const icons = [
   ['Morpheus', 'morpheus.png'],
 ];
 const width = 1500;
-const height = 432;
+const height = 450;
 const cellW = 274;
 const margin = 65;
 const big = 202;
@@ -34,7 +34,7 @@ const labels = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${wid
 <rect width="100%" height="100%" fill="#0c0e11"/>
 <text x="40" y="28" font-size="17" fill="#9ba1ad">Batch 2 · Existing artwork · 22.5% corner mask · 1024×1024 source</text>
 ${rows.join('')}
-<text x="40" y="389" font-size="14" fill="#98a2ad">Large = desktop display · small = mobile display</text>
+<text x="40" y="435" font-size="14" fill="#98a2ad">Large = desktop display · small = mobile display</text>
 </svg>`);
 await mkdir(fileURLToPath(new URL('../docs/open/', import.meta.url)), { recursive: true });
 await sharp({ create: { width, height, channels: 4, background: '#0c0e11' } })
