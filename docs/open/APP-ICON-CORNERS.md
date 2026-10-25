@@ -1,15 +1,16 @@
 ---
 status: open
 lane: standard
-issues: []
+issues: [35]
 owner: Ben
-updated: 2026-10-24
+updated: 2026-10-25
 ---
 
 # App icon corners and dimensions
 
-The square (app) cards show each app's icon. The icons do not share a corner radius, and several
-sit inside transparent padding. Nothing has been remade yet. This doc lists which ones need it.
+The square (app) cards show each app's icon. This page retains the initial audit and diagnoses,
+with the result table updated for the five padded assets corrected in draft PR #67. Changes are
+not on `main` until approved and merged; drop remains a separate draft PR #66.
 
 Measured with `node scripts/audit-icon-corners.mjs`, which reads the square cards out of
 `src/js/project-descriptions.ts` and the PNGs in `src/public/assets/projects/`. Re-run it after
@@ -29,26 +30,26 @@ the script's `TARGET_RADIUS` changes with it. The radius is a circular-corner eq
 measured from each icon's own bounds. It is accurate for comparing icons with each other, not an
 exact figure for a squircle.
 
-## Result
+## Result — on the PR #67 branch
 
 | Card | File | Canvas | Radius | Icon body | Fill | Verdict |
 |---|---|---|---|---|---|---|
 | drop | `drop.png` | 720×720 | 16.6% | 720×720 | 100% | remake: 720×720, not 1024×1024; radius 16.6% |
 | STARK | `STARK.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | Vox | `Vox.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
-| Punchbuggy | `punchbuggy.png` | 1024×1024 | 23.5% | 1019×972 | 95% | remake: icon fills 95% of canvas; icon body 1019×972, not square |
-| Hearth | `hearth.png` | 1024×1024 | 25.6% | 982×999 | 96% | remake: radius 25.6%; icon fills 96% of canvas; icon body 982×999, not square |
-| PushUp Challenge | `pushup.png` | 1024×1024 | 22.4% | 1012×993 | 97% | remake: icon fills 97% of canvas; icon body 1012×993, not square |
+| Punchbuggy | `punchbuggy.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
+| Hearth | `hearth.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
+| PushUp Challenge | `pushup.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | Wrestle | `wrestle.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | Narrative | `narrative.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
-| Morpheus | `morpheus.png` | 1024×1024 | 20.7% | 988×989 | 96% | remake: icon fills 96% of canvas |
+| Morpheus | `morpheus.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | Argus | `argus.png` | 1024×1024 | 22.7% | 1024×1024 | 100% | ok |
 | HAUS | `haus.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | Flag | `flag.png` | 1024×1024 | 20.0% | 1024×1024 | 100% | ok |
-| Chef's Journal | `chefs-journal.png` | 1024×1024 | 19.5% | 1004×899 | 88% | remake: radius 19.5%; icon fills 88% of canvas; icon body 1004×899, not square |
+| Chef's Journal | `chefs-journal.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | Ecological Constellation | `ecological.png` | 1024×1024 | 21.1% | 1011×1014 | 99% | ok |
 
-## What needs a remake, in order of how visible it is
+## Historical diagnoses from the original audit (before corrections)
 
 ### 1. Corners clearly different: STARK, Vox, Wrestle, Narrative, HAUS, drop
 
@@ -61,10 +62,13 @@ drop is also 720×720 (every other icon is 1024) and its radius is 16.6%. Re-exp
 1024×1024 with the 22.5% mask. The source is a generated illustration, so check the upscale or
 regenerate.
 
-### 2. Right-ish corners, but padded or off-centre: Chef's Journal, Punchbuggy, Hearth, PushUp, Morpheus
+### 2. Originally padded or off-centre: Chef's Journal, Punchbuggy, Hearth, PushUp, Morpheus
 
-These carry transparent margin or a soft shadow baked into the PNG, so the icon renders smaller
-than its neighbours and sits off centre.
+These originally carried transparent margins or soft shadows baked into their PNGs. These five
+are corrected in [draft PR #67](https://github.com/BenWassa/Portfolio/pull/67), with a
+[202px/90px visual preview](https://github.com/BenWassa/Portfolio/blob/fix/icon-padding-main-review/docs/open/ICON-PADDING-BATCH2-PREVIEW.png).
+The original measurements below explain why the change was necessary. Hearth retains its light
+artwork; a separate dark-mode redesign has been deferred.
 
 - **Chef's Journal is the worst.** The icon body is 1004×899, so it is not square at all, and it
   fills 88% of the canvas. The source `chefs-journal/public/icon.png` has the same shape, so this
