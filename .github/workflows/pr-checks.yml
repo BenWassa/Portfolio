@@ -1,0 +1,53 @@
+name: PR checks
+
+# Pull-request quality gate. Validates only; it never deploys.
+#
+# - Trigger is `pull_request` (not `pull_request_target`): for PRs from forks the
+#   token is read-only and no repository secrets are exposed.
+# - Publishing to GitHub Pages lives in deploy-pages.yml and runs only after a
+#   merge to main.
+# - External-link / staleness scans are network-dependent and belong to the
+#   separate weekly health workflow, not this gate.
+#
+# The job id/name `pr-quality` is the status-check name for branch rules (#6).
+# Do not rename it without updating the rules.
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pr-quality:
+    name: pr-quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Format check
+        run: npm run format:check
+      - name: Type check
+        run: npm run typecheck
+      - name: Validate project data
+        run: npm run validate:data
+      - name: Build
+        run: npm run build
+      - name: Smoke test build output
+        run: npm run smoke
