@@ -1,0 +1,64 @@
+name: One-off app icon corrections (#68)
+
+# A temporary, branch-only workflow. Generates the two existing-artwork mask corrections,
+# records a genuine before/after sheet and commits *only* the reviewed files.
+# Remove this file before proposing a merge to main.
+on:
+  push:
+    branches: [fix/remaining-icon-corners-68]
+
+permissions:
+  contents: read
+
+jobs:
+  normalize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - run: npm ci
+      - name: Save untouched main-branch icons for honest comparisons
+        run: |
+          mkdir -p "$RUNNER_TEMP/icons-before"
+          cp src/public/assets/projects/macht.png "$RUNNER_TEMP/icons-before/macht.png"
+          cp src/public/assets/projects/pantheon.png "$RUNNER_TEMP/icons-before/pantheon.png"
+      - name: Apply approved geometric masks only to Macht and Pantheon
+        run: |
+          node scripts/standardize-remaining-icons.mjs --write
+          node scripts/standardize-remaining-icons.mjs --check
+          node scripts/render-remaining-icon-preview.mjs "$RUNNER_TEMP/icons-before"
+          node scripts/audit-icon-corners.mjs > "$RUNNER_TEMP/remaining-audit.txt"
+          grep -F '| Macht |' "$RUNNER_TEMP/remaining-audit.txt" | grep -F '| ok |'
+          grep -F '| Pantheon |' "$RUNNER_TEMP/remaining-audit.txt" | grep -F '| ok |'
+      - name: Verify no unrelated project files changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --name-only | tee "$RUNNER_TEMP/diff-files.txt"
+          if grep -Ev '^src/public/assets/projects/(macht|pantheon)\.png$' "$RUNNER_TEMP/diff-files.txt"; then
+            echo "Unexpected modified file"
+            exit 1
+          fi
+      - name: Static checks and build
+        run: |
+          npm run lint
+          npm run format:check
+          npm run typecheck
+          npm run validate:data
+          npm run build
+          npm run smoke
+      - name: Commit selected artwork and contact sheet
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/public/assets/projects/macht.png src/public/assets/projects/pantheon.png docs/open/ICON68-MACHT-PANTHEON-BEFORE-AFTER.png
+          git commit -m "fix(#68): preserve art and normalize Macht Pantheon corners"
+          git push
