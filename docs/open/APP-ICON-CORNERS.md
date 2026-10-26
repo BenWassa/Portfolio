@@ -10,7 +10,7 @@ updated: 2026-10-25
 
 The square (app) cards show each app's icon. This page retains the initial audit and diagnoses,
 with the actual 21-card audit output captured from the combined approved PR #66 / #67 branch.
-PR #66 merged on 2026-10-25; PR #67 is the remaining approved correction batch.
+PRs #66 and #67 are merged. Draft PR #71 proposes preservation-only Macht/Pantheon corrections; Hermes artwork is a separate approval decision.
 
 Measured with `node scripts/audit-icon-corners.mjs`, which reads the square cards out of
 `src/js/project-descriptions.ts` and the PNGs in `src/public/assets/projects/`. Re-run it after
@@ -29,7 +29,7 @@ Ecological 21.1%, PushUp 22.4%, Argus 22.7%). The approved target is encoded in 
 measured from each icon's own bounds. It is accurate for comparing icons with each other, not an
 exact figure for a squircle.
 
-## Result — PR #67 branch after incorporating merged PR #66 (21 square-labelled cards)
+## Result — PR #68 branch (21 square-labelled cards; Macht and Pantheon corrected)
 
 | Card | File | Canvas | Radius | Icon body | Fill | Verdict |
 |---|---|---|---|---|---|---|
@@ -49,23 +49,22 @@ exact figure for a squircle.
 | Ecological Constellation | `ecological.png` | 1024×1024 | 21.1% | 1011×1014 | 99% | ok |
 | Hermes | `hermes.png` | 1024×1024 | 0.0% | 1024×1024 | 100% | remake: radius 0.0% |
 | Ares | `ares.png` | 1024×1024 | 0.0% | 1024×1024 | 100% | remake: radius 0.0% |
-| Macht | `macht.png` | 1024×1024 | 19.7% | 1024×1024 | 100% | remake: radius 19.7% |
-| Pantheon | `pantheon.png` | 1024×1024 | 19.7% | 1024×1024 | 100% | remake: radius 19.7% |
+| Macht | `macht.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
+| Pantheon | `pantheon.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | LayerUp | `layer-up.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | Psi | `psi.png` | 1024×1024 | 22.3% | 1024×1024 | 100% | ok |
 | Iris | `iris.png` | 1024×1024 | 14.7% | 1024×1024 | 100% | remake: radius 14.7% |
 
 ### Outstanding, outside approved icon batches
 
-The full auditor reads **21** cards whose source metadata says `orientation: 'square'`. **16 pass and 5 fail.** The five failures existed before this batch and are not touched in PR #67. All five canvas sizes are 1024×1024 and have 100% measured fill; the outstanding defect is corner treatment/classification.
+The full auditor reads **21** cards whose source metadata says `orientation: 'square'`. **18 pass and 3 fail on this PR branch.** The five original failures existed before this follow-up. PR #71 changes only Macht/Pantheon; Hermes, Ares and Iris still need separate decisions. All original five had 1024×1024 canvases and 100% measured fill; the remaining defects are Hermes branding and Ares/Iris classification.
 
 - **Hermes:** 0.0% measured radius. Source identity (masthead vs. app icon) needs review before applying a mask.
-- **Macht:** 19.7% radius; likely a preservation-only remask pending visual approval.
-- **Pantheon:** 19.7% radius; likely a preservation-only remask pending visual approval.
+- **Macht / Pantheon:** both were 19.7% and are 22.3% on draft PR #71; existing image content preserved, subject to owner review.
 - **Ares:** 0.0%; explicitly **landscape project artwork**, not a square app icon. Its `orientation: 'square'` data value needs separate card-layout review. Do not modify artwork for this audit.
 - **Iris:** 14.7%; also explicitly **landscape project artwork**, not a square app icon, despite `orientation: 'square'`. Do not modify artwork for this audit.
 
-The temporary experiment of making the full audit a mandatory PR check failed on these five previously unscoped entries; that workflow change was reverted. The 16 approved target assets passed the same CI audit output. Keep issue #35 open until the three remaining app identities are reviewed and landscape card metadata is reconciled. The rest of PR #67 retains existing artwork.
+The temporary experiment of making the full audit a mandatory PR check failed on these five previously unscoped entries; that workflow change was reverted. The original 16 approved target assets remain valid. Keep issue #35 open while Hermes branding is decided and the Ares/Iris landscape classification is resolved in separate draft PR #70. The rest of PR #67 retains existing artwork.
 
 ## Historical diagnoses from the original audit (before corrections)
 
