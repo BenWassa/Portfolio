@@ -229,6 +229,15 @@ const validateEntry = (entry, label, seen) => {
       `orientation must be one of ${ORIENTATIONS.join('|')} (got ${JSON.stringify(entry.orientation)})`
     );
   }
+  if (entry.landscapeImageFit !== undefined) {
+    if (!['cover', 'contain'].includes(entry.landscapeImageFit)) {
+      err(where, 'landscapeImageFit must be cover or contain');
+    }
+    if (entry.orientation !== 'landscape') {
+      err(where, 'landscapeImageFit requires landscape orientation');
+    }
+  }
+
   if (!isNonEmptyString(entry.alt)) err(where, 'missing alt text');
 
   if (!entry.theme || typeof entry.theme !== 'object') err(where, 'missing theme');

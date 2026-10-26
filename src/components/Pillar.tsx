@@ -130,9 +130,22 @@ export const Pillar: React.FC<PillarProps> = ({
                         ></div>
                       </div>
                     </div>
-                    {group.projects.map((project) => (
-                      <ProjectCard key={project.title} project={project} onClick={onProjectClick} />
-                    ))}
+                    {group.projects.map((project) =>
+                      project.orientation === 'landscape' && hasSquareProjects ? (
+                        <div
+                          key={project.title}
+                          className="col-span-3 md:col-span-2 xl:col-span-2"
+                        >
+                          <ProjectCard project={project} onClick={onProjectClick} />
+                        </div>
+                      ) : (
+                        <ProjectCard
+                          key={project.title}
+                          project={project}
+                          onClick={onProjectClick}
+                        />
+                      )
+                    )}
                   </React.Fragment>
                 ))}
               </div>

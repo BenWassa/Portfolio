@@ -145,7 +145,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) =>
             srcSet={imageProps.srcSet}
             sizes={imageProps.sizes}
             alt={project.alt}
-            className={`w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 ${
+            className={`w-full h-full ${project.landscapeImageFit === 'contain' ? 'object-contain' : 'object-cover'} transition-all duration-700 ease-out group-hover:scale-105 ${
               imageLoaded ? 'opacity-100 blur-0' : 'opacity-0 blur-sm'
             }`}
             loading={imageProps.loading}
