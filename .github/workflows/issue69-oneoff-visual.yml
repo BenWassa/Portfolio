@@ -1,0 +1,55 @@
+name: One-off landscape card browser review (#69)
+on:
+  push:
+    branches: [fix/landscape-card-classification-69]
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    if: contains(github.event.head_commit.message, 'visual-preview: run')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Install branch dependencies and headless browser
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false playwright
+          npx playwright install --with-deps chromium
+      - name: Build proposed version
+        run: npm run build
+      - name: Build immutable before version
+        run: |
+          git fetch --depth=1 origin main
+          git worktree add --detach "$RUNNER_TEMP/portfolio-before" origin/main
+          (cd "$RUNNER_TEMP/portfolio-before" && npm ci && npm run build)
+      - name: Serve before and after versions
+        shell: bash
+        run: |
+          (cd "$RUNNER_TEMP/portfolio-before" && npm run preview -- --host 127.0.0.1 --port 4174 > "$RUNNER_TEMP/before.log" 2>&1) &
+          npm run preview -- --host 127.0.0.1 --port 4173 > "$RUNNER_TEMP/after.log" 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:4173/ -o /dev/null && curl -fsS http://127.0.0.1:4174/ -o /dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat "$RUNNER_TEMP/before.log" "$RUNNER_TEMP/after.log"
+          exit 1
+      - name: Capture 390px and 1440px before/after browser viewports
+        run: node scripts/capture-landscape-cards-69.mjs http://127.0.0.1:4174/ http://127.0.0.1:4173/
+      - name: Commit only visual review screenshots
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/open/ISSUE69-*.png
+          git commit -m "docs(#69): attach actual before-and-after viewport captures"
+          git push
