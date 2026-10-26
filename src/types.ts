@@ -62,6 +62,8 @@ export type FeaturedProject = ProjectBase & {
   theme: ProjectTheme;
   status: ProjectStatus;
   orientation: ProjectOrientation;
+  /** Preserve complete screenshot artwork inside landscape cards when cropping would lose UI. */
+  landscapeImageFit?: 'cover' | 'contain';
 
   // REPLACED: techStack: string[] -> techSpecs: TechSpecs
   techSpecs: TechSpecs;
