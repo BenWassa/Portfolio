@@ -18,6 +18,9 @@ try {
     for (const width of [390,1440]) {
       const page = await browser.newPage({ viewport: { width, height: 900 }, deviceScaleFactor: 1, reducedMotion: 'reduce' });
       const failures = [];
+      // A clean browser normally shows seven-day onboarding. Use a valid recent local visit
+      // for both before and after so screenshot automation measures the actual portfolio grid.
+      await page.addInitScript(() => window.localStorage.setItem('portfolio_last_visit', new Date().toISOString()));
       page.on('pageerror', (e) => failures.push(e.message));
       await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
       await page.locator('#pillar-psych').click({ position: { x: 20, y: 20 }, force: true });
